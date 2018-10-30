@@ -1,0 +1,133 @@
+{
+  "name": "react-native-template",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "react-native start",
+    "start:clean": "react-native start --reset-cache",
+    "lint": "echo TODO lint?",
+    "unit": "jest",
+    "test": "echo TODO run e2e tests",
+    "run:android": "react-native run-android",
+    "run:android:device": "react-native run-android --device",
+    "run:android:example": "react-native run-android --variant=example",
+    "run:ios": "react-native run-ios",
+    "run:ios:device": "react-native run-ios --device",
+    "run:ios:example": "react-native run-ios --variant=example",
+    "logs:android": "react-native log-android",
+    "logs:ios": "react-native log-ios",
+    "info": "echo TODO show info for $taito_env environment",
+    "info:prod": "echo TODO show info for prod environment",
+    "clean": "echo TODO",
+    "semantic:release": "semantic-release -b dev --no-ci"
+  },
+  "dependencies": {
+    "appcenter": "^1.9.0",
+    "appcenter-analytics": "^1.9.0",
+    "appcenter-crashes": "^1.9.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.1.2",
+    "@commitlint/config-conventional": "^7.1.2",
+    "git-branch-is": "~2.1.0",
+    "husky": "~1.1.2",
+    "npm-run-all": "~4.1.3",
+    "semantic-release": "^15.10.6"
+  },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts"
+    ]
+  },
+  "jest": {
+    "preset": "react-native",
+    "setupFiles": [
+      "<rootDir>/node_modules/appcenter-analytics/test/AppCenterAnalyticsMock.js",
+      "<rootDir>/node_modules/appcenter/test/AppCenterMock.js",
+      "<rootDir>/node_modules/appcenter-crashes/test/AppCenterCrashesMock.js"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "(if git-branch-is -q test || git-branch-is -q stag || git-branch-is -q master; then echo 'ERROR: You cannot commit changes directly to this environment branch. Only fast-forward merge is allowed.' && echo && exit 1; fi) && npm run lint",
+      "pre-push": "npm-run-all --parallel lint unit",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "type-enum": [
+        2,
+        "always",
+        [
+          "wip",
+          "feat",
+          "fix",
+          "docs",
+          "style",
+          "refactor",
+          "perf",
+          "test",
+          "revert",
+          "build",
+          "ci",
+          "chore"
+        ]
+      ]
+    }
+  },
+  "release": {
+    "npmPublish": false,
+    "analyzeCommits": {
+      "preset": "angular",
+      "releaseRules": [
+        {
+          "type": "feat",
+          "release": "minor"
+        },
+        {
+          "type": "fix",
+          "release": "patch"
+        },
+        {
+          "type": "docs",
+          "release": "patch"
+        },
+        {
+          "type": "style",
+          "release": "patch"
+        },
+        {
+          "type": "refactor",
+          "release": "patch"
+        },
+        {
+          "type": "perf",
+          "release": "patch"
+        },
+        {
+          "type": "test",
+          "release": "patch"
+        },
+        {
+          "type": "revert",
+          "release": "patch"
+        },
+        {
+          "type": "build",
+          "release": "patch"
+        },
+        {
+          "type": "ci",
+          "release": "patch"
+        },
+        {
+          "type": "chore",
+          "release": "patch"
+        }
+      ]
+    }
+  }
+}
