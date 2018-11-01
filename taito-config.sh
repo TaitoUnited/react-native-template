@@ -18,7 +18,7 @@ taito_repo_location=github-$taito_organization
 taito_repo_name=$taito_project
 
 # Environments
-taito_environments="dev prod"
+taito_environments="dev test stag prod"
 
 # Provider and namespaces
 taito_namespace=$taito_project-$taito_env
@@ -27,6 +27,7 @@ taito_namespace=$taito_project-$taito_env
 taito_messaging_app=slack
 taito_messaging_channel=companyname
 taito_messaging_builds_channel=builds
+taito_messaging_monitoring_channel=monitoring
 taito_messaging_webhook=TODO
 
 # Hour reporting and issue management
