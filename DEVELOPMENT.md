@@ -6,7 +6,7 @@ Table of contents:
 
 * [Prerequisites](#prerequisites)
 * [Quick start](#quick-start)
-* [Structure](#structure)
+* [Code structure](#code-structure)
 * [Version control](#version-control)
 * [Releases](#releases)
 * [Configuration](#configuration)
@@ -81,9 +81,9 @@ Troubleshooting:
 
     taito --trouble
 
-## Structure
+## Code structure
 
-Project specific conventions are defined in [README.md](README.md#conventions). See the [code structure](https://github.com/TaitoUnited/taito-cli/blob/master/docs/tutorial/b-code-structure.md) appendix of the [taito-cli tutorial](https://github.com/TaitoUnited/taito-cli/blob/master/docs/tutorial/README.md) for some tips on how to design a modular directory structure.
+Project specific conventions are defined in [README.md](README.md#conventions). See [code structure](https://github.com/TaitoUnited/taito-cli/blob/master/docs/tutorial/b-code-structure.md) appendix of the [taito-cli tutorial](https://github.com/TaitoUnited/taito-cli/blob/master/docs/tutorial/README.md) for some tips on how to design a modular directory structure.
 
 ## Version control
 
@@ -91,9 +91,7 @@ Development is done in dev and feature branches.
 
 All commit messages must be structured according to the [Conventional Commits](http://conventionalcommits.org/) convention as application version number and release notes are generated automatically for production release by the [semantic-release](https://github.com/semantic-release/semantic-release) library.
 
-You can manage environment and feature branches using taito-cli commands. Run `taito vc -h` for instructions. If you use git commands or git GUI tools instead, remember to follow the version control conventions defined by `taito vc conventions`.
-
-See the [version control](https://github.com/TaitoUnited/taito-cli/blob/master/docs/tutorial/04-version-control.md) chapter of the [taito-cli tutorial](https://github.com/TaitoUnited/taito-cli/blob/master/docs/tutorial/README.md) for some additional information.
+You can manage environment and feature branches using taito-cli commands. Run `taito vc -h` for instructions. If you use git commands or git GUI tools instead, remember to follow the version control conventions defined by `taito vc conventions`. See [version control](https://github.com/TaitoUnited/taito-cli/blob/master/docs/tutorial/04-version-control.md) chapter of the [taito-cli tutorial](https://github.com/TaitoUnited/taito-cli/blob/master/docs/tutorial/README.md) for some additional information.
 
 ## Releases
 
