@@ -1,22 +1,26 @@
-# react-native-template
+> This page contains a short summary of the project itself. See [DEVELOPMENT.md](DEVELOPMENT.md) for development instructions.
 
 [//]: # (TEMPLATE NOTE START)
 
-Template for mobile applications implemented with React Native and released with Visual Studio App Center. You can create a new project from this template by running `taito project create: react-native-template`. You can also migrate an existing non-taito-cli project by running `taito project migrate: react-native-template` in your project root folder.
+# react-native-template
+
+Template for mobile applications implemented with React Native and released with Visual Studio App Center. You can create a new project from this template by running `taito project create: react-native-template`. You can also migrate an existing react-native project by running `taito project migrate: react-native-template` in your project root folder.
 
 [//]: # (TEMPLATE NOTE END)
+# Project title
 
-Project specific documentation is located in [PROJECT.md](PROJECT.md). Remember to keep it up-to-date.
+Short description for the project: vision, purpose, company, etc.
 
 Table of contents:
 
 * [Links](#links)
-* [Prerequisites](#prerequisites)
-* [Quick start](#quick-start)
-* [Structure](#structure)
-* [Version control](#version-control)
-* [Releases](#releases)
-* [Configuration](#configuration)
+* [Contacts](#contacts)
+* [Responsibilities](#responsibilities)
+* [Recurring issues and solutions](#recurring-issues-and-solutions)
+* [Miscellaneous notes](#miscellaneous-notes)
+* [Conventions](#conventions)
+* [Architecture Overview](#architecture-overview)
+* [Security](#security)
 
 ## Links
 
@@ -28,126 +32,69 @@ LINKS WILL BE GENERATED HERE
 
 > You can update this section by configuring links in `taito-config.sh` and running `taito project docs`.
 
-## Prerequisites
+## Contacts
 
-* [node.js](https://nodejs.org/)
-* [react-native](https://facebook.github.io/react-native/) (see the [getting-started](https://facebook.github.io/react-native/docs/getting-started.html))
-* Optional: [taito-cli](https://github.com/TaitoUnited/taito-cli#readme)
+* Project Manager: John Doe, Company co.
+* Designer: Jane Doe, Company co.
 
-## Quick start
+> NOTE: It is recommended to use a shared address book or CRM for keeping the contact details like email and phone number up-to-date.
 
-> Taito-cli is optional. Most of the commands you can run with `npm` instead of `taito`.
+## Responsibilities
 
-Install linters and some libraries on host (add `--clean` for clean reinstall):
+> Hosting, billing and control of 3rd party services, certificates, etc.
 
-    taito install
+## Recurring issues and solutions
 
-Start packager (use the `--clean` flag in case of trouble):
+See trouble.txt or run `taito --trouble`.
 
-    taito start
+## Miscellaneous notes
 
-Run the app in a local emulator (add `--VARIANT` to run a specific variant):
+## Conventions
 
-    taito run:android
-    taito run:ios
+> Project specific conventions.
 
-Run the app on a physical device connected to computer (add `--VARIANT` to run a specific variant):
+## Architecture Overview
 
-    taito run:android --device
-    taito run:ios --device
-
-Run the app on a mobile application testing platform (add `--VARIANT` to run a specific variant):
-
-    taito run:android --testing
-    taito run:ios --testing
-
-Show user accounts and other information that you can use to log in:
-
-    taito info
-    taito info:dev
-    taito info:test
-    taito info:stag
-    taito info:prod
-
-Show logs:
-
-    taito logs:android
-    taito logs:ios
-
-Run tests:
-
-    taito unit                              # run all unit tests
-    taito unit: trip                        # run the 'trip' unit test (TODO)
-    taito test                              # run all integration and end-to-end tests
-    taito test: billing                     # run the billing test suite (TODO)
-
-List all project related links and open one of them in browser:
-
-    taito open -h
-    taito open NAME
-
-Link libraries:
-
-    taito link
-
-Cleaning:
-
-    taito clean                             # Clean everything
-
-Troubleshooting:
-
-    taito --trouble
-
-## Structure
-
-Project specific conventions are defined in [PROJECT.md](PROJECT.md#conventions). See [server-template wiki](https://github.com/TaitoUnited/server-template/wiki/Structure) for some tips on how to design a modular directory structure.
-
-## Version control
-
-Development is done in dev and feature branches. See [server-template wiki](https://github.com/TaitoUnited/server-template/wiki/Version-control) for some additional information.
-
-All commit messages must be structured according to the [Conventional Commits](http://conventionalcommits.org/) convention as application version number and release notes are generated automatically for production release by the [semantic-release](https://github.com/semantic-release/semantic-release) library.
-
-You can manage environment and feature branches using taito-cli commands. Run `taito vc -h` for instructions. If you use git commands or git GUI tools instead, remember to follow the version control conventions defined by `taito vc conventions`.
-
-## Releases
-
-You can distribute a new release to a certain group of people by merging the changes to a correct branch. For example:
-
-* `feature/FEAT`: Push changes to `feature/FEAT` branch. The release may be distributed to a group of people depending on App Center settings.
-* `dev`: Push to dev branch. The dev release may be distributed to developers depending on App Center settings.
-* `test`: Merge changes to test branch using fast-forward. The test release is typically distributed to testers for general testing.
-* `stag`: Merge changes to stag branch using fast-forward. The staging release is typically distributed to customer for acceptance testing.
-* `prod`: Merge changes to master branch using fast-forward. The production release is distributed to end users. Version number and release notes are generated automatically. TODO more instructions.
-
-You can use `taito vc` commands to manage branches, and `taito deployment` commands to manage builds and deployments. Run `taito vc -h` and `taito deployment -h` for instructions.
-
-See the [environments](#environments) chapter for instructions on configuring the environments.
-
-## Configuration
-
-### Version control settings
-
-`dev` branch should be set as the default branch. Run `taito open conventions` to see organization specific conventions.
-
-### Basic project settings
-
-1. Modify `taito-config.sh` if you need to change some settings. The default settings are ok for most projects, but you might want to define some links with `link_urls`.
-2. Run `taito project apply`
-3. Commit and push changes dev branch
-
-### Environments
-
-Define environments with the `taito_environments` setting in `taito-config.sh`. You can create an environment by running `taito env apply:ENV`. Examples for environment names: `f-orders`, `dev`, `test`, `stag`, `canary`, `prod`.
-
-### Services and secrets
+> TIP: You can use [Gravizo](www.gravizo.com) for making a architecture diagram if the diagram does not contain any confidential information. Note that architecture diagram is not mandatory if the architecture is very simple.
 
 TODO
 
-### Apple App Store
+### Integrations
 
-TODO
+* Client uses Google Maps
+* Server uses system X for authorization (OAUTH)
+* Server fetches products from system Y (REST/json)
+* Server sends email using Sendgrid (REST/json)
 
-### Google Play
+### Processes
 
-TODO
+> NOTE: Only non-trivial processes need to be described here (e.g. scheduled batch processing), though it might be a good idea to describe one or two basic scenarios also.
+
+#### Basic Scenario
+
+1. User performs action on UI
+2. Server authorizes action by system X
+3. Server reads/updates database
+4. Server returns value
+
+#### Product Snapshots
+
+1. User performs action on UI
+2. Server adds message to queue
+5. ...
+6. ...
+7. Server sends email
+
+#### Scheduled Jobs
+
+* ...
+* ...
+
+## Security
+
+> Document security and GDPR related things here (See [template wiki](https://github.com/TaitoUnited/server-template/wiki/Security)). Remember to review these also later in case some newly developed features handle sensitive data.
+
+Done:
+* [ ] Security checklist
+* [ ] Data protection checklist
+* [ ] Security review
