@@ -21,8 +21,11 @@ Table of contents:
 * [Conventions](#conventions)
 * [Architecture Overview](#architecture-overview)
 * [Security](#security)
+* [GDPR](#gdpr)
 
 ## Links
+
+Non-production basic auth credentials: TODO
 
 [//]: # (GENERATED LINKS START)
 
@@ -68,7 +71,7 @@ TODO
 
 ### Processes
 
-> NOTE: Only non-trivial processes need to be described here (e.g. scheduled batch processing), though it might be a good idea to describe one or two basic scenarios also.
+> NOTE: Only non-trivial processes need to be described here (e.g. scheduled batch processing), though it might be a good idea to describe one or two basic scenarios also. Architecture is the main focus here. User stories should be documented elsewhere (e.g. wiki).
 
 #### Basic Scenario
 
@@ -92,9 +95,8 @@ TODO
 
 ## Security
 
-> Document security and GDPR related things here (See [template wiki](https://github.com/TaitoUnited/server-template/wiki/Security)). Remember to review these also later in case some newly developed features handle sensitive data.
+> See the [security](https://github.com/TaitoUnited/taito-cli/blob/master/docs/tutorial/d-security.md) appendix of the [taito-cli tutorial](https://github.com/TaitoUnited/taito-cli/blob/master/docs/tutorial/README.md)
 
-Done:
-* [ ] Security checklist
-* [ ] Data protection checklist
-* [ ] Security review
+## GDPR
+
+> See the [data protection and privacy](https://github.com/TaitoUnited/taito-cli/blob/master/docs/tutorial/e-data-protection-and-privacy.md) appendix of the [taito-cli tutorial](https://github.com/TaitoUnited/taito-cli/blob/master/docs/tutorial/README.md)

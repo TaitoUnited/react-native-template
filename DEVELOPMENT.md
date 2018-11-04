@@ -1,6 +1,6 @@
 # Development
 
-This file has been copied from [REACT-NATIVE-TEMPLATE](https://github.com/TaitoUnited/REACT-NATIVE-TEMPLATE/). Keep modifications minimal and improve the original instead. Project specific conventions are located in [README.md](README.md#conventions).
+This file has been copied from [REACT-NATIVE-TEMPLATE](https://github.com/TaitoUnited/REACT-NATIVE-TEMPLATE/). Keep modifications minimal and improve the [original](https://github.com/TaitoUnited/REACT-NATIVE-TEMPLATE/blob/dev/DEVELOPMENT.md) instead. Project specific conventions are located in [README.md](README.md#conventions). See the [taito-cli tutorial](https://github.com/TaitoUnited/taito-cli/blob/master/docs/tutorial/README.md) for more thorough development instructions. Note that taito-cli is optional (see [without taito-cli](#without-taito-cli)).
 
 Table of contents:
 
@@ -83,15 +83,17 @@ Troubleshooting:
 
 ## Structure
 
-Project specific conventions are defined in [PROJECT.md](PROJECT.md#conventions). See [server-template wiki](https://github.com/TaitoUnited/server-template/wiki/Structure) for some tips on how to design a modular directory structure.
+Project specific conventions are defined in [README.md](README.md#conventions). See the [code structure](https://github.com/TaitoUnited/taito-cli/blob/master/docs/tutorial/b-code-structure.md) appendix of the [taito-cli tutorial](https://github.com/TaitoUnited/taito-cli/blob/master/docs/tutorial/README.md) for some tips on how to design a modular directory structure.
 
 ## Version control
 
-Development is done in dev and feature branches. See [server-template wiki](https://github.com/TaitoUnited/server-template/wiki/Version-control) for some additional information.
+Development is done in dev and feature branches.
 
 All commit messages must be structured according to the [Conventional Commits](http://conventionalcommits.org/) convention as application version number and release notes are generated automatically for production release by the [semantic-release](https://github.com/semantic-release/semantic-release) library.
 
 You can manage environment and feature branches using taito-cli commands. Run `taito vc -h` for instructions. If you use git commands or git GUI tools instead, remember to follow the version control conventions defined by `taito vc conventions`.
+
+See the [version control](https://github.com/TaitoUnited/taito-cli/blob/master/docs/tutorial/04-version-control.md) chapter of the [taito-cli tutorial](https://github.com/TaitoUnited/taito-cli/blob/master/docs/tutorial/README.md) for some additional information.
 
 ## Releases
 
