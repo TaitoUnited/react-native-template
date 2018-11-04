@@ -41,7 +41,7 @@ LINKS WILL BE GENERATED HERE
 
 ## Responsibilities
 
-> Hosting, billing and control of 3rd party services, certificates, etc.
+> Hosting, billing and control of 3rd party services, SSL/TLS certificates, etc.
 
 ## Recurring issues and solutions
 
@@ -55,7 +55,7 @@ See trouble.txt or run `taito --trouble`.
 
 ## Architecture Overview
 
-> TIP: You can use [Gravizo](www.gravizo.com) for making a architecture diagram if the diagram does not contain any confidential information. Note that architecture diagram is not mandatory if the architecture is very simple.
+> TIP: You can use [Gravizo](https://www.gravizo.com) for making a architecture diagram if the diagram does not contain any confidential information. Note that architecture diagram is not mandatory if the architecture is very simple.
 
 TODO
 
