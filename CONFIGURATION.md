@@ -1,6 +1,6 @@
-# Development
+# Configuration
 
-This file has been copied from [REACT-NATIVE-TEMPLATE](https://github.com/TaitoUnited/REACT-NATIVE-TEMPLATE/). Keep modifications minimal and improve the [original](https://github.com/TaitoUnited/REACT-NATIVE-TEMPLATE/blob/dev/CONFIGURATION.md) instead. Project specific conventions are located in [README.md](README.md#conventions). See the [taito-cli tutorial](https://github.com/TaitoUnited/taito-cli/blob/master/docs/tutorial/README.md) for more thorough development instructions. Note that taito-cli is optional (see [usage without taito-cli](DEVELOPMENT.md#usage-without-taito-cli)).
+This file has been copied from [REACT-NATIVE-TEMPLATE](https://github.com/TaitoUnited/REACT-NATIVE-TEMPLATE/). Keep modifications minimal and improve the [original](https://github.com/TaitoUnited/REACT-NATIVE-TEMPLATE/blob/dev/CONFIGURATION.md) instead. Note that taito-cli is optional (see [usage without taito-cli](DEVELOPMENT.md#usage-without-taito-cli)).
 
 Table of contents:
 
