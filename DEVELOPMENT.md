@@ -1,6 +1,6 @@
 # Development
 
-This file has been copied from [REACT-NATIVE-TEMPLATE](https://github.com/TaitoUnited/REACT-NATIVE-TEMPLATE/). Keep modifications minimal and improve the [original](https://github.com/TaitoUnited/REACT-NATIVE-TEMPLATE/blob/dev/DEVELOPMENT.md) instead. Project specific conventions are located in [README.md](README.md#conventions). See the [taito-cli tutorial](https://github.com/TaitoUnited/taito-cli/blob/master/docs/tutorial/README.md) for more thorough development instructions. Note that taito-cli is optional (see [without taito-cli](#without-taito-cli)).
+This file has been copied from [REACT-NATIVE-TEMPLATE](https://github.com/TaitoUnited/REACT-NATIVE-TEMPLATE/). Keep modifications minimal and improve the [original](https://github.com/TaitoUnited/REACT-NATIVE-TEMPLATE/blob/dev/DEVELOPMENT.md) instead. Project specific conventions are located in [README.md](README.md#conventions). See the [taito-cli tutorial](https://github.com/TaitoUnited/taito-cli/blob/master/docs/tutorial/README.md) for more thorough development instructions. Note that taito-cli is optional (see [usage without taito-cli](#usage-without-taito-cli)).
 
 Table of contents:
 
@@ -9,7 +9,7 @@ Table of contents:
 * [Code structure](#code-structure)
 * [Version control](#version-control)
 * [Releases](#releases)
-* [Configuration](#configuration)
+* [Usage without taito-cli](#usage-without-taito-cli)
 
 ## Prerequisites
 
@@ -107,30 +107,6 @@ You can use `taito vc` commands to manage branches, and `taito deployment` comma
 
 See the [environments](#environments) chapter for instructions on configuring the environments.
 
-## Configuration
-
-### Version control settings
-
-`dev` branch should be set as the default branch. Run `taito open conventions` to see organization specific conventions.
-
-### Basic project settings
-
-1. Modify `taito-config.sh` if you need to change some settings. The default settings are ok for most projects, but you might want to define some links with `link_urls`.
-2. Run `taito project apply`
-3. Commit and push changes dev branch
-
-### Environments
-
-Define environments with the `taito_environments` setting in `taito-config.sh`. You can create an environment by running `taito env apply:ENV`. Examples for environment names: `f-orders`, `dev`, `test`, `stag`, `canary`, `prod`.
-
-### Services and secrets
-
-TODO
-
-### Apple App Store
-
-TODO
-
-### Google Play
+## Usage without taito-cli
 
 TODO
