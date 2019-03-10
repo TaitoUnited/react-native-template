@@ -22,7 +22,7 @@ Table of contents:
 
 `dev` branch should be set as the default branch. Run `taito open vc conventions` to see organization specific conventions.
 
-[ ] All done
+* [ ] All done
 
 ## Basic project settings
 
@@ -30,28 +30,28 @@ Table of contents:
 2. Run `taito project apply`
 3. Commit and push changes dev branch
 
-[ ] All done
+* [ ] All done
 
 ## Environments
 
 Define environments with the `taito_environments` setting in `taito-config.sh`. You can create an environment by running `taito env apply:ENV`. Examples for environment names: `f-orders`, `dev`, `test`, `stag`, `canary`, `prod`.
 
-[ ] All done
+* [ ] All done
 
 ## Services and secrets
 
 TODO
 
-[ ] All done
+* [ ] All done
 
 ## Apple App Store
 
 TODO
 
-[ ] All done
+* [ ] All done
 
 ## Google Play
 
 TODO
 
-[ ] All done
+* [ ] All done
