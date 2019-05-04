@@ -7,9 +7,10 @@ echo "POST BUILD SCRIPT START"
 cd "$APPCENTER_SOURCE_DIRECTORY"
 
 # Read settings from taito-config.sh
-taito_env=$APPCENTER_BRANCH
-taito_target_env=$APPCENTER_BRANCH
-. ./taito-config.sh
+set -a
+taito_target_env=${APPCENTER_BRANCH/master/prod}
+. taito-config.sh
+set +a
 
 [[ $APPCENTER_XCODE_PROJECT == *"$appcenter_app"* ]] && TYPE=iOS || TYPE=Android
 

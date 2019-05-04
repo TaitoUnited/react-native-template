@@ -1,6 +1,5 @@
 #!/bin/bash
 # shellcheck disable=SC2034
-: "${taito_env:?}"
 : "${taito_target_env:?}"
 
 # Configuration instructions:
@@ -25,6 +24,7 @@ taito_project_icon=
 
 # Environments
 taito_environments="dev test stag prod"
+taito_env=$taito_target_env
 
 # URLs
 # ...
