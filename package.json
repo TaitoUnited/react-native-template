@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "rename": "npx react-native-rename",
     "start": "react-native start",
     "start:clean": "react-native start --reset-cache",
     "android": "react-native run-android --variant=developmentDebug --appIdSuffix=dev",

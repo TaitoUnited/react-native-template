@@ -1,0 +1,8 @@
+{
+  "name": "HelsinkiCasting",
+  "displayName": "Helsinki Casting",
+  "svgAppIcon": {
+    "foregroundPath": "./assets/icon/foreground.svg",
+    "backgroundPath": "./assets/icon/background.svg"
+  }
+}
