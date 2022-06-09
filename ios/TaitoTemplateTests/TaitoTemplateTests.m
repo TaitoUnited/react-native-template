@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface HelsinkiCastingTests : XCTestCase
+@interface TaitoTemplateTests : XCTestCase
 
 @end
 
-@implementation HelsinkiCastingTests
+@implementation TaitoTemplateTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {
