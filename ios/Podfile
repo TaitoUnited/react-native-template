@@ -1,0 +1,41 @@
+require_relative '../node_modules/react-native/scripts/react_native_pods'
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+
+platform :ios, '11.0'
+
+target 'HelsinkiCasting' do
+  config = use_native_modules!
+
+  use_react_native!(
+    :path => config[:reactNativePath],
+    # to enable hermes on iOS, change `false` to `true` and then install pods
+    :hermes_enabled => false
+  )
+
+  # Add more permissions if needed: https://github.com/zoontek/react-native-permissions#ios
+  permissions_path = '../node_modules/react-native-permissions/ios'
+  pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
+  pod 'Permission-MediaLibrary', :path => "#{permissions_path}/MediaLibrary"
+  pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary"
+  pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications"
+
+  pod 'rn-fetch-blob', :path => '../node_modules/rn-fetch-blob'
+
+  target 'HelsinkiCastingTests' do
+    inherit! :complete
+    # Pods for testing
+  end
+
+  IS_CI = ENV['APPCENTER_BUILD_ID']
+
+  # Note that if you have use_frameworks! enabled, Flipper will not work and
+  # you should disable the next line.
+  if not IS_CI
+    use_flipper!()
+  end
+
+  post_install do |installer|
+    react_native_post_install(installer)
+    __apply_Xcode_12_5_M1_post_install_workaround(installer)
+  end
+end
