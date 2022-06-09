@@ -1,4 +1,4 @@
-package com.helsinkicasting;
+package com.taitotemplate;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

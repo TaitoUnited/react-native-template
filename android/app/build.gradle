@@ -140,12 +140,12 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.helsinkicasting"
+        applicationId "com.taitotemplate"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-        resValue "string", "build_config_package", "com.helsinkicasting"
+        resValue "string", "build_config_package", "com.taitotemplate"
     }
     splits {
         abi {

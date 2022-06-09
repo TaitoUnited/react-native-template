@@ -1,5 +1,5 @@
 {
-  "name": "helsinkicasting",
+  "name": "taitotemplate",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -13,10 +13,10 @@
     "android:production": "react-native run-android --variant=productionDebug",
     "android:production:release": "react-native run-android --variant=productionRelease",
     "ios": "react-native run-ios",
-    "ios:staging": "react-native run-ios --scheme 'HelsinkiCasting Staging'",
-    "ios:staging:release": "react-native run-ios --scheme 'HelsinkiCasting Staging' --configuration Release",
-    "ios:production": "react-native run-ios --scheme 'HelsinkiCasting Production'",
-    "ios:production:release": "react-native run-ios --scheme 'HelsinkiCasting Production' --configuration Release",
+    "ios:staging": "react-native run-ios --scheme 'TaitoTemplate Staging'",
+    "ios:staging:release": "react-native run-ios --scheme 'TaitoTemplate Staging' --configuration Release",
+    "ios:production": "react-native run-ios --scheme 'TaitoTemplate Production'",
+    "ios:production:release": "react-native run-ios --scheme 'TaitoTemplate Production' --configuration Release",
     "test": "jest",
     "typecheck": "tsc --noEmit",
     "lint": "eslint ./src --ext .ts,.tsx --config .eslintrc",
