@@ -111,6 +111,7 @@
     "eslint-plugin-react": "7.28.0",
     "eslint-plugin-react-hooks": "4.3.0",
     "eslint-plugin-standard": "5.0.0",
+    "husky": "8.0.1",
     "jest": "27.4.7",
     "make-plural": "7.0.0",
     "metro-react-native-babel-preset": "0.66.2",

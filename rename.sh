@@ -20,4 +20,7 @@ grep -r -l "$searchUpp" . | sort | uniq | xargs perl -e "s/$searchUpp/$replaceUp
 grep -r -l "$searchLow" . | sort | uniq | xargs perl -e "s/$searchLow/$replaceLow/" -pi
 
 rm -f .git/index
+rm -rf .git/hooks/
+rm -rf node_modules
 git reset
+yarn
