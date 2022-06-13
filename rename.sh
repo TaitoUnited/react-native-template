@@ -1,17 +1,23 @@
 #!/bin/bash
 
 # Take the search string
-# read -p "Enter the search string: " search
+read -p "Enter the search string (press enter if default Taito Template): " searchString
+if [ -z "$searchString" ]; then
+  searchString="Taito Template"
+fi
 
-# # Take the replace string
-# read -p "Enter the replace string: " replace
+# Take the replace string
+read -p "Enter the name of your project in the format 'My Project': " replaceString
 
-# find . ! -path '*/.*' -type f -exec sed -i 's/<string1>/<string2>/g' {} +
-# find . ! -path '*/.*' -type f -exec sed 's/Taito Template/TaitoTemplate/g' {} +
-find . -type f -name "*.xcscheme" -exec echo sed -i 's/Taito Template/TaitoTemplate/g' {} \;
+searchUpp=${searchString//[[:blank:]]/}
+searchLow=$(echo "$searchUpp" | tr '[:upper:]' '[:lower:]')
 
-# if [[ $search != "" && $replace != "" ]]; then
-#   # sed -i "s/$search/$replace/gi" $1
-#   echo $1
-# sed -i "s/Taito Template/TaitoTemplate/gi" $1
-# fi
+replaceUpp=${replaceString//[[:blank:]]/}
+replaceLow=$(echo "$replaceString" | tr '[:upper:]' '[:lower:]')
+
+grep -r -l "$searchString" . | sort | uniq | xargs perl -e "s/$searchString/$replaceString/" -pi
+grep -r -l "$searchUpp" . | sort | uniq | xargs perl -e "s/$searchUpp/$replaceUpp/" -pi
+grep -r -l "$searchLow" . | sort | uniq | xargs perl -e "s/$searchLow/$replaceLow/" -pi
+
+rm -f .git/index
+git reset

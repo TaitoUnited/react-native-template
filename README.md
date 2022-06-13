@@ -2,6 +2,12 @@
 
 [//]: # (TEMPLATE NOTE START)
 
+# HOW TO GET STARTED
+- yarn install
+- You can change folder names with your project's name running `yarn run rename XXXX`
+- You can change all mentions of the project within files in your repo by running `bash rename.sh` and following instructions.
+- Go to ios and run `pod install`
+
 # react-native-template
 
 Template for mobile applications implemented with React Native and released with Visual Studio App Center. You can create a new project from this template by running `taito project create: react-native-template`. You can also migrate an existing react-native project by running `taito project migrate: react-native-template` in your project root folder.
@@ -13,15 +19,23 @@ Short description for the project: vision, purpose, company, etc.
 
 Table of contents:
 
-* [Links](#links)
-* [Contacts](#contacts)
-* [Responsibilities](#responsibilities)
-* [Recurring issues and solutions](#recurring-issues-and-solutions)
-* [Miscellaneous notes](#miscellaneous-notes)
-* [Conventions](#conventions)
-* [Architecture Overview](#architecture-overview)
-* [Security](#security)
-* [GDPR](#gdpr)
+- [HOW TO GET STARTED](#how-to-get-started)
+- [react-native-template](#react-native-template)
+- [Project title](#project-title)
+  - [Links](#links)
+  - [Contacts](#contacts)
+  - [Responsibilities](#responsibilities)
+  - [Recurring issues and solutions](#recurring-issues-and-solutions)
+  - [Miscellaneous notes](#miscellaneous-notes)
+  - [Conventions](#conventions)
+  - [Architecture Overview](#architecture-overview)
+    - [Integrations](#integrations)
+    - [Processes](#processes)
+      - [Basic Scenario](#basic-scenario)
+      - [Product Snapshots](#product-snapshots)
+      - [Scheduled Jobs](#scheduled-jobs)
+  - [Security](#security)
+  - [GDPR](#gdpr)
 
 ## Links
 
