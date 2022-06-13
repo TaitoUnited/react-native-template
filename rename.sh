@@ -13,7 +13,11 @@ searchUpp=${searchString//[[:blank:]]/}
 searchLow=$(echo "$searchUpp" | tr '[:upper:]' '[:lower:]')
 
 replaceUpp=${replaceString//[[:blank:]]/}
-replaceLow=$(echo "$replaceString" | tr '[:upper:]' '[:lower:]')
+replaceLow=$(echo "$replaceUpp" | tr '[:upper:]' '[:lower:]')
+
+echo "Changing $searchString to $replaceString..."
+echo "Changing $searchUpp to $replaceUpp..."
+echo "Changing $searchLow to $replaceLow..."
 
 grep -r -l "$searchString" . | sort | uniq | xargs perl -e "s/$searchString/$replaceString/" -pi
 grep -r -l "$searchUpp" . | sort | uniq | xargs perl -e "s/$searchUpp/$replaceUpp/" -pi
