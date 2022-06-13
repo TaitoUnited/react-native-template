@@ -4,9 +4,8 @@
 
 # HOW TO GET STARTED
 - yarn install
-- You can change folder names with your project's name running `yarn run rename XXXX`
-- You can change all mentions of the project within files in your repo by running `bash rename.sh` and following instructions.
-- Go to ios and run `pod install`
+- You can change all mentions of the project within files and folders in your repo by running `bash rename.sh` and following instructions.
+- Please make sure to run `watchman watch-del-all` and `npm start --reset-cache` before running the app.
 
 # react-native-template
 
