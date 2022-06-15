@@ -190,19 +190,23 @@ android {
             dimension "app"
             applicationIdSuffix ".dev"
             versionNameSuffix "-dev"
+            resValue "string", "app_name", "(Dev) Taito Template"
         }
         qa {
             dimension "app"
             applicationIdSuffix ".test"
             versionNameSuffix "-test"
+            resValue "string", "app_name", "(Test) Taito Template"
         }
         staging {
             dimension "app"
             applicationIdSuffix ".staging"
             versionNameSuffix "-staging"
+            resValue "string", "app_name", "(Staging) Taito Template"
         }
         production {
-            dimension "app"
+            dimension "app",
+            resValue "string", "app_name", "Taito Template"
         }
     }
 
