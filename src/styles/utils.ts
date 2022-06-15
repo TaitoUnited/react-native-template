@@ -14,12 +14,14 @@ const typographyVariants: {
   $title1: getTypographyFromToken(typographyTokens.title1),
   $title2: getTypographyFromToken(typographyTokens.title2),
   $title3: getTypographyFromToken(typographyTokens.title3),
+  $subtitle: getTypographyFromToken(typographyTokens.subtitle),
   $body: getTypographyFromToken(typographyTokens.body),
   $bodyBold: getTypographyFromToken(typographyTokens.bodyBold),
   $bodySmall: getTypographyFromToken(typographyTokens.bodySmall),
   $bodySmallBold: getTypographyFromToken(typographyTokens.bodySmallBold),
-  $bodyExtraSmall: getTypographyFromToken(typographyTokens.bodyExtraSmall),
-  $bodyExtraSmallBold: getTypographyFromToken(typographyTokens.bodyExtraSmallBold), // prettier-ignore
+  $bodyLarge: getTypographyFromToken(typographyTokens.bodyLarge),
+  $bodyLargeBold: getTypographyFromToken(typographyTokens.bodyLargeBold), // prettier-ignore
+  $overline: getTypographyFromToken(typographyTokens.overline),
   $caption: getTypographyFromToken(typographyTokens.caption),
 };
 
