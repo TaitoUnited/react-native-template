@@ -1,80 +1,88 @@
 /* eslint-disable */
 export const native = {
-  "bodyExtraSmall": {
-    "fontFamily": "Atkinson Hyperlegible",
-    "fontWeight": 400,
-    "fontSize": 14,
-    "textTransform": "none",
-    "letterSpacing": 0,
-    "lineHeight": 1.172
-  },
-  "title3": {
-    "fontFamily": "Atkinson Hyperlegible",
-    "fontWeight": 400,
-    "fontSize": 22,
-    "textTransform": "none",
-    "letterSpacing": 0,
-    "lineHeight": 1.172
-  },
-  "body": {
-    "fontFamily": "Atkinson Hyperlegible",
-    "fontWeight": 400,
-    "fontSize": 18,
-    "textTransform": "none",
-    "letterSpacing": 0,
-    "lineHeight": 1.172
-  },
-  "bodyExtraSmallBold": {
-    "fontFamily": "Atkinson Hyperlegible",
-    "fontWeight": 700,
-    "fontSize": 14,
-    "textTransform": "none",
-    "letterSpacing": 0,
-    "lineHeight": 1.172
-  },
-  "title1": {
-    "fontFamily": "Atkinson Hyperlegible",
-    "fontWeight": 700,
-    "fontSize": 36,
-    "textTransform": "none",
-    "letterSpacing": 0,
-    "lineHeight": 1.172
-  },
-  "title2": {
-    "fontFamily": "Atkinson Hyperlegible",
-    "fontWeight": 700,
-    "fontSize": 26,
-    "textTransform": "none",
-    "letterSpacing": 0,
-    "lineHeight": 1.172
-  },
   "bodyBold": {
-    "fontFamily": "Atkinson Hyperlegible",
+    "fontFamily": "Inter",
     "fontWeight": 700,
-    "fontSize": 18,
-    "textTransform": "none",
-    "letterSpacing": 0,
-    "lineHeight": 1.172
-  },
-  "caption": {
-    "fontFamily": "Atkinson Hyperlegible",
-    "fontWeight": 400,
-    "fontSize": 12,
-    "textTransform": "none",
-    "letterSpacing": 0,
-    "lineHeight": 1.172
-  },
-  "bodySmall": {
-    "fontFamily": "Atkinson Hyperlegible",
-    "fontWeight": 400,
     "fontSize": 16,
     "textTransform": "none",
     "letterSpacing": 0,
     "lineHeight": 1.172
   },
   "bodySmallBold": {
-    "fontFamily": "Atkinson Hyperlegible",
+    "fontFamily": "Inter",
     "fontWeight": 700,
+    "fontSize": 12,
+    "textTransform": "none",
+    "letterSpacing": 0,
+    "lineHeight": 1.172
+  },
+  "subtitle": {
+    "fontFamily": "Inter",
+    "fontWeight": 700,
+    "fontSize": 16,
+    "textTransform": "none",
+    "letterSpacing": 0,
+    "lineHeight": 1.172
+  },
+  "overline": {
+    "fontFamily": "Inter",
+    "fontWeight": 400,
+    "fontSize": 10,
+    "textTransform": "uppercase",
+    "letterSpacing": 0.5,
+    "lineHeight": 1.172
+  },
+  "title3": {
+    "fontFamily": "Inter",
+    "fontWeight": 700,
+    "fontSize": 24,
+    "textTransform": "none",
+    "letterSpacing": 0,
+    "lineHeight": 1.172
+  },
+  "caption": {
+    "fontFamily": "Inter",
+    "fontWeight": 400,
+    "fontSize": 10,
+    "textTransform": "none",
+    "letterSpacing": 0,
+    "lineHeight": 1.172
+  },
+  "title2": {
+    "fontFamily": "Inter",
+    "fontWeight": 700,
+    "fontSize": 32,
+    "textTransform": "none",
+    "letterSpacing": 0,
+    "lineHeight": 1.172
+  },
+  "title1": {
+    "fontFamily": "Inter",
+    "fontWeight": 700,
+    "fontSize": 48,
+    "textTransform": "none",
+    "letterSpacing": 0,
+    "lineHeight": 1.172
+  },
+  "bodySmall": {
+    "fontFamily": "Inter",
+    "fontWeight": 400,
+    "fontSize": 12,
+    "textTransform": "none",
+    "letterSpacing": 0,
+    "lineHeight": 1.172
+  },
+  "bodyLarge": {
+    "fontFamily": "Inter",
+    "fontWeight": 400,
+    "fontSize": 18,
+    "textTransform": "none",
+    "letterSpacing": 0,
+    "lineHeight": 1.172
+  },
+  "body": {
+    "fontFamily": "Inter",
+    "fontWeight": 400,
     "fontSize": 16,
     "textTransform": "none",
     "letterSpacing": 0,
@@ -82,94 +90,78 @@ export const native = {
   }
 };
 export const web = {
-  "bodyBold": {
-    "fontFamily": "Atkinson Hyperlegible",
+  "title2": {
+    "fontFamily": "Inter",
     "fontWeight": 700,
+    "fontSize": 32,
+    "textTransform": "none",
+    "letterSpacing": 0,
+    "lineHeight": 1.172
+  },
+  "bodyLarge": {
+    "fontFamily": "Inter",
+    "fontWeight": 400,
     "fontSize": 18,
     "textTransform": "none",
     "letterSpacing": 0,
     "lineHeight": 1.172
   },
-  "bodyExtraSmallBold": {
-    "fontFamily": "Atkinson Hyperlegible",
-    "fontWeight": 700,
-    "fontSize": 14,
-    "textTransform": "none",
-    "letterSpacing": 0,
-    "lineHeight": 1.172
-  },
-  "largeTitle": {
-    "fontFamily": "Atkinson Hyperlegible",
-    "fontWeight": 700,
-    "fontSize": 64,
-    "textTransform": "none",
-    "letterSpacing": 0,
-    "lineHeight": 1.172
-  },
-  "title1": {
-    "fontFamily": "Atkinson Hyperlegible",
-    "fontWeight": 700,
-    "fontSize": 36,
-    "textTransform": "none",
-    "letterSpacing": 0,
-    "lineHeight": 1.172
-  },
-  "bodySmallBold": {
-    "fontFamily": "Atkinson Hyperlegible",
-    "fontWeight": 700,
-    "fontSize": 16,
-    "textTransform": "none",
-    "letterSpacing": 0,
-    "lineHeight": 1.172
-  },
-  "title2": {
-    "fontFamily": "Atkinson Hyperlegible",
-    "fontWeight": 700,
-    "fontSize": 26,
-    "textTransform": "none",
-    "letterSpacing": 0,
-    "lineHeight": 1.172
-  },
-  "title3": {
-    "fontFamily": "Atkinson Hyperlegible",
-    "fontWeight": 400,
-    "fontSize": 22,
-    "textTransform": "none",
-    "letterSpacing": 0,
-    "lineHeight": 1.172
-  },
   "caption": {
-    "fontFamily": "Atkinson Hyperlegible",
+    "fontFamily": "Inter",
     "fontWeight": 400,
-    "fontSize": 12,
+    "fontSize": 10,
     "textTransform": "none",
     "letterSpacing": 0,
     "lineHeight": 1.172
   },
-  "bodySmall": {
-    "fontFamily": "Atkinson Hyperlegible",
-    "fontWeight": 400,
+  "subtitle": {
+    "fontFamily": "Inter",
+    "fontWeight": 700,
     "fontSize": 16,
     "textTransform": "none",
     "letterSpacing": 0,
     "lineHeight": 1.172
   },
   "body": {
-    "fontFamily": "Atkinson Hyperlegible",
+    "fontFamily": "Inter",
     "fontWeight": 400,
-    "fontSize": 18,
+    "fontSize": 16,
     "textTransform": "none",
     "letterSpacing": 0,
     "lineHeight": 1.172
   },
-  "bodyExtraSmall": {
-    "fontFamily": "Atkinson Hyperlegible",
+  "title1": {
+    "fontFamily": "Inter",
+    "fontWeight": 700,
+    "fontSize": 48,
+    "textTransform": "none",
+    "letterSpacing": 0,
+    "lineHeight": 1.172
+  },
+  "overline": {
+    "fontFamily": "Inter",
     "fontWeight": 400,
-    "fontSize": 14,
+    "fontSize": 10,
+    "textTransform": "uppercase",
+    "letterSpacing": 0.5,
+    "lineHeight": 1.172
+  },
+  "title3": {
+    "fontFamily": "Inter",
+    "fontWeight": 700,
+    "fontSize": 24,
+    "textTransform": "none",
+    "letterSpacing": 0,
+    "lineHeight": 1.172
+  },
+  "bodySmall": {
+    "fontFamily": "Inter",
+    "fontWeight": 400,
+    "fontSize": 12,
     "textTransform": "none",
     "letterSpacing": 0,
     "lineHeight": 1.172
   }
 };
 
-export type Token = "body" | "bodyBold" | "bodyExtraSmall" | "bodyExtraSmallBold" | "bodySmall" | "bodySmallBold" | "caption" | "largeTitle" | "title1" | "title2" | "title3";
+export type Token = "body" | "bodyBold" | "bodyLarge" | "bodySmall" | "bodySmallBold" | "caption" | "overline" | "subtitle" | "title1" | "title2" | "title3";
