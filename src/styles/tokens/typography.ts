@@ -1,8 +1,8 @@
 /* eslint-disable */
 export const native = {
-  "bodyBold": {
+  "body": {
     "fontFamily": "Inter",
-    "fontWeight": 700,
+    "fontWeight": 400,
     "fontSize": 16,
     "textTransform": "none",
     "letterSpacing": 0,
@@ -12,6 +12,22 @@ export const native = {
     "fontFamily": "Inter",
     "fontWeight": 700,
     "fontSize": 12,
+    "textTransform": "none",
+    "letterSpacing": 0,
+    "lineHeight": 1.172
+  },
+  "bodyLargeBold": {
+    "fontFamily": "Inter",
+    "fontWeight": 700,
+    "fontSize": 18,
+    "textTransform": "none",
+    "letterSpacing": 0,
+    "lineHeight": 1.172
+  },
+  "bodyBold": {
+    "fontFamily": "Inter",
+    "fontWeight": 700,
+    "fontSize": 16,
     "textTransform": "none",
     "letterSpacing": 0,
     "lineHeight": 1.172
@@ -76,14 +92,6 @@ export const native = {
     "fontFamily": "Inter",
     "fontWeight": 400,
     "fontSize": 18,
-    "textTransform": "none",
-    "letterSpacing": 0,
-    "lineHeight": 1.172
-  },
-  "body": {
-    "fontFamily": "Inter",
-    "fontWeight": 400,
-    "fontSize": 16,
     "textTransform": "none",
     "letterSpacing": 0,
     "lineHeight": 1.172
@@ -164,4 +172,4 @@ export const web = {
   }
 };
 
-export type Token = "body" | "bodyBold" | "bodyLarge" | "bodySmall" | "bodySmallBold" | "caption" | "overline" | "subtitle" | "title1" | "title2" | "title3";
+export type Token = "body" | "bodyBold" | "bodyLarge" | "bodyLargeBold" | "bodySmall" | "bodySmallBold" | "caption" | "overline" | "subtitle" | "title1" | "title2" | "title3";
