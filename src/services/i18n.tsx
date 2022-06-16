@@ -11,7 +11,7 @@ export type Locale = 'fi' | 'en';
 
 const defaultLocale: Locale = 'en';
 
-const LOCALES = ['fi', 'en'];
+export const LOCALES = ['fi', 'en'];
 
 async function initLocale() {
   let persistedLocale = 'en';
