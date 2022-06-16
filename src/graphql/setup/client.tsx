@@ -74,7 +74,7 @@ function makeClient() {
           ...fetchOptions,
           headers: {
             ...fetchOptions.headers,
-            'Accept-Language': locales.includes(locale) ? locale : 'fi',
+            'Accept-Language': locales.includes(locale) ? locale : 'en',
           },
         };
 

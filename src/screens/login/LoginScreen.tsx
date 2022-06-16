@@ -49,7 +49,7 @@ export default function LoginScreen() {
                 rules={{
                   validate: {
                     required: (v) => !!v,
-                    validEmail: (v) => v && v.includes('@'),
+                    // validEmail: (v) => v && v.includes('@'), // TODO: add validator
                   },
                 }}
                 render={({ field, fieldState }) => {

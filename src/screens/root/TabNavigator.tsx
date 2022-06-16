@@ -1,6 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import AdvertsNavigator from '../adverts';
 import HomeNavigator from '../home';
 import ProfileNavigator from '../profile';
 import { useTheme } from '~styles';
@@ -29,15 +28,6 @@ export default function TabNavigator() {
         options={{
           tabBarIcon: ({ focused }) => (
             <Icon name={focused ? 'homeFilled' : 'homeOutline'} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="AdvertsTab"
-        component={AdvertsNavigator}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <Icon name={focused ? 'movieFilled' : 'movieOutline'} />
           ),
         }}
       />

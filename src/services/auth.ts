@@ -8,21 +8,22 @@ import BootSplash from 'react-native-bootsplash';
 import type {
   CurrentUserQuery,
   CurrentUserQueryVariables,
-  LoginMutation,
-  LoginMutationVariables,
-  RegisterUserMutation,
-  RegisterUserMutationVariables,
+  // LoginMutation,
+  // LoginMutationVariables,
+  // RegisterUserMutation,
+  // RegisterUserMutationVariables,
 } from '~graphql/generated';
 
-import {
-  LOGIN_MUTATION,
-  REGISTER_USER_MUTATION,
-} from '~graphql/user/mutations.gql';
+// import {
+//   LOGIN_MUTATION,
+//   REGISTER_USER_MUTATION,
+// } from '~graphql/user/mutations.gql';
 
 import storage from '~utils/storage';
-import { clearClient, getClient } from '~graphql';
+// import { clearClient, getClient } from '~graphql';
 import { CURRENT_USER_QUERY } from '~graphql/user/queries.gql';
 import { showToast } from '~components/common/Toaster';
+import { sleep } from '~utils/common';
 
 type AuthStatus =
   | 'undetermined'
@@ -53,6 +54,7 @@ type AuthState = {
   logout: () => Promise<void>;
 };
 
+// TODO: remove these fake login/logout functions and implement them for real
 export const useAuthStore = create<AuthState>((set) => ({
   tokens: null,
   status: 'undetermined',
@@ -61,23 +63,39 @@ export const useAuthStore = create<AuthState>((set) => ({
     set({ status: 'signing-in' });
 
     try {
-      const result = await getClient()
-        .mutation<RegisterUserMutation, RegisterUserMutationVariables>(
-          REGISTER_USER_MUTATION,
-          { input: credentials },
-        )
-        .toPromise();
+      // const result = await getClient()
+      //   .mutation<RegisterUserMutation, RegisterUserMutationVariables>(
+      //     REGISTER_USER_MUTATION,
+      //     { input: credentials },
+      //   )
+      //   .toPromise();
 
-      if (!result.data?.registerUser) {
-        const error = result.error?.graphQLErrors[0];
-        throw Error(error?.message || 'Failed to register user');
-      }
+      // if (!result.data?.registerUser) {
+      //   const error = result.error?.graphQLErrors[0];
+      //   throw Error(error?.message || 'Failed to register user');
+      // }
 
-      const { accessToken, refreshToken } = result.data.registerUser;
+      // const { accessToken, refreshToken } = result.data.registerUser;
+
+      // await storage.clearAll();
+      // await storage.set('@app/access-token', accessToken);
+      // await storage.set('@app/refresh-token', refreshToken);
+      console.log(
+        '> Doing fake signup...',
+        credentials.email,
+        credentials.password,
+      );
+      await sleep(2000);
 
       await storage.clearAll();
-      await storage.set('@app/access-token', accessToken);
-      await storage.set('@app/refresh-token', refreshToken);
+      await storage.set(
+        '@app/access-token',
+        'react-native-template-access-token',
+      );
+      await storage.set(
+        '@app/refresh-token',
+        'react-native-template-refresh-token',
+      );
 
       set({ status: 'authenticated' });
     } catch (error) {
@@ -89,21 +107,33 @@ export const useAuthStore = create<AuthState>((set) => ({
     set({ status: 'logging-in' });
 
     try {
-      const result = await getClient()
-        .mutation<LoginMutation, LoginMutationVariables>(LOGIN_MUTATION, {
-          input: credentials,
-        })
-        .toPromise();
+      // const result = await getClient()
+      //   .mutation<LoginMutation, LoginMutationVariables>(LOGIN_MUTATION, {
+      //     input: credentials,
+      //   })
+      //   .toPromise();
 
-      if (!result.data?.loginUser) {
-        throw Error('No login result!');
-      }
+      // if (!result.data?.loginUser) {
+      //   throw Error('No login result!');
+      // }
 
-      const { accessToken, refreshToken } = result.data.loginUser;
+      // const { accessToken, refreshToken } = result.data.loginUser;
+      console.log(
+        '> Doing fake login...',
+        credentials.email,
+        credentials.password,
+      );
+      await sleep(2000);
 
       await storage.clearAll();
-      await storage.set('@app/access-token', accessToken);
-      await storage.set('@app/refresh-token', refreshToken);
+      await storage.set(
+        '@app/access-token',
+        'react-native-template-access-token',
+      );
+      await storage.set(
+        '@app/refresh-token',
+        'react-native-template-refresh-token',
+      );
 
       set({ status: 'authenticated' });
     } catch (error) {
@@ -112,10 +142,13 @@ export const useAuthStore = create<AuthState>((set) => ({
     }
   },
   logout: async () => {
+    console.log('> Doing fake logout...');
+    await sleep(2000);
+
     set({ status: 'unauthenticated' });
 
     // Clear client and storage
-    await clearClient();
+    // await clearClient();
     await storage.clearAll();
   },
 }));

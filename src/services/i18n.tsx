@@ -4,17 +4,17 @@ import { i18n } from '@lingui/core';
 import { I18nProvider as LinguiProvider, useLingui } from '@lingui/react';
 import { Settings } from 'luxon';
 
-import { messages } from '../locales/fi/messages';
+import { messages } from '../locales/en/messages';
 import storage from '~utils/storage';
 
 export type Locale = 'fi' | 'en';
 
-const defaultLocale: Locale = 'fi';
+const defaultLocale: Locale = 'en';
 
 const LOCALES = ['fi', 'en'];
 
 async function initLocale() {
-  let persistedLocale = 'fi';
+  let persistedLocale = 'en';
 
   try {
     persistedLocale = await storage.get('@app/locale');
@@ -45,9 +45,9 @@ export function useInitLocale() {
 async function loadMessages(locale: Locale) {
   switch (locale) {
     case 'fi':
-      return messages;
+      return require('../locales/fi/messages').messages;
     case 'en':
-      return require('../locales/en/messages').messages;
+      return messages;
     default:
       throw Error(`Unkown locale: ${locale}`);
   }

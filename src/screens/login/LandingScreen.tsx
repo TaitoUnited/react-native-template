@@ -17,7 +17,7 @@ export default function LandingScreen({
         <SafeArea>
           <Stack axis="y" spacing="xxxlarge">
             <Logo
-              source={require('../../images/logo_text.png')}
+              source={require('../../images/icon.png')}
               size={{ width: dimensions.width * 0.55 }}
             />
 
