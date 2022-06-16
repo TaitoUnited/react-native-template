@@ -183,13 +183,13 @@ function ListHeader({
         <SearchInput value={searchTerm} onChange={onSearch} />
 
         <Stack axis="x" spacing="small" align="center" justify="between">
-          <Text variant="bodyExtraSmall" numberOfLines={1} style={{ flex: 1 }}>
+          <Text variant="bodySmall" numberOfLines={1} style={{ flex: 1 }}>
             {label}
           </Text>
 
           {numSelected > 1 && (
             <ClearButton onPress={onClearOption}>
-              <Text variant="bodyExtraSmallBold" color="textMuted">
+              <Text variant="bodySmallBold" color="textMuted">
                 Clear selected ({numSelected})
               </Text>
             </ClearButton>

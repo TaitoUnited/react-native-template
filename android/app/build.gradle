@@ -205,7 +205,7 @@ android {
             resValue "string", "app_name", "(Staging) Taito Template"
         }
         production {
-            dimension "app",
+            dimension "app"
             resValue "string", "app_name", "Taito Template"
         }
     }

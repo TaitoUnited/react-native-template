@@ -8,17 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* TaitoTemplateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* TaitoTemplateTests.m */; };
+		06E31C7B8F8646F487916A40 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3149B20A0869430B96FF2FAD /* Inter-Bold.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		1A97BBFB6EB04A1E89413F9B /* AtkinsonHyperlegible-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD0EFDAE5422464A8F7BD6B9 /* AtkinsonHyperlegible-BoldItalic.ttf */; };
+		281D1756AAD446B5BCB313A0 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DC48BD7E5BC246EC8EC79EEA /* Inter-Regular.ttf */; };
 		6172F2D35A4C3AA820D92908 /* libPods-TaitoTemplate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-TaitoTemplate.a */; };
-		686CEFB3935C48048CF4F7B7 /* AtkinsonHyperlegible-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8DF1AE6168C74FCA858957A4 /* AtkinsonHyperlegible-Regular.ttf */; };
 		7EF68E3733C33B6898317E18 /* libPods-TaitoTemplate-TaitoTemplateTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-TaitoTemplate-TaitoTemplateTests.a */; };
-		A223504AA9444FCFB84C2F19 /* AtkinsonHyperlegible-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A9BEF48E13EE48B393091E3E /* AtkinsonHyperlegible-Bold.ttf */; };
 		C406433B27BBF46700FE4A60 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C406433A27BBF46700FE4A60 /* BootSplash.storyboard */; };
 		C473B90727A15D0B0009F20C /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = C473B90627A15D0B0009F20C /* AppCenter-Config.plist */; };
-		EA0BA8FDB533412B97642A78 /* AtkinsonHyperlegible-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75DC91FB2CCD4925AA7BB719 /* AtkinsonHyperlegible-Italic.ttf */; };
+		CFC47F4BBD99483A9C3C25B9 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 29CA98F00CF440EDA7CAC8D0 /* Inter-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,18 +41,17 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = TaitoTemplate/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = TaitoTemplate/main.m; sourceTree = "<group>"; };
 		1D0AE47A65C8663E3B452821 /* Pods-TaitoTemplate-TaitoTemplateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaitoTemplate-TaitoTemplateTests.release.xcconfig"; path = "Target Support Files/Pods-TaitoTemplate-TaitoTemplateTests/Pods-TaitoTemplate-TaitoTemplateTests.release.xcconfig"; sourceTree = "<group>"; };
+		29CA98F00CF440EDA7CAC8D0 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-SemiBold.ttf"; path = "../assets/fonts/Inter-SemiBold.ttf"; sourceTree = "<group>"; };
+		3149B20A0869430B96FF2FAD /* Inter-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Bold.ttf"; path = "../assets/fonts/Inter-Bold.ttf"; sourceTree = "<group>"; };
 		6423831EA8574132BED9D8CC /* libPods-TaitoTemplate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TaitoTemplate.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C97AB639B58BBB4B15BBE30 /* Pods-TaitoTemplate-TaitoTemplateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaitoTemplate-TaitoTemplateTests.debug.xcconfig"; path = "Target Support Files/Pods-TaitoTemplate-TaitoTemplateTests/Pods-TaitoTemplate-TaitoTemplateTests.debug.xcconfig"; sourceTree = "<group>"; };
-		75DC91FB2CCD4925AA7BB719 /* AtkinsonHyperlegible-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AtkinsonHyperlegible-Italic.ttf"; path = "../assets/fonts/AtkinsonHyperlegible-Italic.ttf"; sourceTree = "<group>"; };
-		8DF1AE6168C74FCA858957A4 /* AtkinsonHyperlegible-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AtkinsonHyperlegible-Regular.ttf"; path = "../assets/fonts/AtkinsonHyperlegible-Regular.ttf"; sourceTree = "<group>"; };
-		A9BEF48E13EE48B393091E3E /* AtkinsonHyperlegible-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AtkinsonHyperlegible-Bold.ttf"; path = "../assets/fonts/AtkinsonHyperlegible-Bold.ttf"; sourceTree = "<group>"; };
 		ABFE59519B596E51CEFDCCC0 /* libPods-TaitoTemplate-TaitoTemplateTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TaitoTemplate-TaitoTemplateTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0A881CF5CF3F2B244570E2A /* Pods-TaitoTemplate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaitoTemplate.debug.xcconfig"; path = "Target Support Files/Pods-TaitoTemplate/Pods-TaitoTemplate.debug.xcconfig"; sourceTree = "<group>"; };
 		C406433A27BBF46700FE4A60 /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = TaitoTemplate/BootSplash.storyboard; sourceTree = "<group>"; };
 		C473B90627A15D0B0009F20C /* AppCenter-Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "AppCenter-Config.plist"; path = "TaitoTemplate/AppCenter-Config.plist"; sourceTree = "<group>"; };
 		D00AAFFCFCFDA5787532823F /* Pods-TaitoTemplate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaitoTemplate.release.xcconfig"; path = "Target Support Files/Pods-TaitoTemplate/Pods-TaitoTemplate.release.xcconfig"; sourceTree = "<group>"; };
+		DC48BD7E5BC246EC8EC79EEA /* Inter-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Regular.ttf"; path = "../assets/fonts/Inter-Regular.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		FD0EFDAE5422464A8F7BD6B9 /* AtkinsonHyperlegible-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AtkinsonHyperlegible-BoldItalic.ttf"; path = "../assets/fonts/AtkinsonHyperlegible-BoldItalic.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,10 +118,9 @@
 		66A2EA794E074B11977B5A02 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A9BEF48E13EE48B393091E3E /* AtkinsonHyperlegible-Bold.ttf */,
-				FD0EFDAE5422464A8F7BD6B9 /* AtkinsonHyperlegible-BoldItalic.ttf */,
-				75DC91FB2CCD4925AA7BB719 /* AtkinsonHyperlegible-Italic.ttf */,
-				8DF1AE6168C74FCA858957A4 /* AtkinsonHyperlegible-Regular.ttf */,
+				3149B20A0869430B96FF2FAD /* Inter-Bold.ttf */,
+				DC48BD7E5BC246EC8EC79EEA /* Inter-Regular.ttf */,
+				29CA98F00CF440EDA7CAC8D0 /* Inter-SemiBold.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -267,11 +264,10 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				C473B90727A15D0B0009F20C /* AppCenter-Config.plist in Resources */,
-				A223504AA9444FCFB84C2F19 /* AtkinsonHyperlegible-Bold.ttf in Resources */,
-				1A97BBFB6EB04A1E89413F9B /* AtkinsonHyperlegible-BoldItalic.ttf in Resources */,
-				EA0BA8FDB533412B97642A78 /* AtkinsonHyperlegible-Italic.ttf in Resources */,
-				686CEFB3935C48048CF4F7B7 /* AtkinsonHyperlegible-Regular.ttf in Resources */,
 				C406433B27BBF46700FE4A60 /* BootSplash.storyboard in Resources */,
+				06E31C7B8F8646F487916A40 /* Inter-Bold.ttf in Resources */,
+				281D1756AAD446B5BCB313A0 /* Inter-Regular.ttf in Resources */,
+				CFC47F4BBD99483A9C3C25B9 /* Inter-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +455,7 @@
 			baseConfigurationReference = 6C97AB639B58BBB4B15BBE30 /* Pods-TaitoTemplate-TaitoTemplateTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = EPATC4S9N2;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -487,6 +484,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = EPATC4S9N2;
 				INFOPLIST_FILE = TaitoTemplateTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -514,7 +512,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 98693F2X57;
+				DEVELOPMENT_TEAM = EPATC4S9N2;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = TaitoTemplate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -544,7 +542,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 98693F2X57;
+				DEVELOPMENT_TEAM = EPATC4S9N2;
 				INFOPLIST_FILE = TaitoTemplate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

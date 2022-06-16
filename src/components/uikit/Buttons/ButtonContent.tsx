@@ -62,8 +62,8 @@ export default function ButtonContent({
 }
 
 const sizeToTextVariant: Record<ButtonSize, TypographyVariant> = {
-  small: 'bodyExtraSmallBold',
-  medium: 'bodyExtraSmallBold',
+  small: 'bodySmallBold',
+  medium: 'bodySmallBold',
   large: 'bodyBold',
 };
 

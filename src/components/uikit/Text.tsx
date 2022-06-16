@@ -11,8 +11,10 @@ export const Text = styled('Text', {
       bodyBold: { typography: '$bodyBold' },
       bodySmall: { typography: '$bodySmall' },
       bodySmallBold: { typography: '$bodySmallBold' },
-      bodyExtraSmall: { typography: '$bodyExtraSmall' },
-      bodyExtraSmallBold: { typography: '$bodyExtraSmallBold' },
+      bodyLarge: { typography: '$bodyLarge' },
+      bodyLargeBold: { typography: '$bodyLargeBold' },
+      overline: { typography: '$overline' },
+      subtitle: { typography: '$subtitle' },
       caption: { typography: '$caption' },
       title1: { typography: '$title1' },
       title2: { typography: '$title2' },
@@ -41,8 +43,10 @@ export const Text = styled('Text', {
     { variant: 'bodyBold', applyLineHeight: true, css: { lineHeight: '$bodyBold' } }, // prettier-ignore
     { variant: 'bodySmall', applyLineHeight: true, css: { lineHeight: '$bodySmall' } }, // prettier-ignore
     { variant: 'bodySmallBold', applyLineHeight: true, css: { lineHeight: '$bodySmallBold' } }, // prettier-ignore
-    { variant: 'bodyExtraSmall', applyLineHeight: true, css: { lineHeight: '$bodyExtraSmall' } }, // prettier-ignore
-    { variant: 'bodyExtraSmallBold', applyLineHeight: true, css: { lineHeight: '$bodyExtraSmallBold' } }, // prettier-ignore
+    { variant: 'bodyLarge', applyLineHeight: true, css: { lineHeight: '$bodyLarge' } }, // prettier-ignore
+    { variant: 'bodyLargeBold', applyLineHeight: true, css: { lineHeight: '$bodyLargeBold' } }, // prettier-ignore
+    { variant: 'overline', applyLineHeight: true, css: { lineHeight: '$overline' } }, // prettier-ignore
+    { variant: 'subtitle', applyLineHeight: true, css: { lineHeight: '$subtitle' } }, // prettier-ignore
     { variant: 'caption', applyLineHeight: true, css: { lineHeight: '$caption' } }, // prettier-ignore
     { variant: 'title1', applyLineHeight: true, css: { lineHeight: '$title1' } }, // prettier-ignore
     { variant: 'title2', applyLineHeight: true, css: { lineHeight: '$title2' } }, // prettier-ignore

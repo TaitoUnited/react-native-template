@@ -135,7 +135,7 @@ export function PickerModal({
           }}
         >
           <Stack axis="y" spacing="small">
-            <Text variant="bodyExtraSmall">{label}</Text>
+            <Text variant="bodySmall">{label}</Text>
 
             <ScrollView
               style={{

@@ -51,7 +51,7 @@ export function SearchInput({
 
       {isFocused && (
         <TouchableOpacity onPress={() => inputRef.current?.blur()}>
-          <Text variant="bodyExtraSmallBold" color="textMuted">
+          <Text variant="bodySmallBold" color="textMuted">
             <Trans>Cancel</Trans>
           </Text>
         </TouchableOpacity>

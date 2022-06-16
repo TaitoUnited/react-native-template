@@ -106,7 +106,7 @@ export const TextInput = forwardRef(
         </InputWrapper>
 
         {!!message && (
-          <Message variant="bodyExtraSmall" color="textMuted">
+          <Message variant="bodySmall" color="textMuted">
             {message}
           </Message>
         )}

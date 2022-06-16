@@ -73,7 +73,7 @@
     "react-native-svg": "12.1.1",
     "react-native-toast-message": "2.1.1",
     "rn-fetch-blob": "^0.12.0",
-    "stitches-native": "0.1.2",
+    "stitches-native": "0.2.0",
     "urql": "2.2.0",
     "zustand": "3.6.9"
   },
