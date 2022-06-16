@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import HomeNavigator from '../home';
 import ProfileNavigator from '../profile';
+import SettingsNavigator from '../settings';
 import { useTheme } from '~styles';
 import { Icon } from '~components/uikit';
 
@@ -34,6 +35,15 @@ export default function TabNavigator() {
       <Tab.Screen
         name="ProfileTab"
         component={ProfileNavigator}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Icon name={focused ? 'userCicleFilled' : 'userCicleOutline'} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="SettingsTab"
+        component={SettingsNavigator}
         options={{
           tabBarIcon: ({ focused }) => (
             <Icon name={focused ? 'userCicleFilled' : 'userCicleOutline'} />

@@ -1,24 +1,14 @@
 import { Trans } from '@lingui/macro';
 
-import SettingsButton from '../../components/settings/SettingsButton';
+import { View } from 'react-native';
 import { styled } from '~styles';
-import { LocalizedProfile, useProfileListQuery } from '~graphql/generated';
+import { useProfileListQuery } from '~graphql/generated';
 import { FillButton, Stack, Text } from '~components/uikit';
-import { useProfileSummaryHeader } from '~components/profile/details/hooks';
 import LoadingScreen from '~components/common/LoadingScreen';
 import LogoutButton from '~components/auth/LogoutButton';
-import ProfileList from '~components/profile/details/ProfileList';
-import ProfileDetails from '~components/profile/details/ProfileDetails';
-import ProfilesEmpty from '~components/profile/details/ProfilesEmpty';
 
 export default function ProfileSummaryScreen() {
-  const [{ data, error, fetching }, refetch] = useProfileListQuery();
-  const profiles = data?.currentUser.profiles.data as Omit<
-    LocalizedProfile,
-    'user'
-  >[];
-
-  useProfileSummaryHeader(profiles);
+  const [{ error, fetching }, refetch] = useProfileListQuery();
 
   if (fetching) {
     return <LoadingScreen />;
@@ -29,19 +19,14 @@ export default function ProfileSummaryScreen() {
       <ProfileContent>
         {error ? (
           <ProfileError onRetry={() => refetch()} />
-        ) : profiles && profiles.length > 0 ? (
-          profiles.length > 1 ? (
-            <ProfileList profiles={profiles} />
-          ) : (
-            <ProfileDetails profile={profiles[0]} />
-          )
         ) : (
-          <ProfilesEmpty />
+          <View>
+            <Text>NO PROFILE</Text>
+          </View>
         )}
       </ProfileContent>
 
       <Footer spacing="small">
-        <SettingsButton />
         <LogoutButton />
       </Footer>
     </Wrapper>

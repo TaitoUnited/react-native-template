@@ -1,7 +1,6 @@
 import { t } from '@lingui/macro';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import ProfileDetailsScreen from './ProfileDetailsScreen';
 import ProfileSummaryScreen from './ProfileSummaryScreen';
 import Settings from '../settings';
 import { useDefaultStackScreenOptions } from '~screens/utils';
@@ -17,11 +16,6 @@ export default function ProfileNavigator() {
         name="ProfileSummary"
         component={ProfileSummaryScreen}
         options={{ title: '' }}
-      />
-      <ProfileStack.Screen
-        name="ProfileDetails"
-        component={ProfileDetailsScreen}
-        options={{ title: t`Profile` }}
       />
       <ProfileStack.Screen
         name="Settings"

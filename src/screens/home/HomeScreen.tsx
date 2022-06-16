@@ -4,10 +4,12 @@ import LoadingScreen from '../../components/common/LoadingScreen';
 import { useCurrentUserQuery } from '../../graphql/generated';
 import { useColorMode } from '../../services/theming';
 import { styled } from '~styles';
-import { Spacer, Text } from '~components/uikit';
+import { Spacer, Text, ScaledImage } from '~components/uikit';
 
-const IMAGE_DARK = require('../../images/icon-home-dark.png');
-const IMAGE_LIGHT = require('../../images/icon-home.png');
+const IMAGE_DARK = require('../../images/icon.png');
+const IMAGE_LIGHT = require('../../images/icon.png');
+// const IMAGE_DARK = require('../../images/icon-home-dark.png');
+// const IMAGE_LIGHT = require('../../images/icon-home.png');
 
 export default function HomeScreen() {
   const [currentUserResult] = useCurrentUserQuery();
@@ -21,17 +23,25 @@ export default function HomeScreen() {
 
   return (
     <Wrapper>
-      <PlaceholderImage source={isDark ? IMAGE_DARK : IMAGE_LIGHT} />
+      <PlaceholderImage
+        size={{ height: 150 }}
+        source={isDark ? IMAGE_DARK : IMAGE_LIGHT}
+      />
       <Spacer size="normal" />
       <Text variant="title1">
         <Trans>Hi</Trans>
         {` ${firstName}!`}
       </Text>
       <Spacer size="medium" />
-      <Text>
+      <Text variant="title2" align="center">
+        <Trans>Welcome to Taito React Native Template!</Trans>
+      </Text>
+      <Spacer size="medium" />
+      <Text align="center">
         <Trans>
-          In the future you will be able to see notifications, previews and
-          summary of your applications here
+          This React app contains the necessary building blocks that you need to
+          get your project started. You can freely alter any aspect of the
+          template to fit your needs better.
         </Trans>
       </Text>
     </Wrapper>
@@ -49,7 +59,7 @@ const Wrapper = styled('ScrollView', {
   },
 }));
 
-const PlaceholderImage = styled('Image', {
+const PlaceholderImage = styled(ScaledImage, {
   width: '100%',
   resizeMode: 'contain',
 });
