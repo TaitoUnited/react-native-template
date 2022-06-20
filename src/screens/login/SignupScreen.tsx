@@ -4,6 +4,7 @@ import { t, Trans } from '@lingui/macro';
 import { useHeaderHeight } from '@react-navigation/elements';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
+import { name as appName } from '../../../app.json';
 import { styled } from '~styles/styled';
 import { FillButton, Text, TextInput, Stack, Spacer } from '~components/uikit';
 import { showToast } from '~components/common/Toaster';
@@ -68,7 +69,7 @@ export default function SignupScreen() {
           <Stack axis="y" spacing="medium">
             <Stack axis="y" spacing="xsmall">
               <Text variant="title1">
-                <Trans>Welcome to Faces!</Trans>
+                <Trans>Welcome to {appName}!</Trans>
               </Text>
 
               <Text variant="title3">

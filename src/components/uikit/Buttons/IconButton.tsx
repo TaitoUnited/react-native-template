@@ -10,7 +10,7 @@ type Props = IconButtonProps & {
 
 const WANTED_HIT_SIZE = 44;
 
-export default function IconButton({
+export function IconButton({
   size = 'large',
   iconColor,
   icon,

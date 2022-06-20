@@ -5,6 +5,7 @@ import ProfileNavigator from '../profile';
 import SettingsNavigator from '../settings';
 import { useTheme } from '~styles';
 import { Icon } from '~components/uikit';
+import DevNavigator from '~screens/dev';
 
 const Tab = createBottomTabNavigator();
 
@@ -46,7 +47,18 @@ export default function TabNavigator() {
         component={SettingsNavigator}
         options={{
           tabBarIcon: ({ focused }) => (
-            <Icon name={focused ? 'userCicleFilled' : 'userCicleOutline'} />
+            <Icon
+              name={focused ? 'graduationCapFilled' : 'graduationCapOutline'}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="DevTab"
+        component={DevNavigator}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Icon name={focused ? 'eyeFilled' : 'eyeOutline'} />
           ),
         }}
       />

@@ -4,6 +4,7 @@ export { Stack } from './Stack';
 export { Icon } from './Icon';
 export { FillButton } from './Buttons/FillButton';
 export { OutlineButton } from './Buttons/OutlineButton';
+export { IconButton } from './Buttons/IconButton';
 export { Radio } from './Inputs/Radio';
 export { Checkbox } from './Inputs/Checkbox';
 export { TextInput } from './Inputs/TextInput';

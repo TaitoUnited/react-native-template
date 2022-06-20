@@ -2,12 +2,12 @@ import { useForm, Controller } from 'react-hook-form';
 import { t, Trans } from '@lingui/macro';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
+import { name as appName } from '../../../app.json';
 import { styled } from '~styles/styled';
 import { useAuthStore } from '~services/auth';
 import { showToast } from '~components/common/Toaster';
 import { FillButton, Text, TextInput, Stack } from '~components/uikit';
 import StatusBar from '~components/common/StatusBar';
-
 type Credentials = {
   email: string;
   password: string;
@@ -34,7 +34,7 @@ export default function LoginScreen() {
           <Stack axis="y" spacing="medium">
             <Stack axis="y" spacing="xsmall">
               <Text variant="title1">
-                <Trans>Welcome to Faces!</Trans>
+                <Trans>Welcome to {appName} !</Trans>
               </Text>
 
               <Text variant="title3">

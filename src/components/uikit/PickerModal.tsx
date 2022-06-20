@@ -197,7 +197,7 @@ const Content = Animated.createAnimatedComponent(
     padding: '$medium',
     paddingBottom: 0,
     margin: '$xsmall',
-    borderRadius: '$large',
+    borderRadius: '$medium',
     zIndex: 2,
   }),
 );

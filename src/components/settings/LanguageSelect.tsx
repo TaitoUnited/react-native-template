@@ -3,8 +3,7 @@ import React from 'react';
 import { Alert } from 'react-native';
 
 import { Locale, LOCALES, useI18n } from '../../services/i18n';
-import { Select } from '../uikit';
-import IconButton from '~components/uikit/Buttons/IconButton';
+import { IconButton, Select } from '../uikit';
 
 export const languageOptions: { label: string; value: Locale }[] = [
   {

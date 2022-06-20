@@ -14,3 +14,7 @@ export function flattenChildren(children: React.ReactNode): ReactChildArray {
     return flatChildren;
   }, []);
 }
+
+export const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
+export const range = (n: number) => Array.from({ length: n }, (x, i) => i);

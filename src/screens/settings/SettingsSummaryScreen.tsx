@@ -51,7 +51,7 @@ export default function SettingsSummaryScreen() {
 
   const save = async () => {
     const values = getValues();
-    setState('Saving...', values);
+    console.log('Saving...', values);
     // await updateUserMutation({
     //   input: {
     //     id: data?.currentUser?.id ?? '',
