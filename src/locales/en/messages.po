@@ -13,66 +13,66 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/screens/settings/index.tsx:177
+#: src/screens/settings/SettingsSummaryScreen.tsx:191
 msgid "Account deleted"
 msgstr ""
 
-#: src/screens/settings/index.tsx:185
+#: src/screens/settings/SettingsSummaryScreen.tsx:199
 msgid "Account deletion failed"
 msgstr ""
 
-#: src/screens/settings/index.tsx:186
+#: src/screens/settings/SettingsSummaryScreen.tsx:200
 msgid "Account deletion failed. Try again later."
 msgstr ""
 
-#: src/screens/settings/index.tsx:86
+#: src/screens/settings/SettingsSummaryScreen.tsx:97
 msgid "Account information"
 msgstr ""
 
 #: src/components/profile/details/ProfileActingSkillDetails.tsx:24
-msgid "Acting experience (years)"
-msgstr ""
+#~ msgid "Acting experience (years)"
+#~ msgstr ""
 
 #: src/components/profile/update/ActingSkillsForm.tsx:68
-msgid "Acting experience in years"
-msgstr ""
+#~ msgid "Acting experience in years"
+#~ msgstr ""
 
 #: src/components/profile/update/AppearanceForm.tsx:91
-msgid "Acting gender"
-msgstr ""
+#~ msgid "Acting gender"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileAppearanceDetails.tsx:16
-msgid "Acting genders"
-msgstr ""
+#~ msgid "Acting genders"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileActingSkillDetails.tsx:12
 #: src/components/profile/update/hooks.ts:29
-msgid "Acting skills"
-msgstr ""
+#~ msgid "Acting skills"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileActingSkillDetails.tsx:14
-msgid "Actor type"
-msgstr ""
+#~ msgid "Actor type"
+#~ msgstr ""
 
 #: src/components/profile/update/CoursesForm.tsx:24
-msgid "Add courses that are related to your acting career."
-msgstr ""
+#~ msgid "Add courses that are related to your acting career."
+#~ msgstr ""
 
 #: src/components/profile/update/ProfileInputGroupList.tsx:51
-msgid "Add new"
-msgstr ""
+#~ msgid "Add new"
+#~ msgstr ""
 
 #: src/components/profile/update/AppearanceForm.tsx:219
-msgid "Additional attributes"
-msgstr ""
+#~ msgid "Additional attributes"
+#~ msgstr ""
 
 #: src/components/profile/update/AppearanceForm.tsx:165
-msgid "Additional details about hair color"
-msgstr ""
+#~ msgid "Additional details about hair color"
+#~ msgstr ""
 
 #: src/components/profile/update/LanguagesForm.tsx:78
-msgid "Additional info about language"
-msgstr ""
+#~ msgid "Additional info about language"
+#~ msgstr ""
 
 #: src/components/adverts/details/AdvertDetails.tsx:41
 #~ msgid "Advertisement"
@@ -86,17 +86,18 @@ msgstr ""
 #~ msgid "Announcement"
 #~ msgstr ""
 
-#: src/screens/settings/index.tsx:80
+#: src/screens/settings/SettingsSummaryScreen.tsx:91
 msgid "App settings"
 msgstr ""
 
 #: src/components/profile/details/ProfileAppearanceDetails.tsx:12
 #: src/components/profile/update/hooks.ts:26
-msgid "Appearance"
-msgstr ""
+#~ msgid "Appearance"
+#~ msgstr ""
 
 #: src/components/landing/LanguageIconButton.tsx:25
 #: src/components/settings/LanguageSelect.tsx:31
+#: src/components/settings/LanguageSelect.tsx:62
 msgid "Application will have to reload to apply changes"
 msgstr ""
 
@@ -106,22 +107,23 @@ msgstr ""
 
 #: src/components/landing/LanguageIconButton.tsx:24
 #: src/components/settings/LanguageSelect.tsx:30
+#: src/components/settings/LanguageSelect.tsx:61
 msgid "Are you sure you want to change language to {0}?"
 msgstr ""
 
 #: src/components/profile/update/ProfileFormHeader.tsx:46
-msgid "Are you sure you want to close the form?"
-msgstr ""
+#~ msgid "Are you sure you want to close the form?"
+#~ msgstr ""
 
 #: src/components/profile/update/ImageInput.tsx:57
-msgid "Are you sure you want to delete"
-msgstr ""
+#~ msgid "Are you sure you want to delete"
+#~ msgstr ""
 
 #: src/components/profile/details/hooks.tsx:53
-msgid "Are you sure you want to delete this profile?"
-msgstr ""
+#~ msgid "Are you sure you want to delete this profile?"
+#~ msgstr ""
 
-#: src/screens/settings/index.tsx:154
+#: src/screens/settings/SettingsSummaryScreen.tsx:168
 msgid "Are you sure you want to delete your account?"
 msgstr ""
 
@@ -130,30 +132,30 @@ msgid "Are you sure you want to logout?"
 msgstr ""
 
 #: src/components/profile/details/ProfileAppearanceDetails.tsx:61
-msgid "Attributes description"
-msgstr ""
+#~ msgid "Attributes description"
+#~ msgstr ""
 
 #: src/components/profile/update/ActingSkillsForm.tsx:19
-msgid "Awesome! Tell about your experience as an actor."
-msgstr ""
+#~ msgid "Awesome! Tell about your experience as an actor."
+#~ msgstr ""
 
 #: src/screens/utils.ts:32
 msgid "Back"
 msgstr ""
 
 #: src/components/profile/update/LanguagesForm.tsx:100
-msgid "Basic"
-msgstr ""
+#~ msgid "Basic"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileBasicInfoDetails.tsx:14
 #: src/components/profile/update/hooks.ts:23
-msgid "Basic info"
-msgstr ""
+#~ msgid "Basic info"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileAppearanceDetails.tsx:51
 #: src/components/profile/update/AppearanceForm.tsx:190
-msgid "Body build"
-msgstr ""
+#~ msgid "Body build"
+#~ msgstr ""
 
 #: src/components/signup/TermsOfService.tsx:40
 #~ msgid "By signing up, you accept"
@@ -165,50 +167,48 @@ msgstr ""
 
 #: src/components/auth/LogoutButton.tsx:12
 #: src/components/landing/LanguageIconButton.tsx:27
-#: src/components/profile/details/hooks.tsx:54
-#: src/components/profile/update/ImageInput.tsx:60
-#: src/components/profile/update/ProfileFormHeader.tsx:48
 #: src/components/settings/LanguageSelect.tsx:33
+#: src/components/settings/LanguageSelect.tsx:64
 #: src/components/uikit/Inputs/SearchInput.tsx:55
-#: src/screens/settings/index.tsx:157
+#: src/screens/settings/SettingsSummaryScreen.tsx:171
 msgid "Cancel"
 msgstr ""
 
 #: src/components/profile/usePhotoUpload.tsx:110
-msgid "Cannot get upload URL."
-msgstr ""
+#~ msgid "Cannot get upload URL."
+#~ msgstr ""
 
 #: src/components/profile/usePhotoDelete.tsx:32
-msgid "Cannot load attachment."
-msgstr ""
+#~ msgid "Cannot load attachment."
+#~ msgstr ""
 
 #: src/components/profile/update/hooks.ts:24
-msgid "Casting images"
-msgstr ""
+#~ msgid "Casting images"
+#~ msgstr ""
 
 #: src/components/landing/LanguageIconButton.tsx:29
 #: src/components/landing/LanguageIconButton.tsx:43
 #: src/components/settings/LanguageSelect.tsx:35
+#: src/components/settings/LanguageSelect.tsx:66
 msgid "Change language"
 msgstr ""
 
 #: src/components/profile/update/AppearanceForm.tsx:243
-msgid "Children clothing size (cm)"
-msgstr ""
+#~ msgid "Children clothing size (cm)"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileAppearanceDetails.tsx:81
-msgid "Children size (cm)"
-msgstr ""
+#~ msgid "Children size (cm)"
+#~ msgstr ""
 
 #: src/components/uikit/Inputs/DateInput.tsx:48
 msgid "Choose"
 msgstr ""
 
 #: src/components/profile/update/LanguagesForm.tsx:52
-msgid "Choose language"
-msgstr ""
+#~ msgid "Choose language"
+#~ msgstr ""
 
-#: src/components/profile/update/ProfileFormHeader.tsx:64
 #: src/components/uikit/Inputs/DateInput.tsx:49
 #: src/components/uikit/PickerModal.tsx:170
 #: src/components/uikit/PickerSheet.tsx:121
@@ -219,54 +219,54 @@ msgid "Close"
 msgstr ""
 
 #: src/components/profile/update/ProfileFormHeader.tsx:49
-msgid "Close form"
-msgstr ""
+#~ msgid "Close form"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileAppearanceDetails.tsx:73
 #: src/components/profile/update/AppearanceForm.tsx:270
-msgid "Clothing size (lower body)"
-msgstr ""
+#~ msgid "Clothing size (lower body)"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileAppearanceDetails.tsx:68
 #: src/components/profile/update/AppearanceForm.tsx:256
-msgid "Clothing size (upper body)"
-msgstr ""
+#~ msgid "Clothing size (upper body)"
+#~ msgstr ""
 
 #: src/screens/adverts/AdvertsScreenPlaceholder.tsx:19
 #~ msgid "Coming soon..."
 #~ msgstr ""
 
 #: src/components/profile/details/ProfileMediaDetails.tsx:41
-msgid "Compulsory photos"
-msgstr ""
+#~ msgid "Compulsory photos"
+#~ msgstr ""
 
 #: src/components/profile/usePhotoDelete.tsx:56
-msgid "Connection problem"
-msgstr ""
+#~ msgid "Connection problem"
+#~ msgstr ""
 
-#: src/services/auth.ts:159
+#: src/services/auth.ts:192
 msgid "Could not connect to server"
 msgstr ""
 
 #: src/components/profile/details/hooks.tsx:38
-msgid "Could not create profile"
-msgstr ""
+#~ msgid "Could not create profile"
+#~ msgstr ""
 
 #: src/components/profile/details/hooks.tsx:74
-msgid "Could not delete profile"
-msgstr ""
+#~ msgid "Could not delete profile"
+#~ msgstr ""
 
 #: src/components/profile/update/CastingImagesForm.tsx:115
-msgid "Could not fetch photos"
-msgstr ""
+#~ msgid "Could not fetch photos"
+#~ msgstr ""
 
-#: src/screens/profile/ProfileSummaryScreen.tsx:56
+#: src/screens/profile/ProfileSummaryScreen.tsx:41
 msgid "Could not fetch profiles"
 msgstr ""
 
 #: src/components/profile/update/ProfileSaveButton.tsx:50
-msgid "Could not save profile"
-msgstr ""
+#~ msgid "Could not save profile"
+#~ msgstr ""
 
 #: src/utils/permission.ts:101
 msgid "Could not toggle permission. You can change the permission in the system settings."
@@ -274,158 +274,153 @@ msgstr ""
 
 #: src/components/profile/usePhotoUpload.tsx:102
 #: src/components/profile/usePhotoUpload.tsx:102
-msgid "Couldn't upload attachment to the server failed."
-msgstr ""
+#~ msgid "Couldn't upload attachment to the server failed."
+#~ msgstr ""
 
 #: src/components/profile/update/CoursesForm.tsx:41
-msgid "Course description"
-msgstr ""
+#~ msgid "Course description"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileCoursesDetails.tsx:13
 #: src/components/profile/update/hooks.ts:28
-msgid "Courses"
-msgstr ""
+#~ msgid "Courses"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfilesEmpty.tsx:44
-msgid "Create profile"
-msgstr ""
+#~ msgid "Create profile"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfilesEmpty.tsx:42
-msgid "Creating..."
-msgstr ""
+#~ msgid "Creating..."
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileBasicInfoDetails.tsx:26
-msgid "Date of Birth"
-msgstr ""
+#~ msgid "Date of Birth"
+#~ msgstr ""
 
 #: src/components/profile/update/BasicInfoForm.tsx:137
-msgid "Date of birth"
-msgstr ""
+#~ msgid "Date of birth"
+#~ msgstr ""
 
-#: src/components/profile/update/ImageInput.tsx:62
-#: src/screens/settings/index.tsx:158
+#: src/screens/settings/SettingsSummaryScreen.tsx:172
 msgid "Delete"
 msgstr ""
 
-#: src/screens/settings/index.tsx:146
+#: src/screens/settings/SettingsSummaryScreen.tsx:160
 msgid "Delete Account"
 msgstr ""
 
 #: src/components/profile/details/ProfileDetails.tsx:99
-msgid "Delete profile"
-msgstr ""
+#~ msgid "Delete profile"
+#~ msgstr ""
 
 #: src/components/profile/usePhotoDelete.tsx:48
-msgid "Deleted"
-msgstr ""
+#~ msgid "Deleted"
+#~ msgstr ""
 
 #: src/components/profile/usePhotoDelete.tsx:31
 #: src/components/profile/usePhotoDelete.tsx:55
-msgid "Deletion failed!"
-msgstr ""
+#~ msgid "Deletion failed!"
+#~ msgstr ""
 
 #: src/components/profile/usePhotoDelete.tsx:47
-msgid "Deletion successful!"
-msgstr ""
+#~ msgid "Deletion successful!"
+#~ msgstr ""
 
 #: src/components/profile/update/LanguagesForm.tsx:79
-msgid "Describe eg. your dialect"
-msgstr ""
+#~ msgid "Describe eg. your dialect"
+#~ msgstr ""
 
 #: src/components/profile/update/AppearanceForm.tsx:220
-msgid "Describe your other unique attributes"
-msgstr ""
+#~ msgid "Describe your other unique attributes"
+#~ msgstr ""
 
 #: src/components/profile/update/EducationsForm.tsx:59
-msgid "Describe your studies shortly"
-msgstr ""
+#~ msgid "Describe your studies shortly"
+#~ msgstr ""
 
 #: src/components/profile/update/EducationsForm.tsx:58
-msgid "Description"
-msgstr ""
+#~ msgid "Description"
+#~ msgstr ""
 
 #: src/components/profile/details/hooks.tsx:106
 #: src/screens/profile/ProfileDetailsScreen.tsx:23
-msgid "Edit"
-msgstr ""
+#~ msgid "Edit"
+#~ msgstr ""
 
 #: src/components/profile/update/hooks.ts:27
-msgid "Education"
-msgstr ""
+#~ msgid "Education"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileEducationDetails.tsx:13
-msgid "Educations"
-msgstr ""
+#~ msgid "Educations"
+#~ msgstr ""
 
-#: src/components/profile/details/ProfileBasicInfoDetails.tsx:16
-#: src/components/profile/update/BasicInfoForm.tsx:100
 #: src/screens/login/LoginScreen.tsx:66
-#: src/screens/login/SignupScreen.tsx:100
+#: src/screens/login/SignupScreen.tsx:101
 msgid "Email"
 msgstr ""
 
-#: src/components/profile/update/BasicInfoForm.tsx:91
 #: src/screens/login/LoginScreen.tsx:58
-#: src/screens/login/SignupScreen.tsx:92
+#: src/screens/login/SignupScreen.tsx:93
 msgid "Email invalid"
 msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:54
+#: src/screens/login/SignupScreen.tsx:55
 msgid "Email is already taken"
 msgstr ""
 
-#: src/components/profile/update/BasicInfoForm.tsx:93
 #: src/screens/login/LoginScreen.tsx:60
-#: src/screens/login/SignupScreen.tsx:94
+#: src/screens/login/SignupScreen.tsx:95
 msgid "Email required"
 msgstr ""
 
 #: src/components/profile/update/EducationsForm.tsx:81
-msgid "End date"
-msgstr ""
+#~ msgid "End date"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileAppearanceDetails.tsx:26
 #: src/components/profile/update/AppearanceForm.tsx:119
-msgid "Ethnicity"
-msgstr ""
+#~ msgid "Ethnicity"
+#~ msgstr ""
 
 #: src/components/profile/update/CastingImagesForm.tsx:73
-msgid "Face neutral"
-msgstr ""
+#~ msgid "Face neutral"
+#~ msgstr ""
 
 #: src/components/profile/update/CastingImagesForm.tsx:64
-msgid "Face smile"
-msgstr ""
+#~ msgid "Face smile"
+#~ msgstr ""
 
 #: src/components/profile/update/PortfolioForm.tsx:109
-msgid "Facebook"
-msgstr ""
+#~ msgid "Facebook"
+#~ msgstr ""
 
 #: src/screens/login/LoginScreen.tsx:26
 msgid "Failed to login"
 msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:50
+#: src/screens/login/SignupScreen.tsx:51
 msgid "Failed to signup"
 msgstr ""
 
 #: src/components/profile/update/LanguagesForm.tsx:99
-msgid "Fair"
-msgstr ""
+#~ msgid "Fair"
+#~ msgstr ""
 
 #: src/components/profile/usePhotoUpload.tsx:82
 #: src/components/profile/usePhotoUpload.tsx:82
-msgid "File successfully uploaded!"
-msgstr ""
+#~ msgid "File successfully uploaded!"
+#~ msgstr ""
 
 #: src/components/profile/usePhotoUpload.tsx:83
 #: src/components/profile/usePhotoUpload.tsx:83
-msgid "File:"
-msgstr ""
+#~ msgid "File:"
+#~ msgstr ""
 
 #: src/components/profile/update/PortfolioForm.tsx:24
-msgid "Fill in the url to your profile for each relevant site."
-msgstr ""
+#~ msgid "Fill in the url to your profile for each relevant site."
+#~ msgstr ""
 
 #: src/components/profile/update/BasicInfoForm.tsx:47
 #~ msgid "Fill out basic information about the profile"
@@ -436,78 +431,77 @@ msgstr ""
 #~ msgstr ""
 
 #: src/components/profile/update/BasicInfoForm.tsx:47
-msgid "Fill out the basic information of the profile."
-msgstr ""
+#~ msgid "Fill out the basic information of the profile."
+#~ msgstr ""
 
 #: src/components/profile/usePhotoUpload.tsx:92
 #: src/components/profile/usePhotoUpload.tsx:92
-msgid "Finalizing upload failed!"
-msgstr ""
+#~ msgid "Finalizing upload failed!"
+#~ msgstr ""
 
-#: src/components/profile/update/BasicInfoForm.tsx:56
-#: src/screens/login/SignupScreen.tsx:120
-#: src/screens/settings/index.tsx:95
+#: src/screens/login/SignupScreen.tsx:121
+#: src/screens/settings/SettingsSummaryScreen.tsx:106
 msgid "First name"
 msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:115
+#: src/screens/login/SignupScreen.tsx:116
 msgid "First name is required"
 msgstr ""
 
 #: src/components/profile/update/LanguagesForm.tsx:102
-msgid "Fluent"
-msgstr ""
+#~ msgid "Fluent"
+#~ msgstr ""
 
 #: src/components/profile/update/ProfileSaveButton.tsx:30
-msgid "Form is not valid"
-msgstr ""
+#~ msgid "Form is not valid"
+#~ msgstr ""
 
 #: src/components/profile/update/CastingImagesForm.tsx:83
-msgid "Full body"
-msgstr ""
+#~ msgid "Full body"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileMediaDetails.tsx:54
-msgid "Full length shot"
-msgstr ""
+#~ msgid "Full length shot"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileAppearanceDetails.tsx:13
 #: src/components/profile/update/AppearanceForm.tsx:63
-msgid "Gender"
-msgstr ""
+#~ msgid "Gender"
+#~ msgstr ""
 
 #: src/components/profile/update/AppearanceForm.tsx:79
-msgid "Gender description"
-msgstr ""
+#~ msgid "Gender description"
+#~ msgstr ""
 
 #: src/components/profile/update/LanguagesForm.tsx:101
-msgid "Good"
-msgstr ""
+#~ msgid "Good"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileAppearanceDetails.tsx:31
 #: src/components/profile/update/AppearanceForm.tsx:133
-msgid "Hair color"
-msgstr ""
+#~ msgid "Hair color"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileAppearanceDetails.tsx:36
-msgid "Hair color description"
-msgstr ""
+#~ msgid "Hair color description"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileAppearanceDetails.tsx:41
-msgid "Hair dyed"
-msgstr ""
+#~ msgid "Hair dyed"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileAppearanceDetails.tsx:46
 #: src/components/profile/update/AppearanceForm.tsx:176
-msgid "Hair style"
-msgstr ""
+#~ msgid "Hair style"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileMediaDetails.tsx:50
-msgid "Headshot (neutral)"
-msgstr ""
+#~ msgid "Headshot (neutral)"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileMediaDetails.tsx:45
-msgid "Headshot (smile)"
-msgstr ""
+#~ msgid "Headshot (smile)"
+#~ msgstr ""
 
 #: src/App.tsx:27
 #~ msgid "Hei maailma"
@@ -515,14 +509,14 @@ msgstr ""
 
 #: src/components/profile/details/ProfileAppearanceDetails.tsx:87
 #: src/components/profile/update/AppearanceForm.tsx:288
-msgid "Height (cm)"
-msgstr ""
+#~ msgid "Height (cm)"
+#~ msgstr ""
 
 #: src/components/profile/update/CastingImagesForm.tsx:99
-msgid "Help"
-msgstr ""
+#~ msgid "Help"
+#~ msgstr ""
 
-#: src/screens/home/HomeScreen.tsx:27
+#: src/screens/home/HomeScreen.tsx:32
 msgid "Hi"
 msgstr ""
 
@@ -530,7 +524,7 @@ msgstr ""
 #~ msgid "History"
 #~ msgstr ""
 
-#: src/screens/home/index.tsx:17
+#: src/screens/home/index.tsx:21
 msgid "Home"
 msgstr ""
 
@@ -539,28 +533,28 @@ msgid "I accept"
 msgstr ""
 
 #: src/components/profile/update/ActingSkillsForm.tsx:31
-msgid "I'm a member of the Actor Union"
-msgstr ""
+#~ msgid "I'm a member of the Actor Union"
+#~ msgstr ""
 
 #: src/components/profile/update/PortfolioForm.tsx:49
-msgid "IMDB"
-msgstr ""
+#~ msgid "IMDB"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfilesEmpty.tsx:27
-msgid "In order to apply to projects you need to have at least one profile."
-msgstr ""
+#~ msgid "In order to apply to projects you need to have at least one profile."
+#~ msgstr ""
 
 #: src/screens/home/HomeScreen.tsx:32
-msgid "In the future you will be able to see notifications, previews and summary of your applications here"
-msgstr ""
+#~ msgid "In the future you will be able to see notifications, previews and summary of your applications here"
+#~ msgstr ""
 
 #: src/screens/adverts/AdvertsScreenPlaceholder.tsx:23
 #~ msgid "In the future, you can browse different roles here"
 #~ msgstr ""
 
 #: src/components/profile/details/ProfileActingSkillDetails.tsx:39
-msgid "Known for"
-msgstr ""
+#~ msgid "Known for"
+#~ msgstr ""
 
 #: src/components/settings/LanguageSelect.tsx:44
 msgid "Language"
@@ -568,30 +562,29 @@ msgstr ""
 
 #: src/components/profile/details/ProfileLanguageDetails.tsx:13
 #: src/components/profile/update/hooks.ts:25
-msgid "Languages"
-msgstr ""
+#~ msgid "Languages"
+#~ msgstr ""
 
-#: src/components/profile/update/BasicInfoForm.tsx:69
-#: src/screens/login/SignupScreen.tsx:138
-#: src/screens/settings/index.tsx:107
+#: src/screens/login/SignupScreen.tsx:139
+#: src/screens/settings/SettingsSummaryScreen.tsx:118
 msgid "Last name"
 msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:133
+#: src/screens/login/SignupScreen.tsx:134
 msgid "Last name is required"
 msgstr ""
 
 #: src/components/profile/details/ProfilesEmpty.tsx:33
-msgid "Let‘s create your first profile."
-msgstr ""
+#~ msgid "Let‘s create your first profile."
+#~ msgstr ""
 
 #: src/components/profile/details/profileDetail.tsx:74
-msgid "Level"
-msgstr ""
+#~ msgid "Level"
+#~ msgstr ""
 
 #: src/components/profile/update/PortfolioForm.tsx:64
-msgid "LinkedIn"
-msgstr ""
+#~ msgid "LinkedIn"
+#~ msgstr ""
 
 #: src/screens/login/LoginScreen.tsx:107
 msgid "Logging in..."
@@ -613,106 +606,106 @@ msgid "Logout"
 msgstr ""
 
 #: src/components/profile/details/ProfileMediaDetails.tsx:39
-msgid "Media"
-msgstr ""
+#~ msgid "Media"
+#~ msgstr ""
 
 #: src/components/profile/update/hooks.ts:30
 #~ msgid "Media samples"
 #~ msgstr ""
 
 #: src/components/profile/details/ProfileBasicInfoDetails.tsx:63
-msgid "Member of actor union"
-msgstr ""
+#~ msgid "Member of actor union"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileDetails.tsx:27
 #: src/components/profile/details/ProfileList.tsx:47
-msgid "Missing name"
-msgstr ""
+#~ msgid "Missing name"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileBasicInfoDetails.tsx:45
-msgid "Municipalities of interest"
-msgstr ""
+#~ msgid "Municipalities of interest"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileDetails.tsx:59
 #~ msgid "My applications"
 #~ msgstr ""
 
 #: src/components/profile/update/AppearanceForm.tsx:153
-msgid "My hair is dyed"
-msgstr ""
+#~ msgid "My hair is dyed"
+#~ msgstr ""
 
 #: src/components/profile/update/PortfolioForm.tsx:132
-msgid "Name of the website"
-msgstr ""
+#~ msgid "Name of the website"
+#~ msgstr ""
 
 #: src/components/profile/update/LanguagesForm.tsx:103
-msgid "Native"
-msgstr ""
+#~ msgid "Native"
+#~ msgstr ""
 
 #: src/components/profile/details/hooks.tsx:128
-msgid "New"
-msgstr ""
+#~ msgid "New"
+#~ msgstr ""
 
 #: src/components/profile/update/index.tsx:201
-msgid "Next"
-msgstr ""
+#~ msgid "Next"
+#~ msgstr ""
 
 #: src/components/profile/update/AppearanceForm.tsx:49
 #~ msgid "Next, tell a little about your appearance"
 #~ msgstr ""
 
 #: src/components/profile/update/AppearanceForm.tsx:56
-msgid "Next, tell a little about your appearance."
-msgstr ""
+#~ msgid "Next, tell a little about your appearance."
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileAppearanceDetails.tsx:42
-msgid "No"
-msgstr ""
+#~ msgid "No"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileCoursesDetails.tsx:26
-msgid "No courses filled"
-msgstr ""
+#~ msgid "No courses filled"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileEducationDetails.tsx:20
-msgid "No educations filled"
-msgstr ""
+#~ msgid "No educations filled"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileLanguageDetails.tsx:20
-msgid "No languages filled"
-msgstr ""
+#~ msgid "No languages filled"
+#~ msgstr ""
 
 #: src/components/profile/details/profileDetail.tsx:54
-msgid "No photo added"
-msgstr ""
+#~ msgid "No photo added"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfilePortfolioDetails.tsx:24
-msgid "No portfolio links"
-msgstr ""
+#~ msgid "No portfolio links"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfilesEmpty.tsx:23
-msgid "No profiles yet"
-msgstr ""
+#~ msgid "No profiles yet"
+#~ msgstr ""
 
 #: src/components/uikit/PickerSheet.tsx:207
 msgid "No results"
 msgstr ""
 
 #: src/components/profile/details/profileDetail.tsx:26
-msgid "Not filled"
-msgstr ""
+#~ msgid "Not filled"
+#~ msgstr ""
 
 #: src/components/profile/update/LanguagesForm.tsx:98
-msgid "Novice"
-msgstr ""
+#~ msgid "Novice"
+#~ msgstr ""
 
 #: src/components/profile/update/CastingImagesForm.tsx:54
-msgid "Now you can upload different casting images of yourself."
-msgstr ""
+#~ msgid "Now you can upload different casting images of yourself."
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileActingSkillDetails.tsx:19
 #: src/components/profile/update/ActingSkillsForm.tsx:56
-msgid "Occupation"
-msgstr ""
+#~ msgid "Occupation"
+#~ msgstr ""
 
 #: src/utils/file.ts:65
 #: src/utils/permission.ts:90
@@ -721,15 +714,15 @@ msgid "Open settings"
 msgstr ""
 
 #: src/components/profile/details/ProfileMediaDetails.tsx:61
-msgid "Other photos"
-msgstr ""
+#~ msgid "Other photos"
+#~ msgstr ""
 
 #: src/screens/login/LoginScreen.tsx:86
-#: src/screens/login/SignupScreen.tsx:186
+#: src/screens/login/SignupScreen.tsx:187
 msgid "Password"
 msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:233
+#: src/screens/login/SignupScreen.tsx:234
 msgid "Password again"
 msgstr ""
 
@@ -737,46 +730,44 @@ msgstr ""
 msgid "Password is required"
 msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:178
-#: src/screens/login/SignupScreen.tsx:225
+#: src/screens/login/SignupScreen.tsx:179
+#: src/screens/login/SignupScreen.tsx:226
 msgid "Password must be at least 8 characters"
 msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:180
-#: src/screens/login/SignupScreen.tsx:227
+#: src/screens/login/SignupScreen.tsx:181
+#: src/screens/login/SignupScreen.tsx:228
 msgid "Password required"
 msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:223
+#: src/screens/login/SignupScreen.tsx:224
 msgid "Passwords do not match"
 msgstr ""
 
-#: src/components/profile/details/ProfileBasicInfoDetails.tsx:21
-#: src/components/profile/update/BasicInfoForm.tsx:122
-#: src/screens/login/SignupScreen.tsx:160
-#: src/screens/settings/index.tsx:119
+#: src/screens/login/SignupScreen.tsx:161
+#: src/screens/settings/SettingsSummaryScreen.tsx:130
 msgid "Phone number"
 msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:151
+#: src/screens/login/SignupScreen.tsx:152
 msgid "Phone number is required"
 msgstr ""
 
 #: src/components/profile/update/AppearanceForm.tsx:123
-msgid "Pick countries that match your ethnicity"
-msgstr ""
+#~ msgid "Pick countries that match your ethnicity"
+#~ msgstr ""
 
 #: src/components/profile/update/CastingImagesForm.tsx:159
-msgid "Placeholder Text"
-msgstr ""
+#~ msgid "Placeholder Text"
+#~ msgstr ""
 
 #: src/components/profile/update/CastingImagesForm.tsx:146
 #~ msgid "Placeholder close"
 #~ msgstr ""
 
 #: src/components/profile/update/ProfileSaveButton.tsx:31
-msgid "Please check the form and try again."
-msgstr ""
+#~ msgid "Please check the form and try again."
+#~ msgstr ""
 
 #: src/components/profile/details/hooks.tsx:39
 #: src/components/profile/details/hooks.tsx:75
@@ -786,8 +777,8 @@ msgstr ""
 #: src/components/profile/usePhotoUpload.tsx:111
 #: src/components/profile/usePhotoUpload.tsx:93
 #: src/components/profile/usePhotoUpload.tsx:103
-msgid "Please try again"
-msgstr ""
+#~ msgid "Please try again"
+#~ msgstr ""
 
 #: src/components/common/ErrorBoundary.tsx:41
 msgid "Please try restarting the application."
@@ -795,21 +786,20 @@ msgstr ""
 
 #: src/components/profile/details/ProfilePortfolioDetails.tsx:13
 #: src/components/profile/update/hooks.ts:30
-msgid "Portfolio"
-msgstr ""
+#~ msgid "Portfolio"
+#~ msgstr ""
 
-#: src/components/profile/update/BasicInfoForm.tsx:116
-#: src/screens/login/SignupScreen.tsx:155
+#: src/screens/login/SignupScreen.tsx:156
 msgid "Preferred format: +358400123456"
 msgstr ""
 
 #: src/components/profile/details/profileDetail.tsx:103
-msgid "Present"
-msgstr ""
+#~ msgid "Present"
+#~ msgstr ""
 
 #: src/components/profile/update/index.tsx:188
-msgid "Previous"
-msgstr ""
+#~ msgid "Previous"
+#~ msgstr ""
 
 #: src/components/signup/TermsOfService.tsx:46
 #~ msgid "Privacy Policy"
@@ -822,24 +812,24 @@ msgstr ""
 #: src/components/profile/details/hooks.tsx:120
 #: src/components/profile/details/hooks.tsx:136
 #: src/screens/profile/index.tsx:24
-msgid "Profile"
-msgstr ""
+#~ msgid "Profile"
+#~ msgstr ""
 
-#: src/screens/settings/index.tsx:169
+#: src/screens/settings/SettingsSummaryScreen.tsx:183
 msgid "Profile saved"
 msgstr ""
 
 #: src/components/profile/details/hooks.tsx:136
-msgid "Profiles"
-msgstr ""
+#~ msgid "Profiles"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileBasicInfoDetails.tsx:57
-msgid "Project types of interest"
-msgstr ""
+#~ msgid "Project types of interest"
+#~ msgstr ""
 
 #: src/components/profile/update/ProfileFormPhases.tsx:62
-msgid "Required"
-msgstr ""
+#~ msgid "Required"
+#~ msgstr ""
 
 #: src/components/profile/update/ProfileFormHeader.tsx:82
 #~ msgid "Required info"
@@ -847,39 +837,37 @@ msgstr ""
 
 #: src/components/profile/details/ProfileBasicInfoDetails.tsx:35
 #: src/components/profile/update/BasicInfoForm.tsx:150
-msgid "Residence country"
-msgstr ""
+#~ msgid "Residence country"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileBasicInfoDetails.tsx:40
 #: src/components/profile/update/BasicInfoForm.tsx:164
-msgid "Residence municipality"
-msgstr ""
+#~ msgid "Residence municipality"
+#~ msgstr ""
 
-#: src/components/profile/update/CastingImagesForm.tsx:119
-#: src/screens/profile/ProfileSummaryScreen.tsx:60
+#: src/screens/profile/ProfileSummaryScreen.tsx:45
 msgid "Retry"
 msgstr ""
 
 #: src/components/profile/details/ProfileBasicInfoDetails.tsx:52
-msgid "Role types of interest"
-msgstr ""
+#~ msgid "Role types of interest"
+#~ msgstr ""
 
-#: src/components/profile/update/ProfileSaveButton.tsx:81
-#: src/screens/settings/index.tsx:142
+#: src/screens/settings/SettingsSummaryScreen.tsx:156
 msgid "Save"
 msgstr ""
 
 #: src/components/profile/update/ProfileSaveButton.tsx:69
-msgid "Saved!"
-msgstr ""
+#~ msgid "Saved!"
+#~ msgstr ""
 
-#: src/screens/settings/index.tsx:142
+#: src/screens/settings/SettingsSummaryScreen.tsx:156
 msgid "Saving..."
 msgstr ""
 
 #: src/components/profile/update/EducationsForm.tsx:46
-msgid "School name"
-msgstr ""
+#~ msgid "School name"
+#~ msgstr ""
 
 #: src/components/uikit/Inputs/SearchInput.tsx:17
 msgid "Search"
@@ -890,77 +878,91 @@ msgstr ""
 #~ msgstr ""
 
 #: src/components/profile/update/BasicInfoForm.tsx:183
-msgid "Select all the municipalities you can work in"
-msgstr ""
+#~ msgid "Select all the municipalities you can work in"
+#~ msgstr ""
 
 #: src/components/profile/update/BasicInfoForm.tsx:213
-msgid "Select all the type of projects that interest you"
-msgstr ""
+#~ msgid "Select all the type of projects that interest you"
+#~ msgstr ""
 
 #: src/components/profile/update/BasicInfoForm.tsx:198
-msgid "Select all the type of roles that interest you"
+#~ msgid "Select all the type of roles that interest you"
+#~ msgstr ""
+
+#: src/screens/dev/DevScreen.tsx:75
+msgid "Select component"
+msgstr ""
+
+#: src/components/uikit/Buttons/FillButton.stories.tsx:125
+#: src/components/uikit/Buttons/OutlineButton.stories.tsx:125
+#: src/components/uikit/Icon.stories.tsx:72
+msgid "Select state"
 msgstr ""
 
 #: src/components/settings/SettingsButton.tsx:11
-#: src/screens/profile/index.tsx:29
+#: src/screens/profile/index.tsx:23
 msgid "Settings"
 msgstr ""
 
 #: src/components/profile/update/AppearanceForm.tsx:301
-msgid "Shoe size (EU)"
-msgstr ""
+#~ msgid "Shoe size (EU)"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileAppearanceDetails.tsx:92
-msgid "Shoe size (eu)"
-msgstr ""
+#~ msgid "Shoe size (eu)"
+#~ msgstr ""
 
 #: src/components/profile/update/PortfolioForm.tsx:34
-msgid "Showreel"
-msgstr ""
+#~ msgid "Showreel"
+#~ msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:261
+#: src/screens/login/SignupScreen.tsx:262
 msgid "Signing up..."
 msgstr ""
 
 #: src/screens/login/LandingScreen.tsx:33
-#: src/screens/login/SignupScreen.tsx:263
+#: src/screens/login/SignupScreen.tsx:264
 #: src/screens/login/index.tsx:29
 msgid "Signup"
 msgstr ""
 
 #: src/components/profile/details/ProfileAppearanceDetails.tsx:21
 #: src/components/profile/update/AppearanceForm.tsx:105
-msgid "Skin color"
-msgstr ""
+#~ msgid "Skin color"
+#~ msgstr ""
 
 #: src/components/common/ErrorBoundary.tsx:38
 #: src/utils/permission.ts:100
 msgid "Something went wrong"
 msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:75
+#: src/screens/login/SignupScreen.tsx:76
 msgid "Start by creating an account"
 msgstr ""
 
 #: src/components/profile/update/EducationsForm.tsx:69
-msgid "Start date"
-msgstr ""
+#~ msgid "Start date"
+#~ msgstr ""
 
 #: src/components/profile/update/LanguagesForm.tsx:36
 #~ msgid "Tell about your level of language proficiency"
 #~ msgstr ""
 
 #: src/components/profile/update/LanguagesForm.tsx:37
-msgid "Tell about your level of language proficiency."
+#~ msgid "Tell about your level of language proficiency."
+#~ msgstr ""
+
+#: src/screens/home/HomeScreen.tsx:41
+msgid "This React app contains the necessary building blocks that you need to get your project started. You can freely alter any aspect of the template to fit your needs better."
 msgstr ""
 
 #: src/components/profile/update/PortfolioForm.tsx:94
-msgid "Tiktok"
-msgstr ""
+#~ msgid "Tiktok"
+#~ msgstr ""
 
 #: src/components/profile/update/PortfolioForm.tsx:79
-msgid "Twitter"
-msgstr ""
+#~ msgid "Twitter"
+#~ msgstr ""
 
 #: src/utils/permission.ts:86
 msgid "Unable to change permission"
@@ -972,89 +974,101 @@ msgstr ""
 
 #: src/components/profile/details/ProfileAppearanceDetails.tsx:56
 #: src/components/profile/update/AppearanceForm.tsx:204
-msgid "Unique attributes"
-msgstr ""
+#~ msgid "Unique attributes"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileActingSkillDetails.tsx:29
-msgid "Unique skills"
-msgstr ""
+#~ msgid "Unique skills"
+#~ msgstr ""
 
 #: src/components/profile/details/profileDetail.tsx:41
-msgid "Untitled"
-msgstr ""
+#~ msgid "Untitled"
+#~ msgstr ""
 
 #: src/components/profile/usePhotoUpload.tsx:92
 #: src/components/profile/usePhotoUpload.tsx:101
 #: src/components/profile/usePhotoUpload.tsx:110
 #: src/components/profile/usePhotoUpload.tsx:92
 #: src/components/profile/usePhotoUpload.tsx:101
-msgid "Uploading attachment failed!"
-msgstr ""
+#~ msgid "Uploading attachment failed!"
+#~ msgstr ""
 
 #: src/components/profile/update/AppearanceForm.tsx:229
-msgid "Use childrens clothing sizes"
-msgstr ""
+#~ msgid "Use childrens clothing sizes"
+#~ msgstr ""
 
 #: src/components/profile/update/PortfolioForm.tsx:144
-msgid "Website url"
-msgstr ""
+#~ msgid "Website url"
+#~ msgstr ""
 
 #: src/screens/login/LoginScreen.tsx:37
 #: src/screens/login/SignupScreen.tsx:71
-msgid "Welcome to Faces!"
+#~ msgid "Welcome to Faces!"
+#~ msgstr ""
+
+#: src/screens/home/HomeScreen.tsx:37
+msgid "Welcome to Taito React Native Template!"
+msgstr ""
+
+#: src/screens/login/LoginScreen.tsx:37
+msgid "Welcome to {appName} !"
+msgstr ""
+
+#: src/screens/login/SignupScreen.tsx:72
+msgid "Welcome to {appName}!"
 msgstr ""
 
 #: src/components/profile/update/ActingSkillsForm.tsx:105
-msgid "What are you known for?"
-msgstr ""
+#~ msgid "What are you known for?"
+#~ msgstr ""
 
 #: src/components/profile/update/ActingSkillsForm.tsx:93
-msgid "What have you worked on?"
-msgstr ""
+#~ msgid "What have you worked on?"
+#~ msgstr ""
 
 #: src/components/profile/update/EducationsForm.tsx:30
-msgid "What is your educational background?"
-msgstr ""
+#~ msgid "What is your educational background?"
+#~ msgstr ""
 
 #: src/components/profile/update/ActingSkillsForm.tsx:41
-msgid "What kind of actor are you?"
-msgstr ""
+#~ msgid "What kind of actor are you?"
+#~ msgstr ""
 
 #: src/components/profile/update/BasicInfoForm.tsx:209
-msgid "What type of projects interest you?"
-msgstr ""
+#~ msgid "What type of projects interest you?"
+#~ msgstr ""
 
 #: src/components/profile/update/BasicInfoForm.tsx:194
-msgid "What type of roles interest you?"
-msgstr ""
+#~ msgid "What type of roles interest you?"
+#~ msgstr ""
 
 #: src/components/profile/update/ActingSkillsForm.tsx:81
-msgid "What unique skills do you have?"
-msgstr ""
+#~ msgid "What unique skills do you have?"
+#~ msgstr ""
 
 #: src/components/profile/update/BasicInfoForm.tsx:179
-msgid "Where can you work?"
-msgstr ""
+#~ msgid "Where can you work?"
+#~ msgstr ""
 
 #: src/components/profile/update/AppearanceForm.tsx:95
-msgid "Which genders do you want to act?"
-msgstr ""
+#~ msgid "Which genders do you want to act?"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileActingSkillDetails.tsx:34
-msgid "Worked on"
-msgstr ""
+#~ msgid "Worked on"
+#~ msgstr ""
 
 #: src/components/profile/details/ProfileAppearanceDetails.tsx:42
-msgid "Yes"
-msgstr ""
+#~ msgid "Yes"
+#~ msgstr ""
 
 #: src/components/profile/details/hooks.tsx:56
-msgid "Yes, delete"
-msgstr ""
+#~ msgid "Yes, delete"
+#~ msgstr ""
 
 #: src/components/profile/update/ProfileFormHeader.tsx:45
-msgid "You have some unsaved changes that will be lost."
-msgstr ""
+#~ msgid "You have some unsaved changes that will be lost."
+#~ msgstr ""
 
 #: src/utils/permission.ts:87
 msgid "You need to change the permission in the system settings."
@@ -1064,21 +1078,21 @@ msgstr ""
 msgid "You need to update the permission in the system settings."
 msgstr ""
 
-#: src/screens/settings/index.tsx:155
+#: src/screens/settings/SettingsSummaryScreen.tsx:169
 msgid "Your account and all of your profiles will be deleted immediately. This cannot be undone."
 msgstr ""
 
-#: src/screens/settings/index.tsx:178
+#: src/screens/settings/SettingsSummaryScreen.tsx:192
 msgid "Your account has been deleted"
 msgstr ""
 
-#: src/screens/settings/index.tsx:170
+#: src/screens/settings/SettingsSummaryScreen.tsx:184
 msgid "Your profile has been saved"
 msgstr ""
 
 #: src/components/profile/details/ProfileList.tsx:20
-msgid "Your profiles"
-msgstr ""
+#~ msgid "Your profiles"
+#~ msgstr ""
 
 #: src/components/signup/TermsOfService.tsx:30
 msgid "and have read"
@@ -1096,6 +1110,6 @@ msgstr ""
 msgid "the Terms of Service"
 msgstr ""
 
-#: src/screens/home/HomeScreen.tsx:20
+#: src/screens/home/HomeScreen.tsx:22
 msgid "there"
 msgstr ""
