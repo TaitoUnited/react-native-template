@@ -11,56 +11,15 @@ type Options = {
 }[];
 
 export default function DevScreen() {
-  const options: Options = [
-    {
-      label: 'OutlineButton',
-      component: Stories.OutlineButtonWrapper,
-    },
-    {
-      label: 'FillButton',
-      component: Stories.FillButtonWrapper,
-    },
-    {
-      label: 'IconButton',
-      component: Stories.IconButtonWrapper,
-    },
-    {
-      label: 'Checkbox',
-      component: Stories.CheckBoxWrapper,
-    },
-    {
-      label: 'DateInput',
-      component: Stories.DateInputWrapper,
-    },
-    {
-      label: 'Select',
-      component: Stories.SelectWrapper,
-    },
-    {
-      label: 'Modals',
-      component: Stories.ModalsWrapper,
-    },
-    {
-      label: 'Icon',
-      component: Stories.IconWrapper,
-    },
-    {
-      label: 'Text',
-      component: Stories.TextWrapper,
-    },
-    {
-      label: 'TextInput',
-      component: Stories.TextInputWrapper,
-    },
-    {
-      label: 'Spacer',
-      component: Stories.SpacerWrapper,
-    },
-    {
-      label: 'Stack',
-      component: Stories.StackWrapper,
-    },
-  ];
+  const options: Options = Object.keys(Stories).map((key) => {
+    return {
+      label: key
+        .replace('Wrapper', '')
+        .split(/(?=[A-Z])/)
+        .join(' '),
+      component: Stories[key as keyof typeof Stories],
+    };
+  });
 
   const [selectedComponent, setSelectedComponent] = useState<Options[0]>(
     options[0],
