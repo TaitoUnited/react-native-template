@@ -1,8 +1,11 @@
 import { t, Trans } from '@lingui/macro';
 import React from 'react';
+import { View } from 'react-native';
 import LoadingScreen from '../../components/common/LoadingScreen';
 import { useCurrentUserQuery } from '../../graphql/generated';
 import { useColorMode } from '../../services/theming';
+import CardCarousel from './CardCarousel';
+import { features } from './features';
 import { styled } from '~styles';
 import { Spacer, Text, ScaledImage } from '~components/uikit';
 
@@ -22,35 +25,54 @@ export default function HomeScreen() {
   const firstName = data ? data.currentUser.firstName : t`there`;
 
   return (
-    <Wrapper>
-      <PlaceholderImage
-        size={{ height: 150 }}
-        source={isDark ? IMAGE_DARK : IMAGE_LIGHT}
-      />
-      <Spacer size="normal" />
-      <Text variant="title1">
-        <Trans>Hi</Trans>
-        {` ${firstName}!`}
-      </Text>
-      <Spacer size="medium" />
-      <Text variant="title2" align="center">
-        <Trans>Welcome to Taito React Native Template!</Trans>
-      </Text>
-      <Spacer size="medium" />
-      <Text align="center">
-        <Trans>
-          This React app contains the necessary building blocks that you need to
-          get your project started. You can freely alter any aspect of the
-          template to fit your needs better.
-        </Trans>
-      </Text>
-    </Wrapper>
+    <Container>
+      <Wrapper>
+        <PlaceholderImage
+          size={{ height: 100 }}
+          source={isDark ? IMAGE_DARK : IMAGE_LIGHT}
+        />
+        <Spacer size="normal" />
+        <Text variant="title1">
+          <Trans>Hi</Trans>
+          {` ${firstName}!`}
+        </Text>
+        <Spacer size="medium" />
+        <Text variant="title3" align="center">
+          <Trans>Welcome to Taito React Native Template!</Trans>
+        </Text>
+        <Spacer size="medium" />
+        <Text align="center">
+          <Trans>
+            This React app contains the necessary building blocks that you need
+            to get your project started. You can freely alter any aspect of the
+            template to fit your needs better.
+          </Trans>
+        </Text>
+      </Wrapper>
+      <View style={{ marginVertical: 30, alignSelf: 'center' }}>
+        <Text variant="title2">
+          <Trans>Features</Trans>
+        </Text>
+      </View>
+
+      <CardCarousel cards={features} />
+    </Container>
   );
 }
 
-const Wrapper = styled('ScrollView', {
+const Container = styled('ScrollView', {
   flex: 1,
-  padding: '$xxlarge',
+});
+
+const PlaceholderImage = styled(ScaledImage, {
+  width: '100%',
+  resizeMode: 'contain',
+});
+
+const Wrapper = styled('ScrollView', {
+  padding: '$large',
+  width: '100%',
+  resizeMode: 'contain',
 }).attrs(() => ({
   contentContainerStyle: {
     flexGrow: 1,
@@ -58,8 +80,3 @@ const Wrapper = styled('ScrollView', {
     alignItems: 'center',
   },
 }));
-
-const PlaceholderImage = styled(ScaledImage, {
-  width: '100%',
-  resizeMode: 'contain',
-});

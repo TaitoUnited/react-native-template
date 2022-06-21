@@ -95,4 +95,5 @@ const StackIcon = styled('View', {
 const IconNameText = styled('Text', {
   textAlign: 'center',
   marginTop: '$small',
+  color: '$text',
 });

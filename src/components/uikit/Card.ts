@@ -4,6 +4,6 @@ export const Card = styled('TouchableOpacity', {
   borderRadius: '$medium',
   overflow: 'hidden',
   borderWidth: 1,
-  borderColor: '$primary',
+  borderColor: '$backdrop',
   // flexDirection: 'row',
 });
