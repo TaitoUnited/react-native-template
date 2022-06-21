@@ -4,8 +4,10 @@ import HomeNavigator from '../home';
 import ProfileNavigator from '../profile';
 import SettingsNavigator from '../settings';
 import { useTheme } from '~styles';
-import { Icon } from '~components/uikit';
+import { Icon, Stack } from '~components/uikit';
 import DevNavigator from '~screens/dev';
+import ColorModeButton from '~components/common/ColorModeButton';
+import { LanguageSelectTopBar } from '~components/settings/LanguageSelect';
 
 const Tab = createBottomTabNavigator();
 
@@ -16,6 +18,13 @@ export default function TabNavigator() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
+        headerRight: () => (
+          <Stack axis="x" spacing="normal">
+            <ColorModeButton />
+            <LanguageSelectTopBar />
+          </Stack>
+        ),
+
         tabBarShowLabel: false,
         tabBarStyle: {
           backgroundColor: theme.colors.elevated,

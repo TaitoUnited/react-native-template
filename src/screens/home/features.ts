@@ -8,6 +8,7 @@ type Cards = {
 
 export const features: Cards = [
   {
+    // TODO! Add react native aria to project and uikit components
     title: 'Accessibility',
     icon: 'fullBody',
     text: 'Good accessibility is a something that should be expected from every app. The building blocks for creating accessible components are provided by React Aria. This template has pre-built UI kit components, such as Button, Text, TextInput, etc., that have accessibility baked into them. You can use and extend this UI kit to fit your needs.',

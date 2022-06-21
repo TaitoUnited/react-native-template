@@ -7,6 +7,7 @@ import {
 } from '@react-navigation/native';
 
 import { StackParamList } from './types';
+import NavigationHeaderRight from './NavigationHeaderRight';
 import { useTheme } from '~styles';
 import { typography } from '~styles/utils';
 
@@ -32,6 +33,14 @@ export function useDefaultStackScreenOptions() {
     headerBackTitle: t`Back`,
     headerBackTitleStyle: { ...typography('$body') } as any,
   };
+
+  return screenOptions;
+}
+
+export function useCustomStackScreenOptions(title: string) {
+  const screenOptions = useDefaultStackScreenOptions();
+  screenOptions.title = title;
+  screenOptions.headerRight = NavigationHeaderRight;
 
   return screenOptions;
 }

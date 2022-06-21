@@ -43,9 +43,9 @@ export default function HomeScreen() {
         <Spacer size="medium" />
         <Text align="center">
           <Trans>
-            This React app contains the necessary building blocks that you need
-            to get your project started. You can freely alter any aspect of the
-            template to fit your needs better.
+            This React Native app contains the necessary building blocks that
+            you need to get your project started. You can freely alter any
+            aspect of the template to fit your needs better.
           </Trans>
         </Text>
       </Wrapper>
