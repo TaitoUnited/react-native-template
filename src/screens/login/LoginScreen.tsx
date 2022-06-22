@@ -86,6 +86,7 @@ export default function LoginScreen() {
                       label={t`Password`}
                       secureTextEntry
                       returnKeyType="done"
+                      onSubmitEditing={form.handleSubmit(handleSubmit)}
                       message={fieldState.error?.message}
                       isValid={!fieldState.error}
                     />

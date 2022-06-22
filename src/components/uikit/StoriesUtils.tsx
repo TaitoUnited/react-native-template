@@ -27,4 +27,5 @@ export function StoryWrapper({ children }: { children: React.ReactNode }) {
 const Wrapper = styled('View', {
   flex: 1,
   padding: '$large',
+  backgroundColor: '$background',
 });
