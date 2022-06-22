@@ -13,7 +13,7 @@ export default function LandingScreen({
 
   return (
     <>
-      <Background source={require('../../images/login_background.jpg')}>
+      <Background>
         <SafeArea>
           <Stack axis="y" spacing="xxxlarge">
             <Logo
@@ -50,7 +50,8 @@ export default function LandingScreen({
   );
 }
 
-const Background = styled('ImageBackground', {
+const Background = styled('View', {
+  backgroundColor: '$texture',
   flex: 1,
 });
 

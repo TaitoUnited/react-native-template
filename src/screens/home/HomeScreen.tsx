@@ -1,23 +1,17 @@
 import { t, Trans } from '@lingui/macro';
 import React from 'react';
 import { View } from 'react-native';
-import LoadingScreen from '../../components/common/LoadingScreen';
-import { useCurrentUserQuery } from '../../graphql/generated';
-import { useColorMode } from '../../services/theming';
 import CardCarousel from './CardCarousel';
 import { features } from './features';
+import LoadingScreen from '~components/common/LoadingScreen';
+import { useCurrentUserQuery } from '~graphql/generated';
 import { styled } from '~styles';
 import { Spacer, Text, ScaledImage } from '~components/uikit';
 
-const IMAGE_DARK = require('../../images/icon.png');
-const IMAGE_LIGHT = require('../../images/icon.png');
-// const IMAGE_DARK = require('../../images/icon-home-dark.png');
-// const IMAGE_LIGHT = require('../../images/icon-home.png');
+const TaitoLogo = require('../../images/icon.png');
 
 export default function HomeScreen() {
   const [currentUserResult] = useCurrentUserQuery();
-  const { colorMode } = useColorMode();
-  const isDark = colorMode === 'dark';
   const { data, fetching } = currentUserResult;
 
   if (fetching) return <LoadingScreen />;
@@ -27,10 +21,7 @@ export default function HomeScreen() {
   return (
     <Container>
       <Wrapper>
-        <PlaceholderImage
-          size={{ height: 100 }}
-          source={isDark ? IMAGE_DARK : IMAGE_LIGHT}
-        />
+        <PlaceholderImage size={{ height: 100 }} source={TaitoLogo} />
         <Spacer size="normal" />
         <Text variant="title1">
           <Trans>Hi</Trans>
