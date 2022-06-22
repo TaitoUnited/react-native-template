@@ -28,7 +28,7 @@
     "design-tokens:sync": "npm run design-tokens:tokenize && npm run design-tokens:codegen",
     "design-tokens:tokenize": "npx figmage tokenize --env .env.figma",
     "design-tokens:codegen": "npx figmage codegen --env .env.figma",
-    "bootsplash:generate": "npx react-native generate-bootsplash assets/bootsplash/logo.png --background-color=000000 --logo-width=150 --assets-path=assets/bootsplash",
+    "bootsplash:generate": "npx react-native generate-bootsplash assets/bootsplash/logo.png --background-color=ffffff --logo-width=100 --assets-path=assets/bootsplash",
     "icons:generate": "npx react-native-svg-app-icon",
     "graphql:introspection": "node ./src/graphql/introspection/index.mjs",
     "graphql:codegen": "graphql-codegen --config codegen.yml",

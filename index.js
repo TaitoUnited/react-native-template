@@ -3,6 +3,10 @@ import { AppRegistry, LogBox } from 'react-native';
 import App from './src/App';
 import { name as appName } from './app.json';
 
-LogBox.ignoreLogs(['Require cycle', '[react-native-gesture-handler]']);
+LogBox.ignoreLogs([
+  'Require cycle',
+  '[react-native-gesture-handler]',
+  'RCTBridge required dispatch_sync',
+]);
 
 AppRegistry.registerComponent(appName, () => App);
