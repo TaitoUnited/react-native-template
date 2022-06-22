@@ -1,8 +1,8 @@
 import { forwardRef, useEffect, useState } from 'react';
 import { Animated, TextInputProps, TouchableOpacity } from 'react-native';
 
-import { Text } from '../Text';
-import { Icon } from '../Icon';
+import { Text } from '../Text/Text';
+import { Icon } from '../Icon/Icon';
 import { useInputLabelAnimation } from './common';
 import RequiredAsterisk from '../Buttons/RequiredAsterisk';
 import { styled, useTheme } from '~styles';

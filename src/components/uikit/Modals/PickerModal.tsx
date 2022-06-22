@@ -10,12 +10,11 @@ import {
   TouchableWithoutFeedback,
   useWindowDimensions,
 } from 'react-native';
-
-import { Text } from './Text';
-import { Stack } from './Stack';
-import { Radio } from './Inputs/Radio';
-import { Checkbox } from './Inputs/Checkbox';
-import { styled } from '~styles';
+import { Stack } from '../Stack/Stack';
+import { Checkbox } from '../Inputs/Checkbox';
+import { Radio } from '../Inputs/Radio';
+import { Text } from '../Text/Text';
+import { styled } from '~styles/styled';
 
 type Props = {
   label: string;

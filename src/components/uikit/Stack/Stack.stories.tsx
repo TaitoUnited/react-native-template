@@ -1,7 +1,8 @@
 import { View } from 'react-native';
 import { Stack } from './Stack';
-import { range } from './utils';
-import { Text } from './Text';
+import { range } from '../utils';
+import { Text } from '../Text/Text';
+import { StoryWrapper } from '../StoriesUtils';
 import { styled } from '~styles/styled';
 
 export function Horizontal() {
@@ -46,10 +47,12 @@ export function Vertical() {
 
 export function StackWrapper() {
   return (
-    <Stack spacing="normal">
-      <Horizontal />
-      <Vertical />
-    </Stack>
+    <StoryWrapper>
+      <Stack spacing="normal">
+        <Horizontal />
+        <Vertical />
+      </Stack>
+    </StoryWrapper>
   );
 }
 

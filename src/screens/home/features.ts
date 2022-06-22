@@ -1,4 +1,4 @@
-import { IconName } from '~components/uikit/Icon';
+import { IconName } from '~components/uikit/Icon/Icon';
 
 type Cards = {
   title: string;

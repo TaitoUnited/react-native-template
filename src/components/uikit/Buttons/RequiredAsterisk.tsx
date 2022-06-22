@@ -1,4 +1,4 @@
-import { Text } from '../Text';
+import { Text } from '../Text/Text';
 
 export default function RequiredAsterisk({ visible }: { visible: boolean }) {
   return (

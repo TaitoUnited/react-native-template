@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { ScrollView, Animated, SafeAreaView, Dimensions } from 'react-native';
 import { Stack, Text } from '~components/uikit';
-import { Icon, IconName } from '~components/uikit/Icon';
+import { Icon, IconName } from '~components/uikit/Icon/Icon';
 import { Card } from '~components/uikit/Card';
 import { styled } from '~styles/styled';
 

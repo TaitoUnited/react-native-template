@@ -1,6 +1,6 @@
 import { ActivityIndicator } from 'react-native';
 
-import { Icon } from '../Icon';
+import { Icon } from '../Icon/Icon';
 import type { IconButtonProps, ButtonSize } from './types';
 import { styled, useTheme, Theme } from '~styles';
 

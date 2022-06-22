@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { View } from 'react-native';
-import { FillButton } from './Buttons/FillButton';
-import { Checkbox } from './Inputs/Checkbox';
+import { FillButton } from '../Buttons/FillButton';
+import { Checkbox } from '../Inputs/Checkbox';
 import { PickerModal } from './PickerModal';
 import { PickerSheet } from './PickerSheet';
-import { Spacer } from './Spacer';
-import { range } from './utils';
+import { Spacer } from '../Spacer/Spacer';
+import { range } from '../utils';
+import { StoryWrapper } from '../StoriesUtils';
 import { styled } from '~styles/styled';
 
 const optionsHandler = (number: number) =>
@@ -140,7 +141,11 @@ function AllVariants() {
 }
 
 export function ModalsWrapper() {
-  return <AllVariants />;
+  return (
+    <StoryWrapper>
+      <AllVariants />
+    </StoryWrapper>
+  );
 }
 
 const CheckBoxWrapper = styled('View', {

@@ -1,32 +1,35 @@
 import { useState, ComponentProps } from 'react';
-import { Stack } from '../Stack';
+import { Stack } from '../Stack/Stack';
+import { StoryWrapper } from '../StoriesUtils';
 import { TextInput } from './TextInput';
 
 export function AllStates() {
   return (
-    <Stack axis="y" spacing="large" style={{ maxWidth: 400 }}>
-      <TextInputExample label="Default input" />
+    <StoryWrapper>
+      <Stack axis="y" spacing="large" style={{ maxWidth: 400 }}>
+        <TextInputExample label="Default input" />
 
-      <TextInputExample label="Required input" isRequired />
+        <TextInputExample label="Required input" isRequired />
 
-      <TextInputExample
-        label="Input with info message"
-        message="This is an info message"
-      />
+        <TextInputExample
+          label="Input with info message"
+          message="This is an info message"
+        />
 
-      <TextInputExample
-        label="Input with placeholder and validation"
-        placeholder="john@doe.com"
-        isValid={false}
-        message="Incorrect email address"
-      />
+        <TextInputExample
+          label="Input with placeholder and validation"
+          placeholder="john@doe.com"
+          isValid={false}
+          message="Incorrect email address"
+        />
 
-      <TextInputExample
-        label="Input with placeholder and secure text"
-        placeholder="Your amazing password"
-        secureTextEntry
-      />
-    </Stack>
+        <TextInputExample
+          label="Input with placeholder and secure text"
+          placeholder="Your amazing password"
+          secureTextEntry
+        />
+      </Stack>
+    </StoryWrapper>
   );
 }
 

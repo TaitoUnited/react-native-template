@@ -1,7 +1,7 @@
 import { PixelRatio } from 'react-native';
 
-import { Text } from '../Text';
-import { Icon } from '../Icon';
+import { Text } from '../Text/Text';
+import { Icon } from '../Icon/Icon';
 import { styled } from '~styles';
 
 type Props = {

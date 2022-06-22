@@ -1,7 +1,8 @@
 import { View } from 'react-native';
 import { Spacer } from './Spacer';
-import { Stack } from './Stack';
-import { Text } from './Text';
+import { Stack } from '../Stack/Stack';
+import { Text } from '../Text/Text';
+import { StoryWrapper } from '../StoriesUtils';
 import { styled } from '~styles/styled';
 
 export function Horizontal() {
@@ -70,10 +71,12 @@ export function Vertical() {
 
 export function SpacerWrapper() {
   return (
-    <Stack spacing="normal">
-      <Horizontal />
-      <Vertical />
-    </Stack>
+    <StoryWrapper>
+      <Stack spacing="normal">
+        <Horizontal />
+        <Vertical />
+      </Stack>
+    </StoryWrapper>
   );
 }
 

@@ -1,5 +1,5 @@
 import type { ViewStyle } from 'react-native';
-import type { IconName } from '../Icon';
+import type { IconName } from '../Icon/Icon';
 
 // Add more variants if needed, eg. success, error, warning, etc.
 export type ButtonVariant = 'primary' | 'danger';

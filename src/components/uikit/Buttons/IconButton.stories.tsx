@@ -1,4 +1,5 @@
 import { IconButton, Stack } from '..';
+import { StoryWrapper } from '../StoriesUtils';
 import type { ButtonProps } from '~components/uikit/Buttons/types';
 
 const sizes: NonNullable<ButtonProps['size']>[] = ['small', 'medium', 'large'];
@@ -21,5 +22,9 @@ function AllVariants() {
 }
 
 export function IconButtonWrapper() {
-  return <AllVariants />;
+  return (
+    <StoryWrapper>
+      <AllVariants />
+    </StoryWrapper>
+  );
 }

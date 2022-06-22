@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import { Modal } from 'react-native';
 import { Trans } from '@lingui/macro';
-
-import { Text } from './Text';
-import { Stack } from './Stack';
-import { Spacer } from './Spacer';
-import { Radio } from './Inputs/Radio';
-import { Checkbox } from './Inputs/Checkbox';
-import { SearchInput } from './Inputs/SearchInput';
-import { styled } from '~styles';
+import { Text } from '../Text/Text';
+import { Checkbox } from '../Inputs/Checkbox';
+import { Radio } from '../Inputs/Radio';
+import { Stack } from '../Stack/Stack';
+import { SearchInput } from '../Inputs/SearchInput';
+import { Spacer } from '../Spacer/Spacer';
+import { styled } from '~styles/styled';
 
 type Option = {
   label: string;

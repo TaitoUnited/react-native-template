@@ -1,9 +1,9 @@
 import { t } from '@lingui/macro';
 import { useState } from 'react';
 import { OutlineButton, Select, Stack, Spacer } from '..';
+import { StoryWrapper } from '../StoriesUtils';
 import { capitalize } from '~components/uikit/utils';
 import type { ButtonProps } from '~components/uikit/Buttons/types';
-import { styled } from '~styles';
 
 const buttons: NonNullable<ButtonProps['variant']>[] = ['primary', 'danger'];
 
@@ -120,7 +120,7 @@ export function OutlineButtonWrapper() {
   const Component = options[+state].component as React.FC;
 
   return (
-    <Wrapper>
+    <StoryWrapper>
       <Select
         label={t`Select state`}
         value={state}
@@ -129,10 +129,6 @@ export function OutlineButtonWrapper() {
       />
       <Spacer size="medium" />
       <Component />
-    </Wrapper>
+    </StoryWrapper>
   );
 }
-
-const Wrapper = styled('View', {
-  flex: 1,
-});

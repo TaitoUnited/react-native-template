@@ -6,10 +6,10 @@ import {
 } from 'react';
 
 import { ViewStyle } from 'react-native';
-import { IconName } from '../Icon';
+import { IconName } from '../Icon/Icon';
 
-import { PickerModal } from '../PickerModal';
-import { PickerSheet } from '../PickerSheet';
+import { PickerModal } from '../Modals/PickerModal';
+import { PickerSheet } from '../Modals/PickerSheet';
 import { InputButton } from './InputButton';
 
 type Props = {

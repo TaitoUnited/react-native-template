@@ -1,8 +1,8 @@
 import { ActivityIndicator } from 'react-native';
 
-import { Text } from '../Text';
-import { Stack } from '../Stack';
-import { Icon } from '../Icon';
+import { Text } from '../Text/Text';
+import { Stack } from '../Stack/Stack';
+import { Icon } from '../Icon/Icon';
 import type { ButtonProps, ButtonSize } from './types';
 import type { TypographyVariant } from '~styles/utils';
 import { styled, useTheme, Theme } from '~styles';

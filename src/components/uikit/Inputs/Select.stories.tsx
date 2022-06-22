@@ -1,5 +1,6 @@
 import { useState, ComponentProps } from 'react';
-import { Stack } from '../Stack';
+import { Stack } from '../Stack/Stack';
+import { StoryWrapper } from '../StoriesUtils';
 import { Select } from './Select';
 
 export function SelectWrapper() {
@@ -12,21 +13,23 @@ export function SelectWrapper() {
   ];
 
   return (
-    <Stack axis="y" spacing="large" style={{ maxWidth: 400 }}>
-      <TextInputExample label="Regular select" options={options} />
-      <TextInputExample label="With icon" icon="filter" options={options} />
-      <TextInputExample
-        label="With info message"
-        message="Hi, I'm a message about this select"
-        options={options}
-      />
-      <TextInputExample
-        label="Invalid select"
-        isValid={false}
-        message="Something wrong!"
-        options={options}
-      />
-    </Stack>
+    <StoryWrapper>
+      <Stack axis="y" spacing="large" style={{ maxWidth: 400 }}>
+        <TextInputExample label="Regular select" options={options} />
+        <TextInputExample label="With icon" icon="filter" options={options} />
+        <TextInputExample
+          label="With info message"
+          message="Hi, I'm a message about this select"
+          options={options}
+        />
+        <TextInputExample
+          label="Invalid select"
+          isValid={false}
+          message="Something wrong!"
+          options={options}
+        />
+      </Stack>
+    </StoryWrapper>
   );
 }
 

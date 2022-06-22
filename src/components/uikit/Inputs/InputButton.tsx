@@ -1,7 +1,7 @@
 import { Animated, ViewStyle } from 'react-native';
 
-import { Text } from '../Text';
-import { Icon, IconName } from '../Icon';
+import { Text } from '../Text/Text';
+import { Icon, IconName } from '../Icon/Icon';
 import { useInputLabelAnimation } from './common';
 import RequiredAsterisk from '../Buttons/RequiredAsterisk';
 import { styled } from '~styles';

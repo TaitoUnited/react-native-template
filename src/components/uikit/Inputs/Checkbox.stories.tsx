@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Stack } from '../Stack';
+import { Stack } from '../Stack/Stack';
+import { StoryWrapper } from '../StoriesUtils';
 import { Checkbox } from './Checkbox';
 
 export const AllStates = () => {
@@ -21,5 +22,9 @@ export const AllStates = () => {
 };
 
 export function CheckBoxWrapper() {
-  return <AllStates />;
+  return (
+    <StoryWrapper>
+      <AllStates />
+    </StoryWrapper>
+  );
 }

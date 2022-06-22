@@ -2,9 +2,9 @@ import { useRef, useState } from 'react';
 import { TextInputProps, TouchableOpacity } from 'react-native';
 import { t, Trans } from '@lingui/macro';
 
-import { Text } from '../Text';
-import { Stack } from '../Stack';
-import { Icon } from '../Icon';
+import { Text } from '../Text/Text';
+import { Stack } from '../Stack/Stack';
+import { Icon } from '../Icon/Icon';
 import { styled } from '~styles';
 
 type Props = Omit<TextInputProps, 'onChange'> & {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Stack } from '../Stack';
+import { Stack } from '../Stack/Stack';
+import { StoryWrapper } from '../StoriesUtils';
 import { DateInput } from './DateInput';
 
 export default {
@@ -49,5 +50,9 @@ export const AllStates = () => {
 };
 
 export function DateInputWrapper() {
-  return <AllStates />;
+  return (
+    <StoryWrapper>
+      <AllStates />
+    </StoryWrapper>
+  );
 }

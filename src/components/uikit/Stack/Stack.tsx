@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { ViewStyle } from 'react-native';
 
-import { flattenChildren } from './utils';
-import { Spacer } from './Spacer';
+import { flattenChildren } from '../utils';
+import { Spacer } from '../Spacer/Spacer';
 import { styled, Theme } from '~styles';
 
 type Props = {

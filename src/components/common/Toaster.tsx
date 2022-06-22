@@ -4,7 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useWindowDimensions } from 'react-native';
 
 import { styled, useTheme, Color } from '~styles/styled';
-import { IconName } from '~components/uikit/Icon';
+import { IconName } from '~components/uikit/Icon/Icon';
 import { Stack, Text, Icon } from '~components/uikit';
 
 type Props = ToastConfigParams<{

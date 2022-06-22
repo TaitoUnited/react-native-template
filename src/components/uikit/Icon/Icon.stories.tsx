@@ -2,8 +2,9 @@ import { FlatList } from 'react-native';
 import { useState } from 'react';
 import { t } from '@lingui/macro';
 import { Icon, IconName } from './Icon';
-import { Select } from './Inputs/Select';
-import { Spacer } from './Spacer';
+import { Select } from '../Inputs/Select';
+import { Spacer } from '../Spacer/Spacer';
+import { StoryWrapper } from '../StoriesUtils';
 import * as icons from '~styles/tokens/icons';
 import { Color, styled } from '~styles/styled';
 import { useTheme } from '~styles';
@@ -67,7 +68,7 @@ export function IconWrapper() {
   const Component = options[+state].component as React.FC;
 
   return (
-    <Wrapper>
+    <StoryWrapper>
       <Select
         label={t`Select state`}
         value={state}
@@ -76,7 +77,7 @@ export function IconWrapper() {
       />
       <Spacer size="medium" />
       <Component />
-    </Wrapper>
+    </StoryWrapper>
   );
 }
 
