@@ -20,7 +20,7 @@ taito_application=template
 taito_suffix=
 
 # Assets
-taito_project_icon=
+taito_project_icon=https://www.taitounited.fi/icons/icon-72x72.png
 
 # Environments
 taito_environments="dev test stag prod"
@@ -41,7 +41,7 @@ taito_messaging_app=slack
 taito_messaging_channel=companyname
 taito_messaging_builds_channel=builds
 taito_messaging_monitoring_channel=monitoring
-taito_messaging_webhook=TODO
+taito_messaging_webhook=https://hooks.slack.com/services/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
 
 # ------ Plugin specific settings ------
 
@@ -55,8 +55,8 @@ template_name=REACT-NATIVE-TEMPLATE
 template_source_git=git@github.com:TaitoUnited
 
 # App center plugin
-appcenter_org=${template_default_appcenter_organization:?}
-appcenter_app=$taito_project
+appcenter_org=Taito-United
+appcenter_app=TaitoTemplate
 
 # --- Settings for different environments ---
 

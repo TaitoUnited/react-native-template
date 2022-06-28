@@ -12,7 +12,7 @@ taito_target_env=${APPCENTER_BRANCH/master/prod}
 . taito-config.sh
 set +a
 
-[[ $APPCENTER_XCODE_PROJECT == *"$appcenter_app"* ]] && TYPE=iOS || TYPE=Android
+[[ $APPCENTER_XCODE_PROJECT == *"TaitoTemplate"* ]] && TYPE=iOS || TYPE=Android
 
 ORG=$appcenter_org
 APP=$appcenter_app
@@ -30,16 +30,15 @@ slack_notify() {
       \"text\": \"$2\",
       \"icon_url\": \"$ICON\" \
     }" \
-    $SLACK_WEBHOOK
+    "$SLACK_WEBHOOK"
 }
 
 slack_notify_prod_build_passed() {
-  slack_notify "#$taito_messaging_channel" "✓ $build_link built. App is ready for store distribution :shipit_parrot:"
+  slack_notify "#builds" "✅ $build_link $TYPE app built! App is ready for store distribution :shipit_parrot:"
 }
 
 slack_notify_build_failed() {
-  slack_notify "#$taito_messaging_channel" "💥 $build_link build failed."
-  slack_notify "#$taito_messaging_builds_channel" "💥 $build_link build failed."
+  slack_notify "#builds" "💥 $build_link $TYPE app build failed."
 }
 
 if [ "$AGENT_JOBSTATUS" != "Succeeded" ]; then
