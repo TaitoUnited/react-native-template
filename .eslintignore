@@ -1,0 +1,5 @@
+android/
+ios/
+src/locales/_build/
+src/locales/**/*.js
+src/graphql/generated.ts

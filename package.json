@@ -1,130 +1,198 @@
 {
-  "name": "react-native-template",
+  "name": "taitotemplate",
   "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "postinstall": "react-native link",
-    "link": "react-native link",
+    "rename": "bash rename.sh",
     "start": "react-native start",
     "start:clean": "react-native start --reset-cache",
-    "lint": "echo TODO lint?",
-    "unit": "jest",
-    "test": "echo TODO run e2e tests",
-    "run:android": "react-native run-android",
-    "run:android:device": "react-native run-android --device",
-    "run:android:example": "react-native run-android --variant=example",
-    "run:ios": "react-native run-ios",
-    "run:ios:device": "react-native run-ios --device",
-    "run:ios:example": "react-native run-ios --variant=example",
-    "logs:android": "react-native log-android",
-    "logs:ios": "react-native log-ios",
-    "info": "echo TODO show info for $taito_env environment",
-    "info:prod": "echo TODO show info for prod environment",
-    "clean": "echo TODO",
-    "semantic:release": "semantic-release -b dev --no-ci"
+    "android": "react-native run-android --variant=developmentDebug --appIdSuffix=dev",
+    "android:test": "react-native run-android --variant=qaDebug --appIdSuffix=test",
+    "android:staging": "react-native run-android --variant=stagingDebug --appIdSuffix=staging",
+    "android:staging:release": "react-native run-android --variant=stagingRelease --appIdSuffix=staging",
+    "android:production": "react-native run-android --variant=productionDebug",
+    "android:production:release": "react-native run-android --variant=productionRelease",
+    "ios": "react-native run-ios",
+    "ios:staging": "react-native run-ios --scheme 'TaitoTemplate Staging'",
+    "ios:staging:release": "react-native run-ios --scheme 'TaitoTemplate Staging' --configuration Release",
+    "ios:production": "react-native run-ios --scheme 'TaitoTemplate Production'",
+    "ios:production:release": "react-native run-ios --scheme 'TaitoTemplate Production' --configuration Release",
+    "test": "jest",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint ./src --ext .ts,.tsx --config .eslintrc",
+    "lint:fix": "eslint ./src --ext .ts,.tsx --config .eslintrc --fix",
+    "format:check": "prettier --config ./../../.prettierrc --check \"src/**/*.{js,jsx,ts,tsx}\"",
+    "format:write": "prettier --config ./../../.prettierrc --write \"src/**/*.{js,jsx,ts,tsx}\"",
+    "i18n:extract": "lingui extract",
+    "i18n:compile": "lingui compile",
+    "design-tokens:sync": "npm run design-tokens:tokenize && npm run design-tokens:codegen",
+    "design-tokens:tokenize": "npx figmage tokenize --env .env.figma",
+    "design-tokens:codegen": "npx figmage codegen --env .env.figma",
+    "bootsplash:generate": "npx react-native generate-bootsplash assets/bootsplash/logo.png --background-color=ffffff --logo-width=100 --assets-path=assets/bootsplash",
+    "icons:generate": "npx react-native-svg-app-icon",
+    "graphql:introspection": "node ./src/graphql/introspection/index.mjs",
+    "graphql:codegen": "graphql-codegen --config codegen.yml",
+    "graphql:sync": "npm run graphql:introspection && npm run graphql:codegen"
   },
   "dependencies": {
-    "appcenter": "^1.9.0",
-    "appcenter-analytics": "^1.9.0",
-    "appcenter-crashes": "^1.9.0"
+    "@lingui/macro": "3.13.2",
+    "@lingui/react": "3.13.2",
+    "@react-native-async-storage/async-storage": "1.16.1",
+    "@react-native-community/datetimepicker": "5.1.0",
+    "@react-native-community/netinfo": "8.0.0",
+    "@react-navigation/bottom-tabs": "6.0.9",
+    "@react-navigation/drawer": "6.4.1",
+    "@react-navigation/native": "6.0.10",
+    "@react-navigation/stack": "6.2.1",
+    "@urql/exchange-auth": "0.1.7",
+    "@urql/exchange-graphcache": "4.3.6",
+    "@urql/exchange-multipart-fetch": "0.1.14",
+    "@urql/exchange-request-policy": "0.1.5",
+    "@urql/storage-rn": "0.1.1",
+    "appcenter": "4.4.3",
+    "appcenter-analytics": "4.4.3",
+    "appcenter-crashes": "4.4.3",
+    "date-fns": "^2.28.0",
+    "graphql": "16.3.0",
+    "luxon": "2.3.0",
+    "react": "17.0.2",
+    "react-hook-form": "7.27.1",
+    "react-native": "0.67.1",
+    "react-native-bootsplash": "4.1.3",
+    "react-native-config": "1.4.5",
+    "react-native-device-info": "8.4.8",
+    "react-native-document-picker": "8.0.0",
+    "react-native-gesture-handler": "2.2.0",
+    "react-native-image-crop-picker": "0.37.3",
+    "react-native-keyboard-aware-scroll-view": "0.9.5",
+    "react-native-modal-datetime-picker": "13.0.1",
+    "react-native-pager-view": "5.4.15",
+    "react-native-permissions": "3.2.0",
+    "react-native-reanimated": "2.3.1",
+    "react-native-safe-area-context": "3.3.2",
+    "react-native-screens": "3.10.2",
+    "react-native-svg": "12.1.1",
+    "react-native-toast-message": "2.1.1",
+    "rn-fetch-blob": "^0.12.0",
+    "stitches-native": "0.2.0",
+    "urql": "2.2.0",
+    "zustand": "3.6.9"
   },
   "devDependencies": {
-    "@commitlint/cli": "^7.1.2",
-    "@commitlint/config-conventional": "^7.1.2",
-    "git-branch-is": "~2.1.0",
-    "husky": "~1.1.2",
-    "npm-run-all": "~4.1.3",
-    "semantic-release": "^15.10.6"
+    "@babel/core": "7.15.0",
+    "@babel/preset-env": "7.15.0",
+    "@babel/preset-react": "7.14.5",
+    "@babel/preset-typescript": "7.15.0",
+    "@babel/runtime": "7.12.5",
+    "@graphql-codegen/cli": "2.6.2",
+    "@graphql-codegen/typescript": "2.4.5",
+    "@graphql-codegen/typescript-operations": "2.3.2",
+    "@graphql-codegen/typescript-urql": "3.5.3",
+    "@lingui/cli": "3.13.2",
+    "@types/jest": "27.4.0",
+    "@types/luxon": "2.0.9",
+    "@types/react-native": "0.66.12",
+    "@types/react-test-renderer": "17.0.1",
+    "@typescript-eslint/eslint-plugin": "5.7.0",
+    "@typescript-eslint/parser": "5.7.0",
+    "@urql/introspection": "0.3.1",
+    "babel-jest": "27.4.6",
+    "babel-plugin-module-resolver": "4.1.0",
+    "babel-plugin-transform-remove-console": "6.9.4",
+    "dotenv": "16.0.0",
+    "eslint": "8.7.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-config-standard": "17.0.0",
+    "eslint-plugin-import": "2.25.4",
+    "eslint-plugin-lodash": "7.3.0",
+    "eslint-plugin-n": "15.2.1",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-promise": "6.0.0",
+    "eslint-plugin-react": "7.28.0",
+    "eslint-plugin-react-hooks": "4.3.0",
+    "eslint-plugin-standard": "5.0.0",
+    "husky": "8.0.1",
+    "jest": "27.4.7",
+    "make-plural": "7.0.0",
+    "metro-react-native-babel-preset": "0.66.2",
+    "node-fetch": "3.2.0",
+    "prettier": "2.5.1",
+    "react-test-renderer": "17.0.2",
+    "typescript": "4.5.5"
+  },
+  "resolutions": {
+    "@types/react": "17"
   },
   "jest": {
     "preset": "react-native",
     "setupFiles": [
-      "<rootDir>/node_modules/appcenter-analytics/test/AppCenterAnalyticsMock.js",
-      "<rootDir>/node_modules/appcenter/test/AppCenterMock.js",
-      "<rootDir>/node_modules/appcenter-crashes/test/AppCenterCrashesMock.js"
+      "./node_modules/react-native-gesture-handler/jestSetup.js"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
     ]
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "(if git-branch-is -q test || git-branch-is -q stag || git-branch-is -q master; then echo 'ERROR: You cannot commit changes directly to this environment branch. Only fast-forward merge is allowed.' && echo && exit 1; fi) && npm run lint",
-      "pre-push": "npm-run-all --parallel lint unit",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
+  "prettier": {
+    "trailingComma": "all",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true
   },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
+  "lingui": {
+    "locales": [
+      "fi",
+      "en"
     ],
-    "rules": {
-      "type-enum": [
-        2,
-        "always",
-        [
-          "wip",
-          "feat",
-          "fix",
-          "docs",
-          "style",
-          "refactor",
-          "perf",
-          "test",
-          "revert",
-          "build",
-          "ci",
-          "chore"
+    "catalogs": [
+      {
+        "path": "src/locales/{locale}/messages",
+        "include": [
+          "src"
         ]
-      ]
-    }
+      }
+    ],
+    "format": "po"
   },
-  "release": {
-    "npmPublish": false,
-    "analyzeCommits": {
-      "preset": "angular",
-      "releaseRules": [
+  "figmage": {
+    "outDir": "src/styles/tokens",
+    "tokenize": {
+      "tokens": [
         {
-          "type": "feat",
-          "release": "minor"
+          "name": "colors",
+          "type": "color"
         },
         {
-          "type": "fix",
-          "release": "patch"
+          "name": "typography",
+          "type": "text"
         },
         {
-          "type": "docs",
-          "release": "patch"
+          "name": "spacing",
+          "type": "width",
+          "nodeId": "110:694"
         },
         {
-          "type": "style",
-          "release": "patch"
+          "name": "radii",
+          "type": "radius",
+          "nodeId": "102:8"
         },
         {
-          "type": "refactor",
-          "release": "patch"
-        },
-        {
-          "type": "perf",
-          "release": "patch"
-        },
-        {
-          "type": "test",
-          "release": "patch"
-        },
-        {
-          "type": "revert",
-          "release": "patch"
-        },
-        {
-          "type": "build",
-          "release": "patch"
-        },
-        {
-          "type": "ci",
-          "release": "patch"
-        },
-        {
-          "type": "chore",
-          "release": "patch"
+          "name": "icons",
+          "type": "svg",
+          "nodeId": "102:2"
         }
       ]
+    },
+    "codegen": {
+      "defaults": {
+        "filetype": "ts",
+        "tokenCase": "camel"
+      }
     }
   }
 }
