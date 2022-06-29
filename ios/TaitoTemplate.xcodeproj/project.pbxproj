@@ -524,7 +524,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.taitotemplate.faces;
+				PRODUCT_BUNDLE_IDENTIFIER = com.taito.template;
 				PRODUCT_NAME = TaitoTemplate;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -553,7 +553,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.taitotemplate.faces;
+				PRODUCT_BUNDLE_IDENTIFIER = com.taito.template;
 				PRODUCT_NAME = TaitoTemplate;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
