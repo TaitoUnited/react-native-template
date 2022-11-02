@@ -2,20 +2,20 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { t } from '@lingui/macro';
 
 import HomeScreen from './HomeScreen';
-import { useDefaultStackScreenInDrawerOptions } from '~screens/utils';
+import { useDefaultStackScreenOptions } from '~screens/utils';
 
-const HomeStack = createStackNavigator();
+const Stack = createStackNavigator();
 
 export default function HomeNavigator() {
-  const screenOptions = useDefaultStackScreenInDrawerOptions();
+  const screenOptions = useDefaultStackScreenOptions();
 
   return (
-    <HomeStack.Navigator screenOptions={screenOptions}>
-      <HomeStack.Screen
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen
         name="Home"
         options={{ title: t`Home` }}
         component={HomeScreen}
       />
-    </HomeStack.Navigator>
+    </Stack.Navigator>
   );
 }

@@ -9,21 +9,9 @@ export type LoginParamList = {
 
 export type TabParamList = {
   HomeTab: undefined;
-  FoodTab: undefined;
-  BotsTab: undefined;
+  SearchTab: undefined;
+  ProfileTab: undefined;
   SettingsTab: undefined;
-};
-
-export type DrawersParamList = {
-  HomeDrawers: undefined;
-  TimerDrawers: undefined;
-  QrScannerDrawers: undefined;
-  BluetoothDrawers: undefined;
-  MapsDrawers: undefined;
-  PaymentDrawers: undefined;
-  FileUploadDrawers: undefined;
-  MessagingDrawers: undefined;
-  FrisbeeDrawers: undefined;
 };
 
 export type StackParamList = LoginParamList;

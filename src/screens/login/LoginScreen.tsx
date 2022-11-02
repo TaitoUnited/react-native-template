@@ -2,7 +2,6 @@ import { useForm, Controller } from 'react-hook-form';
 import { t, Trans } from '@lingui/macro';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-import appConfig from '../../../config/app.config';
 import { styled } from '~styles/styled';
 import { useAuthStore } from '~services/auth';
 import { showToast } from '~components/common/Toaster';
@@ -28,7 +27,6 @@ export default function LoginScreen() {
     }
   }
 
-  const { name } = appConfig;
   return (
     <SafeArea>
       <Wrapper>
@@ -36,7 +34,7 @@ export default function LoginScreen() {
           <Stack axis="y" spacing="medium">
             <Stack axis="y" spacing="xsmall">
               <Text variant="title2">
-                <Trans>Welcome to {name}!</Trans>
+                <Trans>Welcome!</Trans>
               </Text>
 
               <Text variant="title3">
