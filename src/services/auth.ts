@@ -1,34 +1,15 @@
 import { unstable_batchedUpdates } from 'react-native'; // eslint-disable-line
-import { useEffect } from 'react';
-import { useClient } from 'urql';
 import { t } from '@lingui/macro';
 import create from 'zustand';
-import BootSplash from 'react-native-bootsplash';
-
-import type {
-  CurrentUserQuery,
-  CurrentUserQueryVariables,
-  // LoginMutation,
-  // LoginMutationVariables,
-  // RegisterUserMutation,
-  // RegisterUserMutationVariables,
-} from '~graphql/generated';
-
-// import {
-//   LOGIN_MUTATION,
-//   REGISTER_USER_MUTATION,
-// } from '~graphql/user/mutations.gql';
 
 import storage from '~utils/storage';
-// import { clearClient, getClient } from '~graphql';
-import { CURRENT_USER_QUERY } from '~graphql/user/queries.gql';
 import { showToast } from '~components/common/Toaster';
-import { sleep } from '~utils/common';
 
 type AuthStatus =
   | 'undetermined'
   | 'determining'
   | 'logging-in'
+  | 'logging-out'
   | 'signing-in'
   | 'authenticated'
   | 'unauthenticated';
@@ -54,8 +35,7 @@ type AuthState = {
   logout: () => Promise<void>;
 };
 
-// TODO: remove these fake login/logout functions and implement them for real
-export const useAuthStore = create<AuthState>((set) => ({
+const authStore = create<AuthState>((set) => ({
   tokens: null,
   status: 'undetermined',
   setStatus: (status) => set({ status }),
@@ -63,40 +43,8 @@ export const useAuthStore = create<AuthState>((set) => ({
     set({ status: 'signing-in' });
 
     try {
-      // const result = await getClient()
-      //   .mutation<RegisterUserMutation, RegisterUserMutationVariables>(
-      //     REGISTER_USER_MUTATION,
-      //     { input: credentials },
-      //   )
-      //   .toPromise();
-
-      // if (!result.data?.registerUser) {
-      //   const error = result.error?.graphQLErrors[0];
-      //   throw Error(error?.message || 'Failed to register user');
-      // }
-
-      // const { accessToken, refreshToken } = result.data.registerUser;
-
-      // await storage.clearAll();
-      // await storage.set('@app/access-token', accessToken);
-      // await storage.set('@app/refresh-token', refreshToken);
-      console.log(
-        '> Doing fake signup...',
-        credentials.email,
-        credentials.password,
-      );
-      await sleep(2000);
-
-      await storage.clearAll();
-      await storage.set(
-        '@app/access-token',
-        'react-native-template-access-token',
-      );
-      await storage.set(
-        '@app/refresh-token',
-        'react-native-template-refresh-token',
-      );
-
+      const tokens = await fakeSignup(credentials);
+      await setAuthTokens(tokens);
       set({ status: 'authenticated' });
     } catch (error) {
       set({ status: 'unauthenticated' });
@@ -107,34 +55,8 @@ export const useAuthStore = create<AuthState>((set) => ({
     set({ status: 'logging-in' });
 
     try {
-      // const result = await getClient()
-      //   .mutation<LoginMutation, LoginMutationVariables>(LOGIN_MUTATION, {
-      //     input: credentials,
-      //   })
-      //   .toPromise();
-
-      // if (!result.data?.loginUser) {
-      //   throw Error('No login result!');
-      // }
-
-      // const { accessToken, refreshToken } = result.data.loginUser;
-      console.log(
-        '> Doing fake login...',
-        credentials.email,
-        credentials.password,
-      );
-      await sleep(2000);
-
-      await storage.clearAll();
-      await storage.set(
-        '@app/access-token',
-        'react-native-template-access-token',
-      );
-      await storage.set(
-        '@app/refresh-token',
-        'react-native-template-refresh-token',
-      );
-
+      const tokens = await fakeLogin(credentials);
+      await setAuthTokens(tokens);
       set({ status: 'authenticated' });
     } catch (error) {
       set({ status: 'unauthenticated' });
@@ -142,74 +64,69 @@ export const useAuthStore = create<AuthState>((set) => ({
     }
   },
   logout: async () => {
-    console.log('> Doing fake logout...');
-    await sleep(2000);
+    set({ status: 'logging-out' });
 
-    set({ status: 'unauthenticated' });
+    try {
+      await fakeLogout();
+    } catch (error) {
+      console.log(error);
+    } finally {
+      set({ status: 'unauthenticated' });
+    }
 
-    // Clear client and storage
-    // await clearClient();
+    // TODO: clear API client cache
     await storage.clearAll();
   },
 }));
 
-export function useAuthInit() {
-  const client = useClient();
-  const status = useAuthStore((s) => s.status);
-  const logout = useAuthStore((s) => s.logout);
-  const setStatus = useAuthStore((s) => s.setStatus);
+export const useAuthStore = authStore;
 
-  useEffect(() => {
-    async function init() {
-      setStatus('determining');
+export async function initAuth() {
+  authStore.setState({ status: 'determining' });
 
-      try {
-        const accessToken = await storage.get('@app/access-token');
+  try {
+    const accessToken = await storage.get('@app/access-token');
 
-        if (!accessToken) {
-          throw Error('No access token!');
-        }
-
-        // Query some data to check if the user is authenticated
-        const { error } = await client
-          .query<CurrentUserQuery, CurrentUserQueryVariables>(
-            CURRENT_USER_QUERY,
-          )
-          .toPromise();
-
-        if (isAuthError(error)) {
-          // Ignore auth errors here since they are handled in the GraphQL client
-          // where the user will be logged out automatically
-          console.log('> Auth error detected during auth check'); // prettier-ignore
-          return;
-        }
-
-        // In all other cases keep user logged in if the error is not auth error
-        // since they might be able to resolve it by eg. connecting to the internet etc.
-        setStatus('authenticated');
-
-        if (error?.networkError) {
-          showToast({ title: t`Could not connect to server`, type: 'error' });
-        } else if (error) {
-          console.log('> Unknown auth error', error);
-        }
-      } catch (error) {
-        // Logout the user in case of unknown errors or if the access token is missing
-        logout();
-      } finally {
-        BootSplash.hide({ fade: true });
-      }
+    if (!accessToken) {
+      throw Error('No access token!');
     }
 
-    init();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    // Check that the token is valid
+    await fakeCheckAuth();
 
-  return status;
+    // In all other cases keep user logged in if the error is not auth error
+    // since they might be able to resolve it by eg. connecting to the internet etc.
+    authStore.setState({ status: 'authenticated' });
+  } catch (error: any) {
+    if (isAuthError(error)) {
+      // Ignore auth errors here since they are handled in the GraphQL client
+      // where the user will be logged out automatically
+      console.log('> Auth error detected during auth check'); // prettier-ignore
+    } else if (error?.networkError) {
+      showToast({ title: t`Could not connect to server`, type: 'error' });
+    } else {
+      console.log('> Unknown auth error', error);
+      // Logout the user in case of unknown errors or if the access token is missing
+      authStore.getState().logout();
+    }
+  }
+}
+
+async function setAuthTokens({
+  accessToken,
+  refreshToken,
+}: {
+  accessToken: string;
+  refreshToken: string;
+}) {
+  await storage.clearAll();
+  await storage.set('@app/access-token', accessToken);
+  await storage.set('@app/refresh-token', refreshToken);
 }
 
 export function isAuthError(error: any) {
-  return error?.graphQLErrors.some((e: any) =>
-    ['FORBIDDEN', 'UNAUTHENTICATED'].includes(e?.code),
+  return error?.graphQLErrors?.some((e: any) =>
+    ['FORBIDDEN', 'UNAUTHENTICATED'].includes(e?.code)
   );
 }
 
@@ -224,4 +141,38 @@ export function handleAuthError(error: any) {
         .catch((e) => console.log('> Failed handle auth error', e));
     });
   }
+}
+
+// Mock login functions --------------------------------------------------------
+
+function fakeLogin(
+  _credentials: LoginCredentials
+): Promise<{ accessToken: string; refreshToken: string }> {
+  return new Promise((resolve) =>
+    setTimeout(
+      () => resolve({ accessToken: '1234', refreshToken: '1234' }),
+      1000
+    )
+  );
+}
+
+function fakeLogout(): Promise<{ ok: boolean }> {
+  return new Promise((resolve) =>
+    setTimeout(() => resolve({ ok: true }), 1000)
+  );
+}
+
+function fakeSignup(
+  _credentials: SignupCredentials
+): Promise<{ accessToken: string; refreshToken: string }> {
+  return new Promise((resolve) =>
+    setTimeout(
+      () => resolve({ accessToken: '1234', refreshToken: '1234' }),
+      1000
+    )
+  );
+}
+
+function fakeCheckAuth() {
+  return new Promise((resolve) => setTimeout(resolve, 1000));
 }

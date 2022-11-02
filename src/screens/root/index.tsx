@@ -2,10 +2,10 @@ import React from 'react';
 
 import LoginNavigator from '../login';
 import AppNavigator from './AppNavigator';
-import { useAuthInit } from '~services/auth';
+import { useAuthStore } from '~services/auth';
 
 export default function RootNavigator() {
-  const status = useAuthInit();
+  const status = useAuthStore((s) => s.status);
 
   // Render nothing while we are checking auth
   if (status === 'undetermined' || status === 'determining') return null;

@@ -1,10 +1,8 @@
-import React from 'react';
 import ToastContainer, { ToastConfigParams } from 'react-native-toast-message';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useWindowDimensions } from 'react-native';
 
 import { styled, useTheme, Color } from '~styles/styled';
-import { IconName } from '~components/uikit/Icon/Icon';
+import { IconName } from '~components/uikit/Icon';
 import { Stack, Text, Icon } from '~components/uikit';
 
 type Props = ToastConfigParams<{
@@ -41,7 +39,7 @@ const toastConfig = {
 export default function Toaster() {
   const theme = useTheme();
   const insets = useSafeAreaInsets();
-  const topOffset = insets.top + theme.space.small;
+  const topOffset = insets.top + (theme.space.small as number);
 
   return <ToastContainer config={toastConfig} topOffset={topOffset} />;
 }
@@ -78,27 +76,22 @@ function Toast({
   variant: Variant;
   icon?: IconName;
 }) {
-  const dimensions = useWindowDimensions();
-  const theme = useTheme();
   const color = variantToColor[variant];
   const iconName = icon || variantToIcon[variant];
   const hasIcon = !!iconName;
 
   return (
-    <ToastWrapper
-      hasIcon={hasIcon}
-      style={{ maxWidth: dimensions.width - theme.space.large }}
-    >
+    <ToastWrapper hasIcon={hasIcon}>
       <Stack axis="x" spacing="small" align="center">
         {hasIcon && <Icon name={iconName} size={24} color={color} />}
 
         <Stack axis="y" spacing="none" align="center">
-          <Text variant="bodySmall" color={color} numberOfLines={1}>
+          <Text variant="bodySmall" color={color}>
             {title}
           </Text>
 
           {!!subtitle && (
-            <Text variant="caption" color="textMuted" numberOfLines={1}>
+            <Text variant="caption" color="textMuted">
               {subtitle}
             </Text>
           )}
@@ -122,14 +115,13 @@ const variantToIcon: { [variant in Variant]?: IconName } = {
 const ToastWrapper = styled('View', {
   borderRadius: '$full',
   paddingVertical: '$small',
-  paddingHorizontal: '$xlarge',
+  paddingHorizontal: '$large',
   backgroundColor: '$elevated',
-  elevation: 10,
-  shadow: 'large',
+  shadow: 'medium',
   variants: {
     hasIcon: {
       true: { paddingLeft: '$normal' },
-      false: { paddingLeft: '$xlarge' },
+      false: { paddingLeft: '$large' },
     },
   },
 });

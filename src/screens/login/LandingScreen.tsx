@@ -1,48 +1,82 @@
-import { StatusBar, useWindowDimensions } from 'react-native';
+import { StatusBar } from 'react-native';
 import { Trans } from '@lingui/macro';
+import { request, PERMISSIONS, RESULTS } from 'react-native-permissions';
 
+import appConfig from '../../../config/app.config';
 import { styled } from '~styles';
-import { Stack, Text, ScaledImage } from '~components/uikit';
+import { Stack, FillButton, Text } from '~components/uikit';
 import { StackScreenProps } from '~screens/types';
-import { LanguageIconButton } from '~components/landing/LanguageIconButton';
+import { useColorMode } from '~services/color-mode';
+import { useI18n } from '~services/i18n';
 
 export default function LandingScreen({
   navigation,
 }: StackScreenProps<'Landing'>) {
-  const dimensions = useWindowDimensions();
+  const { colorMode } = useColorMode();
+  const { toggleLocale, locale } = useI18n();
+
+  function requestPerm() {
+    request(PERMISSIONS.IOS.CAMERA)
+      .then((result) => {
+        switch (result) {
+          case RESULTS.UNAVAILABLE:
+            console.log(
+              'This feature is not available (on this device / in this context)'
+            );
+            break;
+          case RESULTS.DENIED:
+            console.log(
+              '> The permission has not been requested / is denied but requestable'
+            );
+            break;
+          case RESULTS.LIMITED:
+            console.log(
+              '> The permission is limited: some actions are possible'
+            );
+            break;
+          case RESULTS.GRANTED:
+            console.log('> The permission is granted');
+            break;
+          case RESULTS.BLOCKED:
+            console.log(
+              '> The permission is denied and not requestable anymore'
+            );
+            break;
+        }
+      })
+      .catch((error) => {
+        console.log('> Failed to check permission', error);
+      });
+  }
 
   return (
     <>
-      <Background>
+      <Wrapper>
         <SafeArea>
-          <Stack axis="y" spacing="xxxlarge">
-            <Logo
-              source={require('../../images/icon.png')}
-              size={{ width: dimensions.width * 0.55 }}
-            />
+          <Stack axis="y" spacing="large">
+            <Text variant="title1">{appConfig.name}</Text>
 
-            <Stack axis="y" spacing="normal">
-              <Button onPress={() => navigation.navigate('Login')}>
-                <ButtonText variant="bodyBold" uppercase>
-                  <Trans>Login</Trans>
-                </ButtonText>
-              </Button>
+            <Stack axis="x" spacing="normal" justify="center">
+              <FillButton onPress={() => navigation.navigate('Login')}>
+                <Trans>Login</Trans>
+              </FillButton>
 
-              <Button onPress={() => navigation.navigate('Signup')}>
-                <ButtonText variant="bodyBold" uppercase>
-                  <Trans>Signup</Trans>
-                </ButtonText>
-              </Button>
+              <FillButton onPress={() => navigation.navigate('Signup')}>
+                <Trans>Signup</Trans>
+              </FillButton>
             </Stack>
           </Stack>
-          <LanguageWrapper>
-            <LanguageIconButton />
-          </LanguageWrapper>
+
+          <FillButton onPress={requestPerm}>
+            <Trans>Request perm</Trans>
+          </FillButton>
+
+          <FillButton onPress={toggleLocale}>{locale}</FillButton>
         </SafeArea>
-      </Background>
+      </Wrapper>
 
       <StatusBar
-        barStyle="light-content"
+        barStyle={colorMode === 'dark' ? 'light-content' : 'dark-content'}
         translucent
         backgroundColor="transparent"
       />
@@ -50,8 +84,7 @@ export default function LandingScreen({
   );
 }
 
-const Background = styled('View', {
-  backgroundColor: '$texture',
+const Wrapper = styled('View', {
   flex: 1,
 });
 
@@ -59,32 +92,4 @@ const SafeArea = styled('SafeAreaView', {
   flex: 1,
   padding: '$large',
   flexCenter: 'column',
-  backgroundColor: 'rgba(0,0,0,0.65)',
-});
-
-const Logo = styled(ScaledImage, {
-  alignSelf: 'center',
-});
-
-// NOTE: don't use UI kit button since this view shouldn't react to light/dark mode
-const Button = styled('TouchableHighlight', {
-  backgroundColor: '#fff',
-  width: '100%',
-  minHeight: 60,
-  paddingHorizontal: '$large',
-  flexCenter: 'row',
-  borderRadius: '$full',
-}).attrs(() => ({
-  underlayColor: '#dddddd',
-}));
-
-// NOTE: use fixed text color to avoid text color change when changing light/dark mode
-const ButtonText = styled(Text, {
-  color: '#2b2b2b',
-});
-
-const LanguageWrapper = styled('View', {
-  position: 'absolute',
-  bottom: 20,
-  right: 20,
 });

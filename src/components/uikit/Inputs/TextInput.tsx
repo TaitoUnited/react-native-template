@@ -1,10 +1,8 @@
 import { forwardRef, useEffect, useState } from 'react';
-import { Animated, TextInputProps, TouchableOpacity } from 'react-native';
+import { Animated, TextInputProps } from 'react-native';
 
-import { Text } from '../Text/Text';
-import { Icon } from '../Icon/Icon';
+import { Text } from '../Text';
 import { useInputLabelAnimation } from './common';
-import RequiredAsterisk from '../Buttons/RequiredAsterisk';
 import { styled, useTheme } from '~styles';
 
 type Props = Omit<TextInputProps, 'onChange'> & {
@@ -14,7 +12,6 @@ type Props = Omit<TextInputProps, 'onChange'> & {
   isRequired?: boolean;
   message?: string;
   showRequiredAsterisk?: boolean;
-  allowSecureTextToggle?: boolean;
   onChange: (val: string) => void;
 };
 
@@ -25,20 +22,17 @@ export const TextInput = forwardRef(
       label,
       message,
       style,
-      secureTextEntry,
       placeholder = '',
       isValid = true,
       isRequired = false,
       showRequiredAsterisk = true,
-      allowSecureTextToggle = !!secureTextEntry,
       onChange,
       onBlur,
       onFocus,
       ...rest
     }: Props,
-    ref,
+    ref
   ) => {
-    const [secureTextVisible, setSecureTextVisible] = useState(false);
     const [isFocused, setFocused] = useState(false);
     const { colors } = useTheme();
     const { labelStyles, labelAnimation, measureLabel, animateLabel } =
@@ -73,7 +67,7 @@ export const TextInput = forwardRef(
             onLayout={measureLabel}
           >
             {label}
-            <RequiredAsterisk visible={isRequired && showRequiredAsterisk} />
+            {isRequired && showRequiredAsterisk ? '*' : ''}
           </Text>
         </Label>
 
@@ -89,30 +83,17 @@ export const TextInput = forwardRef(
             onBlur={handleBlur}
             autoCapitalize="none"
             underlineColorAndroid="transparent"
-            secureTextEntry={allowSecureTextToggle ? !secureTextVisible : secureTextEntry} // prettier-ignore
           />
-
-          {allowSecureTextToggle && (
-            <InputDecoration>
-              <TouchableOpacity onPress={() => setSecureTextVisible((p) => !p)}>
-                {secureTextVisible ? (
-                  <Icon name="eyeFilled" size={20} color="text" />
-                ) : (
-                  <Icon name="eyeOutline" size={20} color="text" />
-                )}
-              </TouchableOpacity>
-            </InputDecoration>
-          )}
         </InputWrapper>
 
         {!!message && (
-          <Message variant="bodySmall" color="textMuted">
+          <Message variant="caption" color="textMuted">
             {message}
           </Message>
         )}
       </Wrapper>
     );
-  },
+  }
 );
 
 TextInput.displayName = 'TextInput';
@@ -123,7 +104,7 @@ const Wrapper = Animated.createAnimatedComponent(
     position: 'relative',
     display: 'flex',
     zIndex: 0,
-  }),
+  })
 );
 
 const Label = Animated.createAnimatedComponent(
@@ -132,7 +113,7 @@ const Label = Animated.createAnimatedComponent(
     top: 0,
     left: 0,
     zIndex: 1,
-  }),
+  })
 );
 
 const InputWrapper = styled('View', {
@@ -156,7 +137,7 @@ const InputWrapper = styled('View', {
 
 const Input = styled('TextInput', {
   minHeight: 60,
-  typography: '$body',
+  typography: 'body',
   color: '$text',
   flexGrow: 1,
   paddingHorizontal: '$small',
@@ -174,14 +155,4 @@ const Input = styled('TextInput', {
 const Message = styled(Text, {
   marginTop: '$xsmall',
   marginLeft: '$small',
-});
-
-const InputDecoration = styled('View', {
-  position: 'absolute',
-  top: 0,
-  right: 0,
-  bottom: 0,
-  flexShrink: 0,
-  padding: '$small',
-  paddingTop: '$medium',
 });

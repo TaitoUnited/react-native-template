@@ -1,39 +1,29 @@
-import type { ButtonProps, ButtonVariant } from './types';
+import type { ButtonProps } from './types';
 import ButtonContent from './ButtonContent';
-import { styled, Theme } from '~styles';
+import { styled } from '~styles';
 
 export function OutlineButton({
-  variant = 'primary',
   disabled = false,
   style,
   onPress,
   ...rest
 }: ButtonProps) {
-  const textColor = variantToTextColor[variant];
-
   return (
     <Wrapper
-      variant={variant}
       activeOpacity={0.8}
       disabled={disabled}
       style={style}
       onPress={onPress}
     >
-      <ButtonContent textColor={textColor} {...rest} />
+      <ButtonContent textColor="primary" {...rest} />
     </Wrapper>
   );
 }
 
-const variantToTextColor: Record<ButtonVariant, keyof Theme['colors']> = {
-  primary: 'primary',
-  danger: 'error',
-};
-
 const Wrapper = styled('TouchableOpacity', {
   backgroundColor: 'transparent',
-  borderRadius: '$full',
+  borderRadius: '$medium',
   borderWidth: 1,
-
   variants: {
     variant: {
       primary: { borderColor: '$primary' },
@@ -43,5 +33,8 @@ const Wrapper = styled('TouchableOpacity', {
       true: { opacity: 0.5 },
       false: { opacity: 1 },
     },
+  },
+  defaultVariants: {
+    variant: 'primary',
   },
 });

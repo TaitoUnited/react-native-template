@@ -1,21 +1,21 @@
-import React from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useIsFocused } from '@react-navigation/native';
 import { AppState, AppStateStatus, BackHandler, Keyboard } from 'react-native';
 
 export function useKeyboardVisibility() {
-  const [isKeyboardOpen, setKeyboardOpen] = React.useState(false);
+  const [isKeyboardOpen, setKeyboardOpen] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const onKeyboardDidShow = () => setKeyboardOpen(true);
     const onKeyboardDidHide = () => setKeyboardOpen(false);
 
     const showSubscription = Keyboard.addListener(
       'keyboardDidShow',
-      onKeyboardDidShow,
+      onKeyboardDidShow
     );
     const hideSubscription = Keyboard.addListener(
       'keyboardDidHide',
-      onKeyboardDidHide,
+      onKeyboardDidHide
     );
 
     return () => {
@@ -28,9 +28,9 @@ export function useKeyboardVisibility() {
 }
 
 export function useAppForegroundEffect(callback: () => void) {
-  const appState = React.useRef(AppState.currentState);
+  const appState = useRef(AppState.currentState);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const _handleAppStateChange = (nextAppState: AppStateStatus) => {
       if (
         appState.current.match(/inactive|background/) &&
@@ -42,10 +42,10 @@ export function useAppForegroundEffect(callback: () => void) {
       appState.current = nextAppState;
     };
 
-    AppState.addEventListener('change', _handleAppStateChange);
+    const handler = AppState.addEventListener('change', _handleAppStateChange);
 
     return () => {
-      AppState.removeEventListener('change', _handleAppStateChange);
+      handler.remove();
     };
   }, [callback]);
 }
@@ -53,7 +53,7 @@ export function useAppForegroundEffect(callback: () => void) {
 export function useBackHandler(callback: () => any) {
   const isFocused = useIsFocused();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const backAction = () => {
       if (isFocused) {
         callback();
@@ -62,11 +62,11 @@ export function useBackHandler(callback: () => any) {
       return false;
     };
 
-    const backHandler = BackHandler.addEventListener(
+    const handler = BackHandler.addEventListener(
       'hardwareBackPress',
-      backAction,
+      backAction
     );
 
-    return () => backHandler.remove();
+    return () => handler.remove();
   }, [isFocused, callback]);
 }

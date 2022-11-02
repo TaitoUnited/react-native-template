@@ -1,5 +1,5 @@
 import { StatusBar as RNStatusBar } from 'react-native';
-import { useColorMode } from '~services/theming';
+import { useColorMode } from '~services/color-mode';
 import { useTheme } from '~styles/styled';
 
 export default function StatusBar() {

@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import { Animated } from 'react-native';
 
-import { Text } from '../Text/Text';
+import { Text } from '../Text';
 import { styled } from '~styles';
 
 type Props = {
@@ -59,5 +59,5 @@ const RadioCircle = Animated.createAnimatedComponent(
     left: 5,
     borderRadius: '$full',
     backgroundColor: '$text',
-  }),
+  })
 );

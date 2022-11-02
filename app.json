@@ -1,8 +1,0 @@
-{
-  "name": "TaitoTemplate",
-  "displayName": "Taito Template",
-  "svgAppIcon": {
-    "foregroundPath": "./assets/icon/foreground.svg",
-    "backgroundPath": "./assets/icon/background.svg"
-  }
-}

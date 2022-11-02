@@ -1,12 +1,10 @@
-import 'react-native-gesture-handler';
-import { AppRegistry, LogBox } from 'react-native';
+import { registerRootComponent } from 'expo';
+import { preventAutoHideAsync } from 'expo-splash-screen';
 import App from './src/App';
-import { name as appName } from './app.json';
 
-LogBox.ignoreLogs([
-  'Require cycle',
-  '[react-native-gesture-handler]',
-  'RCTBridge required dispatch_sync',
-]);
+// Instruct SplashScreen not to hide yet, we want to do this manually
+preventAutoHideAsync().catch(() => {
+  // Reloading the app might trigger some race conditions, ignore them
+});
 
-AppRegistry.registerComponent(appName, () => App);
+registerRootComponent(App);

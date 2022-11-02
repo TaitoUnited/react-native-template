@@ -9,7 +9,7 @@ type Props = ImageProps & {
 // Automatically set the width and height based on the image aspect ratio
 export function ScaledImage({ source, size, style, ...rest }: Props) {
   const [dimensions, setDimensions] = React.useState<null | [number, number]>(
-    null,
+    null
   );
 
   let width: number | undefined;
@@ -30,7 +30,7 @@ export function ScaledImage({ source, size, style, ...rest }: Props) {
         height || (width as number) / aspectRatio,
       ]);
     },
-    [width, height],
+    [width, height]
   );
 
   React.useEffect(() => {

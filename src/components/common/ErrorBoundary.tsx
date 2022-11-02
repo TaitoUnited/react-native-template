@@ -1,10 +1,11 @@
-import { Component } from 'react';
+import { Component, ReactNode } from 'react';
 import { Trans } from '@lingui/macro';
+
 import { Stack, Text } from '~components/uikit';
 import { styled } from '~styles';
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 interface State {
@@ -33,11 +34,11 @@ function ErrorView() {
   return (
     <SafeArea>
       <Scroller>
-        <Stack axis="y" spacing="normal">
-          <Text variant="title2">
+        <Stack axis="y" spacing="normal" align="center">
+          <Text variant="title1" align="center">
             <Trans>Something went wrong</Trans>
           </Text>
-          <Text variant="body">
+          <Text variant="body" align="center">
             <Trans>Please try restarting the application.</Trans>
           </Text>
         </Stack>

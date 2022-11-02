@@ -1,10 +1,10 @@
 import { ActivityIndicator } from 'react-native';
 
-import { Text } from '../Text/Text';
-import { Stack } from '../Stack/Stack';
-import { Icon } from '../Icon/Icon';
+import { Text } from '../Text';
+import { Stack } from '../Stack';
+import { Icon } from '../Icon';
 import type { ButtonProps, ButtonSize } from './types';
-import type { TypographyVariant } from '~styles/utils';
+import type { Token as Typography } from '~design-system/typography';
 import { styled, useTheme, Theme } from '~styles';
 
 type Props = Omit<ButtonProps, 'onPress' | 'disabled'> & {
@@ -16,7 +16,7 @@ export default function ButtonContent({
   size = 'large',
   textColor,
   icon,
-  iconPlacement = 'left',
+  iconPlacement = 'right',
   loading,
 }: Props) {
   const theme = useTheme();
@@ -31,7 +31,10 @@ export default function ButtonContent({
 
   if (loading) {
     decoration = (
-      <ActivityIndicator size="small" color={theme.colors[textColor]} />
+      <ActivityIndicator
+        size="small"
+        color={theme.colors[textColor] as string}
+      />
     );
   }
 
@@ -43,25 +46,25 @@ export default function ButtonContent({
         justify="center"
         spacing={size === 'large' ? 'small' : 'xsmall'}
       >
-        {Boolean(decoration && iconPlacement === 'left') && decoration}
+        <Decoration>
+          {Boolean(decoration && iconPlacement === 'left') && decoration}
+        </Decoration>
 
-        {children && (
-          <Text
-            variant={textVariant}
-            color={textColor}
-            uppercase={size === 'large'}
-          >
+        {!!children && (
+          <Text variant={textVariant} color={textColor}>
             {children}
           </Text>
         )}
 
-        {Boolean(decoration && iconPlacement === 'right') && decoration}
+        <Decoration>
+          {Boolean(decoration && iconPlacement === 'right') && decoration}
+        </Decoration>
       </Stack>
     </Wrapper>
   );
 }
 
-const sizeToTextVariant: Record<ButtonSize, TypographyVariant> = {
+const sizeToTextVariant: Record<ButtonSize, Typography> = {
   small: 'bodySmallBold',
   medium: 'bodySmallBold',
   large: 'bodyBold',
@@ -75,7 +78,6 @@ const sizeToIconSize: Record<ButtonSize, number> = {
 
 const Wrapper = styled('View', {
   flexCenter: 'row',
-
   variants: {
     size: {
       small: {
@@ -88,8 +90,12 @@ const Wrapper = styled('View', {
       },
       large: {
         minHeight: 60,
-        paddingHorizontal: '$large',
+        paddingHorizontal: '$medium',
       },
     },
   },
+});
+
+const Decoration = styled('View', {
+  minWidth: 20,
 });

@@ -2,12 +2,13 @@ import { useForm, Controller } from 'react-hook-form';
 import { t, Trans } from '@lingui/macro';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-import { name as appName } from '../../../app.json';
+import appConfig from '../../../config/app.config';
 import { styled } from '~styles/styled';
 import { useAuthStore } from '~services/auth';
 import { showToast } from '~components/common/Toaster';
 import { FillButton, Text, TextInput, Stack } from '~components/uikit';
 import StatusBar from '~components/common/StatusBar';
+
 type Credentials = {
   email: string;
   password: string;
@@ -27,14 +28,15 @@ export default function LoginScreen() {
     }
   }
 
+  const { name } = appConfig;
   return (
     <SafeArea>
       <Wrapper>
         <Scroller>
           <Stack axis="y" spacing="medium">
             <Stack axis="y" spacing="xsmall">
-              <Text variant="title1">
-                <Trans>Welcome to {appName} !</Trans>
+              <Text variant="title2">
+                <Trans>Welcome to {name}!</Trans>
               </Text>
 
               <Text variant="title3">
@@ -49,7 +51,7 @@ export default function LoginScreen() {
                 rules={{
                   validate: {
                     required: (v) => !!v,
-                    // validEmail: (v) => v && v.includes('@'), // TODO: add validator
+                    validEmail: (v) => v && v.includes('@'),
                   },
                 }}
                 render={({ field, fieldState }) => {
@@ -86,9 +88,9 @@ export default function LoginScreen() {
                       label={t`Password`}
                       secureTextEntry
                       returnKeyType="done"
-                      onSubmitEditing={form.handleSubmit(handleSubmit)}
                       message={fieldState.error?.message}
                       isValid={!fieldState.error}
+                      onSubmitEditing={form.handleSubmit(handleSubmit)}
                     />
                   );
                 }}

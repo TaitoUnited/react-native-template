@@ -1,21 +1,9 @@
-const { getDefaultConfig } = require('metro-config');
+// Learn more https://docs.expo.io/guides/customizing-metro
+const { getDefaultConfig } = require('expo/metro-config');
 
-module.exports = (async () => {
-  const {
-    resolver: { sourceExts },
-  } = await getDefaultConfig();
+const config = getDefaultConfig(__dirname);
 
-  return {
-    transformer: {
-      getTransformOptions: async () => ({
-        transform: {
-          experimentalImportSupport: false,
-          inlineRequires: true,
-        },
-      }),
-    },
-    resolver: {
-      sourceExts: [...sourceExts, 'mjs'],
-    },
-  };
-})();
+config.resolver.assetExts.push('mjs');
+config.resolver.sourceExts.push('mjs');
+
+module.exports = config;

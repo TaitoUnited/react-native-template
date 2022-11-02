@@ -2,9 +2,9 @@ import { useRef, useState } from 'react';
 import { TextInputProps, TouchableOpacity } from 'react-native';
 import { t, Trans } from '@lingui/macro';
 
-import { Text } from '../Text/Text';
-import { Stack } from '../Stack/Stack';
-import { Icon } from '../Icon/Icon';
+import { Text } from '../Text';
+import { Stack } from '../Stack';
+import { Icon } from '../Icon';
 import { styled } from '~styles';
 
 type Props = Omit<TextInputProps, 'onChange'> & {
@@ -20,6 +20,11 @@ export function SearchInput({
 }: Props) {
   const inputRef = useRef<any>();
   const [isFocused, setFocused] = useState(false);
+
+  function handleCancel() {
+    onChange('');
+    inputRef.current?.blur();
+  }
 
   return (
     <Stack axis="x" spacing="xsmall" align="center">
@@ -40,17 +45,11 @@ export function SearchInput({
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
           />
-
-          {!!value && (
-            <ClearButton onPress={() => onChange('')}>
-              <Icon name="x" color="textMuted" size={14} />
-            </ClearButton>
-          )}
         </Stack>
       </InputWrapper>
 
       {isFocused && (
-        <TouchableOpacity onPress={() => inputRef.current?.blur()}>
+        <TouchableOpacity onPress={handleCancel}>
           <Text variant="bodySmallBold" color="textMuted">
             <Trans>Cancel</Trans>
           </Text>
@@ -65,22 +64,14 @@ const InputWrapper = styled('View', {
   paddingVertical: '$xsmall',
   paddingHorizontal: '$small',
   borderRadius: '$full',
-  backgroundColor: '$surface',
+  backgroundColor: '$muted6',
 });
 
 const Input = styled('TextInput', {
-  typography: '$bodySmall',
+  typography: 'bodySmall',
   color: '$text',
   flexGrow: 1,
   padding: 0,
 }).attrs((p) => ({
   placeholderTextColor: p.theme.colors.muted1,
 }));
-
-const ClearButton = styled('TouchableOpacity', {
-  width: 18,
-  height: 18,
-  borderRadius: '$full',
-  backgroundColor: '$elevated',
-  flexCenter: 'row',
-});

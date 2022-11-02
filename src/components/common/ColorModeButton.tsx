@@ -1,14 +1,22 @@
-import { IconButton } from '~components/uikit';
-import { useColorMode } from '~services/theming';
+import { Trans } from '@lingui/macro';
+import { FillButton } from '~components/uikit';
+import ButtonContent from '~components/uikit/Buttons/ButtonContent';
+import { useColorMode } from '~services/color-mode';
 
 export default function ColorModeButton() {
   const { toggleColorMode, colorMode } = useColorMode();
 
   return (
-    <IconButton
-      onPress={toggleColorMode}
-      size="small"
-      icon={colorMode === 'light' ? 'lightningFilled' : 'lightningOutline'}
-    />
+    <FillButton onPress={toggleColorMode} size="small">
+      <ButtonContent
+        variant="primary"
+        textColor="text"
+        icon={colorMode === 'light' ? 'lightningFilled' : 'lightningOutlined'}
+      >
+        <Trans>
+          Change theme to {colorMode === 'light' ? 'dark' : 'light'}
+        </Trans>
+      </ButtonContent>
+    </FillButton>
   );
 }

@@ -1,13 +1,50 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import React from 'react';
-import Tabs from './Tabs';
-import { useTheme } from '~styles';
-import { Icon, Stack } from '~components/uikit';
-import ColorModeButton from '~components/common/ColorModeButton';
-import { LanguageSelectTopBar } from '~components/settings/LanguageSelect';
-import { IconName } from '~components/uikit/Icon/Icon';
+import DrawerNavigator from './DrawerNavigator';
 
-const Tab = createBottomTabNavigator();
+import { useTheme } from '~styles';
+import { Icon } from '~components/uikit';
+import { IconName } from '~components/uikit/Icon';
+import type { TabParamList } from '~screens/types';
+
+import FoodNavigator from '~screens/food';
+import BotsNavigator from '~screens/bots';
+import SettingsNavigator from '~screens/settings';
+
+const Tab = createBottomTabNavigator<TabParamList>();
+
+type TabList = {
+  title: keyof TabParamList;
+  iconFilled: IconName;
+  iconOutlined: IconName;
+  screen: () => JSX.Element;
+}[];
+
+const tabs: TabList = [
+  {
+    title: `HomeTab`,
+    iconFilled: 'homeFilled',
+    iconOutlined: 'homeOutlined',
+    screen: DrawerNavigator,
+  },
+  {
+    title: 'FoodTab',
+    iconFilled: 'foodAppleFilled',
+    iconOutlined: 'foodAppleOutlined',
+    screen: FoodNavigator,
+  },
+  {
+    title: 'BotsTab',
+    iconFilled: 'commandLineFilled',
+    iconOutlined: 'commandLineOutlined',
+    screen: BotsNavigator,
+  },
+  {
+    title: 'SettingsTab',
+    iconFilled: 'settingsCogFilled',
+    iconOutlined: 'settingsCogOutlined',
+    screen: SettingsNavigator,
+  },
+];
 
 export default function TabNavigator() {
   const theme = useTheme();
@@ -16,31 +53,22 @@ export default function TabNavigator() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        headerRight: () => (
-          <Stack axis="x" spacing="normal">
-            <ColorModeButton />
-            <LanguageSelectTopBar />
-          </Stack>
-        ),
-
         tabBarShowLabel: false,
         tabBarStyle: {
-          backgroundColor: theme.colors.elevated,
-          borderTopColor: theme.colors.border,
+          backgroundColor: theme.colors.background,
+          borderTopColor: theme.colors.text,
           borderTopWidth: 1,
         },
       }}
     >
-      {Tabs.map(({ title, icon, screen }) => (
+      {tabs.map(({ title, iconFilled, iconOutlined, screen }) => (
         <Tab.Screen
-          key={`${title}Tab`}
-          name={`${title}Tab`}
+          key={title}
+          name={title}
           component={screen}
           options={{
             tabBarIcon: ({ focused }) => (
-              <Icon
-                name={`${icon}${focused ? 'Filled' : 'Outline'}` as IconName}
-              />
+              <Icon name={focused ? iconFilled : iconOutlined} />
             ),
           }}
         />

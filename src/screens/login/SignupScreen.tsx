@@ -1,16 +1,14 @@
-import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { t, Trans } from '@lingui/macro';
 import { useHeaderHeight } from '@react-navigation/elements';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-import { name as appName } from '../../../app.json';
+import appConfig from '../../../config/app.config';
 import { styled } from '~styles/styled';
 import { FillButton, Text, TextInput, Stack, Spacer } from '~components/uikit';
 import { showToast } from '~components/common/Toaster';
 import { useAuthStore } from '~services/auth';
 import StatusBar from '~components/common/StatusBar';
-import TermsOfService from '~components/signup/TermsOfService';
 
 type Credentials = {
   email: string;
@@ -21,19 +19,15 @@ type Credentials = {
   password2: string;
 };
 
-const MIN_PASSWORD_LEGTH = 8;
+export const MIN_PASSWORD_LEGTH = 8;
 
 export default function SignupScreen() {
-  const form = useForm<Credentials>({ mode: 'onBlur' });
+  const form = useForm<Credentials>({ mode: 'onChange' });
   const password = form.watch('password1');
   const status = useAuthStore((s) => s.status);
   const signup = useAuthStore((s) => s.signup);
   const headerHeight = useHeaderHeight();
-  const [termsAccepted, setTermsAccepted] = useState(false);
-
-  function isValidForm() {
-    return form.formState.isValid && termsAccepted && status !== 'signing-in';
-  }
+  const isValidForm = form.formState.isValid && status !== 'signing-in';
 
   async function handleSubmit() {
     try {
@@ -47,18 +41,11 @@ export default function SignupScreen() {
 
       await signup(credentials);
     } catch (error: any) {
-      const message = (error?.message || '') as string;
-      let toastTitle = t`Failed to signup`;
-
-      // TODO: improve error handling
-      if (message.includes('duplicate key')) {
-        toastTitle = t`Email is already taken`;
-      }
-
-      showToast({ title: toastTitle, type: 'error' });
+      showToast({ title: t`Failed to signup`, type: 'error' });
     }
   }
 
+  const { name } = appConfig;
   return (
     <SafeArea>
       <Wrapper>
@@ -68,8 +55,8 @@ export default function SignupScreen() {
         >
           <Stack axis="y" spacing="medium">
             <Stack axis="y" spacing="xsmall">
-              <Text variant="title1">
-                <Trans>Welcome to {appName}!</Trans>
+              <Text variant="title2">
+                <Trans>Welcome to {name}!</Trans>
               </Text>
 
               <Text variant="title3">
@@ -240,13 +227,6 @@ export default function SignupScreen() {
                   );
                 }}
               />
-
-              <Spacer axis="y" size="medium" />
-
-              <TermsOfService
-                accepted={termsAccepted}
-                onToggleAccepted={() => setTermsAccepted((cur) => !cur)}
-              />
             </Stack>
           </Stack>
 
@@ -255,7 +235,7 @@ export default function SignupScreen() {
           <FillButton
             variant="primary"
             onPress={form.handleSubmit(handleSubmit)}
-            disabled={!isValidForm()}
+            disabled={isValidForm}
             loading={status === 'signing-in'}
           >
             {status === 'signing-in' ? (

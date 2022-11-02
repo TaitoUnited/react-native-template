@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-01-26 11:52+0200\n"
+"POT-Creation-Date: 2022-09-12 10:11+0300\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,1099 +13,235 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/screens/settings/SettingsSummaryScreen.tsx:191
-msgid "Account deleted"
-msgstr "Tili poistettu"
-
-#: src/screens/settings/SettingsSummaryScreen.tsx:199
-msgid "Account deletion failed"
-msgstr "Tilin poisto epäonnistui"
-
-#: src/screens/settings/SettingsSummaryScreen.tsx:200
-msgid "Account deletion failed. Try again later."
-msgstr "Tilin poisto epäonnistui. Yritä myöhemmin uudelleen."
-
-#: src/screens/settings/SettingsSummaryScreen.tsx:97
-msgid "Account information"
-msgstr "Käyttäjätiedot"
-
-#: src/components/profile/details/ProfileActingSkillDetails.tsx:24
-#~ msgid "Acting experience (years)"
-#~ msgstr "Kokemus näyttelijänä (vuosina)"
-
-#: src/components/profile/update/ActingSkillsForm.tsx:68
-#~ msgid "Acting experience in years"
-#~ msgstr "Kokemus näyttelijänä (vuosina)"
-
-#: src/components/profile/update/AppearanceForm.tsx:91
-#~ msgid "Acting gender"
-#~ msgstr "Näyteltävät sukupuolet"
-
-#: src/components/profile/details/ProfileAppearanceDetails.tsx:16
-#~ msgid "Acting genders"
-#~ msgstr "Näyteltävät sukupuolet"
-
-#: src/components/profile/details/ProfileActingSkillDetails.tsx:12
-#: src/components/profile/update/hooks.ts:29
-#~ msgid "Acting skills"
-#~ msgstr "Näyttelijätaidot"
-
-#: src/components/profile/details/ProfileActingSkillDetails.tsx:14
-#~ msgid "Actor type"
-#~ msgstr "Näyttelijätyyppi"
-
-#: src/components/profile/update/CoursesForm.tsx:24
-#~ msgid "Add courses that are related to your acting career."
-#~ msgstr "Lisää kursseja, jotka liittyvät näyttelijän uraasi"
-
-#: src/components/profile/update/ProfileInputGroupList.tsx:51
-#~ msgid "Add new"
-#~ msgstr "Lisää uusi"
-
-#: src/components/profile/update/AppearanceForm.tsx:219
-#~ msgid "Additional attributes"
-#~ msgstr "Lisäominaisuudet"
-
-#: src/components/profile/update/AppearanceForm.tsx:165
-#~ msgid "Additional details about hair color"
-#~ msgstr "Lisätietoja hiuksien väristä"
-
-#: src/components/profile/update/LanguagesForm.tsx:78
-#~ msgid "Additional info about language"
-#~ msgstr "Lisätietoja kielestä"
-
-#: src/components/adverts/details/AdvertDetails.tsx:41
-#~ msgid "Advertisement"
-#~ msgstr "Mainos"
-
-#: src/screens/adverts/index.tsx:24
-#~ msgid "Adverts"
-#~ msgstr "Ilmoitukset"
-
-#: src/screens/root/AppNavigator.tsx:41
-#~ msgid "Announcement"
-#~ msgstr "Ilmoitus"
-
-#: src/screens/settings/SettingsSummaryScreen.tsx:91
-msgid "App settings"
-msgstr "Sovellusasetukset"
-
-#: src/components/profile/details/ProfileAppearanceDetails.tsx:12
-#: src/components/profile/update/hooks.ts:26
-#~ msgid "Appearance"
-#~ msgstr "Ulkonäkö"
-
-#: src/components/landing/LanguageIconButton.tsx:25
-#: src/components/settings/LanguageSelect.tsx:31
-#: src/components/settings/LanguageSelect.tsx:62
-msgid "Application will have to reload to apply changes"
-msgstr "Sovellus käynnistyy uudelleen, jotta muutokset tulevat voimaan"
-
-#: src/components/settings/LanguageSelect.tsx:30
-#~ msgid "Application will to reload to apply changes"
-#~ msgstr "Sovellus käynnistyy uudelleen, jotta muutokset tulevat voimaan"
-
-#: src/components/landing/LanguageIconButton.tsx:24
-#: src/components/settings/LanguageSelect.tsx:30
-#: src/components/settings/LanguageSelect.tsx:61
-msgid "Are you sure you want to change language to {0}?"
-msgstr "Haluatko varmasti vaihtaa kieleksi {0}?"
-
-#: src/components/profile/update/ProfileFormHeader.tsx:46
-#~ msgid "Are you sure you want to close the form?"
-#~ msgstr "Haluatko varmasti sulkea lomakkeen?"
-
-#: src/components/profile/update/ImageInput.tsx:57
-#~ msgid "Are you sure you want to delete"
-#~ msgstr "Oletko varma, että haluat poistaa"
-
-#: src/components/profile/details/hooks.tsx:53
-#~ msgid "Are you sure you want to delete this profile?"
-#~ msgstr "Oletko varma, että haluat poistaa tämän profiilin?"
-
-#: src/screens/settings/SettingsSummaryScreen.tsx:168
-msgid "Are you sure you want to delete your account?"
-msgstr "Oletko varma, että haluat poistaa tilisi?"
+#: src/screens/settings/SettingsScreen.tsx:36
+msgid "Add your avatar"
+msgstr ""
 
 #: src/components/auth/LogoutButton.tsx:11
 msgid "Are you sure you want to logout?"
-msgstr "Oletko varma, että haluat kirjautua ulos?"
+msgstr ""
 
-#: src/components/profile/details/ProfileAppearanceDetails.tsx:61
-#~ msgid "Attributes description"
-#~ msgstr "Ominaisuuksien kuvaus"
-
-#: src/components/profile/update/ActingSkillsForm.tsx:19
-#~ msgid "Awesome! Tell about your experience as an actor."
-#~ msgstr "Hienoa! Kerro kokemuksestasi näyttelijänä."
-
-#: src/screens/utils.ts:32
+#: src/screens/utils.ts:44
 msgid "Back"
-msgstr "Takaisin"
+msgstr ""
 
-#: src/components/profile/update/LanguagesForm.tsx:100
-#~ msgid "Basic"
-#~ msgstr "Kohtalainen"
+#: src/screens/drawer/bluetooth/index.tsx:16
+msgid "Bluetooth"
+msgstr ""
 
-#: src/components/profile/details/ProfileBasicInfoDetails.tsx:14
-#: src/components/profile/update/hooks.ts:23
-#~ msgid "Basic info"
-#~ msgstr "Perustiedot"
-
-#: src/components/profile/details/ProfileAppearanceDetails.tsx:51
-#: src/components/profile/update/AppearanceForm.tsx:190
-#~ msgid "Body build"
-#~ msgstr "Kehonrakenne"
-
-#: src/components/signup/TermsOfService.tsx:40
-#~ msgid "By signing up, you accept"
-#~ msgstr "Luomalla tilin hyväksyt"
-
-#: src/components/signup/TermsOfService.tsx:40
-#~ msgid "By signing up, you accept our"
-#~ msgstr "Luomalla tilin hyväksyt "
+#: src/screens/bots/index.tsx:16
+msgid "Bots"
+msgstr ""
 
 #: src/components/auth/LogoutButton.tsx:12
-#: src/components/landing/LanguageIconButton.tsx:27
-#: src/components/settings/LanguageSelect.tsx:33
-#: src/components/settings/LanguageSelect.tsx:64
-#: src/components/uikit/Inputs/SearchInput.tsx:55
-#: src/screens/settings/SettingsSummaryScreen.tsx:171
+#: src/components/uikit/Inputs/SearchInput.tsx:54
+#: src/components/uikit/PickerSheet.tsx:115
 msgid "Cancel"
-msgstr "Peru"
+msgstr ""
 
-#: src/components/profile/usePhotoUpload.tsx:110
-#~ msgid "Cannot get upload URL."
-#~ msgstr "Latausosoitteen saaminen epäonnistui."
+#: src/utils/linking.ts:21
+msgid "Cannot open {type}"
+msgstr ""
 
-#: src/components/profile/usePhotoDelete.tsx:32
-#~ msgid "Cannot load attachment."
-#~ msgstr "Liitteen lataaminen epäonnistui"
+#: src/components/common/ColorModeButton.tsx:16
+msgid "Change theme to {0}"
+msgstr ""
 
-#: src/components/profile/update/hooks.ts:24
-#~ msgid "Casting images"
-#~ msgstr "Roolituskuvat"
-
-#: src/components/landing/LanguageIconButton.tsx:29
-#: src/components/landing/LanguageIconButton.tsx:43
-#: src/components/settings/LanguageSelect.tsx:35
-#: src/components/settings/LanguageSelect.tsx:66
-msgid "Change language"
-msgstr "Vaihda kieli"
-
-#: src/components/profile/update/AppearanceForm.tsx:243
-#~ msgid "Children clothing size (cm)"
-#~ msgstr "Lasten vaatekoko (cm)"
-
-#: src/components/profile/details/ProfileAppearanceDetails.tsx:81
-#~ msgid "Children size (cm)"
-#~ msgstr "Lasten vaatekoko (cm)"
-
-#: src/components/uikit/Inputs/DateInput.tsx:48
-msgid "Choose"
-msgstr "Valitse"
-
-#: src/components/profile/update/LanguagesForm.tsx:52
-#~ msgid "Choose language"
-#~ msgstr "Valitse kieli"
-
-#: src/components/uikit/Inputs/DateInput.tsx:49
 #: src/components/uikit/PickerModal.tsx:170
-#: src/components/uikit/PickerSheet.tsx:121
-#: src/utils/file.ts:64
-#: src/utils/permission.ts:89
-#: src/utils/permission.ts:103
+#: src/components/uikit/PickerSheet.tsx:115
 msgid "Close"
-msgstr "Sulje"
+msgstr ""
 
-#: src/components/profile/update/ProfileFormHeader.tsx:49
-#~ msgid "Close form"
-#~ msgstr "Sulje lomake"
-
-#: src/components/profile/details/ProfileAppearanceDetails.tsx:73
-#: src/components/profile/update/AppearanceForm.tsx:270
-#~ msgid "Clothing size (lower body)"
-#~ msgstr "Vaatekoko (alaosa)"
-
-#: src/components/profile/details/ProfileAppearanceDetails.tsx:68
-#: src/components/profile/update/AppearanceForm.tsx:256
-#~ msgid "Clothing size (upper body)"
-#~ msgstr "Vaatekoko (yläosa)"
-
-#: src/screens/adverts/AdvertsScreenPlaceholder.tsx:19
-#~ msgid "Coming soon..."
-#~ msgstr "Tulossa pian..."
-
-#: src/components/profile/details/ProfileMediaDetails.tsx:41
-#~ msgid "Compulsory photos"
-#~ msgstr "Pakolliset kuvat"
-
-#: src/components/profile/usePhotoDelete.tsx:56
-#~ msgid "Connection problem"
-#~ msgstr "Yhteysongelma"
-
-#: src/services/auth.ts:192
+#: src/services/auth.ts:106
 msgid "Could not connect to server"
-msgstr "Palvelimeen ei saatu yhteyttä"
+msgstr ""
 
-#: src/components/profile/details/hooks.tsx:38
-#~ msgid "Could not create profile"
-#~ msgstr "Profiilin luominen epäonnistui"
+#: src/components/uikit/PickerSheet.tsx:122
+msgid "Done"
+msgstr ""
 
-#: src/components/profile/details/hooks.tsx:74
-#~ msgid "Could not delete profile"
-#~ msgstr "Profiilin poistaminen epäonnistui"
-
-#: src/components/profile/update/CastingImagesForm.tsx:115
-#~ msgid "Could not fetch photos"
-#~ msgstr "Kuvien lataaminen epäonnistui"
-
-#: src/screens/profile/ProfileSummaryScreen.tsx:41
-msgid "Could not fetch profiles"
-msgstr "Profiilien lataaminen epäonnistui"
-
-#: src/components/profile/update/ProfileSaveButton.tsx:50
-#~ msgid "Could not save profile"
-#~ msgstr "Profiilin tallentaminen epäonnistui"
-
-#: src/utils/permission.ts:101
-msgid "Could not toggle permission. You can change the permission in the system settings."
-msgstr "Pääsyoikeuksia ei voitu muuttaa. Voit muuttaa oikeuksia järjestelmäasetuksista."
-
-#: src/components/profile/usePhotoUpload.tsx:102
-#: src/components/profile/usePhotoUpload.tsx:102
-#~ msgid "Couldn't upload attachment to the server failed."
-#~ msgstr "Liitteen lataaminen palvelimelle epäonnistui."
-
-#: src/components/profile/update/CoursesForm.tsx:41
-#~ msgid "Course description"
-#~ msgstr "Kurssin kuvaus"
-
-#: src/components/profile/details/ProfileCoursesDetails.tsx:13
-#: src/components/profile/update/hooks.ts:28
-#~ msgid "Courses"
-#~ msgstr "Kurssit"
-
-#: src/components/profile/details/ProfilesEmpty.tsx:44
-#~ msgid "Create profile"
-#~ msgstr "Luo profiili"
-
-#: src/components/profile/details/ProfilesEmpty.tsx:42
-#~ msgid "Creating..."
-#~ msgstr "Luodaan..."
-
-#: src/components/profile/details/ProfileBasicInfoDetails.tsx:26
-#~ msgid "Date of Birth"
-#~ msgstr "Syntymäaika"
-
-#: src/components/profile/update/BasicInfoForm.tsx:137
-#~ msgid "Date of birth"
-#~ msgstr "Syntymäaika"
-
-#: src/screens/settings/SettingsSummaryScreen.tsx:172
-msgid "Delete"
-msgstr "Poista"
-
-#: src/screens/settings/SettingsSummaryScreen.tsx:160
-msgid "Delete Account"
-msgstr "Poista tili"
-
-#: src/components/profile/details/ProfileDetails.tsx:99
-#~ msgid "Delete profile"
-#~ msgstr "Poista profiili"
-
-#: src/components/profile/usePhotoDelete.tsx:48
-#~ msgid "Deleted"
-#~ msgstr "Poistettu"
-
-#: src/components/profile/usePhotoDelete.tsx:31
-#: src/components/profile/usePhotoDelete.tsx:55
-#~ msgid "Deletion failed!"
-#~ msgstr "Poistaminen epäonnistui!"
-
-#: src/components/profile/usePhotoDelete.tsx:47
-#~ msgid "Deletion successful!"
-#~ msgstr "Poistaminen onnistui!"
-
-#: src/components/profile/update/LanguagesForm.tsx:79
-#~ msgid "Describe eg. your dialect"
-#~ msgstr "Kuvaile esim. murrettasi"
-
-#: src/components/profile/update/AppearanceForm.tsx:220
-#~ msgid "Describe your other unique attributes"
-#~ msgstr "Kuvaile muita erityisominaisuuksiasi"
-
-#: src/components/profile/update/EducationsForm.tsx:59
-#~ msgid "Describe your studies shortly"
-#~ msgstr "Kuvaile opintojasi lyhyesti"
-
-#: src/components/profile/update/EducationsForm.tsx:58
-#~ msgid "Description"
-#~ msgstr "Kuvaus"
-
-#: src/components/profile/details/hooks.tsx:106
-#: src/screens/profile/ProfileDetailsScreen.tsx:23
-#~ msgid "Edit"
-#~ msgstr "Muokkaa"
-
-#: src/components/profile/update/hooks.ts:27
-#~ msgid "Education"
-#~ msgstr "Koulutus"
-
-#: src/components/profile/details/ProfileEducationDetails.tsx:13
-#~ msgid "Educations"
-#~ msgstr "Koulutukset"
-
-#: src/screens/login/LoginScreen.tsx:66
-#: src/screens/login/SignupScreen.tsx:101
+#: src/screens/login/LoginScreen.tsx:68
+#: src/screens/login/SignupScreen.tsx:88
 msgid "Email"
-msgstr "Sähköposti"
-
-#: src/screens/login/LoginScreen.tsx:58
-#: src/screens/login/SignupScreen.tsx:93
-msgid "Email invalid"
-msgstr "Sähköposti on virheellinen"
-
-#: src/screens/login/SignupScreen.tsx:55
-msgid "Email is already taken"
-msgstr "Tällä sähköpostilla on jo tili"
+msgstr ""
 
 #: src/screens/login/LoginScreen.tsx:60
-#: src/screens/login/SignupScreen.tsx:95
+#: src/screens/login/SignupScreen.tsx:80
+msgid "Email invalid"
+msgstr ""
+
+#: src/screens/login/LoginScreen.tsx:62
+#: src/screens/login/SignupScreen.tsx:82
 msgid "Email required"
-msgstr "Sähköposti on pakollinen"
+msgstr ""
 
-#: src/components/profile/update/EducationsForm.tsx:81
-#~ msgid "End date"
-#~ msgstr "Päättymispäivämäärä"
-
-#: src/components/profile/details/ProfileAppearanceDetails.tsx:26
-#: src/components/profile/update/AppearanceForm.tsx:119
-#~ msgid "Ethnicity"
-#~ msgstr "Etnisyys"
-
-#: src/components/profile/update/CastingImagesForm.tsx:73
-#~ msgid "Face neutral"
-#~ msgstr "Kasvot, neutraali"
-
-#: src/components/profile/update/CastingImagesForm.tsx:64
-#~ msgid "Face smile"
-#~ msgstr "Kasvot, hymy"
-
-#: src/components/profile/update/PortfolioForm.tsx:109
-#~ msgid "Facebook"
-#~ msgstr "Facebook"
-
-#: src/screens/login/LoginScreen.tsx:26
+#: src/screens/login/LoginScreen.tsx:27
 msgid "Failed to login"
-msgstr "Sisäänkirjautuminen epäonnistui"
+msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:51
+#: src/screens/login/SignupScreen.tsx:44
 msgid "Failed to signup"
-msgstr "Tilin luominen epäonnistui"
+msgstr ""
 
-#: src/components/profile/update/LanguagesForm.tsx:99
-#~ msgid "Fair"
-#~ msgstr "Tyydyttävä"
+#: src/screens/drawer/file-upload/index.tsx:16
+msgid "FileUpload"
+msgstr ""
 
-#: src/components/profile/usePhotoUpload.tsx:82
-#: src/components/profile/usePhotoUpload.tsx:82
-#~ msgid "File successfully uploaded!"
-#~ msgstr "Tiedoston lataaminen palvelimelle onnistui!"
+#: src/screens/login/SignupScreen.tsx:108
+msgid "First name"
+msgstr ""
 
-#: src/components/profile/usePhotoUpload.tsx:83
-#: src/components/profile/usePhotoUpload.tsx:83
-#~ msgid "File:"
-#~ msgstr "Tiedosto: "
+#: src/screens/login/SignupScreen.tsx:103
+msgid "First name is required"
+msgstr ""
 
-#: src/components/profile/update/PortfolioForm.tsx:24
-#~ msgid "Fill in the url to your profile for each relevant site."
-#~ msgstr "Täytä haluamasi sivujen web-osoitteet."
+#: src/screens/food/index.tsx:16
+msgid "Food"
+msgstr ""
 
-#: src/components/profile/update/BasicInfoForm.tsx:47
-#~ msgid "Fill out basic information about the profile"
-#~ msgstr "Täytä profiilin perustiedot"
+#: src/screens/drawer/frisbee/index.tsx:16
+msgid "Frisbee"
+msgstr ""
 
-#: src/components/profile/update/BasicInfoForm.tsx:47
-#~ msgid "Fill out basic information about the profile."
-#~ msgstr "Täytä profiilin perustiedot."
+#: src/screens/drawer/home/index.tsx:16
+msgid "Home"
+msgstr ""
 
-#: src/components/profile/update/BasicInfoForm.tsx:47
-#~ msgid "Fill out the basic information of the profile."
-#~ msgstr "Täytä profiilin perustiedot."
-
-#: src/components/profile/usePhotoUpload.tsx:92
-#: src/components/profile/usePhotoUpload.tsx:92
-#~ msgid "Finalizing upload failed!"
-#~ msgstr "Latauksen viimeistely epäonnistui!"
+#: src/screens/login/SignupScreen.tsx:126
+msgid "Last name"
+msgstr ""
 
 #: src/screens/login/SignupScreen.tsx:121
-#: src/screens/settings/SettingsSummaryScreen.tsx:106
-msgid "First name"
-msgstr "Etunimi"
-
-#: src/screens/login/SignupScreen.tsx:116
-msgid "First name is required"
-msgstr "Etunimi on pakollinen"
-
-#: src/components/profile/update/LanguagesForm.tsx:102
-#~ msgid "Fluent"
-#~ msgstr "Sujuva"
-
-#: src/components/profile/update/ProfileSaveButton.tsx:30
-#~ msgid "Form is not valid"
-#~ msgstr "Lomakkeessa on virheitä."
-
-#: src/components/profile/update/CastingImagesForm.tsx:83
-#~ msgid "Full body"
-#~ msgstr "Kokokeho"
-
-#: src/components/profile/details/ProfileMediaDetails.tsx:54
-#~ msgid "Full length shot"
-#~ msgstr "Kokokehokuva"
-
-#: src/components/profile/details/ProfileAppearanceDetails.tsx:13
-#: src/components/profile/update/AppearanceForm.tsx:63
-#~ msgid "Gender"
-#~ msgstr "Sukupuoli"
-
-#: src/components/profile/update/AppearanceForm.tsx:79
-#~ msgid "Gender description"
-#~ msgstr "Sukupuolen kuvaus"
-
-#: src/components/profile/update/LanguagesForm.tsx:101
-#~ msgid "Good"
-#~ msgstr "Hyvä"
-
-#: src/components/profile/details/ProfileAppearanceDetails.tsx:31
-#: src/components/profile/update/AppearanceForm.tsx:133
-#~ msgid "Hair color"
-#~ msgstr "Hiuksien väri"
-
-#: src/components/profile/details/ProfileAppearanceDetails.tsx:36
-#~ msgid "Hair color description"
-#~ msgstr "Hiuksien värin kuvaus"
-
-#: src/components/profile/details/ProfileAppearanceDetails.tsx:41
-#~ msgid "Hair dyed"
-#~ msgstr "Hiukset on värjätty"
-
-#: src/components/profile/details/ProfileAppearanceDetails.tsx:46
-#: src/components/profile/update/AppearanceForm.tsx:176
-#~ msgid "Hair style"
-#~ msgstr "Hiustyyli"
-
-#: src/components/profile/details/ProfileMediaDetails.tsx:50
-#~ msgid "Headshot (neutral)"
-#~ msgstr "Naamakuva (neutraali)"
-
-#: src/components/profile/details/ProfileMediaDetails.tsx:45
-#~ msgid "Headshot (smile)"
-#~ msgstr "Naamakuva (hymyilevä)"
-
-#: src/App.tsx:27
-#~ msgid "Hei maailma"
-#~ msgstr "Hei maailma"
-
-#: src/components/profile/details/ProfileAppearanceDetails.tsx:87
-#: src/components/profile/update/AppearanceForm.tsx:288
-#~ msgid "Height (cm)"
-#~ msgstr "Pituus (cm)"
-
-#: src/components/profile/update/CastingImagesForm.tsx:99
-#~ msgid "Help"
-#~ msgstr "Apua"
-
-#: src/screens/home/HomeScreen.tsx:32
-msgid "Hi"
-msgstr "Hei"
-
-#: src/components/profile/details/ProfileDetails.tsx:67
-#~ msgid "History"
-#~ msgstr "Historia"
-
-#: src/screens/home/index.tsx:21
-msgid "Home"
-msgstr "Koti"
-
-#: src/components/signup/TermsOfService.tsx:24
-msgid "I accept"
-msgstr "Hyväksyn"
-
-#: src/components/profile/update/ActingSkillsForm.tsx:31
-#~ msgid "I'm a member of the Actor Union"
-#~ msgstr "Olen Näyttelijäliiton jäsen"
-
-#: src/components/profile/update/PortfolioForm.tsx:49
-#~ msgid "IMDB"
-#~ msgstr "IMDB"
-
-#: src/components/profile/details/ProfilesEmpty.tsx:27
-#~ msgid "In order to apply to projects you need to have at least one profile."
-#~ msgstr "Jotta sinut voidaan valita projektiin, sinulla tulee olla vähintään yksi profiili."
-
-#: src/screens/home/HomeScreen.tsx:32
-#~ msgid "In the future you will be able to see notifications, previews and summary of your applications here"
-#~ msgstr "Tulevaisuudessa tulet näkemään tässä yhteenvedon ilmoituksistasi sekä hakemuksistasi."
-
-#: src/screens/adverts/AdvertsScreenPlaceholder.tsx:23
-#~ msgid "In the future, you can browse different roles here"
-#~ msgstr "Tulevaisuudessa voit selata täällä erilaisia rooli-ilmoituksia."
-
-#: src/components/profile/details/ProfileActingSkillDetails.tsx:39
-#~ msgid "Known for"
-#~ msgstr "Tunnetaan"
-
-#: src/components/settings/LanguageSelect.tsx:44
-msgid "Language"
-msgstr "Kieli"
-
-#: src/components/profile/details/ProfileLanguageDetails.tsx:13
-#: src/components/profile/update/hooks.ts:25
-#~ msgid "Languages"
-#~ msgstr "Kielet"
-
-#: src/screens/login/SignupScreen.tsx:139
-#: src/screens/settings/SettingsSummaryScreen.tsx:118
-msgid "Last name"
-msgstr "Sukunimi"
-
-#: src/screens/login/SignupScreen.tsx:134
 msgid "Last name is required"
-msgstr "Sukunimi on pakollinen"
+msgstr ""
 
-#: src/components/profile/details/ProfilesEmpty.tsx:33
-#~ msgid "Let‘s create your first profile."
-#~ msgstr "Luodaan sinulle ensimmäinen profiilisi."
-
-#: src/components/profile/details/profileDetail.tsx:74
-#~ msgid "Level"
-#~ msgstr "Taso"
-
-#: src/components/profile/update/PortfolioForm.tsx:64
-#~ msgid "LinkedIn"
-#~ msgstr "LinkedIn                    "
-
-#: src/screens/login/LoginScreen.tsx:107
+#: src/screens/login/LoginScreen.tsx:110
 msgid "Logging in..."
-msgstr "Kirjaudutaan sisään..."
+msgstr ""
 
-#: src/screens/login/LandingScreen.tsx:27
-#: src/screens/login/LoginScreen.tsx:109
+#: src/screens/root/AppNavigator.tsx:56
+msgid "Logging out..."
+msgstr ""
+
+#: src/screens/login/LandingScreen.tsx:26
+#: src/screens/login/LoginScreen.tsx:112
 #: src/screens/login/index.tsx:24
 msgid "Login"
-msgstr "Kirjaudu"
+msgstr ""
 
-#: src/screens/login/LoginScreen.tsx:41
+#: src/screens/login/LoginScreen.tsx:43
 msgid "Login with your account"
-msgstr "Kirjaudu omalle tilillesi"
+msgstr ""
 
 #: src/components/auth/LogoutButton.tsx:13
 #: src/components/auth/LogoutButton.tsx:19
 msgid "Logout"
-msgstr "Kirjaudu ulos"
+msgstr ""
 
-#: src/components/profile/details/ProfileMediaDetails.tsx:39
-#~ msgid "Media"
-#~ msgstr "Media"
+#: src/screens/drawer/maps/index.tsx:16
+msgid "Maps"
+msgstr ""
 
-#: src/components/profile/update/hooks.ts:30
-#~ msgid "Media samples"
-#~ msgstr "Medianäytteet "
+#: src/screens/drawer/messaging/index.tsx:16
+msgid "Messaging"
+msgstr ""
 
-#: src/components/profile/details/ProfileBasicInfoDetails.tsx:63
-#~ msgid "Member of actor union"
-#~ msgstr "Näyttelijäliiton jäsen"
-
-#: src/components/profile/details/ProfileDetails.tsx:27
-#: src/components/profile/details/ProfileList.tsx:47
-#~ msgid "Missing name"
-#~ msgstr "Nimi puuttuu"
-
-#: src/components/profile/details/ProfileBasicInfoDetails.tsx:45
-#~ msgid "Municipalities of interest"
-#~ msgstr "Kiinnostavat kunnat"
-
-#: src/components/profile/details/ProfileDetails.tsx:59
-#~ msgid "My applications"
-#~ msgstr "Hakemukseni"
-
-#: src/components/profile/update/AppearanceForm.tsx:153
-#~ msgid "My hair is dyed"
-#~ msgstr "Hiukseni on värjätty"
-
-#: src/components/profile/update/PortfolioForm.tsx:132
-#~ msgid "Name of the website"
-#~ msgstr "Web-sivun nimi"
-
-#: src/components/profile/update/LanguagesForm.tsx:103
-#~ msgid "Native"
-#~ msgstr "Äidinkieli"
-
-#: src/components/profile/details/hooks.tsx:128
-#~ msgid "New"
-#~ msgstr "Uusi"
-
-#: src/components/profile/update/index.tsx:201
-#~ msgid "Next"
-#~ msgstr "Seuraava"
-
-#: src/components/profile/update/AppearanceForm.tsx:49
-#~ msgid "Next, tell a little about your appearance"
-#~ msgstr "Seuraavaksi kerro hieman miltä näytät"
-
-#: src/components/profile/update/AppearanceForm.tsx:56
-#~ msgid "Next, tell a little about your appearance."
-#~ msgstr "Seuraavaksi kerro ulkonäöstä"
-
-#: src/components/profile/details/ProfileAppearanceDetails.tsx:42
-#~ msgid "No"
-#~ msgstr "Ei"
-
-#: src/components/profile/details/ProfileCoursesDetails.tsx:26
-#~ msgid "No courses filled"
-#~ msgstr "Ei lisättyjä kursseja"
-
-#: src/components/profile/details/ProfileEducationDetails.tsx:20
-#~ msgid "No educations filled"
-#~ msgstr "Ei lisättyjä koulutuksia"
-
-#: src/components/profile/details/ProfileLanguageDetails.tsx:20
-#~ msgid "No languages filled"
-#~ msgstr "Ei lisättyjä kieliä"
-
-#: src/components/profile/details/profileDetail.tsx:54
-#~ msgid "No photo added"
-#~ msgstr "Ei lisättyä kuvaa"
-
-#: src/components/profile/details/ProfilePortfolioDetails.tsx:24
-#~ msgid "No portfolio links"
-#~ msgstr "Ei lisättyjä portfolio-linkkejä"
-
-#: src/components/profile/details/ProfilesEmpty.tsx:23
-#~ msgid "No profiles yet"
-#~ msgstr "Ei vielä luotuja profiileja"
-
-#: src/components/uikit/PickerSheet.tsx:207
+#: src/components/uikit/PickerSheet.tsx:89
 msgid "No results"
-msgstr "Ei tuloksia"
+msgstr ""
 
-#: src/components/profile/details/profileDetail.tsx:26
-#~ msgid "Not filled"
-#~ msgstr "Ei täytetty"
-
-#: src/components/profile/update/LanguagesForm.tsx:98
-#~ msgid "Novice"
-#~ msgstr "Alkeet"
-
-#: src/components/profile/update/CastingImagesForm.tsx:54
-#~ msgid "Now you can upload different casting images of yourself."
-#~ msgstr "Nyt voit lisätä itsestäsi erilaisia roolituskuvia"
-
-#: src/components/profile/details/ProfileActingSkillDetails.tsx:19
-#: src/components/profile/update/ActingSkillsForm.tsx:56
-#~ msgid "Occupation"
-#~ msgstr "Ammatti"
-
-#: src/utils/file.ts:65
-#: src/utils/permission.ts:90
-#: src/utils/permission.ts:104
-msgid "Open settings"
-msgstr "Avaa asetukset"
-
-#: src/components/profile/details/ProfileMediaDetails.tsx:61
-#~ msgid "Other photos"
-#~ msgstr "Muut kuvat"
-
-#: src/screens/login/LoginScreen.tsx:86
-#: src/screens/login/SignupScreen.tsx:187
+#: src/screens/login/LoginScreen.tsx:88
+#: src/screens/login/SignupScreen.tsx:174
 msgid "Password"
-msgstr "Salasana"
+msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:234
+#: src/screens/login/SignupScreen.tsx:221
 msgid "Password again"
-msgstr "Salasana uudestaan"
+msgstr ""
 
-#: src/screens/login/LoginScreen.tsx:81
+#: src/screens/login/LoginScreen.tsx:83
 msgid "Password is required"
-msgstr "Salasana on pakollinen"
+msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:179
-#: src/screens/login/SignupScreen.tsx:226
+#: src/screens/login/SignupScreen.tsx:166
+#: src/screens/login/SignupScreen.tsx:213
 msgid "Password must be at least 8 characters"
-msgstr "Salasanan tulee olla vähintään 8 merkkiä pitkä"
+msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:181
-#: src/screens/login/SignupScreen.tsx:228
+#: src/screens/login/SignupScreen.tsx:168
+#: src/screens/login/SignupScreen.tsx:215
 msgid "Password required"
-msgstr "Salasana on pakollinen"
+msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:224
+#: src/screens/login/SignupScreen.tsx:211
 msgid "Passwords do not match"
-msgstr "Salasanat eivät täsmää"
+msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:161
-#: src/screens/settings/SettingsSummaryScreen.tsx:130
+#: src/screens/drawer/payment/index.tsx:16
+msgid "Payment"
+msgstr ""
+
+#: src/screens/login/SignupScreen.tsx:148
 msgid "Phone number"
-msgstr "Puhelinnumero"
+msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:152
+#: src/screens/login/SignupScreen.tsx:139
 msgid "Phone number is required"
-msgstr "Puhelinnumero on pakollinen"
+msgstr ""
 
-#: src/components/profile/update/AppearanceForm.tsx:123
-#~ msgid "Pick countries that match your ethnicity"
-#~ msgstr "Valitse maita, jotka vastaavat etnisyyttäsi"
-
-#: src/components/profile/update/CastingImagesForm.tsx:159
-#~ msgid "Placeholder Text"
-#~ msgstr "Paikkamerkki tekstille"
-
-#: src/components/profile/update/ProfileSaveButton.tsx:31
-#~ msgid "Please check the form and try again."
-#~ msgstr "Tarkista lomake ja yritä uudelleen."
-
-#: src/components/profile/details/hooks.tsx:39
-#: src/components/profile/details/hooks.tsx:75
-#: src/components/profile/update/ProfileSaveButton.tsx:51
-#: src/components/profile/usePhotoUpload.tsx:93
-#: src/components/profile/usePhotoUpload.tsx:103
-#: src/components/profile/usePhotoUpload.tsx:111
-#: src/components/profile/usePhotoUpload.tsx:93
-#: src/components/profile/usePhotoUpload.tsx:103
-#~ msgid "Please try again"
-#~ msgstr "Ole hyvä ja yritä uudestaan"
-
-#: src/components/common/ErrorBoundary.tsx:41
+#: src/components/common/ErrorBoundary.tsx:42
 msgid "Please try restarting the application."
-msgstr "Kokeile uudelleenkäynnistää sovellus"
+msgstr ""
 
-#: src/components/profile/details/ProfilePortfolioDetails.tsx:13
-#: src/components/profile/update/hooks.ts:30
-#~ msgid "Portfolio"
-#~ msgstr "Portfolio"
-
-#: src/screens/login/SignupScreen.tsx:156
+#: src/screens/login/SignupScreen.tsx:143
 msgid "Preferred format: +358400123456"
-msgstr "Suositeltu formaatti +358400123456"
+msgstr ""
 
-#: src/components/profile/details/profileDetail.tsx:103
-#~ msgid "Present"
-#~ msgstr "Nykyhetki"
-
-#: src/components/profile/update/index.tsx:188
-#~ msgid "Previous"
-#~ msgstr "Edellinen"
-
-#: src/components/signup/TermsOfService.tsx:46
-#~ msgid "Privacy Policy"
-#~ msgstr "Tietosuojakäytännöt"
-
-#: src/components/adverts/details/AdvertDetails.tsx:38
-#~ msgid "Production"
-#~ msgstr "Tuotanto"
-
-#: src/components/profile/details/hooks.tsx:120
-#: src/components/profile/details/hooks.tsx:136
-#: src/screens/profile/index.tsx:24
-#~ msgid "Profile"
-#~ msgstr "Profiili"
-
-#: src/screens/settings/SettingsSummaryScreen.tsx:183
-msgid "Profile saved"
-msgstr "Profiili tallennettu"
-
-#: src/components/profile/details/hooks.tsx:136
-#~ msgid "Profiles"
-#~ msgstr "Profiilit"
-
-#: src/components/profile/details/ProfileBasicInfoDetails.tsx:57
-#~ msgid "Project types of interest"
-#~ msgstr "Kiinnostavat projektityypit"
-
-#: src/components/profile/update/ProfileFormPhases.tsx:62
-#~ msgid "Required"
-#~ msgstr "Pakollinen"
-
-#: src/components/profile/update/ProfileFormHeader.tsx:82
-#~ msgid "Required info"
-#~ msgstr "Pakollinen"
-
-#: src/components/profile/details/ProfileBasicInfoDetails.tsx:35
-#: src/components/profile/update/BasicInfoForm.tsx:150
-#~ msgid "Residence country"
-#~ msgstr "Asuinmaa"
-
-#: src/components/profile/details/ProfileBasicInfoDetails.tsx:40
-#: src/components/profile/update/BasicInfoForm.tsx:164
-#~ msgid "Residence municipality"
-#~ msgstr "Asuinkunta"
-
-#: src/screens/profile/ProfileSummaryScreen.tsx:45
-msgid "Retry"
-msgstr "Yritä uudestaan"
-
-#: src/components/profile/details/ProfileBasicInfoDetails.tsx:52
-#~ msgid "Role types of interest"
-#~ msgstr "Kiinnostavat roolit"
-
-#: src/screens/settings/SettingsSummaryScreen.tsx:156
-msgid "Save"
-msgstr "Tallenna"
-
-#: src/components/profile/update/ProfileSaveButton.tsx:69
-#~ msgid "Saved!"
-#~ msgstr "Tallennettu!"
-
-#: src/screens/settings/SettingsSummaryScreen.tsx:156
-msgid "Saving..."
-msgstr "Tallennetaan..."
-
-#: src/components/profile/update/EducationsForm.tsx:46
-#~ msgid "School name"
-#~ msgstr "Oppilaitoksen nimi"
+#: src/screens/drawer/qr-scanner/index.tsx:16
+msgid "QrScanner"
+msgstr ""
 
 #: src/components/uikit/Inputs/SearchInput.tsx:17
 msgid "Search"
-msgstr "Hae"
-
-#: src/screens/adverts/AdvertDetailsScreen.tsx:25
-#~ msgid "Seek role"
-#~ msgstr "Lähetä hakemus"
-
-#: src/components/profile/update/BasicInfoForm.tsx:183
-#~ msgid "Select all the municipalities you can work in"
-#~ msgstr "Valitse kaikki kunnat, joissa haluat työskennellä"
-
-#: src/components/profile/update/BasicInfoForm.tsx:213
-#~ msgid "Select all the type of projects that interest you"
-#~ msgstr "Valitse kaikki projektityypit, jotka kiinnostavat sinua"
-
-#: src/components/profile/update/BasicInfoForm.tsx:198
-#~ msgid "Select all the type of roles that interest you"
-#~ msgstr "Valitse kaikki roolit, jotka kiinnostavat sinua"
-
-#: src/screens/dev/DevScreen.tsx:75
-msgid "Select component"
 msgstr ""
 
-#: src/components/uikit/Buttons/FillButton.stories.tsx:125
-#: src/components/uikit/Buttons/OutlineButton.stories.tsx:125
-#: src/components/uikit/Icon.stories.tsx:72
-msgid "Select state"
-msgstr ""
-
-#: src/components/settings/SettingsButton.tsx:11
-#: src/screens/profile/index.tsx:23
+#: src/screens/settings/index.tsx:16
 msgid "Settings"
-msgstr "Asetukset"
+msgstr ""
 
-#: src/components/profile/update/AppearanceForm.tsx:301
-#~ msgid "Shoe size (EU)"
-#~ msgstr "Kengän koko (EU)"
-
-#: src/components/profile/details/ProfileAppearanceDetails.tsx:92
-#~ msgid "Shoe size (eu)"
-#~ msgstr "Kengän koko (EU)"
-
-#: src/components/profile/update/PortfolioForm.tsx:34
-#~ msgid "Showreel"
-#~ msgstr "Showreel"
-
-#: src/screens/login/SignupScreen.tsx:262
+#: src/screens/login/SignupScreen.tsx:242
 msgid "Signing up..."
-msgstr "Luodaan tiliä..."
+msgstr ""
 
-#: src/screens/login/LandingScreen.tsx:33
-#: src/screens/login/SignupScreen.tsx:264
+#: src/screens/login/LandingScreen.tsx:30
+#: src/screens/login/SignupScreen.tsx:244
 #: src/screens/login/index.tsx:29
 msgid "Signup"
-msgstr "Luo tili"
+msgstr ""
 
-#: src/components/profile/details/ProfileAppearanceDetails.tsx:21
-#: src/components/profile/update/AppearanceForm.tsx:105
-#~ msgid "Skin color"
-#~ msgstr "Ihonväri"
-
-#: src/components/common/ErrorBoundary.tsx:38
-#: src/utils/permission.ts:100
+#: src/components/common/ErrorBoundary.tsx:39
+#: src/utils/linking.ts:28
 msgid "Something went wrong"
-msgstr "Jotakin meni pieleen"
+msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:76
+#: src/screens/login/SignupScreen.tsx:63
 msgid "Start by creating an account"
-msgstr "Aloita luomalla tili"
-
-#: src/components/profile/update/EducationsForm.tsx:69
-#~ msgid "Start date"
-#~ msgstr "Aloituspäivämäärä"
-
-#: src/components/profile/update/LanguagesForm.tsx:36
-#~ msgid "Tell about your level of language proficiency"
-#~ msgstr "Kerro, kuinka hyvin puhut kieltä"
-
-#: src/components/profile/update/LanguagesForm.tsx:37
-#~ msgid "Tell about your level of language proficiency."
-#~ msgstr "Kerro, mitä kieliä puhut"
-
-#: src/screens/home/HomeScreen.tsx:41
-msgid "This React app contains the necessary building blocks that you need to get your project started. You can freely alter any aspect of the template to fit your needs better."
 msgstr ""
 
-#: src/components/profile/update/PortfolioForm.tsx:94
-#~ msgid "Tiktok"
-#~ msgstr "Tiktok"
-
-#: src/components/profile/update/PortfolioForm.tsx:79
-#~ msgid "Twitter"
-#~ msgstr "Twitter"
-
-#: src/utils/permission.ts:86
-msgid "Unable to change permission"
-msgstr "Luvan muuttaminen epäonnistui"
-
-#: src/utils/file.ts:61
-msgid "Unable to open image picker"
-msgstr "Kuvavalitsimen avaaminen epäonnistui"
-
-#: src/components/profile/details/ProfileAppearanceDetails.tsx:56
-#: src/components/profile/update/AppearanceForm.tsx:204
-#~ msgid "Unique attributes"
-#~ msgstr "Erityispiirteet"
-
-#: src/components/profile/details/ProfileActingSkillDetails.tsx:29
-#~ msgid "Unique skills"
-#~ msgstr "Erityistaidot"
-
-#: src/components/profile/details/profileDetail.tsx:41
-#~ msgid "Untitled"
-#~ msgstr "Nimeämätön"
-
-#: src/components/profile/usePhotoUpload.tsx:92
-#: src/components/profile/usePhotoUpload.tsx:101
-#: src/components/profile/usePhotoUpload.tsx:110
-#: src/components/profile/usePhotoUpload.tsx:92
-#: src/components/profile/usePhotoUpload.tsx:101
-#~ msgid "Uploading attachment failed!"
-#~ msgstr "Liitteen lataaminen palvelimelle epäonnistui!"
-
-#: src/components/profile/update/AppearanceForm.tsx:229
-#~ msgid "Use childrens clothing sizes"
-#~ msgstr "Käytä lasten vaatekokoja"
-
-#: src/components/profile/update/PortfolioForm.tsx:144
-#~ msgid "Website url"
-#~ msgstr "Web-sivun url-osoite"
-
-#: src/screens/login/LoginScreen.tsx:37
-#: src/screens/login/SignupScreen.tsx:71
-#~ msgid "Welcome to Faces!"
-#~ msgstr "Tervetuloa Facesiin!"
-
-#: src/screens/home/HomeScreen.tsx:37
-msgid "Welcome to Taito React Native Template!"
+#: src/screens/drawer/timer/index.tsx:16
+msgid "Timer"
 msgstr ""
 
-#: src/screens/login/LoginScreen.tsx:37
-msgid "Welcome to {appName} !"
+#: src/screens/login/LoginScreen.tsx:39
+#: src/screens/login/SignupScreen.tsx:59
+#~ msgid "Welcome to name!"
+#~ msgstr ""
+
+#: src/screens/login/LoginScreen.tsx:39
+#: src/screens/login/SignupScreen.tsx:59
+msgid "Welcome to {name}!"
 msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:72
-msgid "Welcome to {appName}!"
+#: src/utils/linking.ts:34
+msgid "phone app"
 msgstr ""
-
-#: src/components/profile/update/ActingSkillsForm.tsx:105
-#~ msgid "What are you known for?"
-#~ msgstr "Mistä sinut tunnetaan?"
-
-#: src/components/profile/update/ActingSkillsForm.tsx:93
-#~ msgid "What have you worked on?"
-#~ msgstr "Missä olet työskennellyt?"
-
-#: src/components/profile/update/EducationsForm.tsx:30
-#~ msgid "What is your educational background?"
-#~ msgstr "Mikä on koulutustaustasi?"
-
-#: src/components/profile/update/ActingSkillsForm.tsx:41
-#~ msgid "What kind of actor are you?"
-#~ msgstr "Minkätyyppinen näyttelijä olet?"
-
-#: src/components/profile/update/BasicInfoForm.tsx:209
-#~ msgid "What type of projects interest you?"
-#~ msgstr "Millaiset projektit kiinnostavat sinua?"
-
-#: src/components/profile/update/BasicInfoForm.tsx:194
-#~ msgid "What type of roles interest you?"
-#~ msgstr "Millaiset roolit kiinnostavat sinua?"
-
-#: src/components/profile/update/ActingSkillsForm.tsx:81
-#~ msgid "What unique skills do you have?"
-#~ msgstr "Mitä erityistaitoja sinulla on?"
-
-#: src/components/profile/update/BasicInfoForm.tsx:179
-#~ msgid "Where can you work?"
-#~ msgstr "Missä voit työskennellä?"
-
-#: src/components/profile/update/AppearanceForm.tsx:95
-#~ msgid "Which genders do you want to act?"
-#~ msgstr "Mitä sukupuolia haluat näytellä?"
-
-#: src/components/profile/details/ProfileActingSkillDetails.tsx:34
-#~ msgid "Worked on"
-#~ msgstr "Työskennellyt"
-
-#: src/components/profile/details/ProfileAppearanceDetails.tsx:42
-#~ msgid "Yes"
-#~ msgstr "Kyllä"
-
-#: src/components/profile/details/hooks.tsx:56
-#~ msgid "Yes, delete"
-#~ msgstr "Kyllä, poista"
-
-#: src/components/profile/update/ProfileFormHeader.tsx:45
-#~ msgid "You have some unsaved changes that will be lost."
-#~ msgstr "Sinulla on tallentamattomia muutoksia, jotka häviävät."
-
-#: src/utils/permission.ts:87
-msgid "You need to change the permission in the system settings."
-msgstr "Sinun tulee vaihtaa lupaa järjestelmäasetuksista."
-
-#: src/utils/file.ts:62
-msgid "You need to update the permission in the system settings."
-msgstr "Sinun tulee päivittää lupa järjestelmäasetuksista."
-
-#: src/screens/settings/SettingsSummaryScreen.tsx:169
-msgid "Your account and all of your profiles will be deleted immediately. This cannot be undone."
-msgstr "Kun poistat tilisi, kaikki profiilisi poistuvat myös. Tätä ei voi perua."
-
-#: src/screens/settings/SettingsSummaryScreen.tsx:192
-msgid "Your account has been deleted"
-msgstr "Tilisi on poistettu"
-
-#: src/screens/settings/SettingsSummaryScreen.tsx:184
-msgid "Your profile has been saved"
-msgstr "Profiilisi on tallennettu"
-
-#: src/components/profile/details/ProfileList.tsx:20
-#~ msgid "Your profiles"
-#~ msgstr "Profiilisi"
-
-#: src/components/signup/TermsOfService.tsx:30
-msgid "and have read"
-msgstr "ja olen lukenut"
-
-#: src/components/signup/TermsOfService.tsx:44
-#~ msgid "and have read our"
-#~ msgstr "ja olen lukenut"
-
-#: src/components/signup/TermsOfService.tsx:33
-msgid "the Privacy Policy"
-msgstr "Tietosuojakäytännöt"
-
-#: src/components/signup/TermsOfService.tsx:27
-msgid "the Terms of Service"
-msgstr "Käyttöehdot"
-
-#: src/screens/home/HomeScreen.tsx:22
-msgid "there"
-msgstr "siellä"

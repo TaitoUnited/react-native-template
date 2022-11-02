@@ -1,17 +1,38 @@
-import { StackScreenProps as RegularStackScreenProps } from '@react-navigation/stack';
+import { NavigationProp } from '@react-navigation/native';
+import { StackScreenProps as RNStackScreenProps } from '@react-navigation/stack';
 
-// Key is the name of the screen and the value is the params
-export type StackParamList = {
+export type LoginParamList = {
   Landing: undefined;
   Login: undefined;
   Signup: undefined;
-  ProfileSummary: undefined;
-  Settings: undefined;
 };
+
+export type TabParamList = {
+  HomeTab: undefined;
+  FoodTab: undefined;
+  BotsTab: undefined;
+  SettingsTab: undefined;
+};
+
+export type DrawersParamList = {
+  HomeDrawers: undefined;
+  TimerDrawers: undefined;
+  QrScannerDrawers: undefined;
+  BluetoothDrawers: undefined;
+  MapsDrawers: undefined;
+  PaymentDrawers: undefined;
+  FileUploadDrawers: undefined;
+  MessagingDrawers: undefined;
+  FrisbeeDrawers: undefined;
+};
+
+export type StackParamList = LoginParamList;
 
 export type ScreenName = keyof StackParamList;
 
-export type StackScreenProps<T extends ScreenName> = RegularStackScreenProps<
+export type StackScreenProps<T extends ScreenName> = RNStackScreenProps<
   StackParamList,
   T
 >;
+
+export type UseNavigationProp = NavigationProp<StackParamList>;

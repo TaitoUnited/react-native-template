@@ -15,11 +15,11 @@ export function useInputLabelAnimation({
   const labelStyles = {
     transform: [
       { translateX: -labelWidth / 2 }, // correct transform origin
-      { translateX: space.small },
+      { translateX: space.small as number },
       {
         translateY: labelAnimation.current.interpolate({
           inputRange: [0, 1],
-          outputRange: [space.medium, 5],
+          outputRange: [space.medium as number, 5],
         }),
       },
       {

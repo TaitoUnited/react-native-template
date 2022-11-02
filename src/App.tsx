@@ -1,17 +1,16 @@
-import React from 'react';
-
+import SplashScreen from './components/common/SplashScreen';
 import Providers from './Providers';
-import RootNavigator from './screens/root';
-import { useInitLocale } from '~services/i18n';
+import RootNavigator from '~screens/root';
+import { useAppReady } from '~utils/init';
 
-export default function App() {
-  const initialized = useInitLocale();
-
-  if (!initialized) return null;
+export default function Root() {
+  const ready = useAppReady();
 
   return (
-    <Providers>
-      <RootNavigator />
-    </Providers>
+    <SplashScreen ready={ready}>
+      <Providers>
+        <RootNavigator />
+      </Providers>
+    </SplashScreen>
   );
 }

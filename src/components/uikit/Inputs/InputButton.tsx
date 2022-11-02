@@ -1,9 +1,8 @@
 import { Animated, ViewStyle } from 'react-native';
 
-import { Text } from '../Text/Text';
-import { Icon, IconName } from '../Icon/Icon';
+import { Text } from '../Text';
+import { Icon, IconName } from '../Icon';
 import { useInputLabelAnimation } from './common';
-import RequiredAsterisk from '../Buttons/RequiredAsterisk';
 import { styled } from '~styles';
 
 type Props = {
@@ -45,7 +44,7 @@ export function InputButton({
           onLayout={measureLabel}
         >
           {label}
-          <RequiredAsterisk visible={isRequired && showRequiredAsterisk} />
+          {isRequired && showRequiredAsterisk ? '*' : ''}
         </Text>
       </Label>
 
@@ -54,7 +53,7 @@ export function InputButton({
           {value ? (
             <Text
               variant="body"
-              applyLineHeight
+              withLineHeight
               numberOfLines={1}
               style={{ flex: 1 }}
             >
@@ -73,7 +72,7 @@ export function InputButton({
       </InputWrapper>
 
       {!!message && (
-        <Message variant="bodySmall" color="textMuted">
+        <Message variant="caption" color="textMuted">
           {message}
         </Message>
       )}
@@ -86,7 +85,7 @@ const Wrapper = Animated.createAnimatedComponent(
     position: 'relative',
     display: 'flex',
     zIndex: 0,
-  }),
+  })
 );
 
 const Label = Animated.createAnimatedComponent(
@@ -95,7 +94,7 @@ const Label = Animated.createAnimatedComponent(
     top: 0,
     left: 0,
     zIndex: 1,
-  }),
+  })
 );
 
 const InputWrapper = styled('TouchableOpacity', {

@@ -1,4 +1,10 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 
 export function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -7,33 +13,6 @@ export function sleep(ms: number) {
 export function truncate(str: string, len: number) {
   if (str.length > len) return `${str.substring(0, len - 3)}...`;
   return str;
-}
-
-type RGB = {
-  r: number;
-  g: number;
-  b: number;
-};
-
-export function hexToRgb(hex: string): RGB | null {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result
-    ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16),
-      }
-    : null;
-}
-
-export function usePrevious<T>(state: T): T | undefined {
-  const ref = useRef<T>();
-
-  useEffect(() => {
-    ref.current = state;
-  });
-
-  return ref.current;
 }
 
 export function useFirstMountState(): boolean {
@@ -45,6 +24,16 @@ export function useFirstMountState(): boolean {
   }
 
   return isFirst.current;
+}
+
+export function usePrevious<T>(state: T): T | undefined {
+  const ref = useRef<T>();
+
+  useEffect(() => {
+    ref.current = state;
+  });
+
+  return ref.current;
 }
 
 export function usePreviousDistinct<T>(value: T): T | undefined {
@@ -91,14 +80,17 @@ export function useInterval(callback: () => void, delay: number | null) {
   }, [delay]);
 }
 
-export function nullifyFields<T extends object>(obj: T) {
-  const newObj: any = { ...obj };
+// Userland version of upcoming official `useEvent` React hook:
+// RFC: https://github.com/reactjs/rfcs/blob/useevent/text/0000-useevent.md
+export function useEvent<T extends (...args: any[]) => any>(handler: T) {
+  const handlerRef = useRef<T>();
 
-  for (const key in newObj) {
-    if (newObj[key] === undefined) {
-      newObj[key] = null;
-    }
-  }
+  useLayoutEffect(() => {
+    handlerRef.current = handler;
+  });
 
-  return newObj as { [key in keyof T]-?: T[key] | null };
+  return useCallback((...args: any[]) => {
+    const fn = handlerRef.current;
+    return fn?.(...args);
+  }, []);
 }

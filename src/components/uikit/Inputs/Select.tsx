@@ -1,15 +1,9 @@
-import {
-  ComponentProps,
-  forwardRef,
-  useImperativeHandle,
-  useState,
-} from 'react';
-
 import { ViewStyle } from 'react-native';
-import { IconName } from '../Icon/Icon';
+import { forwardRef, useImperativeHandle, useState } from 'react';
 
-import { PickerModal } from '../Modals/PickerModal';
-import { PickerSheet } from '../Modals/PickerSheet';
+import { IconName } from '../Icon';
+import { PickerModal } from '../PickerModal';
+import { PickerSheet } from '../PickerSheet';
 import { InputButton } from './InputButton';
 
 type Props = {
@@ -23,6 +17,7 @@ type Props = {
   isValid?: boolean;
   isRequired?: boolean;
   showRequiredAsterisk?: boolean;
+  pickerType?: 'modal' | 'sheet';
   onChange: (option?: string | string[]) => void;
 };
 
@@ -34,10 +29,11 @@ export const Select = forwardRef(
       label,
       multiple = false,
       icon = 'chevronDown',
+      pickerType = 'modal',
       onChange,
       ...rest
     }: Props,
-    ref: any,
+    ref: any
   ) => {
     const [isPickerOpen, setPickerOpen] = useState(false);
     const visibleValue = Array.isArray(value)
@@ -46,16 +42,6 @@ export const Select = forwardRef(
           .map((o) => o.label)
           .join(', ')
       : options.find((o) => o.value === value)?.label;
-
-    const pickerProps: ComponentProps<typeof PickerModal> = {
-      label,
-      options,
-      multiple,
-      isVisible: isPickerOpen,
-      selected: value,
-      onOptionSelect: onChange,
-      onClose: () => setPickerOpen(false),
-    };
 
     useImperativeHandle(ref, () => ({
       focus: () => {
@@ -77,14 +63,32 @@ export const Select = forwardRef(
           onPress={() => setPickerOpen(true)}
         />
 
-        {options.length > 20 ? (
-          <PickerSheet {...pickerProps} />
-        ) : (
-          <PickerModal {...pickerProps} />
+        {pickerType === 'modal' && (
+          <PickerModal
+            label={label}
+            options={options}
+            multiple={multiple}
+            isVisible={isPickerOpen}
+            selected={value}
+            onConfirm={onChange}
+            onClose={() => setPickerOpen(false)}
+          />
+        )}
+
+        {pickerType === 'sheet' && (
+          <PickerSheet
+            label={label}
+            emptyLabel="TODO"
+            options={options}
+            isVisible={isPickerOpen}
+            initial={value as string} // TODO: handle multiple
+            onConfirm={onChange}
+            onClose={() => setPickerOpen(false)}
+          />
         )}
       </>
     );
-  },
+  }
 );
 
 Select.displayName = 'Select';

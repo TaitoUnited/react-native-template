@@ -1,4 +1,3 @@
-import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { t } from '@lingui/macro';
 
@@ -6,8 +5,9 @@ import LandingScreen from './LandingScreen';
 import LoginScreen from './LoginScreen';
 import SignupScreen from './SignupScreen';
 import { useDefaultStackScreenOptions } from '~screens/utils';
+import { LoginParamList } from '~screens/types';
 
-const LoginStack = createStackNavigator();
+const LoginStack = createStackNavigator<LoginParamList>();
 
 export default function LoginNavigator() {
   const screenOptions = useDefaultStackScreenOptions();

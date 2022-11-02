@@ -1,27 +1,28 @@
 import React from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+const LOCALE = '@app/locale';
 const ACCESS_TOKEN = '@app/access-token';
 const REFRESH_TOKEN = '@app/refresh-token';
-const LOCALE = '@app/locale';
+const PERMISSION_REQUESTS = '@app/permission-requests';
 
 // Add all storage keys here so that they can be cleared upon logout
-const CLEARABLE_KEYS = [ACCESS_TOKEN, REFRESH_TOKEN, LOCALE] as const;
+const CLEARABLE_KEYS = [ACCESS_TOKEN, REFRESH_TOKEN] as const;
 
 // These storage keys should be persisted across logins, eg. showing some guided tours etc.
-const PERSISTENT_KEYS = [] as const;
+const PERSISTENT_KEYS = [LOCALE, PERMISSION_REQUESTS] as const;
 
 type Key = typeof CLEARABLE_KEYS[number] | typeof PERSISTENT_KEYS[number];
 
-const set = async (key: Key, value: object | string | boolean) => {
+async function set<T extends object | string | boolean>(key: Key, value: T) {
   try {
     await AsyncStorage.setItem(key, JSON.stringify(value));
   } catch (error) {
     console.log(`> Failed to persist item: ${key}`, value, error);
   }
-};
+}
 
-const get = async (key: Key) => {
+async function get<T>(key: Key): Promise<T | null> {
   try {
     const value = await AsyncStorage.getItem(key);
     return value !== null ? JSON.parse(value) : null;
@@ -29,34 +30,34 @@ const get = async (key: Key) => {
     console.log(`> Failed to get persisted item: ${key}`, error);
     return null;
   }
-};
+}
 
-const remove = async (key: Key) => {
+async function remove(key: Key) {
   try {
     await AsyncStorage.removeItem(key);
   } catch (error) {
     console.log(`> Failed to clear persisted item: ${key}`, error);
   }
-};
+}
 
-const clearAll = async () => {
+async function clearAll() {
   try {
     await AsyncStorage.multiRemove(CLEARABLE_KEYS as any);
   } catch (error) {
     console.log('> Failed to clear all persisted values', error);
   }
-};
+}
 
 export function useStorageState<T extends object | string | boolean>(
   key: Parameters<typeof storage.get>[0],
-  initial: T | null = null,
+  initial: T | null = null
 ) {
   const [state, setState] = React.useState<T | null>(initial);
   const [initialized, setInitialized] = React.useState(false);
 
   React.useEffect(() => {
     async function init() {
-      const persistedState = await storage.get(key);
+      const persistedState = await storage.get<T | null>(key);
       if (persistedState !== null) setState(persistedState);
       setInitialized(true);
     }
@@ -73,7 +74,7 @@ export function useStorageState<T extends object | string | boolean>(
         await storage.set(key, newState);
       },
     }),
-    [state, initialized, key],
+    [state, initialized, key]
   );
 }
 

@@ -1,153 +1,119 @@
 {
-  "name": "taitotemplate",
+  "name": "taito-react-native-template",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "rename": "bash rename.sh",
-    "start": "react-native start",
-    "start:clean": "react-native start --reset-cache",
-    "android": "react-native run-android --variant=developmentDebug --appIdSuffix=dev",
-    "android:test": "react-native run-android --variant=qaDebug --appIdSuffix=test",
-    "android:staging": "react-native run-android --variant=stagingDebug --appIdSuffix=staging",
-    "android:staging:release": "react-native run-android --variant=stagingRelease --appIdSuffix=staging",
-    "android:production": "react-native run-android --variant=productionDebug",
-    "android:production:release": "react-native run-android --variant=productionRelease",
-    "ios": "react-native run-ios",
-    "ios:staging": "react-native run-ios --scheme 'TaitoTemplate Staging'",
-    "ios:staging:release": "react-native run-ios --scheme 'TaitoTemplate Staging' --configuration Release",
-    "ios:production": "react-native run-ios --scheme 'TaitoTemplate Production'",
-    "ios:production:release": "react-native run-ios --scheme 'TaitoTemplate Production' --configuration Release",
-    "test": "jest",
-    "typecheck": "tsc --noEmit",
-    "lint": "eslint ./src --ext .ts,.tsx --config .eslintrc",
-    "lint:fix": "eslint ./src --ext .ts,.tsx --config .eslintrc --fix",
-    "format:check": "prettier --config ./../../.prettierrc --check \"src/**/*.{js,jsx,ts,tsx}\"",
-    "format:write": "prettier --config ./../../.prettierrc --write \"src/**/*.{js,jsx,ts,tsx}\"",
+    "start": "expo start --dev-client",
+    "start:clean": "expo start --dev-client --clear",
+    "android": "npx expo prebuild && npx expo run:android",
+    "android:test": "APP_ENV=test npx expo prebuild && npx expo run:android",
+    "android:stag": "APP_ENV=stag npx expo prebuild && npx expo run:android",
+    "android:prod": "APP_ENV=prod npx expo prebuild && npx expo run:android",
+    "ios": "npx expo run:ios",
+    "ios:clean": "npx expo run:ios --no-build-cache",
+    "ios:test": "APP_ENV=test npx expo run:ios",
+    "ios:stag": "APP_ENV=stag npx expo run:ios",
+    "ios:prod": "APP_ENV=prod npx expo run:ios",
+    "prebuild": "npx expo prebuild",
+    "prebuild:clean": "npx expo prebuild --clean",
+    "prebuild:test": "APP_ENV=test npx expo prebuild",
+    "prebuild:stag": "APP_ENV=stag npx expo prebuild",
+    "prebuild:prod": "APP_ENV=prod npx expo prebuild",
+    "prebuild:ci": "EXPO_NO_GIT_STATUS=1 npx expo prebuild --clean --no-install --skip-dependency-update react,react-native",
+    "prebuild:ci:test": "APP_ENV=test npm run prebuild:ci",
+    "prebuild:ci:stag": "APP_ENV=stag npm run prebuild:ci",
+    "prebuild:ci:prod": "APP_ENV=prod npm run prebuild:ci",
+    "design-system:sync": "npm run design-system:tokenize && npm run design-system:codegen",
+    "design-system:tokenize": "figmage tokenize --env ./config/.env.figma",
+    "design-system:codegen": "figmage codegen --env ./config/.env.figma",
     "i18n:extract": "lingui extract",
+    "i18n:extract:clean": "lingui extract --clean",
     "i18n:compile": "lingui compile",
-    "design-tokens:sync": "npm run design-tokens:tokenize && npm run design-tokens:codegen",
-    "design-tokens:tokenize": "npx figmage tokenize --env .env.figma",
-    "design-tokens:codegen": "npx figmage codegen --env .env.figma",
-    "bootsplash:generate": "npx react-native generate-bootsplash assets/bootsplash/logo.png --background-color=ffffff --logo-width=100 --assets-path=assets/bootsplash",
-    "icons:generate": "npx react-native-svg-app-icon",
-    "graphql:introspection": "node ./src/graphql/introspection/index.mjs",
-    "graphql:codegen": "graphql-codegen --config codegen.yml",
-    "graphql:sync": "npm run graphql:introspection && npm run graphql:codegen"
+    "test": "jest",
+    "lint": "eslint .",
+    "postinstall": "patch-package && jetify"
   },
   "dependencies": {
-    "@lingui/macro": "3.13.2",
-    "@lingui/react": "3.13.2",
-    "@react-native-async-storage/async-storage": "1.16.1",
-    "@react-native-community/datetimepicker": "5.1.0",
-    "@react-native-community/netinfo": "8.0.0",
-    "@react-navigation/bottom-tabs": "6.0.9",
-    "@react-navigation/drawer": "6.4.1",
-    "@react-navigation/native": "6.0.10",
-    "@react-navigation/stack": "6.2.1",
-    "@urql/exchange-auth": "0.1.7",
-    "@urql/exchange-graphcache": "4.3.6",
-    "@urql/exchange-multipart-fetch": "0.1.14",
-    "@urql/exchange-request-policy": "0.1.5",
-    "@urql/storage-rn": "0.1.1",
-    "appcenter": "4.4.3",
-    "appcenter-analytics": "4.4.3",
-    "appcenter-crashes": "4.4.3",
-    "date-fns": "^2.28.0",
-    "graphql": "16.3.0",
-    "luxon": "2.3.0",
-    "react": "17.0.2",
-    "react-hook-form": "7.27.1",
-    "react-native": "0.67.1",
-    "react-native-bootsplash": "4.1.3",
-    "react-native-config": "1.4.5",
-    "react-native-device-info": "8.4.8",
-    "react-native-document-picker": "8.0.0",
-    "react-native-gesture-handler": "2.2.0",
-    "react-native-image-crop-picker": "0.37.3",
+    "@lingui/macro": "3.14.0",
+    "@lingui/react": "3.14.0",
+    "@react-native-async-storage/async-storage": "1.17.10",
+    "@react-navigation/bottom-tabs": "6.4.0",
+    "@react-navigation/native": "6.0.13",
+    "@react-navigation/stack": "6.3.3",
+    "expo": "~46.0.16",
+    "expo-device": "~4.3.0",
+    "expo-font": "~10.2.1",
+    "expo-splash-screen": "~0.16.2",
+    "expo-status-bar": "~1.4.0",
+    "expo-system-ui": "~1.3.0",
+    "luxon": "3.1.0",
+    "make-plural": "7.1.0",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "react-freeze": "1.0.3",
+    "react-hook-form": "7.39.1",
+    "react-native": "0.69.6",
+    "react-native-fast-image": "8.6.3",
+    "react-native-gesture-handler": "2.8.0",
     "react-native-keyboard-aware-scroll-view": "0.9.5",
-    "react-native-modal-datetime-picker": "13.0.1",
-    "react-native-pager-view": "5.4.15",
-    "react-native-permissions": "3.2.0",
-    "react-native-reanimated": "2.3.1",
-    "react-native-safe-area-context": "3.3.2",
-    "react-native-screens": "3.10.2",
-    "react-native-svg": "12.1.1",
-    "react-native-toast-message": "2.1.1",
-    "rn-fetch-blob": "^0.12.0",
-    "stitches-native": "0.2.0",
-    "urql": "2.2.0",
-    "zustand": "3.6.9"
+    "react-native-localize": "2.2.4",
+    "react-native-permissions": "3.6.1",
+    "react-native-reanimated": "2.9.1",
+    "react-native-safe-area-context": "4.4.1",
+    "react-native-screens": "3.18.2",
+    "react-native-svg": "13.4.0",
+    "react-native-toast-message": "2.1.5",
+    "react-native-web": "0.18.7",
+    "stitches-native": "0.3.0",
+    "zustand": "4.1.4"
   },
   "devDependencies": {
-    "@babel/core": "7.15.0",
-    "@babel/preset-env": "7.15.0",
-    "@babel/preset-react": "7.14.5",
-    "@babel/preset-typescript": "7.15.0",
+    "@babel/core": "7.12.9",
     "@babel/runtime": "7.12.5",
-    "@graphql-codegen/cli": "2.6.2",
-    "@graphql-codegen/typescript": "2.4.5",
-    "@graphql-codegen/typescript-operations": "2.3.2",
-    "@graphql-codegen/typescript-urql": "3.5.3",
-    "@lingui/cli": "3.13.2",
-    "@types/jest": "27.4.0",
-    "@types/luxon": "2.0.9",
-    "@types/react-native": "0.66.12",
+    "@lingui/cli": "3.14.0",
+    "@taito/eslint-config-react-native": "github:TaitoUnited/taito-eslint-config-react-native",
+    "@types/jest": "29.0.0",
+    "@types/luxon": "3.0.1",
+    "@types/react": "18.0.18",
+    "@types/react-native": "0.69.6",
     "@types/react-test-renderer": "17.0.1",
-    "@typescript-eslint/eslint-plugin": "5.7.0",
-    "@typescript-eslint/parser": "5.7.0",
-    "@urql/introspection": "0.3.1",
-    "babel-jest": "27.4.6",
+    "babel-jest": "26.6.3",
     "babel-plugin-module-resolver": "4.1.0",
     "babel-plugin-transform-remove-console": "6.9.4",
-    "dotenv": "16.0.0",
     "eslint": "8.7.0",
-    "eslint-config-prettier": "8.3.0",
-    "eslint-config-standard": "17.0.0",
-    "eslint-plugin-import": "2.25.4",
-    "eslint-plugin-lodash": "7.3.0",
-    "eslint-plugin-n": "15.2.1",
-    "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-prettier": "4.0.0",
-    "eslint-plugin-promise": "6.0.0",
-    "eslint-plugin-react": "7.28.0",
-    "eslint-plugin-react-hooks": "4.3.0",
-    "eslint-plugin-standard": "5.0.0",
-    "husky": "8.0.1",
-    "jest": "27.4.7",
-    "make-plural": "7.0.0",
-    "metro-react-native-babel-preset": "0.66.2",
-    "node-fetch": "3.2.0",
-    "prettier": "2.5.1",
-    "react-test-renderer": "17.0.2",
-    "typescript": "4.5.5"
+    "figmage": "0.9.0",
+    "jest": "29.0.2",
+    "metro-react-native-babel-preset": "0.70.3",
+    "patch-package": "6.4.7",
+    "prettier": "2.7.1",
+    "react-test-renderer": "18.2.0",
+    "ts-node": "10.9.1",
+    "typescript": "4.8.2"
   },
   "resolutions": {
-    "@types/react": "17"
+    "@types/react": "18.0.18",
+    "@types/react-native": "0.69.6"
+  },
+  "engines": {
+    "npm": ">=7",
+    "yarn": "please-use-npm"
   },
   "jest": {
-    "preset": "react-native",
-    "setupFiles": [
-      "./node_modules/react-native-gesture-handler/jestSetup.js"
-    ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ]
+    "preset": "react-native"
+  },
+  "eslintConfig": {
+    "extends": "@taito/react-native"
   },
   "prettier": {
-    "trailingComma": "all",
+    "trailingComma": "es5",
     "tabWidth": 2,
     "semi": true,
     "singleQuote": true
   },
   "lingui": {
     "locales": [
-      "fi",
-      "en"
+      "en",
+      "fi"
     ],
     "catalogs": [
       {
@@ -160,7 +126,7 @@
     "format": "po"
   },
   "figmage": {
-    "outDir": "src/styles/tokens",
+    "outDir": "src/design-system",
     "tokenize": {
       "tokens": [
         {
@@ -170,6 +136,10 @@
         {
           "name": "typography",
           "type": "text"
+        },
+        {
+          "name": "shadows",
+          "type": "drop-shadow"
         },
         {
           "name": "spacing",
@@ -185,6 +155,11 @@
           "name": "icons",
           "type": "svg",
           "nodeId": "102:2"
+        },
+        {
+          "name": "assets",
+          "type": "png",
+          "nodeId": "643:618"
         }
       ]
     },
@@ -192,6 +167,10 @@
       "defaults": {
         "filetype": "ts",
         "tokenCase": "camel"
+      },
+      "assets": {
+        "filetype": "png",
+        "tokenCase": "kebab"
       }
     }
   }
