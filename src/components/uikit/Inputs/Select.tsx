@@ -1,25 +1,46 @@
-import { ViewStyle } from 'react-native';
-import { forwardRef, useImperativeHandle, useState } from 'react';
+import { Keyboard, ViewStyle } from 'react-native';
 
-import { IconName } from '../Icon';
+import {
+  ComponentProps,
+  forwardRef,
+  ReactNode,
+  useImperativeHandle,
+  useState,
+} from 'react';
+
+import type { IconName } from '../Icon';
+import { Text } from '../Text';
 import { PickerModal } from '../PickerModal';
 import { PickerSheet } from '../PickerSheet';
 import { InputButton } from './InputButton';
+import { styled } from '~styles';
 
-type Props = {
-  value?: string | string[];
+type BaseProps = {
   options: Array<{ label: string; value: string }>;
   label: string;
   icon?: IconName;
   message?: string;
-  multiple?: boolean;
   style?: ViewStyle;
   isValid?: boolean;
   isRequired?: boolean;
   showRequiredAsterisk?: boolean;
+  emptyContent?: ReactNode;
   pickerType?: 'modal' | 'sheet';
-  onChange: (option?: string | string[]) => void;
 };
+
+type SingleValueProps = {
+  multiple?: false;
+  value: string;
+  onChange: (option: string) => void;
+};
+
+type MultipleValueProps = {
+  multiple: true;
+  value: string[];
+  onChange: (option: string[]) => void;
+};
+
+type Props = BaseProps & (SingleValueProps | MultipleValueProps);
 
 export const Select = forwardRef(
   (
@@ -27,9 +48,11 @@ export const Select = forwardRef(
       value,
       options,
       label,
+      message,
+      emptyContent,
+      pickerType,
       multiple = false,
       icon = 'chevronDown',
-      pickerType = 'modal',
       onChange,
       ...rest
     }: Props,
@@ -42,6 +65,17 @@ export const Select = forwardRef(
           .map((o) => o.label)
           .join(', ')
       : options.find((o) => o.value === value)?.label;
+
+    const pickerProps: ComponentProps<typeof PickerSheet> = {
+      label,
+      options,
+      multiple,
+      emptyContent,
+      isVisible: isPickerOpen,
+      selected: value as any,
+      onConfirm: onChange as any,
+      onClose: () => setPickerOpen(false),
+    };
 
     useImperativeHandle(ref, () => ({
       focus: () => {
@@ -60,31 +94,22 @@ export const Select = forwardRef(
           label={label}
           icon={icon}
           isFocused={isPickerOpen}
-          onPress={() => setPickerOpen(true)}
+          onPress={() => {
+            // Dismissing the keyboard is necessary to force any focused input to blur
+            Keyboard.dismiss();
+            setPickerOpen(true);
+          }}
         />
-
-        {pickerType === 'modal' && (
-          <PickerModal
-            label={label}
-            options={options}
-            multiple={multiple}
-            isVisible={isPickerOpen}
-            selected={value}
-            onConfirm={onChange}
-            onClose={() => setPickerOpen(false)}
-          />
+        {!!message && (
+          <Message variant="bodySmall" color="textMuted">
+            {message}
+          </Message>
         )}
 
-        {pickerType === 'sheet' && (
-          <PickerSheet
-            label={label}
-            emptyLabel="TODO"
-            options={options}
-            isVisible={isPickerOpen}
-            initial={value as string} // TODO: handle multiple
-            onConfirm={onChange}
-            onClose={() => setPickerOpen(false)}
-          />
+        {(!pickerType && options.length > 20) || pickerType === 'sheet' ? (
+          <PickerSheet {...pickerProps} />
+        ) : (
+          <PickerModal {...pickerProps} />
         )}
       </>
     );
@@ -92,3 +117,8 @@ export const Select = forwardRef(
 );
 
 Select.displayName = 'Select';
+
+const Message = styled(Text, {
+  marginTop: '$xsmall',
+  marginLeft: '$small',
+});

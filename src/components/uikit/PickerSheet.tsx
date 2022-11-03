@@ -1,44 +1,87 @@
-import { useEffect, useState } from 'react';
-import { Modal } from 'react-native';
-import { t, Trans } from '@lingui/macro';
+import { memo, ReactNode, useState } from 'react';
+import { Modal, Platform, StatusBar } from 'react-native';
+import { Trans } from '@lingui/macro';
+import { FlashList } from '@shopify/flash-list';
 
 import { Text } from './Text';
 import { Stack } from './Stack';
 import { Spacer } from './Spacer';
 import { Radio } from './Inputs/Radio';
+import { Checkbox } from './Inputs/Checkbox';
 import { SearchInput } from './Inputs/SearchInput';
 import { styled } from '~styles';
+import { useEvent } from '~utils/common';
 
 type Option = {
   label: string;
   value: string;
 };
 
-type Props = {
+type BaseProps = {
   label: string;
-  emptyLabel: string;
+  emptyContent?: ReactNode;
   options: Option[];
-  initial?: string;
   isVisible: boolean;
   onClose: () => void;
-  onConfirm: (selected: string) => void;
 };
+
+type SingleValueProps = {
+  multiple?: false;
+  selected: string;
+  onConfirm: (option: string) => void;
+};
+
+type MultipleValueProps = {
+  multiple: true;
+  selected: string[];
+  onConfirm: (option: string[]) => void;
+};
+
+type Props = BaseProps & (SingleValueProps | MultipleValueProps);
 
 // Use this picker for picking a single option from a LONG list of options that need filtering capabilities
 
 export function PickerSheet({
   label,
-  emptyLabel,
+  emptyContent,
   options,
   isVisible,
-  initial,
+  selected,
+  multiple,
   onClose,
   onConfirm,
 }: Props) {
-  const [selected, setSelected] = useState(initial);
+  return (
+    <Modal
+      animationType="slide"
+      presentationStyle="formSheet"
+      visible={isVisible}
+      onRequestClose={onClose}
+    >
+      <ModalContent
+        label={label}
+        emptyContent={emptyContent}
+        options={options}
+        selected={selected}
+        multiple={multiple}
+        onClose={onClose}
+        onConfirm={onConfirm}
+      />
+    </Modal>
+  );
+}
+
+function ModalContent({
+  label,
+  emptyContent,
+  options,
+  selected: _selected,
+  multiple = false,
+  onClose,
+  onConfirm,
+}: Omit<Props, 'isVisible'>) {
   const [searchTerm, setSearchTerm] = useState('');
-  const searchVisible = options.length > 15;
-  const hasSelected = !!selected;
+  const [selected, setSelected] = useState(_selected);
 
   const visibleOptions = options.filter((option) =>
     searchTerm
@@ -46,150 +89,174 @@ export function PickerSheet({
       : true
   );
 
-  function handleClose() {
-    onClose();
-  }
-
-  function handleConfirm() {
-    if (selected) {
-      onConfirm(selected);
+  function handleDone() {
+    onConfirm(selected as any);
+    requestAnimationFrame(() => {
       onClose();
-    }
+    });
   }
 
-  function handleOptionSelect(value: string) {
-    setSelected(value);
-  }
+  const handleOptionSelect = useEvent((value: string) => {
+    if (multiple) {
+      const current = selected as string[];
+      const isChecked = current.includes(value);
+      const newSelected = isChecked
+        ? current.filter((o) => o !== value)
+        : [...current, value];
 
-  useEffect(() => {
-    if (isVisible) {
-      setSelected(initial);
+      setSelected(newSelected);
     } else {
-      setSelected(undefined);
-      setSearchTerm('');
+      setSelected(value);
+      setTimeout(() => {
+        handleDone();
+      }, 200);
     }
-  }, [isVisible]); // eslint-disable-line react-hooks/exhaustive-deps
+  });
+
+  function handleOptionClear() {
+    setSelected(multiple ? [] : '');
+  }
 
   return (
-    <Modal
-      animationType="slide"
-      presentationStyle="formSheet"
-      visible={isVisible}
-      onRequestClose={handleClose}
-    >
-      <SafeArea>
-        <OptionList
-          data={visibleOptions}
-          keyboardShouldPersistTaps="handled"
-          keyExtractor={(option: Option) => option.value}
-          stickyHeaderIndices={[0]}
-          scrollIndicatorInsets={{ top: searchVisible ? 100 : 0 }} // approximation of header height
-          ItemSeparatorComponent={ListSeparator}
-          ListEmptyComponent={
-            <ListEmpty>{emptyLabel || t`No results`}</ListEmpty>
-          }
-          ListHeaderComponent={
-            <ListHeader
-              title={label}
-              searchTerm={searchTerm}
-              searchVisible={searchVisible}
-              onSearch={setSearchTerm}
+    <SafeArea>
+      <ListHeader
+        label={label}
+        searchTerm={searchTerm}
+        numSelected={selected.length}
+        onSearch={setSearchTerm}
+        onClearOption={handleOptionClear}
+      />
+      <FlashList
+        data={visibleOptions}
+        estimatedItemSize={25}
+        keyboardShouldPersistTaps="handled"
+        keyExtractor={(option: Option) => option.value}
+        ItemSeparatorComponent={ListSeparator}
+        ListEmptyComponent={<ListEmpty>{emptyContent}</ListEmpty>}
+        scrollIndicatorInsets={{ top: 100 }} // approximation of header height
+        renderItem={({ item }) => {
+          return (
+            <ListItem
+              multiple={multiple}
+              checked={selected.includes(item.value)}
+              onOptionSelect={handleOptionSelect}
+              value={item.value}
+              label={item.label}
             />
-          }
-          renderItem={({ item }) => {
-            const option = item as Option;
-            return (
-              <ListItem
-                selectedOption={selected}
-                onOptionSelect={handleOptionSelect}
-                value={option.value}
-                label={option.label}
-              />
-            );
-          }}
-        />
+          );
+        }}
+      />
 
-        <Footer>
-          <ActionButton onPress={handleClose}>
+      <Footer>
+        <ActionButton onPress={onClose}>
+          <Text variant={multiple ? 'body' : 'bodyBold'}>
+            {multiple ? <Trans>Cancel</Trans> : <Trans>Close</Trans>}
+          </Text>
+        </ActionButton>
+
+        {multiple && (
+          <ActionButton onPress={handleDone}>
             <Text variant="bodyBold">
-              {selected ? <Trans>Cancel</Trans> : <Trans>Close</Trans>}
+              <Trans>Done</Trans>
             </Text>
           </ActionButton>
+        )}
+      </Footer>
 
-          {hasSelected && (
-            <ActionButton onPress={handleConfirm}>
-              <Text variant="bodyBold" color="primary">
-                <Trans>Done</Trans>
-              </Text>
-            </ActionButton>
-          )}
-        </Footer>
-      </SafeArea>
-    </Modal>
+      {/* On iOS the modal effect will reveal the black root background */}
+      {Platform.OS === 'ios' && <StatusBar barStyle="light-content" />}
+    </SafeArea>
   );
 }
 
 type ListItemProps = {
   label: string;
   value: string;
-  selectedOption: string | undefined;
+  multiple: boolean;
+  checked: boolean;
   onOptionSelect: (value: string) => void;
 };
 
-function ListItem({
-  label,
-  value,
-  selectedOption,
-  onOptionSelect,
-}: ListItemProps) {
-  return (
-    <ListItemWrapper>
-      <Radio
-        key={value}
-        label={label}
-        checked={selectedOption === value}
-        value={value}
-        onChange={() => onOptionSelect(value)}
-      />
-    </ListItemWrapper>
-  );
-}
+const ListItem = memo(
+  ({ multiple, label, value, checked, onOptionSelect }: ListItemProps) => {
+    return (
+      <ListItemWrapper>
+        {multiple ? (
+          <Checkbox
+            label={label}
+            checked={checked}
+            value={value}
+            onChange={() => onOptionSelect(value)}
+          />
+        ) : (
+          <Radio
+            label={label}
+            checked={checked}
+            value={value}
+            onChange={() => onOptionSelect(value)}
+          />
+        )}
+      </ListItemWrapper>
+    );
+  }
+);
+
+ListItem.displayName = 'ListItem';
 
 function ListHeader({
-  title,
+  label,
   searchTerm,
-  searchVisible,
+  numSelected,
   onSearch,
+  onClearOption,
 }: {
-  title: string;
+  label: string;
   searchTerm: string;
-  searchVisible: boolean;
+  numSelected: number;
   onSearch: (s: string) => void;
+  onClearOption: () => void;
 }) {
   return (
     <ListHeaderWrapper>
       <Stack axis="y" spacing="small">
-        {searchVisible && (
-          <SearchInput value={searchTerm} onChange={onSearch} />
-        )}
+        <SearchInput value={searchTerm} onChange={onSearch} />
 
-        <Text
-          variant="body"
-          color="textMuted"
-          numberOfLines={1}
-          style={{ flex: 1 }}
-        >
-          {title}
-        </Text>
+        <Stack axis="x" spacing="small" align="center" justify="between">
+          <Text
+            variant="bodySmall"
+            color="textMuted"
+            numberOfLines={1}
+            style={{ flex: 1 }}
+          >
+            {label}
+          </Text>
+
+          {numSelected > 1 && (
+            <ClearButton onPress={onClearOption}>
+              <Text variant="bodySmallBold" color="textMuted">
+                Clear selected ({numSelected})
+              </Text>
+            </ClearButton>
+          )}
+        </Stack>
       </Stack>
     </ListHeaderWrapper>
   );
 }
 
-function ListEmpty({ children }: { children: string }) {
+function ListEmpty({ children }: { children?: ReactNode }) {
   return (
     <ListEmptyWrapper>
-      <Text variant="body">{children}</Text>
+      {children || (
+        <Stack axis="y" spacing="normal">
+          <Text align="center">
+            <Trans>No results found.</Trans>
+          </Text>
+          <Text align="center">
+            <Trans>Try changing your search term.</Trans>
+          </Text>
+        </Stack>
+      )}
     </ListEmptyWrapper>
   );
 }
@@ -203,14 +270,6 @@ const SafeArea = styled('SafeAreaView', {
   backgroundColor: '$elevated',
 });
 
-const OptionList = styled('FlatList', {
-  flex: 1,
-}).attrs((p) => ({
-  contentContainerStyle: {
-    paddingBottom: p.theme.space.normal,
-  },
-}));
-
 const ListEmptyWrapper = styled('View', {
   padding: '$large',
   flexCenter: 'row',
@@ -218,12 +277,14 @@ const ListEmptyWrapper = styled('View', {
 
 const ListHeaderWrapper = styled('View', {
   marginBottom: '$small',
-  paddingTop: '$small',
-  paddingBottom: '$small',
-  paddingHorizontal: '$small',
+  padding: '$normal',
   backgroundColor: '$elevated',
   borderBottomWidth: 1,
   borderColor: '$border',
+});
+
+const ClearButton = styled('TouchableOpacity', {
+  alignSelf: 'flex-end',
 });
 
 const ListItemWrapper = styled('View', {
