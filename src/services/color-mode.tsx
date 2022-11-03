@@ -30,6 +30,7 @@ export function ColorModeProvider({ children }: { children: ReactNode }) {
   const systemColorMode = useColorScheme();
   const [colorMode, setColorMode] = useState(getColorMode(systemColorMode));
   const theme = colorMode === 'light' ? lightTheme : darkTheme;
+
   const toggleColorMode = useCallback(() => {
     setColorMode((p) => (p === 'dark' ? 'light' : 'dark'));
   }, []);
