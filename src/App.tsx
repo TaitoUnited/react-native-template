@@ -22,5 +22,5 @@ export default function Root() {
 
 const AppWrapper = styled('View', {
   flex: 1,
-  backgroundColor: '$backdrop',
+  backgroundColor: '$background',
 });
