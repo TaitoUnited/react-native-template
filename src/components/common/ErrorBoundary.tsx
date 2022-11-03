@@ -35,7 +35,7 @@ function ErrorView() {
     <SafeArea>
       <Scroller>
         <Stack axis="y" spacing="normal" align="center">
-          <Text variant="title1" align="center">
+          <Text variant="bodyLargeBold" align="center">
             <Trans>Something went wrong</Trans>
           </Text>
           <Text variant="body" align="center">

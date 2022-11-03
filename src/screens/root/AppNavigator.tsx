@@ -1,6 +1,6 @@
 import { Trans } from '@lingui/macro';
 import { createStackNavigator } from '@react-navigation/stack';
-import { ActivityIndicator, StatusBar } from 'react-native';
+import { ActivityIndicator } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
 
 import { styled, useTheme } from '~styles';
@@ -42,11 +42,6 @@ export default function AppNavigator() {
           />
         </AppStack.Group> */}
       </AppStack.Navigator>
-
-      <StatusBar
-        barStyle="dark-content"
-        backgroundColor={theme.colors.background}
-      />
 
       {status === 'logging-out' && (
         <LoggingOutOverlay entering={FadeIn.duration(100)}>

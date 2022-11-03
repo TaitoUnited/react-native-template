@@ -7,7 +7,6 @@ import { styled } from '~styles/styled';
 import { FillButton, Text, TextInput, Stack, Spacer } from '~components/uikit';
 import { showToast } from '~components/common/Toaster';
 import { useAuthStore } from '~services/auth';
-import StatusBar from '~components/common/StatusBar';
 
 type Credentials = {
   email: string;
@@ -244,8 +243,6 @@ export default function SignupScreen() {
           </FillButton>
         </Scroller>
       </Wrapper>
-
-      <StatusBar />
     </SafeArea>
   );
 }

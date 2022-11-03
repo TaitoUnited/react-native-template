@@ -15,7 +15,7 @@ const expoConfig: ExpoConfig = {
   jsEngine: 'hermes',
   platforms: ['ios', 'android'],
   icon: config.iconImage,
-  backgroundColor: '#ffffff', // root view background
+  backgroundColor: '#000000', // root view background
   splash: {
     resizeMode: 'contain',
     backgroundColor: config.splash.backgroundColor,

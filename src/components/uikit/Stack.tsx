@@ -7,17 +7,16 @@ import {
   ReactNode,
 } from 'react';
 
-import { ViewStyle } from 'react-native';
+import { ViewProps } from 'react-native';
 
 import { Spacer } from './Spacer';
 import { styled, Theme } from '~styles';
 
-type Props = {
+type Props = ViewProps & {
   spacing: keyof Theme['space'];
   axis?: 'x' | 'y';
   align?: 'center' | 'start' | 'end' | 'stretch';
   justify?: 'center' | 'start' | 'end' | 'between' | 'around';
-  style?: ViewStyle;
   debug?: boolean;
   children: ReactNode;
 };
