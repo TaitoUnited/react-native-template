@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 
 import {
   native as typographyTokens,
-  Token as Typography,
+  TypographyToken as Typography,
 } from '~design-system/typography';
 
 import * as shadows from '~design-system/shadows';
@@ -28,7 +28,7 @@ export const size = (value: Stitches.PropertyValue<'width'>) => ({
 });
 
 export const shadow = (
-  level: 'none' | designSystemUtils.ShadowName<shadows.Token>
+  level: 'none' | designSystemUtils.ShadowName<shadows.ShadowsToken>
 ) => {
   return {
     none: {

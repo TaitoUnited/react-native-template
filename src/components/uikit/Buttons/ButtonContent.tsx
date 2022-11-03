@@ -4,7 +4,7 @@ import { Text } from '../Text';
 import { Stack } from '../Stack';
 import { Icon } from '../Icon';
 import type { ButtonProps, ButtonSize } from './types';
-import type { Token as Typography } from '~design-system/typography';
+import type { TypographyToken as Typography } from '~design-system/typography';
 import { styled, useTheme, Theme } from '~styles';
 
 type Props = Omit<ButtonProps, 'onPress' | 'disabled'> & {

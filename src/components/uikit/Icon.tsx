@@ -5,7 +5,7 @@ import type { ViewStyle } from 'react-native';
 import * as icons from '~design-system/icons';
 import { useTheme, Theme } from '~styles';
 
-export type IconName = icons.Token;
+export type IconName = icons.IconsToken;
 
 type Props = {
   name: IconName;

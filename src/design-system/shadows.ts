@@ -52,4 +52,4 @@ export const shadowSmall = {
   }
 };
 
-export type Token = "shadowLarge" | "shadowMedium" | "shadowNormal" | "shadowSmall";
+export type ShadowsToken = "shadowLarge" | "shadowMedium" | "shadowNormal" | "shadowSmall";

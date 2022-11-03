@@ -9,4 +9,4 @@ export const xxlarge = 56;
 export const xxsmall = 4;
 export const xxxlarge = 72;
 
-export type Token = "large" | "medium" | "normal" | "small" | "xlarge" | "xsmall" | "xxlarge" | "xxsmall" | "xxxlarge";
+export type SpacingToken = "large" | "medium" | "normal" | "small" | "xlarge" | "xsmall" | "xxlarge" | "xxsmall" | "xxxlarge";

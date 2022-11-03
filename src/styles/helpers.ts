@@ -1,6 +1,6 @@
 import {
   native as typographyTokens,
-  Token as Typography,
+  TypographyToken as Typography,
 } from '../design-system/typography';
 
 import { theme, Theme } from './styled';

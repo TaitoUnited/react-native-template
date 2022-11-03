@@ -34,7 +34,7 @@ export default function TabNavigator() {
     {
       id: 'SearchTab',
       title: t`Search`,
-      iconFilled: 'search',
+      iconFilled: 'searchThick',
       iconOutlined: 'search',
       screen: SearchsNavigator,
     },
