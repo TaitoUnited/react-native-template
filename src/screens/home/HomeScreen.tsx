@@ -11,8 +11,8 @@ import {
 } from '~components/uikit';
 
 export default function HomeScreen() {
-  // const [value, setValue] = useState<string[]>([]);
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState<string[]>([]);
+  // const [selected, setSelected] = useState('');
   const [text, setText] = useState('');
   const [radio, setRadio] = useState('1');
   const [check, setCheck] = useState('n');
@@ -27,6 +27,7 @@ export default function HomeScreen() {
 
         <Select
           label="Test"
+          multiple
           value={selected}
           onChange={setSelected}
           options={Array.from({ length: 100 }).map((_, i) => ({

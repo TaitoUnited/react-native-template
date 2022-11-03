@@ -1,8 +1,8 @@
-import { t } from '@lingui/macro';
+import { StyleSheet } from 'react-native';
 import { StackNavigationOptions } from '@react-navigation/stack';
 import { useNavigation as _useNavigation } from '@react-navigation/native';
+import { t } from '@lingui/macro';
 
-import { DrawerNavigationOptions } from '@react-navigation/drawer';
 import { UseNavigationProp } from './types';
 import { useTheme } from '~styles';
 
@@ -12,8 +12,8 @@ function useSharedOptions() {
   const options = {
     headerStyle: {
       backgroundColor: theme.colors.background,
-      borderBottomColor: theme.colors.text,
-      borderBottomWidth: 1,
+      borderBottomColor: theme.colors.muted3,
+      borderBottomWidth: StyleSheet.hairlineWidth,
     },
     headerLeftContainerStyle: {
       paddingLeft: theme.space.normal,
@@ -24,7 +24,6 @@ function useSharedOptions() {
     headerTintColor: theme.colors.text,
     headerTitleStyle: {
       fontSize: theme.fontSizes.bodyBold,
-      fontWeight: theme.fontWeights.bodyBold as any,
     },
   };
 
@@ -39,38 +38,11 @@ export function useDefaultStackScreenOptions() {
     ...sharedOptions,
     headerBackTitleStyle: {
       fontSize: theme.fontSizes.body,
-      fontWeight: theme.fontWeights.body as any,
     },
     headerBackTitle: t`Back`,
     cardStyle: {
       backgroundColor: theme.colors.background,
     },
-  };
-
-  return screenOptions;
-}
-
-export function useDefaultDrawerScreenOptions() {
-  const theme = useTheme();
-  const sharedOptions = useSharedOptions();
-
-  const screenOptions: DrawerNavigationOptions = {
-    ...sharedOptions,
-    drawerStyle: {
-      backgroundColor: theme.colors.background,
-    },
-    drawerActiveTintColor: theme.colors.text,
-    drawerActiveBackgroundColor: theme.colors.hoverHighlight,
-    drawerInactiveTintColor: theme.colors.text,
-    drawerInactiveBackgroundColor: theme.colors.background,
-  };
-
-  return screenOptions;
-}
-
-export function useDefaultStackScreenInDrawerOptions() {
-  const screenOptions: StackNavigationOptions = {
-    headerShown: false,
   };
 
   return screenOptions;

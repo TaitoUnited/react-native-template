@@ -1,5 +1,6 @@
-import { t } from '@lingui/macro';
+import { StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { t } from '@lingui/macro';
 
 import type { IconName } from '~components/uikit/Icon';
 import type { TabParamList } from '~screens/types';
@@ -62,8 +63,8 @@ export default function TabNavigator() {
         tabBarShowLabel: false,
         tabBarStyle: {
           backgroundColor: theme.colors.background,
-          borderTopColor: theme.colors.text,
-          borderTopWidth: 1,
+          borderTopColor: theme.colors.muted3,
+          borderTopWidth: StyleSheet.hairlineWidth,
         },
       }}
     >
