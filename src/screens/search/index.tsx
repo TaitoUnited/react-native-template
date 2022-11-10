@@ -3,8 +3,9 @@ import { t } from '@lingui/macro';
 
 import SearchScreen from './SearchScreen';
 import { useDefaultStackScreenOptions } from '~screens/utils';
+import { ParamList } from '~screens/types';
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<ParamList>();
 
 export default function SearchNavigator() {
   const screenOptions = useDefaultStackScreenOptions();

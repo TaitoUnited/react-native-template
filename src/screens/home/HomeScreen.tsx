@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { styled } from '~styles';
+import { ScreenProps } from '~screens/types';
 
 import {
   Checkbox,
@@ -10,7 +11,7 @@ import {
   TextInput,
 } from '~components/uikit';
 
-export default function HomeScreen() {
+export default function HomeScreen(_: ScreenProps<'Home'>) {
   const [selected, setSelected] = useState<string[]>([]);
   // const [selected, setSelected] = useState('');
   const [text, setText] = useState('');

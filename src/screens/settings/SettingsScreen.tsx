@@ -3,8 +3,9 @@ import { FillButton, Stack } from '~components/uikit';
 import { useI18n } from '~services/i18n';
 import LogoutButton from '~components/auth/LogoutButton';
 import ColorModeButton from '~components/common/ColorModeButton';
+import { ScreenProps } from '~screens/types';
 
-export default function SettingsScreen() {
+export default function SettingsScreen(_: ScreenProps<'Settings'>) {
   const { toggleLocale, locale } = useI18n();
 
   return (

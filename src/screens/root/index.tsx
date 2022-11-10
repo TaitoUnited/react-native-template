@@ -1,6 +1,6 @@
 import React from 'react';
 
-import LoginNavigator from '../login';
+import UnauthedNavigator from '../unauthed';
 import AppNavigator from './AppNavigator';
 import { useAuthStore } from '~services/auth';
 
@@ -14,5 +14,5 @@ export default function RootNavigator() {
     return <AppNavigator />;
   }
 
-  return <LoginNavigator />;
+  return <UnauthedNavigator />;
 }

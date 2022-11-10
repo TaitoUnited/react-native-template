@@ -6,13 +6,14 @@ import { styled } from '~styles/styled';
 import { useAuthStore } from '~services/auth';
 import { showToast } from '~components/common/Toaster';
 import { FillButton, Text, TextInput, Stack } from '~components/uikit';
+import { ScreenProps } from '~screens/types';
 
 type Credentials = {
   email: string;
   password: string;
 };
 
-export default function LoginScreen() {
+export default function LoginScreen(_: ScreenProps<'Login'>) {
   const form = useForm<Credentials>({ mode: 'onBlur' });
   const status = useAuthStore((s) => s.status);
   const login = useAuthStore((s) => s.login);

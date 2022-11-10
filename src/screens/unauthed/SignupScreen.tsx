@@ -7,6 +7,7 @@ import { styled } from '~styles/styled';
 import { FillButton, Text, TextInput, Stack, Spacer } from '~components/uikit';
 import { showToast } from '~components/common/Toaster';
 import { useAuthStore } from '~services/auth';
+import { ScreenProps } from '~screens/types';
 
 type Credentials = {
   email: string;
@@ -19,7 +20,7 @@ type Credentials = {
 
 export const MIN_PASSWORD_LEGTH = 8;
 
-export default function SignupScreen() {
+export default function SignupScreen(_: ScreenProps<'Signup'>) {
   const form = useForm<Credentials>({ mode: 'onChange' });
   const password = form.watch('password1');
   const status = useAuthStore((s) => s.status);

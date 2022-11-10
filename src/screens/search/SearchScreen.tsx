@@ -1,7 +1,8 @@
 import { styled } from '~styles';
 import { Text } from '~components/uikit';
+import { ScreenProps } from '~screens/types';
 
-export default function SearchScreen() {
+export default function SearchScreen(_: ScreenProps<'Search'>) {
   return (
     <Wrapper>
       <Text variant="body">Search</Text>

@@ -3,8 +3,9 @@ import { t } from '@lingui/macro';
 
 import SettingsScreen from './SettingsScreen';
 import { useDefaultStackScreenOptions } from '~screens/utils';
+import { ParamList } from '~screens/types';
 
-const SettingsStack = createStackNavigator();
+const SettingsStack = createStackNavigator<ParamList>();
 
 export default function SettingsNavigator() {
   const screenOptions = useDefaultStackScreenOptions();

@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { t } from '@lingui/macro';
 
 import type { IconName } from '~components/uikit/Icon';
-import type { TabParamList } from '~screens/types';
+import type { ParamList } from '~screens/types';
 import { useTheme } from '~styles';
 import { Icon } from '~components/uikit';
 import HomeNavigator from '~screens/home';
@@ -11,10 +11,10 @@ import SearchsNavigator from '~screens/search';
 import ProfileNavigator from '~screens/profile';
 import SettingsNavigator from '~screens/settings';
 
-const Tab = createBottomTabNavigator<TabParamList>();
+const Tab = createBottomTabNavigator<ParamList>();
 
 type TabList = {
-  id: keyof TabParamList;
+  id: keyof ParamList;
   title: string;
   iconFilled: IconName;
   iconOutlined: IconName;
@@ -25,14 +25,14 @@ export default function TabNavigator() {
   const theme = useTheme();
   const tabs: TabList = [
     {
-      id: 'HomeTab',
+      id: 'HomeStack',
       title: t`Home`,
       iconFilled: 'homeFilled',
       iconOutlined: 'homeOutlined',
       screen: HomeNavigator,
     },
     {
-      id: 'SearchTab',
+      id: 'SearchStack',
       title: t`Search`,
       iconFilled: 'searchThick',
       iconOutlined: 'search',
@@ -40,7 +40,7 @@ export default function TabNavigator() {
     },
 
     {
-      id: 'ProfileTab',
+      id: 'ProfileStack',
       title: t`Profile`,
       iconFilled: 'userCicleFilled',
       iconOutlined: 'userCicleOutlined',
@@ -48,7 +48,7 @@ export default function TabNavigator() {
     },
 
     {
-      id: 'SettingsTab',
+      id: 'SettingsStack',
       title: t`Settings`,
       iconFilled: 'settingsCogFilled',
       iconOutlined: 'settingsCogOutlined',

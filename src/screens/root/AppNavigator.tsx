@@ -6,10 +6,11 @@ import Animated, { FadeIn } from 'react-native-reanimated';
 import { styled, useTheme } from '~styles';
 import { Stack, Text } from '~components/uikit';
 import { useAuthStore } from '~services/auth';
+import { ParamList } from '~screens/types';
 import TabNavigator from '~screens/root/TabNavigator';
-import LoginNavigator from '~screens/login';
+import UnauthedNavigator from '~screens/unauthed';
 
-const AppStack = createStackNavigator();
+const AppStack = createStackNavigator<ParamList>();
 
 export default function AppNavigator() {
   const theme = useTheme();
@@ -21,19 +22,20 @@ export default function AppNavigator() {
         <AppStack.Group>
           {status === 'authenticated' ? (
             <AppStack.Screen
-              name="Tabs"
+              name="AuthedStack"
               options={{ headerShown: false }}
               component={TabNavigator}
             />
           ) : (
             <AppStack.Screen
-              name="Initial"
+              name="UnauthedStack"
               options={{ headerShown: false }}
-              component={LoginNavigator}
+              component={UnauthedNavigator}
             />
           )}
         </AppStack.Group>
 
+        {/* Add global modal screens here that can be opened from anywhere in the app */}
         {/* <AppStack.Group screenOptions={{ presentation: 'modal' }}>
           <AppStack.Screen
             name="PermissionModal"

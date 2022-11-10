@@ -1,9 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { StackNavigationOptions } from '@react-navigation/stack';
-import { useNavigation as _useNavigation } from '@react-navigation/native';
 import { t } from '@lingui/macro';
 
-import { UseNavigationProp } from './types';
 import { useTheme } from '~styles';
 
 function useSharedOptions() {
@@ -46,8 +44,4 @@ export function useDefaultStackScreenOptions() {
   };
 
   return screenOptions;
-}
-
-export function useNavigation() {
-  return _useNavigation<UseNavigationProp>();
 }

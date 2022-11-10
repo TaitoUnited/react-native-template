@@ -1,26 +1,74 @@
-import { NavigationProp } from '@react-navigation/native';
-import { StackScreenProps as RNStackScreenProps } from '@react-navigation/stack';
+import type { UnionToIntersection } from 'type-fest';
+import type { StackScreenProps } from '@react-navigation/stack';
+import type { NavigatorScreenParams } from '@react-navigation/native';
 
-export type LoginParamList = {
-  Landing: undefined;
-  Login: undefined;
-  Signup: undefined;
+type AuthedNavigation = {
+  AuthedStack: Navigator<{
+    HomeStack: Navigator<{
+      Home: undefined;
+    }>;
+    SearchStack: Navigator<{
+      Search: undefined;
+    }>;
+    ProfileStack: Navigator<{
+      Profile: undefined;
+    }>;
+    SettingsStack: Navigator<{
+      Settings: undefined;
+    }>;
+  }>;
 };
 
-export type TabParamList = {
-  HomeTab: undefined;
-  SearchTab: undefined;
-  ProfileTab: undefined;
-  SettingsTab: undefined;
+type UnauthedNavigation = {
+  UnauthedStack: Navigator<{
+    Landing: undefined;
+    Login: undefined;
+    Signup: undefined;
+  }>;
 };
 
-export type StackParamList = LoginParamList;
+type AppNavigation = UnauthedNavigation & AuthedNavigation;
 
-export type ScreenName = keyof StackParamList;
+// --------------------------------- Exports ----------------------------------
 
-export type StackScreenProps<T extends ScreenName> = RNStackScreenProps<
-  StackParamList,
+export type ParamList = UnionToIntersection<GetParamList<AppNavigation>>;
+
+// Use this in your screen components to get the navigation props typed correctly
+export type ScreenProps<T extends keyof ParamList> = StackScreenProps<
+  ParamList,
   T
 >;
 
-export type UseNavigationProp = NavigationProp<StackParamList>;
+// This ensures that the `useNavigation` hook returns the correct type
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace ReactNavigation {
+    // eslint-disable-next-line @typescript-eslint/no-empty-interface
+    interface RootParamList extends ParamList {}
+  }
+}
+
+// ------------------------- Helpers (do not modify) --------------------------
+type Screen<Params extends Record<string, any>> = {
+  type: 'screen';
+  params: Params;
+};
+
+type Navigator<
+  Children extends Record<string, undefined | Screen<any> | Navigator<any>>
+> = {
+  type: 'navigator';
+  children: Children;
+  params: NavigatorScreenParams<any>; // TODO: fix `any` here
+};
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+type GetParamList<T, K = keyof T, P = {}> = K extends keyof T
+  ? T[K] extends Screen<infer Params>
+    ? P & Record<K, Params>
+    : T[K] extends Navigator<infer Children>
+    ? P & Record<K, T[K]['params']> & GetParamList<Children, keyof Children, P>
+    : T[K] extends Record<string, any>
+    ? P & Record<K, T[K]>
+    : P & Record<K, undefined>
+  : never;

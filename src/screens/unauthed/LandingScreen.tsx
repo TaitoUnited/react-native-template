@@ -2,12 +2,10 @@ import { Trans } from '@lingui/macro';
 
 import { styled } from '~styles';
 import { Stack, FillButton } from '~components/uikit';
-import { StackScreenProps } from '~screens/types';
+import { ScreenProps } from '~screens/types';
 import { useI18n } from '~services/i18n';
 
-export default function LandingScreen({
-  navigation,
-}: StackScreenProps<'Landing'>) {
+export default function LandingScreen({ navigation }: ScreenProps<'Landing'>) {
   const { toggleLocale, locale } = useI18n();
 
   return (

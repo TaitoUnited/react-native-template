@@ -5,11 +5,11 @@ import LandingScreen from './LandingScreen';
 import LoginScreen from './LoginScreen';
 import SignupScreen from './SignupScreen';
 import { useDefaultStackScreenOptions } from '~screens/utils';
-import { LoginParamList } from '~screens/types';
+import { ParamList } from '~screens/types';
 
-const LoginStack = createStackNavigator<LoginParamList>();
+const LoginStack = createStackNavigator<ParamList>();
 
-export default function LoginNavigator() {
+export default function UnauthedNavigator() {
   const screenOptions = useDefaultStackScreenOptions();
 
   return (
