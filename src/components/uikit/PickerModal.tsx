@@ -124,8 +124,8 @@ function ModalContent({
   const insets = useSafeAreaInsets();
   const [selected, setSelected] = useState(_selected);
 
-  function handleDone() {
-    onConfirm(selected as any);
+  function handleDone(value: any) {
+    onConfirm(value);
     requestAnimationFrame(() => {
       onClose();
     });
@@ -143,7 +143,7 @@ function ModalContent({
     } else {
       setSelected(value);
       setTimeout(() => {
-        handleDone();
+        handleDone(value);
       }, 200);
     }
   }
@@ -207,7 +207,7 @@ function ModalContent({
             </ActionButton>
 
             {multiple && (
-              <ActionButton onPress={handleDone}>
+              <ActionButton onPress={() => handleDone(selected)}>
                 <Text variant="bodyBold">
                   <Trans>Done</Trans>
                 </Text>
