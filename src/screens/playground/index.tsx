@@ -41,7 +41,7 @@ export default function PlaygroundNavigator() {
       />
       <Stack.Screen
         name="DesignSystem"
-        options={{ title: 'DesignSystem' }}
+        options={{ title: 'Design System' }}
         component={DesignSystemScreen}
       />
       <Stack.Screen
