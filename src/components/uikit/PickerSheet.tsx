@@ -39,7 +39,7 @@ type MultipleValueProps = {
 
 type Props = BaseProps & (SingleValueProps | MultipleValueProps);
 
-// Use this picker for picking a single option from a LONG list of options that need filtering capabilities
+// Use this picker for picking options from a LONG list of options that need filtering capabilities
 
 export function PickerSheet({
   label,

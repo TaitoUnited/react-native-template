@@ -39,7 +39,8 @@ type MultipleValueProps = {
 
 type Props = BaseProps & (SingleValueProps | MultipleValueProps);
 
-// Use this picker for picking a single option from a SHORT list of options
+// Use this picker for picking options from a SHORT list of options (less than 20 options).
+// You can use `PickerSheet` for longer lists.
 
 export function PickerModal({ isVisible, onClose, ...rest }: Props) {
   const backdropAnimation = useRef(new Animated.Value(isVisible ? 1 : 0));
