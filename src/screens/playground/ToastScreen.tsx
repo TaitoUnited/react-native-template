@@ -60,7 +60,7 @@ export default function ToastScreen(_: ScreenProps<'Toast'>) {
             })
           }
         >
-          Success (icon)
+          Success (custom icon)
         </FillButton>
 
         <FillButton
@@ -70,18 +70,15 @@ export default function ToastScreen(_: ScreenProps<'Toast'>) {
               title: 'A simple toast',
               subtitle: 'With a subtitle',
               type: 'success',
-              icon: 'bell',
             })
           }
         >
-          Success (icon + subtitle)
+          Success (subtitle)
         </FillButton>
 
         <FillButton
           variant="danger"
-          onPress={() =>
-            showToast({ title: 'A success toast', type: 'success' })
-          }
+          onPress={() => showToast({ title: 'A success toast', type: 'error' })}
         >
           Error
         </FillButton>
@@ -96,7 +93,7 @@ export default function ToastScreen(_: ScreenProps<'Toast'>) {
             })
           }
         >
-          Error (icon)
+          Error (custom icon)
         </FillButton>
 
         <FillButton
@@ -106,11 +103,10 @@ export default function ToastScreen(_: ScreenProps<'Toast'>) {
               title: 'A simple toast',
               subtitle: 'With a subtitle',
               type: 'error',
-              icon: 'clock',
             })
           }
         >
-          Error (icon + subtitle)
+          Error (subtitle)
         </FillButton>
       </Stack>
     </Wrapper>
