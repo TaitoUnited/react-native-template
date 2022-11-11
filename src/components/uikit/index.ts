@@ -11,4 +11,4 @@ export { SearchInput } from './Inputs/SearchInput';
 export { Select } from './Inputs/Select';
 export { PickerModal } from './PickerModal';
 export { PickerSheet } from './PickerSheet';
-export { ScaledImage } from './ScaledImage';
+export { Image } from './Image';

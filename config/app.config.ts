@@ -43,10 +43,28 @@ const expoConfig: ExpoConfig = {
     './plugins/with-appcenter-signing',
     [
       './plugins/with-react-native-permissions',
-      // Add more notification permissions here
+      // Add more iOS permissions here
       { pods: ['Notifications'] },
+    ],
+    [
+      'expo-build-properties',
+      { android: { extraProguardRules: getExtraProguardRules() } },
     ],
   ],
 };
+
+// NOTE: we can't inline this to the plugin definition because the indendation would be wrong
+function getExtraProguardRules() {
+  return `
+-keep public class com.dylanvann.fastimage.* {*;}
+-keep public class com.dylanvann.fastimage.** {*;}
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public class * extends com.bumptech.glide.module.AppGlideModule
+-keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
+`;
+}
 
 export default expoConfig;
