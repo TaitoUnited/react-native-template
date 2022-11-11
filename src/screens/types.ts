@@ -17,6 +17,15 @@ type AuthedNavigation = {
       Settings: undefined;
     }>;
   }>;
+  PlaygroundStack: Navigator<{
+    Playground: undefined;
+    Buttons: undefined;
+    DesignSystem: undefined;
+    Icons: undefined;
+    Inputs: undefined;
+    Layout: undefined;
+    Toast: undefined;
+  }>;
 };
 
 type UnauthedNavigation = {

@@ -1,11 +1,11 @@
 import { styled } from '~styles';
-import { ScreenProps } from '~screens/types';
 import { Text } from '~components/uikit';
+import { ScreenProps } from '~screens/types';
 
-export default function HomeScreen(_: ScreenProps<'Home'>) {
+export default function ButtonsScreen(_: ScreenProps<'Buttons'>) {
   return (
     <Wrapper>
-      <Text variant="body">Home</Text>
+      <Text variant="body">Buttons</Text>
     </Wrapper>
   );
 }

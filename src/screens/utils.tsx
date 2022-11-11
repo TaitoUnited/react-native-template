@@ -3,11 +3,12 @@ import { StackNavigationOptions } from '@react-navigation/stack';
 import { t } from '@lingui/macro';
 
 import { useTheme } from '~styles';
+import { Icon } from '~components/uikit';
 
-function useSharedOptions() {
+export function useDefaultStackScreenOptions() {
   const theme = useTheme();
 
-  const options = {
+  const screenOptions: StackNavigationOptions = {
     headerStyle: {
       backgroundColor: theme.colors.background,
       borderBottomColor: theme.colors.muted3,
@@ -23,21 +24,11 @@ function useSharedOptions() {
     headerTitleStyle: {
       fontSize: theme.fontSizes.bodyBold,
     },
-  };
-
-  return options;
-}
-
-export function useDefaultStackScreenOptions() {
-  const theme = useTheme();
-  const sharedOptions = useSharedOptions();
-
-  const screenOptions: StackNavigationOptions = {
-    ...sharedOptions,
     headerBackTitleStyle: {
       fontSize: theme.fontSizes.body,
     },
     headerBackTitle: t`Back`,
+    headerBackImage: () => <Icon name="chevronLeft" size={28} />,
     cardStyle: {
       backgroundColor: theme.colors.background,
     },
