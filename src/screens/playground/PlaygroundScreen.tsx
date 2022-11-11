@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { usePlaygroundStore } from './store';
+import { usePlaygroundStore } from './helpers';
 import { styled } from '~styles';
 import { ParamList, ScreenProps } from '~screens/types';
 import { IconButton, Icon, Stack, Text } from '~components/uikit';

@@ -1,5 +1,5 @@
-import create from 'zustand';
 import { DevSettings } from 'react-native';
+import create from 'zustand';
 
 type Store = {
   playgroundVisible: boolean;

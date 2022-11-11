@@ -1,7 +1,7 @@
 import UnauthedNavigator from '../unauthed';
 import AppNavigator from './AppNavigator';
 import PlaygroundNavigator from '../playground';
-import { usePlaygroundStore } from '../playground/store';
+import { usePlaygroundStore } from '../playground/helpers';
 import { useAuthStore } from '~services/auth';
 
 export default function RootNavigator() {

@@ -5,12 +5,13 @@ const LOCALE = '@app/locale';
 const ACCESS_TOKEN = '@app/access-token';
 const REFRESH_TOKEN = '@app/refresh-token';
 const PERMISSION_REQUESTS = '@app/permission-requests';
+const COLOR_MODE = '@app/color-mode';
 
 // Add all storage keys here so that they can be cleared upon logout
 const CLEARABLE_KEYS = [ACCESS_TOKEN, REFRESH_TOKEN] as const;
 
 // These storage keys should be persisted across logins, eg. showing some guided tours etc.
-const PERSISTENT_KEYS = [LOCALE, PERMISSION_REQUESTS] as const;
+const PERSISTENT_KEYS = [LOCALE, PERMISSION_REQUESTS, COLOR_MODE] as const;
 
 type Key = typeof CLEARABLE_KEYS[number] | typeof PERSISTENT_KEYS[number];
 

@@ -1,15 +1,9 @@
-import {
-  createContext,
-  useContext,
-  ReactNode,
-  useState,
-  useCallback,
-  useEffect,
-} from 'react';
-
+import { createContext, useContext, ReactNode } from 'react';
 import { ColorSchemeName, useColorScheme } from 'react-native';
 
 import { theme as lightTheme, darkTheme, ThemeProvider } from '~styles';
+import { useEvent } from '~utils/common';
+import { useStorageState } from '~utils/storage';
 
 type ColorMode = 'light' | 'dark';
 
@@ -28,21 +22,21 @@ const getColorMode = (c: ColorSchemeName): ColorMode =>
 
 export function ColorModeProvider({ children }: { children: ReactNode }) {
   const systemColorMode = useColorScheme();
-  const [colorMode, setColorMode] = useState(getColorMode(systemColorMode));
+  const { state, setState } = useStorageState(
+    '@app/color-mode',
+    getColorMode(systemColorMode)
+  );
+
+  const colorMode = state || 'light';
   const theme = colorMode === 'light' ? lightTheme : darkTheme;
 
-  const toggleColorMode = useCallback(() => {
-    setColorMode((p) => (p === 'dark' ? 'light' : 'dark'));
-  }, []);
-
-  // Keep theme in sync with OS settings
-  useEffect(() => {
-    setColorMode(getColorMode(systemColorMode));
-  }, [systemColorMode]);
+  const toggleColorMode = useEvent(() => {
+    setState(colorMode === 'light' ? 'dark' : 'light');
+  });
 
   return (
     <ColorModeContext.Provider
-      value={{ colorMode, setColorMode, toggleColorMode }}
+      value={{ colorMode, setColorMode: setState, toggleColorMode }}
     >
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </ColorModeContext.Provider>

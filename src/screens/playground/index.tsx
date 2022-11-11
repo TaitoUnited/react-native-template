@@ -7,6 +7,8 @@ import IconsScreen from './IconsScreen';
 import InputsScreen from './InputsScreen';
 import LayoutScreen from './LayoutScreen';
 import ToastScreen from './ToastScreen';
+import { FillButton } from '~components/uikit';
+import { useColorMode } from '~services/color-mode';
 import { useDefaultStackScreenOptions } from '~screens/utils';
 import { ParamList } from '~screens/types';
 
@@ -14,9 +16,19 @@ const Stack = createStackNavigator<ParamList>();
 
 export default function PlaygroundNavigator() {
   const screenOptions = useDefaultStackScreenOptions();
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <Stack.Navigator screenOptions={screenOptions}>
+    <Stack.Navigator
+      screenOptions={{
+        ...screenOptions,
+        headerRight: () => (
+          <FillButton variant="neutral" size="small" onPress={toggleColorMode}>
+            {colorMode === 'light' ? 'Dark' : 'Light'}
+          </FillButton>
+        ),
+      }}
+    >
       <Stack.Screen
         name="Playground"
         options={{ title: 'Playground' }}
