@@ -5,7 +5,7 @@ import { t } from '@lingui/macro';
 import type { IconName } from '~components/uikit/Icon';
 import type { ParamList } from '~screens/types';
 import { useTheme } from '~styles';
-import { Icon } from '~components/uikit';
+import { Icon, Text } from '~components/uikit';
 import HomeNavigator from '~screens/home';
 import SearchsNavigator from '~screens/search';
 import ProfileNavigator from '~screens/profile';
@@ -60,7 +60,6 @@ export default function TabNavigator() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarShowLabel: false,
         tabBarStyle: {
           backgroundColor: theme.colors.background,
           borderTopColor: theme.colors.muted3,
@@ -74,9 +73,16 @@ export default function TabNavigator() {
           name={id}
           component={screen}
           options={{
-            tabBarLabel: title,
+            tabBarLabel: ({ focused }) => (
+              <Text variant="caption" color={focused ? 'text' : 'textMuted'}>
+                {title}
+              </Text>
+            ),
             tabBarIcon: ({ focused }) => (
-              <Icon name={focused ? iconFilled : iconOutlined} />
+              <Icon
+                name={focused ? iconFilled : iconOutlined}
+                color={focused ? 'text' : 'textMuted'}
+              />
             ),
           }}
         />
