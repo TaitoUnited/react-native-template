@@ -78,7 +78,7 @@ export default function ButtonContent({
 }
 
 const variantToColor: Record<ButtonVariant, Color> = {
-  primary: 'primary',
+  primary: 'primaryText',
   danger: 'errorText',
   warn: 'warnText',
   info: 'infoText',
@@ -107,7 +107,7 @@ const Wrapper = styled('View', {
       },
       medium: {
         minHeight: 44,
-        paddingHorizontal: '$medium',
+        paddingHorizontal: '$normal',
       },
       large: {
         minHeight: 60,
