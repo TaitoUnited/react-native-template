@@ -3,29 +3,40 @@ import ButtonContent from './ButtonContent';
 import { styled } from '~styles';
 
 export function FillButton({
-  disabled = false,
-  style,
-  onPress,
+  children,
+  size,
+  icon,
+  iconSide,
+  iconPosition,
+  loading,
+  variant,
   ...rest
 }: ButtonProps) {
   return (
-    <Wrapper
-      activeOpacity={0.8}
-      disabled={disabled}
-      style={style}
-      onPress={onPress}
-    >
-      <ButtonContent textColor="primaryText" {...rest} />
+    <Wrapper {...rest} variant={variant}>
+      <ButtonContent
+        variant={variant}
+        size={size}
+        icon={icon}
+        iconSide={iconSide}
+        iconPosition={iconPosition}
+        loading={loading}
+      >
+        {children}
+      </ButtonContent>
     </Wrapper>
   );
 }
 
 const Wrapper = styled('TouchableOpacity', {
-  borderRadius: '$medium',
+  borderRadius: '$full',
   variants: {
     variant: {
       primary: { backgroundColor: '$primaryMuted' },
       danger: { backgroundColor: '$errorMuted' },
+      warn: { backgroundColor: '$warnMuted' },
+      info: { backgroundColor: '$infoMuted' },
+      neutral: { backgroundColor: '$muted5' },
     },
     disabled: {
       true: { opacity: 0.5 },
@@ -33,6 +44,8 @@ const Wrapper = styled('TouchableOpacity', {
     },
   },
   defaultVariants: {
-    variant: 'primary',
+    variant: 'neutral',
   },
-});
+}).attrs(() => ({
+  activeOpacity: 0.8,
+}));

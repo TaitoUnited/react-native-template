@@ -4,38 +4,43 @@ import { ActivityIndicator } from 'react-native';
 import { Text } from '../Text';
 import { Stack } from '../Stack';
 import { Icon } from '../Icon';
-import type { ButtonProps, ButtonSize } from './types';
+import type { ButtonProps, ButtonSize, ButtonVariant } from './types';
 import type { TypographyToken as Typography } from '~design-system/typography';
-import { styled, useTheme, Theme } from '~styles';
+import { Color, styled, useTheme } from '~styles';
 
-type Props = Omit<ButtonProps, 'onPress' | 'disabled'> & {
-  textColor: keyof Theme['colors'];
+type Props = {
+  children: ReactNode;
+  variant: ButtonProps['variant'];
+  icon: ButtonProps['icon'];
+  iconSide: ButtonProps['iconSide'];
+  iconPosition: ButtonProps['iconPosition'];
+  size: ButtonProps['size'];
+  loading: ButtonProps['loading'];
 };
 
 export default function ButtonContent({
   children,
-  size = 'large',
-  textColor,
+  variant,
   icon,
-  iconPlacement = 'end',
-  loading,
+  iconSide = 'end',
+  iconPosition = 'label',
+  size = 'medium',
+  loading = false,
 }: Props) {
   const theme = useTheme();
   const textVariant = sizeToTextVariant[size];
   const iconSize = sizeToIconSize[size];
+  const color = variantToColor[variant];
 
   let decoration: ReactNode = null;
 
   if (icon) {
-    decoration = <Icon name={icon} color={textColor} size={iconSize} />;
+    decoration = <Icon name={icon} color={color} size={iconSize} />;
   }
 
   if (loading) {
     decoration = (
-      <ActivityIndicator
-        size="small"
-        color={theme.colors[textColor] as string}
-      />
+      <ActivityIndicator size="small" color={theme.colors[color] as string} />
     );
   }
 
@@ -47,34 +52,49 @@ export default function ButtonContent({
         justify="center"
         spacing={size === 'large' ? 'small' : 'xsmall'}
       >
-        <Decoration>
-          {Boolean(decoration && iconPlacement === 'start') && decoration}
-        </Decoration>
-
-        {!!children && (
-          <Text variant={textVariant} color={textColor}>
-            {children}
-          </Text>
+        {!!decoration && (
+          <Decoration>
+            {Boolean(decoration && iconSide === 'start') && decoration}
+          </Decoration>
         )}
 
-        <Decoration>
-          {Boolean(decoration && iconPlacement === 'end') && decoration}
-        </Decoration>
+        <Label
+          variant={textVariant}
+          color={color}
+          fill={!!decoration && iconPosition === 'edge'}
+          numberOfLines={size === 'large' ? 2 : 1}
+        >
+          {children}
+        </Label>
+
+        {!!decoration && (
+          <Decoration>
+            {Boolean(decoration && iconSide === 'end') && decoration}
+          </Decoration>
+        )}
       </Stack>
     </Wrapper>
   );
 }
 
+const variantToColor: Record<ButtonVariant, Color> = {
+  primary: 'primary',
+  danger: 'errorText',
+  warn: 'warnText',
+  info: 'infoText',
+  neutral: 'text',
+};
+
 const sizeToTextVariant: Record<ButtonSize, Typography> = {
   small: 'bodySmallBold',
-  medium: 'bodySmallBold',
-  large: 'bodyBold',
+  medium: 'bodyBold',
+  large: 'bodyLargeBold',
 };
 
 const sizeToIconSize: Record<ButtonSize, number> = {
   small: 14,
-  medium: 14,
-  large: 20,
+  medium: 18,
+  large: 22,
 };
 
 const Wrapper = styled('View', {
@@ -82,11 +102,11 @@ const Wrapper = styled('View', {
   variants: {
     size: {
       small: {
-        minHeight: 26,
+        minHeight: 32,
         paddingHorizontal: '$small',
       },
       medium: {
-        minHeight: 34,
+        minHeight: 44,
         paddingHorizontal: '$medium',
       },
       large: {
@@ -99,4 +119,13 @@ const Wrapper = styled('View', {
 
 const Decoration = styled('View', {
   minWidth: 20,
+});
+
+const Label = styled(Text, {
+  textAlign: 'center',
+  variants: {
+    fill: {
+      true: { flex: 1 },
+    },
+  },
 });

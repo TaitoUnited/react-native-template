@@ -50,7 +50,7 @@ export const native = {
   },
   "bodyLargeBold": {
     "fontFamily": "Inter",
-    "fontWeight": 700,
+    "fontWeight": 600,
     "fontSize": 18,
     "textTransform": "none",
     "letterSpacing": 0,
@@ -58,7 +58,7 @@ export const native = {
   },
   "bodySmallBold": {
     "fontFamily": "Inter",
-    "fontWeight": 700,
+    "fontWeight": 600,
     "fontSize": 12,
     "textTransform": "none",
     "letterSpacing": 0,
@@ -74,7 +74,7 @@ export const native = {
   },
   "bodyBold": {
     "fontFamily": "Inter",
-    "fontWeight": 700,
+    "fontWeight": 600,
     "fontSize": 16,
     "textTransform": "none",
     "letterSpacing": 0,

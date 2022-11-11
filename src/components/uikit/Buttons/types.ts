@@ -1,20 +1,18 @@
 import type { ReactNode } from 'react';
-import type { ViewStyle } from 'react-native';
+import type { TouchableWithoutFeedbackProps } from 'react-native';
 import type { IconName } from '../Icon';
 
 export type ButtonSize = 'small' | 'medium' | 'large';
 
 // Add more variants if needed, eg. success, error, warning, etc.
-export type ButtonVariant = 'primary' | 'danger';
+export type ButtonVariant = 'primary' | 'danger' | 'warn' | 'info' | 'neutral';
 
-export type ButtonProps = {
+export type ButtonProps = TouchableWithoutFeedbackProps & {
   children: ReactNode;
-  variant?: ButtonVariant;
+  variant: ButtonVariant;
   size?: ButtonSize;
-  disabled?: boolean;
-  style?: ViewStyle;
   icon?: IconName;
-  iconPlacement?: 'start' | 'end';
+  iconSide?: 'start' | 'end';
+  iconPosition?: 'label' | 'edge';
   loading?: boolean;
-  onPress: () => void;
 };

@@ -10,8 +10,10 @@ export default function SettingsScreen(_: ScreenProps<'Settings'>) {
 
   return (
     <Wrapper>
-      <Stack axis="y" spacing="large" align="center" justify="around">
-        <FillButton onPress={toggleLocale}>{locale}</FillButton>
+      <Stack axis="y" spacing="large" align="center">
+        <FillButton variant="neutral" onPress={toggleLocale}>
+          {locale}
+        </FillButton>
         <ColorModeButton />
         <LogoutButton />
       </Stack>

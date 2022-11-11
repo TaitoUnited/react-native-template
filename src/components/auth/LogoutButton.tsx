@@ -15,7 +15,7 @@ export default function LogoutButton() {
   }
 
   return (
-    <OutlineButton variant="primary" size="medium" onPress={handleLogout}>
+    <OutlineButton variant="primary" icon="logout" onPress={handleLogout}>
       <Trans>Logout</Trans>
     </OutlineButton>
   );

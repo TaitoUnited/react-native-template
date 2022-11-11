@@ -1,33 +1,52 @@
-import type { ButtonProps } from './types';
+import type { ButtonProps, ButtonVariant } from './types';
 import ButtonContent from './ButtonContent';
-import { styled } from '~styles';
+import { Color, styled } from '~styles';
 
 export function OutlineButton({
-  disabled = false,
-  style,
-  onPress,
+  children,
+  size,
+  icon,
+  iconSide,
+  iconPosition,
+  loading,
+  variant,
   ...rest
 }: ButtonProps) {
   return (
-    <Wrapper
-      activeOpacity={0.8}
-      disabled={disabled}
-      style={style}
-      onPress={onPress}
-    >
-      <ButtonContent textColor="primary" {...rest} />
+    <Wrapper {...rest} variant={variant}>
+      <ButtonContent
+        variant={variant}
+        size={size}
+        icon={icon}
+        iconSide={iconSide}
+        iconPosition={iconPosition}
+        loading={loading}
+      >
+        {children}
+      </ButtonContent>
     </Wrapper>
   );
 }
 
-const Wrapper = styled('TouchableOpacity', {
+const variantToUnderlayColor: Record<ButtonVariant, Color> = {
+  primary: 'primaryMuted',
+  danger: 'errorMuted',
+  warn: 'warnMuted',
+  info: 'infoMuted',
+  neutral: 'muted5',
+};
+
+const Wrapper = styled('TouchableHighlight', {
   backgroundColor: 'transparent',
-  borderRadius: '$medium',
+  borderRadius: '$full',
   borderWidth: 1,
   variants: {
     variant: {
       primary: { borderColor: '$primary' },
       danger: { borderColor: '$error' },
+      warn: { borderColor: '$warn' },
+      info: { borderColor: '$info' },
+      neutral: { borderColor: '$textMuted' },
     },
     disabled: {
       true: { opacity: 0.5 },
@@ -35,6 +54,8 @@ const Wrapper = styled('TouchableOpacity', {
     },
   },
   defaultVariants: {
-    variant: 'primary',
+    variant: 'neutral',
   },
-});
+}).attrs((p) => ({
+  underlayColor: p.theme.colors[variantToUnderlayColor[p.variant || 'neutral']],
+}));
