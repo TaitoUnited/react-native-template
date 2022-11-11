@@ -1,6 +1,7 @@
 export { Text } from './Text';
 export { Spacer } from './Spacer';
 export { Stack } from './Stack';
+export { Grid } from './Grid';
 export { Icon } from './Icon';
 export { FillButton } from './Buttons/FillButton';
 export { OutlineButton } from './Buttons/OutlineButton';

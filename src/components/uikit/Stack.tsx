@@ -1,14 +1,14 @@
+import type { ViewProps } from 'react-native';
+
 import {
   Children,
   cloneElement,
   Fragment,
   isValidElement,
-  ReactElement,
   ReactNode,
 } from 'react';
 
-import { ViewProps } from 'react-native';
-
+import { flattenChildren } from './helpers';
 import { Spacer } from './Spacer';
 import { styled, Theme } from '~styles';
 
@@ -36,7 +36,7 @@ export function Stack({
   const lastIndex = Children.count(elements) - 1;
 
   return (
-    <StyledStack axis={axis} align={align} justify={justify} {...rest}>
+    <Wrapper axis={axis} align={align} justify={justify} {...rest}>
       {elements.map((child, index) => {
         if (!isValidElement(child)) return null;
 
@@ -59,11 +59,11 @@ export function Stack({
           </Fragment>
         );
       })}
-    </StyledStack>
+    </Wrapper>
   );
 }
 
-const StyledStack = styled('View', {
+const Wrapper = styled('View', {
   variants: {
     axis: {
       x: { flexDirection: 'row' },
@@ -84,20 +84,3 @@ const StyledStack = styled('View', {
     },
   },
 });
-
-// Helpers ---------------------------------------------------------------------
-
-type ReactChildArray = ReturnType<typeof Children.toArray>;
-
-function flattenChildren(children: ReactNode): ReactChildArray {
-  const childrenArray = Children.toArray(children);
-  return childrenArray.reduce((flatChildren: ReactChildArray, child) => {
-    if ((child as ReactElement<any>).type === Fragment) {
-      return flatChildren.concat(
-        flattenChildren((child as ReactElement<any>).props.children)
-      );
-    }
-    flatChildren.push(child);
-    return flatChildren;
-  }, []);
-}
