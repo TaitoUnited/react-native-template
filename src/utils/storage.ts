@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LOCALE = '@app/locale';
@@ -52,10 +52,10 @@ export function useStorageState<T extends object | string | boolean>(
   key: Parameters<typeof storage.get>[0],
   initial: T | null = null
 ) {
-  const [state, setState] = React.useState<T | null>(initial);
-  const [initialized, setInitialized] = React.useState(false);
+  const [state, setState] = useState<T | null>(initial);
+  const [initialized, setInitialized] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     async function init() {
       const persistedState = await storage.get<T | null>(key);
       if (persistedState !== null) setState(persistedState);
@@ -65,7 +65,7 @@ export function useStorageState<T extends object | string | boolean>(
     init();
   }, [key]);
 
-  return React.useMemo(
+  return useMemo(
     () => ({
       initialized,
       state,

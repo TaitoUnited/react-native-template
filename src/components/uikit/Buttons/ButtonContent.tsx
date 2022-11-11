@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { ActivityIndicator } from 'react-native';
 
 import { Text } from '../Text';
@@ -16,14 +17,14 @@ export default function ButtonContent({
   size = 'large',
   textColor,
   icon,
-  iconPlacement = 'right',
+  iconPlacement = 'end',
   loading,
 }: Props) {
   const theme = useTheme();
   const textVariant = sizeToTextVariant[size];
   const iconSize = sizeToIconSize[size];
 
-  let decoration: React.ReactNode = null;
+  let decoration: ReactNode = null;
 
   if (icon) {
     decoration = <Icon name={icon} color={textColor} size={iconSize} />;
@@ -47,7 +48,7 @@ export default function ButtonContent({
         spacing={size === 'large' ? 'small' : 'xsmall'}
       >
         <Decoration>
-          {Boolean(decoration && iconPlacement === 'left') && decoration}
+          {Boolean(decoration && iconPlacement === 'start') && decoration}
         </Decoration>
 
         {!!children && (
@@ -57,7 +58,7 @@ export default function ButtonContent({
         )}
 
         <Decoration>
-          {Boolean(decoration && iconPlacement === 'right') && decoration}
+          {Boolean(decoration && iconPlacement === 'end') && decoration}
         </Decoration>
       </Stack>
     </Wrapper>

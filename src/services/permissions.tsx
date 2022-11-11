@@ -1,8 +1,9 @@
-import React from 'react';
+import { useCallback } from 'react';
+import { Platform, Alert } from 'react-native';
+import { t } from '@lingui/macro';
 import create from 'zustand';
 import flatten from 'lodash/flatten';
 import compact from 'lodash/compact';
-import { Platform, Alert, AppState, AppStateStatus } from 'react-native';
 
 import {
   RESULTS,
@@ -14,6 +15,8 @@ import {
   PERMISSIONS,
   Permission,
 } from 'react-native-permissions';
+
+import { useAppState } from '~utils/observe';
 
 const usePermissionStore = create<PermissionStore>((set, get) => ({
   status: 'pending',
@@ -32,7 +35,7 @@ const OS = Platform.OS as 'ios' | 'android';
 export function usePermissions() {
   const { status, permissions, setPermissions } = usePermissionStore();
 
-  const check = React.useCallback(async () => {
+  const check = useCallback(async () => {
     try {
       const notification = await checkNotifications();
       const statuses = await checkMultiple(getPermissions(OS));
@@ -58,7 +61,7 @@ export function usePermissions() {
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const request = React.useCallback(
+  const request = useCallback(
     async (category: PermissionCategory) => {
       const _openSettings = () => openSettings().catch(() => console.log('> Failed to open settings')); // prettier-ignore
 
@@ -77,12 +80,7 @@ export function usePermissions() {
             statuses = await requestMultiple(permissionsToRequest);
           }
         } else if (category === 'notification') {
-          statuses = await requestNotifications([
-            'alert',
-            'sound',
-            'badge',
-            'criticalAlert',
-          ]);
+          statuses = await requestNotifications(['alert', 'sound', 'badge']);
         }
 
         if (Object.values(statuses).every((s) => s === RESULTS.GRANTED)) {
@@ -91,11 +89,11 @@ export function usePermissions() {
           return RESULTS.GRANTED;
         } else if (Object.values(statuses).some((s) => s === RESULTS.BLOCKED)) {
           Alert.alert(
-            'Unable to change permission',
-            'You need to change the permission in the system settings.',
+            t`Unable to change permission`,
+            t`You need to change the permission in the system settings.`,
             [
-              { text: 'Close', style: 'cancel' },
-              { text: 'Open settings', onPress: _openSettings },
+              { text: t`Close`, style: 'cancel' },
+              { text: t`Open settings`, onPress: _openSettings },
             ]
           );
 
@@ -105,11 +103,11 @@ export function usePermissions() {
         console.log('> Failed to request permission', error);
 
         Alert.alert(
-          'Something went wrong',
-          'Could not toggle permission. You can change the permission in the system settings.',
+          t`Something went wrong`,
+          t`Could not toggle permission. You can change the permission in the system settings.`,
           [
-            { text: 'Close', style: 'cancel' },
-            { text: 'Open settings', onPress: _openSettings },
+            { text: t`Close`, style: 'cancel' },
+            { text: t`Open settings`, onPress: _openSettings },
           ]
         );
 
@@ -121,7 +119,7 @@ export function usePermissions() {
     [check]
   );
 
-  const toggle = React.useCallback(
+  const toggle = useCallback(
     async (category: PermissionCategory) => {
       if (!permissions) return;
 
@@ -136,30 +134,7 @@ export function usePermissions() {
 
   // Re-check permissions when app comes back to foreground eg. after the user
   // has changed a permission in the system settings
-  const appState = React.useRef(AppState.currentState);
-
-  React.useEffect(() => {
-    const _handleAppStateChange = (nextAppState: AppStateStatus) => {
-      if (
-        appState.current.match(/inactive|background/) &&
-        nextAppState === 'active'
-      ) {
-        check();
-      }
-
-      appState.current = nextAppState;
-    };
-
-    const sub = AppState.addEventListener('change', _handleAppStateChange);
-
-    return () => {
-      sub.remove();
-    };
-  }, [check]);
-
-  React.useEffect(() => {
-    check();
-  }, []); // eslint-disable-line
+  useAppState({ onActive: check });
 
   return { status, permissions, check, request, toggle };
 }

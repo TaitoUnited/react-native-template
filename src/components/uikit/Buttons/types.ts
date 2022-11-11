@@ -14,7 +14,7 @@ export type ButtonProps = {
   disabled?: boolean;
   style?: ViewStyle;
   icon?: IconName;
-  iconPlacement?: 'right' | 'left';
+  iconPlacement?: 'start' | 'end';
   loading?: boolean;
   onPress: () => void;
 };

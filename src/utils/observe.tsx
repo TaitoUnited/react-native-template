@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { useIsFocused } from '@react-navigation/native';
 import { AppState, AppStateStatus, BackHandler, Keyboard } from 'react-native';
+import { useIsFocused } from '@react-navigation/native';
+import { useEvent } from './common';
 
 export function useKeyboardVisibility() {
   const [isKeyboardOpen, setKeyboardOpen] = useState(false);
@@ -27,27 +28,33 @@ export function useKeyboardVisibility() {
   return isKeyboardOpen;
 }
 
-export function useAppForegroundEffect(callback: () => void) {
+export function useAppState(callbacks: {
+  onActive?: () => any;
+  onInactive?: () => any;
+}) {
   const appState = useRef(AppState.currentState);
 
+  const onAppStateChange = useEvent((nextAppState: AppStateStatus) => {
+    if (
+      appState.current.match(/inactive|background/) &&
+      nextAppState === 'active'
+    ) {
+      callbacks.onActive?.();
+    } else if (
+      appState.current === 'active' &&
+      nextAppState.match(/inactive|background/)
+    ) {
+      callbacks.onInactive?.();
+    }
+
+    appState.current = nextAppState;
+  });
+
   useEffect(() => {
-    const _handleAppStateChange = (nextAppState: AppStateStatus) => {
-      if (
-        appState.current.match(/inactive|background/) &&
-        nextAppState === 'active'
-      ) {
-        callback();
-      }
-
-      appState.current = nextAppState;
-    };
-
-    const handler = AppState.addEventListener('change', _handleAppStateChange);
-
-    return () => {
-      handler.remove();
-    };
-  }, [callback]);
+    callbacks.onActive?.();
+    const sub = AppState.addEventListener('change', onAppStateChange);
+    return () => sub.remove();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 }
 
 export function useBackHandler(callback: () => any) {

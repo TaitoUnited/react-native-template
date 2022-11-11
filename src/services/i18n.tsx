@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { ReactNode, useCallback } from 'react';
 import { getLocales } from 'react-native-localize';
 import { Settings } from 'luxon';
 import { en, fi } from 'make-plural';
@@ -79,6 +79,6 @@ export function useI18n() {
   };
 }
 
-export function I18nProvider({ children }: { children: React.ReactNode }) {
+export function I18nProvider({ children }: { children: ReactNode }) {
   return <LinguiProvider i18n={i18n}>{children}</LinguiProvider>;
 }
