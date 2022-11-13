@@ -4,11 +4,11 @@ import { Trans } from '@lingui/macro';
 import { FlashList } from '@shopify/flash-list';
 
 import { Text } from './Text';
-import { Stack } from './Stack';
-import { Spacer } from './Spacer';
-import { Radio } from './Inputs/Radio';
-import { Checkbox } from './Inputs/Checkbox';
-import { SearchInput } from './Inputs/SearchInput';
+import { Stack } from './layout/Stack';
+import { Spacer } from './layout/Spacer';
+import { Radio } from './inputs/Radio';
+import { Checkbox } from './inputs/Checkbox';
+import { SearchInput } from './inputs/SearchInput';
 import { styled } from '~styles';
 import { useEvent } from '~utils/common';
 

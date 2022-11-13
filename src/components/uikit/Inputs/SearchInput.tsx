@@ -3,7 +3,7 @@ import { TextInputProps, TouchableOpacity } from 'react-native';
 import { t, Trans } from '@lingui/macro';
 
 import { Text } from '../Text';
-import { Stack } from '../Stack';
+import { Stack } from '../layout/Stack';
 import { Icon } from '../Icon';
 import { styled } from '~styles';
 

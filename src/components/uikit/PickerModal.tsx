@@ -12,9 +12,9 @@ import {
 } from 'react-native';
 
 import { Text } from './Text';
-import { Stack } from './Stack';
-import { Radio } from './Inputs/Radio';
-import { Checkbox } from './Inputs/Checkbox';
+import { Stack } from './layout/Stack';
+import { Radio } from './inputs/Radio';
+import { Checkbox } from './inputs/Checkbox';
 import { styled } from '~styles';
 
 type BaseProps = {

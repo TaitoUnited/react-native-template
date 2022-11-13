@@ -8,7 +8,7 @@ import {
   ReactNode,
 } from 'react';
 
-import { flattenChildren } from './helpers';
+import { flattenChildren } from '../helpers';
 import { Spacer } from './Spacer';
 import { styled, Theme } from '~styles';
 

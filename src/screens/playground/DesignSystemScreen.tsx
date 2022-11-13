@@ -1,6 +1,7 @@
 import startCase from 'lodash/startCase';
 import groupBy from 'lodash/groupBy';
 
+import { Note } from './common';
 import { Color, styled, themeProp } from '~styles';
 import { Grid, Stack, Text } from '~components/uikit';
 import { ScreenProps } from '~screens/types';
@@ -59,6 +60,12 @@ export default function DesignSystemScreen(_: ScreenProps<'DesignSystem'>) {
               ))}
             </Grid>
           </Stack>
+
+          <Note>
+            If the design system colors are shared between a Web app and a
+            native app there might be some colors that are not relevant to
+            native apps like focus related colors.
+          </Note>
         </Stack>
 
         <Stack axis="y" spacing="medium">
@@ -71,6 +78,11 @@ export default function DesignSystemScreen(_: ScreenProps<'DesignSystem'>) {
               </TypographyBlock>
             ))}
           </Stack>
+
+          <Note>
+            Use the Text component to render text with the correct typography
+            variant!
+          </Note>
         </Stack>
 
         <Stack axis="y" spacing="normal">
@@ -106,6 +118,12 @@ export default function DesignSystemScreen(_: ScreenProps<'DesignSystem'>) {
               </Stack>
             ))}
           </Stack>
+
+          <Note>
+            Use spacing tokens for margins and paddings. Use the layout
+            components like Stack, Spacer, or Grid to render elements with
+            proper spacing. Try to avoid adding margins to elements directly.
+          </Note>
         </Stack>
       </Stack>
     </Wrapper>

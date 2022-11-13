@@ -1,7 +1,7 @@
 import { cloneElement, isValidElement, ReactNode, useState } from 'react';
 import { View, ViewProps } from 'react-native';
 
-import { flattenChildren } from './helpers';
+import { flattenChildren } from '../helpers';
 import { styled, Theme, useTheme } from '~styles';
 
 type Props = ViewProps & {

@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { ActivityIndicator } from 'react-native';
 
 import { Text } from '../Text';
-import { Stack } from '../Stack';
+import { Stack } from '../layout/Stack';
 import { Icon } from '../Icon';
 import type { ButtonProps, ButtonSize, ButtonVariant } from './types';
 import type { TypographyToken as Typography } from '~design-system/typography';
