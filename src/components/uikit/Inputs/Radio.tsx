@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import { Animated } from 'react-native';
+import { Animated, PixelRatio } from 'react-native';
 
 import { Text } from '../Text';
 import { styled } from '~styles';
@@ -45,7 +45,7 @@ const RadioOuter = styled('View', {
   height: 24,
   backgroundColor: 'transparent',
   borderRadius: '$full',
-  borderWidth: 1,
+  borderWidth: PixelRatio.roundToNearestPixel(1.5), // match checkbox
   marginRight: '$small',
   borderColor: '$text',
 });

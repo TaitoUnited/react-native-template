@@ -1,5 +1,11 @@
 import { PixelRatio } from 'react-native';
 
+import Animated, {
+  Easing,
+  useAnimatedStyle,
+  withTiming,
+} from 'react-native-reanimated';
+
 import { Text } from '../Text';
 import { Icon } from '../Icon';
 import { styled } from '~styles';
@@ -12,10 +18,25 @@ type Props = {
 };
 
 export function Checkbox({ onChange, checked, value, label }: Props) {
+  const animatedStyles = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          scale: withTiming(checked ? 1 : 0, {
+            duration: 100,
+            easing: Easing.inOut(Easing.ease),
+          }),
+        },
+      ],
+    };
+  });
+
   return (
     <Wrapper onPress={() => onChange(value)} activeOpacity={0.8}>
       <RadioOuter>
-        {checked && <Icon name="checkmark" size={18} color="text" />}
+        <Animated.View style={animatedStyles}>
+          <Icon name="checkmark" size={18} color="text" />
+        </Animated.View>
       </RadioOuter>
 
       <Text variant={checked ? 'bodyBold' : 'body'}>{label}</Text>
