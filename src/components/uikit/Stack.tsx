@@ -74,6 +74,7 @@ const Wrapper = styled('View', {
       start: { alignItems: 'flex-start' },
       end: { alignItems: 'flex-end' },
       stretch: { alignItems: 'stretch' },
+      baseline: { alignItems: 'baseline' },
     },
     justify: {
       center: { justifyContent: 'center' },
