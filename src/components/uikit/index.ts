@@ -14,3 +14,4 @@ export { Select } from './inputs/Select';
 export { PickerModal } from './PickerModal';
 export { PickerSheet } from './PickerSheet';
 export { Image } from './Image';
+export { SegmentedControl } from './SegmentedControl';
