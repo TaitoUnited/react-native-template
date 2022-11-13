@@ -32,7 +32,7 @@ export function Grid({
       {...rest}
       align={align}
       justify={justify}
-      style={[rest.style, { marginHorizontal: theme.space[spacing] / -2 }]}
+      style={[rest.style, { margin: theme.space[spacing] / -2 }]}
       onLayout={(e) => setWidth(e.nativeEvent.layout.width)}
     >
       {elements.map((child, index) => {
