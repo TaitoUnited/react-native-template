@@ -16,7 +16,7 @@ export default function LayoutScreen(_: ScreenProps<'Layout'>) {
         </Note>
 
         <Stack axis="y" spacing="normal">
-          <Text variant="title2">Stack</Text>
+          <Text variant="title3">Stack</Text>
 
           <Text variant="body" withLineHeight>
             Stack component is used to stack elements vertically or horizontally
@@ -53,7 +53,7 @@ export default function LayoutScreen(_: ScreenProps<'Layout'>) {
         </Stack>
 
         <Stack axis="y" spacing="normal">
-          <Text variant="title2">Spacer</Text>
+          <Text variant="title3">Spacer</Text>
 
           <Text variant="body" withLineHeight>
             It&lsquo;s possible to intervine Spacer components within a Stack to
@@ -84,7 +84,7 @@ export default function LayoutScreen(_: ScreenProps<'Layout'>) {
         </Stack>
 
         <Stack axis="y" spacing="normal">
-          <Text variant="title2">Grid</Text>
+          <Text variant="title3">Grid</Text>
 
           <Text variant="body" withLineHeight>
             A Grid component can be used for grid-like layouts.

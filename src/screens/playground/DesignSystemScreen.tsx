@@ -31,7 +31,7 @@ export default function DesignSystemScreen(_: ScreenProps<'DesignSystem'>) {
     <Wrapper>
       <Stack axis="y" spacing="xlarge">
         <Stack axis="y" spacing="medium">
-          <Text variant="title2">Colors</Text>
+          <Text variant="title3">Colors</Text>
 
           {Object.entries(colorGroups).map(([groupName, groupColors]) => (
             <Stack key={groupName} axis="y" spacing="small">
@@ -41,7 +41,9 @@ export default function DesignSystemScreen(_: ScreenProps<'DesignSystem'>) {
                 {groupColors.map((color) => (
                   <Stack key={color} axis="y" spacing="xsmall" align="center">
                     <ColorBlock bg={color} />
-                    <Text variant="bodySmall">{startCase(color)}</Text>
+                    <Text variant="bodySmall" color="textMuted">
+                      {startCase(color)}
+                    </Text>
                   </Stack>
                 ))}
               </Grid>
@@ -55,7 +57,9 @@ export default function DesignSystemScreen(_: ScreenProps<'DesignSystem'>) {
               {otherColors.map((color) => (
                 <Stack key={color} axis="y" spacing="xsmall" align="center">
                   <ColorBlock bg={color} />
-                  <Text variant="bodySmall">{startCase(color)}</Text>
+                  <Text variant="bodySmall" color="textMuted">
+                    {startCase(color)}
+                  </Text>
                 </Stack>
               ))}
             </Grid>
@@ -69,7 +73,7 @@ export default function DesignSystemScreen(_: ScreenProps<'DesignSystem'>) {
         </Stack>
 
         <Stack axis="y" spacing="medium">
-          <Text variant="title2">Typography</Text>
+          <Text variant="title3">Typography</Text>
 
           <Stack axis="y" spacing="xsmall">
             {typographyNames.map((name) => (
@@ -86,7 +90,7 @@ export default function DesignSystemScreen(_: ScreenProps<'DesignSystem'>) {
         </Stack>
 
         <Stack axis="y" spacing="normal">
-          <Text variant="title2">Radii</Text>
+          <Text variant="title3">Radii</Text>
 
           <Grid spacing="normal" justify="center">
             {radiiEntries.map(([name, value]) => (
@@ -103,7 +107,7 @@ export default function DesignSystemScreen(_: ScreenProps<'DesignSystem'>) {
         </Stack>
 
         <Stack axis="y" spacing="medium">
-          <Text variant="title2">Spacing</Text>
+          <Text variant="title3">Spacing</Text>
 
           <Stack axis="y" spacing="xxsmall">
             {spacingEntries.map(([name, value]) => (

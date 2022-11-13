@@ -18,7 +18,7 @@ export default function ButtonsScreen(_: ScreenProps<'Buttons'>) {
     <Wrapper>
       <Stack axis="y" spacing="large">
         <Stack axis="y" spacing="small">
-          <Text variant="overline">Button sizes</Text>
+          <Text variant="title3">Sizes</Text>
 
           <FillButton variant="neutral" size="large" onPress={handlePress}>
             Large
@@ -32,7 +32,7 @@ export default function ButtonsScreen(_: ScreenProps<'Buttons'>) {
         </Stack>
 
         <Stack axis="y" spacing="small">
-          <Text variant="overline">Button types</Text>
+          <Text variant="title3">Types</Text>
           <FillButton variant="neutral" onPress={handlePress}>
             Fill button
           </FillButton>
@@ -42,7 +42,7 @@ export default function ButtonsScreen(_: ScreenProps<'Buttons'>) {
         </Stack>
 
         <Stack axis="y" spacing="small">
-          <Text variant="overline">Button variants</Text>
+          <Text variant="title3">Variants</Text>
 
           <FillButton variant="neutral" onPress={handlePress}>
             Neutral
@@ -77,7 +77,7 @@ export default function ButtonsScreen(_: ScreenProps<'Buttons'>) {
         </Stack>
 
         <Stack axis="y" spacing="small">
-          <Text variant="overline">Button icons</Text>
+          <Text variant="title3">With icon</Text>
 
           <FillButton variant="neutral" icon="camera" onPress={handlePress}>
             Next to label
@@ -110,7 +110,7 @@ export default function ButtonsScreen(_: ScreenProps<'Buttons'>) {
         </Stack>
 
         <Stack axis="y" spacing="normal">
-          <Text variant="overline">Icon buttons</Text>
+          <Text variant="title3">Icon buttons</Text>
 
           <Stack axis="x" spacing="medium">
             <IconButton size="large" icon="languageGlobe" color="text" />
