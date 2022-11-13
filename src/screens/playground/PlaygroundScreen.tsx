@@ -19,6 +19,7 @@ export default function PlaygroundScreen({
     { screen: 'Inputs', label: 'Inputs' },
     { screen: 'Layout', label: 'Layout' },
     { screen: 'Toast', label: 'Toast' },
+    { screen: 'Sandbox', label: 'Sandbox' },
   ];
 
   useEffect(() => {

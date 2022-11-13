@@ -19,6 +19,7 @@ type AuthedNavigation = {
   }>;
   PlaygroundStack: Navigator<{
     Playground: undefined;
+    Sandbox: undefined;
     Buttons: undefined;
     DesignSystem: undefined;
     Icons: undefined;

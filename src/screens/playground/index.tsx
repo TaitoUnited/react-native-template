@@ -1,6 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 
 import PlaygroundScreen from './PlaygroundScreen';
+import SandboxScreen from './SandboxScreen';
 import ButtonsScreen from './ButtonsScreen';
 import DesignSystemScreen from './DesignSystemScreen';
 import IconsScreen from './IconsScreen';
@@ -33,6 +34,11 @@ export default function PlaygroundNavigator() {
         name="Playground"
         options={{ title: 'Playground' }}
         component={PlaygroundScreen}
+      />
+      <Stack.Screen
+        name="Sandbox"
+        options={{ title: 'Sandbox' }}
+        component={SandboxScreen}
       />
       <Stack.Screen
         name="Buttons"
