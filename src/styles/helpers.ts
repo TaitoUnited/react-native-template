@@ -51,10 +51,8 @@ export function themeProp<P extends string, T extends ThemeKey>(
  * }
  */
 export function getTextTypographyVariants() {
-  const typographyVariants = {} as Record<
-    Typography,
-    { typography: Typography }
-  >;
+  // TODO: improve typing here - remove `any`s
+  const typographyVariants = {} as Record<Typography, any>;
 
   const compoundVariants = [] as Array<{
     variant: Typography;
@@ -72,10 +70,11 @@ export function getTextTypographyVariants() {
 
     typographyVariants[variant] = {
       typography: variant,
+      // Apply line height only for multiline text since by default app UI text
+      // should not have a line height bigger than `1` (same as font size)
+      lineHeight: typographyTokens[variant].fontSize,
     };
 
-    // Apply line height only for multiline text since by default app UI text
-    // should not have a line height bigger than `1` (same as font size)
     compoundVariants.push({
       variant: variant,
       withLineHeight: true,
