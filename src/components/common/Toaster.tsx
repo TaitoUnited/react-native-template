@@ -85,7 +85,7 @@ function Toast({
       <Stack axis="x" spacing="small" align="center">
         {hasIcon && <Icon name={iconName} size={24} color={color} />}
 
-        <Stack axis="y" spacing="none" align="center">
+        <Stack axis="y" spacing="xxsmall" align="center">
           <Text variant="bodySmall" color={color}>
             {title}
           </Text>
