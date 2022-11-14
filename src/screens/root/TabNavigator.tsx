@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { t } from '@lingui/macro';
 
@@ -73,6 +73,10 @@ export default function TabNavigator() {
           name={id}
           component={screen}
           options={{
+            tabBarItemStyle: {
+              // On Android the label is too close to the bottom edge of the tab bar
+              paddingBottom: Platform.OS === 'android' ? 4 : 0,
+            },
             tabBarLabel: ({ focused }) => (
               <Text variant="caption" color={focused ? 'text' : 'textMuted'}>
                 {title}
