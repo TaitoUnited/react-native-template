@@ -23,7 +23,7 @@ jobs:
         run: |
           git fetch
           git checkout stag || git checkout -b stag
-          git merge dev -m "ci: sync changes" --strategy-option theirs
+          git merge dev --ff-only
       - name: Install dependencies
         run: npm ci
       - name: Prebuild
@@ -31,5 +31,5 @@ jobs:
           npm run prebuild:ci
           git add -f ios ':!ios/Pods'
           git add -f android
-          git commit --amend --no-edit
+          git commit -m "ci: prebuild"
           git push origin stag
