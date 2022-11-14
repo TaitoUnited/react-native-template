@@ -57,6 +57,7 @@
     "react-freeze": "1.0.3",
     "react-hook-form": "7.39.1",
     "react-native": "0.70.5",
+    "react-native-date-picker": "4.2.6",
     "react-native-device-info": "10.3.0",
     "react-native-fast-image": "8.6.3",
     "react-native-gesture-handler": "~2.8.0",

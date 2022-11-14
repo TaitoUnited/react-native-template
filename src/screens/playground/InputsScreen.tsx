@@ -4,6 +4,7 @@ import { styled } from '~styles';
 import { ScreenProps } from '~screens/types';
 import {
   Checkbox,
+  DateInput,
   Radio,
   SegmentedControl,
   Select,
@@ -19,6 +20,7 @@ export default function InputsScreen(_: ScreenProps<'Inputs'>) {
   const [radio, setRadio] = useState('1');
   const [checked, setChecked] = useState(false);
   const [selectedSegment, setSelectedSegment] = useState('bar');
+  const [date, setDate] = useState(new Date());
 
   return (
     <Wrapper>
@@ -26,6 +28,16 @@ export default function InputsScreen(_: ScreenProps<'Inputs'>) {
         <Stack axis="y" spacing="normal">
           <Text variant="title3">Text Input</Text>
           <TextInput label="Text input" value={text} onChange={setText} />
+        </Stack>
+
+        <Stack axis="y" spacing="normal">
+          <Text variant="title3">Date Input</Text>
+          <DateInput
+            value={date}
+            onChange={setDate}
+            label="Birthday"
+            mode="date"
+          />
         </Stack>
 
         <Stack axis="y" spacing="normal">

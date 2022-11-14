@@ -10,6 +10,7 @@ export { TextInput } from './inputs/TextInput';
 export { Radio } from './inputs/Radio';
 export { Checkbox } from './inputs/Checkbox';
 export { SearchInput } from './inputs/SearchInput';
+export { DateInput } from './inputs/DateInput';
 export { Select } from './inputs/Select';
 export { PickerModal } from './PickerModal';
 export { PickerSheet } from './PickerSheet';
