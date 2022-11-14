@@ -31,5 +31,5 @@ jobs:
           npm run prebuild:ci
           git add -f ios ':!ios/Pods'
           git add -f android
-          git commit --amend
+          git commit --amend --no-edit
           git push origin test
