@@ -1,0 +1,34 @@
+name: 'Sync | Test'
+on: workflow_dispatch
+jobs:
+  build:
+    name: 'Sync changes from main branch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+      - name: Install Sharp CLI
+        run: npm install -g sharp-cli@^1.10.0
+      - name: Configure git
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+      - name: Rebase main
+        run: |
+          git fetch
+          git checkout test || git checkout -b test
+          git rebase main
+      - name: Install dependencies
+        run: npm ci
+      - name: Prebuild
+        run: |
+          npm run prebuild:ci
+          git add -f ios ':!ios/Pods'
+          git add -f android
+          git commit -m "ci: prebuild"
+          git push origin test
