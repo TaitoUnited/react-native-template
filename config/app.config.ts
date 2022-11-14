@@ -75,6 +75,9 @@ function getExtraProguardRules() {
   **[] $VALUES;
   public *;
 }
+
+# react-native-device-info
+-keep class com.google.android.gms.common.** {*;}
 `;
 }
 
