@@ -23,7 +23,7 @@ jobs:
         run: |
           git fetch
           git checkout master || git checkout -b master
-          git merge dev --ff-only
+          git merge dev -m "ci: sync changes" --strategy-option theirs
       - name: Install dependencies
         run: npm ci
       - name: Prebuild
