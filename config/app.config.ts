@@ -23,6 +23,7 @@ const expoConfig: ExpoConfig = {
   },
   android: {
     package: appId,
+    jsEngine: 'hermes',
     adaptiveIcon: {
       foregroundImage: config.adaptiveIcon.foregroundImage,
       backgroundColor: config.adaptiveIcon.backgroundColor,
@@ -32,6 +33,7 @@ const expoConfig: ExpoConfig = {
   },
   ios: {
     bundleIdentifier: appId,
+    jsEngine: 'jsc',
     /* -------------- Add iOS permission usage descriptions here --------------
     infoPlist: {
       NSCameraUsageDescription: 'This app uses the camera to scan QR-codes.',
@@ -48,7 +50,15 @@ const expoConfig: ExpoConfig = {
     ],
     [
       'expo-build-properties',
-      { android: { extraProguardRules: getExtraProguardRules() } },
+      {
+        android: {
+          buildToolsVersion: '31.0.0',
+          minSdkVersion: 23,
+          compileSdkVersion: 33,
+          targetSdkVersion: 33,
+          extraProguardRules: getExtraProguardRules(),
+        },
+      },
     ],
   ],
 };
@@ -56,6 +66,7 @@ const expoConfig: ExpoConfig = {
 // NOTE: we can't inline this to the plugin definition because the indendation would be wrong
 function getExtraProguardRules() {
   return `
+# react-native-fast-image
 -keep public class com.dylanvann.fastimage.* {*;}
 -keep public class com.dylanvann.fastimage.** {*;}
 -keep public class * implements com.bumptech.glide.module.GlideModule
