@@ -19,11 +19,11 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-      - name: Rebase with dev
+      - name: Merge with dev
         run: |
           git fetch
           git checkout master || git checkout -b master
-          git rebase dev
+          git merge dev -m "ci: sync changes" --strategy-option theirs
       - name: Install dependencies
         run: npm ci
       - name: Prebuild
@@ -31,5 +31,5 @@ jobs:
           npm run prebuild:ci
           git add -f ios ':!ios/Pods'
           git add -f android
-          git commit -m "ci: prebuild"
+          git commit --amend
           git push origin master
