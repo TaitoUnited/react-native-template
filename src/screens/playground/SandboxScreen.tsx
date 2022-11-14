@@ -8,7 +8,7 @@ export default function SandboxScreen(_: ScreenProps<'Sandbox'>) {
       <Stack axis="y" spacing="medium">
         <Text variant="body" withLineHeight>
           You can play around with various components here if you don&lsquo;t
-          want to add a new screen for it in the playground.
+          want to add a new screen for them in the playground.
         </Text>
       </Stack>
     </Wrapper>
