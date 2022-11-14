@@ -4,7 +4,7 @@
 
 # React Native template
 
-Project template for mobile app projects using React Native and Expo.
+Project template for mobile app projects using React Native and Expo (via [Prebuild](https://docs.expo.dev/workflow/prebuild/)).
 
 ## Starting a new project
 
