@@ -42,7 +42,10 @@ const expoConfig: ExpoConfig = {
   },
   extra: config,
   plugins: [
-    './plugins/with-appcenter-signing',
+    [
+      './plugins/with-appcenter',
+      { appSecret: 'c061d869-eac1-42f6-bbb1-d9e2ea2749a4' },
+    ],
     [
       './plugins/with-react-native-permissions',
       // Add more iOS permissions here

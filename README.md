@@ -12,7 +12,11 @@ After you have cloned this repo to start a new mobile app project go through the
 
 ### Update app metadata
 
-Update the `slug` and `name` fields in the `config/app.config.ts`.
+Update the following fields in the `config/app.config.ts`:
+
+1. `name` (name of the app)
+2. `appSecret` (in `with-appcenter` plugin options - you need to have App Center projects setup for both iOS and Android versions of the app)
+3. `slug` (this is really not used but Expo requires it)
 
 ### Setup a design system
 
