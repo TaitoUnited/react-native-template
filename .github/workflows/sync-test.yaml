@@ -32,4 +32,4 @@ jobs:
           git add -f ios ':!ios/Pods'
           git add -f android
           git commit -m "ci: prebuild"
-          git push origin test
+          git push origin test --force-with-lease
