@@ -27,6 +27,9 @@ jobs:
       - name: Check formatting
         run: npm run format:check
 
+      - name: Check translations
+        run: npm run i18n:check
+
       - name: Lint code
         run: npm run lint
 
