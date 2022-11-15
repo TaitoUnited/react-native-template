@@ -13,235 +13,239 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/screens/settings/SettingsScreen.tsx:36
-msgid "Add your avatar"
-msgstr ""
-
 #: src/components/auth/LogoutButton.tsx:11
 msgid "Are you sure you want to logout?"
-msgstr ""
+msgstr "Oletko varma, että haluat kirjautua ulos?"
 
-#: src/screens/utils.ts:44
+#: src/screens/utils.tsx:30
 msgid "Back"
-msgstr ""
-
-#: src/screens/drawer/bluetooth/index.tsx:16
-msgid "Bluetooth"
-msgstr ""
-
-#: src/screens/bots/index.tsx:16
-msgid "Bots"
-msgstr ""
+msgstr "Takaisin"
 
 #: src/components/auth/LogoutButton.tsx:12
-#: src/components/uikit/Inputs/SearchInput.tsx:54
-#: src/components/uikit/PickerSheet.tsx:115
+#: src/components/uikit/PickerModal.tsx:206
+#: src/components/uikit/PickerSheet.tsx:153
+#: src/components/uikit/inputs/DateInput.tsx:88
+#: src/components/uikit/inputs/SearchInput.tsx:54
 msgid "Cancel"
-msgstr ""
+msgstr "Sulje"
 
 #: src/utils/linking.ts:21
 msgid "Cannot open {type}"
-msgstr ""
+msgstr "Ei voida avata {type}"
 
-#: src/components/common/ColorModeButton.tsx:16
-msgid "Change theme to {0}"
-msgstr ""
+#: src/screens/settings/SettingsScreen.tsx:25
+msgid "Change language to"
+msgstr "Vaihda kieleksi"
 
-#: src/components/uikit/PickerModal.tsx:170
-#: src/components/uikit/PickerSheet.tsx:115
+#: src/screens/settings/SettingsScreen.tsx:29
+msgid "Change theme to {colorModeLabel} mode"
+msgstr "Vaihda teema {colorModeLabel} tilaan"
+
+#: src/components/uikit/PickerModal.tsx:206
+#: src/components/uikit/PickerSheet.tsx:153
+#: src/services/permissions.tsx:95
+#: src/services/permissions.tsx:109
 msgid "Close"
-msgstr ""
+msgstr "Sulje"
+
+#: src/components/uikit/inputs/DateInput.tsx:87
+msgid "Confirm"
+msgstr "Vahvista"
 
 #: src/services/auth.ts:106
 msgid "Could not connect to server"
-msgstr ""
+msgstr "Ei voitu yhdistää palvelimeen"
 
-#: src/components/uikit/PickerSheet.tsx:122
+#: src/services/permissions.tsx:107
+msgid "Could not toggle permission. You can change the permission in the system settings."
+msgstr "Ei voitu muuttaa lupaa. Voit muuttaa lupaa järjestelmäasetuksista."
+
+#: src/components/uikit/PickerModal.tsx:213
+#: src/components/uikit/PickerSheet.tsx:160
 msgid "Done"
-msgstr ""
+msgstr "Valmis"
 
-#: src/screens/login/LoginScreen.tsx:68
-#: src/screens/login/SignupScreen.tsx:88
+#: src/screens/unauthed/LoginScreen.tsx:66
+#: src/screens/unauthed/SignupScreen.tsx:86
 msgid "Email"
-msgstr ""
+msgstr "Sähköposti"
 
-#: src/screens/login/LoginScreen.tsx:60
-#: src/screens/login/SignupScreen.tsx:80
+#: src/screens/unauthed/LoginScreen.tsx:58
+#: src/screens/unauthed/SignupScreen.tsx:78
 msgid "Email invalid"
-msgstr ""
+msgstr "Virheellinen sähköposti"
 
-#: src/screens/login/LoginScreen.tsx:62
-#: src/screens/login/SignupScreen.tsx:82
+#: src/screens/unauthed/LoginScreen.tsx:60
+#: src/screens/unauthed/SignupScreen.tsx:80
 msgid "Email required"
-msgstr ""
+msgstr "Sähköposti on pakollinen"
 
-#: src/screens/login/LoginScreen.tsx:27
+#: src/screens/unauthed/LoginScreen.tsx:26
 msgid "Failed to login"
-msgstr ""
+msgstr "Sisäänkirjautuminen epäonnistui"
 
-#: src/screens/login/SignupScreen.tsx:44
+#: src/screens/unauthed/SignupScreen.tsx:43
 msgid "Failed to signup"
-msgstr ""
+msgstr "Rekisteröityminen epäonnistui"
 
-#: src/screens/drawer/file-upload/index.tsx:16
-msgid "FileUpload"
-msgstr ""
-
-#: src/screens/login/SignupScreen.tsx:108
+#: src/screens/unauthed/SignupScreen.tsx:106
 msgid "First name"
-msgstr ""
+msgstr "Etunimi"
 
-#: src/screens/login/SignupScreen.tsx:103
+#: src/screens/unauthed/SignupScreen.tsx:101
 msgid "First name is required"
-msgstr ""
+msgstr "Etunimi on pakollinen"
 
-#: src/screens/food/index.tsx:16
-msgid "Food"
-msgstr ""
-
-#: src/screens/drawer/frisbee/index.tsx:16
-msgid "Frisbee"
-msgstr ""
-
-#: src/screens/drawer/home/index.tsx:16
+#: src/screens/home/index.tsx:17
+#: src/screens/root/TabNavigator.tsx:29
 msgid "Home"
-msgstr ""
+msgstr "Koti"
 
-#: src/screens/login/SignupScreen.tsx:126
+#: src/screens/unauthed/SignupScreen.tsx:124
 msgid "Last name"
-msgstr ""
+msgstr "Sukunimi"
 
-#: src/screens/login/SignupScreen.tsx:121
+#: src/screens/unauthed/SignupScreen.tsx:119
 msgid "Last name is required"
-msgstr ""
+msgstr "Sukunimin on pakollinen"
 
-#: src/screens/login/LoginScreen.tsx:110
+#: src/screens/unauthed/LoginScreen.tsx:108
 msgid "Logging in..."
-msgstr ""
+msgstr "Kirjaudutaan sisään..."
 
-#: src/screens/root/AppNavigator.tsx:56
+#: src/screens/root/AppNavigator.tsx:53
 msgid "Logging out..."
-msgstr ""
+msgstr "Kirjaudutaan ulos..."
 
-#: src/screens/login/LandingScreen.tsx:26
-#: src/screens/login/LoginScreen.tsx:112
-#: src/screens/login/index.tsx:24
+#: src/screens/unauthed/LandingScreen.tsx:19
+#: src/screens/unauthed/LoginScreen.tsx:110
+#: src/screens/unauthed/index.tsx:24
 msgid "Login"
-msgstr ""
+msgstr "Kirjaudu sisään"
 
-#: src/screens/login/LoginScreen.tsx:43
+#: src/screens/unauthed/LoginScreen.tsx:41
 msgid "Login with your account"
-msgstr ""
+msgstr "Kirjaudu sisään tililläsi"
 
 #: src/components/auth/LogoutButton.tsx:13
 #: src/components/auth/LogoutButton.tsx:19
 msgid "Logout"
-msgstr ""
+msgstr "Kirjaudu ulos"
 
-#: src/screens/drawer/maps/index.tsx:16
-msgid "Maps"
-msgstr ""
+#: src/components/uikit/PickerSheet.tsx:253
+msgid "No results found."
+msgstr "Ei tuloksia."
 
-#: src/screens/drawer/messaging/index.tsx:16
-msgid "Messaging"
-msgstr ""
+#: src/screens/settings/SettingsScreen.tsx:35
+msgid "Open playground"
+msgstr "Avaa playground"
 
-#: src/components/uikit/PickerSheet.tsx:89
-msgid "No results"
-msgstr ""
+#: src/services/permissions.tsx:96
+#: src/services/permissions.tsx:110
+msgid "Open settings"
+msgstr "Avaa asetukset"
 
-#: src/screens/login/LoginScreen.tsx:88
-#: src/screens/login/SignupScreen.tsx:174
+#: src/screens/unauthed/LoginScreen.tsx:86
+#: src/screens/unauthed/SignupScreen.tsx:172
 msgid "Password"
-msgstr ""
+msgstr "Salasana"
 
-#: src/screens/login/SignupScreen.tsx:221
+#: src/screens/unauthed/SignupScreen.tsx:219
 msgid "Password again"
-msgstr ""
+msgstr "Salasana uudestaan"
 
-#: src/screens/login/LoginScreen.tsx:83
+#: src/screens/unauthed/LoginScreen.tsx:81
+#: src/screens/unauthed/SignupScreen.tsx:166
+#: src/screens/unauthed/SignupScreen.tsx:213
 msgid "Password is required"
-msgstr ""
+msgstr "Salasana on pakollinen"
 
-#: src/screens/login/SignupScreen.tsx:166
-#: src/screens/login/SignupScreen.tsx:213
+#: src/screens/unauthed/SignupScreen.tsx:164
+#: src/screens/unauthed/SignupScreen.tsx:211
 msgid "Password must be at least 8 characters"
-msgstr ""
+msgstr "Salasanan on oltava vähintään 8 merkkiä"
 
-#: src/screens/login/SignupScreen.tsx:168
-#: src/screens/login/SignupScreen.tsx:215
-msgid "Password required"
-msgstr ""
-
-#: src/screens/login/SignupScreen.tsx:211
+#: src/screens/unauthed/SignupScreen.tsx:209
 msgid "Passwords do not match"
-msgstr ""
+msgstr "Salasanat eivät täsmää"
 
-#: src/screens/drawer/payment/index.tsx:16
-msgid "Payment"
-msgstr ""
-
-#: src/screens/login/SignupScreen.tsx:148
+#: src/screens/unauthed/SignupScreen.tsx:146
 msgid "Phone number"
-msgstr ""
+msgstr "Puhelinnumero"
 
-#: src/screens/login/SignupScreen.tsx:139
+#: src/screens/unauthed/SignupScreen.tsx:137
 msgid "Phone number is required"
-msgstr ""
+msgstr "Puhenumero on pakollinen"
 
 #: src/components/common/ErrorBoundary.tsx:42
 msgid "Please try restarting the application."
-msgstr ""
+msgstr "Yritä käynnistää sovellus uudelleen."
 
-#: src/screens/login/SignupScreen.tsx:143
+#: src/screens/unauthed/SignupScreen.tsx:141
 msgid "Preferred format: +358400123456"
-msgstr ""
+msgstr "Suositeltu muoto: +358400123456"
 
-#: src/screens/drawer/qr-scanner/index.tsx:16
-msgid "QrScanner"
-msgstr ""
+#: src/screens/profile/index.tsx:17
+#: src/screens/root/TabNavigator.tsx:44
+msgid "Profile"
+msgstr "Profiili"
 
-#: src/components/uikit/Inputs/SearchInput.tsx:17
+#: src/components/uikit/inputs/SearchInput.tsx:17
+#: src/screens/root/TabNavigator.tsx:36
+#: src/screens/search/index.tsx:17
 msgid "Search"
-msgstr ""
+msgstr "Hae"
 
-#: src/screens/settings/index.tsx:16
+#: src/screens/root/TabNavigator.tsx:52
+#: src/screens/settings/index.tsx:17
 msgid "Settings"
-msgstr ""
+msgstr "Asetukset"
 
-#: src/screens/login/SignupScreen.tsx:242
+#: src/screens/unauthed/SignupScreen.tsx:240
 msgid "Signing up..."
-msgstr ""
+msgstr "Rekisteröidytään..."
 
-#: src/screens/login/LandingScreen.tsx:30
-#: src/screens/login/SignupScreen.tsx:244
-#: src/screens/login/index.tsx:29
+#: src/screens/unauthed/LandingScreen.tsx:25
+#: src/screens/unauthed/SignupScreen.tsx:242
+#: src/screens/unauthed/index.tsx:29
 msgid "Signup"
-msgstr ""
+msgstr "Rekisteröidy"
 
 #: src/components/common/ErrorBoundary.tsx:39
+#: src/services/permissions.tsx:106
 #: src/utils/linking.ts:28
 msgid "Something went wrong"
-msgstr ""
+msgstr "Jotain meni pieleen"
 
-#: src/screens/login/SignupScreen.tsx:63
+#: src/screens/unauthed/SignupScreen.tsx:61
 msgid "Start by creating an account"
-msgstr ""
+msgstr "Aloita luomalla tili"
 
-#: src/screens/drawer/timer/index.tsx:16
-msgid "Timer"
-msgstr ""
+#: src/components/uikit/PickerSheet.tsx:256
+msgid "Try changing your search term."
+msgstr "Kokeile muuttaa hakutermiä."
 
-#: src/screens/login/LoginScreen.tsx:39
-#: src/screens/login/SignupScreen.tsx:59
-#~ msgid "Welcome to name!"
-#~ msgstr ""
+#: src/services/permissions.tsx:92
+msgid "Unable to change permission"
+msgstr "Lupaa ei voitu muuttaa"
 
-#: src/screens/login/LoginScreen.tsx:39
-#: src/screens/login/SignupScreen.tsx:59
-msgid "Welcome to {name}!"
-msgstr ""
+#: src/screens/unauthed/LoginScreen.tsx:37
+#: src/screens/unauthed/SignupScreen.tsx:57
+msgid "Welcome!"
+msgstr "Tervetuloa!"
+
+#: src/services/permissions.tsx:93
+msgid "You need to change the permission in the system settings."
+msgstr "Lupa on muutettava järjestelmäasetuksissa."
+
+#: src/screens/settings/SettingsScreen.tsx:19
+msgid "dark"
+msgstr "tumma"
+
+#: src/screens/settings/SettingsScreen.tsx:19
+msgid "light"
+msgstr "vaalea"
 
 #: src/utils/linking.ts:34
 msgid "phone app"
-msgstr ""
+msgstr "puhelin sovellusta"

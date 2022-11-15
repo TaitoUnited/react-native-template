@@ -163,7 +163,7 @@ export default function SignupScreen(_: ScreenProps<'Signup'>) {
                     fieldState.error?.type === 'minLength'
                       ? t`Password must be at least 8 characters`
                       : fieldState.error?.type === 'required'
-                      ? t`Password required`
+                      ? t`Password is required`
                       : undefined;
 
                   return (
@@ -210,7 +210,7 @@ export default function SignupScreen(_: ScreenProps<'Signup'>) {
                       : fieldState.error?.type === 'minLength'
                       ? t`Password must be at least 8 characters`
                       : fieldState.error?.type === 'required'
-                      ? t`Password required`
+                      ? t`Password is required`
                       : undefined;
 
                   return (
