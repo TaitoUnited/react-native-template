@@ -1,7 +1,9 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+
 import { useColorMode } from '~services/color-mode';
 import { useTheme } from '~styles';
+import { navigationRef } from '~screens/utils';
 
 export default function NavigationProvider({
   children,
@@ -13,12 +15,16 @@ export default function NavigationProvider({
 
   return (
     <NavigationContainer
+      ref={navigationRef}
       theme={{
         dark: colorMode === 'dark',
         colors: {
-          ...theme.colors,
-          card: theme.colors.primary,
-          notification: theme.colors.primaryText,
+          card: theme.colors.surface,
+          background: theme.colors.background,
+          border: theme.colors.border,
+          text: theme.colors.text,
+          primary: theme.colors.primary,
+          notification: theme.colors.error,
         },
       }}
     >
