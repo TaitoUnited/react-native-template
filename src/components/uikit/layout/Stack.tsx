@@ -35,12 +35,6 @@ export function Stack({
   const elementCount = Children.count(elements);
   const lastIndex = elementCount - 1;
 
-  if (elementCount <= 1) {
-    console.warn(
-      'Stack component should not be used with a single child since the purpose of this component is to add spacing between children.'
-    );
-  }
-
   return (
     <Wrapper axis={axis} align={align} justify={justify} {...rest}>
       {elements.map((child, index) => {
