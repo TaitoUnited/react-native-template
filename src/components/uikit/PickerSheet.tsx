@@ -6,9 +6,9 @@ import { FlashList } from '@shopify/flash-list';
 import { Text } from './Text';
 import { Stack } from './layout/Stack';
 import { Spacer } from './layout/Spacer';
-import { Radio } from './inputsx/Radio';
-import { Checkbox } from './inputsx/Checkbox';
-import { SearchInput } from './inputsx/SearchInput';
+import { Radio } from './inputs/Radio';
+import { Checkbox } from './inputs/Checkbox';
+import { SearchInput } from './inputs/SearchInput';
 import { styled } from '~styles';
 import { useEvent } from '~utils/common';
 
