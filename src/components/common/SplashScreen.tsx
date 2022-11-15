@@ -1,15 +1,12 @@
 import { ReactNode, useEffect, useMemo, useState } from 'react';
-import { Animated, Image, StyleSheet, View } from 'react-native';
+import { Animated } from 'react-native';
 import { hideAsync } from 'expo-splash-screen';
 import { useAssets } from 'expo-asset';
-import Constants from 'expo-constants';
 
-const backgroundColor = Constants.manifest?.splash?.backgroundColor;
-const resizeMode = Constants.manifest?.splash?.resizeMode ?? 'contain';
+import config from '~constants/config';
+import { styled } from '~styles';
 
-if (
-  Constants.manifest?.splash?.image !== './src/design-system/assets/splash.png'
-) {
+if (config.splash.image !== './src/design-system/assets/splash.png') {
   throw Error(
     'Unexpected splash screen image, expected "./design-system/assets/splash.png"'
   );
@@ -45,30 +42,47 @@ export default function SplashScreen({ children, ready }: Props) {
 
   // If the splash image fails to load, show the app anyway
   if (error) {
-    return <View style={{ flex: 1 }}>{children}</View>;
+    return <Wrapper>{children}</Wrapper>;
   }
 
   const imageSource = { uri: assets[0].localUri || '' };
 
   return (
-    <View style={{ flex: 1 }}>
+    <Wrapper>
       {ready ? children : null}
       {!isAnimationComplete && (
-        <Animated.View
+        <SplashContent
           pointerEvents="none"
           style={[
-            StyleSheet.absoluteFill,
-            { backgroundColor, opacity: animation },
+            {
+              backgroundColor: config.splash.backgroundColor,
+              opacity: animation,
+            },
           ]}
         >
-          <Image
+          <SplashImage
             source={imageSource}
             fadeDuration={0}
             onLoadEnd={() => setImageLoaded(true)}
-            style={{ width: '100%', height: '100%', resizeMode }}
           />
-        </Animated.View>
+        </SplashContent>
       )}
-    </View>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled('View', {
+  flex: 1,
+});
+
+const SplashContent = Animated.createAnimatedComponent(
+  styled('View', {
+    absoluteFill: true,
+  })
+);
+
+const SplashImage = styled('Image', {
+  width: '100%',
+  height: '100%',
+  resizeMode: 'contain',
+});
