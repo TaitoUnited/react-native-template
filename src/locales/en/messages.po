@@ -13,29 +13,19 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/screens/settings/SettingsScreen.tsx:36
-msgid "Add your avatar"
-msgstr ""
-
 #: src/components/auth/LogoutButton.tsx:11
 msgid "Are you sure you want to logout?"
 msgstr ""
 
-#: src/screens/utils.ts:44
+#: src/screens/utils.tsx:30
 msgid "Back"
 msgstr ""
 
-#: src/screens/drawer/bluetooth/index.tsx:16
-msgid "Bluetooth"
-msgstr ""
-
-#: src/screens/bots/index.tsx:16
-msgid "Bots"
-msgstr ""
-
 #: src/components/auth/LogoutButton.tsx:12
-#: src/components/uikit/Inputs/SearchInput.tsx:54
-#: src/components/uikit/PickerSheet.tsx:115
+#: src/components/uikit/PickerModal.tsx:206
+#: src/components/uikit/PickerSheet.tsx:153
+#: src/components/uikit/inputs/DateInput.tsx:88
+#: src/components/uikit/inputs/SearchInput.tsx:54
 msgid "Cancel"
 msgstr ""
 
@@ -43,93 +33,97 @@ msgstr ""
 msgid "Cannot open {type}"
 msgstr ""
 
-#: src/components/common/ColorModeButton.tsx:16
-msgid "Change theme to {0}"
+#: src/screens/settings/SettingsScreen.tsx:25
+msgid "Change language to"
 msgstr ""
 
-#: src/components/uikit/PickerModal.tsx:170
-#: src/components/uikit/PickerSheet.tsx:115
+#: src/screens/settings/SettingsScreen.tsx:29
+msgid "Change theme to {colorModeLabel} mode"
+msgstr ""
+
+#: src/components/uikit/PickerModal.tsx:206
+#: src/components/uikit/PickerSheet.tsx:153
+#: src/services/permissions.tsx:95
+#: src/services/permissions.tsx:109
 msgid "Close"
+msgstr ""
+
+#: src/components/uikit/inputs/DateInput.tsx:87
+msgid "Confirm"
 msgstr ""
 
 #: src/services/auth.ts:106
 msgid "Could not connect to server"
 msgstr ""
 
-#: src/components/uikit/PickerSheet.tsx:122
+#: src/services/permissions.tsx:107
+msgid "Could not toggle permission. You can change the permission in the system settings."
+msgstr ""
+
+#: src/components/uikit/PickerModal.tsx:213
+#: src/components/uikit/PickerSheet.tsx:160
 msgid "Done"
 msgstr ""
 
-#: src/screens/login/LoginScreen.tsx:68
-#: src/screens/login/SignupScreen.tsx:88
+#: src/screens/unauthed/LoginScreen.tsx:66
+#: src/screens/unauthed/SignupScreen.tsx:86
 msgid "Email"
 msgstr ""
 
-#: src/screens/login/LoginScreen.tsx:60
-#: src/screens/login/SignupScreen.tsx:80
+#: src/screens/unauthed/LoginScreen.tsx:58
+#: src/screens/unauthed/SignupScreen.tsx:78
 msgid "Email invalid"
 msgstr ""
 
-#: src/screens/login/LoginScreen.tsx:62
-#: src/screens/login/SignupScreen.tsx:82
+#: src/screens/unauthed/LoginScreen.tsx:60
+#: src/screens/unauthed/SignupScreen.tsx:80
 msgid "Email required"
 msgstr ""
 
-#: src/screens/login/LoginScreen.tsx:27
+#: src/screens/unauthed/LoginScreen.tsx:26
 msgid "Failed to login"
 msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:44
+#: src/screens/unauthed/SignupScreen.tsx:43
 msgid "Failed to signup"
 msgstr ""
 
-#: src/screens/drawer/file-upload/index.tsx:16
-msgid "FileUpload"
-msgstr ""
-
-#: src/screens/login/SignupScreen.tsx:108
+#: src/screens/unauthed/SignupScreen.tsx:106
 msgid "First name"
 msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:103
+#: src/screens/unauthed/SignupScreen.tsx:101
 msgid "First name is required"
 msgstr ""
 
-#: src/screens/food/index.tsx:16
-msgid "Food"
-msgstr ""
-
-#: src/screens/drawer/frisbee/index.tsx:16
-msgid "Frisbee"
-msgstr ""
-
-#: src/screens/drawer/home/index.tsx:16
+#: src/screens/home/index.tsx:17
+#: src/screens/root/TabNavigator.tsx:29
 msgid "Home"
 msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:126
+#: src/screens/unauthed/SignupScreen.tsx:124
 msgid "Last name"
 msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:121
+#: src/screens/unauthed/SignupScreen.tsx:119
 msgid "Last name is required"
 msgstr ""
 
-#: src/screens/login/LoginScreen.tsx:110
+#: src/screens/unauthed/LoginScreen.tsx:108
 msgid "Logging in..."
 msgstr ""
 
-#: src/screens/root/AppNavigator.tsx:56
+#: src/screens/root/AppNavigator.tsx:53
 msgid "Logging out..."
 msgstr ""
 
-#: src/screens/login/LandingScreen.tsx:26
-#: src/screens/login/LoginScreen.tsx:112
-#: src/screens/login/index.tsx:24
+#: src/screens/unauthed/LandingScreen.tsx:19
+#: src/screens/unauthed/LoginScreen.tsx:110
+#: src/screens/unauthed/index.tsx:24
 msgid "Login"
 msgstr ""
 
-#: src/screens/login/LoginScreen.tsx:43
+#: src/screens/unauthed/LoginScreen.tsx:41
 msgid "Login with your account"
 msgstr ""
 
@@ -138,54 +132,48 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: src/screens/drawer/maps/index.tsx:16
-msgid "Maps"
+#: src/components/uikit/PickerSheet.tsx:253
+msgid "No results found."
 msgstr ""
 
-#: src/screens/drawer/messaging/index.tsx:16
-msgid "Messaging"
+#: src/screens/settings/SettingsScreen.tsx:35
+msgid "Open playground"
 msgstr ""
 
-#: src/components/uikit/PickerSheet.tsx:89
-msgid "No results"
+#: src/services/permissions.tsx:96
+#: src/services/permissions.tsx:110
+msgid "Open settings"
 msgstr ""
 
-#: src/screens/login/LoginScreen.tsx:88
-#: src/screens/login/SignupScreen.tsx:174
+#: src/screens/unauthed/LoginScreen.tsx:86
+#: src/screens/unauthed/SignupScreen.tsx:172
 msgid "Password"
 msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:221
+#: src/screens/unauthed/SignupScreen.tsx:219
 msgid "Password again"
 msgstr ""
 
-#: src/screens/login/LoginScreen.tsx:83
+#: src/screens/unauthed/LoginScreen.tsx:81
+#: src/screens/unauthed/SignupScreen.tsx:166
+#: src/screens/unauthed/SignupScreen.tsx:213
 msgid "Password is required"
 msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:166
-#: src/screens/login/SignupScreen.tsx:213
+#: src/screens/unauthed/SignupScreen.tsx:164
+#: src/screens/unauthed/SignupScreen.tsx:211
 msgid "Password must be at least 8 characters"
 msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:168
-#: src/screens/login/SignupScreen.tsx:215
-msgid "Password required"
-msgstr ""
-
-#: src/screens/login/SignupScreen.tsx:211
+#: src/screens/unauthed/SignupScreen.tsx:209
 msgid "Passwords do not match"
 msgstr ""
 
-#: src/screens/drawer/payment/index.tsx:16
-msgid "Payment"
-msgstr ""
-
-#: src/screens/login/SignupScreen.tsx:148
+#: src/screens/unauthed/SignupScreen.tsx:146
 msgid "Phone number"
 msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:139
+#: src/screens/unauthed/SignupScreen.tsx:137
 msgid "Phone number is required"
 msgstr ""
 
@@ -193,53 +181,69 @@ msgstr ""
 msgid "Please try restarting the application."
 msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:143
+#: src/screens/unauthed/SignupScreen.tsx:141
 msgid "Preferred format: +358400123456"
 msgstr ""
 
-#: src/screens/drawer/qr-scanner/index.tsx:16
-msgid "QrScanner"
+#: src/screens/profile/index.tsx:17
+#: src/screens/root/TabNavigator.tsx:44
+msgid "Profile"
 msgstr ""
 
-#: src/components/uikit/Inputs/SearchInput.tsx:17
+#: src/components/uikit/inputs/SearchInput.tsx:17
+#: src/screens/root/TabNavigator.tsx:36
+#: src/screens/search/index.tsx:17
 msgid "Search"
 msgstr ""
 
-#: src/screens/settings/index.tsx:16
+#: src/screens/root/TabNavigator.tsx:52
+#: src/screens/settings/index.tsx:17
 msgid "Settings"
 msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:242
+#: src/screens/unauthed/SignupScreen.tsx:240
 msgid "Signing up..."
 msgstr ""
 
-#: src/screens/login/LandingScreen.tsx:30
-#: src/screens/login/SignupScreen.tsx:244
-#: src/screens/login/index.tsx:29
+#: src/screens/unauthed/LandingScreen.tsx:25
+#: src/screens/unauthed/SignupScreen.tsx:242
+#: src/screens/unauthed/index.tsx:29
 msgid "Signup"
 msgstr ""
 
 #: src/components/common/ErrorBoundary.tsx:39
+#: src/services/permissions.tsx:106
 #: src/utils/linking.ts:28
 msgid "Something went wrong"
 msgstr ""
 
-#: src/screens/login/SignupScreen.tsx:63
+#: src/screens/unauthed/SignupScreen.tsx:61
 msgid "Start by creating an account"
 msgstr ""
 
-#: src/screens/drawer/timer/index.tsx:16
-msgid "Timer"
+#: src/components/uikit/PickerSheet.tsx:256
+msgid "Try changing your search term."
 msgstr ""
 
-#: src/screens/login/LoginScreen.tsx:39
-#: src/screens/login/SignupScreen.tsx:59
-#~ msgid "Welcome to name!"
-#~ msgstr ""
+#: src/services/permissions.tsx:92
+msgid "Unable to change permission"
+msgstr ""
 
-#: src/screens/login/LoginScreen.tsx:39
-#: src/screens/login/SignupScreen.tsx:59
-msgid "Welcome to {name}!"
+#: src/screens/unauthed/LoginScreen.tsx:37
+#: src/screens/unauthed/SignupScreen.tsx:57
+msgid "Welcome!"
+msgstr ""
+
+#: src/services/permissions.tsx:93
+msgid "You need to change the permission in the system settings."
+msgstr ""
+
+#: src/screens/settings/SettingsScreen.tsx:19
+msgid "dark"
+msgstr ""
+
+#: src/screens/settings/SettingsScreen.tsx:19
+msgid "light"
 msgstr ""
 
 #: src/utils/linking.ts:34

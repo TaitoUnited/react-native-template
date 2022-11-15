@@ -27,9 +27,9 @@
     "design-system:tokenize": "figmage tokenize --env ./config/.env.figma",
     "design-system:codegen": "figmage codegen --env ./config/.env.figma",
     "design-system:format": "prettier --write \"src/design-system/*.ts\"",
-    "i18n:extract": "lingui extract",
-    "i18n:extract:clean": "lingui extract --clean",
+    "i18n:extract": "lingui extract --clean",
     "i18n:compile": "lingui compile",
+    "i18n:check": "lingui compile --strict",
     "test": "jest --passWithNoTests",
     "lint": "eslint './src/**/*.{ts,tsx}' --ignore-path .eslintignore",
     "typecheck": "tsc --noEmit",
@@ -131,6 +131,7 @@
       "en",
       "fi"
     ],
+    "sourceLocale": "en",
     "catalogs": [
       {
         "path": "src/locales/{locale}/messages",
