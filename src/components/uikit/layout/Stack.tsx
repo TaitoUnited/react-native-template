@@ -32,8 +32,14 @@ export function Stack({
 }: Props) {
   // Handle `Fragments` by flattening children
   const elements = flattenChildren(children).filter((e) => isValidElement(e));
+  const elementCount = Children.count(elements);
+  const lastIndex = elementCount - 1;
 
-  const lastIndex = Children.count(elements) - 1;
+  if (elementCount <= 1) {
+    console.warn(
+      'Stack component should not be used with a single child since the purpose of this component is to add spacing between children.'
+    );
+  }
 
   return (
     <Wrapper axis={axis} align={align} justify={justify} {...rest}>
