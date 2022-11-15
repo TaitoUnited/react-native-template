@@ -12,13 +12,21 @@ export default function LandingScreen({ navigation }: ScreenProps<'Landing'>) {
     <Wrapper>
       <SafeArea>
         <Stack axis="y" spacing="normal">
-          <FillButton onPress={() => navigation.navigate('Login')}>
+          <FillButton
+            variant="neutral"
+            onPress={() => navigation.navigate('Login')}
+          >
             <Trans>Login</Trans>
           </FillButton>
-          <FillButton onPress={() => navigation.navigate('Signup')}>
+          <FillButton
+            variant="neutral"
+            onPress={() => navigation.navigate('Signup')}
+          >
             <Trans>Signup</Trans>
           </FillButton>
-          <FillButton onPress={toggleLocale}>{locale}</FillButton>
+          <FillButton variant="neutral" onPress={toggleLocale}>
+            {locale}
+          </FillButton>
         </Stack>
       </SafeArea>
     </Wrapper>
