@@ -34,7 +34,7 @@ jobs:
 
       - name: Prebuild
         run: |
-          npm run prebuild:ci
+          npm run prebuild:ci:stag
           git add -f ios ':!ios/Pods'
           git add -f android
           git commit -m "ci: prebuild"
