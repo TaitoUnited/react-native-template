@@ -13,8 +13,8 @@ import {
 
 import { Text } from './Text';
 import { Stack } from './layout/Stack';
-import { Radio } from './inputs/Radio';
-import { Checkbox } from './inputs/Checkbox';
+import { Radio } from './inputsx/Radio';
+import { Checkbox } from './inputsx/Checkbox';
 import { styled } from '~styles';
 
 type BaseProps = {
