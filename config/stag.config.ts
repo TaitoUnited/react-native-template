@@ -2,6 +2,7 @@ import { Config } from './types';
 import * as colors from '../src/design-system/colors';
 
 export const config: Config = {
+  appEnv: 'stag',
   apiUrl: 'https://api.example.com',
   appIdSuffix: '.dev', // NOTE: dev/test/stag share the same app id!
   iconImage: './src/design-system/assets/icon-stag.png',
