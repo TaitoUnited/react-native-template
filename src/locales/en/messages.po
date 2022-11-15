@@ -17,7 +17,7 @@ msgstr ""
 msgid "Are you sure you want to logout?"
 msgstr ""
 
-#: src/screens/utils.tsx:30
+#: src/screens/utils.tsx:46
 msgid "Back"
 msgstr ""
 
@@ -33,11 +33,11 @@ msgstr ""
 msgid "Cannot open {type}"
 msgstr ""
 
-#: src/screens/settings/SettingsScreen.tsx:25
+#: src/screens/settings/SettingsScreen.tsx:50
 msgid "Change language to"
 msgstr ""
 
-#: src/screens/settings/SettingsScreen.tsx:29
+#: src/screens/settings/SettingsScreen.tsx:54
 msgid "Change theme to {colorModeLabel} mode"
 msgstr ""
 
@@ -113,7 +113,7 @@ msgstr ""
 msgid "Logging in..."
 msgstr ""
 
-#: src/screens/root/AppNavigator.tsx:53
+#: src/screens/root/AppNavigator.tsx:50
 msgid "Logging out..."
 msgstr ""
 
@@ -128,7 +128,7 @@ msgid "Login with your account"
 msgstr ""
 
 #: src/components/auth/LogoutButton.tsx:13
-#: src/components/auth/LogoutButton.tsx:19
+#: src/components/auth/LogoutButton.tsx:24
 msgid "Logout"
 msgstr ""
 
@@ -136,7 +136,7 @@ msgstr ""
 msgid "No results found."
 msgstr ""
 
-#: src/screens/settings/SettingsScreen.tsx:35
+#: src/screens/settings/SettingsScreen.tsx:33
 msgid "Open playground"
 msgstr ""
 
@@ -238,11 +238,11 @@ msgstr ""
 msgid "You need to change the permission in the system settings."
 msgstr ""
 
-#: src/screens/settings/SettingsScreen.tsx:19
+#: src/screens/settings/SettingsScreen.tsx:18
 msgid "dark"
 msgstr ""
 
-#: src/screens/settings/SettingsScreen.tsx:19
+#: src/screens/settings/SettingsScreen.tsx:18
 msgid "light"
 msgstr ""
 

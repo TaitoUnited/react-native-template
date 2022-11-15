@@ -17,7 +17,7 @@ msgstr ""
 msgid "Are you sure you want to logout?"
 msgstr "Oletko varma, että haluat kirjautua ulos?"
 
-#: src/screens/utils.tsx:30
+#: src/screens/utils.tsx:46
 msgid "Back"
 msgstr "Takaisin"
 
@@ -33,11 +33,11 @@ msgstr "Sulje"
 msgid "Cannot open {type}"
 msgstr "Ei voida avata {type}"
 
-#: src/screens/settings/SettingsScreen.tsx:25
+#: src/screens/settings/SettingsScreen.tsx:50
 msgid "Change language to"
 msgstr "Vaihda kieleksi"
 
-#: src/screens/settings/SettingsScreen.tsx:29
+#: src/screens/settings/SettingsScreen.tsx:54
 msgid "Change theme to {colorModeLabel} mode"
 msgstr "Vaihda teema {colorModeLabel} tilaan"
 
@@ -113,7 +113,7 @@ msgstr "Sukunimin on pakollinen"
 msgid "Logging in..."
 msgstr "Kirjaudutaan sisään..."
 
-#: src/screens/root/AppNavigator.tsx:53
+#: src/screens/root/AppNavigator.tsx:50
 msgid "Logging out..."
 msgstr "Kirjaudutaan ulos..."
 
@@ -128,7 +128,7 @@ msgid "Login with your account"
 msgstr "Kirjaudu sisään tililläsi"
 
 #: src/components/auth/LogoutButton.tsx:13
-#: src/components/auth/LogoutButton.tsx:19
+#: src/components/auth/LogoutButton.tsx:24
 msgid "Logout"
 msgstr "Kirjaudu ulos"
 
@@ -136,7 +136,7 @@ msgstr "Kirjaudu ulos"
 msgid "No results found."
 msgstr "Ei tuloksia."
 
-#: src/screens/settings/SettingsScreen.tsx:35
+#: src/screens/settings/SettingsScreen.tsx:33
 msgid "Open playground"
 msgstr "Avaa playground"
 
@@ -238,11 +238,11 @@ msgstr "Tervetuloa!"
 msgid "You need to change the permission in the system settings."
 msgstr "Lupa on muutettava järjestelmäasetuksissa."
 
-#: src/screens/settings/SettingsScreen.tsx:19
+#: src/screens/settings/SettingsScreen.tsx:18
 msgid "dark"
 msgstr "tumma"
 
-#: src/screens/settings/SettingsScreen.tsx:19
+#: src/screens/settings/SettingsScreen.tsx:18
 msgid "light"
 msgstr "vaalea"
 

@@ -8,7 +8,7 @@ import { Stack, Text } from '~components/uikit';
 import { useAuthStore } from '~services/auth';
 import { ParamList } from '~screens/types';
 import TabNavigator from '~screens/root/TabNavigator';
-import UnauthedNavigator from '~screens/unauthed';
+import PlaygroundNavigator from '~screens/playground';
 
 const AppStack = createStackNavigator<ParamList>();
 
@@ -20,19 +20,16 @@ export default function AppNavigator() {
     <>
       <AppStack.Navigator>
         <AppStack.Group>
-          {status === 'authenticated' ? (
-            <AppStack.Screen
-              name="AuthedStack"
-              options={{ headerShown: false }}
-              component={TabNavigator}
-            />
-          ) : (
-            <AppStack.Screen
-              name="UnauthedStack"
-              options={{ headerShown: false }}
-              component={UnauthedNavigator}
-            />
-          )}
+          <AppStack.Screen
+            name="Tabs"
+            options={{ headerShown: false }}
+            component={TabNavigator}
+          />
+          <AppStack.Screen
+            name="PlaygroundStack"
+            options={{ headerShown: false }}
+            component={PlaygroundNavigator}
+          />
         </AppStack.Group>
 
         {/* Add global modal screens here that can be opened from anywhere in the app */}

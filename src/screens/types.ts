@@ -3,7 +3,7 @@ import type { StackScreenProps } from '@react-navigation/stack';
 import type { NavigatorScreenParams } from '@react-navigation/native';
 
 type AuthedNavigation = {
-  AuthedStack: Navigator<{
+  Tabs: Navigator<{
     HomeStack: Navigator<{
       Home: undefined;
     }>;
@@ -30,11 +30,9 @@ type AuthedNavigation = {
 };
 
 type UnauthedNavigation = {
-  UnauthedStack: Navigator<{
-    Landing: undefined;
-    Login: undefined;
-    Signup: undefined;
-  }>;
+  Landing: undefined;
+  Login: undefined;
+  Signup: undefined;
 };
 
 type AppNavigation = UnauthedNavigation & AuthedNavigation;

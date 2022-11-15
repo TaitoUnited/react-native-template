@@ -1,17 +1,13 @@
 import { useEffect } from 'react';
 
-import { usePlaygroundStore } from './helpers';
 import { styled } from '~styles';
 import { ParamList, ScreenProps } from '~screens/types';
 import { IconButton, Icon, Stack, Text } from '~components/uikit';
+import { navigationRef } from '~screens/utils';
 
 export default function PlaygroundScreen({
   navigation,
 }: ScreenProps<'Playground'>) {
-  const setPlaygroundVisible = usePlaygroundStore(
-    (s) => s.setPlaygroundVisible
-  );
-
   const rows: Array<{ label: string; screen: keyof ParamList }> = [
     { screen: 'DesignSystem', label: 'Design System' },
     { screen: 'Icons', label: 'Icons' },
@@ -25,7 +21,7 @@ export default function PlaygroundScreen({
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
-        <IconButton icon="x" onPress={() => setPlaygroundVisible(false)} />
+        <IconButton icon="x" onPress={() => navigationRef.goBack()} />
       ),
     });
   }, []); // eslint-disable-line
