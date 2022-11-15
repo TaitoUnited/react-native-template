@@ -1,4 +1,5 @@
 export type Config = {
+  apiUrl: string;
   appIdSuffix?: string;
   iconImage: string;
   adaptiveIcon: {
