@@ -42,6 +42,7 @@ const expoConfig: ExpoConfig = {
   },
   extra: config,
   plugins: [
+    './plugins/with-m1-fixes',
     [
       './plugins/with-appcenter',
       { appSecret: 'c061d869-eac1-42f6-bbb1-d9e2ea2749a4' },
