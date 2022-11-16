@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { StackNavigationOptions } from '@react-navigation/stack';
 import { t } from '@lingui/macro';
@@ -6,11 +6,14 @@ import { t } from '@lingui/macro';
 import {
   useNavigation,
   createNavigationContainerRef,
+  NavigationState,
+  PartialState,
 } from '@react-navigation/native';
 
 import type { ParamList } from './types';
 import { useTheme } from '~styles';
 import { Icon } from '~components/uikit';
+import storage from '~utils/storage';
 
 export const navigationRef = createNavigationContainerRef<ParamList>();
 
@@ -19,6 +22,35 @@ export function navigate(name: keyof ParamList, params?: any) {
   if (navigationRef.isReady()) {
     navigationRef.navigate(name, params);
   }
+}
+
+export function getActiveRouteName(
+  state: NavigationState | PartialState<NavigationState>
+): string | undefined {
+  if (state.index === undefined) return undefined;
+  const route = state.routes[state.index];
+  if (!route.state) return route.name;
+  return getActiveRouteName(route.state);
+}
+
+export function useNavigationStateRestoration() {
+  const [isReady, setIsReady] = useState(false);
+  const [initialState, setInitialState] = useState<any>();
+
+  useEffect(() => {
+    async function restoreState() {
+      try {
+        const state = await storage.get('@app/navigation-state');
+        if (state !== undefined) setInitialState(state);
+      } finally {
+        setIsReady(true);
+      }
+    }
+
+    if (!isReady) restoreState();
+  }, [isReady]);
+
+  return { isReady, initialState };
 }
 
 export function useDefaultStackScreenOptions() {

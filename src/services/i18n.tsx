@@ -4,6 +4,7 @@ import { Settings } from 'luxon';
 import { en, fi } from 'make-plural';
 import { i18n } from '@lingui/core';
 import { I18nProvider as LinguiProvider, useLingui } from '@lingui/react';
+import { navigationRef } from '~screens/utils';
 import storage from '~utils/storage';
 
 export type Locale = 'fi' | 'en';
@@ -29,9 +30,6 @@ export async function initMessages() {
       : require('../locales/en/messages').messages;
 
   i18n.loadLocaleData({ en: { plurals: en }, fi: { plurals: fi } });
-  // i18n.loadLocaleData('en', { plurals: en });
-  // i18n.loadLocaleData('fi', { plurals: fi });
-
   i18n.load(defaultLocale, defaultMessages);
   i18n.activate(defaultLocale);
   Settings.defaultLocale = defaultLocale;
@@ -52,13 +50,20 @@ export function useI18n() {
   const lingui = useLingui();
   const currentLocale = lingui.i18n.locale as Locale;
 
-  const changeLocale = useCallback(
+  const setLocale = useCallback(
     async (locale: Locale) => {
       try {
+        // Persist navigation state so that we can restore the app after locale change
+        const navigationState = navigationRef.getState();
+        await storage.set('@app/navigation-state', navigationState);
+
         const newMessages = await loadMessages(locale);
+
         lingui.i18n.load(locale, newMessages);
         lingui.i18n.activate(locale);
+
         Settings.defaultLocale = locale;
+
         await storage.set('@app/locale', locale);
       } catch (error) {
         console.log(`> Failed to load messages for locale: ${locale}`, error);
