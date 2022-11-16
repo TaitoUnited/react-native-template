@@ -4,7 +4,6 @@ import { Settings } from 'luxon';
 import { en, fi } from 'make-plural';
 import { i18n } from '@lingui/core';
 import { I18nProvider as LinguiProvider, useLingui } from '@lingui/react';
-import { navigationRef } from '~screens/utils';
 import storage from '~utils/storage';
 
 export type Locale = 'fi' | 'en';
@@ -53,16 +52,11 @@ export function useI18n() {
   const setLocale = useCallback(
     async (locale: Locale) => {
       try {
-        // Persist navigation state so that we can restore the app after locale change
-        const navigationState = navigationRef.getState();
-        await storage.set('@app/navigation-state', navigationState);
-
         const newMessages = await loadMessages(locale);
 
+        Settings.defaultLocale = locale;
         lingui.i18n.load(locale, newMessages);
         lingui.i18n.activate(locale);
-
-        Settings.defaultLocale = locale;
 
         await storage.set('@app/locale', locale);
       } catch (error) {
