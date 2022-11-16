@@ -13,11 +13,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/screens/settings/SettingsScreen.tsx:48
+#: src/screens/settings/SettingsScreen.tsx:37
 msgid "Appearance"
 msgstr "Appearance"
 
-#: src/screens/settings/SettingsScreen.tsx:22
+#: src/screens/settings/SettingsScreen.tsx:19
 msgid "Are you sure you want to logout?"
 msgstr ""
 
@@ -29,7 +29,7 @@ msgstr ""
 #: src/components/uikit/PickerSheet.tsx:153
 #: src/components/uikit/inputs/DateInput.tsx:88
 #: src/components/uikit/inputs/SearchInput.tsx:54
-#: src/screens/settings/SettingsScreen.tsx:23
+#: src/screens/settings/SettingsScreen.tsx:20
 msgid "Cancel"
 msgstr ""
 
@@ -56,8 +56,8 @@ msgstr ""
 msgid "Could not toggle permission. You can change the permission in the system settings."
 msgstr ""
 
-#: src/screens/settings/SettingsScreen.tsx:49
-#: src/screens/settings/SettingsScreen.tsx:53
+#: src/screens/settings/SettingsScreen.tsx:38
+#: src/screens/settings/SettingsScreen.tsx:80
 msgid "Dark"
 msgstr "Dark"
 
@@ -81,7 +81,7 @@ msgstr ""
 msgid "Email required"
 msgstr ""
 
-#: src/screens/settings/SettingsScreen.tsx:41
+#: src/screens/settings/SettingsScreen.tsx:59
 msgid "English"
 msgstr "English"
 
@@ -93,7 +93,7 @@ msgstr ""
 msgid "Failed to signup"
 msgstr ""
 
-#: src/screens/settings/SettingsScreen.tsx:42
+#: src/screens/settings/SettingsScreen.tsx:64
 msgid "Finnish"
 msgstr "Finnish"
 
@@ -110,7 +110,7 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: src/screens/settings/SettingsScreen.tsx:36
+#: src/screens/settings/SettingsScreen.tsx:32
 msgid "Language"
 msgstr "Language"
 
@@ -122,8 +122,8 @@ msgstr ""
 msgid "Last name is required"
 msgstr ""
 
-#: src/screens/settings/SettingsScreen.tsx:49
-#: src/screens/settings/SettingsScreen.tsx:54
+#: src/screens/settings/SettingsScreen.tsx:38
+#: src/screens/settings/SettingsScreen.tsx:85
 msgid "Light"
 msgstr "Light"
 
@@ -145,20 +145,16 @@ msgstr ""
 msgid "Login with your account"
 msgstr ""
 
-#: src/screens/settings/SettingsScreen.tsx:24
-#: src/screens/settings/SettingsScreen.tsx:60
+#: src/screens/settings/SettingsScreen.tsx:21
+#: src/screens/settings/SettingsScreen.tsx:42
 msgid "Logout"
 msgstr ""
-
-#: src/screens/menu-list/index.tsx:17
-msgid "MenuList"
-msgstr "MenuList"
 
 #: src/components/uikit/PickerSheet.tsx:253
 msgid "No results found."
 msgstr ""
 
-#: src/screens/settings/SettingsScreen.tsx:87
+#: src/screens/playground/utils.tsx:25
 msgid "Open playground"
 msgstr ""
 
