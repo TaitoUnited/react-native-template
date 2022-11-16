@@ -8,7 +8,7 @@ import { useI18n } from '~services/i18n';
 import { useColorMode } from '~services/color-mode';
 import { useAuthStore } from '~services/auth';
 import { useHeaderPlaygroundButton } from '~screens/playground/utils';
-import MenuList from '~components/menu/MenuList';
+import MenuList from '~components/common/MenuList';
 
 export default function SettingsScreen(_: ScreenProps<'Settings'>) {
   const { locale } = useI18n();
