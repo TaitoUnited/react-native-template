@@ -73,13 +73,13 @@ export function useI18n() {
   );
 
   const toggleLocale = useCallback(() => {
-    changeLocale(currentLocale === 'fi' ? 'en' : 'fi');
-  }, [currentLocale, changeLocale]);
+    setLocale(currentLocale === 'fi' ? 'en' : 'fi');
+  }, [currentLocale, setLocale]);
 
   return {
     i18n: lingui.i18n,
     locale: currentLocale,
-    changeLocale,
+    setLocale,
     toggleLocale,
   };
 }

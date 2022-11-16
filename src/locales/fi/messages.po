@@ -13,33 +13,29 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/auth/LogoutButton.tsx:11
+#: src/screens/settings/SettingsScreen.tsx:48
+msgid "Appearance"
+msgstr "Väriteema"
+
+#: src/screens/settings/SettingsScreen.tsx:22
 msgid "Are you sure you want to logout?"
 msgstr "Oletko varma, että haluat kirjautua ulos?"
 
-#: src/screens/utils.tsx:46
+#: src/screens/utils.tsx:57
 msgid "Back"
 msgstr "Takaisin"
 
-#: src/components/auth/LogoutButton.tsx:12
 #: src/components/uikit/PickerModal.tsx:206
 #: src/components/uikit/PickerSheet.tsx:153
 #: src/components/uikit/inputs/DateInput.tsx:88
 #: src/components/uikit/inputs/SearchInput.tsx:54
+#: src/screens/settings/SettingsScreen.tsx:23
 msgid "Cancel"
 msgstr "Sulje"
 
 #: src/utils/linking.ts:21
 msgid "Cannot open {type}"
 msgstr "Ei voida avata {type}"
-
-#: src/screens/settings/SettingsScreen.tsx:50
-msgid "Change language to"
-msgstr "Vaihda kieleksi"
-
-#: src/screens/settings/SettingsScreen.tsx:54
-msgid "Change theme to {colorModeLabel} mode"
-msgstr "Vaihda teema {colorModeLabel} tilaan"
 
 #: src/components/uikit/PickerModal.tsx:206
 #: src/components/uikit/PickerSheet.tsx:153
@@ -59,6 +55,11 @@ msgstr "Ei voitu yhdistää palvelimeen"
 #: src/services/permissions.tsx:107
 msgid "Could not toggle permission. You can change the permission in the system settings."
 msgstr "Ei voitu muuttaa lupaa. Voit muuttaa lupaa järjestelmäasetuksista."
+
+#: src/screens/settings/SettingsScreen.tsx:49
+#: src/screens/settings/SettingsScreen.tsx:53
+msgid "Dark"
+msgstr "Tumma"
 
 #: src/components/uikit/PickerModal.tsx:213
 #: src/components/uikit/PickerSheet.tsx:160
@@ -80,6 +81,10 @@ msgstr "Virheellinen sähköposti"
 msgid "Email required"
 msgstr "Sähköposti on pakollinen"
 
+#: src/screens/settings/SettingsScreen.tsx:41
+msgid "English"
+msgstr "Englanti"
+
 #: src/screens/unauthed/LoginScreen.tsx:26
 msgid "Failed to login"
 msgstr "Sisäänkirjautuminen epäonnistui"
@@ -87,6 +92,10 @@ msgstr "Sisäänkirjautuminen epäonnistui"
 #: src/screens/unauthed/SignupScreen.tsx:43
 msgid "Failed to signup"
 msgstr "Rekisteröityminen epäonnistui"
+
+#: src/screens/settings/SettingsScreen.tsx:42
+msgid "Finnish"
+msgstr "Suomi"
 
 #: src/screens/unauthed/SignupScreen.tsx:106
 msgid "First name"
@@ -101,6 +110,10 @@ msgstr "Etunimi on pakollinen"
 msgid "Home"
 msgstr "Koti"
 
+#: src/screens/settings/SettingsScreen.tsx:36
+msgid "Language"
+msgstr "Kieli"
+
 #: src/screens/unauthed/SignupScreen.tsx:124
 msgid "Last name"
 msgstr "Sukunimi"
@@ -109,11 +122,16 @@ msgstr "Sukunimi"
 msgid "Last name is required"
 msgstr "Sukunimin on pakollinen"
 
+#: src/screens/settings/SettingsScreen.tsx:49
+#: src/screens/settings/SettingsScreen.tsx:54
+msgid "Light"
+msgstr "Vaalea"
+
 #: src/screens/unauthed/LoginScreen.tsx:108
 msgid "Logging in..."
 msgstr "Kirjaudutaan sisään..."
 
-#: src/screens/root/AppNavigator.tsx:50
+#: src/screens/root/AppNavigator.tsx:56
 msgid "Logging out..."
 msgstr "Kirjaudutaan ulos..."
 
@@ -127,16 +145,20 @@ msgstr "Kirjaudu sisään"
 msgid "Login with your account"
 msgstr "Kirjaudu sisään tililläsi"
 
-#: src/components/auth/LogoutButton.tsx:13
-#: src/components/auth/LogoutButton.tsx:24
+#: src/screens/settings/SettingsScreen.tsx:24
+#: src/screens/settings/SettingsScreen.tsx:60
 msgid "Logout"
 msgstr "Kirjaudu ulos"
+
+#: src/screens/menu-list/index.tsx:17
+msgid "MenuList"
+msgstr ""
 
 #: src/components/uikit/PickerSheet.tsx:253
 msgid "No results found."
 msgstr "Ei tuloksia."
 
-#: src/screens/settings/SettingsScreen.tsx:33
+#: src/screens/settings/SettingsScreen.tsx:87
 msgid "Open playground"
 msgstr "Avaa playground"
 
@@ -237,14 +259,6 @@ msgstr "Tervetuloa!"
 #: src/services/permissions.tsx:93
 msgid "You need to change the permission in the system settings."
 msgstr "Lupa on muutettava järjestelmäasetuksissa."
-
-#: src/screens/settings/SettingsScreen.tsx:18
-msgid "dark"
-msgstr "tumma"
-
-#: src/screens/settings/SettingsScreen.tsx:18
-msgid "light"
-msgstr "vaalea"
 
 #: src/utils/linking.ts:34
 msgid "phone app"

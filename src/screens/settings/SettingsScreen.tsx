@@ -1,69 +1,100 @@
-import { t, Trans } from '@lingui/macro';
-import * as DropdownMenu from 'zeego/dropdown-menu';
+import { Alert } from 'react-native';
+import { t } from '@lingui/macro';
 
 import { styled } from '~styles';
-import { FillButton, IconButton, Stack } from '~components/uikit';
+import { Icon } from '~components/uikit';
 import { ScreenProps } from '~screens/types';
 import { useI18n } from '~services/i18n';
 import { useColorMode } from '~services/color-mode';
-import LogoutButton from '~components/auth/LogoutButton';
-import { navigate, useHeaderOptions } from '~screens/utils';
-import config from '~constants/config';
+import { useAuthStore } from '~services/auth';
+import { useHeaderPlaygroundButton } from '~screens/playground/utils';
+import MenuList from '~components/menu/MenuList';
 
 export default function SettingsScreen(_: ScreenProps<'Settings'>) {
-  const { toggleLocale, locale } = useI18n();
-  const { toggleColorMode, colorMode } = useColorMode();
+  const { locale } = useI18n();
+  const { colorMode } = useColorMode();
+  const logout = useAuthStore((s) => s.logout);
 
-  const colorModeLabel =
-    colorMode === 'light' ? <Trans>dark</Trans> : <Trans>light</Trans>;
+  function handleLogout() {
+    Alert.alert(t`Are you sure you want to logout?`, '', [
+      { text: t`Cancel`, style: 'cancel' },
+      { text: t`Logout`, onPress: () => logout() },
+    ]);
+  }
 
   useHeaderPlaygroundButton();
 
   return (
     <Wrapper>
-      <Stack axis="y" spacing="normal">
-        <FillButton variant="neutral" onPress={toggleLocale}>
-          <Trans>Change language to</Trans>{' '}
-          {locale === 'en' ? 'Finnish' : 'englanti'}
-        </FillButton>
-        <FillButton variant="neutral" onPress={toggleColorMode}>
-          <Trans>Change theme to {colorModeLabel} mode</Trans>
-        </FillButton>
-        <LogoutButton />
-      </Stack>
+      <MenuList
+        items={[
+          {
+            label: t`Language`,
+            currentValue: locale === 'en' ? 'English' : 'Suomi',
+            target: LanguageMenuTarget,
+          },
+          {
+            label: t`Appearance`,
+            currentValue: colorMode === 'light' ? t`Light` : t`Dark`,
+            target: AppearanceMenuTarget,
+          },
+          {
+            label: t`Logout`,
+            rightSlot: <Icon name="logout" color="textMuted" size={18} />,
+            onPress: handleLogout,
+          },
+        ]}
+      />
     </Wrapper>
   );
 }
 
-function useHeaderPlaygroundButton() {
-  useHeaderOptions({
-    headerRight: () => {
-      return config.appEnv !== 'prod' ? (
-        <DropdownMenu.Root>
-          <DropdownMenu.Trigger>
-            <IconButton icon="ellipsisVertical" size="medium" />
-          </DropdownMenu.Trigger>
-          <DropdownMenu.Content>
-            <DropdownMenu.Item
-              key="playground"
-              onSelect={() => navigate('PlaygroundStack')}
-            >
-              <DropdownMenu.ItemTitle>
-                {t`Open playground`}
-              </DropdownMenu.ItemTitle>
-              <DropdownMenu.ItemIcon
-                iosIconName="character.book.closed"
-                androidIconName="library_books"
-              />
-            </DropdownMenu.Item>
-          </DropdownMenu.Content>
-        </DropdownMenu.Root>
-      ) : null;
-    },
-  });
+function LanguageMenuTarget() {
+  const { setLocale, locale } = useI18n();
+
+  return (
+    <MenuList
+      items={[
+        {
+          label: t`English`,
+          checked: locale === 'en',
+          onPress: () => setLocale('en'),
+        },
+        {
+          label: t`Finnish`,
+          checked: locale === 'fi',
+          onPress: () => setLocale('fi'),
+        },
+      ]}
+    />
+  );
 }
 
-const Wrapper = styled('View', {
+function AppearanceMenuTarget() {
+  const { setColorMode, colorMode } = useColorMode();
+
+  return (
+    <MenuList
+      items={[
+        {
+          label: t`Dark`,
+          checked: colorMode === 'dark',
+          onPress: () => setColorMode('dark'),
+        },
+        {
+          label: t`Light`,
+          checked: colorMode === 'light',
+          onPress: () => setColorMode('light'),
+        },
+      ]}
+    />
+  );
+}
+
+const Wrapper = styled('ScrollView', {
   flex: 1,
-  padding: '$large',
-});
+}).attrs((p) => ({
+  contentContainerStyle: {
+    padding: p.theme.space.normal,
+  },
+}));

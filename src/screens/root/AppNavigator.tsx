@@ -9,6 +9,7 @@ import { useAuthStore } from '~services/auth';
 import { ParamList } from '~screens/types';
 import TabNavigator from '~screens/root/TabNavigator';
 import PlaygroundNavigator from '~screens/playground';
+import MenuListNavigator from '~screens/menu-list';
 
 const AppStack = createStackNavigator<ParamList>();
 
@@ -29,6 +30,11 @@ export default function AppNavigator() {
             name="PlaygroundStack"
             options={{ headerShown: false }}
             component={PlaygroundNavigator}
+          />
+          <AppStack.Screen
+            name="MenuListStack"
+            options={{ headerShown: false }}
+            component={MenuListNavigator}
           />
         </AppStack.Group>
 

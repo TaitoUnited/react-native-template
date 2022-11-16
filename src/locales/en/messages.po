@@ -13,32 +13,28 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/auth/LogoutButton.tsx:11
+#: src/screens/settings/SettingsScreen.tsx:48
+msgid "Appearance"
+msgstr "Appearance"
+
+#: src/screens/settings/SettingsScreen.tsx:22
 msgid "Are you sure you want to logout?"
 msgstr ""
 
-#: src/screens/utils.tsx:46
+#: src/screens/utils.tsx:57
 msgid "Back"
 msgstr ""
 
-#: src/components/auth/LogoutButton.tsx:12
 #: src/components/uikit/PickerModal.tsx:206
 #: src/components/uikit/PickerSheet.tsx:153
 #: src/components/uikit/inputs/DateInput.tsx:88
 #: src/components/uikit/inputs/SearchInput.tsx:54
+#: src/screens/settings/SettingsScreen.tsx:23
 msgid "Cancel"
 msgstr ""
 
 #: src/utils/linking.ts:21
 msgid "Cannot open {type}"
-msgstr ""
-
-#: src/screens/settings/SettingsScreen.tsx:50
-msgid "Change language to"
-msgstr ""
-
-#: src/screens/settings/SettingsScreen.tsx:54
-msgid "Change theme to {colorModeLabel} mode"
 msgstr ""
 
 #: src/components/uikit/PickerModal.tsx:206
@@ -60,6 +56,11 @@ msgstr ""
 msgid "Could not toggle permission. You can change the permission in the system settings."
 msgstr ""
 
+#: src/screens/settings/SettingsScreen.tsx:49
+#: src/screens/settings/SettingsScreen.tsx:53
+msgid "Dark"
+msgstr "Dark"
+
 #: src/components/uikit/PickerModal.tsx:213
 #: src/components/uikit/PickerSheet.tsx:160
 msgid "Done"
@@ -80,6 +81,10 @@ msgstr ""
 msgid "Email required"
 msgstr ""
 
+#: src/screens/settings/SettingsScreen.tsx:41
+msgid "English"
+msgstr "English"
+
 #: src/screens/unauthed/LoginScreen.tsx:26
 msgid "Failed to login"
 msgstr ""
@@ -87,6 +92,10 @@ msgstr ""
 #: src/screens/unauthed/SignupScreen.tsx:43
 msgid "Failed to signup"
 msgstr ""
+
+#: src/screens/settings/SettingsScreen.tsx:42
+msgid "Finnish"
+msgstr "Finnish"
 
 #: src/screens/unauthed/SignupScreen.tsx:106
 msgid "First name"
@@ -101,6 +110,10 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
+#: src/screens/settings/SettingsScreen.tsx:36
+msgid "Language"
+msgstr "Language"
+
 #: src/screens/unauthed/SignupScreen.tsx:124
 msgid "Last name"
 msgstr ""
@@ -109,11 +122,16 @@ msgstr ""
 msgid "Last name is required"
 msgstr ""
 
+#: src/screens/settings/SettingsScreen.tsx:49
+#: src/screens/settings/SettingsScreen.tsx:54
+msgid "Light"
+msgstr "Light"
+
 #: src/screens/unauthed/LoginScreen.tsx:108
 msgid "Logging in..."
 msgstr ""
 
-#: src/screens/root/AppNavigator.tsx:50
+#: src/screens/root/AppNavigator.tsx:56
 msgid "Logging out..."
 msgstr ""
 
@@ -127,16 +145,20 @@ msgstr ""
 msgid "Login with your account"
 msgstr ""
 
-#: src/components/auth/LogoutButton.tsx:13
-#: src/components/auth/LogoutButton.tsx:24
+#: src/screens/settings/SettingsScreen.tsx:24
+#: src/screens/settings/SettingsScreen.tsx:60
 msgid "Logout"
 msgstr ""
+
+#: src/screens/menu-list/index.tsx:17
+msgid "MenuList"
+msgstr "MenuList"
 
 #: src/components/uikit/PickerSheet.tsx:253
 msgid "No results found."
 msgstr ""
 
-#: src/screens/settings/SettingsScreen.tsx:33
+#: src/screens/settings/SettingsScreen.tsx:87
 msgid "Open playground"
 msgstr ""
 
@@ -236,14 +258,6 @@ msgstr ""
 
 #: src/services/permissions.tsx:93
 msgid "You need to change the permission in the system settings."
-msgstr ""
-
-#: src/screens/settings/SettingsScreen.tsx:18
-msgid "dark"
-msgstr ""
-
-#: src/screens/settings/SettingsScreen.tsx:18
-msgid "light"
 msgstr ""
 
 #: src/utils/linking.ts:34
