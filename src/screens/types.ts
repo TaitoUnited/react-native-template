@@ -30,6 +30,7 @@ type AuthedNavigation = {
   }>;
   MenuListStack: Navigator<{
     MenuList: Screen<{
+      title: string;
       target?: FunctionComponent<any>;
     }>;
   }>;

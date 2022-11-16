@@ -30,12 +30,18 @@ export default function MenuList({ items, title }: Props) {
     if (item.target) {
       if (activeRoute === 'MenuList') {
         navigation.dispatch(
-          StackActions.push('MenuList', { target: item.target })
+          StackActions.push('MenuList', {
+            target: item.target,
+            title: item.label,
+          })
         );
       } else {
         navigation.navigate('MenuListStack', {
           screen: 'MenuList',
-          params: { target: item.target },
+          params: {
+            target: item.target,
+            title: item.label,
+          },
         });
       }
     }

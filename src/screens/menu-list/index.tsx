@@ -1,5 +1,4 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { t } from '@lingui/macro';
 
 import MenuListScreen from './MenuListScreen';
 import { useDefaultStackScreenOptions } from '~screens/utils';
@@ -14,7 +13,7 @@ export default function MenuListNavigator() {
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen
         name="MenuList"
-        options={{ title: t`MenuList` }}
+        options={({ route }) => ({ title: route.params.title })}
         component={MenuListScreen}
       />
     </Stack.Navigator>
