@@ -12,7 +12,7 @@ import MenuList from '~components/common/MenuList';
 
 export default function SettingsScreen(_: ScreenProps<'Settings'>) {
   const { locale } = useI18n();
-  const { colorMode } = useColorMode();
+  const { colorScheme } = useColorMode();
   const logout = useAuthStore((s) => s.logout);
 
   function handleLogout() {
@@ -35,7 +35,7 @@ export default function SettingsScreen(_: ScreenProps<'Settings'>) {
           },
           {
             label: t`Appearance`,
-            currentValue: colorMode === 'light' ? t`Light` : t`Dark`,
+            currentValue: colorScheme === 'light' ? t`Light` : t`Dark`,
             target: AppearanceMenuTarget,
           },
           {
@@ -76,6 +76,11 @@ function AppearanceMenuTarget() {
   return (
     <MenuList
       items={[
+        {
+          label: t`Automatic`,
+          checked: colorMode === 'system',
+          onPress: () => setColorMode('system'),
+        },
         {
           label: t`Dark`,
           checked: colorMode === 'dark',

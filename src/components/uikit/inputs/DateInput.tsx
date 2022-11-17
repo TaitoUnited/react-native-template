@@ -39,7 +39,7 @@ export const DateInput = forwardRef(
   ) => {
     const [isPickerOpen, setPickerOpen] = useState(false);
     const { locale } = useI18n();
-    const { colorMode } = useColorMode();
+    const { colorScheme } = useColorMode();
 
     useImperativeHandle(ref, () => ({
       focus: () => {
@@ -58,7 +58,7 @@ export const DateInput = forwardRef(
         : DateTime.TIME_SIMPLE;
 
     // TODO: fix Android dark mode support
-    const pickerTheme = Platform.OS === 'ios' ? colorMode : 'light';
+    const pickerTheme = Platform.OS === 'ios' ? colorScheme : 'light';
 
     return (
       <>

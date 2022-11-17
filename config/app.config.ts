@@ -16,6 +16,7 @@ const expoConfig: ExpoConfig = {
   platforms: ['ios', 'android'],
   icon: config.iconImage,
   backgroundColor: '#000000', // root view background
+  userInterfaceStyle: 'automatic',
   splash: {
     resizeMode: 'contain',
     backgroundColor: config.splash.backgroundColor,

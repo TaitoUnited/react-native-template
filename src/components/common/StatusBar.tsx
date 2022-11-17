@@ -3,12 +3,12 @@ import { useColorMode } from '~services/color-mode';
 import { useTheme } from '~styles/styled';
 
 export default function StatusBar() {
-  const { colorMode } = useColorMode();
+  const { colorScheme } = useColorMode();
   const theme = useTheme();
 
   return (
     <RNStatusBar
-      barStyle={colorMode === 'dark' ? 'light-content' : 'dark-content'}
+      barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
       backgroundColor={theme.colors.background}
     />
   );

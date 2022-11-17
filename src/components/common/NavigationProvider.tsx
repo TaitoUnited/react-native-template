@@ -11,13 +11,13 @@ export default function NavigationProvider({
   children: ReactNode;
 }) {
   const theme = useTheme();
-  const { colorMode } = useColorMode();
+  const { colorScheme } = useColorMode();
 
   return (
     <NavigationContainer
       ref={navigationRef}
       theme={{
-        dark: colorMode === 'dark',
+        dark: colorScheme === 'dark',
         colors: {
           card: theme.colors.surface,
           background: theme.colors.background,

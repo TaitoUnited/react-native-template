@@ -17,15 +17,21 @@ const Stack = createStackNavigator<ParamList>();
 
 export default function PlaygroundNavigator() {
   const screenOptions = useDefaultStackScreenOptions();
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorScheme, setColorMode } = useColorMode();
 
   return (
     <Stack.Navigator
       screenOptions={{
         ...screenOptions,
         headerRight: () => (
-          <FillButton variant="neutral" size="small" onPress={toggleColorMode}>
-            {colorMode === 'light' ? 'Dark' : 'Light'}
+          <FillButton
+            variant="neutral"
+            size="small"
+            onPress={() => {
+              setColorMode(colorScheme === 'light' ? 'dark' : 'light');
+            }}
+          >
+            {colorScheme === 'light' ? 'Dark' : 'Light'}
           </FillButton>
         ),
       }}
