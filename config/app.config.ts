@@ -2,10 +2,11 @@ import { ExpoConfig } from '@expo/config';
 import { getConfig } from './utils';
 
 const env = process.env.APP_ENV || 'dev';
-const config = getConfig(env);
-const appId = `com.taito.template${config.appIdSuffix}`;
 
 console.log(`→ Using ${env} config`);
+
+const config = getConfig(env);
+const appId = `com.taito.template${config.appIdSuffix}`;
 
 const expoConfig: ExpoConfig = {
   slug: 'taito-template',

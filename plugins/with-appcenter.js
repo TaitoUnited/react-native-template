@@ -1,6 +1,12 @@
 const fs = require('fs');
-const { withAppBuildGradle, withPlugins } = require('@expo/config-plugins');
+const path = require('path');
 const { default: withAppCenterConfiguration } = require('expo-appcenter');
+
+const {
+  withAppBuildGradle,
+  withPlugins,
+  withDangerousMod,
+} = require('@expo/config-plugins');
 
 function withAndroidSigning(c) {
   return withAppBuildGradle(c, (config) => {
@@ -35,6 +41,7 @@ function setAppCenterSigning(buildGradle) {
   );
 }
 
+const jsonTemplate = (appSecret) => JSON.stringify({ app_secret: appSecret });
 const plistTemplate = (appSecret) => `
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "https://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -46,15 +53,33 @@ const plistTemplate = (appSecret) => `
 </plist>
 `;
 
-const jsonTemplate = (appSecret) => JSON.stringify({ app_secret: appSecret });
-
 const JSON_CONFIG_PATH = './config/appcenter-config.json';
 const PLIST_CONFIG_PATH = './config/appcenter-config.plist';
 
-function withAddAppCenterConfigs(config, appSecret) {
-  fs.writeFileSync(JSON_CONFIG_PATH, jsonTemplate(appSecret));
-  fs.writeFileSync(PLIST_CONFIG_PATH, plistTemplate(appSecret));
-  return config;
+function withAppCenterConfigJson(c, appSecret) {
+  return withDangerousMod(c, [
+    'android',
+    (config) => {
+      fs.writeFileSync(
+        path.resolve(config.modRequest.projectRoot, JSON_CONFIG_PATH),
+        jsonTemplate(appSecret)
+      );
+      return config;
+    },
+  ]);
+}
+
+function withAppCenterConfigPlist(c, appSecret) {
+  return withDangerousMod(c, [
+    'ios',
+    (config) => {
+      fs.writeFileSync(
+        path.resolve(config.modRequest.projectRoot, PLIST_CONFIG_PATH),
+        plistTemplate(appSecret)
+      );
+      return config;
+    },
+  ]);
 }
 
 function withAppCenter(config, { appSecret = '' }) {
@@ -63,7 +88,8 @@ function withAppCenter(config, { appSecret = '' }) {
   }
 
   return withPlugins(config, [
-    [withAddAppCenterConfigs, appSecret],
+    [withAppCenterConfigJson, appSecret],
+    [withAppCenterConfigPlist, appSecret],
     [withAndroidSigning],
     [
       withAppCenterConfiguration,
