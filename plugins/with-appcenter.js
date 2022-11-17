@@ -88,8 +88,6 @@ function withAppCenter(config, { appSecret = '' }) {
   }
 
   return withPlugins(config, [
-    [withAppCenterConfigJson, appSecret],
-    [withAppCenterConfigPlist, appSecret],
     [withAndroidSigning],
     [
       withAppCenterConfiguration,
@@ -98,6 +96,8 @@ function withAppCenter(config, { appSecret = '' }) {
         iosAppCenterPath: PLIST_CONFIG_PATH,
       },
     ],
+    [withAppCenterConfigJson, appSecret],
+    [withAppCenterConfigPlist, appSecret],
   ]);
 }
 
