@@ -3,8 +3,8 @@ const path = require('path');
 const { withDangerousMod } = require('@expo/config-plugins');
 const { mergeContents } = require('@expo/config-plugins/build/utils/generateCode'); // prettier-ignore
 
-function withReactNativePermissions(config, opts = {}) {
-  return withDangerousMod(config, [
+function withReactNativePermissions(c, opts = {}) {
+  return withDangerousMod(c, [
     'ios',
     async (config) => {
       const filePath = path.join(

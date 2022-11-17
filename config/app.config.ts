@@ -34,6 +34,10 @@ const expoConfig: ExpoConfig = {
   ios: {
     bundleIdentifier: appId,
     jsEngine: 'jsc',
+    bitcode: false,
+    config: {
+      usesNonExemptEncryption: false,
+    },
     /* -------------- Add iOS permission usage descriptions here --------------
     infoPlist: {
       NSCameraUsageDescription: 'This app uses the camera to scan QR-codes.',
@@ -42,7 +46,7 @@ const expoConfig: ExpoConfig = {
   },
   extra: config,
   plugins: [
-    './plugins/with-m1-fixes',
+    ['./plugins/with-ios-settings', { teamId: 'EPATC4S9N2' }],
     [
       './plugins/with-appcenter',
       { appSecret: 'c061d869-eac1-42f6-bbb1-d9e2ea2749a4' },

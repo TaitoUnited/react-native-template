@@ -1,9 +1,9 @@
+const fs = require('fs');
 const { withAppBuildGradle, withPlugins } = require('@expo/config-plugins');
 const { default: withAppCenterConfiguration } = require('expo-appcenter');
-const fs = require('fs');
 
-function withAndroidSigning(config) {
-  return withAppBuildGradle(config, (config) => {
+function withAndroidSigning(c) {
+  return withAppBuildGradle(c, (config) => {
     if (config.modResults.language === 'groovy') {
       config.modResults.contents = setAppCenterSigning(
         config.modResults.contents
