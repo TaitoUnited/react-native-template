@@ -101,7 +101,7 @@ export async function initAuth() {
     if (isAuthError(error)) {
       // Ignore auth errors here since they are handled in the GraphQL client
       // where the user will be logged out automatically
-      console.log('> Auth error detected during auth check'); // prettier-ignore
+      console.log('> Auth error detected during auth check', error);
     } else if (error?.networkError) {
       showToast({ title: t`Could not connect to server`, type: 'error' });
     } else {
