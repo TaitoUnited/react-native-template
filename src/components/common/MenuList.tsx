@@ -138,6 +138,7 @@ const Title = styled(Text, {
 
 const Label = styled(Text, {
   flex: 1,
+  paddingVertical: '$xxsmall',
 });
 
 const Pressable = styled('TouchableHighlight', {}).attrs((p) => ({
