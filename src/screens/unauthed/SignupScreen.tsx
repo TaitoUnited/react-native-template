@@ -52,9 +52,16 @@ export default function SignupScreen(_: ScreenProps<'Signup'>) {
           extraHeight={-headerHeight}
         >
           <Stack axis="y" spacing="medium">
-            <Text variant="title2">
-              <Trans>Create an account</Trans>
-            </Text>
+            <Stack axis="y" spacing="small">
+              <Text variant="title2">
+                <Trans>Create an account</Trans>
+              </Text>
+              <Text variant="bodySmall" color="textMuted">
+                <Trans>
+                  Don&lsquo;t worry, these won&lsquo;t actually be saved.
+                </Trans>
+              </Text>
+            </Stack>
 
             <Stack axis="y" spacing="normal">
               <Controller

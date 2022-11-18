@@ -153,6 +153,6 @@ const Input = styled('TextInput', {
 });
 
 const Message = styled(Text, {
-  marginTop: '$xsmall',
+  marginTop: '$small',
   marginLeft: '$small',
 });
