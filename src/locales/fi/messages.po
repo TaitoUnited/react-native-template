@@ -21,9 +21,17 @@ msgstr "Väriteema"
 msgid "Are you sure you want to logout?"
 msgstr "Oletko varma, että haluat kirjautua ulos?"
 
+#: src/screens/settings/SettingsScreen.tsx:80
+msgid "Automatic"
+msgstr "Automaattinen"
+
 #: src/screens/utils.tsx:57
 msgid "Back"
 msgstr "Takaisin"
+
+#: src/screens/unauthed/LandingScreen.tsx:35
+msgid "By Taito United"
+msgstr "Taito Unitedilta"
 
 #: src/components/uikit/PickerModal.tsx:206
 #: src/components/uikit/PickerSheet.tsx:153
@@ -56,8 +64,12 @@ msgstr "Ei voitu yhdistää palvelimeen"
 msgid "Could not toggle permission. You can change the permission in the system settings."
 msgstr "Ei voitu muuttaa lupaa. Voit muuttaa lupaa järjestelmäasetuksista."
 
+#: src/screens/unauthed/LandingScreen.tsx:66
+msgid "Create an account"
+msgstr "Luo uusi tili"
+
 #: src/screens/settings/SettingsScreen.tsx:38
-#: src/screens/settings/SettingsScreen.tsx:80
+#: src/screens/settings/SettingsScreen.tsx:85
 msgid "Dark"
 msgstr "Tumma"
 
@@ -82,6 +94,7 @@ msgid "Email required"
 msgstr "Sähköposti on pakollinen"
 
 #: src/screens/settings/SettingsScreen.tsx:59
+#: src/screens/unauthed/LandingScreen.tsx:91
 msgid "English"
 msgstr "Englanti"
 
@@ -94,6 +107,7 @@ msgid "Failed to signup"
 msgstr "Rekisteröityminen epäonnistui"
 
 #: src/screens/settings/SettingsScreen.tsx:64
+#: src/screens/unauthed/LandingScreen.tsx:88
 msgid "Finnish"
 msgstr "Suomi"
 
@@ -123,7 +137,7 @@ msgid "Last name is required"
 msgstr "Sukunimin on pakollinen"
 
 #: src/screens/settings/SettingsScreen.tsx:38
-#: src/screens/settings/SettingsScreen.tsx:85
+#: src/screens/settings/SettingsScreen.tsx:90
 msgid "Light"
 msgstr "Vaalea"
 
@@ -135,7 +149,6 @@ msgstr "Kirjaudutaan sisään..."
 msgid "Logging out..."
 msgstr "Kirjaudutaan ulos..."
 
-#: src/screens/unauthed/LandingScreen.tsx:19
 #: src/screens/unauthed/LoginScreen.tsx:110
 #: src/screens/unauthed/index.tsx:24
 msgid "Login"
@@ -208,6 +221,10 @@ msgstr "Suositeltu muoto: +358400123456"
 msgid "Profile"
 msgstr "Profiili"
 
+#: src/screens/unauthed/LandingScreen.tsx:32
+msgid "React Native Template"
+msgstr "React Native templateen"
+
 #: src/components/uikit/inputs/SearchInput.tsx:17
 #: src/screens/root/TabNavigator.tsx:36
 #: src/screens/search/index.tsx:17
@@ -219,11 +236,14 @@ msgstr "Hae"
 msgid "Settings"
 msgstr "Asetukset"
 
+#: src/screens/unauthed/LandingScreen.tsx:49
+msgid "Sign in"
+msgstr "Kirjaudu sisään"
+
 #: src/screens/unauthed/SignupScreen.tsx:240
 msgid "Signing up..."
 msgstr "Rekisteröidytään..."
 
-#: src/screens/unauthed/LandingScreen.tsx:25
 #: src/screens/unauthed/SignupScreen.tsx:242
 #: src/screens/unauthed/index.tsx:29
 msgid "Signup"
@@ -239,6 +259,10 @@ msgstr "Jotain meni pieleen"
 msgid "Start by creating an account"
 msgstr "Aloita luomalla tili"
 
+#: src/screens/unauthed/LandingScreen.tsx:44
+msgid "Start your journey"
+msgstr "Aloita seikkailusi"
+
 #: src/components/uikit/PickerSheet.tsx:256
 msgid "Try changing your search term."
 msgstr "Kokeile muuttaa hakutermiä."
@@ -246,6 +270,10 @@ msgstr "Kokeile muuttaa hakutermiä."
 #: src/services/permissions.tsx:92
 msgid "Unable to change permission"
 msgstr "Lupaa ei voitu muuttaa"
+
+#: src/screens/unauthed/LandingScreen.tsx:29
+msgid "Welcome to"
+msgstr "Tervetuloa"
 
 #: src/screens/unauthed/LoginScreen.tsx:37
 #: src/screens/unauthed/SignupScreen.tsx:57
