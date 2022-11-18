@@ -1,3 +1,4 @@
+import 'react-native-reanimated';
 import { LogBox } from 'react-native';
 import { registerRootComponent } from 'expo';
 import { preventAutoHideAsync } from 'expo-splash-screen';

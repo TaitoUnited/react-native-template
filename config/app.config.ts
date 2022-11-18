@@ -1,10 +1,13 @@
 import { ExpoConfig } from '@expo/config';
 import { getConfig } from './utils';
 
+/** ------------------------- NOTE: -------------------------
+ * Do not commit `console.log` statements in this file!!!
+ * It will break android builds because of the way we Expo resolves
+ * the `index.js` file during the build process...
+ ------------------------------------------------------------ */
+
 const env = process.env.APP_ENV || 'dev';
-
-console.log(`→ Using ${env} config`);
-
 const config = getConfig(env);
 const appId = `com.taito.template${config.appIdSuffix}`;
 
@@ -66,6 +69,7 @@ const expoConfig: ExpoConfig = {
           minSdkVersion: 23,
           compileSdkVersion: 33,
           targetSdkVersion: 33,
+          kotlinVersion: '1.6.21',
           extraProguardRules: getExtraProguardRules(),
         },
       },
