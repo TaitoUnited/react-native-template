@@ -35,7 +35,7 @@ jobs:
       - name: Prebuild
         run: |
           npm run prebuild:ci:test
-          git add -f ios ':!ios/Pods'
+          git add -f ios
           git add -f android
           git commit -m "ci: prebuild ($(git log -2 --pretty=%s | tail -1))"
           git push origin test
