@@ -29,6 +29,7 @@ export const darkTheme = createTheme({ colors: colors.dark });
 export { styled, css, createTheme, useTheme, config, theme, ThemeProvider };
 export type CSS = Stitches.CSS<typeof config>;
 export type Theme = typeof theme;
+export type Typography = keyof typeof typography.native;
 export type Color = keyof Theme['colors'];
 export type Space = keyof Theme['space'];
 export type Radii = keyof Theme['radii'];

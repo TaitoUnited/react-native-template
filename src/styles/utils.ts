@@ -1,13 +1,11 @@
 import type * as Stitches from 'stitches-native';
 import { StyleSheet } from 'react-native';
 
-import {
-  native as typographyTokens,
-  TypographyToken as Typography,
-} from '~design-system/typography';
-
+import { native as typographyTokens } from '~design-system/typography';
 import * as shadows from '~design-system/shadows';
 import * as designSystemUtils from '~design-system/utils';
+
+type Typography = keyof typeof typographyTokens;
 
 export const typography = (variant: Typography) => {
   const { fontWeight, textTransform } = typographyTokens[variant];

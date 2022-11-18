@@ -5,8 +5,7 @@ import { Text } from '../Text';
 import { Stack } from '../layout/Stack';
 import { Icon } from '../Icon';
 import type { ButtonProps, ButtonSize, ButtonVariant } from './types';
-import type { TypographyToken as Typography } from '~design-system/typography';
-import { Color, styled, useTheme } from '~styles';
+import { Color, Typography, styled, useTheme } from '~styles';
 
 type Props = {
   children: ReactNode;
