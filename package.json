@@ -30,7 +30,7 @@
     "design-system:format": "prettier --write \"src/design-system/*.ts\"",
     "i18n:extract": "lingui extract --clean",
     "i18n:compile": "lingui compile",
-    "i18n:check": "lingui compile --strict",
+    "i18n:compile:strict": "lingui compile --strict",
     "test": "jest --passWithNoTests",
     "lint": "eslint './src/**/*.{ts,tsx}' --ignore-path .eslintignore",
     "typecheck": "tsc --noEmit",
