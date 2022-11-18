@@ -5,7 +5,9 @@ import AppNavigator from './AppNavigator';
 import { useAuthStore } from '~services/auth';
 import { navigate } from '~screens/utils';
 
-DevSettings.addMenuItem('Open Playground', () => navigate('PlaygroundStack'));
+if (__DEV__) {
+  DevSettings.addMenuItem('Open Playground', () => navigate('PlaygroundStack'));
+}
 
 export default function RootNavigator() {
   const status = useAuthStore((s) => s.status);
