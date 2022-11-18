@@ -32,15 +32,9 @@ export default function LoginScreen(_: ScreenProps<'Login'>) {
       <Wrapper>
         <Scroller>
           <Stack axis="y" spacing="medium">
-            <Stack axis="y" spacing="xsmall">
-              <Text variant="title2">
-                <Trans>Welcome!</Trans>
-              </Text>
-
-              <Text variant="title3">
-                <Trans>Login with your account</Trans>
-              </Text>
-            </Stack>
+            <Text variant="title3">
+              <Trans>Enter your credentials</Trans>
+            </Text>
 
             <Stack axis="y" spacing="normal">
               <Controller
@@ -100,6 +94,7 @@ export default function LoginScreen(_: ScreenProps<'Login'>) {
 
           <FillButton
             variant="primary"
+            size="large"
             onPress={form.handleSubmit(handleSubmit)}
             disabled={status === 'logging-in'}
             loading={status === 'logging-in'}
@@ -131,6 +126,7 @@ const Scroller = styled(KeyboardAwareScrollView, {
   contentContainerStyle: {
     flexGrow: 1,
     padding: p.theme.space.normal,
+    paddingTop: p.theme.space.medium,
   },
 }));
 

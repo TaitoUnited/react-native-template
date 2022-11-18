@@ -65,6 +65,7 @@ msgid "Could not toggle permission. You can change the permission in the system 
 msgstr ""
 
 #: src/screens/unauthed/LandingScreen.tsx:66
+#: src/screens/unauthed/SignupScreen.tsx:56
 msgid "Create an account"
 msgstr "Create an account"
 
@@ -78,18 +79,18 @@ msgstr "Dark"
 msgid "Done"
 msgstr ""
 
-#: src/screens/unauthed/LoginScreen.tsx:66
-#: src/screens/unauthed/SignupScreen.tsx:86
+#: src/screens/unauthed/LoginScreen.tsx:60
+#: src/screens/unauthed/SignupScreen.tsx:80
 msgid "Email"
 msgstr ""
 
-#: src/screens/unauthed/LoginScreen.tsx:58
-#: src/screens/unauthed/SignupScreen.tsx:78
+#: src/screens/unauthed/LoginScreen.tsx:52
+#: src/screens/unauthed/SignupScreen.tsx:72
 msgid "Email invalid"
 msgstr ""
 
-#: src/screens/unauthed/LoginScreen.tsx:60
-#: src/screens/unauthed/SignupScreen.tsx:80
+#: src/screens/unauthed/LoginScreen.tsx:54
+#: src/screens/unauthed/SignupScreen.tsx:74
 msgid "Email required"
 msgstr ""
 
@@ -97,6 +98,10 @@ msgstr ""
 #: src/screens/unauthed/LandingScreen.tsx:91
 msgid "English"
 msgstr "English"
+
+#: src/screens/unauthed/LoginScreen.tsx:36
+msgid "Enter your credentials"
+msgstr "Enter your credentials"
 
 #: src/screens/unauthed/LoginScreen.tsx:26
 msgid "Failed to login"
@@ -111,11 +116,11 @@ msgstr ""
 msgid "Finnish"
 msgstr "Finnish"
 
-#: src/screens/unauthed/SignupScreen.tsx:106
+#: src/screens/unauthed/SignupScreen.tsx:100
 msgid "First name"
 msgstr ""
 
-#: src/screens/unauthed/SignupScreen.tsx:101
+#: src/screens/unauthed/SignupScreen.tsx:95
 msgid "First name is required"
 msgstr ""
 
@@ -128,11 +133,11 @@ msgstr ""
 msgid "Language"
 msgstr "Language"
 
-#: src/screens/unauthed/SignupScreen.tsx:124
+#: src/screens/unauthed/SignupScreen.tsx:118
 msgid "Last name"
 msgstr ""
 
-#: src/screens/unauthed/SignupScreen.tsx:119
+#: src/screens/unauthed/SignupScreen.tsx:113
 msgid "Last name is required"
 msgstr ""
 
@@ -141,7 +146,7 @@ msgstr ""
 msgid "Light"
 msgstr "Light"
 
-#: src/screens/unauthed/LoginScreen.tsx:108
+#: src/screens/unauthed/LoginScreen.tsx:103
 msgid "Logging in..."
 msgstr ""
 
@@ -149,13 +154,9 @@ msgstr ""
 msgid "Logging out..."
 msgstr ""
 
-#: src/screens/unauthed/LoginScreen.tsx:110
+#: src/screens/unauthed/LoginScreen.tsx:105
 #: src/screens/unauthed/index.tsx:24
 msgid "Login"
-msgstr ""
-
-#: src/screens/unauthed/LoginScreen.tsx:41
-msgid "Login with your account"
 msgstr ""
 
 #: src/screens/settings/SettingsScreen.tsx:21
@@ -176,35 +177,35 @@ msgstr ""
 msgid "Open settings"
 msgstr ""
 
-#: src/screens/unauthed/LoginScreen.tsx:86
-#: src/screens/unauthed/SignupScreen.tsx:172
+#: src/screens/unauthed/LoginScreen.tsx:80
+#: src/screens/unauthed/SignupScreen.tsx:166
 msgid "Password"
 msgstr ""
 
-#: src/screens/unauthed/SignupScreen.tsx:219
+#: src/screens/unauthed/SignupScreen.tsx:213
 msgid "Password again"
 msgstr ""
 
-#: src/screens/unauthed/LoginScreen.tsx:81
-#: src/screens/unauthed/SignupScreen.tsx:166
-#: src/screens/unauthed/SignupScreen.tsx:213
+#: src/screens/unauthed/LoginScreen.tsx:75
+#: src/screens/unauthed/SignupScreen.tsx:160
+#: src/screens/unauthed/SignupScreen.tsx:207
 msgid "Password is required"
 msgstr ""
 
-#: src/screens/unauthed/SignupScreen.tsx:164
-#: src/screens/unauthed/SignupScreen.tsx:211
+#: src/screens/unauthed/SignupScreen.tsx:158
+#: src/screens/unauthed/SignupScreen.tsx:205
 msgid "Password must be at least 8 characters"
 msgstr ""
 
-#: src/screens/unauthed/SignupScreen.tsx:209
+#: src/screens/unauthed/SignupScreen.tsx:203
 msgid "Passwords do not match"
 msgstr ""
 
-#: src/screens/unauthed/SignupScreen.tsx:146
+#: src/screens/unauthed/SignupScreen.tsx:140
 msgid "Phone number"
 msgstr ""
 
-#: src/screens/unauthed/SignupScreen.tsx:137
+#: src/screens/unauthed/SignupScreen.tsx:131
 msgid "Phone number is required"
 msgstr ""
 
@@ -212,7 +213,7 @@ msgstr ""
 msgid "Please try restarting the application."
 msgstr ""
 
-#: src/screens/unauthed/SignupScreen.tsx:141
+#: src/screens/unauthed/SignupScreen.tsx:135
 msgid "Preferred format: +358400123456"
 msgstr ""
 
@@ -240,11 +241,11 @@ msgstr ""
 msgid "Sign in"
 msgstr "Sign in"
 
-#: src/screens/unauthed/SignupScreen.tsx:240
+#: src/screens/unauthed/SignupScreen.tsx:235
 msgid "Signing up..."
 msgstr ""
 
-#: src/screens/unauthed/SignupScreen.tsx:242
+#: src/screens/unauthed/SignupScreen.tsx:237
 #: src/screens/unauthed/index.tsx:29
 msgid "Signup"
 msgstr ""
@@ -253,10 +254,6 @@ msgstr ""
 #: src/services/permissions.tsx:106
 #: src/utils/linking.ts:28
 msgid "Something went wrong"
-msgstr ""
-
-#: src/screens/unauthed/SignupScreen.tsx:61
-msgid "Start by creating an account"
 msgstr ""
 
 #: src/screens/unauthed/LandingScreen.tsx:44
@@ -274,11 +271,6 @@ msgstr ""
 #: src/screens/unauthed/LandingScreen.tsx:29
 msgid "Welcome to"
 msgstr "Welcome to"
-
-#: src/screens/unauthed/LoginScreen.tsx:37
-#: src/screens/unauthed/SignupScreen.tsx:57
-msgid "Welcome!"
-msgstr ""
 
 #: src/services/permissions.tsx:93
 msgid "You need to change the permission in the system settings."

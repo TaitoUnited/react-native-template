@@ -52,15 +52,9 @@ export default function SignupScreen(_: ScreenProps<'Signup'>) {
           extraHeight={-headerHeight}
         >
           <Stack axis="y" spacing="medium">
-            <Stack axis="y" spacing="xsmall">
-              <Text variant="title2">
-                <Trans>Welcome!</Trans>
-              </Text>
-
-              <Text variant="title3">
-                <Trans>Start by creating an account</Trans>
-              </Text>
-            </Stack>
+            <Text variant="title3">
+              <Trans>Create an account</Trans>
+            </Text>
 
             <Stack axis="y" spacing="normal">
               <Controller
@@ -232,6 +226,7 @@ export default function SignupScreen(_: ScreenProps<'Signup'>) {
 
           <FillButton
             variant="primary"
+            size="large"
             onPress={form.handleSubmit(handleSubmit)}
             disabled={isValidForm}
             loading={status === 'signing-in'}
@@ -263,6 +258,7 @@ const Scroller = styled(KeyboardAwareScrollView, {
   contentContainerStyle: {
     flexGrow: 1,
     padding: p.theme.space.normal,
+    paddingTop: p.theme.space.medium,
   },
 }));
 
