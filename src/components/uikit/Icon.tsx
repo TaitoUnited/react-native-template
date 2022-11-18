@@ -10,6 +10,7 @@ export type IconName = icons.IconsToken;
 type Props = {
   name: IconName;
   color?: keyof Theme['colors'];
+  forcedColor?: string; // NOTE: use this only in very special cases!!!
   size?: number;
   style?: ViewStyle;
 };
@@ -17,17 +18,19 @@ type Props = {
 export const Icon = memo(function Icon({
   name,
   color = 'text',
+  forcedColor,
   size = 24,
   style,
 }: Props) {
   const theme = useTheme();
+  const iconColor = forcedColor || theme.colors[color];
 
   return (
     <SvgXml
       xml={icons[name]}
       width={size}
       height={size}
-      color={theme.colors[color]}
+      color={iconColor}
       style={style}
     />
   );

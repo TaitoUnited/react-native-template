@@ -15,6 +15,7 @@ type Size = 'small' | 'medium' | 'large';
 
 type Props = PressableProps & {
   icon: IconName;
+  forcedColor?: string; // NOTE: use this only in very special cases!!!
   size?: Size;
   color?: Color;
   loading?: boolean;
@@ -24,8 +25,9 @@ const WANTED_HIT_SIZE = 44;
 
 export function IconButton({
   size = 'medium',
-  color,
+  color = 'text',
   icon,
+  forcedColor,
   loading,
   ...rest
 }: Props) {
@@ -40,13 +42,15 @@ export function IconButton({
     right: (WANTED_HIT_SIZE - iconSize) / 2,
   };
 
-  let content: ReactNode = <Icon name={icon} color={color} size={iconSize} />;
+  let content: ReactNode = (
+    <Icon name={icon} color={color} forcedColor={forcedColor} size={iconSize} />
+  );
 
   if (loading) {
     content = (
       <ActivityIndicator
         size="small"
-        color={color ? theme.colors[color] : theme.colors.text}
+        color={forcedColor || theme.colors[color]}
       />
     );
   }
