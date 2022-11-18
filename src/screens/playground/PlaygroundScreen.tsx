@@ -2,13 +2,14 @@ import { useEffect } from 'react';
 
 import { styled } from '~styles';
 import { ParamList, ScreenProps } from '~screens/types';
-import { IconButton, Icon, Stack, Text } from '~components/uikit';
+import { IconButton, Text } from '~components/uikit';
 import { navigationRef } from '~screens/utils';
+import MenuList from '~components/common/MenuList';
 
 export default function PlaygroundScreen({
   navigation,
 }: ScreenProps<'Playground'>) {
-  const rows: Array<{ label: string; screen: keyof ParamList }> = [
+  const items: Array<{ label: string; screen: keyof ParamList }> = [
     { screen: 'DesignSystem', label: 'Design System' },
     { screen: 'Icons', label: 'Icons' },
     { screen: 'Buttons', label: 'Buttons' },
@@ -28,28 +29,19 @@ export default function PlaygroundScreen({
 
   return (
     <Wrapper>
-      <Content>
-        {rows.map((row, index) => (
-          <Row
-            key={row.label}
-            onPress={() => navigation.navigate(row.screen as any)}
-          >
-            <RowContent withDivider={index < rows.length - 1}>
-              <Stack axis="x" spacing="small" align="center">
-                <RowDecoration>
-                  <Text variant="bodyLargeBold" color="infoText">
-                    {row.label.slice(0, 2)}
-                  </Text>
-                </RowDecoration>
-                <Text variant="body" numberOfLines={1} style={{ flex: 1 }}>
-                  {row.label}
-                </Text>
-                <Icon name="chevronRight" size={24} color="muted2" />
-              </Stack>
-            </RowContent>
-          </Row>
-        ))}
-      </Content>
+      <MenuList
+        items={items.map((item) => ({
+          label: item.label,
+          target: item.screen,
+          leftSlot: (
+            <MenuListItemLeftSlot>
+              <Text variant="bodyLargeBold" color="infoText">
+                {item.label.slice(0, 2)}
+              </Text>
+            </MenuListItemLeftSlot>
+          ),
+        }))}
+      />
     </Wrapper>
   );
 }
@@ -62,31 +54,7 @@ const Wrapper = styled('ScrollView', {
   },
 }));
 
-const Content = styled('View', {
-  backgroundColor: '$surface',
-  borderRadius: '$normal',
-  overflow: 'hidden',
-});
-
-const Row = styled('TouchableHighlight', {}).attrs((p) => ({
-  underlayColor: p.theme.colors.pressHighlight,
-}));
-
-const RowContent = styled('View', {
-  padding: '$small',
-  paddingLeft: 0,
-  marginLeft: '$small',
-  variants: {
-    withDivider: {
-      true: {
-        borderBottomWidth: 1,
-        borderBottomColor: '$border',
-      },
-    },
-  },
-});
-
-const RowDecoration = styled('View', {
+const MenuListItemLeftSlot = styled('View', {
   width: 40,
   height: 40,
   flexCenter: 'row',

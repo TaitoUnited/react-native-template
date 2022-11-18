@@ -5,6 +5,7 @@ import { StyleSheet } from 'react-native';
 import { styled } from '~styles';
 import { Icon, Spacer, Stack, Text } from '~components/uikit';
 import { getActiveRouteName } from '~screens/utils';
+import { ParamList } from '~screens/types';
 
 type Item = {
   label: string;
@@ -12,7 +13,7 @@ type Item = {
   checked?: boolean;
   leftSlot?: ReactNode;
   rightSlot?: ReactNode;
-  target?: FunctionComponent<any>;
+  target?: FunctionComponent<any> | keyof ParamList;
   onPress?: () => void;
 };
 
@@ -27,7 +28,7 @@ export default function MenuList({ items, title }: Props) {
   function handleItemPress(item: Item) {
     const activeRoute = getActiveRouteName(navigation.getState());
 
-    if (item.target) {
+    if (typeof item.target === 'function') {
       if (activeRoute === 'MenuList') {
         navigation.dispatch(
           StackActions.push('MenuList', {
@@ -44,6 +45,8 @@ export default function MenuList({ items, title }: Props) {
           },
         });
       }
+    } else if (typeof item.target === 'string') {
+      navigation.navigate(item.target as any);
     }
 
     item.onPress?.();
@@ -67,56 +70,55 @@ export default function MenuList({ items, title }: Props) {
                 : undefined
             }
           >
-            <ContentStack axis="x" spacing="small" align="center">
+            <ContentWrapper axis="x" spacing="small">
               {item.leftSlot ? <LeftSlot>{item.leftSlot}</LeftSlot> : null}
 
-              <Content withDivider={index < items.length - 1}>
-                <Stack axis="x" spacing="small" align="center">
-                  <Label variant="body" numberOfLines={1}>
-                    {item.label}
-                  </Label>
+              <Content
+                axis="x"
+                spacing="small"
+                align="center"
+                withDivider={index < items.length - 1}
+              >
+                <Label variant="body" numberOfLines={1}>
+                  {item.label}
+                </Label>
 
-                  {item.rightSlot ? (
-                    item.rightSlot
-                  ) : (
-                    <>
-                      {item.currentValue !== undefined && (
-                        <Text
-                          variant="body"
-                          color="textMuted"
-                          numberOfLines={1}
-                        >
-                          {item.currentValue}
-                        </Text>
-                      )}
+                {item.rightSlot ? (
+                  <RightSlot>{item.rightSlot}</RightSlot>
+                ) : (
+                  <>
+                    {item.currentValue !== undefined && (
+                      <Text variant="body" color="textMuted" numberOfLines={1}>
+                        {item.currentValue}
+                      </Text>
+                    )}
 
-                      {item.checked !== undefined && (
-                        <>
-                          {item.checked ? (
-                            <CheckCircle>
-                              <Icon
-                                name="checkmark"
-                                color="infoMuted"
-                                size={14}
-                              />
-                            </CheckCircle>
-                          ) : (
-                            <CheckOutline />
-                          )}
-                        </>
-                      )}
+                    {item.checked !== undefined && (
+                      <>
+                        {item.checked ? (
+                          <CheckCircle>
+                            <Icon
+                              name="checkmark"
+                              color="infoMuted"
+                              size={14}
+                            />
+                          </CheckCircle>
+                        ) : (
+                          <CheckOutline />
+                        )}
+                      </>
+                    )}
 
-                      {!!item.target && (
-                        <>
-                          <Spacer axis="x" size="xxsmall" />
-                          <Icon name="chevronRight" size={24} color="muted2" />
-                        </>
-                      )}
-                    </>
-                  )}
-                </Stack>
+                    {!!item.target && (
+                      <>
+                        <Spacer axis="x" size="xxsmall" />
+                        <Icon name="chevronRight" size={24} color="muted2" />
+                      </>
+                    )}
+                  </>
+                )}
               </Content>
-            </ContentStack>
+            </ContentWrapper>
           </Pressable>
         ))}
       </Wrapper>
@@ -136,20 +138,20 @@ const Title = styled(Text, {
 
 const Label = styled(Text, {
   flex: 1,
-  paddingVertical: '$normal',
 });
 
 const Pressable = styled('TouchableHighlight', {}).attrs((p) => ({
   underlayColor: p.theme.colors.pressHighlight,
 }));
 
-const ContentStack = styled(Stack, {
+const ContentWrapper = styled(Stack, {
   paddingLeft: '$normal',
 });
 
-const Content = styled('View', {
+const Content = styled(Stack, {
   flex: 1,
   paddingRight: '$small',
+  paddingVertical: '$small',
   variants: {
     withDivider: {
       true: {
@@ -162,6 +164,12 @@ const Content = styled('View', {
 
 const LeftSlot = styled('View', {
   flexCenter: 'row',
+  paddingVertical: '$small',
+});
+
+const RightSlot = styled('View', {
+  flexCenter: 'row',
+  minHeight: 24,
 });
 
 const CheckCircle = styled('View', {
