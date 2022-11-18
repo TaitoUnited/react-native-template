@@ -19,7 +19,7 @@
     "prebuild:test": "APP_ENV=test npx expo prebuild",
     "prebuild:stag": "APP_ENV=stag npx expo prebuild",
     "prebuild:prod": "APP_ENV=prod npx expo prebuild",
-    "prebuild:ci": "EXPO_NO_GIT_STATUS=1 npx expo prebuild --clean --no-install --skip-dependency-update react,react-native",
+    "prebuild:ci": "EXPO_NO_GIT_STATUS=1 npx expo prebuild --clean --skip-dependency-update react,react-native",
     "prebuild:ci:test": "APP_ENV=test npm run prebuild:ci",
     "prebuild:ci:stag": "APP_ENV=stag npm run prebuild:ci",
     "prebuild:ci:prod": "APP_ENV=prod npm run prebuild:ci",
