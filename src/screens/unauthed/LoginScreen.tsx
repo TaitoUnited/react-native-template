@@ -32,7 +32,7 @@ export default function LoginScreen(_: ScreenProps<'Login'>) {
       <Wrapper>
         <Scroller>
           <Stack axis="y" spacing="medium">
-            <Text variant="title3">
+            <Text variant="title2">
               <Trans>Enter your credentials</Trans>
             </Text>
 

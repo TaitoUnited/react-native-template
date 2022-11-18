@@ -31,7 +31,12 @@ export default function LandingScreen({ navigation }: ScreenProps<'Landing'>) {
               <BlackText variant="title1" align="center">
                 <Trans>React Native Template</Trans>
               </BlackText>
-              <BlackText variant="subtitle" align="center" withLineHeight>
+              <BlackText
+                variant="subtitle"
+                align="center"
+                withLineHeight
+                style={{ marginLeft: 16 }}
+              >
                 <Trans>By Taito United</Trans> 💚
               </BlackText>
             </Stack>

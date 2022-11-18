@@ -52,7 +52,7 @@ export default function SignupScreen(_: ScreenProps<'Signup'>) {
           extraHeight={-headerHeight}
         >
           <Stack axis="y" spacing="medium">
-            <Text variant="title3">
+            <Text variant="title2">
               <Trans>Create an account</Trans>
             </Text>
 

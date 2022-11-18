@@ -23,7 +23,7 @@
     "prebuild:ci:test": "APP_ENV=test npm run prebuild:ci",
     "prebuild:ci:stag": "APP_ENV=stag npm run prebuild:ci",
     "prebuild:ci:prod": "APP_ENV=prod npm run prebuild:ci",
-    "design-system:sync": "npm run design-system:tokenize && npm run design-system:codegen && design-system:format",
+    "design-system:sync": "npm run design-system:tokenize && npm run design-system:codegen && npm run design-system:format",
     "design-system:tokenize": "figmage tokenize --env ./config/.env.figma",
     "design-system:codegen": "figmage codegen --env ./config/.env.figma",
     "design-system:format": "prettier --write \"src/design-system/*.ts\"",
