@@ -44,7 +44,7 @@ const authStore = create<AuthState>((set) => ({
 
     try {
       const tokens = await fakeSignup(credentials);
-      await setAuthTokens(tokens);
+      setAuthTokens(tokens);
       set({ status: 'authenticated' });
     } catch (error) {
       set({ status: 'unauthenticated' });
@@ -56,7 +56,7 @@ const authStore = create<AuthState>((set) => ({
 
     try {
       const tokens = await fakeLogin(credentials);
-      await setAuthTokens(tokens);
+      setAuthTokens(tokens);
       set({ status: 'authenticated' });
     } catch (error) {
       set({ status: 'unauthenticated' });
@@ -75,7 +75,7 @@ const authStore = create<AuthState>((set) => ({
     }
 
     // TODO: clear API client cache
-    await storage.clearAll();
+    storage.clearAll();
   },
 }));
 
@@ -85,7 +85,7 @@ export async function initAuth() {
   authStore.setState({ status: 'determining' });
 
   try {
-    const accessToken = await storage.get('@app/access-token');
+    const accessToken = storage.getString('@app/access-token');
 
     if (!accessToken) {
       throw Error('No access token!');
@@ -112,16 +112,16 @@ export async function initAuth() {
   }
 }
 
-async function setAuthTokens({
+function setAuthTokens({
   accessToken,
   refreshToken,
 }: {
   accessToken: string;
   refreshToken: string;
 }) {
-  await storage.clearAll();
-  await storage.set('@app/access-token', accessToken);
-  await storage.set('@app/refresh-token', refreshToken);
+  storage.clearAll();
+  storage.set('@app/access-token', accessToken);
+  storage.set('@app/refresh-token', refreshToken);
 }
 
 export function isAuthError(error: any) {

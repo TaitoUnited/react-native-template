@@ -1,89 +1,102 @@
-import { useEffect, useMemo, useState } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import isObject from 'lodash/isObject';
+
+import {
+  MMKV,
+  useMMKVBoolean,
+  useMMKVNumber,
+  useMMKVObject,
+  useMMKVString,
+} from 'react-native-mmkv';
 
 const LOCALE = '@app/locale';
 const ACCESS_TOKEN = '@app/access-token';
 const REFRESH_TOKEN = '@app/refresh-token';
-const PERMISSION_REQUESTS = '@app/permission-requests';
 const COLOR_MODE = '@app/color-mode';
 
 // Add all storage keys here so that they can be cleared upon logout
 const CLEARABLE_KEYS = [ACCESS_TOKEN, REFRESH_TOKEN] as const;
 
 // These storage keys should be persisted across logins, eg. showing some guided tours etc.
-const PERSISTENT_KEYS = [LOCALE, PERMISSION_REQUESTS, COLOR_MODE] as const;
+const PERSISTENT_KEYS = [LOCALE, COLOR_MODE] as const;
+
+const clearableStorage = new MMKV({ id: 'clearable' });
+const persistentStorage = new MMKV({ id: 'persistent' });
 
 type Key = typeof CLEARABLE_KEYS[number] | typeof PERSISTENT_KEYS[number];
 
-async function set<T extends object | string | boolean>(key: Key, value: T) {
+function getStorage(key: Key) {
+  return PERSISTENT_KEYS.includes(key as any)
+    ? persistentStorage
+    : clearableStorage;
+}
+
+function set<T extends object | string | boolean | number>(key: Key, value: T) {
   try {
-    await AsyncStorage.setItem(key, JSON.stringify(value));
+    const s = getStorage(key);
+    if (isObject(value)) {
+      s.set(key, JSON.stringify(value));
+    } else {
+      s.set(key, value);
+    }
   } catch (error) {
     console.log(`> Failed to persist item: ${key}`, value, error);
   }
 }
 
-async function get<T>(key: Key): Promise<T | null> {
+function getString(key: Key) {
   try {
-    const value = await AsyncStorage.getItem(key);
-    return value !== null ? JSON.parse(value) : null;
+    const s = getStorage(key);
+    return s.getString(key);
   } catch (error) {
-    console.log(`> Failed to get persisted item: ${key}`, error);
-    return null;
+    console.log(`> Failed to get persisted string: ${key}`, error);
   }
 }
 
-async function remove(key: Key) {
-  try {
-    await AsyncStorage.removeItem(key);
-  } catch (error) {
-    console.log(`> Failed to clear persisted item: ${key}`, error);
-  }
+function getNumber(key: Key) {
+  return getStorage(key).getNumber(key);
 }
 
-async function clearAll() {
-  try {
-    await AsyncStorage.multiRemove(CLEARABLE_KEYS as any);
-  } catch (error) {
-    console.log('> Failed to clear all persisted values', error);
-  }
+function getBoolean(key: Key) {
+  return getStorage(key).getBoolean(key);
 }
 
-export function useStorageState<T extends object | string | boolean>(
-  key: Parameters<typeof storage.get>[0],
-  initial: T | null = null
-) {
-  const [state, setState] = useState<T | null>(initial);
-  const [initialized, setInitialized] = useState(false);
+function getObject<T>(key: Key): T | undefined {
+  const value = getStorage(key).getString(key);
+  return value ? JSON.parse(value) : undefined;
+}
 
-  useEffect(() => {
-    async function init() {
-      const persistedState = await storage.get<T | null>(key);
-      if (persistedState !== null) setState(persistedState);
-      setInitialized(true);
-    }
+function remove(key: Key) {
+  getStorage(key).delete(key);
+}
 
-    init();
-  }, [key]);
-
-  return useMemo(
-    () => ({
-      initialized,
-      state,
-      setState: async (newState: T) => {
-        setState(newState);
-        await storage.set(key, newState);
-      },
-    }),
-    [state, initialized, key]
-  );
+function clearAll() {
+  clearableStorage.clearAll();
 }
 
 const storage = {
   set,
-  get,
+  getString,
+  getNumber,
+  getBoolean,
+  getObject,
   remove,
   clearAll,
 };
 
 export default storage;
+
+export function useStorageString(key: Key) {
+  return useMMKVString(key, getStorage(key));
+}
+
+export function useStorageNumber(key: Key) {
+  return useMMKVNumber(key, getStorage(key));
+}
+
+export function useStorageBoolean(key: Key) {
+  return useMMKVBoolean(key, getStorage(key));
+}
+
+export function useStorageObject<T>(key: Key) {
+  return useMMKVObject<T>(key, getStorage(key));
+}
