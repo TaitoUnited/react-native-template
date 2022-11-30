@@ -82,9 +82,11 @@ function withAppCenterConfigPlist(c, appSecret) {
   ]);
 }
 
-function withAppCenter(config, { appSecret = '' }) {
-  if (!appSecret) {
-    throw new Error(`Missing App Center app secret!`);
+function withAppCenter(config, { iosAppSecret = '', androidAppSecret = '' }) {
+  if (!iosAppSecret || !androidAppSecret) {
+    throw new Error(
+      `Missing App Center app secret! Provide iOS and/or Android app secret.`
+    );
   }
 
   return withPlugins(config, [
@@ -96,8 +98,8 @@ function withAppCenter(config, { appSecret = '' }) {
         iosAppCenterPath: PLIST_CONFIG_PATH,
       },
     ],
-    [withAppCenterConfigJson, appSecret],
-    [withAppCenterConfigPlist, appSecret],
+    [withAppCenterConfigJson, androidAppSecret],
+    [withAppCenterConfigPlist, iosAppSecret],
   ]);
 }
 

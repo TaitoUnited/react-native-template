@@ -51,15 +51,25 @@ const expoConfig: ExpoConfig = {
   },
   extra: config,
   plugins: [
-    ['./plugins/with-ios-settings', { teamId: 'EPATC4S9N2' }],
+    [
+      './plugins/with-ios-settings',
+      {
+        teamId: 'EPATC4S9N2',
+      },
+    ],
     [
       './plugins/with-appcenter',
-      { appSecret: 'c061d869-eac1-42f6-bbb1-d9e2ea2749a4' },
+      {
+        iosAppSecret: '0053bb6e-f90a-48c3-8bf8-4f0cf98000df',
+        androidAppSecret: 'c061d869-eac1-42f6-bbb1-d9e2ea2749a4',
+      },
     ],
     [
       './plugins/with-react-native-permissions',
-      // Add more iOS permissions here
-      { pods: ['Notifications'] },
+      {
+        // Add more iOS permissions here
+        pods: ['Notifications'],
+      },
     ],
     [
       'expo-build-properties',
