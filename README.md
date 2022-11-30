@@ -6,6 +6,10 @@
 
 Project template for mobile app projects using React Native and Expo (via [Prebuild](https://docs.expo.dev/workflow/prebuild/)).
 
+## Prerequisites
+
+Make sure your development environment is setup and up-to-date by following this [guide](https://reactnative.dev/docs/environment-setup).
+
 ## Starting a new project
 
 After you have cloned this repo to start a new mobile app project go through the following steps to customize the template based on your project needs.
