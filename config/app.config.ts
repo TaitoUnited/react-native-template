@@ -38,7 +38,7 @@ const expoConfig: ExpoConfig = {
   },
   ios: {
     bundleIdentifier: appId,
-    jsEngine: 'jsc',
+    jsEngine: 'hermes',
     bitcode: false,
     config: {
       usesNonExemptEncryption: false,
