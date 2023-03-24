@@ -1,19 +1,10 @@
+import type { ReactNode } from 'react';
 import type { ViewProps } from 'react-native';
 
-import {
-  Children,
-  cloneElement,
-  Fragment,
-  isValidElement,
-  ReactNode,
-} from 'react';
-
-import { flattenChildren } from '../helpers';
-import { Spacer } from './Spacer';
-import { styled, Theme } from '~styles';
+import { styled, theme, Theme } from '~styles';
 
 type Props = ViewProps & {
-  spacing: keyof Theme['space'];
+  spacing: keyof Theme['space'] | 'none';
   axis?: 'x' | 'y';
   align?: 'center' | 'start' | 'end' | 'stretch';
   justify?: 'center' | 'start' | 'end' | 'between' | 'around';
@@ -30,38 +21,26 @@ export function Stack({
   debug,
   ...rest
 }: Props) {
-  // Handle `Fragments` by flattening children
-  const elements = flattenChildren(children).filter((e) => isValidElement(e));
-  const elementCount = Children.count(elements);
-  const lastIndex = elementCount - 1;
-
   return (
-    <Wrapper axis={axis} align={align} justify={justify} {...rest}>
-      {elements.map((child, index) => {
-        if (!isValidElement(child)) return null;
-
-        const isSpacer = (child as any).type.__SPACER__;
-
-        // Just return spacers as is so that they can override the default spacing
-        if (isSpacer) return cloneElement(child);
-
-        const isLast = index === lastIndex;
-        const nextElement = isLast ? null : (elements[index + 1] as any);
-        const isNextSpacer = nextElement && nextElement.type.__SPACER__;
-        const shouldAddSpacing = !isLast && !isNextSpacer;
-
-        return (
-          <Fragment key={index}>
-            {cloneElement(child)}
-            {shouldAddSpacing && (
-              <Spacer axis={axis} size={spacing} debug={debug} />
-            )}
-          </Fragment>
-        );
-      })}
+    <Wrapper
+      axis={axis}
+      align={align}
+      justify={justify}
+      spacing={spacing}
+      {...rest}
+    >
+      {children}
     </Wrapper>
   );
 }
+
+const spacingVariants: { [key in Props['spacing']]: { gap: number } } =
+  Object.entries(theme.space).reduce((acc, [key, value]) => {
+    acc[key as Props['spacing']] = {
+      gap: Number(value.value),
+    };
+    return acc;
+  }, {} as { [key in Props['spacing']]: { gap: number } });
 
 const Wrapper = styled('View', {
   variants: {
@@ -83,5 +62,6 @@ const Wrapper = styled('View', {
       between: { justifyContent: 'space-between' },
       around: { justifyContent: 'space-around' },
     },
+    spacing: spacingVariants,
   },
 });

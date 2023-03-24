@@ -1,5 +1,5 @@
-import { useCallback } from 'react';
-import { Platform, Alert } from 'react-native';
+import { useCallback, useEffect, useRef } from 'react';
+import { Platform, Alert, AppState, AppStateStatus } from 'react-native';
 import { t } from '@lingui/macro';
 import create from 'zustand';
 import flatten from 'lodash/flatten';
@@ -45,6 +45,12 @@ export function usePermissions() {
         bluetooth: PERMISSION_CATEGORIES.bluetooth[OS].every(
           (p) => statuses[p] === RESULTS.GRANTED
         ),
+        location: PERMISSION_CATEGORIES.location[OS].every(
+          (p) => statuses[p] === RESULTS.GRANTED
+        ),
+        camera: PERMISSION_CATEGORIES.camera[OS].every(
+          (p) => statuses[p] === RESULTS.GRANTED
+        ),
         photo: PERMISSION_CATEGORIES.photo[OS].every(
           (p) => statuses[p] === RESULTS.GRANTED
         ),
@@ -70,6 +76,8 @@ export function usePermissions() {
 
         if (
           category === 'bluetooth' ||
+          category === 'camera' ||
+          category === 'location' ||
           category === 'photo' ||
           category === 'voice' ||
           category === 'externalStorage'
@@ -80,7 +88,12 @@ export function usePermissions() {
             statuses = await requestMultiple(permissionsToRequest);
           }
         } else if (category === 'notification') {
-          statuses = await requestNotifications(['alert', 'sound', 'badge']);
+          statuses = await requestNotifications([
+            'alert',
+            'sound',
+            'badge',
+            'criticalAlert',
+          ]);
         }
 
         if (Object.values(statuses).every((s) => s === RESULTS.GRANTED)) {
@@ -153,9 +166,21 @@ const PERMISSION_CATEGORIES: Record<
   string,
   Record<'ios' | 'android', Permission[]>
 > = {
+  camera: {
+    ios: [PERMISSIONS.IOS.CAMERA],
+    android: [PERMISSIONS.ANDROID.CAMERA],
+  },
   photo: {
     ios: [PERMISSIONS.IOS.PHOTO_LIBRARY, PERMISSIONS.IOS.CAMERA],
     android: [PERMISSIONS.ANDROID.CAMERA],
+  },
+  location: {
+    ios: [PERMISSIONS.IOS.LOCATION_ALWAYS],
+    android: [
+      PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
+      PERMISSIONS.ANDROID.ACCESS_COARSE_LOCATION,
+      PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION,
+    ],
   },
   bluetooth: {
     ios: [PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL],
@@ -181,16 +206,18 @@ const PERMISSION_CATEGORIES: Record<
   },
 };
 
-type PermissionCategory =
+export type PermissionCategory =
   | 'notification'
   | 'bluetooth'
+  | 'location'
+  | 'camera'
   | 'photo'
   | 'voice'
   | 'externalStorage';
 
 type PermissionState = Record<PermissionCategory, boolean>;
 
-type PermissionCheckStatus = 'pending' | 'success' | 'error';
+export type PermissionCheckStatus = 'pending' | 'success' | 'error';
 
 type PermissionStore = {
   status: PermissionCheckStatus;

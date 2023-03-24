@@ -110,10 +110,7 @@ export default function MenuList({ items, title }: Props) {
                     )}
 
                     {!!item.target && (
-                      <>
-                        <Spacer axis="x" size="xxsmall" />
-                        <Icon name="chevronRight" size={24} color="muted2" />
-                      </>
+                      <Icon name="chevronRight" size={24} color="muted2" />
                     )}
                   </>
                 )}
