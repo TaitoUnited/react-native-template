@@ -65,21 +65,13 @@ const expoConfig: ExpoConfig = {
       },
     ],
     [
-      './plugins/with-react-native-permissions',
-      {
-        // Add more iOS permissions here
-        pods: ['Notifications'],
-      },
-    ],
-    [
       'expo-build-properties',
       {
         android: {
-          buildToolsVersion: '31.0.0',
+          buildToolsVersion: '33.0.0',
           minSdkVersion: 23,
           compileSdkVersion: 33,
           targetSdkVersion: 33,
-          kotlinVersion: '1.6.21',
           extraProguardRules: getExtraProguardRules(),
         },
       },
