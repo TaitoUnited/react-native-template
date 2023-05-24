@@ -8,7 +8,6 @@ type Props = ViewProps & {
   axis?: 'x' | 'y';
   align?: 'center' | 'start' | 'end' | 'stretch';
   justify?: 'center' | 'start' | 'end' | 'between' | 'around';
-  debug?: boolean;
   children: ReactNode;
 };
 
@@ -18,7 +17,6 @@ export function Stack({
   spacing,
   align,
   justify,
-  debug,
   ...rest
 }: Props) {
   return (

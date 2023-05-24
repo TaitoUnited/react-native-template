@@ -3,7 +3,7 @@ import { StackActions, useNavigation } from '@react-navigation/native';
 import { StyleSheet } from 'react-native';
 
 import { styled } from '~styles';
-import { Icon, Spacer, Stack, Text } from '~components/uikit';
+import { Icon, Stack, Text } from '~components/uikit';
 import { getActiveRouteName } from '~screens/utils';
 import { ParamList } from '~screens/types';
 

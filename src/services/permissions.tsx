@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useRef } from 'react';
-import { Platform, Alert, AppState, AppStateStatus } from 'react-native';
+import { useCallback } from 'react';
+import { Platform, Alert } from 'react-native';
 import { t } from '@lingui/macro';
 import create from 'zustand';
 import flatten from 'lodash/flatten';
@@ -185,7 +185,7 @@ const PERMISSION_CATEGORIES: Record<
   bluetooth: {
     ios: [PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL],
     android:
-      OS === 'android' && Platform.Version > 30
+      OS === 'android' && +Platform.Version > 30
         ? [
             PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
             PERMISSIONS.ANDROID.BLUETOOTH_SCAN,
