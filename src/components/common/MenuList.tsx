@@ -3,7 +3,7 @@ import { StackActions, useNavigation } from '@react-navigation/native';
 import { StyleSheet } from 'react-native';
 
 import { styled } from '~styles';
-import { Icon, Spacer, Stack, Text } from '~components/uikit';
+import { Icon, Stack, Text } from '~components/uikit';
 import { getActiveRouteName } from '~screens/utils';
 import { ParamList } from '~screens/types';
 
@@ -110,10 +110,7 @@ export default function MenuList({ items, title }: Props) {
                     )}
 
                     {!!item.target && (
-                      <>
-                        <Spacer axis="x" size="xxsmall" />
-                        <Icon name="chevronRight" size={24} color="muted2" />
-                      </>
+                      <Icon name="chevronRight" size={24} color="muted2" />
                     )}
                   </>
                 )}
