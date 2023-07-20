@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useMemo, useState } from 'react';
 import { Animated } from 'react-native';
-import { hideAsync } from 'expo-splash-screen';
+import { SplashScreen as ExpoSplashScreen } from 'expo-router';
 import { useAssets } from 'expo-asset';
 
 import config from '~constants/config';
@@ -27,7 +27,7 @@ export default function SplashScreen({ children, ready }: Props) {
 
   useEffect(() => {
     async function hide() {
-      await hideAsync();
+      ExpoSplashScreen.hideAsync();
       Animated.timing(animation, {
         toValue: 0,
         duration: 300,

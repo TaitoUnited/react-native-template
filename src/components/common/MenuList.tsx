@@ -1,11 +1,9 @@
 import { FunctionComponent, ReactNode } from 'react';
-import { StackActions, useNavigation } from '@react-navigation/native';
 import { StyleSheet } from 'react-native';
 
+import { router } from 'expo-router';
 import { styled } from '~styles';
 import { Icon, Stack, Text } from '~components/uikit';
-import { getActiveRouteName } from '~screens/utils';
-import { ParamList } from '~screens/types';
 
 type Item = {
   label: string;
@@ -13,7 +11,8 @@ type Item = {
   checked?: boolean;
   leftSlot?: ReactNode;
   rightSlot?: ReactNode;
-  target?: FunctionComponent<any> | keyof ParamList;
+  target?: FunctionComponent<any>; // | keyof ParamList;
+  targetName?: string;
   onPress?: () => void;
 };
 
@@ -23,30 +22,16 @@ type Props = {
 };
 
 export default function MenuList({ items, title }: Props) {
-  const navigation = useNavigation();
-
   function handleItemPress(item: Item) {
-    const activeRoute = getActiveRouteName(navigation.getState());
-
     if (typeof item.target === 'function') {
-      if (activeRoute === 'MenuList') {
-        navigation.dispatch(
-          StackActions.push('MenuList', {
-            target: item.target,
-            title: item.label,
-          })
-        );
-      } else {
-        navigation.navigate('MenuListStack', {
-          screen: 'MenuList',
-          params: {
-            target: item.target,
-            title: item.label,
-          },
-        });
-      }
+      router.push({
+        pathname: 'menuList/[menuListItem]',
+        params: {
+          menuListItem: item.targetName,
+        },
+      });
     } else if (typeof item.target === 'string') {
-      navigation.navigate(item.target as any);
+      router.push(item.target);
     }
 
     item.onPress?.();

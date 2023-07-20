@@ -14,6 +14,7 @@ const appId = `com.taito.template${config.appIdSuffix}`;
 const expoConfig: ExpoConfig = {
   slug: 'taito-template',
   name: 'Taito Template',
+  scheme: 'taito-template',
   version: '1.0.0',
   orientation: 'portrait',
   jsEngine: 'hermes',
@@ -23,6 +24,7 @@ const expoConfig: ExpoConfig = {
   userInterfaceStyle: 'automatic',
   experiments: {
     tsconfigPaths: true,
+    typedRoutes: true,
   },
   splash: {
     resizeMode: 'contain',
@@ -54,6 +56,12 @@ const expoConfig: ExpoConfig = {
   },
   extra: config,
   plugins: [
+    [
+      'expo-router',
+      {
+        asyncRoutes: 'development',
+      },
+    ],
     [
       './plugins/with-ios-settings',
       {

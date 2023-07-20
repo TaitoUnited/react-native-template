@@ -13,31 +13,26 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/screens/settings/SettingsScreen.tsx:40
-msgid "Appearance"
-msgstr "Väriteema"
-
-#: src/screens/settings/SettingsScreen.tsx:22
+#: src/app/(tabs)/settings.tsx:20
 msgid "Are you sure you want to logout?"
 msgstr "Oletko varma, että haluat kirjautua ulos?"
 
-#: src/screens/settings/SettingsScreen.tsx:87
+#: src/app/(tabs)/settings.tsx:92
 msgid "Automatic"
 msgstr "Automaattinen"
 
-#: src/screens/utils.tsx:57
+#: src/utils/navigation.tsx:56
 msgid "Back"
 msgstr "Takaisin"
 
-#: src/screens/unauthed/LandingScreen.tsx:40
+#: src/app/(auth)/landing.tsx:40
 msgid "By Taito United"
 msgstr "Taito Unitedilta"
 
+#: src/app/(tabs)/settings.tsx:21
+#: src/components/uikit/inputs/SearchInput.tsx:54
 #: src/components/uikit/PickerModal.tsx:206
 #: src/components/uikit/PickerSheet.tsx:153
-#: src/components/uikit/inputs/DateInput.tsx:88
-#: src/components/uikit/inputs/SearchInput.tsx:54
-#: src/screens/settings/SettingsScreen.tsx:23
 msgid "Cancel"
 msgstr "Sulje"
 
@@ -52,11 +47,7 @@ msgstr "Ei voida avata {type}"
 msgid "Close"
 msgstr "Sulje"
 
-#: src/components/uikit/inputs/DateInput.tsx:87
-msgid "Confirm"
-msgstr "Vahvista"
-
-#: src/services/auth.ts:106
+#: src/app/context/auth.tsx:156
 msgid "Could not connect to server"
 msgstr "Ei voitu yhdistää palvelimeen"
 
@@ -64,115 +55,100 @@ msgstr "Ei voitu yhdistää palvelimeen"
 msgid "Could not toggle permission. You can change the permission in the system settings."
 msgstr "Ei voitu muuttaa lupaa. Voit muuttaa lupaa järjestelmäasetuksista."
 
-#: src/screens/unauthed/LandingScreen.tsx:71
-#: src/screens/unauthed/SignupScreen.tsx:57
+#: src/app/(auth)/landing.tsx:70
+#: src/app/(auth)/signup.tsx:55
 msgid "Create an account"
 msgstr "Luo uusi tili"
 
-#: src/screens/settings/SettingsScreen.tsx:41
-#: src/screens/settings/SettingsScreen.tsx:92
+#: src/app/(tabs)/settings.tsx:97
 msgid "Dark"
 msgstr "Tumma"
+
+#: src/app/(auth)/signup.tsx:58
+msgid "Don‘t worry, these won‘t actually be saved."
+msgstr ""
 
 #: src/components/uikit/PickerModal.tsx:213
 #: src/components/uikit/PickerSheet.tsx:160
 msgid "Done"
 msgstr "Valmis"
 
-#: src/screens/unauthed/SignupScreen.tsx:60
-msgid "Don‘t worry, these won‘t actually be saved."
-msgstr "Älä huoli, mitään ei oikeasti tallenneta"
-
-#: src/screens/unauthed/LoginScreen.tsx:65
-#: src/screens/unauthed/SignupScreen.tsx:87
+#: src/app/(auth)/login.tsx:63
+#: src/app/(auth)/signup.tsx:85
 msgid "Email"
 msgstr "Sähköposti"
 
-#: src/screens/unauthed/LoginScreen.tsx:57
-#: src/screens/unauthed/SignupScreen.tsx:79
+#: src/app/(auth)/login.tsx:55
+#: src/app/(auth)/signup.tsx:77
 msgid "Email invalid"
 msgstr "Virheellinen sähköposti"
 
-#: src/screens/unauthed/LoginScreen.tsx:59
-#: src/screens/unauthed/SignupScreen.tsx:81
+#: src/app/(auth)/login.tsx:57
+#: src/app/(auth)/signup.tsx:79
 msgid "Email required"
 msgstr "Sähköposti on pakollinen"
 
-#: src/screens/settings/SettingsScreen.tsx:66
-#: src/screens/unauthed/LandingScreen.tsx:96
+#: src/app/(auth)/landing.tsx:95
+#: src/app/(tabs)/settings.tsx:71
 msgid "English"
 msgstr "Englanti"
 
-#: src/screens/unauthed/LoginScreen.tsx:37
+#: src/app/(auth)/login.tsx:35
 msgid "Enter your credentials"
 msgstr "Syötä tunnuksesi"
 
-#: src/screens/settings/SettingsScreen.tsx:115
+#: src/app/(tabs)/settings.tsx:120
 msgid "Environment"
-msgstr "Ympäristö"
+msgstr ""
 
-#: src/screens/unauthed/LoginScreen.tsx:26
+#: src/app/(auth)/login.tsx:24
 msgid "Failed to login"
 msgstr "Sisäänkirjautuminen epäonnistui"
 
-#: src/screens/unauthed/SignupScreen.tsx:43
+#: src/app/(auth)/signup.tsx:41
 msgid "Failed to signup"
 msgstr "Rekisteröityminen epäonnistui"
 
-#: src/screens/settings/SettingsScreen.tsx:71
-#: src/screens/unauthed/LandingScreen.tsx:93
+#: src/app/(auth)/landing.tsx:92
+#: src/app/(tabs)/settings.tsx:76
 msgid "Finnish"
 msgstr "Suomi"
 
-#: src/screens/unauthed/SignupScreen.tsx:107
+#: src/app/(auth)/signup.tsx:105
 msgid "First name"
 msgstr "Etunimi"
 
-#: src/screens/unauthed/SignupScreen.tsx:102
+#: src/app/(auth)/signup.tsx:100
 msgid "First name is required"
 msgstr "Etunimi on pakollinen"
 
-#: src/screens/home/index.tsx:17
-#: src/screens/root/TabNavigator.tsx:29
+#: src/app/(tabs)/_layout.tsx:19
 msgid "Home"
 msgstr "Koti"
 
-#: src/screens/settings/SettingsScreen.tsx:45
-msgid "Info"
-msgstr "Tiedot"
-
-#: src/screens/settings/SettingsScreen.tsx:35
-msgid "Language"
-msgstr "Kieli"
-
-#: src/screens/unauthed/SignupScreen.tsx:125
+#: src/app/(auth)/signup.tsx:123
 msgid "Last name"
 msgstr "Sukunimi"
 
-#: src/screens/unauthed/SignupScreen.tsx:120
+#: src/app/(auth)/signup.tsx:118
 msgid "Last name is required"
 msgstr "Sukunimin on pakollinen"
 
-#: src/screens/settings/SettingsScreen.tsx:41
-#: src/screens/settings/SettingsScreen.tsx:97
+#: src/app/(tabs)/settings.tsx:102
 msgid "Light"
 msgstr "Vaalea"
 
-#: src/screens/unauthed/LoginScreen.tsx:108
+#: src/app/(auth)/login.tsx:106
 msgid "Logging in..."
 msgstr "Kirjaudutaan sisään..."
 
-#: src/screens/root/AppNavigator.tsx:56
-msgid "Logging out..."
-msgstr "Kirjaudutaan ulos..."
-
-#: src/screens/unauthed/LoginScreen.tsx:110
-#: src/screens/unauthed/index.tsx:24
+#: src/app/(auth)/_layout.tsx:11
+#: src/app/(auth)/login.tsx:108
 msgid "Login"
 msgstr "Kirjaudu sisään"
 
-#: src/screens/settings/SettingsScreen.tsx:24
-#: src/screens/settings/SettingsScreen.tsx:49
+#: src/app/(tabs)/settings.tsx:22
+#: src/app/(tabs)/settings.tsx:35
 msgid "Logout"
 msgstr "Kirjaudu ulos"
 
@@ -180,7 +156,7 @@ msgstr "Kirjaudu ulos"
 msgid "No results found."
 msgstr "Ei tuloksia."
 
-#: src/screens/playground/utils.tsx:25
+#: src/app/playground/utils.tsx:25
 msgid "Open playground"
 msgstr "Avaa playground"
 
@@ -189,35 +165,39 @@ msgstr "Avaa playground"
 msgid "Open settings"
 msgstr "Avaa asetukset"
 
-#: src/screens/unauthed/LoginScreen.tsx:85
-#: src/screens/unauthed/SignupScreen.tsx:173
+#: src/app/(auth)/login.tsx:83
+#: src/app/(auth)/signup.tsx:171
 msgid "Password"
 msgstr "Salasana"
 
-#: src/screens/unauthed/SignupScreen.tsx:220
+#: src/app/(auth)/signup.tsx:218
 msgid "Password again"
 msgstr "Salasana uudestaan"
 
-#: src/screens/unauthed/LoginScreen.tsx:80
-#: src/screens/unauthed/SignupScreen.tsx:167
-#: src/screens/unauthed/SignupScreen.tsx:214
+#: src/app/(auth)/login.tsx:78
+#: src/app/(auth)/signup.tsx:165
+#: src/app/(auth)/signup.tsx:212
 msgid "Password is required"
 msgstr "Salasana on pakollinen"
 
-#: src/screens/unauthed/SignupScreen.tsx:165
-#: src/screens/unauthed/SignupScreen.tsx:212
+#: src/app/(auth)/signup.tsx:163
+#: src/app/(auth)/signup.tsx:210
 msgid "Password must be at least 8 characters"
 msgstr "Salasanan on oltava vähintään 8 merkkiä"
 
-#: src/screens/unauthed/SignupScreen.tsx:210
+#: src/app/(auth)/signup.tsx:208
 msgid "Passwords do not match"
 msgstr "Salasanat eivät täsmää"
 
-#: src/screens/unauthed/SignupScreen.tsx:147
+#: src/utils/linking.ts:34
+msgid "phone app"
+msgstr "puhelin sovellusta"
+
+#: src/app/(auth)/signup.tsx:145
 msgid "Phone number"
 msgstr "Puhelinnumero"
 
-#: src/screens/unauthed/SignupScreen.tsx:138
+#: src/app/(auth)/signup.tsx:136
 msgid "Phone number is required"
 msgstr "Puhenumero on pakollinen"
 
@@ -225,40 +205,39 @@ msgstr "Puhenumero on pakollinen"
 msgid "Please try restarting the application."
 msgstr "Yritä käynnistää sovellus uudelleen."
 
-#: src/screens/unauthed/SignupScreen.tsx:142
+#: src/app/(auth)/signup.tsx:140
 msgid "Preferred format: +358400123456"
 msgstr "Suositeltu muoto: +358400123456"
 
-#: src/screens/profile/index.tsx:17
-#: src/screens/root/TabNavigator.tsx:44
+#: src/app/(tabs)/_layout.tsx:32
 msgid "Profile"
 msgstr "Profiili"
 
-#: src/screens/unauthed/LandingScreen.tsx:32
+#: src/app/(auth)/landing.tsx:32
 msgid "React Native Template"
 msgstr "React Native templateen"
 
+#: src/app/(tabs)/_layout.tsx:25
+#: src/app/(tabs)/search.tsx:9
 #: src/components/uikit/inputs/SearchInput.tsx:17
-#: src/screens/root/TabNavigator.tsx:36
-#: src/screens/search/index.tsx:17
 msgid "Search"
 msgstr "Hae"
 
-#: src/screens/root/TabNavigator.tsx:52
-#: src/screens/settings/index.tsx:17
+#: src/app/(tabs)/_layout.tsx:39
+#: src/app/(tabs)/settings.tsx:31
 msgid "Settings"
 msgstr "Asetukset"
 
-#: src/screens/unauthed/LandingScreen.tsx:54
+#: src/app/(auth)/landing.tsx:53
 msgid "Sign in"
 msgstr "Kirjaudu sisään"
 
-#: src/screens/unauthed/SignupScreen.tsx:242
+#: src/app/(auth)/signup.tsx:240
 msgid "Signing up..."
 msgstr "Rekisteröidytään..."
 
-#: src/screens/unauthed/SignupScreen.tsx:244
-#: src/screens/unauthed/index.tsx:29
+#: src/app/(auth)/_layout.tsx:12
+#: src/app/(auth)/signup.tsx:242
 msgid "Signup"
 msgstr "Rekisteröidy"
 
@@ -268,7 +247,7 @@ msgstr "Rekisteröidy"
 msgid "Something went wrong"
 msgstr "Jotain meni pieleen"
 
-#: src/screens/unauthed/LandingScreen.tsx:49
+#: src/app/(auth)/landing.tsx:49
 msgid "Start your journey"
 msgstr "Aloita seikkailusi"
 
@@ -280,22 +259,18 @@ msgstr "Kokeile muuttaa hakutermiä."
 msgid "Unable to change permission"
 msgstr "Lupaa ei voitu muuttaa"
 
-#: src/screens/settings/SettingsScreen.tsx:111
+#: src/app/(tabs)/settings.tsx:116
 msgid "Version"
-msgstr "Versio"
+msgstr ""
 
-#: src/screens/unauthed/LandingScreen.tsx:29
+#: src/app/(auth)/landing.tsx:29
 msgid "Welcome to"
 msgstr "Tervetuloa"
 
-#: src/screens/unauthed/LoginScreen.tsx:40
+#: src/app/(auth)/login.tsx:38
 msgid "You can enter any email and password to login."
-msgstr "Voit syöttää minkä tahansa tunnuksen kirjautuaksesi"
+msgstr ""
 
 #: src/services/permissions.tsx:106
 msgid "You need to change the permission in the system settings."
 msgstr "Lupa on muutettava järjestelmäasetuksissa."
-
-#: src/utils/linking.ts:34
-msgid "phone app"
-msgstr "puhelin sovellusta"
