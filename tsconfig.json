@@ -1,11 +1,12 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths": { "~*": ["./src/*"] },
     "strict": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
     "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": true,
-    "paths": { "~*": ["./src/*"] }
+    "skipLibCheck": true
   }
 }
