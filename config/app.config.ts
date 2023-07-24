@@ -21,6 +21,9 @@ const expoConfig: ExpoConfig = {
   icon: config.iconImage,
   backgroundColor: '#000000', // root view background
   userInterfaceStyle: 'automatic',
+  experiments: {
+    tsconfigPaths: true,
+  },
   splash: {
     resizeMode: 'contain',
     backgroundColor: config.splash.backgroundColor,
