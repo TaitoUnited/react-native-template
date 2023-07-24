@@ -13,15 +13,19 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/app/(tabs)/settings.tsx:133
+msgid "Appearance"
+msgstr "Appearance"
+
 #: src/app/(tabs)/settings.tsx:20
 msgid "Are you sure you want to logout?"
 msgstr ""
 
-#: src/app/(tabs)/settings.tsx:92
+#: src/app/(tabs)/settings.tsx:74
 msgid "Automatic"
 msgstr "Automatic"
 
-#: src/utils/navigation.tsx:56
+#: src/utils/navigation.tsx:46
 msgid "Back"
 msgstr ""
 
@@ -30,7 +34,8 @@ msgid "By Taito United"
 msgstr "By Taito United"
 
 #: src/app/(tabs)/settings.tsx:21
-#: src/components/uikit/inputs/SearchInput.tsx:54
+#: src/components/uikit/inputs/DateInput.tsx:90
+#: src/components/uikit/inputs/SearchInput.tsx:56
 #: src/components/uikit/PickerModal.tsx:206
 #: src/components/uikit/PickerSheet.tsx:153
 msgid "Cancel"
@@ -42,25 +47,30 @@ msgstr ""
 
 #: src/components/uikit/PickerModal.tsx:206
 #: src/components/uikit/PickerSheet.tsx:153
-#: src/services/permissions.tsx:108
-#: src/services/permissions.tsx:122
+#: src/services/permissions.tsx:110
+#: src/services/permissions.tsx:124
 msgid "Close"
 msgstr ""
 
-#: src/app/context/auth.tsx:156
+#: src/components/uikit/inputs/DateInput.tsx:89
+msgid "Confirm"
+msgstr "Confirm"
+
+#: src/context/auth.tsx:158
 msgid "Could not connect to server"
 msgstr ""
 
-#: src/services/permissions.tsx:120
+#: src/services/permissions.tsx:122
 msgid "Could not toggle permission. You can change the permission in the system settings."
 msgstr ""
 
-#: src/app/(auth)/landing.tsx:70
+#: src/app/(auth)/landing.tsx:73
 #: src/app/(auth)/signup.tsx:55
 msgid "Create an account"
 msgstr "Create an account"
 
-#: src/app/(tabs)/settings.tsx:97
+#: src/app/(tabs)/settings.tsx:79
+#: src/app/(tabs)/settings.tsx:134
 msgid "Dark"
 msgstr "Dark"
 
@@ -88,8 +98,8 @@ msgstr ""
 msgid "Email required"
 msgstr ""
 
-#: src/app/(auth)/landing.tsx:95
-#: src/app/(tabs)/settings.tsx:71
+#: src/app/(auth)/landing.tsx:99
+#: src/app/(tabs)/settings.tsx:53
 msgid "English"
 msgstr "English"
 
@@ -97,7 +107,7 @@ msgstr "English"
 msgid "Enter your credentials"
 msgstr "Enter your credentials"
 
-#: src/app/(tabs)/settings.tsx:120
+#: src/app/(tabs)/settings.tsx:102
 msgid "Environment"
 msgstr "Environment"
 
@@ -109,8 +119,8 @@ msgstr ""
 msgid "Failed to signup"
 msgstr ""
 
-#: src/app/(auth)/landing.tsx:92
-#: src/app/(tabs)/settings.tsx:76
+#: src/app/(auth)/landing.tsx:96
+#: src/app/(tabs)/settings.tsx:58
 msgid "Finnish"
 msgstr "Finnish"
 
@@ -122,9 +132,18 @@ msgstr ""
 msgid "First name is required"
 msgstr ""
 
-#: src/app/(tabs)/_layout.tsx:19
+#: src/app/(tabs)/_layout.tsx:20
+#: src/app/(tabs)/home.tsx:10
 msgid "Home"
 msgstr ""
+
+#: src/app/(tabs)/settings.tsx:138
+msgid "Info"
+msgstr "Info"
+
+#: src/app/(tabs)/settings.tsx:128
+msgid "Language"
+msgstr "Language"
 
 #: src/app/(auth)/signup.tsx:123
 msgid "Last name"
@@ -134,7 +153,8 @@ msgstr ""
 msgid "Last name is required"
 msgstr ""
 
-#: src/app/(tabs)/settings.tsx:102
+#: src/app/(tabs)/settings.tsx:84
+#: src/app/(tabs)/settings.tsx:134
 msgid "Light"
 msgstr "Light"
 
@@ -148,7 +168,7 @@ msgid "Login"
 msgstr ""
 
 #: src/app/(tabs)/settings.tsx:22
-#: src/app/(tabs)/settings.tsx:35
+#: src/app/(tabs)/settings.tsx:33
 msgid "Logout"
 msgstr ""
 
@@ -156,12 +176,12 @@ msgstr ""
 msgid "No results found."
 msgstr ""
 
-#: src/app/playground/utils.tsx:25
+#: src/app/playground/utils.tsx:23
 msgid "Open playground"
 msgstr ""
 
-#: src/services/permissions.tsx:109
-#: src/services/permissions.tsx:123
+#: src/services/permissions.tsx:111
+#: src/services/permissions.tsx:125
 msgid "Open settings"
 msgstr ""
 
@@ -209,7 +229,8 @@ msgstr ""
 msgid "Preferred format: +358400123456"
 msgstr ""
 
-#: src/app/(tabs)/_layout.tsx:32
+#: src/app/(tabs)/_layout.tsx:33
+#: src/app/(tabs)/profile.tsx:9
 msgid "Profile"
 msgstr ""
 
@@ -217,18 +238,17 @@ msgstr ""
 msgid "React Native Template"
 msgstr "React Native Template"
 
-#: src/app/(tabs)/_layout.tsx:25
+#: src/app/(tabs)/_layout.tsx:26
 #: src/app/(tabs)/search.tsx:9
-#: src/components/uikit/inputs/SearchInput.tsx:17
+#: src/components/uikit/inputs/SearchInput.tsx:18
 msgid "Search"
 msgstr ""
 
-#: src/app/(tabs)/_layout.tsx:39
-#: src/app/(tabs)/settings.tsx:31
+#: src/app/(tabs)/_layout.tsx:40
 msgid "Settings"
 msgstr ""
 
-#: src/app/(auth)/landing.tsx:53
+#: src/app/(auth)/landing.tsx:54
 msgid "Sign in"
 msgstr "Sign in"
 
@@ -242,7 +262,7 @@ msgid "Signup"
 msgstr ""
 
 #: src/components/common/ErrorBoundary.tsx:39
-#: src/services/permissions.tsx:119
+#: src/services/permissions.tsx:121
 #: src/utils/linking.ts:28
 msgid "Something went wrong"
 msgstr ""
@@ -255,11 +275,11 @@ msgstr "Start your journey"
 msgid "Try changing your search term."
 msgstr ""
 
-#: src/services/permissions.tsx:105
+#: src/services/permissions.tsx:107
 msgid "Unable to change permission"
 msgstr ""
 
-#: src/app/(tabs)/settings.tsx:116
+#: src/app/(tabs)/settings.tsx:98
 msgid "Version"
 msgstr "Version"
 
@@ -271,6 +291,6 @@ msgstr "Welcome to"
 msgid "You can enter any email and password to login."
 msgstr "You can enter any email and password to login."
 
-#: src/services/permissions.tsx:106
+#: src/services/permissions.tsx:108
 msgid "You need to change the permission in the system settings."
 msgstr ""
