@@ -13,15 +13,15 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/screens/settings/SettingsScreen.tsx:37
+#: src/screens/settings/SettingsScreen.tsx:40
 msgid "Appearance"
 msgstr "Appearance"
 
-#: src/screens/settings/SettingsScreen.tsx:19
+#: src/screens/settings/SettingsScreen.tsx:22
 msgid "Are you sure you want to logout?"
 msgstr ""
 
-#: src/screens/settings/SettingsScreen.tsx:80
+#: src/screens/settings/SettingsScreen.tsx:87
 msgid "Automatic"
 msgstr "Automatic"
 
@@ -29,7 +29,7 @@ msgstr "Automatic"
 msgid "Back"
 msgstr ""
 
-#: src/screens/unauthed/LandingScreen.tsx:35
+#: src/screens/unauthed/LandingScreen.tsx:40
 msgid "By Taito United"
 msgstr "By Taito United"
 
@@ -37,7 +37,7 @@ msgstr "By Taito United"
 #: src/components/uikit/PickerSheet.tsx:153
 #: src/components/uikit/inputs/DateInput.tsx:88
 #: src/components/uikit/inputs/SearchInput.tsx:54
-#: src/screens/settings/SettingsScreen.tsx:20
+#: src/screens/settings/SettingsScreen.tsx:23
 msgid "Cancel"
 msgstr ""
 
@@ -47,8 +47,8 @@ msgstr ""
 
 #: src/components/uikit/PickerModal.tsx:206
 #: src/components/uikit/PickerSheet.tsx:153
-#: src/services/permissions.tsx:95
-#: src/services/permissions.tsx:109
+#: src/services/permissions.tsx:108
+#: src/services/permissions.tsx:122
 msgid "Close"
 msgstr ""
 
@@ -60,17 +60,17 @@ msgstr ""
 msgid "Could not connect to server"
 msgstr ""
 
-#: src/services/permissions.tsx:107
+#: src/services/permissions.tsx:120
 msgid "Could not toggle permission. You can change the permission in the system settings."
 msgstr ""
 
-#: src/screens/unauthed/LandingScreen.tsx:66
-#: src/screens/unauthed/SignupScreen.tsx:56
+#: src/screens/unauthed/LandingScreen.tsx:71
+#: src/screens/unauthed/SignupScreen.tsx:57
 msgid "Create an account"
 msgstr "Create an account"
 
-#: src/screens/settings/SettingsScreen.tsx:38
-#: src/screens/settings/SettingsScreen.tsx:85
+#: src/screens/settings/SettingsScreen.tsx:41
+#: src/screens/settings/SettingsScreen.tsx:92
 msgid "Dark"
 msgstr "Dark"
 
@@ -79,29 +79,37 @@ msgstr "Dark"
 msgid "Done"
 msgstr ""
 
-#: src/screens/unauthed/LoginScreen.tsx:60
-#: src/screens/unauthed/SignupScreen.tsx:80
+#: src/screens/unauthed/SignupScreen.tsx:60
+msgid "Don‘t worry, these won‘t actually be saved."
+msgstr "Don‘t worry, these won‘t actually be saved."
+
+#: src/screens/unauthed/LoginScreen.tsx:65
+#: src/screens/unauthed/SignupScreen.tsx:87
 msgid "Email"
 msgstr ""
 
-#: src/screens/unauthed/LoginScreen.tsx:52
-#: src/screens/unauthed/SignupScreen.tsx:72
+#: src/screens/unauthed/LoginScreen.tsx:57
+#: src/screens/unauthed/SignupScreen.tsx:79
 msgid "Email invalid"
 msgstr ""
 
-#: src/screens/unauthed/LoginScreen.tsx:54
-#: src/screens/unauthed/SignupScreen.tsx:74
+#: src/screens/unauthed/LoginScreen.tsx:59
+#: src/screens/unauthed/SignupScreen.tsx:81
 msgid "Email required"
 msgstr ""
 
-#: src/screens/settings/SettingsScreen.tsx:59
-#: src/screens/unauthed/LandingScreen.tsx:91
+#: src/screens/settings/SettingsScreen.tsx:66
+#: src/screens/unauthed/LandingScreen.tsx:96
 msgid "English"
 msgstr "English"
 
-#: src/screens/unauthed/LoginScreen.tsx:36
+#: src/screens/unauthed/LoginScreen.tsx:37
 msgid "Enter your credentials"
 msgstr "Enter your credentials"
+
+#: src/screens/settings/SettingsScreen.tsx:115
+msgid "Environment"
+msgstr "Environment"
 
 #: src/screens/unauthed/LoginScreen.tsx:26
 msgid "Failed to login"
@@ -111,16 +119,16 @@ msgstr ""
 msgid "Failed to signup"
 msgstr ""
 
-#: src/screens/settings/SettingsScreen.tsx:64
-#: src/screens/unauthed/LandingScreen.tsx:88
+#: src/screens/settings/SettingsScreen.tsx:71
+#: src/screens/unauthed/LandingScreen.tsx:93
 msgid "Finnish"
 msgstr "Finnish"
 
-#: src/screens/unauthed/SignupScreen.tsx:100
+#: src/screens/unauthed/SignupScreen.tsx:107
 msgid "First name"
 msgstr ""
 
-#: src/screens/unauthed/SignupScreen.tsx:95
+#: src/screens/unauthed/SignupScreen.tsx:102
 msgid "First name is required"
 msgstr ""
 
@@ -129,24 +137,28 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: src/screens/settings/SettingsScreen.tsx:32
+#: src/screens/settings/SettingsScreen.tsx:45
+msgid "Info"
+msgstr "Info"
+
+#: src/screens/settings/SettingsScreen.tsx:35
 msgid "Language"
 msgstr "Language"
 
-#: src/screens/unauthed/SignupScreen.tsx:118
+#: src/screens/unauthed/SignupScreen.tsx:125
 msgid "Last name"
 msgstr ""
 
-#: src/screens/unauthed/SignupScreen.tsx:113
+#: src/screens/unauthed/SignupScreen.tsx:120
 msgid "Last name is required"
 msgstr ""
 
-#: src/screens/settings/SettingsScreen.tsx:38
-#: src/screens/settings/SettingsScreen.tsx:90
+#: src/screens/settings/SettingsScreen.tsx:41
+#: src/screens/settings/SettingsScreen.tsx:97
 msgid "Light"
 msgstr "Light"
 
-#: src/screens/unauthed/LoginScreen.tsx:103
+#: src/screens/unauthed/LoginScreen.tsx:108
 msgid "Logging in..."
 msgstr ""
 
@@ -154,13 +166,13 @@ msgstr ""
 msgid "Logging out..."
 msgstr ""
 
-#: src/screens/unauthed/LoginScreen.tsx:105
+#: src/screens/unauthed/LoginScreen.tsx:110
 #: src/screens/unauthed/index.tsx:24
 msgid "Login"
 msgstr ""
 
-#: src/screens/settings/SettingsScreen.tsx:21
-#: src/screens/settings/SettingsScreen.tsx:42
+#: src/screens/settings/SettingsScreen.tsx:24
+#: src/screens/settings/SettingsScreen.tsx:49
 msgid "Logout"
 msgstr ""
 
@@ -172,40 +184,40 @@ msgstr ""
 msgid "Open playground"
 msgstr ""
 
-#: src/services/permissions.tsx:96
-#: src/services/permissions.tsx:110
+#: src/services/permissions.tsx:109
+#: src/services/permissions.tsx:123
 msgid "Open settings"
 msgstr ""
 
-#: src/screens/unauthed/LoginScreen.tsx:80
-#: src/screens/unauthed/SignupScreen.tsx:166
+#: src/screens/unauthed/LoginScreen.tsx:85
+#: src/screens/unauthed/SignupScreen.tsx:173
 msgid "Password"
 msgstr ""
 
-#: src/screens/unauthed/SignupScreen.tsx:213
+#: src/screens/unauthed/SignupScreen.tsx:220
 msgid "Password again"
 msgstr ""
 
-#: src/screens/unauthed/LoginScreen.tsx:75
-#: src/screens/unauthed/SignupScreen.tsx:160
-#: src/screens/unauthed/SignupScreen.tsx:207
+#: src/screens/unauthed/LoginScreen.tsx:80
+#: src/screens/unauthed/SignupScreen.tsx:167
+#: src/screens/unauthed/SignupScreen.tsx:214
 msgid "Password is required"
 msgstr ""
 
-#: src/screens/unauthed/SignupScreen.tsx:158
-#: src/screens/unauthed/SignupScreen.tsx:205
+#: src/screens/unauthed/SignupScreen.tsx:165
+#: src/screens/unauthed/SignupScreen.tsx:212
 msgid "Password must be at least 8 characters"
 msgstr ""
 
-#: src/screens/unauthed/SignupScreen.tsx:203
+#: src/screens/unauthed/SignupScreen.tsx:210
 msgid "Passwords do not match"
 msgstr ""
 
-#: src/screens/unauthed/SignupScreen.tsx:140
+#: src/screens/unauthed/SignupScreen.tsx:147
 msgid "Phone number"
 msgstr ""
 
-#: src/screens/unauthed/SignupScreen.tsx:131
+#: src/screens/unauthed/SignupScreen.tsx:138
 msgid "Phone number is required"
 msgstr ""
 
@@ -213,7 +225,7 @@ msgstr ""
 msgid "Please try restarting the application."
 msgstr ""
 
-#: src/screens/unauthed/SignupScreen.tsx:135
+#: src/screens/unauthed/SignupScreen.tsx:142
 msgid "Preferred format: +358400123456"
 msgstr ""
 
@@ -237,26 +249,26 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: src/screens/unauthed/LandingScreen.tsx:49
+#: src/screens/unauthed/LandingScreen.tsx:54
 msgid "Sign in"
 msgstr "Sign in"
 
-#: src/screens/unauthed/SignupScreen.tsx:235
+#: src/screens/unauthed/SignupScreen.tsx:242
 msgid "Signing up..."
 msgstr ""
 
-#: src/screens/unauthed/SignupScreen.tsx:237
+#: src/screens/unauthed/SignupScreen.tsx:244
 #: src/screens/unauthed/index.tsx:29
 msgid "Signup"
 msgstr ""
 
 #: src/components/common/ErrorBoundary.tsx:39
-#: src/services/permissions.tsx:106
+#: src/services/permissions.tsx:119
 #: src/utils/linking.ts:28
 msgid "Something went wrong"
 msgstr ""
 
-#: src/screens/unauthed/LandingScreen.tsx:44
+#: src/screens/unauthed/LandingScreen.tsx:49
 msgid "Start your journey"
 msgstr "Start your journey"
 
@@ -264,15 +276,23 @@ msgstr "Start your journey"
 msgid "Try changing your search term."
 msgstr ""
 
-#: src/services/permissions.tsx:92
+#: src/services/permissions.tsx:105
 msgid "Unable to change permission"
 msgstr ""
+
+#: src/screens/settings/SettingsScreen.tsx:111
+msgid "Version"
+msgstr "Version"
 
 #: src/screens/unauthed/LandingScreen.tsx:29
 msgid "Welcome to"
 msgstr "Welcome to"
 
-#: src/services/permissions.tsx:93
+#: src/screens/unauthed/LoginScreen.tsx:40
+msgid "You can enter any email and password to login."
+msgstr "You can enter any email and password to login."
+
+#: src/services/permissions.tsx:106
 msgid "You need to change the permission in the system settings."
 msgstr ""
 

@@ -1,5 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { t } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 
 import LandingScreen from './LandingScreen';
 import LoginScreen from './LoginScreen';
@@ -10,6 +11,7 @@ import { ParamList } from '~screens/types';
 const LoginStack = createStackNavigator<ParamList>();
 
 export default function UnauthedNavigator() {
+  useLingui();
   const screenOptions = useDefaultStackScreenOptions();
 
   return (

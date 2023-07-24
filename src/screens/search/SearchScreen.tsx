@@ -1,3 +1,5 @@
+import { Trans } from '@lingui/macro';
+
 import { styled } from '~styles';
 import { Text } from '~components/uikit';
 import { ScreenProps } from '~screens/types';
@@ -5,7 +7,9 @@ import { ScreenProps } from '~screens/types';
 export default function SearchScreen(_: ScreenProps<'Search'>) {
   return (
     <Wrapper>
-      <Text variant="body">Search</Text>
+      <Text variant="body">
+        <Trans>Search</Trans>
+      </Text>
     </Wrapper>
   );
 }

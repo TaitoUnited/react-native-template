@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { TextInputProps, TouchableOpacity } from 'react-native';
 import { t, Trans } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 
 import { Text } from '../Text';
 import { Stack } from '../layout/Stack';
@@ -18,6 +19,7 @@ export function SearchInput({
   onChange,
   ...rest
 }: Props) {
+  useLingui();
   const inputRef = useRef<any>();
   const [isFocused, setFocused] = useState(false);
 

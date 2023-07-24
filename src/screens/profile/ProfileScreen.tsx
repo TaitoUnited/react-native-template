@@ -1,3 +1,5 @@
+import { Trans } from '@lingui/macro';
+
 import { styled } from '~styles';
 import { Text } from '~components/uikit';
 import { ScreenProps } from '~screens/types';
@@ -5,7 +7,9 @@ import { ScreenProps } from '~screens/types';
 export default function ProfileScreen(_: ScreenProps<'Profile'>) {
   return (
     <Wrapper>
-      <Text variant="body">Profile</Text>
+      <Text variant="body">
+        <Trans>Profile</Trans>
+      </Text>
     </Wrapper>
   );
 }
