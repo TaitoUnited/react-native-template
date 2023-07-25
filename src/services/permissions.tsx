@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
 import { Platform, Alert } from 'react-native';
 import { t } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
 import create from 'zustand';
 import flatten from 'lodash/flatten';
 import compact from 'lodash/compact';
@@ -34,7 +33,6 @@ const usePermissionStore = create<PermissionStore>((set, get) => ({
 const OS = Platform.OS as 'ios' | 'android';
 
 export function usePermissions() {
-  useLingui();
   const { status, permissions, setPermissions } = usePermissionStore();
 
   const check = useCallback(async () => {

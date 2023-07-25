@@ -1,6 +1,7 @@
 import { Stack, router } from 'expo-router';
 import { useEffect } from 'react';
 import { DevSettings } from 'react-native';
+import { useLingui } from '@lingui/react';
 import { useAuth } from '../context/auth';
 import Providers from '~Providers';
 import SplashScreen from '~components/common/SplashScreen';
@@ -27,6 +28,7 @@ export default function StackLayout() {
 }
 
 function RootLayoutNav() {
+  useLingui();
   const screenOptions = useDefaultStackScreenOptions();
   const { initAuth } = useAuth();
 

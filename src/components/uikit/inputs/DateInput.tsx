@@ -1,7 +1,6 @@
 import { Keyboard, Platform, ViewStyle } from 'react-native';
 import { forwardRef, useImperativeHandle, useState } from 'react';
 import { t } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
 import { DateTime } from 'luxon';
 import DatePicker from 'react-native-date-picker';
 
@@ -38,7 +37,6 @@ export const DateInput = forwardRef(
     }: Props,
     ref: any
   ) => {
-    useLingui();
     const [isPickerOpen, setPickerOpen] = useState(false);
     const { locale } = useI18n();
     const { colorScheme } = useColorMode();
