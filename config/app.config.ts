@@ -31,7 +31,6 @@ const expoConfig: ExpoConfig = {
   },
   android: {
     package: appId,
-    jsEngine: 'hermes',
     adaptiveIcon: {
       foregroundImage: config.adaptiveIcon.foregroundImage,
       backgroundColor: config.adaptiveIcon.backgroundColor,
@@ -41,7 +40,6 @@ const expoConfig: ExpoConfig = {
   },
   ios: {
     bundleIdentifier: appId,
-    jsEngine: 'hermes',
     bitcode: false,
     config: {
       usesNonExemptEncryption: false,
