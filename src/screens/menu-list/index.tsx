@@ -1,5 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 
+import { useLingui } from '@lingui/react';
 import MenuListScreen from './MenuListScreen';
 import { useDefaultStackScreenOptions } from '~screens/utils';
 import { ParamList } from '~screens/types';
@@ -7,6 +8,7 @@ import { ParamList } from '~screens/types';
 const Stack = createStackNavigator<ParamList>();
 
 export default function MenuListNavigator() {
+  useLingui();
   const screenOptions = useDefaultStackScreenOptions();
 
   return (

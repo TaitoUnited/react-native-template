@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 import { getLocales } from 'react-native-localize';
 import { Settings } from 'luxon';
-import { en, fi } from 'make-plural';
 import { i18n } from '@lingui/core';
 import { I18nProvider as LinguiProvider, useLingui } from '@lingui/react';
 
@@ -27,11 +26,10 @@ export async function initMessages() {
 
   const defaultMessages =
     defaultLocale === 'fi'
-      ? require('../locales/fi/messages').messages
-      : require('../locales/en/messages').messages;
+      ? await loadMessages('fi')
+      : await loadMessages('en');
 
   Settings.defaultLocale = defaultLocale;
-  i18n.loadLocaleData({ en: { plurals: en }, fi: { plurals: fi } });
   i18n.load(defaultLocale, defaultMessages);
   i18n.activate(defaultLocale);
 }

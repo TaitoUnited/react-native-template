@@ -1,6 +1,7 @@
 import ToastContainer, { ToastConfigParams } from 'react-native-toast-message';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { useLingui } from '@lingui/react';
 import { styled, useTheme, Color } from '~styles/styled';
 import { IconName } from '~components/uikit/Icon';
 import { Stack, Text, Icon } from '~components/uikit';
@@ -76,6 +77,7 @@ function Toast({
   variant: Variant;
   icon?: IconName;
 }) {
+  useLingui();
   const color = variantToColor[variant];
   const iconName = icon || variantToIcon[variant];
   const hasIcon = !!iconName;

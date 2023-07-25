@@ -1,6 +1,7 @@
 import { Platform, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { t } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 
 import type { IconName } from '~components/uikit/Icon';
 import type { ParamList } from '~screens/types';
@@ -22,6 +23,7 @@ type TabList = {
 }[];
 
 export default function TabNavigator() {
+  useLingui();
   const theme = useTheme();
   const tabs: TabList = [
     {
