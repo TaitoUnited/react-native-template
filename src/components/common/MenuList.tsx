@@ -25,7 +25,7 @@ export default function MenuList({ items, title }: Props) {
   function handleItemPress(item: Item) {
     if (typeof item.target === 'function') {
       router.push({
-        pathname: 'menuList/[menuListItem]',
+        pathname: 'menu-list/[menuListItem]',
         params: {
           menuListItem: item.targetName,
         },

@@ -48,9 +48,10 @@ function RootLayoutNav() {
       }}
     >
       <Stack.Screen name="index" />
+      <Stack.Screen name="(auth)" />
       <Stack.Screen name="(tabs)" />
       <Stack.Screen
-        name="menuList/[menuListItem]"
+        name="menu-list/[menuListItem]"
         options={{ headerShown: true }}
       />
     </Stack>

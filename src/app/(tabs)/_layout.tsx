@@ -19,7 +19,7 @@ export default function TabsLayout() {
   /**
    * Note: useLingui is called in root _layout, and it is passed down to all children.
    * Here, the useLingui hook is necessary to make the t macro work in the tab bar and header.
-   * It is the only place that seems that addition, not sure why.
+   * It is the only place that needs that addition, not sure why.
    */
   useLingui();
 

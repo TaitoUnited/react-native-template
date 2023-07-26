@@ -26,9 +26,9 @@ export default function Settings() {
   useHeaderPlaygroundButton();
 
   const items = [
-    getMenuListItem('LanguageMenuTarget'),
-    getMenuListItem('AppearanceMenuTarget'),
-    getMenuListItem('SystemInfoMenuTarget'),
+    useMenuListItem('LanguageMenuTarget'),
+    useMenuListItem('AppearanceMenuTarget'),
+    useMenuListItem('SystemInfoMenuTarget'),
     {
       label: t`Logout`,
       rightSlot: <Icon name="logout" color="textMuted" size={18} />,
@@ -115,9 +115,9 @@ const Wrapper = styled('ScrollView', {
   },
 }));
 
-export function getMenuListItem(targetName: string) {
+export function useMenuListItem(targetName: string) {
   const { locale } = useI18n();
-  const { colorScheme } = useColorMode();
+  const { colorMode } = useColorMode();
 
   let label = '';
   let currentValue;
@@ -131,7 +131,12 @@ export function getMenuListItem(targetName: string) {
       break;
     case 'AppearanceMenuTarget':
       label = t`Appearance`;
-      currentValue = colorScheme === 'light' ? t`Light` : t`Dark`;
+      currentValue =
+        colorMode === 'light'
+          ? t`Light`
+          : colorMode === 'dark'
+          ? t`Dark`
+          : t`Automatic`;
       target = AppearanceMenuTarget;
       break;
     case 'SystemInfoMenuTarget':

@@ -8,12 +8,12 @@ import MenuList from '~components/common/MenuList';
 export default function PlaygroundPage() {
   const navigation = useNavigation();
   const items: Array<{ label: string; screen: any }> = [
-    { screen: 'designSystem', label: 'Design System' },
-    { screen: 'icons', label: 'Icons' },
-    { screen: 'buttons', label: 'Buttons' },
-    { screen: 'inputs', label: 'Inputs' },
-    { screen: 'layout', label: 'Layout' },
-    { screen: 'toast', label: 'Toast' },
+    { screen: 'playground/design-system', label: 'Design System' },
+    { screen: 'playground/icons', label: 'Icons' },
+    { screen: 'playground/buttons', label: 'Buttons' },
+    { screen: 'playground/inputs', label: 'Inputs' },
+    { screen: 'playground/layout', label: 'Layout' },
+    { screen: 'playground/toast', label: 'Toast' },
   ];
 
   if (__DEV__) {

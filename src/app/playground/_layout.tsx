@@ -27,7 +27,7 @@ export default function PlaygroundLayout() {
       <Stack.Screen name="index" options={{ title: 'Playground' }} />
       <Stack.Screen name="sandbox" options={{ title: 'Sandbox' }} />
       <Stack.Screen name="buttons" options={{ title: 'Buttons' }} />
-      <Stack.Screen name="designSystem" options={{ title: 'Design System' }} />
+      <Stack.Screen name="design-system" options={{ title: 'Design System' }} />
       <Stack.Screen name="icons" options={{ title: 'Icons' }} />
       <Stack.Screen name="inputs" options={{ title: 'Inputs' }} />
       <Stack.Screen name="layout" options={{ title: 'Layout' }} />
