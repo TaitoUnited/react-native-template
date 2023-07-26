@@ -10,12 +10,11 @@ import { useI18n } from '~services/i18n';
 import { useColorMode } from '~services/color-mode';
 import MenuList from '~components/common/MenuList';
 import config from '~constants/config';
-import { useAuth } from '~context/auth';
 import { useHeaderPlaygroundButton } from '~app/playground/utils';
+import { useAuthStore } from '~services/auth';
 
 export default function Settings() {
-  const { logout } = useAuth();
-
+  const logout = useAuthStore((s) => s.logout);
   function handleLogout() {
     Alert.alert(t`Are you sure you want to logout?`, '', [
       { text: t`Cancel`, style: 'cancel' },

@@ -5,7 +5,6 @@ import { ColorModeProvider } from '~services/color-mode';
 import { I18nProvider } from '~services/i18n';
 import Toaster from '~components/common/Toaster';
 import ErrorBoundary from '~components/common/ErrorBoundary';
-import { AuthProvider } from '~context/auth';
 import NavigationThemeProvider from '~components/common/NavigationThemeProvider';
 
 export default function Providers({ children }: { children: ReactNode }) {
@@ -15,10 +14,8 @@ export default function Providers({ children }: { children: ReactNode }) {
         <ErrorBoundary>
           <NavigationThemeProvider>
             <AppWrapper>
-              <AuthProvider>
-                {children}
-                <Toaster />
-              </AuthProvider>
+              {children}
+              <Toaster />
             </AppWrapper>
           </NavigationThemeProvider>
         </ErrorBoundary>

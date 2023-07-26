@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 
+import { SplashScreen } from 'expo-router';
+
 import { useAppFonts } from './font';
+import { initAuth } from '~services/auth';
 import { initMessages } from '~services/i18n';
 
 export function useAppReady() {
@@ -10,6 +13,7 @@ export function useAppReady() {
   useEffect(() => {
     async function init() {
       await initMessages();
+      await initAuth();
       setInitReady(true);
     }
 
@@ -17,6 +21,11 @@ export function useAppReady() {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const appReady = initReady && fontsReady;
+
+  useEffect(() => {
+    if (!appReady) return;
+    SplashScreen.hideAsync();
+  }, [appReady]);
 
   return appReady;
 }

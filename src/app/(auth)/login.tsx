@@ -5,7 +5,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { styled } from '~styles/styled';
 import { showToast } from '~components/common/Toaster';
 import { FillButton, Text, TextInput, Stack } from '~components/uikit';
-import { useAuth } from '~context/auth';
+import { useAuthStore } from '~services/auth';
 
 type Credentials = {
   email: string;
@@ -14,7 +14,7 @@ type Credentials = {
 
 export default function Login() {
   const form = useForm<Credentials>({ mode: 'onBlur' });
-  const { status, login } = useAuth();
+  const { status, login } = useAuthStore();
 
   async function handleSubmit() {
     try {

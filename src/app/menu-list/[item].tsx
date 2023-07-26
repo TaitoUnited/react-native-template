@@ -4,10 +4,10 @@ import { useMenuListItem } from '../(tabs)/settings';
 import { styled } from '~styles';
 
 export default function MenuListItem() {
-  const { menuListItem } = useLocalSearchParams();
-  const item = useMenuListItem(menuListItem);
+  const { item } = useLocalSearchParams();
+  const { target, label } = useMenuListItem(item);
 
-  const Target = item.target;
+  const Target = target;
 
   // NOTE: in case navigation state persistence is added the `target` component
   // will not be present in the navigation params since it's not serializable.
@@ -18,7 +18,7 @@ export default function MenuListItem() {
   if (!Target) return null;
   return (
     <Wrapper>
-      <Stack.Screen options={{ title: item.label }} />
+      <Stack.Screen options={{ title: label }} />
       <Target />
     </Wrapper>
   );

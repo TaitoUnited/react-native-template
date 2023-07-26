@@ -6,7 +6,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { styled } from '~styles/styled';
 import { FillButton, Text, TextInput, Stack, Spacer } from '~components/uikit';
 import { showToast } from '~components/common/Toaster';
-import { useAuth } from '~context/auth';
+import { useAuthStore } from '~services/auth';
 
 type Credentials = {
   email: string;
@@ -22,7 +22,7 @@ export const MIN_PASSWORD_LEGTH = 8;
 export default function Signup() {
   const form = useForm<Credentials>({ mode: 'onChange' });
   const password = form.watch('password1');
-  const { status, signup } = useAuth();
+  const { status, signup } = useAuthStore();
   const headerHeight = useHeaderHeight();
   const isValidForm = form.formState.isValid && status !== 'signing-in';
 

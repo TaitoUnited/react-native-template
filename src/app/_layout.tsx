@@ -1,10 +1,8 @@
-import { Stack, router } from 'expo-router';
-import { useEffect } from 'react';
+import { SplashScreen, Stack, router } from 'expo-router';
 import { DevSettings } from 'react-native';
 import { useLingui } from '@lingui/react';
-import { useAuth } from '../context/auth';
+import { useProtectedRoute } from '../context/auth';
 import Providers from '~Providers';
-import SplashScreen from '~components/common/SplashScreen';
 import StatusBar from '~components/common/StatusBar';
 import { useAppReady } from '~utils/init';
 import { useDefaultStackScreenOptions } from '~utils/navigation';
@@ -14,31 +12,26 @@ if (__DEV__) {
   DevSettings.addMenuItem('Open Sitemap', () => router.push('_sitemap'));
 }
 
+SplashScreen.preventAutoHideAsync();
+
 export default function StackLayout() {
-  const ready = useAppReady();
+  console.log(`>> Here's the StackLayout!`);
+  useAppReady();
 
   return (
-    <SplashScreen ready={ready}>
-      <Providers>
-        <RootLayoutNav />
-        <StatusBar />
-      </Providers>
-    </SplashScreen>
+    <Providers>
+      <RootLayoutNav />
+      <StatusBar />
+    </Providers>
   );
 }
 
 function RootLayoutNav() {
-  useLingui();
+  console.log(`>> Here's the root layout nav!`);
   const screenOptions = useDefaultStackScreenOptions();
-  const { initAuth } = useAuth();
+  useLingui();
 
-  useEffect(() => {
-    async function init() {
-      await initAuth();
-    }
-
-    init();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  useProtectedRoute();
 
   return (
     <Stack
@@ -48,12 +41,9 @@ function RootLayoutNav() {
       }}
     >
       <Stack.Screen name="index" />
-      <Stack.Screen name="(auth)" />
-      <Stack.Screen name="(tabs)" />
-      <Stack.Screen
-        name="menu-list/[menuListItem]"
-        options={{ headerShown: true }}
-      />
+      <Stack.Screen name="(tabs)" options={{ animation: 'none' }} />
+      <Stack.Screen name="(auth)" options={{ animation: 'fade' }} />
+      <Stack.Screen name="menu-list/[item]" options={{ headerShown: true }} />
     </Stack>
   );
 }
