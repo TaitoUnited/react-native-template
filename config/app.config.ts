@@ -4,7 +4,7 @@ import { getConfig } from './utils';
 /** ------------------------- NOTE: -------------------------
  * Do not commit `console.log` statements in this file!!!
  * It will break android builds because of the way we Expo resolves
- * the `index.js` file during the build process...
+ * the `index.tsx` file during the build process...
  ------------------------------------------------------------ */
 
 const env = process.env.APP_ENV || 'dev';

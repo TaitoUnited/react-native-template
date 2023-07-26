@@ -80,9 +80,9 @@ export function useInterval(callback: () => void, delay: number | null) {
   }, [delay]);
 }
 
-// Userland version of upcoming official `useEvent` React hook:
-// RFC: https://github.com/reactjs/rfcs/blob/useevent/text/0000-useevent.md
-export function useEvent<T extends (...args: any[]) => any>(handler: T) {
+// Userland version of upcoming official `useEffectEvent` React hook:
+// RFC: https://github.com/reactjs/rfcs/blob/useEffectEvent/text/0000-useEffectEvent.md
+export function useEffectEvent<T extends (...args: any[]) => any>(handler: T) {
   const handlerRef = useRef<T>();
 
   useLayoutEffect(() => {

@@ -4,7 +4,7 @@ import { Settings } from 'luxon';
 import { i18n } from '@lingui/core';
 import { I18nProvider as LinguiProvider, useLingui } from '@lingui/react';
 
-import { useEvent } from '~utils/common';
+import { useEffectEvent } from '~utils/common';
 import storage from '~utils/storage';
 
 export type Locale = 'fi' | 'en';
@@ -49,7 +49,7 @@ export function useI18n() {
   const lingui = useLingui();
   const currentLocale = lingui.i18n.locale as Locale;
 
-  const setLocale = useEvent(async (locale: Locale) => {
+  const setLocale = useEffectEvent(async (locale: Locale) => {
     try {
       const newMessages = await loadMessages(locale);
 
@@ -63,7 +63,7 @@ export function useI18n() {
     }
   });
 
-  const toggleLocale = useEvent(() => {
+  const toggleLocale = useEffectEvent(() => {
     setLocale(currentLocale === 'fi' ? 'en' : 'fi');
   });
 

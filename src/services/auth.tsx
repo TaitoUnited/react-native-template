@@ -10,7 +10,6 @@ type AuthStatus =
   | 'undetermined'
   | 'determining'
   | 'logging-in'
-  | 'logging-out'
   | 'signing-in'
   | 'authenticated'
   | 'unauthenticated';
@@ -66,15 +65,11 @@ const authStore = create<AuthState>((set) => ({
     }
   },
   logout: async () => {
-    set({ status: 'logging-out' });
-
+    set({ status: 'unauthenticated' });
     try {
       await fakeLogout();
     } catch (error) {
       console.log(error);
-    } finally {
-      set({ status: 'unauthenticated' });
-      console.log(`>> status changed to unauthenticated`);
     }
 
     // TODO: clear API client cache
@@ -100,8 +95,6 @@ export async function initAuth() {
     // In all other cases keep user logged in if the error is not auth error
     // since they might be able to resolve it by eg. connecting to the internet etc.
     authStore.setState({ status: 'authenticated' });
-
-    // router.replace('home');
   } catch (error: any) {
     if (isAuthError(error)) {
       // Ignore auth errors here since they are handled in the GraphQL client
@@ -113,7 +106,6 @@ export async function initAuth() {
       console.log('> Unknown auth error', error);
       // Logout the user in case of unknown errors or if the access token is missing
       authStore.getState().logout();
-      // router.replace('(auth)/landing');
     }
   }
 }

@@ -1,6 +1,5 @@
-import { ReactNode, useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { Animated } from 'react-native';
-import { SplashScreen as ExpoSplashScreen } from 'expo-router';
 import { useAssets } from 'expo-asset';
 
 import config from '~constants/config';
@@ -12,61 +11,34 @@ if (config.splash.image !== './src/design-system/assets/splash.png') {
   );
 }
 
-type Props = {
-  children: ReactNode;
-  ready: boolean;
-};
-
-export default function SplashScreen({ children, ready }: Props) {
-  const [isAnimationComplete, setAnimationComplete] = useState(false);
-  const [isImageLoaded, setImageLoaded] = useState(false);
+export default function SplashScreen() {
   const animation = useMemo(() => new Animated.Value(1), []);
   const [assets, error] = useAssets([
     require('../../design-system/assets/splash.png'),
   ]);
 
-  useEffect(() => {
-    async function hide() {
-      ExpoSplashScreen.hideAsync();
-      Animated.timing(animation, {
-        toValue: 0,
-        duration: 300,
-        useNativeDriver: true,
-      }).start(() => setAnimationComplete(true));
-    }
-
-    if (ready && isImageLoaded) hide();
-  }, [ready, isImageLoaded]); // eslint-disable-line react-hooks/exhaustive-deps
-
   if (!assets) return null;
 
   // If the splash image fails to load, show the app anyway
   if (error) {
-    return <Wrapper>{children}</Wrapper>;
+    return <Wrapper />;
   }
 
   const imageSource = { uri: assets[0].localUri || '' };
 
   return (
     <Wrapper>
-      {ready ? children : null}
-      {!isAnimationComplete && (
-        <SplashContent
-          pointerEvents="none"
-          style={[
-            {
-              backgroundColor: config.splash.backgroundColor,
-              opacity: animation,
-            },
-          ]}
-        >
-          <SplashImage
-            source={imageSource}
-            fadeDuration={0}
-            onLoadEnd={() => setImageLoaded(true)}
-          />
-        </SplashContent>
-      )}
+      <SplashContent
+        pointerEvents="none"
+        style={[
+          {
+            backgroundColor: config.splash.backgroundColor,
+            opacity: animation,
+          },
+        ]}
+      >
+        <SplashImage source={imageSource} fadeDuration={0} />
+      </SplashContent>
     </Wrapper>
   );
 }

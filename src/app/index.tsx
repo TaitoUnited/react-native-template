@@ -1,5 +1,5 @@
-import { View } from 'react-native';
+import SplashScreen from '~components/common/SplashScreen';
 
 export default function RootPage() {
-  return <View style={{ backgroundColor: 'red', flex: 1 }} />;
+  return <SplashScreen />;
 }

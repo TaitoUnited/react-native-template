@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { SplashScreen } from 'expo-router';
 
 import { useAppFonts } from './font';
+import { sleep } from './common';
 import { initAuth } from '~services/auth';
 import { initMessages } from '~services/i18n';
 
@@ -23,8 +24,13 @@ export function useAppReady() {
   const appReady = initReady && fontsReady;
 
   useEffect(() => {
-    if (!appReady) return;
-    SplashScreen.hideAsync();
+    async function init() {
+      if (!appReady) return;
+      await sleep(10);
+      SplashScreen.hideAsync();
+    }
+
+    init();
   }, [appReady]);
 
   return appReady;

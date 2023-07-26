@@ -6,7 +6,7 @@ export default function AuthLayout() {
   const screenOptions = useDefaultStackScreenOptions();
 
   return (
-    <Stack screenOptions={screenOptions}>
+    <Stack screenOptions={screenOptions} initialRouteName="landing">
       <Stack.Screen name="landing" options={{ headerShown: false }} />
       <Stack.Screen name="login" options={{ title: t`Login` }} />
       <Stack.Screen name="signup" options={{ title: t`Signup` }} />

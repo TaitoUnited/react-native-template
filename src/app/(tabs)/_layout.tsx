@@ -56,7 +56,7 @@ export default function TabsLayout() {
 
   return (
     <Tabs
-      // initialRouteName="home"
+      initialRouteName="home"
       screenOptions={{
         ...defaultHeaderOptions,
         tabBarStyle: {
