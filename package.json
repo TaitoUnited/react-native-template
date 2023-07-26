@@ -18,9 +18,9 @@
     "ios:prod": "APP_ENV=prod npx expo run:ios",
     "prebuild": "npx expo prebuild",
     "prebuild:clean": "npx expo prebuild --clean",
-    "prebuild:test": "APP_ENV=test npx expo prebuild",
-    "prebuild:stag": "APP_ENV=stag npx expo prebuild",
-    "prebuild:prod": "APP_ENV=prod npx expo prebuild",
+    "prebuild:test": "APP_ENV=test npm run prebuild",
+    "prebuild:stag": "APP_ENV=stag npm run prebuild",
+    "prebuild:prod": "APP_ENV=prod npm run prebuild",
     "prebuild:ci": "EXPO_NO_GIT_STATUS=1 npx expo prebuild --clean --skip-dependency-update react,react-native",
     "prebuild:ci:test": "APP_ENV=test npm run prebuild:ci",
     "prebuild:ci:stag": "APP_ENV=stag npm run prebuild:ci",
@@ -115,10 +115,6 @@
     "type-fest": "3.1.0",
     "typescript": "^5.1.3"
   },
-  "//": "NOTE: Don't forget to run 'react-native setup-ios-permissions && pod-install' after changing permissions!",
-  "reactNativePermissionsIOS": [
-    "Notifications"
-  ],
   "engines": {
     "npm": ">=7",
     "yarn": "please-use-npm"

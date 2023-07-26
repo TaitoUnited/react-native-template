@@ -76,6 +76,13 @@ const expoConfig: ExpoConfig = {
       },
     ],
     [
+      './plugins/with-ios-permissions',
+      {
+        // Add more iOS permissions here
+        permissions: ['Notifications'],
+      },
+    ],
+    [
       'expo-build-properties',
       {
         android: {

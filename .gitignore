@@ -73,6 +73,9 @@ android/
 config/appcenter-config.json
 config/appcenter-config.plist
 
+# Auto-generated file for react-native-permissions from `with-ios-permissions` Expo Config Plugin
+reactNativePermissionsIOS.json
+
 # Temporary files created by Metro to check the health of the file watcher
 .metro-health-check*
 
