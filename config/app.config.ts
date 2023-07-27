@@ -7,7 +7,7 @@ import { getConfig } from './utils';
  * the `index.tsx` file during the build process...
  ------------------------------------------------------------ */
 
-const env = process.env.APP_ENV || 'dev';
+const env = process.env.EXPO_PUBLIC_APP_ENV || 'dev';
 const config = getConfig(env);
 const appId = `com.taito.template${config.appIdSuffix}`;
 
@@ -54,7 +54,12 @@ const expoConfig: ExpoConfig = {
     },
     ------------------------------------------------------------------------- */
   },
-  extra: config,
+  extra: {
+    ...config,
+    eas: {
+      projectId: 'a079aab5-fb32-474f-8efb-fb983606bc9a',
+    },
+  },
   plugins: [
     [
       'expo-router',
@@ -66,13 +71,6 @@ const expoConfig: ExpoConfig = {
       './plugins/with-ios-settings',
       {
         teamId: 'EPATC4S9N2',
-      },
-    ],
-    [
-      './plugins/with-appcenter',
-      {
-        iosAppSecret: '0053bb6e-f90a-48c3-8bf8-4f0cf98000df',
-        androidAppSecret: 'c061d869-eac1-42f6-bbb1-d9e2ea2749a4',
       },
     ],
     [
