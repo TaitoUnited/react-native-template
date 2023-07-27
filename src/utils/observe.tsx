@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { AppState, AppStateStatus, BackHandler, Keyboard } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
-import { useEvent } from './common';
+import { useEffectEvent } from './common';
 
 export function useKeyboardVisibility() {
   const [isKeyboardOpen, setKeyboardOpen] = useState(false);
@@ -34,7 +34,7 @@ export function useAppState(callbacks: {
 }) {
   const appState = useRef(AppState.currentState);
 
-  const onAppStateChange = useEvent((nextAppState: AppStateStatus) => {
+  const onAppStateChange = useEffectEvent((nextAppState: AppStateStatus) => {
     if (
       appState.current.match(/inactive|background/) &&
       nextAppState === 'active'

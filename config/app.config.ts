@@ -4,7 +4,7 @@ import { getConfig } from './utils';
 /** ------------------------- NOTE: -------------------------
  * Do not commit `console.log` statements in this file!!!
  * It will break android builds because of the way we Expo resolves
- * the `index.js` file during the build process...
+ * the `index.tsx` file during the build process...
  ------------------------------------------------------------ */
 
 const env = process.env.APP_ENV || 'dev';
@@ -14,6 +14,7 @@ const appId = `com.taito.template${config.appIdSuffix}`;
 const expoConfig: ExpoConfig = {
   slug: 'taito-template',
   name: 'Taito Template',
+  scheme: 'taito-template',
   version: '1.0.0',
   orientation: 'portrait',
   jsEngine: 'hermes',
@@ -23,6 +24,7 @@ const expoConfig: ExpoConfig = {
   userInterfaceStyle: 'automatic',
   experiments: {
     tsconfigPaths: true,
+    // typedRoutes: true, // Enable when it's possible to generate types for routes manually
   },
   splash: {
     resizeMode: 'contain',
@@ -55,6 +57,12 @@ const expoConfig: ExpoConfig = {
   extra: config,
   plugins: [
     [
+      'expo-router',
+      {
+        asyncRoutes: 'development',
+      },
+    ],
+    [
       './plugins/with-ios-settings',
       {
         teamId: 'EPATC4S9N2',
@@ -65,6 +73,13 @@ const expoConfig: ExpoConfig = {
       {
         iosAppSecret: '0053bb6e-f90a-48c3-8bf8-4f0cf98000df',
         androidAppSecret: 'c061d869-eac1-42f6-bbb1-d9e2ea2749a4',
+      },
+    ],
+    [
+      './plugins/with-ios-permissions',
+      {
+        // Add more iOS permissions here
+        permissions: ['Notifications'],
       },
     ],
     [

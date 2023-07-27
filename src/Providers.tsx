@@ -1,29 +1,26 @@
 import type { ReactNode } from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { styled } from '~styles';
 import { ColorModeProvider } from '~services/color-mode';
 import { I18nProvider } from '~services/i18n';
 import Toaster from '~components/common/Toaster';
 import ErrorBoundary from '~components/common/ErrorBoundary';
-import NavigationProvider from '~components/common/NavigationProvider';
+import NavigationThemeProvider from '~components/common/NavigationThemeProvider';
 
 export default function Providers({ children }: { children: ReactNode }) {
   return (
-    <SafeAreaProvider>
+    <I18nProvider>
       <ColorModeProvider>
         <ErrorBoundary>
-          <NavigationProvider>
+          <NavigationThemeProvider>
             <AppWrapper>
-              <I18nProvider>
-                {children}
-                <Toaster />
-              </I18nProvider>
+              {children}
+              <Toaster />
             </AppWrapper>
-          </NavigationProvider>
+          </NavigationThemeProvider>
         </ErrorBoundary>
       </ColorModeProvider>
-    </SafeAreaProvider>
+    </I18nProvider>
   );
 }
 

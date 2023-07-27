@@ -10,7 +10,7 @@ import { Radio } from './inputs/Radio';
 import { Checkbox } from './inputs/Checkbox';
 import { SearchInput } from './inputs/SearchInput';
 import { styled } from '~styles';
-import { useEvent } from '~utils/common';
+import { useEffectEvent } from '~utils/common';
 
 type Option = {
   label: string;
@@ -96,7 +96,7 @@ function ModalContent({
     });
   }
 
-  const handleOptionSelect = useEvent((value: string) => {
+  const handleOptionSelect = useEffectEvent((value: string) => {
     if (multiple) {
       const current = selected as string[];
       const isChecked = current.includes(value);
