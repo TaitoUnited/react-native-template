@@ -2,7 +2,6 @@ import { unstable_batchedUpdates } from 'react-native'; // eslint-disable-line
 import { t } from '@lingui/macro';
 import create from 'zustand';
 
-import { router } from 'expo-router';
 import storage from '~utils/storage';
 import { showToast } from '~components/common/Toaster';
 
@@ -58,7 +57,6 @@ const authStore = create<AuthState>((set) => ({
       const tokens = await fakeLogin(credentials);
       setAuthTokens(tokens);
       set({ status: 'authenticated' });
-      console.log(`>> status changed`);
     } catch (error) {
       set({ status: 'unauthenticated' });
       throw error; // rethrow so caller can handle it

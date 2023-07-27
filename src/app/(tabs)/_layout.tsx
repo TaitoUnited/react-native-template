@@ -9,7 +9,7 @@ import { Icon, Text } from '~components/uikit';
 import { useDefaultHeaderOptions } from '~utils/navigation';
 
 type TabList = {
-  id: any;
+  id: string;
   title: string;
   iconFilled: IconName;
   iconOutlined: IconName;

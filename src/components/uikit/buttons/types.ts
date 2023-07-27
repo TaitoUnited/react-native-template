@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 import type { TouchableWithoutFeedbackProps } from 'react-native';
-import { Href } from 'expo-router';
 import type { IconName } from '../Icon';
 
 export type ButtonSize = 'small' | 'medium' | 'large';
@@ -16,14 +15,4 @@ export type ButtonProps = TouchableWithoutFeedbackProps & {
   iconSide?: 'start' | 'end';
   iconPosition?: 'label' | 'edge';
   loading?: boolean;
-};
-export type LinkProps = {
-  children: ReactNode;
-  variant: ButtonVariant;
-  size?: ButtonSize;
-  icon?: IconName;
-  iconSide?: 'start' | 'end';
-  iconPosition?: 'label' | 'edge';
-  loading?: boolean;
-  href: Href<string>;
 };

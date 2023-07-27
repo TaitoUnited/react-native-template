@@ -45,7 +45,7 @@ function RootLayoutNavigator() {
   return (
     <Stack screenOptions={{ headerShown: false, ...screenOptions }}>
       <Stack.Screen name="index" />
-      <Stack.Screen name="(tabs)" options={{ animation: 'fade' }} />
+      <Stack.Screen name="(tabs)" options={{ animation: 'none' }} />
       <Stack.Screen name="(auth)" options={{ animation: 'fade' }} />
       <Stack.Screen name="menu-list/[item]" options={{ headerShown: true }} />
     </Stack>
@@ -64,7 +64,7 @@ function RouteProtection() {
   const onAuthChange = useEffectEvent(() => {
     if (authStatus === 'unauthenticated' && notInAuthRoute) {
       router.replace('/(auth)/landing');
-    } else {
+    } else if (authStatus === 'authenticated') {
       router.replace('/(tabs)/home');
     }
   });

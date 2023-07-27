@@ -24,7 +24,7 @@ const expoConfig: ExpoConfig = {
   userInterfaceStyle: 'automatic',
   experiments: {
     tsconfigPaths: true,
-    typedRoutes: true,
+    // typedRoutes: true, // Enable when it's possible to generate types for routes manually
   },
   splash: {
     resizeMode: 'contain',

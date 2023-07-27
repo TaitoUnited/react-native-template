@@ -6,7 +6,6 @@ import { t } from '@lingui/macro';
 
 import { useNavigation } from 'expo-router';
 import { NavigationState, PartialState } from '@react-navigation/native';
-import { useLingui } from '@lingui/react';
 import { useTheme } from '~styles';
 
 export function getActiveRouteName(
