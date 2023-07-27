@@ -41,7 +41,6 @@
   },
   "dependencies_comment": "NOTE: Expo will automatically update some package versions to be compatible with the current Expo SDK version!",
   "dependencies": {
-    "@expo/webpack-config": "18.1.1",
     "@lingui/macro": "4.3.0",
     "@lingui/react": "4.3.0",
     "@react-native-menu/menu": "0.7.2",
