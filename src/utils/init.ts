@@ -1,15 +1,26 @@
 import { useEffect, useState } from 'react';
+import { SplashScreen, useRootNavigation } from 'expo-router';
 
-import { SplashScreen } from 'expo-router';
-
-import { useAppFonts } from './font';
+import { useFontsReady } from './font';
 import { sleep } from './common';
 import { initAuth } from '~services/auth';
 import { initMessages } from '~services/i18n';
 
 export function useAppReady() {
+  const initReady = useInitReady();
+  const fontsReady = useFontsReady();
+  const routerReady = useRouterReady();
+  const appReady = initReady && fontsReady && routerReady;
+
+  useEffect(() => {
+    if (appReady) sleep(10).then(() => SplashScreen.hideAsync());
+  }, [appReady]);
+
+  return appReady;
+}
+
+function useInitReady() {
   const [initReady, setInitReady] = useState(false);
-  const fontsReady = useAppFonts();
 
   useEffect(() => {
     async function init() {
@@ -21,17 +32,18 @@ export function useAppReady() {
     init();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const appReady = initReady && fontsReady;
+  return initReady;
+}
+
+function useRouterReady() {
+  const rootNavigation = useRootNavigation();
+  const [routerReady, setRouterReady] = useState(false);
 
   useEffect(() => {
-    async function init() {
-      if (!appReady) return;
-      await sleep(10);
-      SplashScreen.hideAsync();
-    }
+    return rootNavigation?.addListener('state', () => {
+      setRouterReady(true);
+    });
+  }, [rootNavigation]); // eslint-disable-line react-hooks/exhaustive-deps
 
-    init();
-  }, [appReady]);
-
-  return appReady;
+  return routerReady;
 }

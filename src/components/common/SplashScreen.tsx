@@ -1,5 +1,3 @@
-import { useMemo } from 'react';
-import { Animated } from 'react-native';
 import { useAssets } from 'expo-asset';
 
 import config from '~constants/config';
@@ -12,17 +10,11 @@ if (config.splash.image !== './src/design-system/assets/splash.png') {
 }
 
 export default function SplashScreen() {
-  const animation = useMemo(() => new Animated.Value(1), []);
   const [assets, error] = useAssets([
     require('../../design-system/assets/splash.png'),
   ]);
 
-  if (!assets) return null;
-
-  // If the splash image fails to load, show the app anyway
-  if (error) {
-    return <Wrapper />;
-  }
+  if (!assets || error) return null;
 
   const imageSource = { uri: assets[0].localUri || '' };
 
@@ -30,12 +22,7 @@ export default function SplashScreen() {
     <Wrapper>
       <SplashContent
         pointerEvents="none"
-        style={[
-          {
-            backgroundColor: config.splash.backgroundColor,
-            opacity: animation,
-          },
-        ]}
+        style={[{ backgroundColor: config.splash.backgroundColor }]}
       >
         <SplashImage source={imageSource} fadeDuration={0} />
       </SplashContent>
@@ -47,11 +34,9 @@ const Wrapper = styled('View', {
   flex: 1,
 });
 
-const SplashContent = Animated.createAnimatedComponent(
-  styled('View', {
-    absoluteFill: true,
-  })
-);
+const SplashContent = styled('View', {
+  absoluteFill: true,
+});
 
 const SplashImage = styled('Image', {
   width: '100%',
