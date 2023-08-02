@@ -23,7 +23,7 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 📦 Install dependencies
-        run: npm run install
+        run: npm install
 
       - name: 🚀 Create preview
         uses: expo/expo-github-action/preview@v8
