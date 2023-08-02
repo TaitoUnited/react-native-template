@@ -15,6 +15,7 @@ const expoConfig: ExpoConfig = {
   slug: 'taito-template',
   name: 'Taito Template',
   scheme: 'taito-template',
+  owner: 'jtexier',
   version: '1.0.0',
   orientation: 'portrait',
   jsEngine: 'hermes',
