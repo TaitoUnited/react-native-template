@@ -10,7 +10,8 @@
       "distribution": "internal",
       "env": {
         "EXPO_PUBLIC_APP_ENV": "dev"
-      }
+      },
+      "channel": "development"
     },
     "preview": {
       "distribution": "internal",
@@ -23,7 +24,8 @@
       },
       "env": {
         "EXPO_PUBLIC_APP_ENV": "stag"
-      }
+      },
+      "channel": "preview"
     },
     "production": {
       "distribution": "store",
@@ -33,7 +35,8 @@
       },
       "env": {
         "EXPO_PUBLIC_APP_ENV": "prod"
-      }
+      },
+      "channel": "production"
     }
   },
   "submit": {
