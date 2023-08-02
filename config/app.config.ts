@@ -61,6 +61,12 @@ const expoConfig: ExpoConfig = {
       projectId: 'a079aab5-fb32-474f-8efb-fb983606bc9a',
     },
   },
+  updates: {
+    url: 'https://u.expo.dev/a079aab5-fb32-474f-8efb-fb983606bc9a',
+  },
+  runtimeVersion: {
+    policy: 'sdkVersion',
+  },
   plugins: [
     [
       'expo-router',
