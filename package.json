@@ -38,7 +38,11 @@
     "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
     "format:write": "prettier --write \"src/**/*.{ts,tsx}\"",
     "postinstall": "patch-package",
-    "eas-build-post-install": "./post-install.sh"
+    "eas-build-post-install": "./post-install.sh",
+    "eas:configure": "eas build:configure",
+    "ios:submit": "eas submit --platform ios --latest",
+    "android:submit": "eas submit --platform android --latest",
+    "metadata:push": "eas metadata:push"
   },
   "dependencies_comment": "NOTE: Expo will automatically update some package versions to be compatible with the current Expo SDK version!",
   "dependencies": {
@@ -56,7 +60,7 @@
     "expo-font": "~11.4.0",
     "expo-linking": "~5.0.2",
     "expo-router": "2.0.0",
-    "expo-splash-screen": "~0.20.4",
+    "expo-splash-screen": "~0.20.5",
     "expo-status-bar": "~1.6.0",
     "expo-system-ui": "~2.4.0",
     "lodash": "4.17.21",
@@ -96,7 +100,6 @@
     "@types/lodash": "4.14.187",
     "@types/luxon": "3.0.2",
     "@types/react": "~18.2.14",
-    "@types/react-native": "0.72.1",
     "@types/react-test-renderer": "^18.0.0",
     "babel-jest": "^29.2.1",
     "babel-plugin-transform-remove-console": "6.9.4",
@@ -113,6 +116,7 @@
   },
   "engines": {
     "npm": ">=7",
+    "node": ">=16",
     "yarn": "please-use-npm"
   },
   "jest": {

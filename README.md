@@ -14,6 +14,18 @@ Make sure your development environment is setup and up-to-date by following this
 
 After you have cloned this repo to start a new mobile app project go through the following steps to customize the template based on your project needs.
 
+### Setup EAS 
+
+We use EAS to build our app and distribute it to testers and to the stores. To configure our app, run `npm run eas:configure` and follow the instructions. It should create a `eas.json` file at the root level and add the following in `app.json`.
+
+```
+eas: {
+  projectId: 'YOUR_PROJECT_ID',
+},
+```
+
+As we have a custom `app.config.ts`, it is possible that it does not edit the file automatically. If so, copy the projectId and move on to the step below.
+
 ### Update app metadata
 
 Update the following fields in the `config/app.config.ts`:

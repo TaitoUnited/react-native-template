@@ -9,12 +9,13 @@ import { getConfig } from './utils';
 
 const env = process.env.EXPO_PUBLIC_APP_ENV || 'dev';
 const config = getConfig(env);
-const appId = `com.taito.template${config.appIdSuffix}`;
+const appId = `com.taito.template${config.appIdSuffix ?? ''}`;
 
 const expoConfig: ExpoConfig = {
   slug: 'taito-template',
   name: 'Taito Template',
   scheme: 'taito-template',
+  owner: 'jtexier',
   version: '1.0.0',
   orientation: 'portrait',
   jsEngine: 'hermes',
