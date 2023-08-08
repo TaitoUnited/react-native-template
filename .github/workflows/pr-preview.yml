@@ -1,7 +1,10 @@
 name: 'PR Preview'
+# on:
+#   pull_request:
+#     types: [opened, synchronize]
 on:
-  pull_request:
-    types: [opened, synchronize]
+  workflow_dispatch
+  
 jobs:
   preview:
     runs-on: ubuntu-latest
