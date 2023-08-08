@@ -1,42 +1,22 @@
 {
   "cli": {
-    "version": ">= 0.53.0",
-    "promptToConfigurePushNotifications": false,
-    "appVersionSource": "remote"
+    "promptToConfigurePushNotifications": false
   },
   "build": {
-    "development": {
-      "developmentClient": true,
+    "test": {
       "distribution": "internal",
       "env": {
-        "EXPO_PUBLIC_APP_ENV": "dev"
+        "EXPO_PUBLIC_APP_ENV": "test"
       },
-      "channel": "development"
+      "channel": "test"
     },
-    "preview": {
-      "distribution": "internal",
-      "autoIncrement": true,
-      "android": {
-        "buildType": "apk"
-      },
-      "ios": {
-        "simulator": true
-      },
-      "env": {
-        "EXPO_PUBLIC_APP_ENV": "stag"
-      },
-      "channel": "preview"
-    },
-    "production": {
+    "prod": {
       "distribution": "store",
       "autoIncrement": true,
-      "android": {
-        "buildType": "apk"
-      },
       "env": {
         "EXPO_PUBLIC_APP_ENV": "prod"
       },
-      "channel": "production"
+      "channel": "prod"
     }
   },
   "submit": {

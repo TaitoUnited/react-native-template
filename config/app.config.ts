@@ -9,13 +9,14 @@ import { getConfig } from './utils';
 
 const env = process.env.EXPO_PUBLIC_APP_ENV || 'dev';
 const config = getConfig(env);
-const appId = `com.taito.template${config.appIdSuffix ?? ''}`;
+const appIdSuffix = config.appIdSuffix ? `.${config.appIdSuffix}` : '';
+const appId = `com.taito.template${appIdSuffix}`;
 
 const expoConfig: ExpoConfig = {
   slug: 'taito-template',
   name: 'Taito Template',
   scheme: 'taito-template',
-  owner: 'jtexier',
+  owner: 'taito-united',
   version: '1.0.0',
   orientation: 'portrait',
   jsEngine: 'hermes',
@@ -58,16 +59,24 @@ const expoConfig: ExpoConfig = {
   extra: {
     ...config,
     eas: {
-      projectId: 'a079aab5-fb32-474f-8efb-fb983606bc9a',
+      projectId: '808dbf9f-9986-4409-a52d-050e69d62397',
     },
   },
-  updates: {
-    url: 'https://u.expo.dev/a079aab5-fb32-474f-8efb-fb983606bc9a',
-  },
+  // updates: {
+  //   url: 'https://u.expo.dev/808dbf9f-9986-4409-a52d-050e69d62397',
+  // },
+  // This is important for OTA updates to work properly!
+  // https://docs.expo.dev/eas-update/runtime-versions/#nativeversion-runtime-version-policy
   runtimeVersion: {
-    policy: 'sdkVersion',
+    policy: 'appVersion',
   },
   plugins: [
+    [
+      'expo-updates',
+      {
+        username: 'taito-united',
+      },
+    ],
     [
       'expo-router',
       {

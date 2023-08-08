@@ -1,26 +1,15 @@
 import { Trans } from '@lingui/macro';
-
-import { FillButton, Stack, Text } from '~components/uikit';
-import { styled } from '~styles';
+import capitalize from 'lodash/capitalize';
 import * as Updates from 'expo-updates';
-import { Button } from 'react-native';
-import { capitalize } from 'lodash';
+
+import { Stack, Text } from '~components/uikit';
+import { styled } from '~styles';
 import config from '~constants/config';
 
 export default function Home() {
-  async function onFetchUpdateAsync() {
-    try {
-      const update = await Updates.checkForUpdateAsync();
-      console.log(`>> Here is the update: ${JSON.stringify(update)}`);
-      if (update.isAvailable) {
-        await Updates.fetchUpdateAsync();
-        await Updates.reloadAsync();
-      }
-    } catch (error) {
-      // You can also add an alert() to see the error message in case of an error when fetching updates.
-      alert(`Error fetching latest Expo update: ${error}`);
-    }
-  }
+  const runTypeMessage = Updates.isEmbeddedLaunch
+    ? 'This app is running from built-in code'
+    : 'This app is running an update';
 
   return (
     <Wrapper>
@@ -32,7 +21,8 @@ export default function Home() {
         <Text variant="body">
           <Trans>Environment: {capitalize(config.appEnv)}</Trans>
         </Text>
-        <Button title="Fetch update" onPress={onFetchUpdateAsync} />
+
+        <Text variant="body">{runTypeMessage}</Text>
       </Stack>
     </Wrapper>
   );
