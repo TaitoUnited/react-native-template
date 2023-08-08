@@ -9,8 +9,7 @@ import { getConfig } from './utils';
 
 const env = process.env.EXPO_PUBLIC_APP_ENV || 'dev';
 const config = getConfig(env);
-const appIdSuffix = config.appIdSuffix ? `.${config.appIdSuffix}` : '';
-const appId = `com.taito.template${appIdSuffix}`;
+const appId = `com.taito.template${config.appIdSuffix ?? ''}`;
 
 const expoConfig: ExpoConfig = {
   slug: 'taito-template',
