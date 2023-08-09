@@ -11,7 +11,7 @@ jobs:
       env:
         SLACK_CHANNEL: builds
         SLACK_COLOR: good # or a specific color like 'good' or '#ff00ff'
-        SLACK_ICON: https://github.com/TaitoUnited.png?size=48
+        SLACK_ICON: https://github.com/TaitoUnited/react-native-template.png?size=48
         SLACK_MESSAGE: 'The build was successfull :rocket:'
         SLACK_TITLE: Build Notification
         SLACK_USERNAME: Github Actions Bot
