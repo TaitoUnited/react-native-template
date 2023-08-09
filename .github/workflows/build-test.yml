@@ -68,9 +68,10 @@ jobs:
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_COLOR: #ff00ff # or a specific color like 'good' or '#ff00ff'
-          SLACK_ICON: https://github.com/rtCamp.png?size=48
-          SLACK_MESSAGE: 'The ${{inputs.environment}} build was successfull :rocket:'
+          SLACK_CHANNEL: taksa
+          SLACK_COLOR: good
+          SLACK_ICON: https://github.com/TaitoUnited/react-native-template.png?size=48
+          SLACK_MESSAGE: 'The test build was successfull :rocket:'
           SLACK_TITLE: Build Notification for ${{ inputs.platform }}
           SLACK_USERNAME: ${{ github.event.repository.name }} - ${{ github.workflow }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
