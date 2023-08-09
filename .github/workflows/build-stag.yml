@@ -6,13 +6,13 @@ on:
       platform:
         type: choice
         description: Which platform to build for
-        options: 
+        options:
           - ios
           - android
         required: true
 jobs:
   build:
-    name: "Build (staging / ${{ github.event.inputs.platform }})"
+    name: 'Build (staging / ${{ github.event.inputs.platform }})'
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Setup repo
