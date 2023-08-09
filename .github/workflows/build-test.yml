@@ -70,7 +70,7 @@ jobs:
         env:
           SLACK_CHANNEL: builds
           SLACK_COLOR: ${{ job.status }}
-          SLACK_ICON: https://avatars.githubusercontent.com/u/3034007?s=100&v=4
+          SLACK_ICON: ${{ github.event.organization.avatar_url }}
           SLACK_MESSAGE: 'The test build was successfull :rocket:'
           SLACK_TITLE: Build Notification for ${{ inputs.platform }}
           SLACK_USERNAME: ${{ github.event.repository.name }} - ${{ github.workflow }}
