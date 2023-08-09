@@ -34,7 +34,6 @@ const expoConfig: ExpoConfig = {
   },
   android: {
     package: appId,
-    jsEngine: 'hermes',
     adaptiveIcon: {
       foregroundImage: config.adaptiveIcon.foregroundImage,
       backgroundColor: config.adaptiveIcon.backgroundColor,
@@ -44,7 +43,6 @@ const expoConfig: ExpoConfig = {
   },
   ios: {
     bundleIdentifier: appId,
-    jsEngine: 'hermes',
     bitcode: false,
     config: {
       usesNonExemptEncryption: false,
@@ -76,12 +74,7 @@ const expoConfig: ExpoConfig = {
         username: 'taito-united',
       },
     ],
-    [
-      'expo-router',
-      {
-        asyncRoutes: 'development',
-      },
-    ],
+    'expo-router',
     [
       './plugins/with-ios-settings',
       {
