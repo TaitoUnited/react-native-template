@@ -13,15 +13,16 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/app/(tabs)/settings.tsx:133
+#: src/app/(tabs)/settings.tsx:132
 msgid "Appearance"
 msgstr "Väriteema"
 
-#: src/app/(tabs)/settings.tsx:20
+#: src/app/(tabs)/settings.tsx:19
 msgid "Are you sure you want to logout?"
 msgstr "Oletko varma, että haluat kirjautua ulos?"
 
-#: src/app/(tabs)/settings.tsx:74
+#: src/app/(tabs)/settings.tsx:73
+#: src/app/(tabs)/settings.tsx:138
 msgid "Automatic"
 msgstr "Automaattinen"
 
@@ -33,9 +34,9 @@ msgstr "Takaisin"
 msgid "By Taito United"
 msgstr "Taito Unitedilta"
 
-#: src/app/(tabs)/settings.tsx:21
-#: src/components/uikit/inputs/DateInput.tsx:90
-#: src/components/uikit/inputs/SearchInput.tsx:56
+#: src/app/(tabs)/settings.tsx:20
+#: src/components/uikit/inputs/DateInput.tsx:88
+#: src/components/uikit/inputs/SearchInput.tsx:54
 #: src/components/uikit/PickerModal.tsx:206
 #: src/components/uikit/PickerSheet.tsx:153
 msgid "Cancel"
@@ -47,20 +48,20 @@ msgstr "Ei voida avata {type}"
 
 #: src/components/uikit/PickerModal.tsx:206
 #: src/components/uikit/PickerSheet.tsx:153
-#: src/services/permissions.tsx:110
-#: src/services/permissions.tsx:124
+#: src/services/permissions.tsx:108
+#: src/services/permissions.tsx:122
 msgid "Close"
 msgstr "Sulje"
 
-#: src/components/uikit/inputs/DateInput.tsx:89
+#: src/components/uikit/inputs/DateInput.tsx:87
 msgid "Confirm"
 msgstr "Vahvista"
 
-#: src/context/auth.tsx:158
+#: src/services/auth.tsx:102
 msgid "Could not connect to server"
 msgstr "Ei voitu yhdistää palvelimeen"
 
-#: src/services/permissions.tsx:122
+#: src/services/permissions.tsx:120
 msgid "Could not toggle permission. You can change the permission in the system settings."
 msgstr "Ei voitu muuttaa lupaa. Voit muuttaa lupaa järjestelmäasetuksista."
 
@@ -69,8 +70,8 @@ msgstr "Ei voitu muuttaa lupaa. Voit muuttaa lupaa järjestelmäasetuksista."
 msgid "Create an account"
 msgstr "Luo uusi tili"
 
-#: src/app/(tabs)/settings.tsx:79
-#: src/app/(tabs)/settings.tsx:134
+#: src/app/(tabs)/settings.tsx:78
+#: src/app/(tabs)/settings.tsx:137
 msgid "Dark"
 msgstr "Tumma"
 
@@ -99,7 +100,7 @@ msgid "Email required"
 msgstr "Sähköposti on pakollinen"
 
 #: src/app/(auth)/landing.tsx:99
-#: src/app/(tabs)/settings.tsx:53
+#: src/app/(tabs)/settings.tsx:52
 msgid "English"
 msgstr "Englanti"
 
@@ -107,7 +108,7 @@ msgstr "Englanti"
 msgid "Enter your credentials"
 msgstr "Syötä tunnuksesi"
 
-#: src/app/(tabs)/settings.tsx:102
+#: src/app/(tabs)/settings.tsx:101
 msgid "Environment"
 msgstr "Ympäristö"
 
@@ -120,7 +121,7 @@ msgid "Failed to signup"
 msgstr "Rekisteröityminen epäonnistui"
 
 #: src/app/(auth)/landing.tsx:96
-#: src/app/(tabs)/settings.tsx:58
+#: src/app/(tabs)/settings.tsx:57
 msgid "Finnish"
 msgstr "Suomi"
 
@@ -132,16 +133,16 @@ msgstr "Etunimi"
 msgid "First name is required"
 msgstr "Etunimi on pakollinen"
 
-#: src/app/(tabs)/_layout.tsx:20
+#: src/app/(tabs)/_layout.tsx:31
 #: src/app/(tabs)/home.tsx:10
 msgid "Home"
 msgstr "Koti"
 
-#: src/app/(tabs)/settings.tsx:138
+#: src/app/(tabs)/settings.tsx:142
 msgid "Info"
 msgstr "Tiedot"
 
-#: src/app/(tabs)/settings.tsx:128
+#: src/app/(tabs)/settings.tsx:127
 msgid "Language"
 msgstr "Kieli"
 
@@ -153,8 +154,8 @@ msgstr "Sukunimi"
 msgid "Last name is required"
 msgstr "Sukunimin on pakollinen"
 
-#: src/app/(tabs)/settings.tsx:84
-#: src/app/(tabs)/settings.tsx:134
+#: src/app/(tabs)/settings.tsx:83
+#: src/app/(tabs)/settings.tsx:135
 msgid "Light"
 msgstr "Vaalea"
 
@@ -167,8 +168,8 @@ msgstr "Kirjaudutaan sisään..."
 msgid "Login"
 msgstr "Kirjaudu sisään"
 
-#: src/app/(tabs)/settings.tsx:22
-#: src/app/(tabs)/settings.tsx:33
+#: src/app/(tabs)/settings.tsx:21
+#: src/app/(tabs)/settings.tsx:32
 msgid "Logout"
 msgstr "Kirjaudu ulos"
 
@@ -180,8 +181,8 @@ msgstr "Ei tuloksia."
 msgid "Open playground"
 msgstr "Avaa playground"
 
-#: src/services/permissions.tsx:111
-#: src/services/permissions.tsx:125
+#: src/services/permissions.tsx:109
+#: src/services/permissions.tsx:123
 msgid "Open settings"
 msgstr "Avaa asetukset"
 
@@ -229,7 +230,7 @@ msgstr "Yritä käynnistää sovellus uudelleen."
 msgid "Preferred format: +358400123456"
 msgstr "Suositeltu muoto: +358400123456"
 
-#: src/app/(tabs)/_layout.tsx:33
+#: src/app/(tabs)/_layout.tsx:44
 #: src/app/(tabs)/profile.tsx:9
 msgid "Profile"
 msgstr "Profiili"
@@ -238,13 +239,13 @@ msgstr "Profiili"
 msgid "React Native Template"
 msgstr "React Native templateen"
 
-#: src/app/(tabs)/_layout.tsx:26
+#: src/app/(tabs)/_layout.tsx:37
 #: src/app/(tabs)/search.tsx:9
-#: src/components/uikit/inputs/SearchInput.tsx:18
+#: src/components/uikit/inputs/SearchInput.tsx:17
 msgid "Search"
 msgstr "Hae"
 
-#: src/app/(tabs)/_layout.tsx:40
+#: src/app/(tabs)/_layout.tsx:51
 msgid "Settings"
 msgstr "Asetukset"
 
@@ -262,7 +263,7 @@ msgid "Signup"
 msgstr "Rekisteröidy"
 
 #: src/components/common/ErrorBoundary.tsx:39
-#: src/services/permissions.tsx:121
+#: src/services/permissions.tsx:119
 #: src/utils/linking.ts:28
 msgid "Something went wrong"
 msgstr "Jotain meni pieleen"
@@ -275,11 +276,11 @@ msgstr "Aloita seikkailusi"
 msgid "Try changing your search term."
 msgstr "Kokeile muuttaa hakutermiä."
 
-#: src/services/permissions.tsx:107
+#: src/services/permissions.tsx:105
 msgid "Unable to change permission"
 msgstr "Lupaa ei voitu muuttaa"
 
-#: src/app/(tabs)/settings.tsx:98
+#: src/app/(tabs)/settings.tsx:97
 msgid "Version"
 msgstr "Versio"
 
@@ -291,6 +292,6 @@ msgstr "Tervetuloa"
 msgid "You can enter any email and password to login."
 msgstr "Voit syöttää minkä tahansa tunnuksen kirjautuaksesi"
 
-#: src/services/permissions.tsx:108
+#: src/services/permissions.tsx:106
 msgid "You need to change the permission in the system settings."
 msgstr "Lupa on muutettava järjestelmäasetuksissa."

@@ -14,12 +14,24 @@ Make sure your development environment is setup and up-to-date by following this
 
 After you have cloned this repo to start a new mobile app project go through the following steps to customize the template based on your project needs.
 
+### Setup EAS 
+
+We use EAS to build our app and distribute it to testers and to the stores. To configure our app, run `npm run eas:configure` and follow the instructions. It should create a `eas.json` file at the root level and add the following in `app.json`.
+
+```
+eas: {
+  projectId: 'YOUR_PROJECT_ID',
+},
+```
+
+As we have a custom `app.config.ts`, it is possible that it does not edit the file automatically. If so, copy the projectId and move on to the step below.
+
 ### Update app metadata
 
 Update the following fields in the `config/app.config.ts`:
 
 1. `name` (name of the app)
-2. `appSecret` (in `with-appcenter` plugin options - you need to have App Center projects setup for both iOS and Android versions of the app)
+2. `projectId` in `eas` (coming from expo eas)
 3. `slug` (this is really not used but Expo requires it)
 
 ### Setup a design system

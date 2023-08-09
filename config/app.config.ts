@@ -7,14 +7,15 @@ import { getConfig } from './utils';
  * the `index.tsx` file during the build process...
  ------------------------------------------------------------ */
 
-const env = process.env.APP_ENV || 'dev';
+const env = process.env.EXPO_PUBLIC_APP_ENV || 'dev';
 const config = getConfig(env);
-const appId = `com.taito.template${config.appIdSuffix}`;
+const appId = `com.taito.template${config.appIdSuffix ?? ''}`;
 
 const expoConfig: ExpoConfig = {
   slug: 'taito-template',
   name: 'Taito Template',
   scheme: 'taito-template',
+  owner: 'taito-united',
   version: '1.0.0',
   orientation: 'portrait',
   jsEngine: 'hermes',
@@ -54,8 +55,27 @@ const expoConfig: ExpoConfig = {
     },
     ------------------------------------------------------------------------- */
   },
-  extra: config,
+  extra: {
+    ...config,
+    eas: {
+      projectId: '808dbf9f-9986-4409-a52d-050e69d62397',
+    },
+  },
+  // updates: {
+  //   url: 'https://u.expo.dev/808dbf9f-9986-4409-a52d-050e69d62397',
+  // },
+  // This is important for OTA updates to work properly!
+  // https://docs.expo.dev/eas-update/runtime-versions/#nativeversion-runtime-version-policy
+  runtimeVersion: {
+    policy: 'appVersion',
+  },
   plugins: [
+    [
+      'expo-updates',
+      {
+        username: 'taito-united',
+      },
+    ],
     [
       'expo-router',
       {
@@ -66,13 +86,6 @@ const expoConfig: ExpoConfig = {
       './plugins/with-ios-settings',
       {
         teamId: 'EPATC4S9N2',
-      },
-    ],
-    [
-      './plugins/with-appcenter',
-      {
-        iosAppSecret: '0053bb6e-f90a-48c3-8bf8-4f0cf98000df',
-        androidAppSecret: 'c061d869-eac1-42f6-bbb1-d9e2ea2749a4',
       },
     ],
     [

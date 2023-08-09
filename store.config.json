@@ -1,0 +1,16 @@
+{
+  "configVersion": 0,
+  "apple": {
+    "info": {
+      "en-US": {
+        "title": "Taito Template",
+        "subtitle": "Your self-made awesome app",
+        "description": "The most awesome app you've ever seen",
+        "keywords": ["awesome", "app"],
+        "marketingUrl": "https://example.com/en/promo",
+        "supportUrl": "https://example.com/en/support",
+        "privacyPolicyUrl": "https://example.com/en/privacy"
+      }
+    }
+  }
+}

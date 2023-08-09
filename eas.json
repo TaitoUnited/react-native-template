@@ -1,0 +1,33 @@
+{
+  "cli": {
+    "promptToConfigurePushNotifications": false
+  },
+  "build": {
+    "test": {
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_APP_ENV": "test"
+      },
+      "channel": "test"
+    },
+    "prod": {
+      "distribution": "store",
+      "autoIncrement": true,
+      "env": {
+        "EXPO_PUBLIC_APP_ENV": "prod"
+      },
+      "channel": "prod"
+    }
+  },
+  "submit": {
+    "production": {
+      "android": {
+        "track": "internal"
+      },
+      "ios": {
+        "ascAppId": "6455988705",
+        "appleTeamId": "EPATC4S9N2"
+      }
+    }
+  }
+}

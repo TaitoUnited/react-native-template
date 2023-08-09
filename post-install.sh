@@ -6,7 +6,7 @@ echo "Pre-build script start"
 echo "Compiling language files..."
 npm run i18n:extract
 
-if [ "$APPCENTER_BRANCH" == "master" ] || [ "$APPCENTER_BRANCH" == "main" ]; then
+if [ "$EXPO_PUBLIC_APP_ENV" == "prod" ] || [ "$EXPO_PUBLIC_APP_ENV" == "stag" ]; then
   npm run i18n:compile:strict
 else
   npm run i18n:compile
