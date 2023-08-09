@@ -1,0 +1,18 @@
+on: push
+name: Slack Notification Demo
+jobs:
+  slackNotification:
+    name: Slack Notification
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_CHANNEL: builds
+        SLACK_COLOR: good # or a specific color like 'good' or '#ff00ff'
+        SLACK_ICON: https://github.com/TaitoUnited.png?size=48
+        SLACK_MESSAGE: 'The build was successfull :rocket:'
+        SLACK_TITLE: Build Notification
+        SLACK_USERNAME: Github Actions Bot
+        SLACK_WEBHOOK: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
