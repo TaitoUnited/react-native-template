@@ -9,7 +9,7 @@ export default function StatusBar({ transparent = false }) {
   return (
     <RNStatusBar
       barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
-      translucent={transparent ? true : false}
+      translucent={transparent}
       backgroundColor={transparent ? 'transparent' : theme.colors.background}
     />
   );
