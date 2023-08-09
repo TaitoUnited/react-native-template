@@ -31,7 +31,7 @@ export default function RootLayout() {
   return (
     <Providers>
       <RootLayoutNavigator />
-      <StatusBar />
+      <StatusBar transparent />
       {appReady && <RouteProtection />}
     </Providers>
   );
