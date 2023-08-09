@@ -1,4 +1,4 @@
-import { FunctionComponent, ReactNode } from 'react';
+import { FunctionComponent, ReactNode, isValidElement } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { router } from 'expo-router';
@@ -7,7 +7,7 @@ import { Icon, Stack, Text } from '~components/uikit';
 
 type Item = {
   label: string;
-  currentValue?: string | number;
+  currentValue?: string | number | ReactNode;
   checked?: boolean;
   leftSlot?: ReactNode;
   rightSlot?: ReactNode;
@@ -72,11 +72,18 @@ export default function MenuList({ items, title }: Props) {
                   <RightSlot>{item.rightSlot}</RightSlot>
                 ) : (
                   <>
-                    {item.currentValue !== undefined && (
-                      <Text variant="body" color="textMuted" numberOfLines={1}>
-                        {item.currentValue}
-                      </Text>
-                    )}
+                    {item.currentValue !== undefined &&
+                      (isValidElement(item.currentValue) ? (
+                        item.currentValue
+                      ) : (
+                        <Text
+                          variant="body"
+                          color="textMuted"
+                          numberOfLines={1}
+                        >
+                          {item.currentValue}
+                        </Text>
+                      ))}
 
                     {item.checked !== undefined && (
                       <>
