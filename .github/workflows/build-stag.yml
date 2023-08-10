@@ -38,24 +38,31 @@ jobs:
         run: npm run i18n:extract && npm run i18n:compile
 
       - name: 🚀 Build app
-        run: eas build --platform ${{ inputs.platform }} --profile ${{ inputs.environment }} --non-interactive
+        id: build
+        run: |
+          output=$(eas build --platform ${{ inputs.platform }} --profile ${{ inputs.environment }} --non-interactive)
+          echo "::set-output name=BUILD_URL::$(echo "$output" | grep -o 'Build details: [^ ]*' | awk '{print $3}')"
 
       - name: ✅ Notify slack success
         if: success()
+        uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
-        uses: voxmedia/github-action-slack-notify-build@v1
-        with:
-          channel: builds
-          status: SUCCESS
-          color: good
+          SLACK_CHANNEL: builds
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_ICON: ${{ github.event.organization.avatar_url }}
+          SLACK_TITLE: 'Build successfull for ${{ inputs.platform }} :white_check_mark:'
+          SLACK_MESSAGE: 'See [EAS build](${{ steps.build.outputs.BUILD_URL }}) :rocket:'
+          SLACK_USERNAME: ${{ github.event.repository.name }} - ${{ github.workflow }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
       - name: ❌ Notify slack fail
         if: failure()
+        uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
-        uses: voxmedia/github-action-slack-notify-build@v1
-        with:
-          channel: builds
-          status: FAILED
-          color: danger
+          SLACK_CHANNEL: builds
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_ICON: ${{ github.event.organization.avatar_url }}
+          SLACK_TITLE: 'Build failed for ${{ inputs.platform }} :x:'
+          SLACK_MESSAGE: 'See [EAS build](${{ steps.build.outputs.BUILD_URL }}) for more info :sad_pepe:'
+          SLACK_USERNAME: ${{ github.event.repository.name }} - ${{ github.workflow }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
