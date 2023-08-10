@@ -42,7 +42,14 @@ jobs:
         id: build
         run: |
           output=$(eas build --platform ${{ inputs.platform }} --profile ${{ inputs.environment }} --non-interactive)
-          echo "::set-output name=BUILD_URL::$(echo "$output" | grep -o 'Build details: [^ ]*' | awk '{print $3}')"
+          echo "Build Command Output:"
+          echo "$output"
+          build_url=$(echo "$output" | grep -o 'Build details: [^ ]*' | awk '{print $3}')
+          echo "::set-output name=BUILD_URL::$build_url"
+
+      - name: Display extracted URL
+        run: echo "Extracted URL: ${{ steps.build.outputs.BUILD_URL }}"
+
 
       - name: ✅ Notify slack success
         if: success()
