@@ -19,54 +19,54 @@ jobs:
       - name: ⬇️ Setup repo
         uses: actions/checkout@v3
 
-      - name: ⎔ Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18.x
-          cache: npm
-          cache-dependency-path: ./package.json
+      # - name: ⎔ Setup Node
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 18.x
+      #     cache: npm
+      #     cache-dependency-path: ./package.json
 
-      - name: 🏗 Setup EAS
-        uses: expo/expo-github-action@v8
-        with:
-          eas-version: latest
-          token: ${{ secrets.EXPO_TOKEN }}
+      # - name: 🏗 Setup EAS
+      #   uses: expo/expo-github-action@v8
+      #   with:
+      #     eas-version: latest
+      #     token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: 📦 Install dependencies
-        run: npm ci
+      # - name: 📦 Install dependencies
+      #   run: npm ci
 
-      - name: 🌎 Compile translations
-        run: npm run i18n:extract && npm run i18n:compile
+      # - name: 🌎 Compile translations
+      #   run: npm run i18n:extract && npm run i18n:compile
 
       - name: 🚀 Build app
         id: build
         run: |
-          output=$(eas build --platform ${{ inputs.platform }} --profile ${{ inputs.environment }} --non-interactive)
+          output=$(eas build --platform ${{ inputs.platform }} --profile test --non-interactive)
           echo "Build Command Output:"
           echo "$output"
           build_url=$(echo "$output" | grep -o 'Build details: [^ ]*' | awk '{print $3}')
           echo "::set-output name=BUILD_URL::$build_url"
 
-      - name: ✅ Notify slack success
-        if: success()
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_CHANNEL: builds
-          SLACK_COLOR: ${{ job.status }}
-          SLACK_ICON: ${{ github.event.organization.avatar_url }}
-          SLACK_TITLE: 'Build successfull for ${{ inputs.platform }} :white_check_mark:'
-          SLACK_MESSAGE: 'See [EAS build](${{ steps.build.outputs.BUILD_URL }}) :rocket:'
-          SLACK_USERNAME: ${{ github.event.repository.name }} - ${{ github.workflow }}
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      # - name: ✅ Notify slack success
+      #   if: success()
+      #   uses: rtCamp/action-slack-notify@v2
+      #   env:
+      #     SLACK_CHANNEL: builds
+      #     SLACK_COLOR: ${{ job.status }}
+      #     SLACK_ICON: ${{ github.event.organization.avatar_url }}
+      #     SLACK_TITLE: 'Build successfull for ${{ inputs.platform }} :white_check_mark:'
+      #     SLACK_MESSAGE: 'See [EAS build](${{ steps.build.outputs.BUILD_URL }}) :rocket:'
+      #     SLACK_USERNAME: ${{ github.event.repository.name }} - ${{ github.workflow }}
+      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
-      - name: ❌ Notify slack fail
-        if: failure()
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_CHANNEL: builds
-          SLACK_COLOR: ${{ job.status }}
-          SLACK_ICON: ${{ github.event.organization.avatar_url }}
-          SLACK_TITLE: 'Build failed for ${{ inputs.platform }} :x:'
-          SLACK_MESSAGE: 'See [EAS build](${{ steps.build.outputs.BUILD_URL }}) for more info :sad_pepe:'
-          SLACK_USERNAME: ${{ github.event.repository.name }} - ${{ github.workflow }}
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      # - name: ❌ Notify slack fail
+      #   if: failure()
+      #   uses: rtCamp/action-slack-notify@v2
+      #   env:
+      #     SLACK_CHANNEL: builds
+      #     SLACK_COLOR: ${{ job.status }}
+      #     SLACK_ICON: ${{ github.event.organization.avatar_url }}
+      #     SLACK_TITLE: 'Build failed for ${{ inputs.platform }} :x:'
+      #     SLACK_MESSAGE: 'See [EAS build](${{ steps.build.outputs.BUILD_URL }}) for more info :sad_pepe:'
+      #     SLACK_USERNAME: ${{ github.event.repository.name }} - ${{ github.workflow }}
+      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}

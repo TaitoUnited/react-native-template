@@ -40,7 +40,7 @@ jobs:
       - name: 🚀 Build app
         id: build
         run: |
-          output=$(eas build --platform ${{ inputs.platform }} --profile ${{ inputs.environment }} --non-interactive)
+          output=$(eas build --platform ${{ inputs.platform }} --profile prod --non-interactive)
           echo "::set-output name=BUILD_URL::$(echo "$output" | grep -o 'Build details: [^ ]*' | awk '{print $3}')"
 
       - name: ✅ Notify slack success
