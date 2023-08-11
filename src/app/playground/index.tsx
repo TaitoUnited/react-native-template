@@ -1,12 +1,10 @@
-import { useEffect } from 'react';
+import { Stack, router } from 'expo-router';
 
-import { router, useNavigation } from 'expo-router';
 import { styled } from '~styles';
 import { IconButton, Text } from '~components/uikit';
 import MenuList from '~components/common/MenuList';
 
 export default function PlaygroundPage() {
-  const navigation = useNavigation();
   const items: Array<{ label: string; screen: any }> = [
     { screen: 'playground/design-system', label: 'Design System' },
     { screen: 'playground/icons', label: 'Icons' },
@@ -16,20 +14,18 @@ export default function PlaygroundPage() {
     { screen: 'playground/toast', label: 'Toast' },
   ];
 
-  if (__DEV__) {
-    items.push({ screen: 'sandbox', label: 'Sandbox' });
-  }
-
-  useEffect(() => {
-    navigation.setOptions({
-      headerLeft: () => (
-        <IconButton icon="x" onPress={() => router.push('settings')} />
-      ),
-    });
-  }, []); // eslint-disable-line
+  if (__DEV__) items.push({ screen: 'playground/sandbox', label: 'Sandbox' });
 
   return (
     <Wrapper>
+      <Stack.Screen
+        options={{
+          title: 'Playground',
+          headerLeft: () => (
+            <IconButton icon="x" onPress={() => router.push('settings')} />
+          ),
+        }}
+      />
       <MenuList
         items={items.map((item) => ({
           label: item.label,
