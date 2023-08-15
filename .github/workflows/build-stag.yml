@@ -1,5 +1,6 @@
 # Build the staging env app on EAS Cloud service.
 name: 'Build | Staging'
+run-name: Build | Staging for ${{ inputs.platform }} on ${{ github.ref_name }}
 on:
   workflow_dispatch:
     inputs:

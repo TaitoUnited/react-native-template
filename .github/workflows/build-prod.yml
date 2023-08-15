@@ -1,5 +1,6 @@
 # Build the production env app on EAS Cloud service.
 name: 'Build | Production'
+run-name: Build | Production for ${{ inputs.platform }} on ${{ github.ref_name }}
 on:
   workflow_dispatch:
     inputs:

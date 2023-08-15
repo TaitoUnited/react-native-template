@@ -1,5 +1,6 @@
 # Build the test env app on EAS Cloud service.
 name: 'Build | Test'
+run-name: Build | Test for ${{ inputs.platform }} on ${{ github.ref_name }}
 on:
   workflow_dispatch:
     inputs:
