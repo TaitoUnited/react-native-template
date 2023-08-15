@@ -1,4 +1,5 @@
 name: 'Common workflow'
+run-name: Build | Test for ${{ inputs.platform }} on ${{ github.ref_name }}
 on:
   workflow_call:
     inputs:
