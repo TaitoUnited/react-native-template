@@ -61,7 +61,7 @@ jobs:
         if: success()
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_CHANNEL: builds
+          SLACK_CHANNEL: builds # <-- Change this to the relevant slack channel
           SLACK_COLOR: ${{ job.status }}
           SLACK_ICON: ${{ github.event.organization.avatar_url }}
           SLACK_TITLE: 'Update successfull :white_check_mark:'
@@ -73,7 +73,7 @@ jobs:
         if: failure()
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_CHANNEL: builds
+          SLACK_CHANNEL: builds # <-- Change this to the relevant slack channel
           SLACK_COLOR: ${{ job.status }}
           SLACK_ICON: ${{ github.event.organization.avatar_url }}
           SLACK_TITLE: 'Update failed :x:'

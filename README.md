@@ -14,25 +14,18 @@ Make sure your development environment is setup and up-to-date by following this
 
 After you have cloned this repo to start a new mobile app project go through the following steps to customize the template based on your project needs.
 
-### Setup EAS 
-
-We use EAS to build our app and distribute it to testers and to the stores. To configure our app, run `npm run eas:configure` and follow the instructions. It should create a `eas.json` file at the root level and add the following in `app.json`.
-
-```
-eas: {
-  projectId: 'YOUR_PROJECT_ID',
-},
-```
-
-As we have a custom `app.config.ts`, it is possible that it does not edit the file automatically. If so, copy the projectId and move on to the step below.
-
 ### Update app metadata
 
 Update the following fields in the `config/app.config.ts`:
 
-1. `name` (name of the app)
-2. `projectId` in `eas` (coming from expo eas)
-3. `slug` (this is really not used but Expo requires it)
+1. `appId` (the id of the app, usually the bundle identifier. For example: `com.mynewapp`. Keep the `appIdSuffix` logic as it is)
+2. `slug` (this is really not used but Expo requires it)
+3. `name` (name of the app)
+4. `scheme` (the url scheme used to open the app from a link)
+
+### Setup EAS for building and distributing the app
+
+Follow this [EAS guide](/docs/EAS.md).
 
 ### Setup a design system
 
@@ -50,5 +43,5 @@ TODO: add more info here...
 - [Design System](/docs/DESIGN_SYSTEM.md)
 - [Localization](/docs/LOCALIZATION.md)
 - [Code Signing](/docs/CODE_SIGNING.md)
-- [App Center](/docs/APP_CENTER.md)
+- [EAS](/docs/EAS.md)
 - [Publishing to stores](/docs/PUBLISHING.md)

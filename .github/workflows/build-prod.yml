@@ -9,7 +9,15 @@ on:
         options: 
           - ios
           - android
+          - all
         required: true
+      email:
+        type: choice
+        description: Do you want to notify the client via email?
+        options:
+          - yes
+          - no
+        default: false
 jobs:
   build:
     name: "Build (production / ${{ github.event.inputs.platform }})"
@@ -43,11 +51,22 @@ jobs:
           eas build --platform ${{ inputs.platform }} --profile prod --non-interactive | tee temp.txt
           echo "BUILD_URL=$(echo "$(cat temp.txt)" | grep -o 'Build details: [^ ]*' | awk '{print $3}')" >> $GITHUB_OUTPUT
 
+  notify:
+    name: "Slack notification & email to client"
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+        matrix:
+          to-emails:
+          # Add the client emails here
+            - julien.texier@taitounited.fi
+            - teemu.taskula@taitounited.fi
+    steps:
       - name: ✅ Notify slack success
         if: success()
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_CHANNEL: builds
+          SLACK_CHANNEL: builds # <-- Change this to the relevant slack channel
           SLACK_COLOR: ${{ job.status }}
           SLACK_ICON: ${{ github.event.organization.avatar_url }}
           SLACK_TITLE: 'Build successfull for ${{ inputs.platform }} :white_check_mark:'
@@ -55,11 +74,23 @@ jobs:
           SLACK_USERNAME: ${{ github.event.repository.name }} - ${{ github.workflow }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
+      - name: 📧 Notify client
+        if: success() && inputs.email == 'yes'
+        uses: licenseware/send-email-notification@v1
+        with:
+          api-key: ${{ secrets.SENDGRID_GITHUB_ACTION_API_KEY }}
+          subject: New Release for ${{ inputs.platform }}
+          from-email: taito.dev@gmail.com
+          to-email: ${{ join(matrix.to-emails, ', ') }}
+          markdown-body: |
+            # New Release for ${{ inputs.platform }} 🚀
+            Click [here](${{ needs.build.outputs.BUILD_URL }}) to install it on your device. 📲
+
       - name: ❌ Notify slack fail
         if: failure()
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_CHANNEL: builds
+          SLACK_CHANNEL: builds # <-- Change this to the relevant slack channel
           SLACK_COLOR: ${{ job.status }}
           SLACK_ICON: ${{ github.event.organization.avatar_url }}
           SLACK_TITLE: 'Build failed for ${{ inputs.platform }} :x:'

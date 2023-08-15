@@ -8,6 +8,7 @@ import { getConfig } from './utils';
  ------------------------------------------------------------ */
 
 const env = process.env.EXPO_PUBLIC_APP_ENV || 'dev';
+
 const config = getConfig(env);
 const appId = `com.taito.template${config.appIdSuffix ?? ''}`;
 
@@ -59,9 +60,9 @@ const expoConfig: ExpoConfig = {
       projectId: '808dbf9f-9986-4409-a52d-050e69d62397',
     },
   },
-  // updates: {
-  //   url: 'https://u.expo.dev/808dbf9f-9986-4409-a52d-050e69d62397',
-  // },
+  updates: {
+    url: 'https://u.expo.dev/808dbf9f-9986-4409-a52d-050e69d62397',
+  },
   // This is important for OTA updates to work properly!
   // https://docs.expo.dev/eas-update/runtime-versions/#nativeversion-runtime-version-policy
   runtimeVersion: {
