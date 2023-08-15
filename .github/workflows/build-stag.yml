@@ -18,7 +18,6 @@ on:
           - yes
           - no
         default: false
-    secrets: inherit
 jobs:
   use-common-config:
     name: 'Build (staging / ${{ github.event.inputs.platform }})'
