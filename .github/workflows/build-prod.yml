@@ -21,7 +21,7 @@ on:
 jobs:
   use-common-config:
     name: "Build (production / ${{ github.event.inputs.platform }})"
-    uses: ./.github/config/common-config.yml
+    uses: ./.github/workflows/common-config.yml
     with:
       platform: ${{ github.event.inputs.platform }}
       email: ${{ github.event.inputs.email }}
