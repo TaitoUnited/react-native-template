@@ -45,7 +45,7 @@ jobs:
       - name: 🚀 Build app
         id: build-app
         run: |
-          eas build --platform ${{ inputs.platform }} --profile prod --non-interactive | tee temp.txt
+          eas build --platform ${{ inputs.platform }} --profile ${{ inputs.environment }} --non-interactive | tee temp.txt
           echo "BUILD_URL=$(echo "$(cat temp.txt)" | grep -o 'Build details: [^ ]*' | awk '{print $3}')" >> $GITHUB_OUTPUT
 
   notify-slack:
