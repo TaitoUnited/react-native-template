@@ -3,14 +3,11 @@ on:
   workflow_call:
     inputs:
       platform:
-        type: choice
         required: true
       email:
-        type: choice
         default: false
 
       environment:
-        type: choice
         required: true
 jobs:
   build:
