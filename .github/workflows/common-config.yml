@@ -12,7 +12,6 @@ on:
       environment:
         type: string
         required: true
-    secrets: inherit
 jobs:
   build:
     runs-on: ubuntu-latest

@@ -22,6 +22,7 @@ on:
 jobs:
   use-common-config:
     uses: ./.github/workflows/common-config.yml
+    secrets: inherit
     with:
       platform: ${{ github.event.inputs.platform }}
       email: ${{ github.event.inputs.email }}
