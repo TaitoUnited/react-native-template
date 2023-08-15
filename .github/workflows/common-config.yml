@@ -61,7 +61,7 @@ jobs:
           fi
  
       - name: ✅ Notify slack success
-        if: success()
+        if: ${{ needs.build.result }} == 'success'
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_CHANNEL: builds # <-- Change this to the relevant slack channel
@@ -73,7 +73,7 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
       - name: ❌ Notify slack fail
-        if: failure()
+        if: needs.build.result != 'success'
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_CHANNEL: builds # <-- Change this to the relevant slack channel
@@ -86,7 +86,7 @@ jobs:
   
   notify-clients:
     name: "Send emails to client"
-    if: success() && inputs.email == 'yes'
+    if: needs.build.result == 'success' && inputs.email == 'yes'
     needs: build
     runs-on: ubuntu-latest
     strategy:
