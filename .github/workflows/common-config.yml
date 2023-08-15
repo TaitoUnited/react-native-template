@@ -6,8 +6,8 @@ on:
         type: string
         required: true
       email:
-        type: boolean
-        default: false
+        type: string
+        required: true
 
       environment:
         type: string
