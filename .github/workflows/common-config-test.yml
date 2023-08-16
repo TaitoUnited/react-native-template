@@ -1,0 +1,119 @@
+name: 'Common workflow'
+on:
+  workflow_call:
+    inputs:
+      platform:
+        type: string
+        required: true
+      email:
+        type: string
+        required: true
+
+      environment:
+        type: string
+        required: true
+jobs:
+  build:
+    outputs:
+      BUILD_URL: ${{ steps.build-app.outputs.BUILD_URL }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🔐 Check for EXPO_TOKEN
+        run: |
+          if [ -z "${{ secrets.EXPO_TOKEN }}" ]; then
+            echo "You must provide an EXPO_TOKEN secret linked to this project's Expo account in this repo's secrets. Learn more: https://docs.expo.dev/eas-update/github-actions"
+            exit 1
+          fi
+
+      - name: ⬇️ Setup repo
+        uses: actions/checkout@v3
+
+      - name: ⎔ Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: npm
+          cache-dependency-path: ./package.json
+
+      - name: 🏗 Setup EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🚀 Build app
+        id: build-app
+        run: |
+          cat eas.txt | tee temp.txt
+          log=$(cat temp.txt)
+          echo "BUILD_URL=$(echo "$log" | grep -o 'Build details: [^ ]*' | awk '{print $3}')" >> $GITHUB_OUTPUT
+
+  notify-slack:
+    name: 'Slack notification'
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🔐 Check for SLACK_WEBHOOK
+        run: |
+          if [ -z "${{ secrets.SLACK_WEBHOOK }}" ]; then
+            echo "You must provide a SLACK_WEBHOOK secret to be able to send slack notifications. Learn more in the EAS README"
+            exit 1
+          fi
+
+      - name: ✅ Notify slack success
+        if: needs.build.result == 'success' && needs.build.outputs.BUILD_URL != ''
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: builds # <-- Change this to the relevant slack channel
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_ICON: ${{ github.event.organization.avatar_url }}
+          SLACK_TITLE: 'Build successfull for ${{ inputs.platform }} :white_check_mark:'
+          SLACK_MESSAGE: 'See <${{ steps.build-app.outputs.BUILD_URL }}|EAS build> :rocket:'
+          SLACK_USERNAME: ${{ github.event.repository.name }} - ${{ github.workflow }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+
+      - name: ❌ Notify slack fail
+        if: needs.build.result != 'success' || needs.build.outputs.BUILD_URL == ''
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: builds # <-- Change this to the relevant slack channel
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_ICON: ${{ github.event.organization.avatar_url }}
+          SLACK_TITLE: 'Build failed for ${{ inputs.platform }} :x:'
+          SLACK_MESSAGE: 'See <${{ steps.build-app.outputs.BUILD_URL }}|EAS build> for more info :sad_pepe:'
+          SLACK_USERNAME: ${{ github.event.repository.name }} - ${{ github.workflow }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+
+  notify-clients:
+    name: 'Send emails to client'
+    # We need to make sure the build was actually successful, not just that the job ran successfully
+    if: needs.build.result == 'success' && needs.build.outputs.BUILD_URL != '' && inputs.email == 'yes'
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        to-emails:
+          # Add the client emails here
+          - julien.texier@taitounited.fi
+          - juu.texier@gmail.com
+    steps:
+      - name: 🔐 Check for secrets.SENDGRID_GITHUB_ACTION_API_KEY
+        run: |
+          if [ -z "${{ secrets.secrets.SENDGRID_GITHUB_ACTION_API_KEY }}" ]; then
+            echo "You must provide a SENDGRID_GITHUB_ACTION_API_KEY secret linked to be able to send emails. Learn more in the EAS README"
+            exit 1
+          fi
+
+      - name: 📧 Notify client
+        uses: licenseware/send-email-notification@v1
+        with:
+          api-key: ${{ secrets.SENDGRID_GITHUB_ACTION_API_KEY }}
+          subject: New Release for ${{ inputs.platform }} (${{ inputs.environment }} environment)
+          from-email: taito.dev@gmail.com
+          to-email: ${{ join(matrix.to-emails, ', ') }}
+          markdown-body: |
+            # New Release for ${{ inputs.platform }} 🚀
+            Click [here](${{ needs.build.outputs.BUILD_URL }}) to install it on your device. 📲
