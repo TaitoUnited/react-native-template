@@ -1,6 +1,6 @@
 # Build the test env app on EAS Cloud service.
 name: 'Build | Test'
-run-name: Build | Test for ${{ inputs.platform }} on ${{ github.ref_name }}
+run-name: Build | Test (for ${{ inputs.platform }} on ${{ github.ref_name }})
 on:
   workflow_dispatch:
     inputs:
@@ -21,7 +21,8 @@ on:
           - true
         required: true
 jobs:
-  use-common-config:
+  build-workflow:
+    name: Build workflow
     uses: ./.github/workflows/common-config.yml
     secrets: inherit
     with:

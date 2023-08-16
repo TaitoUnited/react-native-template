@@ -1,6 +1,6 @@
 # Build the staging env app on EAS Cloud service.
 name: 'Build | Staging'
-run-name: Build | Staging for ${{ inputs.platform }} on ${{ github.ref_name }}
+run-name: Build | Staging (for ${{ inputs.platform }} on ${{ github.ref_name }})
 on:
   workflow_dispatch:
     inputs:
@@ -20,8 +20,8 @@ on:
           - true
         required: true
 jobs:
-  use-common-config:
-    name: 'Build (staging / ${{ github.event.inputs.platform }})'
+  build-workflow:
+    name: Build workflow
     uses: ./.github/workflows/common-config.yml
     secrets: inherit
     with:

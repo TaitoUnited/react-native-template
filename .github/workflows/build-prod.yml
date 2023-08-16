@@ -1,6 +1,6 @@
 # Build the production env app on EAS Cloud service.
 name: 'Build | Production'
-run-name: Build | Production for ${{ inputs.platform }} on ${{ github.ref_name }}
+run-name: Build | Production (for ${{ inputs.platform }} on ${{ github.ref_name }})
 on:
   workflow_dispatch:
     inputs:
@@ -20,8 +20,8 @@ on:
           - true
         required: true
 jobs:
-  use-common-config:
-    name: 'Build (production / ${{ github.event.inputs.platform }})'
+  build-workflow:
+    name: Build workflow
     uses: ./.github/workflows/common-config.yml
     secrets: inherit
     with:
