@@ -14,11 +14,11 @@ on:
         required: true
       email:
         type: choice
-        description: Do you want to notify the client via email?
+        description: Notify the client via email?
         options:
-          - yes
-          - no
-        default: no
+          - false
+          - true
+        required: true
 jobs:
   use-common-config:
     name: 'Build (production / ${{ github.event.inputs.platform }})'

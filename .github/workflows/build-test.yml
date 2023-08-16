@@ -22,7 +22,7 @@ on:
         required: true
 jobs:
   use-common-config:
-    uses: ./.github/workflows/common-config-test.yml
+    uses: ./.github/workflows/common-config.yml
     secrets: inherit
     with:
       platform: ${{ github.event.inputs.platform }}

@@ -82,7 +82,7 @@ jobs:
           SLACK_COLOR: ${{ job.status }}
           SLACK_ICON: ${{ github.event.organization.avatar_url }}
           SLACK_TITLE: 'Build failed for ${{ inputs.platform }} :x:'
-          SLACK_MESSAGE: 'See the <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Github Actions logs> for more info :sad_pepe:'
+          SLACK_MESSAGE: if [ -z "${{ needs.build.outputs.BUILD_URL }}" ]; then echo 'See the <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Github Actions logs> for more info :sad_pepe:'; else echo 'See the <${{ needs.build.outputs.BUILD_URL }}|EAS build> for more info :sad_pepe:'; fi
           SLACK_USERNAME: ${{ github.event.repository.name }} - ${{ github.workflow }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
@@ -90,7 +90,7 @@ jobs:
     name: 'Send emails to client'
     needs: build
     runs-on: ubuntu-latest
-    if: needs.build.result == 'success' && needs.build.outputs.BUILD_URL != '' && inputs.email == 'yes'
+    if: needs.build.result == 'success' && needs.build.outputs.BUILD_URL != '' && inputs.email == 'true'
     strategy:
       matrix:
         to-emails:
