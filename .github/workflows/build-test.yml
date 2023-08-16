@@ -12,13 +12,15 @@ on:
           - android
           - all
         required: true
+        default: all
       email:
         type: choice
         description: Do you want to notify the client via email?
         options:
           - yes
           - no
-        default: false
+        required: true
+        default: no
 jobs:
   use-common-config:
     uses: ./.github/workflows/common-config.yml

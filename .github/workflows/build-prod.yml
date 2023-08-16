@@ -18,10 +18,10 @@ on:
         options:
           - yes
           - no
-        default: false
+        default: no
 jobs:
   use-common-config:
-    name: "Build (production / ${{ github.event.inputs.platform }})"
+    name: 'Build (production / ${{ github.event.inputs.platform }})'
     uses: ./.github/workflows/common-config.yml
     secrets: inherit
     with:
