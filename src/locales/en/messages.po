@@ -13,16 +13,16 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/app/(tabs)/settings.tsx:132
+#: src/app/(tabs)/settings.tsx:157
 msgid "Appearance"
 msgstr "Appearance"
 
-#: src/app/(tabs)/settings.tsx:19
+#: src/app/(tabs)/settings.tsx:22
 msgid "Are you sure you want to logout?"
 msgstr ""
 
-#: src/app/(tabs)/settings.tsx:73
-#: src/app/(tabs)/settings.tsx:138
+#: src/app/(tabs)/settings.tsx:76
+#: src/app/(tabs)/settings.tsx:163
 msgid "Automatic"
 msgstr "Automatic"
 
@@ -30,15 +30,15 @@ msgstr "Automatic"
 msgid "Back"
 msgstr ""
 
-#: src/app/(auth)/landing.tsx:40
+#: src/app/(auth)/landing.tsx:41
 msgid "By Taito United"
 msgstr "By Taito United"
 
-#: src/app/(tabs)/settings.tsx:20
+#: src/app/(tabs)/settings.tsx:23
 #: src/components/uikit/inputs/DateInput.tsx:88
 #: src/components/uikit/inputs/SearchInput.tsx:54
 #: src/components/uikit/PickerModal.tsx:206
-#: src/components/uikit/PickerSheet.tsx:153
+#: src/components/uikit/PickerSheet.tsx:154
 msgid "Cancel"
 msgstr ""
 
@@ -47,7 +47,7 @@ msgid "Cannot open {type}"
 msgstr ""
 
 #: src/components/uikit/PickerModal.tsx:206
-#: src/components/uikit/PickerSheet.tsx:153
+#: src/components/uikit/PickerSheet.tsx:154
 #: src/services/permissions.tsx:108
 #: src/services/permissions.tsx:122
 msgid "Close"
@@ -57,6 +57,10 @@ msgstr ""
 msgid "Confirm"
 msgstr "Confirm"
 
+#: src/app/(tabs)/settings.tsx:117
+msgid "Copied to clipboard"
+msgstr "Copied to clipboard"
+
 #: src/services/auth.tsx:102
 msgid "Could not connect to server"
 msgstr ""
@@ -65,13 +69,13 @@ msgstr ""
 msgid "Could not toggle permission. You can change the permission in the system settings."
 msgstr ""
 
-#: src/app/(auth)/landing.tsx:73
+#: src/app/(auth)/landing.tsx:74
 #: src/app/(auth)/signup.tsx:55
 msgid "Create an account"
 msgstr "Create an account"
 
-#: src/app/(tabs)/settings.tsx:78
-#: src/app/(tabs)/settings.tsx:137
+#: src/app/(tabs)/settings.tsx:81
+#: src/app/(tabs)/settings.tsx:162
 msgid "Dark"
 msgstr "Dark"
 
@@ -80,7 +84,7 @@ msgid "Don‘t worry, these won‘t actually be saved."
 msgstr "Don‘t worry, these won‘t actually be saved."
 
 #: src/components/uikit/PickerModal.tsx:213
-#: src/components/uikit/PickerSheet.tsx:160
+#: src/components/uikit/PickerSheet.tsx:161
 msgid "Done"
 msgstr ""
 
@@ -99,8 +103,8 @@ msgstr ""
 msgid "Email required"
 msgstr ""
 
-#: src/app/(auth)/landing.tsx:99
-#: src/app/(tabs)/settings.tsx:52
+#: src/app/(auth)/landing.tsx:100
+#: src/app/(tabs)/settings.tsx:55
 msgid "English"
 msgstr "English"
 
@@ -108,7 +112,7 @@ msgstr "English"
 msgid "Enter your credentials"
 msgstr "Enter your credentials"
 
-#: src/app/(tabs)/settings.tsx:101
+#: src/app/(tabs)/settings.tsx:102
 msgid "Environment"
 msgstr "Environment"
 
@@ -120,8 +124,8 @@ msgstr ""
 msgid "Failed to signup"
 msgstr ""
 
-#: src/app/(auth)/landing.tsx:96
-#: src/app/(tabs)/settings.tsx:57
+#: src/app/(auth)/landing.tsx:97
+#: src/app/(tabs)/settings.tsx:60
 msgid "Finnish"
 msgstr "Finnish"
 
@@ -138,11 +142,11 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: src/app/(tabs)/settings.tsx:142
+#: src/app/(tabs)/settings.tsx:167
 msgid "Info"
 msgstr "Info"
 
-#: src/app/(tabs)/settings.tsx:127
+#: src/app/(tabs)/settings.tsx:152
 msgid "Language"
 msgstr "Language"
 
@@ -154,8 +158,8 @@ msgstr ""
 msgid "Last name is required"
 msgstr ""
 
-#: src/app/(tabs)/settings.tsx:83
-#: src/app/(tabs)/settings.tsx:135
+#: src/app/(tabs)/settings.tsx:86
+#: src/app/(tabs)/settings.tsx:160
 msgid "Light"
 msgstr "Light"
 
@@ -168,16 +172,16 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: src/app/(tabs)/settings.tsx:21
-#: src/app/(tabs)/settings.tsx:32
+#: src/app/(tabs)/settings.tsx:24
+#: src/app/(tabs)/settings.tsx:35
 msgid "Logout"
 msgstr ""
 
-#: src/components/uikit/PickerSheet.tsx:253
+#: src/components/uikit/PickerSheet.tsx:254
 msgid "No results found."
 msgstr ""
 
-#: src/app/playground/utils.tsx:23
+#: src/app/playground/utils.tsx:26
 msgid "Open playground"
 msgstr ""
 
@@ -235,7 +239,7 @@ msgstr ""
 msgid "Profile"
 msgstr ""
 
-#: src/app/(auth)/landing.tsx:32
+#: src/app/(auth)/landing.tsx:33
 msgid "React Native Template"
 msgstr "React Native Template"
 
@@ -249,7 +253,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: src/app/(auth)/landing.tsx:54
+#: src/app/(auth)/landing.tsx:55
 msgid "Sign in"
 msgstr "Sign in"
 
@@ -268,11 +272,11 @@ msgstr ""
 msgid "Something went wrong"
 msgstr ""
 
-#: src/app/(auth)/landing.tsx:49
+#: src/app/(auth)/landing.tsx:50
 msgid "Start your journey"
 msgstr "Start your journey"
 
-#: src/components/uikit/PickerSheet.tsx:256
+#: src/components/uikit/PickerSheet.tsx:257
 msgid "Try changing your search term."
 msgstr ""
 
@@ -280,11 +284,15 @@ msgstr ""
 msgid "Unable to change permission"
 msgstr ""
 
-#: src/app/(tabs)/settings.tsx:97
+#: src/app/(tabs)/settings.tsx:111
+msgid "Update ID"
+msgstr "Update ID"
+
+#: src/app/(tabs)/settings.tsx:98
 msgid "Version"
 msgstr "Version"
 
-#: src/app/(auth)/landing.tsx:29
+#: src/app/(auth)/landing.tsx:30
 msgid "Welcome to"
 msgstr "Welcome to"
 

@@ -4,13 +4,16 @@ import * as DropdownMenu from 'zeego/dropdown-menu';
 
 import { IconButton } from '~components/uikit';
 import config from '~constants/config';
+import { useTheme } from '~styles';
 import { useHeaderOptions } from '~utils/navigation';
 
 export function useHeaderPlaygroundButton() {
+  const theme = useTheme();
+
   useHeaderOptions({
     headerRight: () => {
       return config.appEnv !== 'prod' ? (
-        <DropdownMenu.Root>
+        <DropdownMenu.Root style={{ marginHorizontal: theme.space.normal }}>
           <DropdownMenu.Trigger>
             <IconButton icon="ellipsisVertical" size="medium" />
           </DropdownMenu.Trigger>

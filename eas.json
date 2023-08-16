@@ -1,5 +1,6 @@
 {
   "cli": {
+    "version": ">= 4.1.2",
     "promptToConfigurePushNotifications": false
   },
   "build": {
@@ -9,6 +10,13 @@
         "EXPO_PUBLIC_APP_ENV": "test"
       },
       "channel": "test"
+    },
+    "stag": {
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_APP_ENV": "stag"
+      },
+      "channel": "stag"
     },
     "prod": {
       "distribution": "store",

@@ -76,5 +76,8 @@ export function useI18n() {
 }
 
 export function I18nProvider({ children }: { children: ReactNode }) {
+  // Wait for messages to be loaded
+  if (Object.keys(i18n.messages).length === 0) return null;
+
   return <LinguiProvider i18n={i18n}>{children}</LinguiProvider>;
 }

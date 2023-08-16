@@ -59,20 +59,24 @@ jobs:
 
       - name: ✅ Notify slack success
         if: success()
+        uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
-        uses: voxmedia/github-action-slack-notify-build@v1
-        with:
-          channel: builds
-          status: SUCCESS
-          color: good
+          SLACK_CHANNEL: builds # <-- Change this to the relevant slack channel
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_ICON: ${{ github.event.organization.avatar_url }}
+          SLACK_TITLE: 'Update successfull :white_check_mark:'
+          SLACK_MESSAGE: 'See [EAS build](https://expo.dev/accounts/taito-united/projects/taito-template/updates) :rocket:'
+          SLACK_USERNAME: ${{ github.event.repository.name }} - ${{ github.workflow }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
       - name: ❌ Notify slack fail
         if: failure()
+        uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
-        uses: voxmedia/github-action-slack-notify-build@v1
-        with:
-          channel: builds
-          status: FAILED
-          color: danger
+          SLACK_CHANNEL: builds # <-- Change this to the relevant slack channel
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_ICON: ${{ github.event.organization.avatar_url }}
+          SLACK_TITLE: 'Update failed :x:'
+          SLACK_MESSAGE: 'See [EAS build](https://expo.dev/accounts/taito-united/projects/taito-template/updates) for more info :sad_pepe:'
+          SLACK_USERNAME: ${{ github.event.repository.name }} - ${{ github.workflow }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}

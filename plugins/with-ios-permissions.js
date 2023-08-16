@@ -16,6 +16,7 @@ function withIosPermissions(c, opts = {}) {
         JSON.stringify(permissions)
       );
 
+      console.log(`> Setting up iOS permissions: ${permissions.join(', ')}`);
       execSync('npx react-native setup-ios-permissions');
 
       return config;

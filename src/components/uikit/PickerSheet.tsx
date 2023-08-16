@@ -1,5 +1,5 @@
 import { memo, ReactNode, useState } from 'react';
-import { Modal, Platform, StatusBar } from 'react-native';
+import { Modal, Platform } from 'react-native';
 import { Trans } from '@lingui/macro';
 import { FlashList } from '@shopify/flash-list';
 
@@ -11,6 +11,7 @@ import { Checkbox } from './inputs/Checkbox';
 import { SearchInput } from './inputs/SearchInput';
 import { styled } from '~styles';
 import { useEffectEvent } from '~utils/common';
+import StatusBar from '~components/common/StatusBar';
 
 type Option = {
   label: string;
@@ -164,7 +165,7 @@ function ModalContent({
       </Footer>
 
       {/* On iOS the modal effect will reveal the black root background */}
-      {Platform.OS === 'ios' && <StatusBar barStyle="light-content" />}
+      {Platform.OS === 'ios' && <StatusBar />}
     </SafeArea>
   );
 }
