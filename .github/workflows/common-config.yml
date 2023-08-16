@@ -70,7 +70,7 @@ jobs:
           SLACK_COLOR: ${{ job.status }}
           SLACK_ICON: ${{ github.event.organization.avatar_url }}
           SLACK_TITLE: 'Build successfull for ${{ inputs.platform }} :white_check_mark:'
-          SLACK_MESSAGE: 'See <${{ steps.build-app.outputs.BUILD_URL }}|EAS build> :rocket:'
+          SLACK_MESSAGE: 'See <${{ needs.build.outputs.BUILD_URL }}|EAS build> :rocket:'
           SLACK_USERNAME: ${{ github.event.repository.name }} - ${{ github.workflow }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
@@ -82,16 +82,15 @@ jobs:
           SLACK_COLOR: ${{ job.status }}
           SLACK_ICON: ${{ github.event.organization.avatar_url }}
           SLACK_TITLE: 'Build failed for ${{ inputs.platform }} :x:'
-          SLACK_MESSAGE: 'See <${{ steps.build-app.outputs.BUILD_URL }}|EAS build> for more info :sad_pepe:'
+          SLACK_MESSAGE: 'See <${{ needs.build.outputs.BUILD_URL }}|EAS build> for more info :sad_pepe:'
           SLACK_USERNAME: ${{ github.event.repository.name }} - ${{ github.workflow }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
   notify-clients:
     name: 'Send emails to client'
-    # We need to make sure the build was actually successful, not just that the job ran successfully
-    if: needs.build.result == 'success' && needs.build.outputs.BUILD_URL != '' && inputs.email == 'yes'
     needs: build
     runs-on: ubuntu-latest
+    if: needs.build.result == 'success' && needs.build.outputs.BUILD_URL != '' && inputs.email == 'yes'
     strategy:
       matrix:
         to-emails:
