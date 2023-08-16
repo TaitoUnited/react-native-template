@@ -63,6 +63,9 @@ jobs:
             exit 1
           fi
 
+      - name: Check the email input
+        run: echo "Email input is ${{ inputs.email }}"
+
       - name: ✅ Notify slack success
         if: needs.build.result == 'success' && needs.build.outputs.BUILD_URL != ''
         uses: rtCamp/action-slack-notify@v2
