@@ -97,7 +97,7 @@ jobs:
         to-emails:
           # Add the client emails here
           - julien.texier@taitounited.fi
-          - juu.texier@gmail.com
+          - teemu.taskula@taitounited.fi
     steps:
       - name: 🔐 Check for secrets.SENDGRID_GITHUB_ACTION_API_KEY
         run: |
