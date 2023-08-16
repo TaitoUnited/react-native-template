@@ -17,10 +17,9 @@ on:
         type: choice
         description: Notify the client via email?
         options:
-          - yes
-          - no
+          - false
+          - true
         required: true
-        default: no
 jobs:
   use-common-config:
     uses: ./.github/workflows/common-config-test.yml
