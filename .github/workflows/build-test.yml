@@ -15,7 +15,7 @@ on:
         default: all
       email:
         type: choice
-        description: Do you want to notify the client via email?
+        description: Notify the client via email?
         options:
           - yes
           - no

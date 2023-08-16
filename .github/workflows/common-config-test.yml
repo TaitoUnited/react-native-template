@@ -28,26 +28,26 @@ jobs:
       - name: ⬇️ Setup repo
         uses: actions/checkout@v3
 
-      - name: ⎔ Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18.x
-          cache: npm
-          cache-dependency-path: ./package.json
+      # - name: ⎔ Setup Node
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 18.x
+      #     cache: npm
+      #     cache-dependency-path: ./package.json
 
-      - name: 🏗 Setup EAS
-        uses: expo/expo-github-action@v8
-        with:
-          eas-version: latest
-          token: ${{ secrets.EXPO_TOKEN }}
+      # - name: 🏗 Setup EAS
+      #   uses: expo/expo-github-action@v8
+      #   with:
+      #     eas-version: latest
+      #     token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: 📦 Install dependencies
-        run: npm ci
+      # - name: 📦 Install dependencies
+      #   run: npm ci
 
       - name: 🚀 Build app
         id: build-app
         run: |
-          cat eas.txt | tee temp.txt
+          cat eas-error.txt | tee temp.txt
           log=$(cat temp.txt)
           echo "BUILD_URL=$(echo "$log" | grep -o 'Build details: [^ ]*' | awk '{print $3}')" >> $GITHUB_OUTPUT
 
