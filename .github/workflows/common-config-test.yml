@@ -83,7 +83,7 @@ jobs:
           SLACK_COLOR: ${{ job.status }}
           SLACK_ICON: ${{ github.event.organization.avatar_url }}
           SLACK_TITLE: 'Build failed for ${{ inputs.platform }} :x:'
-          SLACK_MESSAGE: 'See <${{ needs.build.outputs.BUILD_URL }}|EAS build> for more info :sad_pepe:'
+          SLACK_MESSAGE: 'See the <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Github Actions logs> for more info :sad_pepe:'
           SLACK_USERNAME: ${{ github.event.repository.name }} - ${{ github.workflow }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
