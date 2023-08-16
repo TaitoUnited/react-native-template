@@ -104,7 +104,7 @@ jobs:
     steps:
       - name: 🔐 Check for secrets.SENDGRID_GITHUB_ACTION_API_KEY
         run: |
-          if [ -z "${{ secrets.secrets.SENDGRID_GITHUB_ACTION_API_KEY }}" ]; then
+          if [ -z "${{ secrets.SENDGRID_GITHUB_ACTION_API_KEY }}" ]; then
             echo "You must provide a SENDGRID_GITHUB_ACTION_API_KEY secret linked to be able to send emails. Learn more in the EAS README"
             exit 1
           fi
