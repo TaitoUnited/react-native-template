@@ -48,6 +48,7 @@ export default function MenuList({ items, title }: Props) {
       <Wrapper>
         {items.map((item, index) => (
           <Pressable
+            testID={item.targetName}
             key={item.label}
             onPress={
               item.onPress || item.target

@@ -1,0 +1,27 @@
+appId: com.taito.template.dev
+env:
+    EMAIL: "taitodev@gmail.com"
+    PASSWORD: "qwerty123"
+onFlowStart:
+  - runFlow: OpenApp.yml
+---
+- tapOn:
+    id: "loginButton"
+
+- tapOn:
+    id: "emailInput"
+
+- inputText: ${EMAIL}
+
+- tapOn:
+    id: "passwordInput"
+
+- inputText: ${PASSWORD}
+
+- scroll
+
+- tapOn:
+    id: "loginButton"
+
+- assertVisible:
+    id: "homeScreen"

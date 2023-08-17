@@ -1,0 +1,13 @@
+appId: com.taito.template.dev
+name: "Settings"
+onFlowStart:
+  - runFlow: OpenApp.yml
+  - runFlow: Login.yml
+onFlowComplete:
+  - runFlow: Logout.yml
+---
+- tapOn:
+    id: "settings"
+
+- assertVisible: 
+    id: "settingsScreen"

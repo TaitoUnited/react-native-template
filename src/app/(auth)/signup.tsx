@@ -89,6 +89,7 @@ export default function Signup() {
                       autoCapitalize="none"
                       returnKeyType="next"
                       onSubmitEditing={() => form.setFocus('firstName')}
+                      testID="emailInput"
                     />
                   );
                 }}
@@ -107,6 +108,7 @@ export default function Signup() {
                       isValid={!fieldState.error}
                       returnKeyType="next"
                       onSubmitEditing={() => form.setFocus('lastName')}
+                      testID="firstNameInput"
                     />
                   );
                 }}
@@ -125,6 +127,7 @@ export default function Signup() {
                       isValid={!fieldState.error}
                       returnKeyType="next"
                       onSubmitEditing={() => form.setFocus('phoneNumber')}
+                      testID="lastNameInput"
                     />
                   );
                 }}
@@ -148,6 +151,7 @@ export default function Signup() {
                       returnKeyType="next"
                       keyboardType="phone-pad"
                       onSubmitEditing={() => form.setFocus('password1')}
+                      testID="phoneNumberInput"
                     />
                   );
                 }}
@@ -174,6 +178,7 @@ export default function Signup() {
                       secureTextEntry
                       returnKeyType="next"
                       onSubmitEditing={() => form.setFocus('password2')}
+                      testID="passwordInput"
                     />
                   );
                 }}
@@ -187,9 +192,9 @@ export default function Signup() {
                * Also we need to render <Spacer> components to mitigate the extra
                * space that the hidden input would cause within the wrapping <Stack>
                */}
-              <Spacer axis="y" size="xsmall" />
               <PasswordAutofillFix pointerEvents="none" />
-              <Spacer axis="y" size="xsmall" />
+              {/*  <Spacer axis="y" size="xsmall" />
+              <Spacer axis="y" size="xsmall" /> */}
               {/* ----------------------------------------------------------- */}
 
               <Controller
@@ -220,6 +225,7 @@ export default function Signup() {
                       isValid={!fieldState.error}
                       secureTextEntry
                       returnKeyType="done"
+                      testID="confirmPasswordInput"
                     />
                   );
                 }}
@@ -235,6 +241,7 @@ export default function Signup() {
             onPress={form.handleSubmit(handleSubmit)}
             disabled={isValidForm}
             loading={status === 'signing-in'}
+            testID="signupButton"
           >
             {status === 'signing-in' ? (
               <Trans>Signing up...</Trans>

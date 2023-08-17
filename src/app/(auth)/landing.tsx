@@ -50,7 +50,7 @@ export default function Landing() {
               ✨ <Trans>Start your journey</Trans> ✨
             </WhiteText>
             <Link href="/(auth)/login" asChild>
-              <Button>
+              <Button testID="loginButton">
                 <WhiteText variant="bodyBold">
                   <Trans>Sign in</Trans>
                 </WhiteText>
@@ -69,7 +69,7 @@ export default function Landing() {
             </Stack>
 
             <Link href="/(auth)/signup" asChild>
-              <Button>
+              <Button testID="signInButton">
                 <WhiteText variant="bodyBold">
                   <Trans>Create an account</Trans>
                 </WhiteText>

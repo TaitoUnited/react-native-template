@@ -32,6 +32,7 @@ export default function Settings() {
     useMenuListItem('AppearanceMenuTarget'),
     useMenuListItem('SystemInfoMenuTarget'),
     {
+      targetName: 'LogoutButton',
       label: t`Logout`,
       rightSlot: <Icon name="logout" color="textMuted" size={18} />,
       onPress: handleLogout,
@@ -39,7 +40,7 @@ export default function Settings() {
   ];
 
   return (
-    <Wrapper>
+    <Wrapper testID="settingsScreen">
       <MenuList items={items} />
     </Wrapper>
   );

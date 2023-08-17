@@ -67,6 +67,7 @@ export default function Login() {
                       message={message}
                       isValid={!message}
                       onSubmitEditing={() => form.setFocus('password')}
+                      testID="emailInput"
                     />
                   );
                 }}
@@ -86,6 +87,7 @@ export default function Login() {
                       message={fieldState.error?.message}
                       isValid={!fieldState.error}
                       onSubmitEditing={form.handleSubmit(handleSubmit)}
+                      testID="passwordInput"
                     />
                   );
                 }}
@@ -101,6 +103,7 @@ export default function Login() {
             onPress={form.handleSubmit(handleSubmit)}
             disabled={status === 'logging-in'}
             loading={status === 'logging-in'}
+            testID="loginButton"
           >
             {status === 'logging-in' ? (
               <Trans>Logging in...</Trans>

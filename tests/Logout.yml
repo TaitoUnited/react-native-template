@@ -1,0 +1,14 @@
+appId: com.taito.template.dev
+---
+- tapOn:
+    id: "settings"
+
+- tapOn:
+    id: "LogoutButton"
+
+- tapOn: "Logout"
+
+- pressKey: Enter # The logout dialog is an Alert, so we cannot give it a testID. Instead, we press Enter to confirm the logout.
+
+- assertVisible:
+    id: "loginButton"
