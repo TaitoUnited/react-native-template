@@ -25,6 +25,11 @@ eas: {
 
 Make sure that the owner of the project (if different than the default **taito-united**) is defined correctly in `app.config.ts`
 
+Make sure to update the following in `eas.json`
+
+- `bundleIdentifier`: the bundle identifier of the app. Please make sure that it is the same as the one defined in `app.config.ts`
+- `appleTeamId`: the team id of the Apple Developer account.
+
 ### Make your first build
 
 We are using **Github Actions** to create the builds, but we need to run the first ones using the *eas cli* to be able to generate the credentials.
@@ -95,6 +100,39 @@ You can do it by running `eas build:resign --profile (test|stag|prod)`, select i
 **Important**
 
 EAS CLI doesn't fetch the devices from the Apple Developer portal. EAS maintains its own list on the servers. Therefore we **do not recommand** handling devices directly in the Apple portal but instead always use `eas device:create` and resign your latest build to include the new devices in the provisioning profile (see above).
+
+
+## Handle the app's metadata
+
+### iOS
+
+EAS uses the `store.config.json` file to generate the app's metadata. You can find the documentation here: https://docs.expo.dev/eas/metadata/schema/
+
+The main categories to update are:
+
+- `info`: general information about the app that will be displayed in the App Store (name, description, keywords, etc.)
+- `categories`: the categories of the app 
+- `review`: the information that is needed for the review process (demo credentials, notes, etc.)
+
+
+**Note:** You still need to add the screenshots manually in the App Store Connect.
+
+Once you have updated the metadata, you can run `eas metadata:push` to send it to the app stores. You can check the status of the metadata in the **Metadata** tab in EAS dashboard.
+
+### Android
+
+Currently, EAS Metadata is not supported for Android. We need need to manually update the metadata in the Google Play Console.
+
+
+## Submitting the app to the app stores
+
+### iOS
+
+Once you have updated the metadata and the app is ready to be submitted, you can run `eas submit --platform ios` to submit the app to the App Store. You can check the status of the submission in the **Submissions** tab in EAS dashboard.
+
+### Android
+
+Once you have updated the metadata and the app is ready to be submitted, you can run `eas submit --platform android` to submit the app to the Google Play Store. You can check the status of the submission in the **Submissions** tab in EAS dashboard.
 
 ## FAQ
 

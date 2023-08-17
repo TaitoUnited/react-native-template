@@ -44,4 +44,7 @@ TODO: add more info here...
 - [Localization](/docs/LOCALIZATION.md)
 - [Code Signing](/docs/CODE_SIGNING.md)
 - [EAS](/docs/EAS.md)
+- [Testing](/docs/TESTING.md)
 - [Publishing to stores](/docs/PUBLISHING.md)
+- [Analytics](/docs/ANALYTICS.md)
+- [Crash reporting](/docs/CRASH_REPORTING.md)
