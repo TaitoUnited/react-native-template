@@ -7,7 +7,7 @@ import { getConfig } from './utils';
  * the `index.tsx` file during the build process...
  ------------------------------------------------------------ */
 
-const env = process.env.EXPO_PUBLIC_APP_ENV || 'dev';
+const env = process.env.APP_ENV || 'dev';
 
 const config = getConfig(env);
 const appId = `com.taito.template${config.appIdSuffix ?? ''}`;

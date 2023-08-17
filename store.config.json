@@ -10,7 +10,48 @@
         "marketingUrl": "https://example.com/en/promo",
         "supportUrl": "https://example.com/en/support",
         "privacyPolicyUrl": "https://example.com/en/privacy"
+      },
+      "fi": {
+        "title": "Taito Template",
+        "subtitle": "Your self-made awesome app",
+        "description": "The most awesome app you've ever seen",
+        "keywords": ["awesome", "app"],
+        "marketingUrl": "https://example.com/fi/promo",
+        "supportUrl": "https://example.com/fi/support",
+        "privacyPolicyUrl": "https://example.com/fi/privacy"
       }
+    },
+    "categories": ["FINANCE", "NEWS"],
+    "review": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john@example.com",
+      "phone": "+44 844 209 0611",
+      "demoUsername": "john",
+      "demoPassword": "applereview",
+      "demoRequired": false,
+      "notes": "This is an example app primarily used for educational purposes."
+    },
+    "release": {
+      "automaticRelease": true
+    },
+    "advisory": {
+      "alcoholTobaccoOrDrugUseOrReferences": "NONE",
+      "contests": "NONE",
+      "gamblingSimulated": "NONE",
+      "horrorOrFearThemes": "NONE",
+      "matureOrSuggestiveThemes": "NONE",
+      "medicalOrTreatmentInformation": "NONE",
+      "profanityOrCrudeHumor": "NONE",
+      "sexualContentGraphicAndNudity": "NONE",
+      "sexualContentOrNudity": "NONE",
+      "violenceCartoonOrFantasy": "NONE",
+      "violenceRealistic": "NONE",
+      "violenceRealisticProlongedGraphicOrSadistic": "NONE",
+      "gambling": false,
+      "unrestrictedWebAccess": false,
+      "kidsAgeBand": null,
+      "seventeenPlus": false
     }
   }
 }

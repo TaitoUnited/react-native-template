@@ -7,33 +7,32 @@
     "test": {
       "distribution": "internal",
       "env": {
-        "EXPO_PUBLIC_APP_ENV": "test"
+        "APP_ENV": "test"
       },
       "channel": "test"
     },
     "stag": {
       "distribution": "internal",
       "env": {
-        "EXPO_PUBLIC_APP_ENV": "stag"
+        "APP_ENV": "stag"
       },
       "channel": "stag"
     },
     "prod": {
       "distribution": "store",
-      "autoIncrement": true,
       "env": {
-        "EXPO_PUBLIC_APP_ENV": "prod"
+        "APP_ENV": "prod"
       },
       "channel": "prod"
     }
   },
   "submit": {
-    "production": {
+    "prod": {
       "android": {
         "track": "internal"
       },
       "ios": {
-        "ascAppId": "6455988705",
+        "bundleIdentifier": "com.taito.template",
         "appleTeamId": "EPATC4S9N2"
       }
     }
