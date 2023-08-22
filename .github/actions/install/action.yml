@@ -9,6 +9,7 @@ runs:
   using: composite
   steps:
     - name: 🔐 Check for EXPO_TOKEN
+      shell: bash
       run: |
         echo ${{ inputs.EXPO_TOKEN }}
         if [ -z "${{ inputs.EXPO_TOKEN }}" ]; then
@@ -30,4 +31,5 @@ runs:
         token: ${{ inputs.EXPO_TOKEN }}
 
     - name: 📫 Install dependencies
+      shell: bash
       run: npm ci
