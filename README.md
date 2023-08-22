@@ -23,9 +23,9 @@ Update the following fields in the `config/app.config.ts`:
 3. `name` (name of the app)
 4. `scheme` (the url scheme used to open the app from a link)
 
-### Setup EAS for building and distributing the app
+### Setup CICD for building and distributing the app
 
-Follow this [EAS guide](/docs/EAS.md).
+Follow this [CICD guide](/docs/CICD.md).
 
 ### Setup a design system
 
@@ -34,7 +34,11 @@ Follow this [EAS guide](/docs/EAS.md).
 3. Add your own app icon and splash screen in the **App Icon & Splash** page.
 4. Run `npm run design-system:sync` in the terminal.
 
-TODO: add more info here...
+*A more detailed guide on how to setup a design system can be found [here](/docs/DESIGN_SYSTEM.md). For fonts & assets check [this](/docs/ASSETS.md).*
+
+### Setup publishing to stores
+
+Follow this [Publishing guide](/docs/PUBLISHING.md).
 
 ## Project documentation
 
@@ -42,9 +46,11 @@ TODO: add more info here...
 - [Assets (icons, fonts, etc.)](/docs/ASSETS.md)
 - [Design System](/docs/DESIGN_SYSTEM.md)
 - [Localization](/docs/LOCALIZATION.md)
+- [PR Reviews](/docs/PR_REVIEWS.md)
+- [CICD](/docs/CICD.md)
 - [Code Signing](/docs/CODE_SIGNING.md)
-- [EAS](/docs/EAS.md)
-- [Testing](/docs/TESTING.md)
 - [Publishing to stores](/docs/PUBLISHING.md)
+- [Publishing updates to stores](/docs/UPDATES.md)
+- [Testing](/docs/TESTING.md)
 - [Analytics](/docs/ANALYTICS.md)
 - [Crash reporting](/docs/CRASH_REPORTING.md)

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { DevSettings } from 'react-native';
 import { useLingui } from '@lingui/react';
+import { registerDevMenuItems } from 'expo-dev-menu';
 
 import {
   SplashScreen,
@@ -19,6 +20,19 @@ import { useAuthStore } from '~services/auth';
 import { useEffectEvent } from '~utils/common';
 
 if (__DEV__) {
+  const devMenuItems = [
+    {
+      name: 'Open Playground',
+      callback: () => router.push('playground'),
+    },
+    {
+      name: 'Open Sitemap',
+      callback: () => router.push('_sitemap'),
+    },
+  ];
+
+  registerDevMenuItems(devMenuItems);
+
   DevSettings.addMenuItem('Open Playground', () => router.push('playground'));
   DevSettings.addMenuItem('Open Sitemap', () => router.push('_sitemap'));
 }

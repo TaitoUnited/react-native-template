@@ -17,7 +17,7 @@ type Credentials = {
   password2: string;
 };
 
-export const MIN_PASSWORD_LEGTH = 8;
+export const MIN_PASSWORD_LENGTH = 8;
 
 export default function Signup() {
   const form = useForm<Credentials>({ mode: 'onChange' });
@@ -160,7 +160,7 @@ export default function Signup() {
               <Controller
                 name="password1"
                 control={form.control}
-                rules={{ required: true, minLength: MIN_PASSWORD_LEGTH }}
+                rules={{ required: true, minLength: MIN_PASSWORD_LENGTH }}
                 render={({ field, fieldState }) => {
                   const message =
                     fieldState.error?.type === 'minLength'
@@ -192,9 +192,9 @@ export default function Signup() {
                * Also we need to render <Spacer> components to mitigate the extra
                * space that the hidden input would cause within the wrapping <Stack>
                */}
+              <Spacer axis="y" size="xsmall" />
               <PasswordAutofillFix pointerEvents="none" />
-              {/*  <Spacer axis="y" size="xsmall" />
-              <Spacer axis="y" size="xsmall" /> */}
+              <Spacer axis="y" size="xsmall" />
               {/* ----------------------------------------------------------- */}
 
               <Controller
@@ -203,7 +203,7 @@ export default function Signup() {
                 rules={{
                   validate: {
                     required: (v) => !!v,
-                    minLength: (v) => v && v.length >= MIN_PASSWORD_LEGTH,
+                    minLength: (v) => v && v.length >= MIN_PASSWORD_LENGTH,
                     passwordsMatch: (v) => v && v === password,
                   },
                 }}
@@ -239,7 +239,7 @@ export default function Signup() {
             variant="primary"
             size="large"
             onPress={form.handleSubmit(handleSubmit)}
-            disabled={isValidForm}
+            disabled={!isValidForm}
             loading={status === 'signing-in'}
             testID="signupButton"
           >
