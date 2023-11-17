@@ -40,6 +40,23 @@ _A more detailed guide on how to setup a design system can be found [here](/docs
 
 Follow this [Publishing guide](/docs/PUBLISHING.md).
 
+### Setup app reviews
+
+> Context: to counter one 1 ⭐ rating we need 7 x 5 ⭐ to have an average of 4.5 ⭐.
+
+If the app is customer facing and published to App Store or Google Play you should setup app reviews. This allows users to rate the app and give feedback. The reviews are then visible in the store and can be used to improve the app.
+
+1. Setup app reviews in App Store Connect and Google Play Console.
+2. Update the `(dev|test|stag|prod.config.ts` with the app store and google play urls. (only prod will allow you to actually rate the app, the rest is for testing purposes)
+3. Mode the `StoreReview` component to a more appropriate place in your app.
+4. Make sure to collect the user feedback in the backend or have it sent to you via email or some other channel.
+
+> Note: It’s crucial to time well the moment when we ask a user for their feedback. It’s best to ask for a review after a positive action. For example, after completing a level, uploading a post, or making a purchase. As the template is basically a blank app, this guideline is not respected. Move the review request to a more appropriate place in your app.
+
+**Important**: It’s also important to be mindful of how often we ask for review. The App Store only lets you do it **3 times a year**. Make sure not to exceed this limit. The current implementation makes sure we don't ask for review after the user has been to the rating modal (We cannnot know if they actually submitted their review or not). If you want to ask for review more often you need to change the logic in the `StoreReview` component.
+
+More information on how to setup app reviews can be found [here](https://docs.expo.dev/versions/latest/sdk/storereview/).
+
 ## Project documentation
 
 - [Development](/docs/DEVELOPMENT.md)

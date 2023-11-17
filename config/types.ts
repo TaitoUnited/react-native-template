@@ -11,4 +11,6 @@ export type Config = {
     backgroundColor: string;
     image: string;
   };
+  appStoreUrl?: string;
+  playStoreUrl?: string;
 };
