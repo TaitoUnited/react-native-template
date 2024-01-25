@@ -32,6 +32,10 @@ export const dark = {
   warnMuted: '#40351a',
   warnText: '#ffc93d',
 };
+export const env = {
+  envStaging: '#9a008b',
+  envTest: '#009a9a',
+};
 export const light = {
   backdrop: 'rgba(0, 0, 0, 0.5)',
   background: '#f3f4f6',
@@ -71,6 +75,8 @@ export type ColorsToken =
   | 'background'
   | 'border'
   | 'elevated'
+  | 'envStaging'
+  | 'envTest'
   | 'error'
   | 'errorMuted'
   | 'errorText'
