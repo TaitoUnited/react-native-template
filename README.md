@@ -55,6 +55,8 @@ If the app is customer facing and published to App Store or Google Play you shou
 
 **Important**: It’s also important to be mindful of how often we ask for review. The App Store only lets you do it **3 times a year**. Make sure not to exceed this limit. The current implementation makes sure we don't ask for review after the user has been to the rating modal (We cannnot know if they actually submitted their review or not). If you want to ask for review more often you need to change the logic in the `StoreReview` component.
 
+> Note: currently we use async storage to store when the last review was done. This means that if the user uninstalls the app and reinstalls it, we will ask for review again. Ideally we would store this information in the backend.
+
 More information on how to setup app reviews can be found [here](https://docs.expo.dev/versions/latest/sdk/storereview/).
 
 ## Project documentation

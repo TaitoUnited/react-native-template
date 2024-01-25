@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import * as ExpoStoreReview from 'expo-store-review';
 import { Trans, t } from '@lingui/macro';
-import { differenceInSeconds } from 'date-fns';
+import { differenceInDays } from 'date-fns';
 
 import { showToast } from './Toaster';
 
@@ -16,21 +16,22 @@ import {
 import storage from '~utils/storage';
 import { styled } from '~styles';
 
-const DAYS_TO_WAIT_BEFORE_ASKING_AGAIN = 7 * 24 * 60 * 60; // 7 days
+const DAYS_TO_WAIT_BEFORE_ASKING_AGAIN = 7; // 7 days
+const DAYS_BETWEEN_REVIEWS = 365; // 1 year
 
 export default function StoreReview() {
   const [open, setOpen] = useState<boolean>(false);
   const [improvementRequest, setImprovementRequest] = useState<boolean>(false);
 
   useEffect(() => {
-    const persistedHasReviewed = storage.getBoolean('@app/review-done');
+    const persistedHasReviewed = storage.getNumber('@app/last-review-done');
     const getReviewDate = async () => {
       if (await ExpoStoreReview.hasAction()) {
         const persistedLastAsked = storage.getNumber(
-          '@app/review-last-requested'
+          '@app/last-requested-review'
         );
         if (persistedLastAsked) {
-          const differenceInDaysValue = differenceInSeconds(
+          const differenceInDaysValue = differenceInDays(
             new Date(),
             new Date(persistedLastAsked)
           );
@@ -38,7 +39,7 @@ export default function StoreReview() {
           const isWeekOrMoreOld =
             differenceInDaysValue >= DAYS_TO_WAIT_BEFORE_ASKING_AGAIN;
 
-          if (isWeekOrMoreOld) {
+          if (!isWeekOrMoreOld) {
             setOpen(true);
             updateLastAsked();
           }
@@ -48,22 +49,27 @@ export default function StoreReview() {
       }
     };
 
-    if (!persistedHasReviewed) {
+    // Check if the user has already reviewed the app in the last year
+    if (
+      persistedHasReviewed &&
+      differenceInDays(new Date(), new Date(persistedHasReviewed)) >=
+        DAYS_BETWEEN_REVIEWS
+    ) {
       setTimeout(() => {
         getReviewDate();
-      }, 10000); // Wait for 10 seconds before asking for review (To be removed once we implement it in a strategic place)
+      }, 10); // Wait for 10 seconds before asking for review (To be removed once we implement it in a strategic place)
     }
   }, []);
 
   const updateLastAsked = () => {
-    storage.set('@app/review-last-requested', new Date().getTime());
+    storage.set('@app/last-requested-review', new Date().getTime());
   };
 
   async function requestReview() {
     try {
       if (await ExpoStoreReview.hasAction()) {
         await ExpoStoreReview.requestReview();
-        storage.set('@app/review-done', true);
+        storage.set('@app/last-review-done', new Date().getTime());
       }
     } catch (error) {
       console.log('> Error requesting review: ', error);
