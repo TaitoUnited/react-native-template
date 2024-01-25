@@ -192,9 +192,9 @@ export default function Signup() {
                * Also we need to render <Spacer> components to mitigate the extra
                * space that the hidden input would cause within the wrapping <Stack>
                */}
-              <Spacer axis="y" size="xsmall" />
+              <Spacer axis="y" size="none" />
               <PasswordAutofillFix pointerEvents="none" />
-              <Spacer axis="y" size="xsmall" />
+              <Spacer axis="y" size="none" />
               {/* ----------------------------------------------------------- */}
 
               <Controller
@@ -232,7 +232,6 @@ export default function Signup() {
               />
             </Stack>
           </Stack>
-
           <PushContent />
 
           <FillButton

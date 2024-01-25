@@ -1,14 +1,14 @@
 appId: com.taito.template.dev
 ---
 - tapOn:
-    id: "settings"
+    id: 'settings'
 
 - tapOn:
-    id: "LogoutButton"
+    id: 'logout'
 
-- tapOn: "Logout"
+- assertVisible: 'Are you sure you want to logout?'
 
-- pressKey: Enter # The logout dialog is an Alert, so we cannot give it a testID. Instead, we press Enter to confirm the logout.
+- tapOn: 'I am sure' # The logout dialog is an Alert, so we cannot give it a testID. Instead, we use the text on the button.
 
 - assertVisible:
-    id: "loginButton"
+    id: 'loginButton'

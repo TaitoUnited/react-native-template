@@ -21,7 +21,7 @@ export default function Settings() {
   function handleLogout() {
     Alert.alert(t`Are you sure you want to logout?`, '', [
       { text: t`Cancel`, style: 'cancel' },
-      { text: t`Logout`, onPress: () => logout() },
+      { text: t`I am sure`, onPress: logout },
     ]);
   }
 
@@ -32,6 +32,7 @@ export default function Settings() {
     useMenuListItem('AppearanceMenuTarget'),
     useMenuListItem('SystemInfoMenuTarget'),
     {
+      id: 'logout',
       targetName: 'LogoutButton',
       label: t`Logout`,
       rightSlot: <Icon name="logout" color="textMuted" size={18} />,
@@ -53,11 +54,13 @@ function LanguageMenuTarget() {
     <MenuList
       items={[
         {
+          id: 'en',
           label: t`English`,
           checked: locale === 'en',
           onPress: () => setLocale('en'),
         },
         {
+          id: 'fi',
           label: t`Finnish`,
           checked: locale === 'fi',
           onPress: () => setLocale('fi'),
@@ -74,16 +77,19 @@ function AppearanceMenuTarget() {
     <MenuList
       items={[
         {
+          id: 'system',
           label: t`Automatic`,
           checked: colorMode === 'system',
           onPress: () => setColorMode('system'),
         },
         {
+          id: 'dark',
           label: t`Dark`,
           checked: colorMode === 'dark',
           onPress: () => setColorMode('dark'),
         },
         {
+          id: 'light',
           label: t`Light`,
           checked: colorMode === 'light',
           onPress: () => setColorMode('light'),
@@ -96,10 +102,12 @@ function AppearanceMenuTarget() {
 function SystemInfoMenuTarget() {
   const items: ComponentProps<typeof MenuList>['items'] = [
     {
+      id: 'version',
       label: t`Version`,
       currentValue: getReadableVersion(),
     },
     {
+      id: 'environment',
       label: t`Environment`,
       currentValue: capitalize(config.appEnv),
     },
@@ -109,6 +117,7 @@ function SystemInfoMenuTarget() {
 
   if (updateId) {
     items.push({
+      id: 'updateId',
       label: t`Update ID`,
       currentValue: (
         <TouchableOpacity
@@ -173,6 +182,7 @@ export function useMenuListItem(targetName: string) {
   }
 
   return {
+    id: targetName,
     label,
     currentValue,
     target,

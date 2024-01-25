@@ -32,9 +32,9 @@ if (__DEV__) {
   ];
 
   registerDevMenuItems(devMenuItems);
-
-  DevSettings.addMenuItem('Open Playground', () => router.push('playground'));
-  DevSettings.addMenuItem('Open Sitemap', () => router.push('_sitemap'));
+  devMenuItems.forEach((item) => {
+    DevSettings.addMenuItem(item.name, item.callback);
+  });
 }
 
 SplashScreen.preventAutoHideAsync();

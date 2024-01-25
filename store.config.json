@@ -4,7 +4,7 @@
     "info": {
       "en-US": {
         "title": "Taito Template",
-        "subtitle": "Your self-made awesome app",
+        "subtitle": "Itse tekemäsi mahtava sovellus",
         "description": "The most awesome app you've ever seen",
         "keywords": ["awesome", "app"],
         "marketingUrl": "https://example.com/en/promo",
@@ -13,8 +13,8 @@
       },
       "fi": {
         "title": "Taito Template",
-        "subtitle": "Your self-made awesome app",
-        "description": "The most awesome app you've ever seen",
+        "subtitle": "Itse tekemäsi mahtava sovellus",
+        "description": "Mahtavin sovellus, jonka olet koskaan nähnyt",
         "keywords": ["awesome", "app"],
         "marketingUrl": "https://example.com/fi/promo",
         "supportUrl": "https://example.com/fi/support",

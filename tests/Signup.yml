@@ -1,61 +1,52 @@
 appId: com.taito.template.dev
 env:
-    EMAIL: "taitodev@gmail.com"
-    PASSWORD: "qwerty123"
-onFlowStart:
-  - runFlow: OpenApp.yml
-onFlowComplete:
-  - runFlow: Logout.yml
----
-- runFlow: 
-    when:
-      notVisible: 
-        id: "loginButton"
-    file: "logout.yml"
+  EMAIL: 'taitodev@gmail.com'
+  PASSWORD: 'qwerty123'
 
+---
 - runFlow:
     when:
-      notVisible: 
-        id: "loginButton"
-    file: "logout.yml"
+      notVisible:
+        id: 'loginButton'
+    file: 'logout.yml'
 
 - tapOn:
-    id: "signInButton"
+    id: 'signInButton'
 
 - tapOn:
-    id: "emailInput"
+    id: 'emailInput'
 
 - inputText: ${EMAIL}
 
 - tapOn:
-    id: "firstNameInput"
+    id: 'firstNameInput'
 
 - inputRandomPersonName
 
 - tapOn:
-    id: "lastNameInput"
+    id: 'lastNameInput'
 
 - inputRandomPersonName
 
 - tapOn:
-    id: "phoneNumberInput"
+    id: 'phoneNumberInput'
 
 - inputRandomNumber
 
 - tapOn:
-    id: "passwordInput"
+    id: 'passwordInput'
 
 - inputText: ${PASSWORD}
 
 - scroll
 
 - tapOn:
-    id: "confirmPasswordInput"
+    id: 'confirmPasswordInput'
 
 - inputText: ${PASSWORD}
 
 - tapOn:
-    id: "signupButton"
+    id: 'signupButton'
 
 - assertVisible:
-    id: "homeScreen"
+    id: 'homeScreen'

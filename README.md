@@ -31,10 +31,10 @@ Follow this [CICD guide](/docs/CICD.md).
 
 1. If you don't have a design system yet clone the [Design System Template](https://www.figma.com/file/vEO1Adp6j0nHiiq9BiexE1/Design-System-Template) project in Figma.
 2. Update the design tokens (colors, typography, etc.) to match your project design and branding.
-3. Add your own app icon and splash screen in the **App Icon & Splash** page.
+3. Add your own app icon in the **App Icon & Splash** page. Use the import areas to import the iOS and Android icons (they need different sizes)
 4. Run `npm run design-system:sync` in the terminal.
 
-*A more detailed guide on how to setup a design system can be found [here](/docs/DESIGN_SYSTEM.md). For fonts & assets check [this](/docs/ASSETS.md).*
+_A more detailed guide on how to setup a design system can be found [here](/docs/DESIGN_SYSTEM.md). For fonts & assets check [this](/docs/ASSETS.md)._
 
 ### Setup publishing to stores
 
