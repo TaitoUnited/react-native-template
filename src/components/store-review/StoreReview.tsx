@@ -127,12 +127,13 @@ export default function StoreReview() {
           }
         }}
       >
-        {!improvementRequest && <Feedback />}
-        {improvementRequest && (
+        {improvementRequest ? (
           <ImprovementForm
             setOpen={setOpen}
             setImprovementRequest={setImprovementRequest}
           />
+        ) : (
+          <Feedback />
         )}
       </BottomSheet>
     )
