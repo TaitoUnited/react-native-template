@@ -1,6 +1,6 @@
-import React, { useCallback, useRef, ReactNode } from 'react';
-import { useWindowDimensions } from 'react-native';
+import { ReactNode, forwardRef } from 'react';
 import RNBottomSheet, {
+  BottomSheetBackdrop,
   BottomSheetProps as RNBottomSheetProps,
 } from '@gorhom/bottom-sheet';
 
@@ -10,50 +10,55 @@ interface BottomSheetProps {
   initialIndex: number;
   snapPoints: string[]; // e.g. ['25%', '50%']
   children: ReactNode;
-  onSheetChanges?: (index: number) => void;
+  onSheetChange?: (index: number) => void;
   keyboardBehavior?: RNBottomSheetProps['keyboardBehavior'];
 }
 
-export function BottomSheet({
-  initialIndex,
-  snapPoints,
-  children,
-  onSheetChanges,
-  keyboardBehavior = 'interactive',
-}: BottomSheetProps) {
-  const theme = useTheme();
-  const bottomSheetRef = useRef<RNBottomSheet>(null);
-  const { height, width } = useWindowDimensions();
+export const BottomSheet = forwardRef(
+  (
+    {
+      initialIndex,
+      snapPoints,
+      children,
+      onSheetChange,
+      keyboardBehavior = 'interactive',
+    }: BottomSheetProps,
+    ref: any
+  ) => {
+    const theme = useTheme();
 
-  const handleSheetChanges = useCallback(
-    (index: number) => {
-      if (onSheetChanges) {
-        onSheetChanges(index);
+    const handleSheetChanges = (index: number) => {
+      if (onSheetChange) {
+        onSheetChange(index);
       }
-    },
-    [onSheetChanges]
-  );
+    };
 
-  return (
-    <Wrapper style={{ height, width }}>
+    return (
       <RNBottomSheet
+        ref={ref}
         backgroundStyle={{ backgroundColor: theme.colors.elevated }}
-        ref={bottomSheetRef}
         index={initialIndex}
         snapPoints={snapPoints}
         onChange={handleSheetChanges}
         enablePanDownToClose
         keyboardBehavior={keyboardBehavior}
+        backdropComponent={(props) => (
+          <BottomSheetBackdrop
+            {...props}
+            enableTouchThrough={false}
+            opacity={0.2}
+            disappearsOnIndex={-1}
+            pressBehavior="none"
+          />
+        )}
       >
         <ContentWrapper>{children}</ContentWrapper>
       </RNBottomSheet>
-    </Wrapper>
-  );
-}
+    );
+  }
+);
 
-const Wrapper = styled('View', {
-  position: 'absolute',
-});
+BottomSheet.displayName = 'BottomSheet';
 
 const ContentWrapper = styled('View', {
   padding: '$normal',

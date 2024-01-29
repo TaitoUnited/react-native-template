@@ -120,7 +120,7 @@ export default function StoreReview() {
         initialIndex={improvementRequest ? 1 : 0}
         snapPoints={['25%', '35%']}
         keyboardBehavior="fillParent"
-        onSheetChanges={(index) => {
+        onSheetChange={(index) => {
           // Close the bottom sheet when the user swipes down
           if (index === -1) {
             setOpen(false);
