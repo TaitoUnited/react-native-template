@@ -201,14 +201,13 @@
         "exclude": {
           "group": [
             "Internal"
-          ],
-          "token": "\\b(Figma)\\b.*"
+          ]
         }
       },
       "typography": {
-        "exclude": {
+        "include": {
           "group": [
-            "Web"
+            "Native"
           ]
         }
       },
