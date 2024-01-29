@@ -8,10 +8,10 @@ export const config: Config = {
   iconImage: './src/design-system/assets/icon-stag.png',
   adaptiveIcon: {
     foregroundImage: './src/design-system/assets/adaptive-icon-stag.png',
-    backgroundColor: colors.envStaging,
+    backgroundColor: colors.env.envStaging,
   },
   splash: {
     image: './src/design-system/assets/splash.png',
-    backgroundColor: colors.envStaging,
+    backgroundColor: colors.env.envStaging,
   },
 };
