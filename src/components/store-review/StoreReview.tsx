@@ -3,7 +3,7 @@ import * as ExpoStoreReview from 'expo-store-review';
 import { Trans, t } from '@lingui/macro';
 import { differenceInDays } from 'date-fns';
 
-import { showToast } from './Toaster';
+import { showToast } from '../common/Toaster';
 
 import ImprovementForm from '~components/store-review/ImprovementForm';
 import {
@@ -16,36 +16,41 @@ import {
 import storage from '~utils/storage';
 import { styled } from '~styles';
 
-const DAYS_TO_WAIT_BEFORE_ASKING_AGAIN = 7; // 7 days
-const DAYS_BETWEEN_REVIEWS = 365; // 1 year
+const DAYS_TO_WAIT_BEFORE_ASKING_AGAIN = 7;
+const DAYS_BETWEEN_REVIEWS = 365;
 
 export default function StoreReview() {
-  const [open, setOpen] = useState<boolean>(false);
-  const [improvementRequest, setImprovementRequest] = useState<boolean>(false);
+  const [open, setOpen] = useState(false);
+  const [improvementRequest, setImprovementRequest] = useState(false);
 
   useEffect(() => {
     const persistedHasReviewed = storage.getNumber('@app/last-review-done');
     const getReviewDate = async () => {
-      if (await ExpoStoreReview.hasAction()) {
-        const persistedLastAsked = storage.getNumber(
-          '@app/last-requested-review'
-        );
-        if (persistedLastAsked) {
-          const differenceInDaysValue = differenceInDays(
-            new Date(),
-            new Date(persistedLastAsked)
+      try {
+        if (await ExpoStoreReview.hasAction()) {
+          const persistedLastAsked = storage.getNumber(
+            '@app/last-requested-review'
           );
-          // Check if the difference is a week or more
-          const isWeekOrMoreOld =
-            differenceInDaysValue >= DAYS_TO_WAIT_BEFORE_ASKING_AGAIN;
+          if (persistedLastAsked) {
+            const differenceInDaysValue = differenceInDays(
+              new Date(),
+              new Date(persistedLastAsked)
+            );
+            // Check if the difference is a week or more
+            const isWeekOrMoreOld =
+              differenceInDaysValue >= DAYS_TO_WAIT_BEFORE_ASKING_AGAIN;
 
-          if (!isWeekOrMoreOld) {
+            if (!isWeekOrMoreOld) {
+              setOpen(true);
+              updateLastAsked();
+            }
+          } else {
             setOpen(true);
             updateLastAsked();
           }
-        } else {
-          updateLastAsked();
         }
+      } catch (error) {
+        console.log('> Error checking if review is available: ', error);
       }
     };
 
@@ -57,7 +62,7 @@ export default function StoreReview() {
     ) {
       setTimeout(() => {
         getReviewDate();
-      }, 10); // Wait for 10 seconds before asking for review (To be removed once we implement it in a strategic place)
+      }, 10000); // Wait for 10 seconds before asking for review (To be removed once we implement it in a strategic place)
     }
   }, []);
 
@@ -137,5 +142,4 @@ export default function StoreReview() {
 const FeedbackWrapper = styled(Stack, {
   width: '100%',
   paddingHorizontal: '$normal',
-  marginTop: -20,
 });

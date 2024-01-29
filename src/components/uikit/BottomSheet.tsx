@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, ReactNode } from 'react';
-import { Dimensions } from 'react-native';
+import { useWindowDimensions } from 'react-native';
 import RNBottomSheet, {
   BottomSheetProps as RNBottomSheetProps,
 } from '@gorhom/bottom-sheet';
@@ -8,7 +8,7 @@ import { styled, useTheme } from '~styles';
 
 interface BottomSheetProps {
   initialIndex: number;
-  snapPoints?: string[];
+  snapPoints: string[]; // e.g. ['25%', '50%']
   children: ReactNode;
   onSheetChanges?: (index: number) => void;
   keyboardBehavior?: RNBottomSheetProps['keyboardBehavior'];
@@ -16,13 +16,14 @@ interface BottomSheetProps {
 
 export function BottomSheet({
   initialIndex,
-  snapPoints = ['25%', '50%'],
+  snapPoints,
   children,
   onSheetChanges,
   keyboardBehavior = 'interactive',
 }: BottomSheetProps) {
   const theme = useTheme();
   const bottomSheetRef = useRef<RNBottomSheet>(null);
+  const { height, width } = useWindowDimensions();
 
   const handleSheetChanges = useCallback(
     (index: number) => {
@@ -32,8 +33,6 @@ export function BottomSheet({
     },
     [onSheetChanges]
   );
-
-  const { height, width } = Dimensions.get('window');
 
   return (
     <Wrapper style={{ height, width }}>
@@ -57,6 +56,5 @@ const Wrapper = styled('View', {
 });
 
 const ContentWrapper = styled('View', {
-  paddingHorizontal: '$normal',
-  marginTop: 30,
+  padding: '$normal',
 });

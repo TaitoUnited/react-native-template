@@ -3,7 +3,7 @@ import { Tabs } from 'expo-router';
 import { t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 
-import StoreReview from '~components/common/StoreReview';
+import StoreReview from '~components/store-review/StoreReview';
 import type { IconName } from '~components/uikit/Icon';
 import { useTheme } from '~styles';
 import { Icon, Text } from '~components/uikit';
