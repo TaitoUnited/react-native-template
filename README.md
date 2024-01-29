@@ -23,18 +23,22 @@ Update the following fields in the `config/app.config.ts`:
 3. `name` (name of the app)
 4. `scheme` (the url scheme used to open the app from a link)
 
-### Setup EAS for building and distributing the app
+### Setup CICD for building and distributing the app
 
-Follow this [EAS guide](/docs/EAS.md).
+Follow this [CICD guide](/docs/CICD.md).
 
 ### Setup a design system
 
 1. If you don't have a design system yet clone the [Design System Template](https://www.figma.com/file/vEO1Adp6j0nHiiq9BiexE1/Design-System-Template) project in Figma.
 2. Update the design tokens (colors, typography, etc.) to match your project design and branding.
-3. Add your own app icon and splash screen in the **App Icon & Splash** page.
+3. Add your own app icon in the **App Icon & Splash** page. Use the import areas to import the iOS and Android icons (they need different sizes)
 4. Run `npm run design-system:sync` in the terminal.
 
-TODO: add more info here...
+_A more detailed guide on how to setup a design system can be found [here](/docs/DESIGN_SYSTEM.md). For fonts & assets check [this](/docs/ASSETS.md)._
+
+### Setup publishing to stores
+
+Follow this [Publishing guide](/docs/PUBLISHING.md).
 
 ## Project documentation
 
@@ -42,6 +46,11 @@ TODO: add more info here...
 - [Assets (icons, fonts, etc.)](/docs/ASSETS.md)
 - [Design System](/docs/DESIGN_SYSTEM.md)
 - [Localization](/docs/LOCALIZATION.md)
+- [PR Reviews](/docs/PR_REVIEWS.md)
+- [CICD](/docs/CICD.md)
 - [Code Signing](/docs/CODE_SIGNING.md)
-- [EAS](/docs/EAS.md)
 - [Publishing to stores](/docs/PUBLISHING.md)
+- [Publishing updates to stores](/docs/UPDATES.md)
+- [Testing](/docs/TESTING.md)
+- [Analytics](/docs/ANALYTICS.md)
+- [Crash reporting](/docs/CRASH_REPORTING.md)

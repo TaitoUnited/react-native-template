@@ -4,7 +4,7 @@ import { styled } from '~styles';
 
 export default function Profile() {
   return (
-    <Wrapper>
+    <Wrapper testID="profileScreen">
       <Text variant="body">
         <Trans>Profile</Trans>
       </Text>

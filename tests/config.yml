@@ -1,0 +1,8 @@
+executionOrder:
+  continueOnFailure: true # default is true
+  flowsOrder:
+    - Login
+    - Bottom Navigation
+    - Change Language
+    - Logout
+    - Signup

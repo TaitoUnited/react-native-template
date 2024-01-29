@@ -1,0 +1,23 @@
+appId: com.taito.template.dev
+name: 'Bottom Navigation'
+
+---
+- tapOn:
+    id: 'search'
+- assertVisible:
+    id: 'searchScreen'
+
+- tapOn:
+    id: 'profile'
+- assertVisible:
+    id: 'profileScreen'
+
+- tapOn:
+    id: 'settings'
+- assertVisible:
+    id: 'settingsScreen'
+
+- tapOn:
+    id: 'home'
+- assertVisible:
+    id: 'homeScreen'

@@ -2,8 +2,9 @@ import { t, Trans } from '@lingui/macro';
 import { useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as DropdownMenu from 'zeego/dropdown-menu';
-
 import { Link } from 'expo-router';
+
+import appConfig from '../../../config/app.config';
 import { styled, useTheme } from '~styles';
 import { IconButton, Stack, Text } from '~components/uikit';
 import { useI18n } from '~services/i18n';
@@ -30,7 +31,7 @@ export default function Landing() {
                 <Trans>Welcome to</Trans>
               </BlackText>
               <BlackText variant="title1" align="center">
-                <Trans>React Native Template</Trans>
+                <Trans>{appConfig.name}</Trans>
               </BlackText>
               <BlackText
                 variant="subtitle"
@@ -50,7 +51,7 @@ export default function Landing() {
               ✨ <Trans>Start your journey</Trans> ✨
             </WhiteText>
             <Link href="/(auth)/login" asChild>
-              <Button>
+              <Button testID="loginButton">
                 <WhiteText variant="bodyBold">
                   <Trans>Sign in</Trans>
                 </WhiteText>
@@ -69,7 +70,7 @@ export default function Landing() {
             </Stack>
 
             <Link href="/(auth)/signup" asChild>
-              <Button>
+              <Button testID="signInButton">
                 <WhiteText variant="bodyBold">
                   <Trans>Create an account</Trans>
                 </WhiteText>

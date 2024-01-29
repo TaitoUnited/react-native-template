@@ -28,6 +28,7 @@ export default function PlaygroundPage() {
       />
       <MenuList
         items={items.map((item) => ({
+          id: item.screen,
           label: item.label,
           target: item.screen,
           leftSlot: (

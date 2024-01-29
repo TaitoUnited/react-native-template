@@ -77,7 +77,11 @@ export default function TabsLayout() {
               paddingBottom: Platform.OS === 'android' ? 4 : 0,
             },
             tabBarLabel: ({ focused }) => (
-              <Text variant="caption" color={focused ? 'text' : 'textMuted'}>
+              <Text
+                variant="caption"
+                color={focused ? 'text' : 'textMuted'}
+                testID={id}
+              >
                 {title}
               </Text>
             ),

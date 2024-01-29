@@ -1,4 +1,4 @@
-# EAS
+# CICD
 
 We use EAS to build our app and distribute it to testers and to the stores.
 
@@ -25,17 +25,18 @@ eas: {
 
 Make sure that the owner of the project (if different than the default **taito-united**) is defined correctly in `app.config.ts`
 
+Make sure to update the following in `eas.json`
+
+- `bundleIdentifier`: the bundle identifier of the app. Please make sure that it is the same as the one defined in `app.config.ts`
+- `appleTeamId`: the team id of the Apple Developer account.
+
 ### Make your first build
 
 We are using **Github Actions** to create the builds, but we need to run the first ones using the *eas cli* to be able to generate the credentials.
 
 Run the script `android:build:test` for android and `ios:build:test` for ios.
 
-We **highly suggest** to let EAS generate the credentials for you. You can also do it manually by following the instructions here: https://docs.expo.dev/app-signing/local-credentials/
-
-For **Android**, it will suggest to create a new keystore.
-
-For **iOS**, it will ask you to login to your Apple Developer account. It will then ask you to select a team and create a new distribution certificate and provisioning profile. If you are building using the *Taito United* team, do not create a new certificate but reuse the one they suggest. Make sure you have the right permissions to create certificates and provisioning profiles.
+See [CODE_SIGNING](./CODE_SIGNING.md) for more information about the code signing that will be done during that first build.
 
 Once the build is done, you can download the artifacts from the **Builds** tab in EAS dashboard and see the generated credentials in the **Credentials** tab.
 
@@ -96,12 +97,4 @@ You can do it by running `eas build:resign --profile (test|stag|prod)`, select i
 
 EAS CLI doesn't fetch the devices from the Apple Developer portal. EAS maintains its own list on the servers. Therefore we **do not recommand** handling devices directly in the Apple portal but instead always use `eas device:create` and resign your latest build to include the new devices in the provisioning profile (see above).
 
-## FAQ
 
-### Unable to install on iOS - Integrity could not be verified
-
-If your client gets a "Unable to install <<YOUR_APP_NAME>>. This app cannot be installed because its integrity could not be verified", it means that his/her device is not registered in EAS. Make sure that the device is registered and that the profile is installed correctly (see above).
-
-### Unable to install on Android - Unsafe app blocked
-
-If your client gets a "Unsafe app blocked", he/she needs to click "More details" and then "Install anyway". This is because the app is not signed by Google Play Store. It is safe to install the app they received from us.
