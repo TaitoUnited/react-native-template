@@ -129,8 +129,8 @@ export default function StoreReview() {
       >
         {improvementRequest ? (
           <ImprovementForm
-            setOpen={setOpen}
-            setImprovementRequest={setImprovementRequest}
+            onDone={() => setOpen(false)}
+            onCancel={() => setImprovementRequest(false)}
           />
         ) : (
           <Feedback />

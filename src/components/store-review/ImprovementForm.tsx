@@ -10,13 +10,13 @@ import { sleep } from '~utils/common';
 import { showToast } from '~components/common/Toaster';
 
 type ImprovementFormType = {
-  setImprovementRequest: (value: boolean) => void;
-  setOpen: (value: boolean) => void;
+  onCancel: () => void;
+  onDone: () => void;
 };
 
 export default function ImprovementForm({
-  setImprovementRequest,
-  setOpen,
+  onCancel,
+  onDone,
 }: ImprovementFormType) {
   const form = useForm({
     defaultValues: {
@@ -36,7 +36,7 @@ export default function ImprovementForm({
     } catch (error) {
       console.log('> Error sending feedback to server: ', error);
     } finally {
-      setOpen(false);
+      onDone();
     }
   }
 
@@ -48,7 +48,7 @@ export default function ImprovementForm({
       justify="between"
       style={{ height: '100%' }}
     >
-      <BackButton icon="x" onPress={() => setImprovementRequest(false)} />
+      <BackButton icon="x" onPress={onCancel} />
 
       <Text variant="title3">
         <Trans>How can we improve?</Trans>
