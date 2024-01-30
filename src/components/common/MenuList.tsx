@@ -25,14 +25,14 @@ type Props = {
 export default function MenuList({ items, title }: Props) {
   function handleItemPress(item: Item) {
     if (typeof item.target === 'function') {
-      router.push({
+      router.navigate({
         pathname: 'menu-list/[menuListItem]',
         params: {
           menuListItem: item.targetName,
         },
       });
     } else if (typeof item.target === 'string') {
-      router.push(item.target);
+      router.navigate(item.target);
     }
 
     item.onPress?.();

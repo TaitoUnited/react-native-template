@@ -20,7 +20,7 @@ export function useHeaderPlaygroundButton() {
           <DropdownMenu.Content>
             <DropdownMenu.Item
               key="playground"
-              onSelect={() => router.push('playground')}
+              onSelect={() => router.navigate('playground')}
             >
               <DropdownMenu.ItemTitle>
                 {t`Open playground`}
