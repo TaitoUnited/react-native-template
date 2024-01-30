@@ -14,4 +14,6 @@ export const config: Config = {
     image: './src/design-system/assets/splash.png',
     backgroundColor: colors.env.envStaging,
   },
+  appStoreUrl: 'https://apps.apple.com/us/app/example/id1234567890',
+  playStoreUrl: 'https://play.google.com/store/apps/details?id=com.example',
 };

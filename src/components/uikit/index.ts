@@ -16,3 +16,4 @@ export { PickerModal } from './PickerModal';
 export { PickerSheet } from './PickerSheet';
 export { Image } from './Image';
 export { SegmentedControl } from './SegmentedControl';
+export { BottomSheet } from './BottomSheet';
