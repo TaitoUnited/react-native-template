@@ -7,7 +7,7 @@ import { getConfig } from './utils';
  * the `index.tsx` file during the build process...
  ------------------------------------------------------------ */
 
-const env = process.env.EXPO_PUBLIC_APP_ENV || 'dev';
+const env = process.env.APP_ENV || 'dev';
 
 const config = getConfig(env);
 const appId = `com.taito.template${config.appIdSuffix ?? ''}`;
@@ -35,6 +35,7 @@ const expoConfig: ExpoConfig = {
   },
   android: {
     package: appId,
+    playStoreUrl: config.playStoreUrl,
     adaptiveIcon: {
       foregroundImage: config.adaptiveIcon.foregroundImage,
       backgroundColor: config.adaptiveIcon.backgroundColor,
@@ -44,6 +45,7 @@ const expoConfig: ExpoConfig = {
   },
   ios: {
     bundleIdentifier: appId,
+    appStoreUrl: config.appStoreUrl,
     bitcode: false,
     config: {
       usesNonExemptEncryption: false,

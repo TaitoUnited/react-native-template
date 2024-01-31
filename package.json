@@ -8,23 +8,23 @@
     "start:clean": "expo start --clear",
     "android": "npx expo run:android",
     "android:clean": "npx expo run:android --no-build-cache",
-    "android:test": "EXPO_PUBLIC_APP_ENV=test npx expo run:android",
-    "android:stag": "EXPO_PUBLIC_APP_ENV=stag npx expo run:android",
-    "android:prod": "EXPO_PUBLIC_APP_ENV=prod npx expo run:android",
+    "android:test": "APP_ENV=test npx expo run:android",
+    "android:stag": "APP_ENV=stag npx expo run:android",
+    "android:prod": "APP_ENV=prod npx expo run:android",
     "ios": "npx expo run:ios",
     "ios:clean": "npx expo run:ios --no-build-cache",
-    "ios:test": "EXPO_PUBLIC_APP_ENV=test npx expo run:ios",
-    "ios:stag": "EXPO_PUBLIC_APP_ENV=stag npx expo run:ios",
-    "ios:prod": "EXPO_PUBLIC_APP_ENV=prod npx expo run:ios",
+    "ios:test": "APP_ENV=test npx expo run:ios",
+    "ios:stag": "APP_ENV=stag npx expo run:ios",
+    "ios:prod": "APP_ENV=prod npx expo run:ios",
     "prebuild": "npx expo prebuild",
     "prebuild:clean": "npx expo prebuild --clean",
-    "prebuild:test": "EXPO_PUBLIC_APP_ENV=test npm run prebuild",
-    "prebuild:stag": "EXPO_PUBLIC_APP_ENV=stag npm run prebuild",
-    "prebuild:prod": "EXPO_PUBLIC_APP_ENV=prod npm run prebuild",
+    "prebuild:test": "APP_ENV=test npm run prebuild",
+    "prebuild:stag": "APP_ENV=stag npm run prebuild",
+    "prebuild:prod": "APP_ENV=prod npm run prebuild",
     "prebuild:ci": "EXPO_NO_GIT_STATUS=1 npx expo prebuild --clean --skip-dependency-update react,react-native",
-    "prebuild:ci:test": "EXPO_PUBLIC_APP_ENV=test npm run prebuild:ci",
-    "prebuild:ci:stag": "EXPO_PUBLIC_APP_ENV=stag npm run prebuild:ci",
-    "prebuild:ci:prod": "EXPO_PUBLIC_APP_ENV=prod npm run prebuild:ci",
+    "prebuild:ci:test": "APP_ENV=test npm run prebuild:ci",
+    "prebuild:ci:stag": "APP_ENV=stag npm run prebuild:ci",
+    "prebuild:ci:prod": "APP_ENV=prod npm run prebuild:ci",
     "design-system:sync": "npm run design-system:tokenize && npm run design-system:codegen && npm run design-system:format",
     "design-system:tokenize": "figmage tokenize --env ./config/.env.figma",
     "design-system:codegen": "figmage codegen --env ./config/.env.figma",
@@ -53,6 +53,7 @@
   },
   "dependencies_comment": "NOTE: Expo will automatically update some package versions to be compatible with the current Expo SDK version!",
   "dependencies": {
+    "@gorhom/bottom-sheet": "4.5.1",
     "@lingui/macro": "4.3.0",
     "@lingui/react": "4.3.0",
     "@react-native-menu/menu": "0.7.2",
@@ -70,6 +71,7 @@
     "expo-router": "2.0.0",
     "expo-splash-screen": "0.20.4",
     "expo-status-bar": "~1.6.0",
+    "expo-store-review": "~6.4.0",
     "expo-system-ui": "~2.4.0",
     "expo-updates": "~0.18.11",
     "lodash": "4.17.21",
@@ -114,7 +116,7 @@
     "babel-jest": "^29.2.1",
     "babel-plugin-transform-remove-console": "6.9.4",
     "eslint": "^8.41.0",
-    "figmage": "0.10.0",
+    "figmage": "0.11.1",
     "jest": "^29.2.1",
     "patch-package": "6.5.1",
     "prettier": "2.7.1",
@@ -198,6 +200,20 @@
       "defaults": {
         "filetype": "ts",
         "tokenCase": "camel"
+      },
+      "colors": {
+        "exclude": {
+          "group": [
+            "Internal"
+          ]
+        }
+      },
+      "typography": {
+        "include": {
+          "group": [
+            "Native"
+          ]
+        }
       },
       "assets": {
         "filetype": "png",

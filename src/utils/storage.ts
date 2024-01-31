@@ -12,12 +12,19 @@ const LOCALE = '@app/locale';
 const ACCESS_TOKEN = '@app/access-token';
 const REFRESH_TOKEN = '@app/refresh-token';
 const COLOR_MODE = '@app/color-mode';
+const APP_REVIEW_LAST_REQUESTED = '@app/last-requested-review';
+const APP_REVIEW_DONE = '@app/last-review-done';
 
 // Add all storage keys here so that they can be cleared upon logout
 const CLEARABLE_KEYS = [ACCESS_TOKEN, REFRESH_TOKEN] as const;
 
 // These storage keys should be persisted across logins, eg. showing some guided tours etc.
-const PERSISTENT_KEYS = [LOCALE, COLOR_MODE] as const;
+const PERSISTENT_KEYS = [
+  LOCALE,
+  COLOR_MODE,
+  APP_REVIEW_DONE,
+  APP_REVIEW_LAST_REQUESTED,
+] as const;
 
 const clearableStorage = new MMKV({ id: 'clearable' });
 const persistentStorage = new MMKV({ id: 'persistent' });

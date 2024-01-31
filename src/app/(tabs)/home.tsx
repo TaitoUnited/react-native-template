@@ -5,7 +5,7 @@ import { styled } from '~styles';
 
 export default function Home() {
   return (
-    <Wrapper>
+    <Wrapper testID="homeScreen">
       <Text variant="body">
         <Trans>Home</Trans>
       </Text>

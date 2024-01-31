@@ -1,7 +1,8 @@
 import { forwardRef, useEffect, useState } from 'react';
-import { Animated, TextInputProps } from 'react-native';
+import { Animated, TextInputProps, TouchableOpacity } from 'react-native';
 
 import { Text } from '../Text';
+import { Icon } from '../Icon';
 import { useInputLabelAnimation } from './common';
 import { styled, useTheme } from '~styles';
 
@@ -12,7 +13,9 @@ type Props = Omit<TextInputProps, 'onChange'> & {
   isRequired?: boolean;
   message?: string;
   showRequiredAsterisk?: boolean;
+  allowSecureTextToggle?: boolean;
   onChange: (val: string) => void;
+  showCharacterLimit?: boolean;
 };
 
 export const TextInput = forwardRef(
@@ -22,18 +25,25 @@ export const TextInput = forwardRef(
       label,
       message,
       style,
+      secureTextEntry,
       placeholder = '',
       isValid = true,
+      allowSecureTextToggle = !!secureTextEntry,
       isRequired = false,
       showRequiredAsterisk = true,
+      showCharacterLimit,
       onChange,
       onBlur,
       onFocus,
+      multiline = false,
+      maxLength,
       ...rest
     }: Props,
     ref
   ) => {
+    const [secureTextVisible, setSecureTextVisible] = useState(false);
     const [isFocused, setFocused] = useState(false);
+    const [characterCount, setCharacterCount] = useState(value?.length || 0);
     const { colors } = useTheme();
     const { labelStyles, labelAnimation, measureLabel, animateLabel } =
       useInputLabelAnimation({ isAnimated: Boolean(value) || isFocused });
@@ -46,6 +56,14 @@ export const TextInput = forwardRef(
     function handleBlur(e: any) {
       setFocused(false);
       if (onBlur) onBlur(e);
+    }
+
+    function handleChangeText(val: string) {
+      if (showCharacterLimit && maxLength && val.length > maxLength) {
+        val = val.substring(0, maxLength);
+      }
+      setCharacterCount(val.length);
+      onChange(val);
     }
 
     // Automatically animate the label if the value is set programatically
@@ -65,11 +83,19 @@ export const TextInput = forwardRef(
             variant="body"
             color={isValid ? 'text' : 'error'}
             onLayout={measureLabel}
+            numberOfLines={1}
           >
             {label}
             {isRequired && showRequiredAsterisk ? '*' : ''}
           </Text>
         </Label>
+
+        {showCharacterLimit && isFocused && (
+          <CharacterCount style={labelStyles} variant="caption">
+            <Text variant="bodySmallBold">{characterCount}</Text>
+            {` / ${maxLength}`}
+          </CharacterCount>
+        )}
 
         <InputWrapper focused={isFocused} valid={isValid}>
           <Input
@@ -78,12 +104,27 @@ export const TextInput = forwardRef(
             value={value}
             placeholder={placeholder}
             placeholderTextColor={isFocused ? colors.muted3 : 'transparent'}
-            onChangeText={onChange}
+            onChangeText={handleChangeText}
             onFocus={handleFocus}
             onBlur={handleBlur}
             autoCapitalize="none"
             underlineColorAndroid="transparent"
+            secureTextEntry={allowSecureTextToggle ? !secureTextVisible : secureTextEntry} // prettier-ignore
+            multiline={multiline}
+            maxLength={maxLength}
           />
+
+          {allowSecureTextToggle && (
+            <InputDecoration>
+              <TouchableOpacity onPress={() => setSecureTextVisible((p) => !p)}>
+                {secureTextVisible ? (
+                  <Icon name="eyeFilled" size={20} color="text" />
+                ) : (
+                  <Icon name="eyeOutlined" size={20} color="text" />
+                )}
+              </TouchableOpacity>
+            </InputDecoration>
+          )}
         </InputWrapper>
 
         {!!message && (
@@ -143,16 +184,28 @@ const Input = styled('TextInput', {
   paddingHorizontal: '$small',
   paddingBottom: 10,
   paddingTop: '$medium',
-  variants: {
-    multiline: {
-      // HACK: for some reason `multiline` prop moves the input up a bit so we need to compensate
-      true: { transform: [{ translateY: 1 }] },
-      false: {},
-    },
-  },
 });
 
 const Message = styled(Text, {
-  marginTop: '$small',
+  marginTop: '$xsmall',
   marginLeft: '$small',
 });
+
+const InputDecoration = styled('View', {
+  position: 'absolute',
+  top: 0,
+  right: 0,
+  bottom: 0,
+  flexShrink: 0,
+  padding: '$small',
+  paddingTop: '$medium',
+});
+
+const CharacterCount = Animated.createAnimatedComponent(
+  styled(Text, {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    marginRight: '$small',
+  })
+);

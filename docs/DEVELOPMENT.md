@@ -8,17 +8,25 @@
 npm install
 ```
 
-### Compile language files
+### Extract & compile language files
+
+```sh
+npm run i18n:extract
+```
 
 ```sh
 npm run i18n:compile
 ```
+
+*For more information about localization check the [LOCALIZATION guide](/docs/LOCALIZATION.md).*
 
 ### Generate native projects
 
 ```sh
 npm run prebuild:clean
 ```
+
+*More information about prebuild [here](https://docs.expo.dev/workflow/prebuild/)*
 
 ### Run app in simulator
 

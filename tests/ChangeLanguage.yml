@@ -1,0 +1,42 @@
+appId: com.taito.template.dev
+name: 'Change Language'
+
+---
+- tapOn:
+    id: 'settings'
+
+- tapOn:
+    id: 'LanguageMenuTarget'
+
+- assertVisible:
+    id: 'en'
+
+- assertVisible:
+    id: 'fi'
+
+- tapOn:
+    id: 'fi'
+
+- assertVisible: 'Suomi'
+
+- tapOn: 'Takaisin'
+
+- assertVisible: 'Asetukset'
+
+- tapOn:
+    id: 'LanguageMenuTarget'
+
+- assertVisible:
+    id: 'en'
+
+- assertVisible:
+    id: 'fi'
+
+- tapOn:
+    id: 'en'
+
+- assertVisible: 'Finnish'
+
+- tapOn: 'Back'
+
+- assertVisible: 'Settings'

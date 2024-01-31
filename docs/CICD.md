@@ -1,10 +1,10 @@
-# EAS
+# CICD
 
 We use EAS to build our app and distribute it to testers and to the stores.
 
 ## Prerequisites
 
-If you are not a member of the Taito United team in EAS, please contact _<julien.texier@taitounited.fi>_.
+If you are not a member of the Taito United team in EAS, please contact *julien.texier@taitounited.fi*.
 
 Once a member, connect to [EAS dashboard](https://expo.dev/accounts/taito-united) and create an account or login.
 
@@ -24,13 +24,18 @@ eas: {
 
 Make sure that the owner of the project (if different than the default **taito-united**) is defined correctly in `app.config.ts`
 
+Make sure to update the following in `eas.json`
+
+- `bundleIdentifier`: the bundle identifier of the app. Please make sure that it is the same as the one defined in `app.config.ts`
+- `appleTeamId`: the team id of the Apple Developer account.
+
 ### Make your first build
 
 We are using **Github Actions** to create the builds, but we need to run the first ones using the _eas cli_ to be able to generate the credentials.
 
 Run the script `eas:build` and follow the instructions.
 
-We **highly suggest** to let EAS generate the credentials for you. You can also do it manually by following the instructions here: <https://docs.expo.dev/app-signing/local-credentials/>
+We **highly suggest** to let EAS generate the credentials for you. You can also do it manually by following the instructions here: https://docs.expo.dev/app-signing/local-credentials/
 
 For **Android**, it will suggest to create a new keystore.
 
@@ -93,16 +98,6 @@ You can do it by running `eas build:resign --profile (test|stag|prod)`, select i
 **Important**
 
 EAS CLI doesn't fetch the devices from the Apple Developer portal. EAS maintains its own list on the servers. Therefore we **do not recommand** handling devices directly in the Apple portal but instead always use `eas device:create` and resign your latest build to include the new devices in the provisioning profile (see above).
-
-## Submitting to stores
-
-> NOTE: UNDER CONSTRUCTION: We need to test the process and update the documentation
-
-### Android
-
-Process needed to be able to submit to Google Play Store: <https://github.com/expo/fyi/blob/main/creating-google-service-account.md>
-
-### iOS
 
 ## FAQ
 

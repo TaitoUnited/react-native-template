@@ -6,6 +6,7 @@ import { styled } from '~styles';
 import { Icon, Stack, Text } from '~components/uikit';
 
 type Item = {
+  id: string;
   label: string;
   currentValue?: string | number | ReactNode;
   checked?: boolean;
@@ -48,6 +49,7 @@ export default function MenuList({ items, title }: Props) {
       <Wrapper>
         {items.map((item, index) => (
           <Pressable
+            testID={item.id}
             key={item.label}
             onPress={
               item.onPress || item.target

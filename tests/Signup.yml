@@ -1,0 +1,52 @@
+appId: com.taito.template.dev
+env:
+  EMAIL: 'taitodev@gmail.com'
+  PASSWORD: 'qwerty123'
+
+---
+- runFlow:
+    when:
+      notVisible:
+        id: 'loginButton'
+    file: 'logout.yml'
+
+- tapOn:
+    id: 'signInButton'
+
+- tapOn:
+    id: 'emailInput'
+
+- inputText: ${EMAIL}
+
+- tapOn:
+    id: 'firstNameInput'
+
+- inputRandomPersonName
+
+- tapOn:
+    id: 'lastNameInput'
+
+- inputRandomPersonName
+
+- tapOn:
+    id: 'phoneNumberInput'
+
+- inputRandomNumber
+
+- tapOn:
+    id: 'passwordInput'
+
+- inputText: ${PASSWORD}
+
+- scroll
+
+- tapOn:
+    id: 'confirmPasswordInput'
+
+- inputText: ${PASSWORD}
+
+- tapOn:
+    id: 'signupButton'
+
+- assertVisible:
+    id: 'homeScreen'

@@ -4,7 +4,7 @@ import { styled } from '~styles';
 
 export default function Search() {
   return (
-    <Wrapper>
+    <Wrapper testID="searchScreen">
       <Text variant="body">
         <Trans>Search</Trans>
       </Text>
