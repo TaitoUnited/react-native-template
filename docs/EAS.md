@@ -4,12 +4,11 @@ We use EAS to build our app and distribute it to testers and to the stores.
 
 ## Prerequisites
 
-If you are not a member of the Taito United team in EAS, please contact *julien.texier@taitounited.fi*.
+If you are not a member of the Taito United team in EAS, please contact _<julien.texier@taitounited.fi>_.
 
 Once a member, connect to [EAS dashboard](https://expo.dev/accounts/taito-united) and create an account or login.
 
-
-## Setup EAS 
+## Setup EAS
 
 Go to **All Projects** then click on **Create project**. Choose the name of your project.
 
@@ -27,15 +26,15 @@ Make sure that the owner of the project (if different than the default **taito-u
 
 ### Make your first build
 
-We are using **Github Actions** to create the builds, but we need to run the first ones using the *eas cli* to be able to generate the credentials.
+We are using **Github Actions** to create the builds, but we need to run the first ones using the _eas cli_ to be able to generate the credentials.
 
-Run the script `android:build:test` for android and `ios:build:test` for ios.
+Run the script `eas:build` and follow the instructions.
 
-We **highly suggest** to let EAS generate the credentials for you. You can also do it manually by following the instructions here: https://docs.expo.dev/app-signing/local-credentials/
+We **highly suggest** to let EAS generate the credentials for you. You can also do it manually by following the instructions here: <https://docs.expo.dev/app-signing/local-credentials/>
 
 For **Android**, it will suggest to create a new keystore.
 
-For **iOS**, it will ask you to login to your Apple Developer account. It will then ask you to select a team and create a new distribution certificate and provisioning profile. If you are building using the *Taito United* team, do not create a new certificate but reuse the one they suggest. Make sure you have the right permissions to create certificates and provisioning profiles.
+For **iOS**, it will ask you to login to your Apple Developer account. It will then ask you to select a team and create a new distribution certificate and provisioning profile. If you are building using the _Taito United_ team, do not create a new certificate but reuse the one they suggest. Make sure you have the right permissions to create certificates and provisioning profiles.
 
 Once the build is done, you can download the artifacts from the **Builds** tab in EAS dashboard and see the generated credentials in the **Credentials** tab.
 
@@ -52,7 +51,6 @@ Go to your repository settings and click on **Secrets**. Add the following secre
 - `EXPO_TOKEN` (the token we use to authenticate to Expo as the project owner)
 - `SENDGRID_GITHUB_ACTION_API_KEY` (the api key we use to send emails to testers)
 - `SLACK_WEBHOOK` (the webhook we use to send messages to Slack)
-
 
 You should change the following in `.github/workflows/common-config.yml`:
 
@@ -82,7 +80,7 @@ Run `eas device:create` and connect to the relevant team. Select the **Website -
 
 Share the QR code and/or the link to the testers/client. They will need to open the link on their device and follow the instructions to install the profile.
 
-*Note:* Using the website portal prevents you from giving a name to the device, which can be problematic if you need to update/remove some devices later on. You can always use the `eas device:rename --udid=<<UDID>>` command to add a name manually to a specific device.
+_Note:_ Using the website portal prevents you from giving a name to the device, which can be problematic if you need to update/remove some devices later on. You can always use the `eas device:rename --udid=<<UDID>>` command to add a name manually to a specific device.
 
 The manual way to add a device is to run `eas device:create` and select the **Input - allows you to type in UDIDs (advanced option)** option. You will need to enter the UDID of the device and a name. UDID is not very easy to get from clients, so we suggest to use the website portal instead.
 
@@ -95,6 +93,16 @@ You can do it by running `eas build:resign --profile (test|stag|prod)`, select i
 **Important**
 
 EAS CLI doesn't fetch the devices from the Apple Developer portal. EAS maintains its own list on the servers. Therefore we **do not recommand** handling devices directly in the Apple portal but instead always use `eas device:create` and resign your latest build to include the new devices in the provisioning profile (see above).
+
+## Submitting to stores
+
+> NOTE: UNDER CONSTRUCTION: We need to test the process and update the documentation
+
+### Android
+
+Process needed to be able to submit to Google Play Store: <https://github.com/expo/fyi/blob/main/creating-google-service-account.md>
+
+### iOS
 
 ## FAQ
 

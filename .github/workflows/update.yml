@@ -9,6 +9,7 @@ on:
         options:
           - ios
           - android
+          - all
         required: true
       environment:
         type: choice

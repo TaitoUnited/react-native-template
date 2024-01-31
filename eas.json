@@ -20,7 +20,6 @@
     },
     "prod": {
       "distribution": "store",
-      "autoIncrement": true,
       "env": {
         "EXPO_PUBLIC_APP_ENV": "prod"
       },
@@ -28,7 +27,7 @@
     }
   },
   "submit": {
-    "production": {
+    "prod": {
       "android": {
         "track": "internal"
       },

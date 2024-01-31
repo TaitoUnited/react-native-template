@@ -1,5 +1,5 @@
 name: Install action
-description: installs yarn dependencies with caching
+description: installs dependencies with caching
 inputs:
   EXPO_TOKEN:
     description: Used for eas and expo commands
