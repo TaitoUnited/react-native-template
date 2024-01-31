@@ -68,6 +68,7 @@
     "expo-updates": "~0.24.9",
     "lodash": "4.17.21",
     "luxon": "3.4.4",
+    "lottie-react-native": "6.6.0",
     "moti": "0.21.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",

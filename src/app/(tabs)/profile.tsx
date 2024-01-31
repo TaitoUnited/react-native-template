@@ -1,4 +1,7 @@
 import { Trans } from '@lingui/macro';
+
+import animation from '~assets/animations/profile.json';
+import AnimatedLottie from '~components/common/AnimatedLottie';
 import { Text } from '~components/uikit';
 import { styled } from '~styles';
 
@@ -8,6 +11,7 @@ export default function Profile() {
       <Text variant="body">
         <Trans>Profile</Trans>
       </Text>
+      <AnimatedLottie animation={animation} />
     </Wrapper>
   );
 }

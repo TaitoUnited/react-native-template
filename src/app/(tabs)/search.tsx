@@ -1,4 +1,7 @@
 import { Trans } from '@lingui/macro';
+
+import animation from '~assets/animations/search.json';
+import AnimatedLottie from '~components/common/AnimatedLottie';
 import { Text } from '~components/uikit';
 import { styled } from '~styles';
 
@@ -8,6 +11,7 @@ export default function Search() {
       <Text variant="body">
         <Trans>Search</Trans>
       </Text>
+      <AnimatedLottie animation={animation} />
     </Wrapper>
   );
 }

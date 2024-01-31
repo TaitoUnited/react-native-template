@@ -1,5 +1,7 @@
 import { Trans } from '@lingui/macro';
 
+import animation from '~assets/animations/dev.json';
+import AnimatedLottie from '~components/common/AnimatedLottie';
 import { Text } from '~components/uikit';
 import { styled } from '~styles';
 
@@ -9,6 +11,7 @@ export default function Home() {
       <Text variant="body">
         <Trans>Home</Trans>
       </Text>
+      <AnimatedLottie animation={animation} />
     </Wrapper>
   );
 }
