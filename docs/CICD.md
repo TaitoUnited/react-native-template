@@ -35,11 +35,7 @@ We are using **Github Actions** to create the builds, but we need to run the fir
 
 Run the script `eas:build` and follow the instructions.
 
-We **highly suggest** to let EAS generate the credentials for you. You can also do it manually by following the instructions here: https://docs.expo.dev/app-signing/local-credentials/
-
-For **Android**, it will suggest to create a new keystore.
-
-For **iOS**, it will ask you to login to your Apple Developer account. It will then ask you to select a team and create a new distribution certificate and provisioning profile. If you are building using the _Taito United_ team, do not create a new certificate but reuse the one they suggest. Make sure you have the right permissions to create certificates and provisioning profiles.
+See [CODE_SIGNING](./CODE_SIGNING.md) for more information about the code signing that will be done during that first build.
 
 Once the build is done, you can download the artifacts from the **Builds** tab in EAS dashboard and see the generated credentials in the **Credentials** tab.
 
