@@ -22,9 +22,15 @@ on:
 jobs:
   build-workflow:
     name: Build workflow
-    uses: ./.github/workflows/common-config.yml
-    secrets: inherit
-    with:
-      platform: ${{ github.event.inputs.platform }}
-      email: ${{ github.event.inputs.email }}
-      environment: prod
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Setup repo
+        uses: actions/checkout@v3
+
+      - name: 👷‍♀️ Build
+        uses: ./.github/actions/build-workflow
+        with:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          platform: ${{ github.event.inputs.platform }}
+          email: ${{ github.event.inputs.email }}
+          environment: prod

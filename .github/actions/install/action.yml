@@ -1,0 +1,35 @@
+name: Install action
+description: installs dependencies with caching
+inputs:
+  EXPO_TOKEN:
+    description: Used for eas and expo commands
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: 🔐 Check for EXPO_TOKEN
+      shell: bash
+      run: |
+        echo ${{ inputs.EXPO_TOKEN }}
+        if [ -z "${{ inputs.EXPO_TOKEN }}" ]; then
+          echo "You must provide an EXPO_TOKEN secret linked to this project's Expo account in this repo's secrets. Learn more: https://docs.expo.dev/eas-update/github-actions"
+          exit 1
+        fi
+
+    - name: ⎔ Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+        cache: npm
+        cache-dependency-path: ./package.json
+
+    - name: 🏗 Setup EAS
+      uses: expo/expo-github-action@v8
+      with:
+        eas-version: latest
+        token: ${{ inputs.EXPO_TOKEN }}
+
+    - name: 📫 Install dependencies
+      shell: bash
+      run: npm ci

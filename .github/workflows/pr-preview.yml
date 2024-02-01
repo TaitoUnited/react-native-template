@@ -1,48 +1,39 @@
-name: 'PR Preview'
-# on:
-#   pull_request:
-#     types: [opened, synchronize]
+name: Deploy PR Preview
 on:
-  workflow_dispatch
-  
+  pull_request:
+    types: [opened, reopened, synchronize]
+permissions:
+  pull-requests: write
 jobs:
-  preview:
+  update:
+    name: Update Preview Branch
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write # Allow comments on PRs
     steps:
-      - name: 🏗 Setup repo
+      - name: ⬇️ Setup repo
         uses: actions/checkout@v3
 
-      - name: 🏗 Setup Node
-        uses: actions/setup-node@v3
+      - name: 📦 Install
+        uses: ./.github/actions/install
         with:
-          node-version: 18.x
-          cache: npm
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
-      - name: 🏗 Setup EAS
-        uses: expo/expo-github-action@v8
-        with:
-          eas-version: latest
-          token: ${{ secrets.EXPO_TOKEN }}
-
-      - name: 📦 Install dependencies
-        run: npm install
-
-      - name: 🌎 Install translations
+      - name: 🌎 Compile translations
         run: npm run i18n:extract && npm run i18n:compile
 
       - name: 🚀 Create preview
         uses: expo/expo-github-action/preview@v8
+        id: preview
         with:
-          command: eas update --auto
+          command: eas update --branch ${{ github.head_ref }} --auto --non-interactive --json
 
-      - name: 💬 Comment in Slack
-        uses: voxmedia/github-action-slack-notify-build@v1
+      - name: ✅ Notify slack success
+        if: steps.preview.outcome == 'success'
+        uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
-        with:
-          channel_id: builds # TODO: project channel name
-          status: SUCCESS
-          color: good
-          slack-message: 'New deployment is ready!\n- Preview: ${{ steps.preview.outputs.qr }}'
+          SLACK_CHANNEL: builds # <-- Change this to the relevant slack channel
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_ICON: ${{ github.event.organization.avatar_url }}
+          SLACK_TITLE: 'PR Preview ready for ${{ github.head_ref }}'
+          SLACK_MESSAGE: 'Preview: ${{ steps.preview.outputs.qr }}'
+          SLACK_USERNAME: ${{ github.event.repository.name }} - ${{ github.workflow }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}

@@ -1,0 +1,24 @@
+name: Cleanup Preview Deployments
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  update:
+    name: Cleanup Preview Channel and Branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Setup repo
+        uses: actions/checkout@v3
+
+      - name: 📦 Install
+        uses: ./.github/actions/install
+        with:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+      - name: 👋 Delete Channel
+        run: eas channel:delete ${{ github.head_ref }} --non-interactive
+
+      - name: 🌳 Delete Branch
+        run: eas branch:delete ${{ github.head_ref }} --non-interactive

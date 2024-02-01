@@ -1,0 +1,27 @@
+name: update
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update:
+    name: EAS Update
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Setup repo
+        uses: actions/checkout@v3
+
+      - name: 📦 Install
+        uses: ./.github/actions/install
+        with:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+      - name: 🌎 Compile translations
+        run: npm run i18n:extract && npm run i18n:compile
+
+      - name: 🚀 Publish update
+        uses: expo/expo-github-action/preview@v8
+        with:
+          command: eas update --auto --branch main
+          comment: false

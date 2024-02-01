@@ -8,8 +8,7 @@ If you are not a member of the Taito United team in EAS, please contact *julien.
 
 Once a member, connect to [EAS dashboard](https://expo.dev/accounts/taito-united) and create an account or login.
 
-
-## Setup EAS 
+## Setup EAS
 
 Go to **All Projects** then click on **Create project**. Choose the name of your project.
 
@@ -32,9 +31,9 @@ Make sure to update the following in `eas.json`
 
 ### Make your first build
 
-We are using **Github Actions** to create the builds, but we need to run the first ones using the *eas cli* to be able to generate the credentials.
+We are using **Github Actions** to create the builds, but we need to run the first ones using the _eas cli_ to be able to generate the credentials.
 
-Run the script `android:build:test` for android and `ios:build:test` for ios.
+Run the script `eas:build` and follow the instructions.
 
 See [CODE_SIGNING](./CODE_SIGNING.md) for more information about the code signing that will be done during that first build.
 
@@ -53,7 +52,6 @@ Go to your repository settings and click on **Secrets**. Add the following secre
 - `EXPO_TOKEN` (the token we use to authenticate to Expo as the project owner)
 - `SENDGRID_GITHUB_ACTION_API_KEY` (the api key we use to send emails to testers)
 - `SLACK_WEBHOOK` (the webhook we use to send messages to Slack)
-
 
 You should change the following in `.github/workflows/common-config.yml`:
 
@@ -83,7 +81,7 @@ Run `eas device:create` and connect to the relevant team. Select the **Website -
 
 Share the QR code and/or the link to the testers/client. They will need to open the link on their device and follow the instructions to install the profile.
 
-*Note:* Using the website portal prevents you from giving a name to the device, which can be problematic if you need to update/remove some devices later on. You can always use the `eas device:rename --udid=<<UDID>>` command to add a name manually to a specific device.
+_Note:_ Using the website portal prevents you from giving a name to the device, which can be problematic if you need to update/remove some devices later on. You can always use the `eas device:rename --udid=<<UDID>>` command to add a name manually to a specific device.
 
 The manual way to add a device is to run `eas device:create` and select the **Input - allows you to type in UDIDs (advanced option)** option. You will need to enter the UDID of the device and a name. UDID is not very easy to get from clients, so we suggest to use the website portal instead.
 
@@ -97,4 +95,12 @@ You can do it by running `eas build:resign --profile (test|stag|prod)`, select i
 
 EAS CLI doesn't fetch the devices from the Apple Developer portal. EAS maintains its own list on the servers. Therefore we **do not recommand** handling devices directly in the Apple portal but instead always use `eas device:create` and resign your latest build to include the new devices in the provisioning profile (see above).
 
+## FAQ
 
+### Unable to install on iOS - Integrity could not be verified
+
+If your client gets a "Unable to install <<YOUR_APP_NAME>>. This app cannot be installed because its integrity could not be verified", it means that his/her device is not registered in EAS. Make sure that the device is registered and that the profile is installed correctly (see above).
+
+### Unable to install on Android - Unsafe app blocked
+
+If your client gets a "Unsafe app blocked", he/she needs to click "More details" and then "Install anyway". This is because the app is not signed by Google Play Store. It is safe to install the app they received from us.
