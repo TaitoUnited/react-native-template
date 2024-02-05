@@ -1,5 +1,5 @@
 import { cloneElement, isValidElement, ReactNode, useState } from 'react';
-import { View, ViewProps } from 'react-native';
+import { LayoutChangeEvent, View, ViewProps } from 'react-native';
 
 import { flattenChildren } from '../helpers';
 import { styled, Theme, useTheme } from '~styles';
@@ -33,7 +33,7 @@ export function Grid({
       align={align}
       justify={justify}
       style={[rest.style, { margin: theme.space[spacing] / -2 }]}
-      onLayout={(e) => setWidth(e.nativeEvent.layout.width)}
+      onLayout={(e: LayoutChangeEvent) => setWidth(e.nativeEvent.layout.width)}
     >
       {elements.map((child, index) => {
         return (
