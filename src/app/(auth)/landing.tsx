@@ -29,6 +29,10 @@ export default function Landing() {
               <BlackText variant="title3" align="center" withLineHeight>
                 <Trans>Welcome to</Trans>
               </BlackText>
+              <BlackText variant="title1" align="center">
+                <Trans>Taito Template</Trans>
+              </BlackText>
+
               <BlackText
                 variant="subtitle"
                 align="center"

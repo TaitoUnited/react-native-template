@@ -1,5 +1,8 @@
+// https://docs.expo.dev/guides/typescript/#appconfigjs
+import 'ts-node/register';
 import { ExpoConfig } from '@expo/config';
-import { getConfig } from './utils';
+
+import { getConfig } from './config/utils';
 
 /** ------------------------- NOTE: -------------------------
  * Do not commit `console.log` statements in this file!!!
