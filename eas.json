@@ -4,6 +4,23 @@
     "promptToConfigurePushNotifications": false
   },
   "build": {
+    "dev:simulator": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "APP_ENV": "dev"
+      },
+      "ios": {
+        "simulator": true
+      }
+    },
+    "dev": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "APP_ENV": "dev"
+      }
+    },
     "test": {
       "distribution": "internal",
       "env": {
@@ -20,6 +37,7 @@
     },
     "prod": {
       "distribution": "store",
+      "autoIncrement": true,
       "env": {
         "APP_ENV": "prod"
       },

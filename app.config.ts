@@ -74,19 +74,10 @@ const expoConfig: ExpoConfig = {
     policy: 'appVersion',
   },
   plugins: [
-    [
-      'expo-updates',
-      {
-        username: 'taito-united',
-      },
-    ],
     'expo-router',
-    [
-      './plugins/with-ios-settings',
-      {
-        teamId: 'EPATC4S9N2',
-      },
-    ],
+    'expo-font',
+    ['expo-updates', { username: 'taito-united' }],
+    ['./plugins/with-ios-settings', { teamId: 'EPATC4S9N2' }],
     [
       './plugins/with-ios-permissions',
       {
@@ -98,10 +89,10 @@ const expoConfig: ExpoConfig = {
       'expo-build-properties',
       {
         android: {
-          buildToolsVersion: '33.0.0',
+          buildToolsVersion: '34.0.0',
           minSdkVersion: 23,
-          compileSdkVersion: 33,
-          targetSdkVersion: 33,
+          compileSdkVersion: 34,
+          targetSdkVersion: 34,
           extraProguardRules: getExtraProguardRules(),
         },
       },
