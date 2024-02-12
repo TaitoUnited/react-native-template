@@ -76,8 +76,8 @@ export default function Signup() {
                     fieldState.error?.type === 'validEmail'
                       ? t`Email invalid`
                       : fieldState.error?.type === 'required'
-                      ? t`Email required`
-                      : undefined;
+                        ? t`Email required`
+                        : undefined;
 
                   return (
                     <TextInput
@@ -166,8 +166,8 @@ export default function Signup() {
                     fieldState.error?.type === 'minLength'
                       ? t`Password must be at least 8 characters`
                       : fieldState.error?.type === 'required'
-                      ? t`Password is required`
-                      : undefined;
+                        ? t`Password is required`
+                        : undefined;
 
                   return (
                     <TextInput
@@ -212,10 +212,10 @@ export default function Signup() {
                     fieldState.error?.type === 'passwordsMatch'
                       ? t`Passwords do not match`
                       : fieldState.error?.type === 'minLength'
-                      ? t`Password must be at least 8 characters`
-                      : fieldState.error?.type === 'required'
-                      ? t`Password is required`
-                      : undefined;
+                        ? t`Password must be at least 8 characters`
+                        : fieldState.error?.type === 'required'
+                          ? t`Password is required`
+                          : undefined;
 
                   return (
                     <TextInput

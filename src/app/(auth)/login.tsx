@@ -54,8 +54,8 @@ export default function Login() {
                     fieldState.error?.type === 'validEmail'
                       ? t`Email invalid`
                       : fieldState.error?.type === 'required'
-                      ? t`Email required`
-                      : undefined;
+                        ? t`Email required`
+                        : undefined;
 
                   return (
                     <TextInput

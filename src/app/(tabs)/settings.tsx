@@ -169,8 +169,8 @@ export function useMenuListItem(targetName: string) {
         colorMode === 'light'
           ? t`Light`
           : colorMode === 'dark'
-          ? t`Dark`
-          : t`Automatic`;
+            ? t`Dark`
+            : t`Automatic`;
       target = AppearanceMenuTarget;
       break;
     case 'SystemInfoMenuTarget':

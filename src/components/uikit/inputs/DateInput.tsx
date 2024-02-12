@@ -54,8 +54,8 @@ export const DateInput = forwardRef(
       mode === 'date'
         ? DateTime.DATE_SHORT
         : mode === 'datetime'
-        ? DateTime.DATETIME_SHORT
-        : DateTime.TIME_SIMPLE;
+          ? DateTime.DATETIME_SHORT
+          : DateTime.TIME_SIMPLE;
 
     // TODO: fix Android dark mode support
     const pickerTheme = Platform.OS === 'ios' ? colorScheme : 'light';

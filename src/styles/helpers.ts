@@ -73,7 +73,7 @@ export function getTextTypographyVariants() {
     };
 
     compoundVariants.push({
-      variant: variant,
+      variant,
       withLineHeight: true,
       css: {
         lineHeight: `$${variant}`,
