@@ -33,12 +33,15 @@ export function Stack({
 }
 
 const spacingVariants: { [key in Props['spacing']]: { gap: number } } =
-  Object.entries(theme.space).reduce((acc, [key, value]) => {
-    acc[key as Props['spacing']] = {
-      gap: Number(value.value),
-    };
-    return acc;
-  }, {} as { [key in Props['spacing']]: { gap: number } });
+  Object.entries(theme.space).reduce(
+    (acc, [key, value]) => {
+      acc[key as Props['spacing']] = {
+        gap: Number(value.value),
+      };
+      return acc;
+    },
+    {} as { [key in Props['spacing']]: { gap: number } }
+  );
 
 const Wrapper = styled('View', {
   variants: {

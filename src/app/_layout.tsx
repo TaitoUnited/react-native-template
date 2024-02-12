@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { DevSettings } from 'react-native';
 import { useLingui } from '@lingui/react';
 import { registerDevMenuItems } from 'expo-dev-menu';
+import * as SplashScreen from 'expo-splash-screen';
 
 import {
-  SplashScreen,
   Stack,
   router,
   usePathname,
@@ -23,11 +23,11 @@ if (__DEV__) {
   const devMenuItems = [
     {
       name: 'Open Playground',
-      callback: () => router.push('playground'),
+      callback: () => router.navigate('playground'),
     },
     {
       name: 'Open Sitemap',
-      callback: () => router.push('_sitemap'),
+      callback: () => router.navigate('_sitemap'),
     },
   ];
 
@@ -86,7 +86,7 @@ function RouteProtection() {
   const onPathChange = useEffectEvent(() => {
     if (authStatus === 'unauthenticated' && notInAuthRoute) {
       router.replace('/');
-      router.push('/(auth)/landing');
+      router.navigate('/(auth)/landing');
     }
   });
 

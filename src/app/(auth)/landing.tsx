@@ -4,7 +4,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as DropdownMenu from 'zeego/dropdown-menu';
 import { Link } from 'expo-router';
 
-import appConfig from '../../../config/app.config';
 import { styled, useTheme } from '~styles';
 import { IconButton, Stack, Text } from '~components/uikit';
 import { useI18n } from '~services/i18n';
@@ -31,8 +30,9 @@ export default function Landing() {
                 <Trans>Welcome to</Trans>
               </BlackText>
               <BlackText variant="title1" align="center">
-                <Trans>{appConfig.name}</Trans>
+                <Trans>Taito Template</Trans>
               </BlackText>
+
               <BlackText
                 variant="subtitle"
                 align="center"

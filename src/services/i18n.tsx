@@ -20,8 +20,8 @@ export async function initMessages() {
     LOCALES.some((l) => l === persistedLocale)
       ? persistedLocale
       : LOCALES.includes(preferredLocale.languageCode as Locale)
-      ? preferredLocale.languageCode
-      : 'en'
+        ? preferredLocale.languageCode
+        : 'en'
   ) as Locale;
 
   const defaultMessages =

@@ -4,7 +4,7 @@ import ora from 'ora';
 
 async function main() {
   const platformOptions = ['Android', 'iOS', 'All'];
-  const profileOptions = ['Testing', 'Staging', 'Production'];
+  const profileOptions = ['Development', 'Testing', 'Staging', 'Production'];
 
   const answers = await inquirer.prompt([
     {
@@ -39,7 +39,7 @@ async function main() {
     answers.autoSubmit = autoSubmitAnswer.autoSubmit;
   }
 
-  const { platform, profile, message } = answers;
+  let { platform, profile, message } = answers;
 
   const platformMap = {
     Android: 'android',
@@ -47,7 +47,26 @@ async function main() {
     All: 'all',
   };
 
+  if (platform === 'iOS' && profile === 'Development') {
+    const devSimulatorAnswer = await inquirer.prompt([
+      {
+        type: 'list',
+        name: 'simulator',
+        message: 'Build for simulator or real device?',
+        choices: ['Simulator', 'Device'],
+      },
+    ]);
+
+    answers.simulator = devSimulatorAnswer.simulator;
+  }
+
+  if (answers.simulator === 'Simulator') {
+    profile = 'Simulator';
+  }
+
   const profileMap = {
+    Simulator: 'dev:simulator',
+    Development: 'dev',
     Testing: 'test',
     Staging: 'stag',
     Production: 'prod',
@@ -61,9 +80,11 @@ async function main() {
     command += ' --auto-submit';
   }
 
+  console.info('> command: ', command);
+
   const spinner = ora('Processing...').start();
 
-  //   // Use spawnSync to run the EAS script synchronously
+  // Using spawnSync to run the EAS script synchronously
   const result = spawnSync(command, { stdio: 'inherit', shell: true });
 
   spinner.stop();

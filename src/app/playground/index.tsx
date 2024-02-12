@@ -22,7 +22,7 @@ export default function PlaygroundPage() {
         options={{
           title: 'Playground',
           headerLeft: () => (
-            <IconButton icon="x" onPress={() => router.push('settings')} />
+            <IconButton icon="x" onPress={() => router.navigate('settings')} />
           ),
         }}
       />

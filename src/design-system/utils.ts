@@ -63,7 +63,7 @@ export function getLineHeights<T extends Record<string, TypographyDefinition>>(
 }
 
 export function getLetterSpacings<
-  T extends Record<string, TypographyDefinition>
+  T extends Record<string, TypographyDefinition>,
 >(t: T) {
   const letterSpacings = {} as Record<keyof T, number>;
 
@@ -89,7 +89,7 @@ export function getElevation(shadowRadius: number) {
 
 export function getShadows<
   T extends Record<string, ShadowDefinition>,
-  K extends Extract<keyof T, string>
+  K extends Extract<keyof T, string>,
 >(t: T) {
   const shadows = {} as Record<ShadowName<K>, ShadowOutput>;
 

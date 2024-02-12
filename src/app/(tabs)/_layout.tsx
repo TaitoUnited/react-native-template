@@ -73,7 +73,7 @@ export default function TabsLayout() {
             key={title}
             name={id}
             options={{
-              title: title,
+              title,
               tabBarItemStyle: {
                 // On Android the label is too close to the bottom edge of the tab bar
                 paddingBottom: Platform.OS === 'android' ? 4 : 0,

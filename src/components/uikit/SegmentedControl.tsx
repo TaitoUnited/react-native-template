@@ -1,4 +1,4 @@
-import type { LayoutRectangle } from 'react-native';
+import type { LayoutChangeEvent, LayoutRectangle } from 'react-native';
 import { Fragment, useState } from 'react';
 
 import Animated, {
@@ -21,7 +21,9 @@ export function SegmentedControl<T>(props: Props<T>) {
   const [layout, setLayout] = useState<LayoutRectangle>();
 
   return (
-    <Wrapper onLayout={(e) => setLayout(e.nativeEvent.layout)}>
+    <Wrapper
+      onLayout={(e: LayoutChangeEvent) => setLayout(e.nativeEvent.layout)}
+    >
       {!!layout && <Segments {...props} width={layout.width} />}
     </Wrapper>
   );
