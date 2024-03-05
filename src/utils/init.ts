@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigationContainerRef } from 'expo-router';
+import { useReactNavigationDevTools } from '@dev-plugins/react-navigation';
 import * as SplashScreen from 'expo-splash-screen';
 
 import { useFontsReady } from './font';
@@ -38,6 +39,8 @@ function useInitReady() {
 
 function useRouterReady() {
   const rootNavigation = useNavigationContainerRef();
+  useReactNavigationDevTools(rootNavigation);
+
   const [routerReady, setRouterReady] = useState(false);
 
   useEffect(() => {

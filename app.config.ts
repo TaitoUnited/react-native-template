@@ -28,8 +28,7 @@ const expoConfig: ExpoConfig = {
   backgroundColor: '#000000', // root view background
   userInterfaceStyle: 'automatic',
   experiments: {
-    tsconfigPaths: true,
-    // typedRoutes: true, // Enable when it's possible to generate types for routes manually
+    typedRoutes: true, // Enable when it's possible to generate types for routes manually
   },
   splash: {
     resizeMode: 'contain',
