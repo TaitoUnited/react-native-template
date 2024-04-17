@@ -35,7 +35,7 @@ export function Grid({
       style={[rest.style, { margin: theme.space[spacing] / -2 }]}
       onLayout={(e: LayoutChangeEvent) => setWidth(e.nativeEvent.layout.width)}
     >
-      {colWidth !== undefined && 
+      {colWidth !== undefined &&
         elements.map((child, index) => {
           return (
             <View
