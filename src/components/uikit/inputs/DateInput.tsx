@@ -31,7 +31,7 @@ export const DateInput = forwardRef(
       label,
       message,
       mode = 'date',
-      icon = mode === 'time' ? 'clock' : 'calendar',
+      icon = mode === 'time' ? 'clock' : 'calendarMonth',
       onChange,
       ...rest
     }: Props,
@@ -105,6 +105,6 @@ export const DateInput = forwardRef(
 DateInput.displayName = 'DateInput';
 
 const Message = styled(Text, {
-  marginTop: '$xsmall',
+  marginTop: '$xs',
   marginLeft: '$small',
 });

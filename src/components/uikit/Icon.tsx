@@ -1,11 +1,11 @@
 import { memo } from 'react';
-import { SvgXml } from 'react-native-svg';
 import type { ViewStyle } from 'react-native';
+import { SvgXml } from 'react-native-svg';
 
 import * as icons from '~design-system/icons';
-import { useTheme, Theme } from '~styles';
+import { Theme, useTheme } from '~styles';
 
-export type IconName = icons.IconsToken;
+export type IconName = keyof typeof icons;
 
 type Props = {
   name: IconName;

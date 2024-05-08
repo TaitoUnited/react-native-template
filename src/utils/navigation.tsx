@@ -22,7 +22,7 @@ export function useDefaultHeaderOptions() {
 
   const headerOptions = {
     headerStyle: {
-      backgroundColor: theme.colors.background,
+      backgroundColor: theme.colors.surfaceHover,
     },
     headerTintColor: theme.colors.text,
 

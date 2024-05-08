@@ -1,8 +1,9 @@
-import type * as Stitches from 'stitches-native';
 import { StyleSheet } from 'react-native';
+import type * as Stitches from 'stitches-native';
 
-import { native as typographyTokens } from '~design-system/typography';
+import * as colors from '~design-system/colors';
 import * as shadows from '~design-system/shadows';
+import * as typographyTokens from '~design-system/typography';
 import * as designSystemUtils from '~design-system/utils';
 
 type Typography = keyof typeof typographyTokens;
@@ -51,3 +52,22 @@ export const flexCenter = (
 export const absoluteFill = () => ({
   ...StyleSheet.absoluteFillObject,
 });
+
+export function tokenName(value: string | number) {
+  return `${value}`;
+}
+
+// TODO: check if there is a better way to handle this
+export function transformColors(
+  colorGroups: Record<keyof typeof colors, Record<string, string>>
+) {
+  const tokens: Record<string, string> = {};
+
+  Object.values(colorGroups).forEach((colorGroup) => {
+    Object.entries(colorGroup).forEach(([key, value]) => {
+      tokens[tokenName(key)] = value;
+    });
+  });
+
+  return tokens as Record<colors.ColorsToken, string>;
+}

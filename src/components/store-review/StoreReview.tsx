@@ -90,8 +90,8 @@ export default function StoreReview() {
 
   function Feedback() {
     return (
-      <FeedbackWrapper axis="y" spacing="normal" align="center">
-        <Text variant="title3">
+      <FeedbackWrapper axis="y" spacing="regular" align="center">
+        <Text variant="headingS">
           <Trans>Enjoying the app?</Trans>
         </Text>
         <FillButton
@@ -142,5 +142,5 @@ export default function StoreReview() {
 
 const FeedbackWrapper = styled(Stack, {
   width: '100%',
-  paddingHorizontal: '$normal',
+  paddingHorizontal: '$regular',
 });

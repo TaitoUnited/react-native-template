@@ -48,9 +48,9 @@ export default function ImprovementForm({
       justify="between"
       style={{ height: '100%' }}
     >
-      <BackButton icon="x" onPress={onCancel} />
+      <BackButton icon="close" onPress={onCancel} />
 
-      <Text variant="title3">
+      <Text variant="headingS">
         <Trans>How can we improve?</Trans>
       </Text>
       <ScrollView
@@ -108,8 +108,8 @@ const InputWrapper = styled('View', {
   position: 'relative',
   flexDirection: 'row',
   borderBottomWidth: 1,
-  borderTopRightRadius: '$normal',
-  borderTopLeftRadius: '$normal',
+  borderTopRightRadius: '$regular',
+  borderTopLeftRadius: '$regular',
   variants: {
     focused: {
       true: { backgroundColor: 'rgba(150, 150, 150, 0.15)' },

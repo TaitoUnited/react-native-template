@@ -31,27 +31,27 @@ export default function TabsLayout() {
       id: 'home',
       title: t`Home`,
       iconFilled: 'homeFilled',
-      iconOutlined: 'homeOutlined',
+      iconOutlined: 'home',
     },
     {
       id: 'search',
       title: t`Search`,
-      iconFilled: 'searchThick',
+      iconFilled: 'search',
       iconOutlined: 'search',
     },
 
     {
       id: 'profile',
       title: t`Profile`,
-      iconFilled: 'userCicleFilled',
-      iconOutlined: 'userCicleOutlined',
+      iconFilled: 'personCircleFilled',
+      iconOutlined: 'personCircle',
     },
 
     {
       id: 'settings',
       title: t`Settings`,
-      iconFilled: 'settingsCogFilled',
-      iconOutlined: 'settingsCogOutlined',
+      iconFilled: 'settingsFilled',
+      iconOutlined: 'settings',
     },
   ];
 
@@ -62,8 +62,8 @@ export default function TabsLayout() {
         screenOptions={{
           ...defaultHeaderOptions,
           tabBarStyle: {
-            backgroundColor: theme.colors.background,
-            borderTopColor: theme.colors.muted3,
+            backgroundColor: theme.colors.surfaceHover,
+            borderTopColor: theme.colors.neutral3,
             borderTopWidth: StyleSheet.hairlineWidth,
           },
         }}
@@ -80,7 +80,7 @@ export default function TabsLayout() {
               },
               tabBarLabel: ({ focused }) => (
                 <Text
-                  variant="caption"
+                  variant="bodyExtraSmall"
                   color={focused ? 'text' : 'textMuted'}
                   testID={id}
                 >

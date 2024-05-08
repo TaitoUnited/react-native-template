@@ -119,6 +119,6 @@ export const Select = forwardRef(
 Select.displayName = 'Select';
 
 const Message = styled(Text, {
-  marginTop: '$xsmall',
+  marginTop: '$xs',
   marginLeft: '$small',
 });

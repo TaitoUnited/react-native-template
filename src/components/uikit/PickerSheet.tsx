@@ -249,7 +249,7 @@ function ListEmpty({ children }: { children?: ReactNode }) {
   return (
     <ListEmptyWrapper>
       {children || (
-        <Stack axis="y" spacing="normal">
+        <Stack axis="y" spacing="regular">
           <Text align="center">
             <Trans>No results found.</Trans>
           </Text>
@@ -263,12 +263,12 @@ function ListEmpty({ children }: { children?: ReactNode }) {
 }
 
 function ListSeparator() {
-  return <Spacer axis="y" size="normal" />;
+  return <Spacer axis="y" size="regular" />;
 }
 
 const SafeArea = styled('SafeAreaView', {
   flex: 1,
-  backgroundColor: '$elevated',
+  backgroundColor: '$surface',
 });
 
 const ListEmptyWrapper = styled('View', {
@@ -278,8 +278,8 @@ const ListEmptyWrapper = styled('View', {
 
 const ListHeaderWrapper = styled('View', {
   marginBottom: '$small',
-  padding: '$normal',
-  backgroundColor: '$elevated',
+  padding: '$regular',
+  backgroundColor: '$surface',
   borderBottomWidth: 1,
   borderColor: '$border',
 });
@@ -302,6 +302,6 @@ const Footer = styled('View', {
 });
 
 const ActionButton = styled('TouchableOpacity', {
-  padding: '$normal',
+  padding: '$regular',
   flexCenter: 'row',
 });

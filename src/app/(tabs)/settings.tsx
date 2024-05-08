@@ -158,7 +158,7 @@ function SystemInfoMenuTarget() {
             showToast({
               title: t`Copied to clipboard`,
               type: 'success',
-              icon: 'checkmark',
+              icon: 'check',
             });
           }}
         >
@@ -177,7 +177,7 @@ const Wrapper = styled('ScrollView', {
   flex: 1,
 }).attrs((p) => ({
   contentContainerStyle: {
-    padding: p.theme.space.normal,
+    padding: p.theme.space.regular,
   },
 }));
 

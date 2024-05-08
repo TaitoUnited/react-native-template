@@ -1,4 +1,4 @@
-import { native as typographyTokens } from '../design-system/typography';
+import * as typographyTokens from '../design-system/typography';
 import { theme, Theme } from './styled';
 
 type Typography = keyof typeof typographyTokens;

@@ -6,8 +6,8 @@ export default function Toast() {
   return (
     <Wrapper>
       <Stack axis="y" spacing="large">
-        <Stack axis="y" spacing="normal">
-          <Text variant="title3">Info toast</Text>
+        <Stack axis="y" spacing="regular">
+          <Text variant="headingS">Info toast</Text>
 
           <Stack axis="y" spacing="small">
             <FillButton
@@ -48,8 +48,8 @@ export default function Toast() {
           </Stack>
         </Stack>
 
-        <Stack axis="y" spacing="normal">
-          <Text variant="title3">Success toast</Text>
+        <Stack axis="y" spacing="regular">
+          <Text variant="headingS">Success toast</Text>
 
           <Stack axis="y" spacing="small">
             <FillButton
@@ -89,8 +89,8 @@ export default function Toast() {
           </Stack>
         </Stack>
 
-        <Stack axis="y" spacing="normal">
-          <Text variant="title3">Error toast</Text>
+        <Stack axis="y" spacing="regular">
+          <Text variant="headingS">Error toast</Text>
 
           <Stack axis="y" spacing="small">
             <FillButton
@@ -138,7 +138,7 @@ const Wrapper = styled('ScrollView', {
   flex: 1,
 }).attrs((p) => ({
   contentContainerStyle: {
-    padding: p.theme.space.normal,
+    padding: p.theme.space.regular,
     paddingBottom: 100,
   },
 }));

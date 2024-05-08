@@ -145,7 +145,7 @@ const SegmentButton = styled('TouchableOpacity', {
   flex: 1,
   flexCenter: 'row',
   paddingVertical: '$small',
-  paddingHorizontal: '$normal',
+  paddingHorizontal: '$regular',
   zIndex: 1,
   elevation: 1,
 }).attrs(() => ({

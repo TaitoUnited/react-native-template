@@ -1,8 +1,8 @@
 import { Stack, router } from 'expo-router';
 
-import { styled } from '~styles';
-import { IconButton, Text } from '~components/uikit';
 import MenuList from '~components/common/MenuList';
+import { IconButton, Text } from '~components/uikit';
+import { styled } from '~styles';
 
 export default function PlaygroundPage() {
   const items: Array<{ label: string; screen: any }> = [
@@ -22,7 +22,10 @@ export default function PlaygroundPage() {
         options={{
           title: 'Playground',
           headerLeft: () => (
-            <IconButton icon="x" onPress={() => router.navigate('settings')} />
+            <IconButton
+              icon="close"
+              onPress={() => router.navigate('settings')}
+            />
           ),
         }}
       />
@@ -33,7 +36,7 @@ export default function PlaygroundPage() {
           target: item.screen,
           leftSlot: (
             <MenuListItemLeftSlot>
-              <Text variant="bodyLargeBold" color="infoText">
+              <Text variant="bodyLargeBold" color="infoContrast">
                 {item.label.slice(0, 2)}
               </Text>
             </MenuListItemLeftSlot>
@@ -48,7 +51,7 @@ const Wrapper = styled('ScrollView', {
   flex: 1,
 }).attrs((p) => ({
   contentContainerStyle: {
-    padding: p.theme.space.normal,
+    padding: p.theme.space.regular,
   },
 }));
 
@@ -56,6 +59,7 @@ const MenuListItemLeftSlot = styled('View', {
   width: 40,
   height: 40,
   flexCenter: 'row',
-  borderRadius: '$normal',
+  borderRadius: '$regular',
   backgroundColor: '$infoMuted',
+  marginLeft: '$regular',
 });

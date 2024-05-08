@@ -72,7 +72,7 @@ export function InputButton({
       </InputWrapper>
 
       {!!message && (
-        <Message variant="caption" color="textMuted">
+        <Message variant="bodyExtraSmall" color="textMuted">
           {message}
         </Message>
       )}
@@ -101,8 +101,8 @@ const InputWrapper = styled('TouchableOpacity', {
   position: 'relative',
   flexDirection: 'row',
   borderBottomWidth: 1,
-  borderTopRightRadius: '$normal',
-  borderTopLeftRadius: '$normal',
+  borderTopRightRadius: '$regular',
+  borderTopLeftRadius: '$regular',
   overflow: 'hidden',
   variants: {
     focused: {
@@ -128,7 +128,7 @@ const Input = styled('View', {
 
 const InputDecoration = styled('View', {
   flexCenter: 'row',
-  paddingRight: '$xsmall',
+  paddingRight: '$xs',
 });
 
 const TextPlaceholder = styled('View', {
@@ -136,6 +136,6 @@ const TextPlaceholder = styled('View', {
 });
 
 const Message = styled(Text, {
-  marginTop: '$xsmall',
+  marginTop: '$xs',
   marginLeft: '$small',
 });

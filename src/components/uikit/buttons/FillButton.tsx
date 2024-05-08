@@ -36,7 +36,7 @@ const Wrapper = styled('TouchableOpacity', {
       danger: { backgroundColor: '$errorMuted' },
       warn: { backgroundColor: '$warnMuted' },
       info: { backgroundColor: '$infoMuted' },
-      neutral: { backgroundColor: '$muted5' },
+      neutral: { backgroundColor: '$neutral5' },
     },
     disabled: {
       true: { opacity: 0.5 },

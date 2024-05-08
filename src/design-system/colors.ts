@@ -1,106 +1,133 @@
 /* eslint-disable */
-export const dark = {
-  backdrop: 'rgba(0, 0, 0, 0.5)',
-  background: '#111111',
-  border: 'rgba(150, 150, 150, 0.3)',
-  elevated: '#333333',
-  error: '#ef4444',
-  errorMuted: '#3e1c1d',
-  errorText: '#ff7070',
-  focusRing: '#009a48',
-  hoverHighlight: 'rgba(150, 150, 150, 0.08)',
-  info: '#3b82f6',
-  infoMuted: '#1b2940',
-  infoText: '#81aef7',
-  muted1: '#8e8e93',
-  muted2: '#636366',
-  muted3: '#48484a',
-  muted4: '#3a3a3c',
-  muted5: '#2c2c2e',
-  muted6: '#1d1d1f',
-  pressHighlight: 'rgba(150, 150, 150, 0.2)',
-  primary: '#009a48',
-  primaryMuted: '#24392a',
-  primaryText: '#1cff87',
-  success: '#10b981',
-  successMuted: '#193328',
-  successText: '#1ee8a5',
-  surface: '#222222',
-  text: '#ffffff',
-  textMuted: '#999999',
-  warn: '#fbbf24',
-  warnMuted: '#40351a',
-  warnText: '#ffc93d',
+export const brand = {
+  brand: '#009a48',
+  brandContrast: '#066531',
+  brandContrastHover: '#035827',
+  brandHover: '#00813c',
+  brandMuted: '#def2e7',
+  brandMutedHover: '#d1eadc',
 };
-export const env = {
-  envStaging: '#9a008b',
-  envTest: '#009a9a',
+export const error = {
+  error: '#c53535',
+  errorContrast: '#870d0d',
+  errorContrastHover: '#750a0a',
+  errorHover: '#b93131',
+  errorMuted: '#f9e2e3',
+  errorMutedHover: '#f4c6c8',
 };
-export const light = {
-  backdrop: 'rgba(0, 0, 0, 0.5)',
-  background: '#f3f4f6',
-  border: 'rgba(150, 150, 150, 0.3)',
-  elevated: '#ffffff',
-  error: '#ef4444',
-  errorMuted: '#f3d2d3',
-  errorText: '#8c0606',
-  focusRing: '#009a48',
-  hoverHighlight: 'rgba(150, 150, 150, 0.1)',
-  info: '#3b82f6',
-  infoMuted: '#cfdef7',
-  infoText: '#0a45a6',
-  muted1: '#8e8e93',
-  muted2: '#aeaeb2',
-  muted3: '#c7c7cc',
-  muted4: '#d1d1d6',
-  muted5: '#e5e5ea',
-  muted6: '#f2f2f7',
-  pressHighlight: 'rgba(150, 150, 150, 0.2)',
-  primary: '#009a48',
-  primaryMuted: '#d6ebdb',
-  primaryText: '#015227',
-  success: '#10b981',
-  successMuted: '#cee8df',
-  successText: '#06734e',
+export const info = {
+  info: '#2e72e1',
+  infoContrast: '#0c47a7',
+  infoContrastHover: '#0b4199',
+  infoHover: '#2063d2',
+  infoMuted: '#e7effd',
+  infoMutedHover: '#dae7fd',
+};
+export const line = {
+  focusRing: '#296bd7',
+  line1: 'rgba(0, 0, 0, 0.5)',
+  line2: 'rgba(0, 0, 0, 0.25)',
+  line3: 'rgba(0, 0, 0, 0.1)',
+};
+export const neutral = {
+  neutral1: '#55575e',
+  neutral2: '#92969d',
+  neutral3: '#d4d6db',
+  neutral4: '#e4e5e9',
+  neutral5: '#f0f1f5',
   surface: '#ffffff',
-  text: '#222222',
-  textMuted: '#666666',
-  warn: '#fbbf24',
+  surfaceHover: '#f5f6fa',
+};
+export const primary = {
+  primary: '#296bd7',
+  primaryContrast: '#124598',
+  primaryContrastHover: '#08357f',
+  primaryHover: '#1857be',
+  primaryMuted: '#ebf3ff',
+  primaryMutedDarker: '#cedef8',
+  primaryMutedHover: '#dee9fd',
+};
+export const success = {
+  success: '#099566',
+  successContrast: '#00573a',
+  successContrastHover: '#004d34',
+  successHover: '#05865c',
+  successMuted: '#ddf1ea',
+  successMutedHover: '#c1e6d9',
+};
+export const text = {
+  text: '#000000',
+  textDisabled: '#7d7f85',
+  textMuted: '#55575e',
+  textOnContrastingBg: '#ffffff',
+};
+export const visualization = {
+  mint: '#27caa3',
+  pink: '#e04f83',
+  purple: '#9d2389',
+};
+export const warn = {
+  warn: '#b98604',
+  warnContrast: '#614500',
+  warnContrastHover: '#573d00',
+  warnHover: '#a07403',
   warnMuted: '#f3ead1',
-  warnText: '#8a6200',
+  warnMutedHover: '#ede0bd',
 };
 
 export type ColorsToken =
-  | 'backdrop'
-  | 'background'
-  | 'border'
-  | 'elevated'
-  | 'envStaging'
-  | 'envTest'
+  | 'brand'
+  | 'brandContrast'
+  | 'brandContrastHover'
+  | 'brandHover'
+  | 'brandMuted'
+  | 'brandMutedHover'
   | 'error'
+  | 'errorContrast'
+  | 'errorContrastHover'
+  | 'errorHover'
   | 'errorMuted'
-  | 'errorText'
+  | 'errorMutedHover'
   | 'focusRing'
-  | 'hoverHighlight'
   | 'info'
+  | 'infoContrast'
+  | 'infoContrastHover'
+  | 'infoHover'
   | 'infoMuted'
-  | 'infoText'
-  | 'muted1'
-  | 'muted2'
-  | 'muted3'
-  | 'muted4'
-  | 'muted5'
-  | 'muted6'
-  | 'pressHighlight'
+  | 'infoMutedHover'
+  | 'line1'
+  | 'line2'
+  | 'line3'
+  | 'mint'
+  | 'neutral1'
+  | 'neutral2'
+  | 'neutral3'
+  | 'neutral4'
+  | 'neutral5'
+  | 'pink'
   | 'primary'
+  | 'primaryContrast'
+  | 'primaryContrastHover'
+  | 'primaryHover'
   | 'primaryMuted'
-  | 'primaryText'
+  | 'primaryMutedDarker'
+  | 'primaryMutedHover'
+  | 'purple'
   | 'success'
+  | 'successContrast'
+  | 'successContrastHover'
+  | 'successHover'
   | 'successMuted'
-  | 'successText'
+  | 'successMutedHover'
   | 'surface'
+  | 'surfaceHover'
   | 'text'
+  | 'textDisabled'
   | 'textMuted'
+  | 'textOnContrastingBg'
   | 'warn'
+  | 'warnContrast'
+  | 'warnContrastHover'
+  | 'warnHover'
   | 'warnMuted'
-  | 'warnText';
+  | 'warnMutedHover';

@@ -33,7 +33,7 @@ const variantToUnderlayColor: Record<ButtonVariant, Color> = {
   danger: 'errorMuted',
   warn: 'warnMuted',
   info: 'infoMuted',
-  neutral: 'muted5',
+  neutral: 'neutral5',
 };
 
 const Wrapper = styled('TouchableHighlight', {

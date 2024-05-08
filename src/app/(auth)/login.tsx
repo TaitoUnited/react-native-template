@@ -31,7 +31,7 @@ export default function Login() {
         <Scroller>
           <Stack axis="y" spacing="medium">
             <Stack axis="y" spacing="small">
-              <Text variant="title2">
+              <Text variant="headingL">
                 <Trans>Enter your credentials</Trans>
               </Text>
               <Text variant="bodySmall" color="textMuted">
@@ -39,7 +39,7 @@ export default function Login() {
               </Text>
             </Stack>
 
-            <Stack axis="y" spacing="normal">
+            <Stack axis="y" spacing="regular">
               <Controller
                 name="email"
                 control={form.control}
@@ -131,7 +131,7 @@ const Scroller = styled(KeyboardAwareScrollView, {
   keyboardShouldPersistTaps: 'handled',
   contentContainerStyle: {
     flexGrow: 1,
-    padding: p.theme.space.normal,
+    padding: p.theme.space.regular,
     paddingTop: p.theme.space.medium,
   },
 }));

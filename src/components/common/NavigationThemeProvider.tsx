@@ -18,8 +18,8 @@ export default function NavigationThemeProvider({
         dark: colorScheme === 'dark',
         colors: {
           card: theme.colors.surface,
-          background: theme.colors.background,
-          border: theme.colors.border,
+          background: theme.colors.surfaceHover, // NOTE: used to be background. TODO: Check if we decide to add again a background color
+          border: theme.colors.line3, // NOTE: used to be border. TODO: check if this is correct
           text: theme.colors.text,
           primary: theme.colors.primary,
           notification: theme.colors.error,

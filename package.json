@@ -120,7 +120,7 @@
     "eslint-plugin-react": "7.33.2",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-standard": "5.0.0",
-    "figmage": "0.11.1",
+    "figmage": "0.13.0",
     "jest": "^29.2.1",
     "patch-package": "6.5.1",
     "prettier": "3.2.5",
@@ -178,22 +178,22 @@
         {
           "name": "spacing",
           "type": "width",
-          "nodeId": "110:694"
+          "nodeName": "Figmage - Spacing"
         },
         {
           "name": "radii",
           "type": "radius",
-          "nodeId": "102:8"
+          "nodeName": "Figmage - Radii"
         },
         {
           "name": "icons",
           "type": "svg",
-          "nodeId": "102:2"
+          "nodeName": "Figmage - Icons"
         },
         {
           "name": "assets",
           "type": "png",
-          "nodeId": "643:618"
+          "nodeName": "App Icon & Splash"
         }
       ]
     },
@@ -202,19 +202,8 @@
         "filetype": "ts",
         "tokenCase": "camel"
       },
-      "colors": {
-        "exclude": {
-          "group": [
-            "Internal"
-          ]
-        }
-      },
-      "typography": {
-        "include": {
-          "group": [
-            "Native"
-          ]
-        }
+      "spacing": {
+        "filetype": "json"
       },
       "assets": {
         "filetype": "png",

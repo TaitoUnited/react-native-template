@@ -85,13 +85,13 @@ function Toast({
       <Stack axis="x" spacing="small" align="center">
         {hasIcon && <Icon name={iconName} size={24} color={color} />}
 
-        <Stack axis="y" spacing="xxsmall" align="center">
+        <Stack axis="y" spacing="xxs" align="center">
           <Text variant="bodySmall" color={color}>
             {title}
           </Text>
 
           {!!subtitle && (
-            <Text variant="caption" color="textMuted">
+            <Text variant="bodyExtraSmall" color="textMuted">
               {subtitle}
             </Text>
           )}
@@ -103,24 +103,24 @@ function Toast({
 
 const variantToColor: { [variant in Variant]: Color } = {
   info: 'text',
-  error: 'errorText',
-  success: 'successText',
+  error: 'errorContrast',
+  success: 'successContrast',
 };
 
 const variantToIcon: { [variant in Variant]?: IconName } = {
-  error: 'warningTriangle',
-  success: 'checkmark',
+  error: 'warning',
+  success: 'check',
 };
 
 const ToastWrapper = styled('View', {
   borderRadius: '$full',
   paddingVertical: '$small',
   paddingHorizontal: '$large',
-  backgroundColor: '$elevated',
+  backgroundColor: '$surface',
   shadow: 'medium',
   variants: {
     hasIcon: {
-      true: { paddingLeft: '$normal' },
+      true: { paddingLeft: '$regular' },
       false: { paddingLeft: '$large' },
     },
   },

@@ -17,7 +17,7 @@ export function Grid({
   spacing = 'none',
   align,
   justify,
-  columns,
+  columns = 3,
   ...rest
 }: Props) {
   // Handle `Fragments` by flattening children

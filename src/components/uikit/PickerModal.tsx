@@ -177,7 +177,7 @@ function ModalContent({
               maxHeight: dimensions.height - insets.bottom - insets.top - 150,
             }}
           >
-            <Stack axis="y" spacing="normal">
+            <Stack axis="y" spacing="regular">
               {options.map((option) =>
                 multiple ? (
                   <Checkbox
@@ -236,11 +236,11 @@ const Backdrop = Animated.createAnimatedComponent(
 
 const Content = Animated.createAnimatedComponent(
   styled('View', {
-    backgroundColor: '$elevated',
+    backgroundColor: '$surface',
     shadow: 'large',
     padding: '$medium',
     paddingBottom: 0,
-    margin: '$xsmall',
+    margin: '$xs',
     borderRadius: '$large',
     zIndex: 2,
   })
@@ -252,7 +252,7 @@ const Footer = styled('View', {
 
 const ActionButton = styled('TouchableOpacity', {
   flex: 1,
-  paddingTop: '$normal',
+  paddingTop: '$regular',
   paddingBottom: '$medium',
   flexCenter: 'row',
 });

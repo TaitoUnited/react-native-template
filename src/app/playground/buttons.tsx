@@ -17,7 +17,7 @@ export default function Buttons() {
     <Wrapper>
       <Stack axis="y" spacing="large">
         <Stack axis="y" spacing="small">
-          <Text variant="title3">Sizes</Text>
+          <Text variant="headingS">Sizes</Text>
 
           <FillButton variant="neutral" size="large" onPress={handlePress}>
             Large
@@ -31,7 +31,7 @@ export default function Buttons() {
         </Stack>
 
         <Stack axis="y" spacing="small">
-          <Text variant="title3">Types</Text>
+          <Text variant="headingS">Types</Text>
           <FillButton variant="neutral" onPress={handlePress}>
             Fill button
           </FillButton>
@@ -41,7 +41,7 @@ export default function Buttons() {
         </Stack>
 
         <Stack axis="y" spacing="small">
-          <Text variant="title3">Variants</Text>
+          <Text variant="headingS">Variants</Text>
 
           <FillButton variant="neutral" onPress={handlePress}>
             Neutral
@@ -76,7 +76,7 @@ export default function Buttons() {
         </Stack>
 
         <Stack axis="y" spacing="small">
-          <Text variant="title3">With icon</Text>
+          <Text variant="headingS">With icon</Text>
 
           <FillButton variant="neutral" icon="camera" onPress={handlePress}>
             Next to label
@@ -91,7 +91,7 @@ export default function Buttons() {
           </OutlineButton>
           <FillButton
             variant="neutral"
-            icon="calendar"
+            icon="calendarMonth"
             iconPosition="edge"
             onPress={handlePress}
           >
@@ -99,7 +99,7 @@ export default function Buttons() {
           </FillButton>
           <OutlineButton
             variant="neutral"
-            icon="bluetoothFilled"
+            icon="camera"
             iconSide="start"
             iconPosition="edge"
             onPress={handlePress}
@@ -108,31 +108,31 @@ export default function Buttons() {
           </OutlineButton>
         </Stack>
 
-        <Stack axis="y" spacing="normal">
-          <Text variant="title3">Icon buttons</Text>
+        <Stack axis="y" spacing="regular">
+          <Text variant="headingS">Icon buttons</Text>
 
           <Stack axis="x" spacing="medium">
-            <IconButton size="large" icon="languageGlobe" color="text" />
-            <IconButton size="large" icon="eyeFilled" color="primary" />
-            <IconButton size="large" icon="fingerPrint" color="info" />
-            <IconButton size="large" icon="x" color="error" />
-            <IconButton size="large" icon="bell" color="warnText" />
+            <IconButton size="large" icon="globe" color="text" />
+            <IconButton size="large" icon="eye" color="primary" />
+            <IconButton size="large" icon="fingerprint" color="info" />
+            <IconButton size="large" icon="close" color="error" />
+            <IconButton size="large" icon="bell" color="warn" />
           </Stack>
 
           <Stack axis="x" spacing="medium">
-            <IconButton icon="languageGlobe" color="text" />
-            <IconButton icon="eyeFilled" color="primary" />
-            <IconButton icon="fingerPrint" color="info" />
-            <IconButton icon="x" color="error" />
-            <IconButton icon="bell" color="warnText" />
+            <IconButton icon="globe" color="text" />
+            <IconButton icon="eye" color="primary" />
+            <IconButton icon="fingerprint" color="info" />
+            <IconButton icon="close" color="error" />
+            <IconButton icon="bell" color="warn" />
           </Stack>
 
           <Stack axis="x" spacing="medium">
-            <IconButton size="small" icon="languageGlobe" color="text" />
-            <IconButton size="small" icon="eyeFilled" color="primary" />
-            <IconButton size="small" icon="fingerPrint" color="info" />
-            <IconButton size="small" icon="x" color="error" />
-            <IconButton size="small" icon="bell" color="warnText" />
+            <IconButton size="small" icon="globe" color="text" />
+            <IconButton size="small" icon="eye" color="primary" />
+            <IconButton size="small" icon="fingerprint" color="info" />
+            <IconButton size="small" icon="close" color="error" />
+            <IconButton size="small" icon="bell" color="warn" />
           </Stack>
         </Stack>
       </Stack>
@@ -144,7 +144,7 @@ const Wrapper = styled('ScrollView', {
   flex: 1,
 }).attrs((p) => ({
   contentContainerStyle: {
-    padding: p.theme.space.normal,
+    padding: p.theme.space.regular,
     paddingBottom: 100,
   },
 }));

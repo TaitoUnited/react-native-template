@@ -25,7 +25,7 @@ export const shadowMedium = {
     rgba: 'rgba(0, 0, 0, 0.12)',
   },
 };
-export const shadowNormal = {
+export const shadowRegular = {
   boxShadow: '0px 4px 16px rgba(0, 0, 0, 0.12)',
   offset: {
     x: 0,
@@ -55,5 +55,5 @@ export const shadowSmall = {
 export type ShadowsToken =
   | 'shadowLarge'
   | 'shadowMedium'
-  | 'shadowNormal'
+  | 'shadowRegular'
   | 'shadowSmall';
