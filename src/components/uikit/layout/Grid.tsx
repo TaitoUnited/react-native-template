@@ -17,7 +17,7 @@ export function Grid({
   spacing = 'none',
   align,
   justify,
-  columns = 3,
+  columns,
   ...rest
 }: Props) {
   // Handle `Fragments` by flattening children
@@ -35,20 +35,19 @@ export function Grid({
       style={[rest.style, { margin: theme.space[spacing] / -2 }]}
       onLayout={(e: LayoutChangeEvent) => setWidth(e.nativeEvent.layout.width)}
     >
-      {colWidth !== undefined &&
-        elements.map((child, index) => {
-          return (
-            <View
-              key={index}
-              style={{
-                margin: theme.space[spacing] / 2,
-                width: colWidth && colWidth - theme.space[spacing],
-              }}
-            >
-              {isValidElement(child) ? cloneElement(child) : null}
-            </View>
-          );
-        })}
+      {elements.map((child, index) => {
+        return (
+          <View
+            key={index}
+            style={{
+              margin: theme.space[spacing] / 2,
+              width: colWidth && colWidth - theme.space[spacing],
+            }}
+          >
+            {isValidElement(child) ? cloneElement(child) : null}
+          </View>
+        );
+      })}
     </Wrapper>
   );
 }
