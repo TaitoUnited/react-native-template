@@ -1,6 +1,7 @@
-import type { ButtonProps, ButtonVariant } from './types';
-import ButtonContent from './ButtonContent';
 import { Color, styled } from '~styles';
+
+import ButtonContent from './ButtonContent';
+import type { ButtonProps, ButtonVariant } from './types';
 
 export function OutlineButton({
   children,

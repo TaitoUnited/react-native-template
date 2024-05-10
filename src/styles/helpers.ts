@@ -1,5 +1,5 @@
-import * as typographyTokens from '../design-system/typography';
 import { theme, Theme } from './styled';
+import * as typographyTokens from '../design-system/typography';
 
 type Typography = keyof typeof typographyTokens;
 type ThemeKey = keyof Theme;

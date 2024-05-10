@@ -1,7 +1,5 @@
-import { MutableRefObject, useEffect, useRef, useState } from 'react';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Trans } from '@lingui/macro';
-
+import { MutableRefObject, useEffect, useRef, useState } from 'react';
 import {
   Animated,
   Easing,
@@ -10,12 +8,14 @@ import {
   TouchableWithoutFeedback,
   useWindowDimensions,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+import { styled } from '~styles';
 
 import { Text } from './Text';
-import { Stack } from './layout/Stack';
-import { Radio } from './inputs/Radio';
 import { Checkbox } from './inputs/Checkbox';
-import { styled } from '~styles';
+import { Radio } from './inputs/Radio';
+import { Stack } from './layout/Stack';
 
 type BaseProps = {
   label: string;

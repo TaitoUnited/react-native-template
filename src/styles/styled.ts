@@ -2,13 +2,13 @@ import { StyleSheet } from 'react-native';
 import type * as Stitches from 'stitches-native';
 import { createStitches } from 'stitches-native';
 
-import * as utils from './utils';
-
 import * as colors from '~design-system/colors';
 import * as radii from '~design-system/radii';
 import space from '~design-system/spacing.json';
 import * as typography from '~design-system/typography';
 import * as designSystemUtils from '~design-system/utils';
+
+import * as utils from './utils';
 
 const { styled, css, createTheme, config, theme, useTheme, ThemeProvider } =
   createStitches({

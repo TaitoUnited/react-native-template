@@ -1,9 +1,10 @@
 import { Animated, ViewStyle } from 'react-native';
 
-import { Text } from '../Text';
-import { Icon, IconName } from '../Icon';
-import { useInputLabelAnimation } from './common';
 import { styled } from '~styles';
+
+import { useInputLabelAnimation } from './common';
+import { Icon, IconName } from '../Icon';
+import { Text } from '../Text';
 
 type Props = {
   value?: string;

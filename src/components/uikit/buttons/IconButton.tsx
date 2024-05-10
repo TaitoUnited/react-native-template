@@ -1,15 +1,15 @@
 import { ReactNode } from 'react';
 import { ActivityIndicator, PressableProps } from 'react-native';
-
 import Animated, {
-  withSpring,
-  useSharedValue,
   useAnimatedStyle,
+  useSharedValue,
+  withSpring,
   withTiming,
 } from 'react-native-reanimated';
 
+import { Color, styled, useTheme } from '~styles';
+
 import { Icon, IconName } from '../Icon';
-import { styled, useTheme, Color } from '~styles';
 
 type Size = 'small' | 'medium' | 'large';
 

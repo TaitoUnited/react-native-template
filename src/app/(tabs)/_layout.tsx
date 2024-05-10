@@ -1,13 +1,13 @@
-import { StyleSheet } from 'react-native';
-import { Tabs } from 'expo-router';
 import { t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
+import { Tabs } from 'expo-router';
+import { StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import StoreReview from '~components/store-review/StoreReview';
+import { Icon, Text } from '~components/uikit';
 import type { IconName } from '~components/uikit/Icon';
 import { useTheme } from '~styles';
-import { Icon, Text } from '~components/uikit';
 
 type TabList = {
   id: string;

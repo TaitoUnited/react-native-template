@@ -1,4 +1,5 @@
 import FastImage, { FastImageProps } from 'react-native-fast-image';
+
 import { useImageDimensions } from '~utils/image';
 
 type Props = FastImageProps & {

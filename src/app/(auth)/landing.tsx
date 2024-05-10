@@ -1,13 +1,13 @@
 import { t, Trans } from '@lingui/macro';
+import { Link } from 'expo-router';
 import { useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as DropdownMenu from 'zeego/dropdown-menu';
-import { Link } from 'expo-router';
 
-import { styled, useTheme } from '~styles';
+import StatusBar from '~components/common/StatusBar';
 import { IconButton, Stack, Text } from '~components/uikit';
 import { useI18n } from '~services/i18n';
-import StatusBar from '~components/common/StatusBar';
+import { styled, useTheme } from '~styles';
 
 export default function Landing() {
   const { height } = useWindowDimensions();

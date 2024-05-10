@@ -1,6 +1,7 @@
-import type { ButtonProps } from './types';
-import ButtonContent from './ButtonContent';
 import { styled } from '~styles';
+
+import ButtonContent from './ButtonContent';
+import type { ButtonProps } from './types';
 
 export function FillButton({
   children,

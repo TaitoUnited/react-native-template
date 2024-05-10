@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro';
 import { Stack } from 'expo-router';
+
 import { useDefaultStackScreenOptions } from '~utils/navigation';
 
 export default function AuthLayout() {

@@ -1,14 +1,14 @@
 import { PixelRatio } from 'react-native';
-
 import Animated, {
   Easing,
   useAnimatedStyle,
   withTiming,
 } from 'react-native-reanimated';
 
-import { Text } from '../Text';
-import { Icon } from '../Icon';
 import { styled } from '~styles';
+
+import { Icon } from '../Icon';
+import { Text } from '../Text';
 
 type Props = {
   onChange: (value: string) => void;
