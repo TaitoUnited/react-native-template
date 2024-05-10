@@ -1,20 +1,26 @@
-import { ComponentProps, FunctionComponent } from 'react';
-import { Alert, TouchableOpacity, View } from 'react-native';
 import { t } from '@lingui/macro';
-import { getReadableVersion } from 'react-native-device-info';
-import capitalize from 'lodash/capitalize';
-import { updateId as expoUpdateId } from 'expo-updates';
 import { setStringAsync } from 'expo-clipboard';
+import { updateId as expoUpdateId } from 'expo-updates';
+import capitalize from 'lodash/capitalize';
+import { ComponentProps, FunctionComponent } from 'react';
+import { Alert, Platform, TouchableOpacity, View } from 'react-native';
+import {
+  getApiLevelSync,
+  getReadableVersion,
+  getSystemName,
+  getSystemVersion,
+  getUniqueIdSync,
+} from 'react-native-device-info';
 
-import { styled } from '~styles';
-import { Icon, Text } from '~components/uikit';
-import { useI18n } from '~services/i18n';
-import { useColorMode } from '~services/color-mode';
-import MenuList from '~components/common/MenuList';
-import config from '~constants/config';
 import { useHeaderPlaygroundButton } from '~app/playground/utils';
-import { useAuthStore } from '~services/auth';
+import MenuList from '~components/common/MenuList';
 import { showToast } from '~components/common/Toaster';
+import { Icon, Text } from '~components/uikit';
+import config from '~constants/config';
+import { useAuthStore } from '~services/auth';
+import { useColorMode } from '~services/color-mode';
+import { useI18n } from '~services/i18n';
+import { styled } from '~styles';
 
 export default function Settings() {
   const logout = useAuthStore((s) => s.logout);
@@ -102,6 +108,32 @@ function AppearanceMenuTarget() {
 function SystemInfoMenuTarget() {
   const items: ComponentProps<typeof MenuList>['items'] = [
     {
+      id: 'deviceId',
+      label: 'Device ID',
+      currentValue: getUniqueIdSync(),
+    },
+    {
+      id: 'systemName',
+      label: 'System name',
+      currentValue: getSystemName(),
+    },
+    {
+      id: 'systemVersion',
+      label: 'System version',
+      currentValue: getSystemVersion(),
+    },
+    {
+      id: 'apiLevel',
+      label: 'API level',
+      currentValue: getApiLevelSync(),
+      platform: 'android',
+    },
+    {
+      id: 'appEnv',
+      label: 'App environment',
+      currentValue: config.appEnv,
+    },
+    {
       id: 'version',
       label: t`Version`,
       currentValue: getReadableVersion(),
@@ -138,7 +170,11 @@ function SystemInfoMenuTarget() {
     });
   }
 
-  return <MenuList items={items} />;
+  const filteredItems = items.filter(
+    (info) => !(info.platform && Platform.OS !== info.platform)
+  );
+
+  return <MenuList items={filteredItems} />;
 }
 
 const Wrapper = styled('ScrollView', {

@@ -2,8 +2,8 @@ import { FunctionComponent, ReactNode, isValidElement } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { router } from 'expo-router';
-import { styled } from '~styles';
 import { Icon, Stack, Text } from '~components/uikit';
+import { styled } from '~styles';
 
 type Item = {
   id: string;
@@ -15,6 +15,7 @@ type Item = {
   target?: FunctionComponent<any>; // | keyof ParamList;
   targetName?: string;
   onPress?: () => void;
+  platform?: 'ios' | 'android';
 };
 
 type Props = {
