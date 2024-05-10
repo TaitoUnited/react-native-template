@@ -13,7 +13,7 @@ import * as designSystemUtils from '~design-system/utils';
 const { styled, css, createTheme, config, theme, useTheme, ThemeProvider } =
   createStitches({
     theme: {
-      colors: utils.transformColors(colors),
+      colors: designSystemUtils.transformColors(colors),
       radii: { ...radii, none: 0 },
       space: { ...space, none: 0 },
       sizes: { hairlineWidth: StyleSheet.hairlineWidth },
@@ -27,7 +27,7 @@ const { styled, css, createTheme, config, theme, useTheme, ThemeProvider } =
   });
 
 export const darkTheme = createTheme({
-  colors: utils.transformColors(colors), // TODO: add dark theme
+  colors: designSystemUtils.transformColors(colors), // TODO: add dark theme support once we get dark mode colors from Figma
 });
 export { styled, css, createTheme, useTheme, config, theme, ThemeProvider };
 export type CSS = Stitches.CSS<typeof config>;
