@@ -35,7 +35,7 @@ export default function Settings() {
 
   const items = [
     useMenuListItem('LanguageMenuTarget'),
-    // useMenuListItem('AppearanceMenuTarget'),
+    // useMenuListItem('AppearanceMenuTarget'), // We currently do not support dark mode, so until we do, we should not show this option
     useMenuListItem('SystemInfoMenuTarget'),
     {
       id: 'logout',
