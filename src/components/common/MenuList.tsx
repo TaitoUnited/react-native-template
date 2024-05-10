@@ -134,14 +134,16 @@ const Label = styled(Text, {
 });
 
 const Pressable = styled('TouchableHighlight', {}).attrs(() => ({
-  underlayColor: 'rgba(150, 150, 150, 0.2)', // TODO: add pressHighlight color if needed
+  underlayColor: 'rgba(150, 150, 150, 0.2)', // TODO: Design system template do not have the pressed color for now. Might be added in the future.
 }));
 
-const ContentWrapper = styled(Stack, {});
+const ContentWrapper = styled(Stack, {
+  paddingLeft: '$regular',
+});
 
 const Content = styled(Stack, {
   flex: 1,
-  paddingHorizontal: '$small',
+  paddingRight: '$small',
   paddingVertical: '$small',
   variants: {
     withDivider: {

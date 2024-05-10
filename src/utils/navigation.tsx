@@ -17,29 +17,17 @@ export function getActiveRouteName(
   return getActiveRouteName(route.state);
 }
 
-export function useDefaultHeaderOptions() {
+export function useDefaultStackScreenOptions() {
   const theme = useTheme();
 
-  const headerOptions = {
+  const screenOptions: NativeStackNavigationOptions = {
     headerStyle: {
-      backgroundColor: theme.colors.surfaceHover,
+      backgroundColor: theme.colors.surface,
     },
     headerTintColor: theme.colors.text,
-
     headerTitleStyle: {
       fontSize: theme.fontSizes.bodyBold,
     },
-  };
-
-  return headerOptions;
-}
-
-export function useDefaultStackScreenOptions() {
-  const theme = useTheme();
-  const defaultHeaderOptions = useDefaultHeaderOptions();
-
-  const screenOptions: NativeStackNavigationOptions = {
-    ...defaultHeaderOptions,
     headerBackTitleStyle: {
       fontSize: theme.fontSizes.body,
     },

@@ -57,7 +57,6 @@ export function tokenName(value: string | number) {
   return `${value}`;
 }
 
-// TODO: check if there is a better way to handle this
 export function transformColors(
   colorGroups: Record<keyof typeof colors, Record<string, string>>
 ) {

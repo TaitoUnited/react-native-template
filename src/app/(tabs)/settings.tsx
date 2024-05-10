@@ -35,7 +35,7 @@ export default function Settings() {
 
   const items = [
     useMenuListItem('LanguageMenuTarget'),
-    useMenuListItem('AppearanceMenuTarget'),
+    // useMenuListItem('AppearanceMenuTarget'),
     useMenuListItem('SystemInfoMenuTarget'),
     {
       id: 'logout',

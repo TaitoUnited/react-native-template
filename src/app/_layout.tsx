@@ -57,11 +57,14 @@ function RootLayoutNavigator() {
   useLingui();
 
   return (
-    <Stack screenOptions={{ headerShown: false, ...screenOptions }}>
+    <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="index" />
       <Stack.Screen name="(tabs)" options={{ animation: 'none' }} />
       <Stack.Screen name="(auth)" options={{ animation: 'fade' }} />
-      <Stack.Screen name="menu-list/[item]" options={{ headerShown: true }} />
+      <Stack.Screen
+        name="menu-list/[item]"
+        options={{ headerShown: true, ...screenOptions }}
+      />
     </Stack>
   );
 }

@@ -61,5 +61,4 @@ const MenuListItemLeftSlot = styled('View', {
   flexCenter: 'row',
   borderRadius: '$regular',
   backgroundColor: '$infoMuted',
-  marginLeft: '$regular',
 });
