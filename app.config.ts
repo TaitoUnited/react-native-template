@@ -71,7 +71,7 @@ const expoConfig: ExpoConfig = {
   // This is important for OTA updates to work properly!
   // https://docs.expo.dev/eas-update/runtime-versions/#nativeversion-runtime-version-policy
   runtimeVersion: {
-    policy: 'appVersion',
+    policy: 'fingerprintExperimental',
   },
   plugins: [
     'expo-router',

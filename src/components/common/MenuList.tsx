@@ -1,9 +1,9 @@
 import { FunctionComponent, ReactNode, isValidElement } from 'react';
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
 import { router } from 'expo-router';
-import { styled } from '~styles';
 import { Icon, Stack, Text } from '~components/uikit';
+import { styled } from '~styles';
 
 type Item = {
   id: string;
@@ -15,6 +15,7 @@ type Item = {
   target?: FunctionComponent<any>; // | keyof ParamList;
   targetName?: string;
   onPress?: () => void;
+  platform?: 'ios' | 'android';
 };
 
 type Props = {
@@ -23,6 +24,10 @@ type Props = {
 };
 
 export default function MenuList({ items, title }: Props) {
+  const filteredItems = items.filter(
+    (info) => !(info.platform && Platform.OS !== info.platform)
+  );
+
   function handleItemPress(item: Item) {
     if (typeof item.target === 'function') {
       router.navigate({
@@ -47,7 +52,7 @@ export default function MenuList({ items, title }: Props) {
       )}
 
       <Wrapper>
-        {items.map((item, index) => (
+        {filteredItems.map((item, index) => (
           <Pressable
             testID={item.id}
             key={item.label}
@@ -64,7 +69,7 @@ export default function MenuList({ items, title }: Props) {
                 axis="x"
                 spacing="small"
                 align="center"
-                withDivider={index < items.length - 1}
+                withDivider={index < filteredItems.length - 1}
               >
                 <Label variant="body" numberOfLines={1}>
                   {item.label}
