@@ -3,7 +3,7 @@ import { setStringAsync } from 'expo-clipboard';
 import { updateId as expoUpdateId } from 'expo-updates';
 import capitalize from 'lodash/capitalize';
 import { ComponentProps, FunctionComponent } from 'react';
-import { Alert, Platform, TouchableOpacity, View } from 'react-native';
+import { Alert, TouchableOpacity, View } from 'react-native';
 import {
   getApiLevelSync,
   getReadableVersion,
@@ -170,11 +170,7 @@ function SystemInfoMenuTarget() {
     });
   }
 
-  const filteredItems = items.filter(
-    (info) => !(info.platform && Platform.OS !== info.platform)
-  );
-
-  return <MenuList items={filteredItems} />;
+  return <MenuList items={items} />;
 }
 
 const Wrapper = styled('ScrollView', {
