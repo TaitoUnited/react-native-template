@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-import { styled } from '~styles';
 import {
   Checkbox,
   DateInput,
@@ -11,6 +10,7 @@ import {
   Text,
   TextInput,
 } from '~components/uikit';
+import { styled } from '~styles';
 
 export default function Inputs() {
   const [selectedMultiple, setSelectedMultiple] = useState<string[]>([]);
@@ -23,14 +23,14 @@ export default function Inputs() {
 
   return (
     <Wrapper>
-      <Stack axis="y" spacing="xlarge">
-        <Stack axis="y" spacing="normal">
-          <Text variant="title3">Text Input</Text>
+      <Stack axis="y" spacing="xl">
+        <Stack axis="y" spacing="regular">
+          <Text variant="headingS">Text Input</Text>
           <TextInput label="Text input" value={text} onChange={setText} />
         </Stack>
 
-        <Stack axis="y" spacing="normal">
-          <Text variant="title3">Date Input</Text>
+        <Stack axis="y" spacing="regular">
+          <Text variant="headingS">Date Input</Text>
           <DateInput
             value={date}
             onChange={setDate}
@@ -39,8 +39,8 @@ export default function Inputs() {
           />
         </Stack>
 
-        <Stack axis="y" spacing="normal">
-          <Text variant="title3">Select</Text>
+        <Stack axis="y" spacing="regular">
+          <Text variant="headingS">Select</Text>
 
           <Select
             label="Single value"
@@ -64,8 +64,8 @@ export default function Inputs() {
           />
         </Stack>
 
-        <Stack axis="y" spacing="normal">
-          <Text variant="title3">Checkbox</Text>
+        <Stack axis="y" spacing="regular">
+          <Text variant="headingS">Checkbox</Text>
 
           <Checkbox
             label="Check me"
@@ -75,8 +75,8 @@ export default function Inputs() {
           />
         </Stack>
 
-        <Stack axis="y" spacing="normal">
-          <Text variant="title3">Radio</Text>
+        <Stack axis="y" spacing="regular">
+          <Text variant="headingS">Radio</Text>
 
           <Radio
             label="Radio 1"
@@ -100,8 +100,8 @@ export default function Inputs() {
           />
         </Stack>
 
-        <Stack axis="y" spacing="normal">
-          <Text variant="title3">Segmented Control</Text>
+        <Stack axis="y" spacing="regular">
+          <Text variant="headingS">Segmented Control</Text>
 
           <SegmentedControl
             onSelect={setSelectedSegment}
@@ -123,7 +123,7 @@ const Wrapper = styled('ScrollView', {
   flex: 1,
 }).attrs((p) => ({
   contentContainerStyle: {
-    padding: p.theme.space.normal,
+    padding: p.theme.space.regular,
     paddingBottom: 100,
   },
 }));

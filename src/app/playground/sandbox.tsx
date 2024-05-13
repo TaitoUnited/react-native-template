@@ -1,5 +1,5 @@
+import { Stack, Text } from '~components/uikit';
 import { styled } from '~styles';
-import { Text, Stack } from '~components/uikit';
 
 export default function Sandbox() {
   return (
@@ -18,7 +18,7 @@ const Wrapper = styled('ScrollView', {
   flex: 1,
 }).attrs((p) => ({
   contentContainerStyle: {
-    padding: p.theme.space.normal,
+    padding: p.theme.space.regular,
     paddingBottom: 100,
   },
 }));

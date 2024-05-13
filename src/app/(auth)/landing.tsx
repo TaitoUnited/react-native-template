@@ -1,13 +1,13 @@
 import { t, Trans } from '@lingui/macro';
+import { Link } from 'expo-router';
 import { useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as DropdownMenu from 'zeego/dropdown-menu';
-import { Link } from 'expo-router';
 
-import { styled, useTheme } from '~styles';
+import StatusBar from '~components/common/StatusBar';
 import { IconButton, Stack, Text } from '~components/uikit';
 import { useI18n } from '~services/i18n';
-import StatusBar from '~components/common/StatusBar';
+import { styled, useTheme } from '~styles';
 
 export default function Landing() {
   const { height } = useWindowDimensions();
@@ -18,7 +18,7 @@ export default function Landing() {
     <Wrapper>
       <ImageBackground source={require('~assets/landing_background.jpg')}>
         <TopSection
-          style={{ paddingTop: Math.max(insets.top, theme.space.normal) }}
+          style={{ paddingTop: Math.max(insets.top, theme.space.regular) }}
         >
           <TopSectionHeader>
             <LanguageSelector />
@@ -26,15 +26,15 @@ export default function Landing() {
 
           <TopSectionBody>
             <Stack axis="y" spacing="medium">
-              <BlackText variant="title3" align="center" withLineHeight>
+              <BlackText variant="headingS" align="center" withLineHeight>
                 <Trans>Welcome to</Trans>
               </BlackText>
-              <BlackText variant="title1" align="center">
+              <BlackText variant="headingXl" align="center">
                 <Trans>Taito Template</Trans>
               </BlackText>
 
               <BlackText
-                variant="subtitle"
+                variant="headingS"
                 align="center"
                 withLineHeight
                 style={{ marginLeft: 16 }}
@@ -46,7 +46,7 @@ export default function Landing() {
         </TopSection>
 
         <BottomSection style={{ minHeight: height * 0.4 }}>
-          <Stack axis="y" spacing="normal">
+          <Stack axis="y" spacing="regular">
             <WhiteText variant="body" align="center" withLineHeight>
               ✨ <Trans>Start your journey</Trans> ✨
             </WhiteText>
@@ -60,12 +60,12 @@ export default function Landing() {
 
             <Stack
               axis="x"
-              spacing="xsmall"
+              spacing="xs"
               align="center"
               style={{ alignSelf: 'center' }}
             >
               <Line />
-              <WhiteText variant="overline">Or</WhiteText>
+              <WhiteText variant="overlineSmall">Or</WhiteText>
               <Line />
             </Stack>
 
@@ -91,7 +91,7 @@ function LanguageSelector() {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
-        <IconButton icon="languageGlobe" forcedColor="#fff" />
+        <IconButton icon="globe" forcedColor="#fff" />
       </DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Item key="fi" onSelect={() => setLocale('fi')}>
@@ -118,7 +118,7 @@ const Wrapper = styled('View', {
 const ImageBackground = styled('ImageBackground', {
   flex: 1,
   justifyContent: 'flex-end',
-  paddingHorizontal: '$xxsmall',
+  paddingHorizontal: '$xxs',
 });
 
 const BlackText = styled(Text, {
@@ -136,7 +136,7 @@ const TopSection = styled('View', {
 const TopSectionHeader = styled('View', {
   flexDirection: 'row',
   justifyContent: 'flex-end',
-  paddingHorizontal: '$normal',
+  paddingHorizontal: '$regular',
 });
 
 const TopSectionBody = styled('View', {
@@ -146,7 +146,7 @@ const TopSectionBody = styled('View', {
 });
 
 const BottomSection = styled('View', {
-  padding: '$normal',
+  padding: '$regular',
   paddingTop: '$large',
   backgroundColor: 'rgba(0, 0, 0, 0.65)',
   borderRadius: '$large',

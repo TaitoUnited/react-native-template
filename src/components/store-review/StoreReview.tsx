@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react';
-import * as ExpoStoreReview from 'expo-store-review';
 import { Trans, t } from '@lingui/macro';
 import { differenceInDays } from 'date-fns';
-
-import { showToast } from '../common/Toaster';
+import * as ExpoStoreReview from 'expo-store-review';
+import { useEffect, useState } from 'react';
 
 import ImprovementForm from '~components/store-review/ImprovementForm';
 import {
@@ -13,8 +11,10 @@ import {
   Stack,
   Text,
 } from '~components/uikit';
-import storage from '~utils/storage';
 import { styled } from '~styles';
+import storage from '~utils/storage';
+
+import { showToast } from '../common/Toaster';
 
 const DAYS_TO_WAIT_BEFORE_ASKING_AGAIN = 7;
 const DAYS_BETWEEN_REVIEWS = 365;
@@ -90,8 +90,8 @@ export default function StoreReview() {
 
   function Feedback() {
     return (
-      <FeedbackWrapper axis="y" spacing="normal" align="center">
-        <Text variant="title3">
+      <FeedbackWrapper axis="y" spacing="regular" align="center">
+        <Text variant="headingS">
           <Trans>Enjoying the app?</Trans>
         </Text>
         <FillButton
@@ -142,5 +142,5 @@ export default function StoreReview() {
 
 const FeedbackWrapper = styled(Stack, {
   width: '100%',
-  paddingHorizontal: '$normal',
+  paddingHorizontal: '$regular',
 });

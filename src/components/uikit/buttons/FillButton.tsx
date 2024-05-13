@@ -1,6 +1,7 @@
-import type { ButtonProps } from './types';
-import ButtonContent from './ButtonContent';
 import { styled } from '~styles';
+
+import ButtonContent from './ButtonContent';
+import type { ButtonProps } from './types';
 
 export function FillButton({
   children,
@@ -36,7 +37,7 @@ const Wrapper = styled('TouchableOpacity', {
       danger: { backgroundColor: '$errorMuted' },
       warn: { backgroundColor: '$warnMuted' },
       info: { backgroundColor: '$infoMuted' },
-      neutral: { backgroundColor: '$muted5' },
+      neutral: { backgroundColor: '$neutral5' },
     },
     disabled: {
       true: { opacity: 0.5 },

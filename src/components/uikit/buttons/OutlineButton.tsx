@@ -1,6 +1,7 @@
-import type { ButtonProps, ButtonVariant } from './types';
-import ButtonContent from './ButtonContent';
 import { Color, styled } from '~styles';
+
+import ButtonContent from './ButtonContent';
+import type { ButtonProps, ButtonVariant } from './types';
 
 export function OutlineButton({
   children,
@@ -33,7 +34,7 @@ const variantToUnderlayColor: Record<ButtonVariant, Color> = {
   danger: 'errorMuted',
   warn: 'warnMuted',
   info: 'infoMuted',
-  neutral: 'muted5',
+  neutral: 'neutral5',
 };
 
 const Wrapper = styled('TouchableHighlight', {

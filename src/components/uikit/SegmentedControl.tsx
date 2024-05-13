@@ -1,6 +1,5 @@
-import type { LayoutChangeEvent, LayoutRectangle } from 'react-native';
 import { Fragment, useState } from 'react';
-
+import type { LayoutChangeEvent, LayoutRectangle } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -8,8 +7,9 @@ import Animated, {
   withSpring,
 } from 'react-native-reanimated';
 
-import { Text } from './Text';
 import { styled } from '~styles';
+
+import { Text } from './Text';
 
 type Props<T> = {
   segments: Array<{ value: T; label: string }>;
@@ -145,7 +145,7 @@ const SegmentButton = styled('TouchableOpacity', {
   flex: 1,
   flexCenter: 'row',
   paddingVertical: '$small',
-  paddingHorizontal: '$normal',
+  paddingHorizontal: '$regular',
   zIndex: 1,
   elevation: 1,
 }).attrs(() => ({

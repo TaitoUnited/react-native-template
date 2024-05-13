@@ -1,9 +1,10 @@
 import { Animated, ViewStyle } from 'react-native';
 
-import { Text } from '../Text';
-import { Icon, IconName } from '../Icon';
-import { useInputLabelAnimation } from './common';
 import { styled } from '~styles';
+
+import { useInputLabelAnimation } from './common';
+import { Icon, IconName } from '../Icon';
+import { Text } from '../Text';
 
 type Props = {
   value?: string;
@@ -72,7 +73,7 @@ export function InputButton({
       </InputWrapper>
 
       {!!message && (
-        <Message variant="caption" color="textMuted">
+        <Message variant="bodyExtraSmall" color="textMuted">
           {message}
         </Message>
       )}
@@ -101,8 +102,8 @@ const InputWrapper = styled('TouchableOpacity', {
   position: 'relative',
   flexDirection: 'row',
   borderBottomWidth: 1,
-  borderTopRightRadius: '$normal',
-  borderTopLeftRadius: '$normal',
+  borderTopRightRadius: '$regular',
+  borderTopLeftRadius: '$regular',
   overflow: 'hidden',
   variants: {
     focused: {
@@ -128,7 +129,7 @@ const Input = styled('View', {
 
 const InputDecoration = styled('View', {
   flexCenter: 'row',
-  paddingRight: '$xsmall',
+  paddingRight: '$xs',
 });
 
 const TextPlaceholder = styled('View', {
@@ -136,6 +137,6 @@ const TextPlaceholder = styled('View', {
 });
 
 const Message = styled(Text, {
-  marginTop: '$xsmall',
+  marginTop: '$xs',
   marginLeft: '$small',
 });

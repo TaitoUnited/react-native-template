@@ -1,20 +1,19 @@
-import { useCallback } from 'react';
-import { Platform, Alert } from 'react-native';
 import { t } from '@lingui/macro';
-import create from 'zustand';
-import flatten from 'lodash/flatten';
 import compact from 'lodash/compact';
-
+import flatten from 'lodash/flatten';
+import { useCallback } from 'react';
+import { Alert, Platform } from 'react-native';
 import {
-  RESULTS,
-  openSettings,
-  checkMultiple,
-  checkNotifications,
-  requestMultiple,
-  requestNotifications,
   PERMISSIONS,
   Permission,
+  RESULTS,
+  checkMultiple,
+  checkNotifications,
+  openSettings,
+  requestMultiple,
+  requestNotifications,
 } from 'react-native-permissions';
+import create from 'zustand';
 
 import { useAppState } from '~utils/observe';
 

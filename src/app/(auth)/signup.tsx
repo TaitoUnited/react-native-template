@@ -1,12 +1,12 @@
-import { useForm, Controller } from 'react-hook-form';
 import { t, Trans } from '@lingui/macro';
 import { useHeaderHeight } from '@react-navigation/elements';
+import { Controller, useForm } from 'react-hook-form';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-import { styled } from '~styles/styled';
-import { FillButton, Text, TextInput, Stack, Spacer } from '~components/uikit';
 import { showToast } from '~components/common/Toaster';
+import { FillButton, Spacer, Stack, Text, TextInput } from '~components/uikit';
 import { useAuthStore } from '~services/auth';
+import { styled } from '~styles/styled';
 
 type Credentials = {
   email: string;
@@ -51,7 +51,7 @@ export default function Signup() {
         >
           <Stack axis="y" spacing="medium">
             <Stack axis="y" spacing="small">
-              <Text variant="title2">
+              <Text variant="headingL">
                 <Trans>Create an account</Trans>
               </Text>
               <Text variant="bodySmall" color="textMuted">
@@ -61,7 +61,7 @@ export default function Signup() {
               </Text>
             </Stack>
 
-            <Stack axis="y" spacing="normal">
+            <Stack axis="y" spacing="regular">
               <Controller
                 name="email"
                 control={form.control}
@@ -268,7 +268,7 @@ const Scroller = styled(KeyboardAwareScrollView, {
   keyboardShouldPersistTaps: 'handled',
   contentContainerStyle: {
     flexGrow: 1,
-    padding: p.theme.space.normal,
+    padding: p.theme.space.regular,
     paddingTop: p.theme.space.medium,
   },
 }));

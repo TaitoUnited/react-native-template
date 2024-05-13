@@ -1,13 +1,13 @@
-import { Platform, StyleSheet } from 'react-native';
-import { Tabs } from 'expo-router';
 import { t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
+import { Tabs } from 'expo-router';
+import { StyleSheet } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import StoreReview from '~components/store-review/StoreReview';
+import { Icon, Text } from '~components/uikit';
 import type { IconName } from '~components/uikit/Icon';
 import { useTheme } from '~styles';
-import { Icon, Text } from '~components/uikit';
-import { useDefaultHeaderOptions } from '~utils/navigation';
 
 type TabList = {
   id: string;
@@ -23,35 +23,35 @@ export default function TabsLayout() {
    * It is the only place that needs that addition, not sure why.
    */
   useLingui();
+  const insets = useSafeAreaInsets();
 
   const theme = useTheme();
-  const defaultHeaderOptions = useDefaultHeaderOptions();
   const tabs: TabList = [
     {
       id: 'home',
       title: t`Home`,
       iconFilled: 'homeFilled',
-      iconOutlined: 'homeOutlined',
+      iconOutlined: 'home',
     },
     {
       id: 'search',
       title: t`Search`,
-      iconFilled: 'searchThick',
+      iconFilled: 'search',
       iconOutlined: 'search',
     },
 
     {
       id: 'profile',
       title: t`Profile`,
-      iconFilled: 'userCicleFilled',
-      iconOutlined: 'userCicleOutlined',
+      iconFilled: 'personCircleFilled',
+      iconOutlined: 'personCircle',
     },
 
     {
       id: 'settings',
       title: t`Settings`,
-      iconFilled: 'settingsCogFilled',
-      iconOutlined: 'settingsCogOutlined',
+      iconFilled: 'settingsFilled',
+      iconOutlined: 'settings',
     },
   ];
 
@@ -60,10 +60,20 @@ export default function TabsLayout() {
       <Tabs
         initialRouteName="home"
         screenOptions={{
-          ...defaultHeaderOptions,
+          headerStyle: {
+            backgroundColor: theme.colors.surface,
+          },
+          headerTintColor: theme.colors.text,
+          headerBackgroundContainerStyle: {
+            borderBottomColor: theme.colors.line3,
+            borderBottomWidth: StyleSheet.hairlineWidth,
+          },
+          headerTitleStyle: {
+            fontSize: theme.fontSizes.bodyBold,
+          },
           tabBarStyle: {
-            backgroundColor: theme.colors.background,
-            borderTopColor: theme.colors.muted3,
+            backgroundColor: theme.colors.surface,
+            borderTopColor: theme.colors.line3,
             borderTopWidth: StyleSheet.hairlineWidth,
           },
         }}
@@ -75,12 +85,12 @@ export default function TabsLayout() {
             options={{
               title,
               tabBarItemStyle: {
-                // On Android the label is too close to the bottom edge of the tab bar
-                paddingBottom: Platform.OS === 'android' ? 4 : 0,
+                // On certain devices without insets, the tab bar is too close to the bottom of the screen
+                paddingBottom: insets.bottom === 0 ? 4 : 0,
               },
               tabBarLabel: ({ focused }) => (
                 <Text
-                  variant="caption"
+                  variant="bodyExtraSmall"
                   color={focused ? 'text' : 'textMuted'}
                   testID={id}
                 >

@@ -1,8 +1,9 @@
-import { useRef, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Animated, PixelRatio } from 'react-native';
 
-import { Text } from '../Text';
 import { styled } from '~styles';
+
+import { Text } from '../Text';
 
 type Props = {
   onChange: (value: string) => void;

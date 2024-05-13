@@ -1,7 +1,7 @@
+import { router } from 'expo-router';
 import { FunctionComponent, ReactNode, isValidElement } from 'react';
 import { Platform, StyleSheet } from 'react-native';
 
-import { router } from 'expo-router';
 import { Icon, Stack, Text } from '~components/uikit';
 import { styled } from '~styles';
 
@@ -44,9 +44,9 @@ export default function MenuList({ items, title }: Props) {
   }
 
   return (
-    <Stack axis="y" spacing="xsmall">
+    <Stack axis="y" spacing="xs">
       {!!title && (
-        <Title variant="overline" color="textMuted">
+        <Title variant="overlineSmall" color="textMuted">
           {title}
         </Title>
       )}
@@ -96,11 +96,7 @@ export default function MenuList({ items, title }: Props) {
                       <>
                         {item.checked ? (
                           <CheckCircle>
-                            <Icon
-                              name="checkmark"
-                              color="infoMuted"
-                              size={14}
-                            />
+                            <Icon name="check" color="infoMuted" size={14} />
                           </CheckCircle>
                         ) : (
                           <CheckOutline />
@@ -109,7 +105,7 @@ export default function MenuList({ items, title }: Props) {
                     )}
 
                     {!!item.target && (
-                      <Icon name="chevronRight" size={24} color="muted2" />
+                      <Icon name="chevronRight" size={24} color="neutral2" />
                     )}
                   </>
                 )}
@@ -134,15 +130,15 @@ const Title = styled(Text, {
 
 const Label = styled(Text, {
   flex: 1,
-  paddingVertical: '$xxsmall',
+  paddingVertical: '$xxs',
 });
 
-const Pressable = styled('TouchableHighlight', {}).attrs((p) => ({
-  underlayColor: p.theme.colors.pressHighlight,
+const Pressable = styled('TouchableHighlight', {}).attrs(() => ({
+  underlayColor: 'rgba(150, 150, 150, 0.2)', // TODO: Design system template do not have the pressed color for now. Might be added in the future.
 }));
 
 const ContentWrapper = styled(Stack, {
-  paddingLeft: '$normal',
+  paddingLeft: '$regular',
 });
 
 const Content = styled(Stack, {
@@ -153,7 +149,7 @@ const Content = styled(Stack, {
     withDivider: {
       true: {
         borderBottomWidth: StyleSheet.hairlineWidth,
-        borderBottomColor: '$border',
+        borderBottomColor: '$line3',
       },
     },
   },

@@ -1,8 +1,9 @@
 import { cloneElement, isValidElement, ReactNode, useState } from 'react';
 import { LayoutChangeEvent, View, ViewProps } from 'react-native';
 
-import { flattenChildren } from '../helpers';
 import { styled, Theme, useTheme } from '~styles';
+
+import { flattenChildren } from '../helpers';
 
 type Props = ViewProps & {
   spacing: keyof Theme['space'];
@@ -35,20 +36,19 @@ export function Grid({
       style={[rest.style, { margin: theme.space[spacing] / -2 }]}
       onLayout={(e: LayoutChangeEvent) => setWidth(e.nativeEvent.layout.width)}
     >
-      {colWidth !== undefined &&
-        elements.map((child, index) => {
-          return (
-            <View
-              key={index}
-              style={{
-                margin: theme.space[spacing] / 2,
-                width: colWidth && colWidth - theme.space[spacing],
-              }}
-            >
-              {isValidElement(child) ? cloneElement(child) : null}
-            </View>
-          );
-        })}
+      {elements.map((child, index) => {
+        return (
+          <View
+            key={index}
+            style={{
+              margin: theme.space[spacing] / 2,
+              width: colWidth && colWidth - theme.space[spacing],
+            }}
+          >
+            {isValidElement(child) ? cloneElement(child) : null}
+          </View>
+        );
+      })}
     </Wrapper>
   );
 }

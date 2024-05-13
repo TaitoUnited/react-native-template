@@ -1,20 +1,20 @@
 import type { ReactNode } from 'react';
 
-import { styled } from '~styles';
 import { Icon, Stack, Text } from '~components/uikit';
+import { styled } from '~styles';
 
 export function Note({ children }: { children: ReactNode }) {
   return (
     <NoteWrapper>
-      <Stack axis="y" spacing="xsmall">
-        <Stack axis="x" spacing="xxsmall" align="center">
-          <Icon name="warningTriangle" color="warn" />
-          <Text variant="bodyBold" color="warnText">
+      <Stack axis="y" spacing="xs">
+        <Stack axis="x" spacing="xxs" align="center">
+          <Icon name="warning" color="warn" />
+          <Text variant="bodyBold" color="warnContrast">
             Note:
           </Text>
         </Stack>
 
-        <Text variant="bodySmall" color="warnText" withLineHeight>
+        <Text variant="bodySmall" color="warnContrast" withLineHeight>
           {children}
         </Text>
       </Stack>
@@ -27,5 +27,5 @@ const NoteWrapper = styled('View', {
   borderColor: '$warn',
   borderRadius: '$small',
   backgroundColor: '$warnMuted',
-  padding: '$normal',
+  padding: '$regular',
 });

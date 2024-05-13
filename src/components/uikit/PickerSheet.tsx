@@ -1,17 +1,18 @@
-import { memo, ReactNode, useState } from 'react';
-import { Modal, Platform } from 'react-native';
 import { Trans } from '@lingui/macro';
 import { FlashList } from '@shopify/flash-list';
+import { ReactNode, memo, useState } from 'react';
+import { Modal, Platform } from 'react-native';
 
-import { Text } from './Text';
-import { Stack } from './layout/Stack';
-import { Spacer } from './layout/Spacer';
-import { Radio } from './inputs/Radio';
-import { Checkbox } from './inputs/Checkbox';
-import { SearchInput } from './inputs/SearchInput';
+import StatusBar from '~components/common/StatusBar';
 import { styled } from '~styles';
 import { useEffectEvent } from '~utils/common';
-import StatusBar from '~components/common/StatusBar';
+
+import { Text } from './Text';
+import { Checkbox } from './inputs/Checkbox';
+import { Radio } from './inputs/Radio';
+import { SearchInput } from './inputs/SearchInput';
+import { Spacer } from './layout/Spacer';
+import { Stack } from './layout/Stack';
 
 type Option = {
   label: string;
@@ -249,7 +250,7 @@ function ListEmpty({ children }: { children?: ReactNode }) {
   return (
     <ListEmptyWrapper>
       {children || (
-        <Stack axis="y" spacing="normal">
+        <Stack axis="y" spacing="regular">
           <Text align="center">
             <Trans>No results found.</Trans>
           </Text>
@@ -263,12 +264,12 @@ function ListEmpty({ children }: { children?: ReactNode }) {
 }
 
 function ListSeparator() {
-  return <Spacer axis="y" size="normal" />;
+  return <Spacer axis="y" size="regular" />;
 }
 
 const SafeArea = styled('SafeAreaView', {
   flex: 1,
-  backgroundColor: '$elevated',
+  backgroundColor: '$surface',
 });
 
 const ListEmptyWrapper = styled('View', {
@@ -278,8 +279,8 @@ const ListEmptyWrapper = styled('View', {
 
 const ListHeaderWrapper = styled('View', {
   marginBottom: '$small',
-  padding: '$normal',
-  backgroundColor: '$elevated',
+  padding: '$regular',
+  backgroundColor: '$surface',
   borderBottomWidth: 1,
   borderColor: '$border',
 });
@@ -302,6 +303,6 @@ const Footer = styled('View', {
 });
 
 const ActionButton = styled('TouchableOpacity', {
-  padding: '$normal',
+  padding: '$regular',
   flexCenter: 'row',
 });

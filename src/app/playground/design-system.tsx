@@ -1,25 +1,12 @@
 import startCase from 'lodash/startCase';
-import groupBy from 'lodash/groupBy';
 
 import { Note } from '~components/playground/common';
-import { Color, styled, themeProp } from '~styles';
 import { Grid, Stack, Text } from '~components/uikit';
-import { light as colors } from '~design-system/colors';
-import { native as typography } from '~design-system/typography';
+import * as colors from '~design-system/colors';
 import * as radii from '~design-system/radii';
-import * as spacing from '~design-system/spacing';
-
-const otherColors: Color[] = [];
-const colorNames = Object.keys(colors).sort() as Color[];
-const colorGroups = groupBy(colorNames, (n) => startCase(n).split(' ')[0]);
-
-// Move colors from groups that have less than 3 colors to the `otherColors` group
-Object.keys(colorGroups).forEach((group) => {
-  if (colorGroups[group].length < 3) {
-    colorGroups[group].forEach((color) => otherColors.push(color));
-    delete colorGroups[group];
-  }
-});
+import spacing from '~design-system/spacing.json';
+import * as typography from '~design-system/typography';
+import { styled, themeProp } from '~styles';
 
 const typographyNames = Object.keys(typography).sort();
 const radiiEntries = Object.entries(radii).sort((a, b) => a[1] - b[1]);
@@ -28,41 +15,29 @@ const spacingEntries = Object.entries(spacing).sort((a, b) => a[1] - b[1]);
 export default function DesignSystem() {
   return (
     <Wrapper>
-      <Stack axis="y" spacing="xlarge">
+      <Stack axis="y" spacing="xl">
         <Stack axis="y" spacing="medium">
-          <Text variant="title3">Colors</Text>
+          <Text variant="headingS">Colors</Text>
 
-          {Object.entries(colorGroups).map(([groupName, groupColors]) => (
-            <Stack key={groupName} axis="y" spacing="small">
-              <Text variant="bodyBold">{groupName}</Text>
+          {Object.entries(colors).map((category) => (
+            <Stack key={category[0]} axis="y" spacing="small">
+              <Text variant="bodyBold">{startCase(category[0])}</Text>
 
-              <Grid spacing="normal" columns={3}>
-                {groupColors.map((color) => (
-                  <Stack key={color} axis="y" spacing="xsmall" align="center">
-                    <ColorBlock bg={color} />
-                    <Text variant="bodySmall" color="textMuted">
-                      {startCase(color)}
-                    </Text>
-                  </Stack>
-                ))}
+              <Grid spacing="regular" columns={3}>
+                {Object.entries(category[1]).map((color) => {
+                  const colorName = color[0] as colors.ColorsToken;
+                  return (
+                    <Stack key={colorName} axis="y" spacing="xs" align="center">
+                      <ColorBlock bg={colorName} />
+                      <Text variant="bodySmall" color="neutral2">
+                        {startCase(colorName)}
+                      </Text>
+                    </Stack>
+                  );
+                })}
               </Grid>
             </Stack>
           ))}
-
-          <Stack axis="y" spacing="small">
-            <Text variant="bodyBold">Other</Text>
-
-            <Grid spacing="normal" columns={3}>
-              {otherColors.map((color) => (
-                <Stack key={color} axis="y" spacing="xsmall" align="center">
-                  <ColorBlock bg={color} />
-                  <Text variant="bodySmall" color="textMuted">
-                    {startCase(color)}
-                  </Text>
-                </Stack>
-              ))}
-            </Grid>
-          </Stack>
 
           <Note>
             If the design system colors are shared between a Web app and a
@@ -72,9 +47,9 @@ export default function DesignSystem() {
         </Stack>
 
         <Stack axis="y" spacing="medium">
-          <Text variant="title3">Typography</Text>
+          <Text variant="headingS">Typography</Text>
 
-          <Stack axis="y" spacing="xsmall">
+          <Stack axis="y" spacing="xs">
             {typographyNames.map((name) => (
               <TypographyBlock key={name}>
                 <Text variant={name as any}>{startCase(name)}</Text>
@@ -88,12 +63,12 @@ export default function DesignSystem() {
           </Note>
         </Stack>
 
-        <Stack axis="y" spacing="normal">
-          <Text variant="title3">Radii</Text>
+        <Stack axis="y" spacing="regular">
+          <Text variant="headingS">Radii</Text>
 
-          <Grid spacing="normal" justify="center">
+          <Grid spacing="regular" justify="center">
             {radiiEntries.map(([name, value]) => (
-              <Stack key={name} axis="y" spacing="xsmall" align="center">
+              <Stack key={name} axis="y" spacing="xs" align="center">
                 <RadiiBlock style={{ borderRadius: value }}>
                   <Text variant="body" color="textMuted">
                     {value}px
@@ -106,11 +81,11 @@ export default function DesignSystem() {
         </Stack>
 
         <Stack axis="y" spacing="medium">
-          <Text variant="title3">Spacing</Text>
+          <Text variant="headingS">Spacing</Text>
 
-          <Stack axis="y" spacing="xxsmall">
+          <Stack axis="y" spacing="xxs">
             {spacingEntries.map(([name, value]) => (
-              <Stack key={name} axis="x" spacing="xsmall" align="center">
+              <Stack key={name} axis="x" spacing="xs" align="center">
                 <Text variant="bodySmall" style={{ minWidth: 56 }}>
                   {startCase(name)}
                 </Text>
@@ -137,7 +112,7 @@ const Wrapper = styled('ScrollView', {
   flex: 1,
 }).attrs((p) => ({
   contentContainerStyle: {
-    padding: p.theme.space.normal,
+    padding: p.theme.space.regular,
     paddingBottom: 100,
   },
 }));
@@ -156,7 +131,7 @@ const ColorBlock = styled('View', {
 });
 
 const TypographyBlock = styled('View', {
-  padding: '$normal',
+  padding: '$regular',
   borderRadius: '$medium',
   borderWidth: 1,
   borderColor: 'rgba(150, 150, 150, 0.15)',
@@ -167,7 +142,7 @@ const RadiiBlock = styled('View', {
   width: 100,
   borderWidth: 1,
   borderColor: '$border',
-  backgroundColor: '$muted5',
+  backgroundColor: '$neutral5',
   flexCenter: 'row',
 });
 
@@ -176,5 +151,5 @@ const SpacingBlock = styled('View', {
   borderWidth: 1,
   borderRadius: 2,
   borderColor: '$border',
-  backgroundColor: '$muted5',
+  backgroundColor: '$neutral5',
 });

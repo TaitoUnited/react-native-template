@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native';
 
 import { Note } from '~components/playground/common';
-import { styled } from '~styles';
 import { Grid, Spacer, Stack, Text } from '~components/uikit';
+import { styled } from '~styles';
 
 export default function Layout() {
   return (
@@ -14,8 +14,8 @@ export default function Layout() {
           SectionList!
         </Note>
 
-        <Stack axis="y" spacing="normal">
-          <Text variant="title3">Stack</Text>
+        <Stack axis="y" spacing="regular">
+          <Text variant="headingS">Stack</Text>
 
           <Text variant="body" withLineHeight>
             Stack component is used to stack elements vertically or horizontally
@@ -24,11 +24,11 @@ export default function Layout() {
 
           <ExampleBlock>
             <Stack axis="y" spacing="small">
-              <Text variant="bodySmallBold" color="infoText">
-                {`<Stack axis="x" spacing="normal">...</Stack>`}
+              <Text variant="bodySmallBold" color="infoContrast">
+                {`<Stack axis="x" spacing="regular">...</Stack>`}
               </Text>
 
-              <Stack axis="x" spacing="normal">
+              <Stack axis="x" spacing="regular">
                 <Box />
                 <Box />
                 <Box />
@@ -38,7 +38,7 @@ export default function Layout() {
 
           <ExampleBlock>
             <Stack axis="y" spacing="small">
-              <Text variant="bodySmallBold" color="infoText">
+              <Text variant="bodySmallBold" color="infoContrast">
                 {`<Stack axis="y" spacing="small">...</Stack>`}
               </Text>
 
@@ -51,8 +51,8 @@ export default function Layout() {
           </ExampleBlock>
         </Stack>
 
-        <Stack axis="y" spacing="normal">
-          <Text variant="title3">Spacer</Text>
+        <Stack axis="y" spacing="regular">
+          <Text variant="headingS">Spacer</Text>
 
           <Text variant="body" withLineHeight>
             It&lsquo;s possible to intervine Spacer components within a Stack to
@@ -62,9 +62,9 @@ export default function Layout() {
 
           <ExampleBlock>
             <Stack axis="y" spacing="small">
-              <Text variant="bodySmallBold" color="infoText" withLineHeight>
+              <Text variant="bodySmallBold" color="infoContrast" withLineHeight>
                 {`
-<Stack axis="x" spacing="xsmall">
+<Stack axis="x" spacing="xs">
     <Box />
     <Spacer size="large" />
     <Box />
@@ -72,7 +72,7 @@ export default function Layout() {
 </Stack>`.trim()}
               </Text>
 
-              <Stack axis="x" spacing="xsmall">
+              <Stack axis="x" spacing="xs">
                 <Box />
                 <Spacer size="large" />
                 <Box />
@@ -82,8 +82,8 @@ export default function Layout() {
           </ExampleBlock>
         </Stack>
 
-        <Stack axis="y" spacing="normal">
-          <Text variant="title3">Grid</Text>
+        <Stack axis="y" spacing="regular">
+          <Text variant="headingS">Grid</Text>
 
           <Text variant="body" withLineHeight>
             A Grid component can be used for grid-like layouts.
@@ -91,11 +91,11 @@ export default function Layout() {
 
           <ExampleBlock>
             <Stack axis="y" spacing="small">
-              <Text variant="bodySmallBold" color="infoText">
-                {`<Grid spacing="xsmall">...</Grid>`}
+              <Text variant="bodySmallBold" color="infoContrast">
+                {`<Grid spacing="xs">...</Grid>`}
               </Text>
 
-              <Grid spacing="xsmall">
+              <Grid spacing="xs">
                 {Array.from({ length: 15 }).map((_, i) => (
                   <Box key={i} />
                 ))}
@@ -111,11 +111,11 @@ export default function Layout() {
 
           <ExampleBlock>
             <Stack axis="y" spacing="small">
-              <Text variant="bodySmallBold" color="infoText">
-                {`<Grid spacing="xsmall" colums={3}>...</Grid>`}
+              <Text variant="bodySmallBold" color="infoContrast">
+                {`<Grid spacing="xs" colums={3}>...</Grid>`}
               </Text>
 
-              <Grid spacing="xsmall" columns={3}>
+              <Grid spacing="xs" columns={3}>
                 {Array.from({ length: 15 }).map((_, i) => (
                   <Box key={i} style={{ width: '100%' }} />
                 ))}
@@ -132,7 +132,7 @@ const Wrapper = styled('ScrollView', {
   flex: 1,
 }).attrs((p) => ({
   contentContainerStyle: {
-    padding: p.theme.space.normal,
+    padding: p.theme.space.regular,
     paddingBottom: 100,
   },
 }));
@@ -142,7 +142,7 @@ const ExampleBlock = styled('View', {
   borderWidth: 1,
   borderColor: '$border',
   borderRadius: '$small',
-  backgroundColor: '$muted5',
+  backgroundColor: '$neutral5',
 });
 
 const Box = styled('View', {
@@ -150,6 +150,6 @@ const Box = styled('View', {
   width: 60,
   borderWidth: StyleSheet.hairlineWidth,
   borderColor: '$info',
-  borderRadius: '$normal',
+  borderRadius: '$regular',
   backgroundColor: '$infoMuted',
 });

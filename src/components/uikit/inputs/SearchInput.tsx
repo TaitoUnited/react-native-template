@@ -1,11 +1,12 @@
+import { t, Trans } from '@lingui/macro';
 import { useRef, useState } from 'react';
 import { TextInputProps, TouchableOpacity } from 'react-native';
-import { t, Trans } from '@lingui/macro';
 
+import { styled } from '~styles';
+
+import { Icon } from '../Icon';
 import { Text } from '../Text';
 import { Stack } from '../layout/Stack';
-import { Icon } from '../Icon';
-import { styled } from '~styles';
 
 type Props = Omit<TextInputProps, 'onChange'> & {
   value: string;
@@ -27,10 +28,10 @@ export function SearchInput({
   }
 
   return (
-    <Stack axis="x" spacing="xsmall" align="center">
+    <Stack axis="x" spacing="xs" align="center">
       <InputWrapper>
-        <Stack axis="x" spacing="xsmall" align="center">
-          <Icon name="search" color="muted1" size={24} />
+        <Stack axis="x" spacing="xs" align="center">
+          <Icon name="search" color="neutral1" size={24} />
 
           <Input
             {...rest}
@@ -61,7 +62,7 @@ export function SearchInput({
 
 const InputWrapper = styled('View', {
   flex: 1,
-  paddingVertical: '$xsmall',
+  paddingVertical: '$xs',
   paddingHorizontal: '$small',
   borderRadius: '$full',
   backgroundColor: '$muted6',
@@ -73,5 +74,5 @@ const Input = styled('TextInput', {
   flexGrow: 1,
   padding: 0,
 }).attrs((p) => ({
-  placeholderTextColor: p.theme.colors.muted1,
+  placeholderTextColor: p.theme.colors.neutral1,
 }));

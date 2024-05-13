@@ -1,14 +1,14 @@
 import { PixelRatio } from 'react-native';
-
 import Animated, {
   Easing,
   useAnimatedStyle,
   withTiming,
 } from 'react-native-reanimated';
 
-import { Text } from '../Text';
-import { Icon } from '../Icon';
 import { styled } from '~styles';
+
+import { Icon } from '../Icon';
+import { Text } from '../Text';
 
 type Props = {
   onChange: (value: string) => void;
@@ -35,7 +35,7 @@ export function Checkbox({ onChange, checked, value, label }: Props) {
     <Wrapper onPress={() => onChange(value)} activeOpacity={0.8}>
       <RadioOuter>
         <Animated.View style={animatedStyles}>
-          <Icon name="checkmark" size={18} color="text" />
+          <Icon name="check" size={18} color="text" />
         </Animated.View>
       </RadioOuter>
 
@@ -54,7 +54,7 @@ const RadioOuter = styled('View', {
   width: 24,
   height: 24,
   backgroundColor: 'transparent',
-  borderRadius: '$normal',
+  borderRadius: '$regular',
   borderWidth: PixelRatio.roundToNearestPixel(1.5), // try to match icon width
   marginRight: '$small',
   borderColor: '$text',

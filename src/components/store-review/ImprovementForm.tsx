@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import { ScrollView } from 'react-native';
 import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
 import { Trans, t } from '@lingui/macro';
+import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import { ScrollView } from 'react-native';
 
+import { showToast } from '~components/common/Toaster';
 import { FillButton, IconButton, Stack, Text } from '~components/uikit';
 import { styled } from '~styles';
 import { sleep } from '~utils/common';
-import { showToast } from '~components/common/Toaster';
 
 type ImprovementFormType = {
   onCancel: () => void;
@@ -48,9 +48,9 @@ export default function ImprovementForm({
       justify="between"
       style={{ height: '100%' }}
     >
-      <BackButton icon="x" onPress={onCancel} />
+      <BackButton icon="close" onPress={onCancel} />
 
-      <Text variant="title3">
+      <Text variant="headingS">
         <Trans>How can we improve?</Trans>
       </Text>
       <ScrollView
@@ -108,8 +108,8 @@ const InputWrapper = styled('View', {
   position: 'relative',
   flexDirection: 'row',
   borderBottomWidth: 1,
-  borderTopRightRadius: '$normal',
-  borderTopLeftRadius: '$normal',
+  borderTopRightRadius: '$regular',
+  borderTopLeftRadius: '$regular',
   variants: {
     focused: {
       true: { backgroundColor: 'rgba(150, 150, 150, 0.15)' },

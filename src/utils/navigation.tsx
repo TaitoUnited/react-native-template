@@ -1,11 +1,10 @@
-import { useEffect } from 'react';
-import { StackNavigationOptions } from '@react-navigation/stack';
-import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
-
 import { t } from '@lingui/macro';
-
-import { useNavigation } from 'expo-router';
 import { NavigationState, PartialState } from '@react-navigation/native';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import { StackNavigationOptions } from '@react-navigation/stack';
+import { useNavigation } from 'expo-router';
+import { useEffect } from 'react';
+
 import { useTheme } from '~styles';
 
 export function getActiveRouteName(
@@ -17,29 +16,17 @@ export function getActiveRouteName(
   return getActiveRouteName(route.state);
 }
 
-export function useDefaultHeaderOptions() {
+export function useDefaultStackScreenOptions() {
   const theme = useTheme();
 
-  const headerOptions = {
+  const screenOptions: NativeStackNavigationOptions = {
     headerStyle: {
-      backgroundColor: theme.colors.background,
+      backgroundColor: theme.colors.surface,
     },
     headerTintColor: theme.colors.text,
-
     headerTitleStyle: {
       fontSize: theme.fontSizes.bodyBold,
     },
-  };
-
-  return headerOptions;
-}
-
-export function useDefaultStackScreenOptions() {
-  const theme = useTheme();
-  const defaultHeaderOptions = useDefaultHeaderOptions();
-
-  const screenOptions: NativeStackNavigationOptions = {
-    ...defaultHeaderOptions,
     headerBackTitleStyle: {
       fontSize: theme.fontSizes.body,
     },

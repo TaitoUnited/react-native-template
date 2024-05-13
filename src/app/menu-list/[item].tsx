@@ -1,7 +1,9 @@
-import { useEffect } from 'react';
 import { Stack, router, useLocalSearchParams } from 'expo-router';
-import { useMenuListItem } from '../(tabs)/settings';
+import { useEffect } from 'react';
+
 import { styled } from '~styles';
+
+import { useMenuListItem } from '../(tabs)/settings';
 
 export default function MenuListItem() {
   const { item } = useLocalSearchParams<{ item: string }>();
@@ -28,6 +30,6 @@ const Wrapper = styled('ScrollView', {
   flex: 1,
 }).attrs((p) => ({
   contentContainerStyle: {
-    padding: p.theme.space.normal,
+    padding: p.theme.space.regular,
   },
 }));

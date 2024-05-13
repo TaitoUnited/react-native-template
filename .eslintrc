@@ -6,21 +6,21 @@
     "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:lodash/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
   ],
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint", "import", "lodash", "prettier"],
   "parserOptions": {
     "sourceType": "module",
-    "ecmaVersion": 2020
+    "ecmaVersion": 2020,
   },
   "env": {
-    "es6": true
+    "es6": true,
   },
   "settings": {
     "react": {
-      "version": "detect"
-    }
+      "version": "detect",
+    },
   },
   "globals": {
     "__DEV__": true,
@@ -65,7 +65,7 @@
     "URLSearchParams": false,
     "WebSocket": true,
     "window": false,
-    "XMLHttpRequest": false
+    "XMLHttpRequest": false,
   },
   "rules": {
     // You must disable the base rule as it can report incorrect errors
@@ -83,7 +83,7 @@
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-unused-vars": [
       "error",
-      { "argsIgnorePattern": "^_" }
+      { "argsIgnorePattern": "^_" },
     ],
     "@typescript-eslint/explicit-module-boundary-types": "off",
 
@@ -106,11 +106,20 @@
     "import/order": [
       "error",
       {
+        "pathGroups": [
+          {
+            "pattern": "{~*,~*/**}",
+            "group": "internal",
+            "position": "after",
+          },
+        ],
         "groups": [
           ["builtin", "external", "internal"],
-          ["parent", "sibling", "index"]
-        ]
-      }
-    ]
-  }
+          ["parent", "sibling", "index"],
+        ],
+        "newlines-between": "always",
+        "alphabetize": { "order": "asc", "caseInsensitive": false },
+      },
+    ],
+  },
 }

@@ -35,7 +35,7 @@ export default function Settings() {
 
   const items = [
     useMenuListItem('LanguageMenuTarget'),
-    useMenuListItem('AppearanceMenuTarget'),
+    // useMenuListItem('AppearanceMenuTarget'), // We currently do not support dark mode, so until we do, we should not show this option
     useMenuListItem('SystemInfoMenuTarget'),
     {
       id: 'logout',
@@ -158,7 +158,7 @@ function SystemInfoMenuTarget() {
             showToast({
               title: t`Copied to clipboard`,
               type: 'success',
-              icon: 'checkmark',
+              icon: 'check',
             });
           }}
         >
@@ -177,7 +177,7 @@ const Wrapper = styled('ScrollView', {
   flex: 1,
 }).attrs((p) => ({
   contentContainerStyle: {
-    padding: p.theme.space.normal,
+    padding: p.theme.space.regular,
   },
 }));
 

@@ -1,3 +1,5 @@
+import * as colors from '~design-system/colors';
+
 const WEIGHT_TO_FONT = {
   100: 'Thin',
   200: 'ExtraLight',
@@ -106,6 +108,20 @@ export function getShadows<
   });
 
   return shadows;
+}
+
+export function transformColors(
+  colorGroups: Record<keyof typeof colors, Record<string, string>>
+) {
+  const tokens: Record<string, string> = {};
+
+  Object.values(colorGroups).forEach((colorGroup) => {
+    Object.entries(colorGroup).forEach(([key, value]) => {
+      tokens[key] = value;
+    });
+  });
+
+  return tokens as Record<colors.ColorsToken, string>;
 }
 
 // Types ----------------------------------------------------------------------

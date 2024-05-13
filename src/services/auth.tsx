@@ -1,9 +1,9 @@
-import { unstable_batchedUpdates } from 'react-native'; // eslint-disable-line
 import { t } from '@lingui/macro';
+import { unstable_batchedUpdates } from 'react-native'; // eslint-disable-line
 import create from 'zustand';
 
-import storage from '~utils/storage';
 import { showToast } from '~components/common/Toaster';
+import storage from '~utils/storage';
 
 type AuthStatus =
   | 'undetermined'

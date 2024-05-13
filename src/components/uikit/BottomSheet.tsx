@@ -1,8 +1,8 @@
-import { ReactNode, forwardRef } from 'react';
 import RNBottomSheet, {
   BottomSheetBackdrop,
   BottomSheetProps as RNBottomSheetProps,
 } from '@gorhom/bottom-sheet';
+import { ReactNode, forwardRef } from 'react';
 
 import { styled, useTheme } from '~styles';
 
@@ -36,7 +36,7 @@ export const BottomSheet = forwardRef(
     return (
       <RNBottomSheet
         ref={ref}
-        backgroundStyle={{ backgroundColor: theme.colors.elevated }}
+        backgroundStyle={{ backgroundColor: theme.colors.surface }}
         index={initialIndex}
         snapPoints={snapPoints}
         onChange={handleSheetChanges}
@@ -61,5 +61,5 @@ export const BottomSheet = forwardRef(
 BottomSheet.displayName = 'BottomSheet';
 
 const ContentWrapper = styled('View', {
-  padding: '$normal',
+  padding: '$regular',
 });

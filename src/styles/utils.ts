@@ -1,8 +1,8 @@
-import type * as Stitches from 'stitches-native';
 import { StyleSheet } from 'react-native';
+import type * as Stitches from 'stitches-native';
 
-import { native as typographyTokens } from '~design-system/typography';
 import * as shadows from '~design-system/shadows';
+import * as typographyTokens from '~design-system/typography';
 import * as designSystemUtils from '~design-system/utils';
 
 type Typography = keyof typeof typographyTokens;

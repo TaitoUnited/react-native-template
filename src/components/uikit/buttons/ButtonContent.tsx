@@ -1,11 +1,12 @@
 import { ReactNode } from 'react';
 import { ActivityIndicator } from 'react-native';
 
+import { Color, Typography, styled, useTheme } from '~styles';
+
+import { ButtonProps, ButtonSize, ButtonVariant } from './types';
+import { Icon } from '../Icon';
 import { Text } from '../Text';
 import { Stack } from '../layout/Stack';
-import { Icon } from '../Icon';
-import type { ButtonProps, ButtonSize, ButtonVariant } from './types';
-import { Color, Typography, styled, useTheme } from '~styles';
 
 type Props = {
   children: ReactNode;
@@ -49,7 +50,7 @@ export default function ButtonContent({
         axis="x"
         align="center"
         justify="center"
-        spacing={size === 'large' ? 'small' : 'xsmall'}
+        spacing={size === 'large' ? 'small' : 'xs'}
       >
         {!!decoration && (
           <Decoration>
@@ -77,10 +78,10 @@ export default function ButtonContent({
 }
 
 const variantToColor: Record<ButtonVariant, Color> = {
-  primary: 'primaryText',
-  danger: 'errorText',
-  warn: 'warnText',
-  info: 'infoText',
+  primary: 'primaryContrast',
+  danger: 'errorContrast',
+  warn: 'warnContrast',
+  info: 'infoContrast',
   neutral: 'text',
 };
 
@@ -106,7 +107,7 @@ const Wrapper = styled('View', {
       },
       medium: {
         minHeight: 44,
-        paddingHorizontal: '$normal',
+        paddingHorizontal: '$regular',
       },
       large: {
         minHeight: 60,

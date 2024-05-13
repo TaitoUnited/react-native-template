@@ -1,10 +1,11 @@
 import { forwardRef, useEffect, useState } from 'react';
 import { Animated, TextInputProps, TouchableOpacity } from 'react-native';
 
-import { Text } from '../Text';
-import { Icon } from '../Icon';
-import { useInputLabelAnimation } from './common';
 import { styled, useTheme } from '~styles';
+
+import { useInputLabelAnimation } from './common';
+import { Icon } from '../Icon';
+import { Text } from '../Text';
 
 type Props = Omit<TextInputProps, 'onChange'> & {
   value: string;
@@ -91,7 +92,7 @@ export const TextInput = forwardRef(
         </Label>
 
         {showCharacterLimit && isFocused && (
-          <CharacterCount style={labelStyles} variant="caption">
+          <CharacterCount style={labelStyles} variant="bodyExtraSmall">
             <Text variant="bodySmallBold">{characterCount}</Text>
             {` / ${maxLength}`}
           </CharacterCount>
@@ -103,7 +104,7 @@ export const TextInput = forwardRef(
             ref={ref}
             value={value}
             placeholder={placeholder}
-            placeholderTextColor={isFocused ? colors.muted3 : 'transparent'}
+            placeholderTextColor={isFocused ? colors.neutral3 : 'transparent'}
             onChangeText={handleChangeText}
             onFocus={handleFocus}
             onBlur={handleBlur}
@@ -118,9 +119,9 @@ export const TextInput = forwardRef(
             <InputDecoration>
               <TouchableOpacity onPress={() => setSecureTextVisible((p) => !p)}>
                 {secureTextVisible ? (
-                  <Icon name="eyeFilled" size={20} color="text" />
+                  <Icon name="eye" size={20} color="text" />
                 ) : (
-                  <Icon name="eyeOutlined" size={20} color="text" />
+                  <Icon name="eyeOff" size={20} color="text" />
                 )}
               </TouchableOpacity>
             </InputDecoration>
@@ -128,7 +129,7 @@ export const TextInput = forwardRef(
         </InputWrapper>
 
         {!!message && (
-          <Message variant="caption" color="textMuted">
+          <Message variant="bodyExtraSmall" color="neutral2">
             {message}
           </Message>
         )}
@@ -162,8 +163,8 @@ const InputWrapper = styled('View', {
   position: 'relative',
   flexDirection: 'row',
   borderBottomWidth: 1,
-  borderTopRightRadius: '$normal',
-  borderTopLeftRadius: '$normal',
+  borderTopRightRadius: '$regular',
+  borderTopLeftRadius: '$regular',
   variants: {
     focused: {
       true: { backgroundColor: 'rgba(150, 150, 150, 0.15)' },
@@ -187,7 +188,7 @@ const Input = styled('TextInput', {
 });
 
 const Message = styled(Text, {
-  marginTop: '$xsmall',
+  marginTop: '$xs',
   marginLeft: '$small',
 });
 
