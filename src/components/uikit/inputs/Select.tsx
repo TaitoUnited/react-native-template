@@ -1,5 +1,3 @@
-import { Keyboard, ViewStyle } from 'react-native';
-
 import {
   ComponentProps,
   forwardRef,
@@ -7,13 +5,15 @@ import {
   useImperativeHandle,
   useState,
 } from 'react';
+import { Keyboard, ViewStyle } from 'react-native';
 
+import { styled } from '~styles';
+
+import { InputButton } from './InputButton';
 import type { IconName } from '../Icon';
-import { Text } from '../Text';
 import { PickerModal } from '../PickerModal';
 import { PickerSheet } from '../PickerSheet';
-import { InputButton } from './InputButton';
-import { styled } from '~styles';
+import { Text } from '../Text';
 
 type BaseProps = {
   options: Array<{ label: string; value: string }>;

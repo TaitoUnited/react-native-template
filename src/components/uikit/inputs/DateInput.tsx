@@ -1,15 +1,16 @@
-import { Keyboard, Platform, ViewStyle } from 'react-native';
-import { forwardRef, useImperativeHandle, useState } from 'react';
 import { t } from '@lingui/macro';
 import { DateTime } from 'luxon';
+import { forwardRef, useImperativeHandle, useState } from 'react';
+import { Keyboard, Platform, ViewStyle } from 'react-native';
 import DatePicker from 'react-native-date-picker';
 
-import type { IconName } from '../Icon';
-import { Text } from '../Text';
-import { InputButton } from './InputButton';
-import { styled } from '~styles';
-import { useI18n } from '~services/i18n';
 import { useColorMode } from '~services/color-mode';
+import { useI18n } from '~services/i18n';
+import { styled } from '~styles';
+
+import { InputButton } from './InputButton';
+import { IconName } from '../Icon';
+import { Text } from '../Text';
 
 type Props = {
   label: string;

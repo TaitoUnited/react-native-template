@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-import { styled } from '~styles';
 import {
   Checkbox,
   DateInput,
@@ -11,6 +10,7 @@ import {
   Text,
   TextInput,
 } from '~components/uikit';
+import { styled } from '~styles';
 
 export default function Inputs() {
   const [selectedMultiple, setSelectedMultiple] = useState<string[]>([]);

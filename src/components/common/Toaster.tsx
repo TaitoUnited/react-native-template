@@ -1,9 +1,9 @@
-import ToastContainer, { ToastConfigParams } from 'react-native-toast-message';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import ToastContainer, { ToastConfigParams } from 'react-native-toast-message';
 
-import { styled, useTheme, Color } from '~styles/styled';
+import { Icon, Stack, Text } from '~components/uikit';
 import { IconName } from '~components/uikit/Icon';
-import { Stack, Text, Icon } from '~components/uikit';
+import { Color, styled, useTheme } from '~styles/styled';
 
 type Props = ToastConfigParams<{
   icon?: IconName;

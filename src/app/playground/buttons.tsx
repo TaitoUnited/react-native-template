@@ -1,5 +1,3 @@
-import { styled } from '~styles';
-
 import {
   FillButton,
   IconButton,
@@ -7,6 +5,7 @@ import {
   Stack,
   Text,
 } from '~components/uikit';
+import { styled } from '~styles';
 
 export default function Buttons() {
   function handlePress() {

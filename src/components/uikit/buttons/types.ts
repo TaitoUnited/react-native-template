@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import type { TouchableWithoutFeedbackProps } from 'react-native';
+
 import type { IconName } from '../Icon';
 
 export type ButtonSize = 'small' | 'medium' | 'large';

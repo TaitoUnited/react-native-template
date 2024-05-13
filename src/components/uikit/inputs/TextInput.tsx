@@ -1,10 +1,11 @@
 import { forwardRef, useEffect, useState } from 'react';
 import { Animated, TextInputProps, TouchableOpacity } from 'react-native';
 
-import { Text } from '../Text';
-import { Icon } from '../Icon';
-import { useInputLabelAnimation } from './common';
 import { styled, useTheme } from '~styles';
+
+import { useInputLabelAnimation } from './common';
+import { Icon } from '../Icon';
+import { Text } from '../Text';
 
 type Props = Omit<TextInputProps, 'onChange'> & {
   value: string;

@@ -1,9 +1,5 @@
-import { useEffect } from 'react';
-import { DevSettings } from 'react-native';
 import { useLingui } from '@lingui/react';
 import { registerDevMenuItems } from 'expo-dev-menu';
-import * as SplashScreen from 'expo-splash-screen';
-
 import {
   Stack,
   router,
@@ -11,13 +7,16 @@ import {
   useRouter,
   useSegments,
 } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
+import { useEffect } from 'react';
+import { DevSettings } from 'react-native';
 
 import Providers from '~Providers';
 import StatusBar from '~components/common/StatusBar';
-import { useAppReady } from '~utils/init';
-import { useDefaultStackScreenOptions } from '~utils/navigation';
 import { useAuthStore } from '~services/auth';
 import { useEffectEvent } from '~utils/common';
+import { useAppReady } from '~utils/init';
+import { useDefaultStackScreenOptions } from '~utils/navigation';
 
 if (__DEV__) {
   const devMenuItems = [

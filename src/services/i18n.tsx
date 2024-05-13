@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
-import { getLocales } from 'react-native-localize';
-import { Settings } from 'luxon';
 import { i18n } from '@lingui/core';
 import { I18nProvider as LinguiProvider, useLingui } from '@lingui/react';
+import { Settings } from 'luxon';
+import { ReactNode } from 'react';
+import { getLocales } from 'react-native-localize';
 
 import { useEffectEvent } from '~utils/common';
 import storage from '~utils/storage';

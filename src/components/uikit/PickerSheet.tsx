@@ -1,17 +1,18 @@
-import { memo, ReactNode, useState } from 'react';
-import { Modal, Platform } from 'react-native';
 import { Trans } from '@lingui/macro';
 import { FlashList } from '@shopify/flash-list';
+import { ReactNode, memo, useState } from 'react';
+import { Modal, Platform } from 'react-native';
 
-import { Text } from './Text';
-import { Stack } from './layout/Stack';
-import { Spacer } from './layout/Spacer';
-import { Radio } from './inputs/Radio';
-import { Checkbox } from './inputs/Checkbox';
-import { SearchInput } from './inputs/SearchInput';
+import StatusBar from '~components/common/StatusBar';
 import { styled } from '~styles';
 import { useEffectEvent } from '~utils/common';
-import StatusBar from '~components/common/StatusBar';
+
+import { Text } from './Text';
+import { Checkbox } from './inputs/Checkbox';
+import { Radio } from './inputs/Radio';
+import { SearchInput } from './inputs/SearchInput';
+import { Spacer } from './layout/Spacer';
+import { Stack } from './layout/Stack';
 
 type Option = {
   label: string;

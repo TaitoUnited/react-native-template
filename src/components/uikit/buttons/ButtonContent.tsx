@@ -1,11 +1,12 @@
 import { ReactNode } from 'react';
 import { ActivityIndicator } from 'react-native';
 
+import { Color, Typography, styled, useTheme } from '~styles';
+
+import { ButtonProps, ButtonSize, ButtonVariant } from './types';
 import { Icon } from '../Icon';
 import { Text } from '../Text';
 import { Stack } from '../layout/Stack';
-import type { ButtonProps, ButtonSize, ButtonVariant } from './types';
-import { Color, Typography, styled, useTheme } from '~styles';
 
 type Props = {
   children: ReactNode;

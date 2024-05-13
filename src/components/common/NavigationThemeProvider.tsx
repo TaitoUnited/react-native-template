@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
 import { ThemeProvider } from '@react-navigation/native';
+import { ReactNode } from 'react';
 
 import { useColorMode } from '~services/color-mode';
 import { useTheme } from '~styles';

@@ -1,5 +1,4 @@
 import isObject from 'lodash/isObject';
-
 import {
   MMKV,
   useMMKVBoolean,

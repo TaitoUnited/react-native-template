@@ -1,8 +1,9 @@
 import { cloneElement, isValidElement, ReactNode, useState } from 'react';
 import { LayoutChangeEvent, View, ViewProps } from 'react-native';
 
-import { flattenChildren } from '../helpers';
 import { styled, Theme, useTheme } from '~styles';
+
+import { flattenChildren } from '../helpers';
 
 type Props = ViewProps & {
   spacing: keyof Theme['space'];

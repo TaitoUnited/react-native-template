@@ -1,11 +1,12 @@
+import { t, Trans } from '@lingui/macro';
 import { useRef, useState } from 'react';
 import { TextInputProps, TouchableOpacity } from 'react-native';
-import { t, Trans } from '@lingui/macro';
 
+import { styled } from '~styles';
+
+import { Icon } from '../Icon';
 import { Text } from '../Text';
 import { Stack } from '../layout/Stack';
-import { Icon } from '../Icon';
-import { styled } from '~styles';
 
 type Props = Omit<TextInputProps, 'onChange'> & {
   value: string;

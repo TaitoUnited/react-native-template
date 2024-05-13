@@ -1,7 +1,7 @@
+import { router } from 'expo-router';
 import { FunctionComponent, ReactNode, isValidElement } from 'react';
 import { Platform, StyleSheet } from 'react-native';
 
-import { router } from 'expo-router';
 import { Icon, Stack, Text } from '~components/uikit';
 import { styled } from '~styles';
 

@@ -1,11 +1,11 @@
-import { useForm, Controller } from 'react-hook-form';
 import { t, Trans } from '@lingui/macro';
+import { Controller, useForm } from 'react-hook-form';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-import { styled } from '~styles/styled';
 import { showToast } from '~components/common/Toaster';
-import { FillButton, Text, TextInput, Stack } from '~components/uikit';
+import { FillButton, Stack, Text, TextInput } from '~components/uikit';
 import { useAuthStore } from '~services/auth';
+import { styled } from '~styles/styled';
 
 type Credentials = {
   email: string;

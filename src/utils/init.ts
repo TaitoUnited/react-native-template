@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
 import { useNavigationContainerRef } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
+import { useEffect, useState } from 'react';
 
-import { useFontsReady } from './font';
-import { sleep } from './common';
 import { initAuth } from '~services/auth';
 import { initMessages } from '~services/i18n';
+
+import { sleep } from './common';
+import { useFontsReady } from './font';
 
 export function useAppReady() {
   const initReady = useInitReady();

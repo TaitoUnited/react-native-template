@@ -1,11 +1,10 @@
-import { useEffect } from 'react';
-import { StackNavigationOptions } from '@react-navigation/stack';
-import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
-
 import { t } from '@lingui/macro';
-
-import { useNavigation } from 'expo-router';
 import { NavigationState, PartialState } from '@react-navigation/native';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import { StackNavigationOptions } from '@react-navigation/stack';
+import { useNavigation } from 'expo-router';
+import { useEffect } from 'react';
+
 import { useTheme } from '~styles';
 
 export function getActiveRouteName(

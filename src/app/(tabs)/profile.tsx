@@ -1,4 +1,5 @@
 import { Trans } from '@lingui/macro';
+
 import { Text } from '~components/uikit';
 import { styled } from '~styles';
 

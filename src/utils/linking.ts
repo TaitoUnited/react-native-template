@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro';
 import { Linking } from 'react-native';
+
 import { showToast } from '~components/common/Toaster';
 
 export async function launchUrl(

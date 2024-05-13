@@ -1,4 +1,5 @@
 import { ActivityIndicator } from 'react-native';
+
 import { styled, useTheme } from '~styles';
 
 export default function LoadingScreen() {

@@ -1,7 +1,9 @@
-import { useEffect } from 'react';
 import { Stack, router, useLocalSearchParams } from 'expo-router';
-import { useMenuListItem } from '../(tabs)/settings';
+import { useEffect } from 'react';
+
 import { styled } from '~styles';
+
+import { useMenuListItem } from '../(tabs)/settings';
 
 export default function MenuListItem() {
   const { item } = useLocalSearchParams<{ item: string }>();

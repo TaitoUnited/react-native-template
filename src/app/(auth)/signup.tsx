@@ -1,12 +1,12 @@
-import { useForm, Controller } from 'react-hook-form';
 import { t, Trans } from '@lingui/macro';
 import { useHeaderHeight } from '@react-navigation/elements';
+import { Controller, useForm } from 'react-hook-form';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-import { styled } from '~styles/styled';
-import { FillButton, Text, TextInput, Stack, Spacer } from '~components/uikit';
 import { showToast } from '~components/common/Toaster';
+import { FillButton, Spacer, Stack, Text, TextInput } from '~components/uikit';
 import { useAuthStore } from '~services/auth';
+import { styled } from '~styles/styled';
 
 type Credentials = {
   email: string;

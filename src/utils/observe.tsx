@@ -1,6 +1,7 @@
+import { useIsFocused } from '@react-navigation/native';
 import { useEffect, useRef, useState } from 'react';
 import { AppState, AppStateStatus, BackHandler, Keyboard } from 'react-native';
-import { useIsFocused } from '@react-navigation/native';
+
 import { useEffectEvent } from './common';
 
 export function useKeyboardVisibility() {
