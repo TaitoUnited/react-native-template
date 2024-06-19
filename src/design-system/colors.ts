@@ -34,7 +34,7 @@ export const neutral = {
   neutral2: '#92969d',
   neutral3: '#d4d6db',
   neutral4: '#e4e5e9',
-  neutral5: '#f0f1f5',
+  neutral5: '#f5f5f5',
   surface: '#ffffff',
   surfaceHover: '#f5f6fa',
 };
