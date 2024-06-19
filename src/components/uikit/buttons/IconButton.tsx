@@ -1,36 +1,27 @@
-import { ReactNode } from 'react';
-import { ActivityIndicator, PressableProps } from 'react-native';
+import { ActivityIndicator } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withSpring,
   withTiming,
 } from 'react-native-reanimated';
-
-import { Color, styled, useTheme } from '~styles';
-
-import { Icon, IconName } from '../Icon';
-
-type Size = 'small' | 'medium' | 'large';
-
-type Props = PressableProps & {
-  icon: IconName;
-  forcedColor?: string; // NOTE: use this only in very special cases!!!
-  size?: Size;
-  color?: Color;
-  loading?: boolean;
-};
+import { styled, useTheme } from '~styles';
+import { Icon } from '../Icon';
+import { getIconColor, getIconWrapperStyle, sizeToIconSize } from './helpers';
+import { IconButtonProps } from './types';
 
 const WANTED_HIT_SIZE = 44;
 
 export function IconButton({
-  size = 'medium',
-  color = 'text',
   icon,
+  color = 'primary',
   forcedColor,
+  size = 'normal',
+  variant = 'filled',
   loading,
+  disabled,
   ...rest
-}: Props) {
+}: IconButtonProps) {
   const theme = useTheme();
   const pressed = useSharedValue(false);
   const iconSize = sizeToIconSize[size];
@@ -42,18 +33,14 @@ export function IconButton({
     right: (WANTED_HIT_SIZE - iconSize) / 2,
   };
 
-  let content: ReactNode = (
-    <Icon name={icon} color={color} forcedColor={forcedColor} size={iconSize} />
-  );
+  const wrapperStyle = getIconWrapperStyle({
+    theme,
+    variant,
+    color,
+    disabled,
+  });
 
-  if (loading) {
-    content = (
-      <ActivityIndicator
-        size="small"
-        color={forcedColor || theme.colors[color]}
-      />
-    );
-  }
+  const iconColor = getIconColor({ variant, color, disabled });
 
   function handlePressIn() {
     pressed.value = true;
@@ -79,25 +66,57 @@ export function IconButton({
   return (
     <Wrapper
       hitSlop={hitSlop}
-      {...rest}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
+      size={size}
+      disabled={disabled ?? false}
+      style={wrapperStyle}
+      {...rest}
     >
       <PressHighlight style={highlightStyles} />
-      <Animated.View style={contentStyles}>{content}</Animated.View>
+      {loading ? (
+        <ActivityIndicator color={theme.colors[iconColor]} size="small" />
+      ) : (
+        <Animated.View style={contentStyles}>
+          <Icon
+            name={icon}
+            color={iconColor}
+            size={iconSize}
+            forcedColor={forcedColor}
+          />
+        </Animated.View>
+      )}
     </Wrapper>
   );
 }
 
-const sizeToIconSize: Record<Size, number> = {
-  small: 16,
-  medium: 24,
-  large: 32,
-};
-
 const Wrapper = styled('Pressable', {
-  flexCenter: 'row',
+  borderRadius: '$medium',
   position: 'relative',
+  flexCenter: 'row',
+  variants: {
+    size: {
+      small: {
+        height: 32,
+        width: 32,
+        borderRadius: '$regular',
+      },
+      normal: {
+        height: 44,
+        width: 44,
+        borderRadius: '$regular',
+      },
+      large: {
+        height: 60,
+        width: 60,
+      },
+    },
+    disabled: {
+      true: {
+        opacity: 0.9,
+      },
+    },
+  },
 });
 
 const PressHighlight = Animated.createAnimatedComponent(

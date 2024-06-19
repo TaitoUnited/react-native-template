@@ -1,5 +1,5 @@
 import { showToast } from '~components/common/Toaster';
-import { FillButton, Stack, Text } from '~components/uikit';
+import { Button, Stack, Text } from '~components/uikit';
 import { styled } from '~styles';
 
 export default function Toast() {
@@ -10,17 +10,19 @@ export default function Toast() {
           <Text variant="headingS">Info toast</Text>
 
           <Stack axis="y" spacing="small">
-            <FillButton
-              variant="info"
+            <Button
+              variant="outlined"
+              color="primary"
               onPress={() =>
                 showToast({ title: 'An info toast', type: 'info' })
               }
             >
               Default
-            </FillButton>
+            </Button>
 
-            <FillButton
-              variant="info"
+            <Button
+              variant="outlined"
+              color="primary"
               onPress={() =>
                 showToast({
                   title: 'An info toast',
@@ -30,10 +32,11 @@ export default function Toast() {
               }
             >
               With icon
-            </FillButton>
+            </Button>
 
-            <FillButton
-              variant="info"
+            <Button
+              variant="outlined"
+              color="primary"
               onPress={() =>
                 showToast({
                   title: 'An info toast',
@@ -44,7 +47,7 @@ export default function Toast() {
               }
             >
               With subtitle + icon
-            </FillButton>
+            </Button>
           </Stack>
         </Stack>
 
@@ -52,17 +55,19 @@ export default function Toast() {
           <Text variant="headingS">Success toast</Text>
 
           <Stack axis="y" spacing="small">
-            <FillButton
-              variant="primary"
+            <Button
+              variant="outlined"
+              color="success"
               onPress={() =>
                 showToast({ title: 'A success toast', type: 'success' })
               }
             >
               Default
-            </FillButton>
+            </Button>
 
-            <FillButton
-              variant="primary"
+            <Button
+              variant="outlined"
+              color="success"
               onPress={() =>
                 showToast({
                   title: 'A success toast',
@@ -72,10 +77,11 @@ export default function Toast() {
               }
             >
               With custom icon
-            </FillButton>
+            </Button>
 
-            <FillButton
-              variant="primary"
+            <Button
+              variant="outlined"
+              color="success"
               onPress={() =>
                 showToast({
                   title: 'A simple toast',
@@ -85,7 +91,7 @@ export default function Toast() {
               }
             >
               With subtitle
-            </FillButton>
+            </Button>
           </Stack>
         </Stack>
 
@@ -93,17 +99,19 @@ export default function Toast() {
           <Text variant="headingS">Error toast</Text>
 
           <Stack axis="y" spacing="small">
-            <FillButton
-              variant="danger"
+            <Button
+              variant="outlined"
+              color="error"
               onPress={() =>
                 showToast({ title: 'A success toast', type: 'error' })
               }
             >
               Default
-            </FillButton>
+            </Button>
 
-            <FillButton
-              variant="danger"
+            <Button
+              variant="outlined"
+              color="error"
               onPress={() =>
                 showToast({
                   title: 'A error toast',
@@ -113,10 +121,11 @@ export default function Toast() {
               }
             >
               With custom icon
-            </FillButton>
+            </Button>
 
-            <FillButton
-              variant="danger"
+            <Button
+              variant="outlined"
+              color="error"
               onPress={() =>
                 showToast({
                   title: 'A simple toast',
@@ -126,7 +135,7 @@ export default function Toast() {
               }
             >
               With subtitle
-            </FillButton>
+            </Button>
           </Stack>
         </Stack>
       </Stack>

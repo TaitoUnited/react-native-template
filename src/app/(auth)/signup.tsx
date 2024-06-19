@@ -4,7 +4,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import { showToast } from '~components/common/Toaster';
-import { FillButton, Spacer, Stack, Text, TextInput } from '~components/uikit';
+import { Button, Spacer, Stack, Text, TextInput } from '~components/uikit';
 import { useAuthStore } from '~services/auth';
 import { styled } from '~styles/styled';
 
@@ -234,8 +234,9 @@ export default function Signup() {
           </Stack>
           <PushContent />
 
-          <FillButton
-            variant="primary"
+          <Button
+            color="primary"
+            variant="filled"
             size="large"
             onPress={form.handleSubmit(handleSubmit)}
             disabled={!isValidForm}
@@ -247,7 +248,7 @@ export default function Signup() {
             ) : (
               <Trans>Signup</Trans>
             )}
-          </FillButton>
+          </Button>
         </Scroller>
       </Wrapper>
     </SafeArea>

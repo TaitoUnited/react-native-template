@@ -91,7 +91,7 @@ function LanguageSelector() {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
-        <IconButton icon="globe" forcedColor="#fff" />
+        <IconButton icon="globe" forcedColor="#fff" color="neutral" />
       </DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Item key="fi" onSelect={() => setLocale('fi')}>
