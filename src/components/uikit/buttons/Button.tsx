@@ -1,5 +1,7 @@
 import { ActivityIndicator } from 'react-native';
+
 import { Typography, styled, useTheme } from '~styles';
+
 import { Icon } from '../Icon';
 import { Text } from '../Text';
 import { Stack } from '../layout/Stack';

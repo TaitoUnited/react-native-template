@@ -5,7 +5,9 @@ import Animated, {
   withSpring,
   withTiming,
 } from 'react-native-reanimated';
+
 import { styled, useTheme } from '~styles';
+
 import { Icon } from '../Icon';
 import { getIconColor, getIconWrapperStyle, sizeToIconSize } from './helpers';
 import { IconButtonProps } from './types';

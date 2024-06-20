@@ -94,6 +94,8 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
 
+    "dot-notation": "warn",
+
     "lodash/import-scope": "error",
     "lodash/prefer-lodash-method": "off",
     "lodash/prefer-lodash-typecheck": "off",
@@ -118,7 +120,6 @@
           ["parent", "sibling", "index"],
         ],
         "newlines-between": "always",
-        "alphabetize": { "order": "asc", "caseInsensitive": false },
       },
     ],
   },
