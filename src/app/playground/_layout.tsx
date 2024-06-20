@@ -7,7 +7,7 @@ import { useDefaultStackScreenOptions } from '~utils/navigation';
 export default function PlaygroundLayout() {
   const screenOptions = useDefaultStackScreenOptions();
   const { colorScheme, setColorMode } = useColorMode();
-  console.log('colorScheme', colorScheme);
+
   return (
     <Stack
       screenOptions={{

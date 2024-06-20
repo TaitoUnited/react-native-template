@@ -1,109 +1,158 @@
 import { Button, Card, IconButton, Stack, Text } from '~components/uikit';
+import {
+  ButtonColor,
+  ButtonSize,
+  ButtonVariant,
+  IconButtonProps,
+} from '~components/uikit/buttons/types';
 import { styled } from '~styles';
 
 export default function Buttons() {
-  function handlePress() {
-    console.log('Pressed');
-  }
-
   return (
     <Wrapper>
       <Stack axis="y" spacing="large">
-        <Card>
-          <Stack axis="y" spacing="small">
-            <Text variant="headingS">Sizes</Text>
-
-            <Button variant="filled" size="large" onPress={handlePress}>
-              Large
-            </Button>
-            <Button variant="filled" size="normal" onPress={handlePress}>
-              Medium
-            </Button>
-            <Button variant="filled" size="small" onPress={handlePress}>
-              Small
-            </Button>
-          </Stack>
-        </Card>
-        <Card>
-          <Stack axis="y" spacing="small">
-            <Text variant="headingS">Variants</Text>
-            <Button variant="filled" onPress={handlePress}>
-              Filled button
-            </Button>
-            <Button variant="soft" onPress={handlePress}>
-              Soft button
-            </Button>
-            <Button variant="outlined" onPress={handlePress}>
-              Outline button
-            </Button>
-            <Button variant="plain" onPress={handlePress}>
-              Plain button
-            </Button>
-          </Stack>
-        </Card>
-
-        <Card>
-          <Stack axis="y" spacing="small">
-            <Text variant="headingS">Colors</Text>
-            <Button variant="filled" color="primary" onPress={handlePress}>
-              Primary button
-            </Button>
-            <Button variant="filled" color="success" onPress={handlePress}>
-              Success button
-            </Button>
-            <Button variant="filled" color="error" onPress={handlePress}>
-              Error button
-            </Button>
-          </Stack>
-        </Card>
-        <Card>
-          <Stack axis="y" spacing="small">
-            <Text variant="headingS">With icon</Text>
-
-            <Button
-              variant="outlined"
-              iconLeading="camera"
-              onPress={handlePress}
-            >
-              Leading icon
-            </Button>
-            <Button
-              variant="outlined"
-              iconTrailing="chevronRight"
-              onPress={handlePress}
-            >
-              Trailing icon
-            </Button>
-          </Stack>
-        </Card>
-        <Card>
-          <Stack axis="y" spacing="regular">
-            <Text variant="headingS">Icon buttons</Text>
-
-            <Stack axis="x" spacing="medium">
-              <IconButton size="large" icon="globe" color="neutral" />
-              <IconButton size="large" icon="eye" color="primary" />
-              <IconButton size="large" icon="fingerprint" color="success" />
-              <IconButton size="large" icon="close" color="error" />
-            </Stack>
-
-            <Stack axis="x" spacing="medium">
-              <IconButton icon="globe" color="neutral" />
-              <IconButton icon="eye" color="primary" />
-              <IconButton icon="fingerprint" color="success" />
-              <IconButton icon="close" color="error" />
-            </Stack>
-
-            <Stack axis="x" spacing="medium">
-              <IconButton size="small" icon="globe" color="neutral" />
-              <IconButton size="small" icon="eye" color="primary" />
-              <IconButton size="small" icon="fingerprint" color="success" />
-              <IconButton size="small" icon="close" color="error" />
-            </Stack>
-          </Stack>
-        </Card>
+        <ButtonExamples />
+        <IconButtonExamples title="Icon buttons" />
+        <IconButtonExamples title="Loading Icon buttons" loading />
+        <IconButtonExamples title="Disabled Icon buttons" disabled />
       </Stack>
     </Wrapper>
+  );
+}
+
+function handlePress() {
+  console.log('Pressed');
+}
+
+function getButtonText(key: string) {
+  return key.charAt(0).toUpperCase() + key.slice(1);
+}
+
+function Section({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Card>
+      <Stack axis="y" spacing="small">
+        <Text variant="headingS">{title}</Text>
+        {children}
+      </Stack>
+    </Card>
+  );
+}
+
+function ButtonExamples() {
+  const sizes: ButtonSize[] = ['large', 'normal', 'small'];
+  const variants: ButtonVariant[] = ['filled', 'soft', 'outlined', 'plain'];
+  const colors: ButtonColor[] = ['primary', 'success', 'error'];
+
+  return (
+    <Stack axis="y" spacing="large">
+      <Section title="Sizes">
+        {sizes.map((size) => (
+          <Button key={size} variant="filled" size={size} onPress={handlePress}>
+            {getButtonText(size)}
+          </Button>
+        ))}
+      </Section>
+
+      <Section title="Variants">
+        {variants.map((variant) => (
+          <Button key={variant} variant={variant} onPress={handlePress}>
+            {getButtonText(variant)} button
+          </Button>
+        ))}
+      </Section>
+
+      <Section title="Colors">
+        {colors.map((color) => (
+          <Button
+            key={color}
+            variant="filled"
+            color={color}
+            onPress={handlePress}
+          >
+            {getButtonText(color)} button
+          </Button>
+        ))}
+      </Section>
+
+      <Section title="Loading">
+        {variants.map((variant) => (
+          <Button key={variant} variant={variant} onPress={handlePress} loading>
+            {getButtonText(variant)} Loading
+          </Button>
+        ))}
+      </Section>
+
+      <Section title="Disabled">
+        {variants.map((variant) => (
+          <Button
+            key={variant}
+            variant={variant}
+            onPress={handlePress}
+            disabled
+          >
+            {getButtonText(variant)} disabled
+          </Button>
+        ))}
+      </Section>
+
+      <Section title="With icon">
+        <Button variant="outlined" icon="camera" onPress={handlePress}>
+          Leading icon
+        </Button>
+        <Button
+          variant="outlined"
+          icon="chevronRight"
+          iconPlacement="end"
+          onPress={handlePress}
+        >
+          Trailing icon
+        </Button>
+      </Section>
+    </Stack>
+  );
+}
+
+function IconButtonExamples({
+  title,
+  loading = false,
+  disabled = false,
+}: {
+  title: string;
+  loading?: boolean;
+  disabled?: boolean;
+}) {
+  const sizes: ButtonSize[] = ['large', 'normal', 'small'];
+  const colors: IconButtonProps['color'][] = [
+    'neutral',
+    'primary',
+    'success',
+    'error',
+  ];
+
+  return (
+    <Section title={title}>
+      {sizes.map((size, sizeIndex) => (
+        <Stack key={sizeIndex} axis="x" spacing="medium">
+          {colors.map((color) => (
+            <IconButton
+              key={color}
+              size={size}
+              icon="globe"
+              color={color}
+              loading={loading}
+              disabled={disabled}
+            />
+          ))}
+        </Stack>
+      ))}
+    </Section>
   );
 }
 

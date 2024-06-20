@@ -23,13 +23,12 @@ export type ButtonProps = TouchableWithoutFeedbackProps &
   ButtonOwnProps & {
     color?: ButtonColor;
     children: ReactNode;
-    iconLeading?: IconName;
-    iconTrailing?: IconName;
+    icon?: IconName;
+    iconPlacement?: 'start' | 'end';
   };
 
 export type IconButtonProps = PressableProps &
   ButtonOwnProps & {
     icon: IconName;
     color?: ButtonColor | 'neutral';
-    forcedColor?: string;
   };

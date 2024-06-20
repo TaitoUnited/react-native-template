@@ -9,13 +9,14 @@ import { ButtonProps, ButtonSize } from './types';
 export function Button({
   children,
   color = 'primary',
-  iconLeading,
-  iconTrailing,
+  icon,
+  iconPlacement = 'start',
   loading,
   disabled,
-  size = 'large',
+  size = 'normal',
   style,
   variant = 'filled',
+  onPress,
   ...rest
 }: ButtonProps) {
   const theme = useTheme();
@@ -31,11 +32,16 @@ export function Button({
 
   const textColor = getTextColor({ variant, color, disabled });
 
+  const iconComp = icon && (
+    <Icon name={icon} color={textColor} size={iconSize} />
+  );
+
   return (
     <Wrapper
       size={size}
       disabled={disabled}
       style={[wrapperStyle, style]}
+      onPress={!disabled ? onPress : () => {}}
       {...rest}
     >
       {loading ? (
@@ -48,25 +54,18 @@ export function Button({
           style={{ flex: 1 }}
           spacing={size === 'large' ? 'small' : 'xs'}
         >
-          {iconLeading && (
-            <Icon name={iconLeading} color={textColor} size={iconSize} />
-          )}
+          {icon && iconPlacement === 'start' && iconComp}
           <Text
             variant={textVariant}
             style={{
               color: theme.colors[textColor],
               lineHeight: sizeToLineHeight[size],
-              // Should we align the text in the center regardless of the icon?
-              // paddingLeft: iconLeading ? 0 : sizeToIconSize[size],
-              // paddingRight: iconTrailing ? 0 : sizeToIconSize[size],
             }}
             numberOfLines={size === 'large' ? 2 : 1}
           >
             {children}
           </Text>
-          {iconTrailing && (
-            <Icon name={iconTrailing} color={textColor} size={iconSize} />
-          )}
+          {icon && iconPlacement === 'end' && iconComp}
         </Stack>
       )}
     </Wrapper>
@@ -86,20 +85,17 @@ const sizeToLineHeight: Record<ButtonSize, number> = {
 };
 
 const Wrapper = styled('TouchableOpacity', {
-  borderRadius: '$medium',
+  borderRadius: '$full',
   flexCenter: 'row',
-  border: '1px solid red',
   variants: {
     size: {
       small: {
         minHeight: 32,
         paddingHorizontal: '$small',
-        borderRadius: '$regular',
       },
       normal: {
         minHeight: 44,
         paddingHorizontal: '$regular',
-        borderRadius: '$regular',
       },
       large: {
         minHeight: 60,
@@ -113,5 +109,5 @@ const Wrapper = styled('TouchableOpacity', {
     },
   },
 }).attrs(({ disabled }) => ({
-  activeOpacity: disabled ? 9 : 0.8,
+  activeOpacity: disabled ? 0.9 : 0.8,
 }));

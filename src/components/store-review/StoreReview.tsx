@@ -91,7 +91,7 @@ export default function StoreReview() {
         <Button
           variant="filled"
           onPress={requestReview}
-          iconLeading="heartFilled"
+          icon="heartFilled"
           style={{ width: '75%' }}
         >
           <Trans>Loving it</Trans>

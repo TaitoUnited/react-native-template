@@ -19,8 +19,23 @@ const getBaseStyle = ({
   };
 
   if (disabled) {
-    baseStyle.backgroundColor = theme.colors['neutral4'];
-    baseStyle.borderColor = theme.colors['neutral2'];
+    switch (variant) {
+      case 'filled':
+        baseStyle.backgroundColor = theme.colors['neutral4'];
+        break;
+      case 'soft':
+        baseStyle.backgroundColor = theme.colors['neutral5'];
+        break;
+      case 'outlined':
+        baseStyle.borderColor = theme.colors['line2'];
+        break;
+      case 'plain':
+        // baseStyle remains as is
+        break;
+
+      default:
+        break;
+    }
     return baseStyle;
   }
 

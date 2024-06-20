@@ -15,11 +15,11 @@ const WANTED_HIT_SIZE = 44;
 export function IconButton({
   icon,
   color = 'primary',
-  forcedColor,
   size = 'normal',
   variant = 'filled',
   loading,
   disabled,
+  onPress,
   ...rest
 }: IconButtonProps) {
   const theme = useTheme();
@@ -43,10 +43,12 @@ export function IconButton({
   const iconColor = getIconColor({ variant, color, disabled });
 
   function handlePressIn() {
+    if (disabled) return;
     pressed.value = true;
   }
 
   function handlePressOut() {
+    if (disabled) return;
     pressed.value = false;
   }
 
@@ -69,7 +71,8 @@ export function IconButton({
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       size={size}
-      disabled={disabled ?? false}
+      disabled={disabled}
+      onPress={!disabled ? onPress : () => {}}
       style={wrapperStyle}
       {...rest}
     >
@@ -78,12 +81,7 @@ export function IconButton({
         <ActivityIndicator color={theme.colors[iconColor]} size="small" />
       ) : (
         <Animated.View style={contentStyles}>
-          <Icon
-            name={icon}
-            color={iconColor}
-            size={iconSize}
-            forcedColor={forcedColor}
-          />
+          <Icon name={icon} color={iconColor} size={iconSize} />
         </Animated.View>
       )}
     </Wrapper>
