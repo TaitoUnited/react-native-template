@@ -1,5 +1,5 @@
 import { Button, Card, IconButton, Stack, Text } from '~components/uikit';
-import {
+import type {
   ButtonColor,
   ButtonSize,
   ButtonVariant,
