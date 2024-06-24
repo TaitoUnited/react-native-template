@@ -1,4 +1,3 @@
-import { useLingui } from '@lingui/react';
 import { registerDevMenuItems } from 'expo-dev-menu';
 import {
   Stack,
@@ -52,8 +51,6 @@ export default function RootLayout() {
 
 function RootLayoutNavigator() {
   const screenOptions = useDefaultStackScreenOptions();
-
-  useLingui();
 
   return (
     <Stack screenOptions={{ headerShown: false }}>

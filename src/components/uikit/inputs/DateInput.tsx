@@ -1,4 +1,4 @@
-import { t } from '@lingui/macro';
+import { msg } from '@lingui/macro';
 import { DateTime } from 'luxon';
 import { forwardRef, useImperativeHandle, useState } from 'react';
 import { Keyboard, Platform, ViewStyle } from 'react-native';
@@ -38,6 +38,7 @@ export const DateInput = forwardRef(
     }: Props,
     ref: any
   ) => {
+    const { _ } = useI18n();
     const [isPickerOpen, setPickerOpen] = useState(false);
     const { locale } = useI18n();
     const { colorScheme } = useColorMode();
@@ -85,8 +86,8 @@ export const DateInput = forwardRef(
           modal
           theme={pickerTheme}
           title={label}
-          confirmText={t`Confirm`}
-          cancelText={t`Cancel`}
+          confirmText={_(msg`Confirm`)}
+          cancelText={_(msg`Cancel`)}
           locale={locale}
           mode={mode}
           androidVariant="nativeAndroid"

@@ -1,13 +1,15 @@
-import { t } from '@lingui/macro';
+import { msg } from '@lingui/macro';
 import { router } from 'expo-router';
 import * as DropdownMenu from 'zeego/dropdown-menu';
 
 import { IconButton } from '~components/uikit';
 import config from '~constants/config';
+import { useI18n } from '~services/i18n';
 import { useTheme } from '~styles';
 import { useHeaderOptions } from '~utils/navigation';
 
 export function useHeaderPlaygroundButton() {
+  const { _ } = useI18n();
   const theme = useTheme();
 
   useHeaderOptions({
@@ -23,10 +25,10 @@ export function useHeaderPlaygroundButton() {
               onSelect={() => router.navigate('playground')}
             >
               <DropdownMenu.ItemTitle>
-                {t`Open playground`}
+                {_(msg`Open playground`)}
               </DropdownMenu.ItemTitle>
               <DropdownMenu.ItemIcon
-                iosIconName="character.book.closed"
+                ios={{ name: 'character.book.closed' }}
                 androidIconName="library_books"
               />
             </DropdownMenu.Item>

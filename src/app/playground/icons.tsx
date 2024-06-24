@@ -1,4 +1,4 @@
-import { Trans, t } from '@lingui/macro';
+import { Trans, msg } from '@lingui/macro';
 import { setStringAsync } from 'expo-clipboard';
 import { Pressable } from 'react-native';
 
@@ -7,9 +7,11 @@ import { Note } from '~components/playground/common';
 import { Grid, Icon, Stack, Text } from '~components/uikit';
 import type { IconName } from '~components/uikit/Icon';
 import * as icons from '~design-system/icons';
+import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 
 export default function Icons() {
+  const { _ } = useI18n();
   return (
     <Wrapper>
       <Stack axis="y" spacing="medium">
@@ -25,7 +27,7 @@ export default function Icons() {
               onLongPress={async () => {
                 await setStringAsync(name);
                 showToast({
-                  title: t`Copied to clipboard`,
+                  title: _(msg`Copied to clipboard`),
                   subtitle: `"${name}"`,
                   type: 'success',
                   icon: 'check',

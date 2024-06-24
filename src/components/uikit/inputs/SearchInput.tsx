@@ -1,12 +1,13 @@
-import { t, Trans } from '@lingui/macro';
+import { i18n } from '@lingui/core';
+import { msg, Trans } from '@lingui/macro';
 import { useRef, useState } from 'react';
 import { TextInputProps, TouchableOpacity } from 'react-native';
 
 import { styled } from '~styles';
 
 import { Icon } from '../Icon';
-import { Text } from '../Text';
 import { Stack } from '../layout/Stack';
+import { Text } from '../Text';
 
 type Props = Omit<TextInputProps, 'onChange'> & {
   value: string;
@@ -15,7 +16,7 @@ type Props = Omit<TextInputProps, 'onChange'> & {
 
 export function SearchInput({
   value,
-  placeholder = t`Search`,
+  placeholder = i18n._(msg`Search`),
   onChange,
   ...rest
 }: Props) {

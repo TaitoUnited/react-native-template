@@ -1,4 +1,4 @@
-import { t, Trans } from '@lingui/macro';
+import { Trans, msg } from '@lingui/macro';
 import { Link } from 'expo-router';
 import { useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -10,6 +10,7 @@ import { useI18n } from '~services/i18n';
 import { styled, useTheme } from '~styles';
 
 export default function Landing() {
+  const { _ } = useI18n();
   const { height } = useWindowDimensions();
   const insets = useSafeAreaInsets();
   const theme = useTheme();
@@ -88,7 +89,7 @@ export default function Landing() {
 }
 
 function LanguageSelector() {
-  const { setLocale } = useI18n();
+  const { _, setLocale } = useI18n();
 
   return (
     <DropdownMenu.Root>
@@ -97,10 +98,10 @@ function LanguageSelector() {
       </DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Item key="fi" onSelect={() => setLocale('fi')}>
-          <DropdownMenu.ItemTitle>{t`Finnish`}</DropdownMenu.ItemTitle>
+          <DropdownMenu.ItemTitle>{_(msg`Finnish`)}</DropdownMenu.ItemTitle>
         </DropdownMenu.Item>
         <DropdownMenu.Item key="en" onSelect={() => setLocale('en')}>
-          <DropdownMenu.ItemTitle>{t`English`}</DropdownMenu.ItemTitle>
+          <DropdownMenu.ItemTitle>{_(msg`English`)}</DropdownMenu.ItemTitle>
         </DropdownMenu.Item>
       </DropdownMenu.Content>
     </DropdownMenu.Root>

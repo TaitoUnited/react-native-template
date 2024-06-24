@@ -1,37 +1,29 @@
 import { i18n } from '@lingui/core';
 import { I18nProvider as LinguiProvider, useLingui } from '@lingui/react';
 import { Settings } from 'luxon';
-import { ReactNode } from 'react';
 import { getLocales } from 'react-native-localize';
 
 import { useEffectEvent } from '~utils/common';
 import storage, { LOCALE_STORAGE_KEY } from '~utils/storage';
 
 export type Locale = 'fi' | 'en';
-
 const LOCALES: Locale[] = ['fi', 'en'];
 
 export async function initMessages() {
   const locales = getLocales();
-  const persistedLocale = storage.getString(LOCALE_STORAGE_KEY);
+  const persistedLocale = storage.getString(LOCALE_STORAGE_KEY) as Locale;
   const preferredLocale = locales[0];
+  const defaultLocale: Locale = LOCALES.includes(persistedLocale)
+    ? persistedLocale
+    : LOCALES.includes(preferredLocale.languageCode as Locale)
+      ? (preferredLocale.languageCode as Locale)
+      : 'en';
 
-  const defaultLocale = (
-    LOCALES.some((l) => l === persistedLocale)
-      ? persistedLocale
-      : LOCALES.includes(preferredLocale.languageCode as Locale)
-        ? preferredLocale.languageCode
-        : 'en'
-  ) as Locale;
+  const defaultMessages = await loadMessages(defaultLocale);
 
-  const defaultMessages =
-    defaultLocale === 'fi'
-      ? await loadMessages('fi')
-      : await loadMessages('en');
-
+  i18n.loadAndActivate({ locale: defaultLocale, messages: defaultMessages });
+  storage.set(LOCALE_STORAGE_KEY, defaultLocale);
   Settings.defaultLocale = defaultLocale;
-  i18n.load(defaultLocale, defaultMessages);
-  i18n.activate(defaultLocale);
 }
 
 async function loadMessages(locale: Locale) {
@@ -52,32 +44,23 @@ export function useI18n() {
   const setLocale = useEffectEvent(async (locale: Locale) => {
     try {
       const newMessages = await loadMessages(locale);
+      i18n.loadAndActivate({ locale, messages: newMessages });
 
       Settings.defaultLocale = locale;
-      lingui.i18n.load(locale, newMessages);
-      lingui.i18n.activate(locale);
-
       storage.set(LOCALE_STORAGE_KEY, locale);
     } catch (error) {
       console.log(`> Failed to load messages for locale: ${locale}`, error);
     }
   });
 
-  const toggleLocale = useEffectEvent(() => {
-    setLocale(currentLocale === 'fi' ? 'en' : 'fi');
-  });
-
   return {
     i18n: lingui.i18n,
     locale: currentLocale,
     setLocale,
-    toggleLocale,
+    _: lingui._,
   };
 }
 
-export function I18nProvider({ children }: { children: ReactNode }) {
-  // Wait for messages to be loaded
-  if (Object.keys(i18n.messages).length === 0) return null;
-
+export function I18nProvider({ children }: { children: React.ReactNode }) {
   return <LinguiProvider i18n={i18n}>{children}</LinguiProvider>;
 }

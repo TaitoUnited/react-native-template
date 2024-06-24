@@ -1,4 +1,5 @@
-import { t } from '@lingui/macro';
+import { i18n } from '@lingui/core';
+import { msg } from '@lingui/macro';
 import { unstable_batchedUpdates } from 'react-native'; // eslint-disable-line
 import create from 'zustand';
 
@@ -102,7 +103,10 @@ export async function initAuth() {
       // where the user will be logged out automatically
       console.log('> Auth error detected during auth check', error);
     } else if (error?.networkError) {
-      showToast({ title: t`Could not connect to server`, type: 'error' });
+      showToast({
+        title: i18n._(msg`Could not connect to server`),
+        type: 'error',
+      });
     } else {
       console.log('> Unknown auth error', error);
       // Logout the user in case of unknown errors or if the access token is missing
