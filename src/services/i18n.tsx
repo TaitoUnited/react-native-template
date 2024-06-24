@@ -5,7 +5,7 @@ import { ReactNode } from 'react';
 import { getLocales } from 'react-native-localize';
 
 import { useEffectEvent } from '~utils/common';
-import storage from '~utils/storage';
+import storage, { LOCALE_STORAGE_KEY } from '~utils/storage';
 
 export type Locale = 'fi' | 'en';
 
@@ -13,7 +13,7 @@ const LOCALES: Locale[] = ['fi', 'en'];
 
 export async function initMessages() {
   const locales = getLocales();
-  const persistedLocale = storage.getString('@app/locale');
+  const persistedLocale = storage.getString(LOCALE_STORAGE_KEY);
   const preferredLocale = locales[0];
 
   const defaultLocale = (
@@ -57,7 +57,7 @@ export function useI18n() {
       lingui.i18n.load(locale, newMessages);
       lingui.i18n.activate(locale);
 
-      storage.set('@app/locale', locale);
+      storage.set(LOCALE_STORAGE_KEY, locale);
     } catch (error) {
       console.log(`> Failed to load messages for locale: ${locale}`, error);
     }

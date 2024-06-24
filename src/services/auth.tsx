@@ -3,7 +3,10 @@ import { unstable_batchedUpdates } from 'react-native'; // eslint-disable-line
 import create from 'zustand';
 
 import { showToast } from '~components/common/Toaster';
-import storage from '~utils/storage';
+import storage, {
+  ACCESS_TOKEN_STORAGE_KEY,
+  REFRESH_TOKEN_STORAGE_KEY,
+} from '~utils/storage';
 
 type AuthStatus =
   | 'undetermined'
@@ -81,7 +84,7 @@ export async function initAuth() {
   authStore.setState({ status: 'determining' });
 
   try {
-    const accessToken = storage.getString('@app/access-token');
+    const accessToken = storage.getString(ACCESS_TOKEN_STORAGE_KEY);
 
     if (!accessToken) {
       throw Error('No access token!');
@@ -116,8 +119,8 @@ function setAuthTokens({
   refreshToken: string;
 }) {
   storage.clearAll();
-  storage.set('@app/access-token', accessToken);
-  storage.set('@app/refresh-token', refreshToken);
+  storage.set(ACCESS_TOKEN_STORAGE_KEY, accessToken);
+  storage.set(REFRESH_TOKEN_STORAGE_KEY, refreshToken);
 }
 
 export function isAuthError(error: any) {

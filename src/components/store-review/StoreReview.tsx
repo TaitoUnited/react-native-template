@@ -6,7 +6,10 @@ import { useEffect, useState } from 'react';
 import ImprovementForm from '~components/store-review/ImprovementForm';
 import { BottomSheet, Button, Stack, Text } from '~components/uikit';
 import { styled } from '~styles';
-import storage from '~utils/storage';
+import storage, {
+  APP_REVIEW_DONE_STORAGE_KEY,
+  APP_REVIEW_LAST_REQUESTED_STORAGE_KEY,
+} from '~utils/storage';
 
 import { showToast } from '../common/Toaster';
 
@@ -18,12 +21,12 @@ export default function StoreReview() {
   const [improvementRequest, setImprovementRequest] = useState(false);
 
   useEffect(() => {
-    const persistedHasReviewed = storage.getNumber('@app/last-review-done');
+    const persistedHasReviewed = storage.getNumber(APP_REVIEW_DONE_STORAGE_KEY);
     const getReviewDate = async () => {
       try {
         if (await ExpoStoreReview.hasAction()) {
           const persistedLastAsked = storage.getNumber(
-            '@app/last-requested-review'
+            APP_REVIEW_LAST_REQUESTED_STORAGE_KEY
           );
           if (persistedLastAsked) {
             const differenceInDaysValue = differenceInDays(
@@ -61,14 +64,14 @@ export default function StoreReview() {
   }, []);
 
   const updateLastAsked = () => {
-    storage.set('@app/last-requested-review', new Date().getTime());
+    storage.set(APP_REVIEW_LAST_REQUESTED_STORAGE_KEY, new Date().getTime());
   };
 
   async function requestReview() {
     try {
       if (await ExpoStoreReview.hasAction()) {
         await ExpoStoreReview.requestReview();
-        storage.set('@app/last-review-done', new Date().getTime());
+        storage.set(APP_REVIEW_DONE_STORAGE_KEY, new Date().getTime());
       }
     } catch (error) {
       console.log('> Error requesting review: ', error);
