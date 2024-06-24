@@ -40,6 +40,8 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const appReady = useAppReady();
 
+  if (!appReady) return null;
+
   return (
     <Providers>
       <RootLayoutNavigator />
