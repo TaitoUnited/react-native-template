@@ -10,7 +10,6 @@ import { useI18n } from '~services/i18n';
 import { styled, useTheme } from '~styles';
 
 export default function Landing() {
-  const { _ } = useI18n();
   const { height } = useWindowDimensions();
   const insets = useSafeAreaInsets();
   const theme = useTheme();

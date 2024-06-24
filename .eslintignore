@@ -5,5 +5,4 @@ src/locales/**/*.js
 src/graphql/generated.ts
 src/app/playground/
 src/components/playground/
-rc/design-system/
-rc/components/uikit/
+src/design-system/

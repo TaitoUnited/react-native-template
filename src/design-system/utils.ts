@@ -1,4 +1,3 @@
-/* eslint-disable lingui/no-unlocalized-strings */
 import * as colors from '~design-system/colors';
 
 const WEIGHT_TO_FONT = {
