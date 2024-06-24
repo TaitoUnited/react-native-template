@@ -34,9 +34,9 @@ export default function Settings() {
   useHeaderPlaygroundButton();
 
   const items = [
-    useMenuListItem('LanguageMenuTarget'),
-    // useMenuListItem('AppearanceMenuTarget'), // We currently do not support dark mode, so until we do, we should not show this option
-    useMenuListItem('SystemInfoMenuTarget'),
+    useMenuListItem({ targetName: 'LanguageMenuTarget' }),
+    // useMenuListItem({ targetName: 'AppearanceMenuTarget' }), // We currently do not support dark mode, so until we do, we should not show this option
+    useMenuListItem({ targetName: 'SystemInfoMenuTarget' }),
     {
       id: 'logout',
       targetName: 'LogoutButton',
@@ -109,28 +109,28 @@ function SystemInfoMenuTarget() {
   const items: ComponentProps<typeof MenuList>['items'] = [
     {
       id: 'deviceId',
-      label: 'Device ID',
+      label: t`Device ID`,
       currentValue: getUniqueIdSync(),
     },
     {
       id: 'systemName',
-      label: 'System name',
+      label: t`System name`,
       currentValue: getSystemName(),
     },
     {
       id: 'systemVersion',
-      label: 'System version',
+      label: t`System version`,
       currentValue: getSystemVersion(),
     },
     {
       id: 'apiLevel',
-      label: 'API level',
+      label: t`API level`,
       currentValue: getApiLevelSync(),
       platform: 'android',
     },
     {
       id: 'appEnv',
-      label: 'App environment',
+      label: t`App environment`,
       currentValue: config.appEnv,
     },
     {
@@ -181,7 +181,7 @@ const Wrapper = styled('ScrollView', {
   },
 }));
 
-export function useMenuListItem(targetName: string) {
+export function useMenuListItem({ targetName }: { targetName: string }) {
   const { locale } = useI18n();
   const { colorMode } = useColorMode();
 
@@ -192,7 +192,7 @@ export function useMenuListItem(targetName: string) {
   switch (targetName) {
     case 'LanguageMenuTarget':
       label = t`Language`;
-      currentValue = locale === 'en' ? 'English' : 'Suomi';
+      currentValue = locale === 'en' ? t`English` : t`Suomi`;
       target = LanguageMenuTarget;
       break;
     case 'AppearanceMenuTarget':

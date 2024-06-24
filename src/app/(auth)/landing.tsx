@@ -65,7 +65,9 @@ export default function Landing() {
               style={{ alignSelf: 'center' }}
             >
               <Line />
-              <WhiteText variant="overlineSmall">Or</WhiteText>
+              <WhiteText variant="overlineSmall">
+                <Trans>Or</Trans>
+              </WhiteText>
               <Line />
             </Stack>
 

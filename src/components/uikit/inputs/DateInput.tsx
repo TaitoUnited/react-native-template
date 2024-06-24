@@ -8,9 +8,9 @@ import { useColorMode } from '~services/color-mode';
 import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 
-import { InputButton } from './InputButton';
 import { IconName } from '../Icon';
 import { Text } from '../Text';
+import { InputButton } from './InputButton';
 
 type Props = {
   label: string;
@@ -103,6 +103,7 @@ export const DateInput = forwardRef(
   }
 );
 
+// eslint-disable-next-line lingui/no-unlocalized-strings
 DateInput.displayName = 'DateInput';
 
 const Message = styled(Text, {

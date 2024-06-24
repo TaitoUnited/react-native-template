@@ -3,9 +3,9 @@ import { Animated, TextInputProps, TouchableOpacity } from 'react-native';
 
 import { styled, useTheme } from '~styles';
 
-import { useInputLabelAnimation } from './common';
 import { Icon } from '../Icon';
 import { Text } from '../Text';
+import { useInputLabelAnimation } from './common';
 
 type Props = Omit<TextInputProps, 'onChange'> & {
   value: string;
@@ -138,6 +138,7 @@ export const TextInput = forwardRef(
   }
 );
 
+// eslint-disable-next-line lingui/no-unlocalized-strings
 TextInput.displayName = 'TextInput';
 
 const Wrapper = Animated.createAnimatedComponent(
