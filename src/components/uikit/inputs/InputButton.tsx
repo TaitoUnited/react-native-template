@@ -33,7 +33,7 @@ export function InputButton({
   style,
   isDisabled = false,
   isValid = true,
-  isRequired = true,
+  isRequired = false,
   isFocused = false,
   showRequiredAsterisk = true,
   onPress,

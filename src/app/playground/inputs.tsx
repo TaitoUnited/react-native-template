@@ -29,7 +29,6 @@ export default function Inputs() {
           label="Search input"
           value={text}
           onChange={setText}
-          labelIcon="comment"
           message="Find your favorite fruit"
           suggestions={['Apple', 'Banana', 'Orange', 'Pineapple', 'Strawberry']}
         />
@@ -47,6 +46,20 @@ export default function Inputs() {
           showCharacterLimit
           maxLength={10}
           message="Max 10 characters"
+        />
+        <TextInput
+          label="Mandatory Text input"
+          showRequiredAsterisk
+          isRequired
+          value={text}
+          onChange={setText}
+          message="This field is mandatory"
+        />
+        <TextInput
+          label="Text input with label icon"
+          labelIcon="personEdit"
+          value={text}
+          onChange={setText}
         />
         <TextInput
           label="Disabled input"
