@@ -221,7 +221,7 @@ function ModalContent({
   );
 }
 
-const Wrapper = styled('SafeAreaView', {
+const Wrapper = styled('View', {
   flex: 1,
   justifyContent: 'flex-end',
 });
@@ -239,7 +239,6 @@ const Content = Animated.createAnimatedComponent(
     backgroundColor: '$surface',
     shadow: 'large',
     padding: '$medium',
-    paddingBottom: 0,
     borderTopLeftRadius: '$medium',
     borderTopRightRadius: '$medium',
     zIndex: 2,
