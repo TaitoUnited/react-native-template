@@ -6,13 +6,12 @@ import { ReactNode, forwardRef } from 'react';
 
 import { styled, useTheme } from '~styles';
 
-interface BottomSheetProps {
+type BottomSheetProps = RNBottomSheetProps & {
   initialIndex: number;
   snapPoints: string[]; // e.g. ['25%', '50%']
   children: ReactNode;
   onSheetChange?: (index: number) => void;
-  keyboardBehavior?: RNBottomSheetProps['keyboardBehavior'];
-}
+};
 
 export const BottomSheet = forwardRef(
   (
@@ -22,6 +21,7 @@ export const BottomSheet = forwardRef(
       children,
       onSheetChange,
       keyboardBehavior = 'interactive',
+      ...rest
     }: BottomSheetProps,
     ref: any
   ) => {
@@ -35,6 +35,7 @@ export const BottomSheet = forwardRef(
 
     return (
       <RNBottomSheet
+        {...rest}
         ref={ref}
         backgroundStyle={{ backgroundColor: theme.colors.surface }}
         index={initialIndex}

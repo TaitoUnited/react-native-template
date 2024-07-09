@@ -31,9 +31,10 @@ export default function PlaygroundLayout() {
       <Stack.Screen name="icons" options={{ title: 'Icons' }} />
       <Stack.Screen name="inputs" options={{ title: 'Inputs' }} />
       <Stack.Screen name="layout" options={{ title: 'Layout' }} />
-      <Stack.Screen name="toast" options={{ title: 'Toast' }} />
+      <Stack.Screen name="bottom-sheet" options={{ title: 'Bottom Sheet' }} />
       <Stack.Screen name="accordion" options={{ title: 'Accordion' }} />
       <Stack.Screen name="progress" options={{ title: 'Progress' }} />
+      <Stack.Screen name="toast" options={{ title: 'Toast' }} />
     </Stack>
   );
 }
