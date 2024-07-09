@@ -1,3 +1,5 @@
+import { i18n } from '@lingui/core';
+import { msg } from '@lingui/macro';
 import {
   ComponentProps,
   forwardRef,
@@ -7,20 +9,20 @@ import {
 } from 'react';
 import { Keyboard, ViewStyle } from 'react-native';
 
-import { styled } from '~styles';
-
 import type { IconName } from '../Icon';
 import { PickerModal } from '../PickerModal';
 import { PickerSheet } from '../PickerSheet';
-import { Text } from '../Text';
 import { InputButton } from './InputButton';
 
 type BaseProps = {
   options: Array<{ label: string; value: string }>;
   label: string;
+  labelIcon?: IconName;
+  placeholder?: string;
   icon?: IconName;
   message?: string;
   style?: ViewStyle;
+  isDisabled?: boolean;
   isValid?: boolean;
   isRequired?: boolean;
   showRequiredAsterisk?: boolean;
@@ -30,13 +32,13 @@ type BaseProps = {
 
 type SingleValueProps = {
   multiple?: false;
-  value: string;
+  value: string | null;
   onChange: (option: string) => void;
 };
 
 type MultipleValueProps = {
   multiple: true;
-  value: string[];
+  value: string[] | null;
   onChange: (option: string[]) => void;
 };
 
@@ -48,11 +50,13 @@ export const Select = forwardRef(
       value,
       options,
       label,
+      labelIcon,
+      placeholder = i18n._(msg`Select`),
       message,
       emptyContent,
       pickerType,
       multiple = false,
-      icon = 'chevronDown',
+      icon = 'arrowDropDown',
       onChange,
       ...rest
     }: Props,
@@ -92,7 +96,10 @@ export const Select = forwardRef(
           {...rest}
           value={visibleValue}
           label={label}
+          labelIcon={labelIcon}
           icon={icon}
+          message={message}
+          placeholder={placeholder}
           isFocused={isPickerOpen}
           onPress={() => {
             // Dismissing the keyboard is necessary to force any focused input to blur
@@ -100,11 +107,6 @@ export const Select = forwardRef(
             setPickerOpen(true);
           }}
         />
-        {!!message && (
-          <Message variant="bodySmall" color="textMuted">
-            {message}
-          </Message>
-        )}
 
         {(!pickerType && options.length > 20) || pickerType === 'sheet' ? (
           <PickerSheet {...pickerProps} />
@@ -118,8 +120,3 @@ export const Select = forwardRef(
 
 // eslint-disable-next-line lingui/no-unlocalized-strings
 Select.displayName = 'Select';
-
-const Message = styled(Text, {
-  marginTop: '$xs',
-  marginLeft: '$small',
-});

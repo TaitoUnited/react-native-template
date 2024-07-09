@@ -169,8 +169,8 @@ function ModalContent({
           ],
         }}
       >
-        <Stack axis="y" spacing="small">
-          <Text variant="bodySmall">{label}</Text>
+        <Stack axis="y" spacing="regular">
+          <Text variant="bodySmallSemiBold">{label}</Text>
 
           <ScrollView
             style={{
@@ -183,7 +183,7 @@ function ModalContent({
                   <Checkbox
                     key={option.value}
                     label={option.label}
-                    checked={selected.includes(option.value)}
+                    checked={selected?.includes(option.value)}
                     value={option.value}
                     onChange={() => handleOptionSelect(option.value)}
                   />
@@ -191,7 +191,7 @@ function ModalContent({
                   <Radio
                     key={option.value}
                     label={option.label}
-                    checked={selected.includes(option.value)}
+                    checked={selected?.includes(option.value)}
                     value={option.value}
                     onChange={() => handleOptionSelect(option.value)}
                   />
@@ -229,7 +229,7 @@ const Wrapper = styled('SafeAreaView', {
 const Backdrop = Animated.createAnimatedComponent(
   styled('View', {
     absoluteFill: true,
-    backgroundColor: '$backdrop',
+    backgroundColor: '$line1',
     zIndex: 1,
   })
 );
@@ -240,8 +240,8 @@ const Content = Animated.createAnimatedComponent(
     shadow: 'large',
     padding: '$medium',
     paddingBottom: 0,
-    margin: '$xs',
-    borderRadius: '$large',
+    borderTopLeftRadius: '$medium',
+    borderTopRightRadius: '$medium',
     zIndex: 2,
   })
 );

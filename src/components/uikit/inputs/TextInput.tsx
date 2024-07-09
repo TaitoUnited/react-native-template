@@ -1,21 +1,30 @@
-import { forwardRef, useEffect, useState } from 'react';
-import { Animated, TextInputProps, TouchableOpacity } from 'react-native';
+import { i18n } from '@lingui/core';
+import { msg } from '@lingui/macro';
+import { forwardRef, useRef, useState } from 'react';
+import {
+  TextInputProps as RNTextInputProps,
+  TouchableOpacity,
+} from 'react-native';
 
-import { styled, useTheme } from '~styles';
+import { styled } from '~styles';
 
-import { Icon } from '../Icon';
+import { Icon, IconName } from '../Icon';
 import { Text } from '../Text';
-import { useInputLabelAnimation } from './common';
+import { IconButton } from '../buttons/IconButton';
+import { Stack } from '../layout/Stack';
 
-type Props = Omit<TextInputProps, 'onChange'> & {
+export type TextInputProps = Omit<RNTextInputProps, 'onChange'> & {
   value: string;
-  label: string;
-  isValid?: boolean;
+  onChange: (val: string) => void;
+  icon?: IconName;
   isRequired?: boolean;
-  message?: string;
+  isValid?: boolean;
+  isDisabled?: boolean;
   showRequiredAsterisk?: boolean;
   allowSecureTextToggle?: boolean;
-  onChange: (val: string) => void;
+  label?: string;
+  labelIcon?: IconName;
+  message?: string;
   showCharacterLimit?: boolean;
 };
 
@@ -23,31 +32,38 @@ export const TextInput = forwardRef(
   (
     {
       value,
+      placeholder = i18n._(msg`Type here`),
+      onChange,
+      icon,
+      isRequired = false,
+      isValid = true,
+      isDisabled = false,
+      showRequiredAsterisk = true,
+      secureTextEntry,
+      allowSecureTextToggle = !!secureTextEntry,
+      showCharacterLimit = false,
+      maxLength = 200,
       label,
+      labelIcon,
       message,
       style,
-      secureTextEntry,
-      placeholder = '',
-      isValid = true,
-      allowSecureTextToggle = !!secureTextEntry,
-      isRequired = false,
-      showRequiredAsterisk = true,
-      showCharacterLimit,
-      onChange,
       onBlur,
       onFocus,
       multiline = false,
-      maxLength,
+      returnKeyType = 'done',
       ...rest
-    }: Props,
+    }: TextInputProps,
     ref
   ) => {
     const [secureTextVisible, setSecureTextVisible] = useState(false);
     const [isFocused, setFocused] = useState(false);
     const [characterCount, setCharacterCount] = useState(value?.length || 0);
-    const { colors } = useTheme();
-    const { labelStyles, labelAnimation, measureLabel, animateLabel } =
-      useInputLabelAnimation({ isAnimated: Boolean(value) || isFocused });
+    const inputRef = useRef<any>(ref);
+
+    function handleCancel() {
+      onChange('');
+      inputRef.current?.blur();
+    }
 
     function handleFocus(e: any) {
       setFocused(true);
@@ -67,55 +83,58 @@ export const TextInput = forwardRef(
       onChange(val);
     }
 
-    // Automatically animate the label if the value is set programatically
-    useEffect(() => {
-      if (
-        value &&
-        (!isFocused || Math.round((labelAnimation.current as any)._value) === 0)
-      ) {
-        animateLabel(1);
-      }
-    }, [value]); // eslint-disable-line react-hooks/exhaustive-deps
-
     return (
-      <Wrapper style={style}>
-        <Label style={labelStyles} pointerEvents="none">
-          <Text
-            variant="body"
-            color={isValid ? 'text' : 'error'}
-            onLayout={measureLabel}
-            numberOfLines={1}
-          >
-            {label}
-            {isRequired && showRequiredAsterisk ? '*' : ''}
-          </Text>
-        </Label>
+      <Stack axis="y" spacing="regular">
+        {label && (
+          <Stack axis="x" spacing="xs" align="center">
+            {labelIcon && <Icon name={labelIcon} size={24} color="text" />}
+            <Text variant="headingS" color="text" numberOfLines={1}>
+              {label}
+            </Text>
+            {isRequired && showRequiredAsterisk && (
+              <Text variant="body" color="error">
+                *
+              </Text>
+            )}
+          </Stack>
+        )}
 
         {showCharacterLimit && isFocused && (
-          <CharacterCount style={labelStyles} variant="bodyExtraSmall">
-            <Text variant="bodySmallBold">{characterCount}</Text>
+          <CharacterCount variant="bodyExtraSmall">
+            <Text variant="bodyExtraSmallBold">{characterCount}</Text>
             {` / ${maxLength}`}
           </CharacterCount>
         )}
 
-        <InputWrapper focused={isFocused} valid={isValid}>
+        <InputWrapper
+          axis="x"
+          spacing="xs"
+          align="center"
+          valid={isValid}
+          disabled={isDisabled}
+          style={style}
+        >
+          {!!icon && <Icon name={icon} size={24} color="text" />}
+
           <Input
-            {...(rest as any)}
-            ref={ref}
+            {...rest}
+            {...{ ref: inputRef }}
             value={value}
             placeholder={placeholder}
-            placeholderTextColor={isFocused ? colors.neutral3 : 'transparent'}
-            onChangeText={handleChangeText}
+            onChangeText={isDisabled ? undefined : handleChangeText}
             onFocus={handleFocus}
             onBlur={handleBlur}
             autoCapitalize="none"
             underlineColorAndroid="transparent"
             secureTextEntry={allowSecureTextToggle ? !secureTextVisible : secureTextEntry} // prettier-ignore
+            returnKeyType={returnKeyType}
+            editable={!isDisabled}
+            selectTextOnFocus={!isDisabled}
             multiline={multiline}
             maxLength={maxLength}
           />
 
-          {allowSecureTextToggle && (
+          {allowSecureTextToggle ? (
             <InputDecoration>
               <TouchableOpacity onPress={() => setSecureTextVisible((p) => !p)}>
                 {secureTextVisible ? (
@@ -125,15 +144,28 @@ export const TextInput = forwardRef(
                 )}
               </TouchableOpacity>
             </InputDecoration>
+          ) : (
+            <IconButton
+              icon="close"
+              size="small"
+              onPress={handleCancel}
+              disabled={!value}
+            />
           )}
         </InputWrapper>
 
         {!!message && (
-          <Message variant="bodyExtraSmall" color="neutral2">
-            {message}
-          </Message>
+          <Stack axis="x" spacing="small" align="center">
+            {!isValid && <Icon name="error" size={20} color="errorContrast" />}
+            <Text
+              variant="bodySmall"
+              color={isValid ? 'text' : 'errorContrast'}
+            >
+              {message}
+            </Text>
+          </Stack>
         )}
-      </Wrapper>
+      </Stack>
     );
   }
 );
@@ -141,73 +173,39 @@ export const TextInput = forwardRef(
 // eslint-disable-next-line lingui/no-unlocalized-strings
 TextInput.displayName = 'TextInput';
 
-const Wrapper = Animated.createAnimatedComponent(
-  styled('View', {
-    maxWidth: '100%',
-    position: 'relative',
-    display: 'flex',
-    zIndex: 0,
-  })
-);
-
-const Label = Animated.createAnimatedComponent(
-  styled('View', {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    zIndex: 1,
-  })
-);
-
-const InputWrapper = styled('View', {
-  alignItems: 'flex-end',
-  position: 'relative',
-  flexDirection: 'row',
-  borderBottomWidth: 1,
-  borderTopRightRadius: '$regular',
-  borderTopLeftRadius: '$regular',
+const InputWrapper = styled(Stack, {
+  padding: '$regular',
+  borderRadius: '$small',
+  backgroundColor: '$surface',
+  borderWidth: 1,
   variants: {
-    focused: {
-      true: { backgroundColor: 'rgba(150, 150, 150, 0.15)' },
-      false: { backgroundColor: 'transparent' },
-    },
     valid: {
-      true: { borderColor: '$text' },
-      false: { borderColor: '$error' },
+      true: { borderColor: '$line1' },
+      false: { borderColor: '$errorContrast' },
+    },
+    disabled: {
+      true: { backgroundColor: '$neutral4', borderWidth: 0 },
     },
   },
 });
 
 const Input = styled('TextInput', {
-  minHeight: 60,
   typography: 'body',
   color: '$text',
+  lineHeight: 20,
+  width: '70%', // This is to prevent the input from expanding with the text and pushing the icon out of view
   flexGrow: 1,
-  paddingHorizontal: '$small',
-  paddingBottom: 10,
-  paddingTop: '$medium',
-});
-
-const Message = styled(Text, {
-  marginTop: '$xs',
-  marginLeft: '$small',
-});
+}).attrs((p) => ({
+  placeholderTextColor: p.theme.colors.textMuted,
+}));
 
 const InputDecoration = styled('View', {
-  position: 'absolute',
-  top: 0,
-  right: 0,
-  bottom: 0,
-  flexShrink: 0,
-  padding: '$small',
-  paddingTop: '$medium',
+  flexCenter: 'row',
+  paddingRight: '$xs',
 });
 
-const CharacterCount = Animated.createAnimatedComponent(
-  styled(Text, {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    marginRight: '$small',
-  })
-);
+const CharacterCount = styled(Text, {
+  position: 'absolute',
+  top: '$regular',
+  right: '$xxs',
+});

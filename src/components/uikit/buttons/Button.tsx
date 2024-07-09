@@ -12,7 +12,7 @@ export function Button({
   children,
   color = 'primary',
   icon,
-  iconPlacement = 'start',
+  iconPlacement = 'end',
   loading,
   disabled,
   size = 'normal',
@@ -43,33 +43,36 @@ export function Button({
       size={size}
       disabled={disabled}
       style={[wrapperStyle, style]}
-      onPress={!disabled ? onPress : () => {}}
+      onPress={!disabled ? onPress : undefined}
       {...rest}
     >
-      {loading ? (
-        <ActivityIndicator color={theme.colors[textColor]} size="small" />
-      ) : (
-        <Stack
-          axis="x"
-          align="center"
-          justify="center"
-          style={{ flex: 1 }}
-          spacing={size === 'large' ? 'small' : 'xs'}
-        >
-          {icon && iconPlacement === 'start' && iconComp}
-          <Text
-            variant={textVariant}
-            style={{
-              color: theme.colors[textColor],
-              lineHeight: sizeToLineHeight[size],
-            }}
-            numberOfLines={size === 'large' ? 2 : 1}
-          >
-            {children}
-          </Text>
-          {icon && iconPlacement === 'end' && iconComp}
-        </Stack>
-      )}
+      <Stack
+        axis="x"
+        align="center"
+        justify="center"
+        style={{ flexGrow: 1 }}
+        spacing={size === 'large' ? 'small' : 'xs'}
+      >
+        {loading ? (
+          <ActivityIndicator color={theme.colors[textColor]} size="small" />
+        ) : (
+          <>
+            {icon && iconPlacement === 'start' && iconComp}
+            <Text
+              variant={textVariant}
+              style={{
+                color: theme.colors[textColor],
+                lineHeight: sizeToLineHeight[size],
+                flexShrink: 1,
+              }}
+              numberOfLines={size === 'large' ? 2 : 1}
+            >
+              {children}
+            </Text>
+            {icon && iconPlacement === 'end' && iconComp}
+          </>
+        )}
+      </Stack>
     </Wrapper>
   );
 }
@@ -88,7 +91,6 @@ const sizeToLineHeight: Record<ButtonSize, number> = {
 
 const Wrapper = styled('TouchableOpacity', {
   borderRadius: '$full',
-  flexCenter: 'row',
   variants: {
     size: {
       small: {

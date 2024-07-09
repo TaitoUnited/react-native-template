@@ -124,7 +124,7 @@ function ModalContent({
       <ListHeader
         label={label}
         searchTerm={searchTerm}
-        numSelected={selected.length}
+        numSelected={multiple ? selected?.length : selected ? 1 : 0}
         onSearch={setSearchTerm}
         onClearOption={handleOptionClear}
       />
@@ -140,7 +140,7 @@ function ModalContent({
           return (
             <ListItem
               multiple={multiple}
-              checked={selected.includes(item.value)}
+              checked={selected?.includes(item.value)}
               onOptionSelect={handleOptionSelect}
               value={item.value}
               label={item.label}
@@ -221,13 +221,13 @@ function ListHeader({
 }) {
   return (
     <ListHeaderWrapper>
-      <Stack axis="y" spacing="small">
+      <Stack axis="y" spacing="regular">
         <SearchInput value={searchTerm} onChange={onSearch} />
 
         <Stack axis="x" spacing="small" align="center" justify="between">
           <Text
-            variant="bodySmall"
-            color="textMuted"
+            variant="bodySmallSemiBold"
+            color="text"
             numberOfLines={1}
             style={{ flex: 1 }}
           >
@@ -236,7 +236,7 @@ function ListHeader({
 
           {numSelected > 1 && (
             <ClearButton onPress={onClearOption}>
-              <Text variant="bodySmallBold" color="textMuted">
+              <Text variant="bodyExtraSmall" color="textMuted">
                 <Trans>Clear selected ({numSelected})</Trans>
               </Text>
             </ClearButton>
@@ -283,7 +283,7 @@ const ListHeaderWrapper = styled('View', {
   padding: '$regular',
   backgroundColor: '$surface',
   borderBottomWidth: 1,
-  borderColor: '$border',
+  borderColor: '$line3',
 });
 
 const ClearButton = styled('TouchableOpacity', {
@@ -297,7 +297,7 @@ const ListItemWrapper = styled('View', {
 const Footer = styled('View', {
   width: '100%',
   borderTopWidth: 1,
-  borderColor: '$border',
+  borderColor: '$line3',
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-around',

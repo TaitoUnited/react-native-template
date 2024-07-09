@@ -1,17 +1,20 @@
-import { Animated, ViewStyle } from 'react-native';
+import { ViewStyle } from 'react-native';
 
 import { styled } from '~styles';
 
-import { useInputLabelAnimation } from './common';
 import { Icon, IconName } from '../Icon';
 import { Text } from '../Text';
+import { Stack } from '../layout/Stack';
 
 type Props = {
   value?: string;
   label: string;
+  labelIcon?: IconName;
+  placeholder?: string;
   icon?: IconName;
   message?: string;
   style?: ViewStyle;
+  isDisabled?: boolean;
   isValid?: boolean;
   isRequired?: boolean;
   isFocused?: boolean;
@@ -23,99 +26,95 @@ type Props = {
 export function InputButton({
   value,
   label,
+  labelIcon,
+  placeholder,
   icon,
   message,
   style,
+  isDisabled = false,
   isValid = true,
-  isRequired = false,
+  isRequired = true,
   isFocused = false,
   showRequiredAsterisk = true,
   onPress,
 }: Props) {
-  const { labelStyles, measureLabel } = useInputLabelAnimation({
-    isAnimated: !!value,
-  });
-
   return (
-    <Wrapper style={style}>
-      <Label style={labelStyles} pointerEvents="none">
-        <Text
-          variant="body"
-          color={isValid ? 'text' : 'error'}
-          onLayout={measureLabel}
-        >
+    <Stack axis="y" spacing="regular">
+      <Stack axis="x" spacing="xs" align="center">
+        {labelIcon && <Icon name={labelIcon} size={18} color="text" />}
+        <Text variant="headingS" color="text">
           {label}
-          {isRequired && showRequiredAsterisk ? '*' : ''}
         </Text>
-      </Label>
-
-      <InputWrapper focused={isFocused} valid={isValid} onPress={onPress}>
-        <Input>
-          {value ? (
+        {isRequired && showRequiredAsterisk && (
+          <Text variant="body" color="error">
+            *
+          </Text>
+        )}
+      </Stack>
+      <Wrapper style={style}>
+        <InputWrapper
+          focused={isFocused}
+          valid={isValid}
+          disabled={isDisabled}
+          onPress={isDisabled ? undefined : onPress}
+        >
+          <Input>
             <Text
               variant="body"
               withLineHeight
               numberOfLines={1}
               style={{ flex: 1 }}
             >
-              {value}
+              {value || placeholder}
             </Text>
-          ) : (
-            <TextPlaceholder />
+          </Input>
+
+          {!!icon && (
+            <InputDecoration>
+              <Icon name={icon} size={24} color="text" />
+            </InputDecoration>
           )}
-        </Input>
-
-        {!!icon && (
-          <InputDecoration>
-            <Icon name={icon} size={20} color="textMuted" />
-          </InputDecoration>
-        )}
-      </InputWrapper>
-
+        </InputWrapper>
+      </Wrapper>
       {!!message && (
-        <Message variant="bodyExtraSmall" color="textMuted">
-          {message}
-        </Message>
+        <Stack axis="x" spacing="small" align="center">
+          {!isValid && <Icon name="error" size={20} color="errorContrast" />}
+          <Text variant="bodySmall" color={isValid ? 'text' : 'errorContrast'}>
+            {message}
+          </Text>
+        </Stack>
       )}
-    </Wrapper>
+    </Stack>
   );
 }
 
-const Wrapper = Animated.createAnimatedComponent(
-  styled('View', {
-    position: 'relative',
-    display: 'flex',
-    zIndex: 0,
-  })
-);
-
-const Label = Animated.createAnimatedComponent(
-  styled('View', {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    zIndex: 1,
-  })
-);
+const Wrapper = styled('View', {
+  position: 'relative',
+  display: 'flex',
+});
 
 const InputWrapper = styled('TouchableOpacity', {
   position: 'relative',
   flexDirection: 'row',
-  borderBottomWidth: 1,
-  borderTopRightRadius: '$regular',
-  borderTopLeftRadius: '$regular',
+  borderWidth: 1,
+  borderRadius: '$small',
+  backgroundColor: '$surface',
   overflow: 'hidden',
   variants: {
     focused: {
-      true: { backgroundColor: 'rgba(150, 150, 150, 0.15)' },
-      false: { backgroundColor: 'transparent' },
+      true: { opacity: 0.5 },
     },
     valid: {
-      true: { borderColor: '$text' },
-      false: { borderColor: '$error' },
+      true: { borderColor: '$line1' },
+      false: { borderColor: '$errorContrast' },
+    },
+    disabled: {
+      true: { backgroundColor: '$neutral4', borderWidth: 0 },
     },
   },
-});
+}).attrs(({ disabled }) => ({
+  activeOpacity: disabled ? 1 : 0.5,
+}));
 
 const Input = styled('View', {
   alignItems: 'flex-end',
@@ -123,20 +122,10 @@ const Input = styled('View', {
   minHeight: 60,
   flexGrow: 1,
   paddingHorizontal: '$small',
-  paddingBottom: 10,
-  paddingTop: '$medium',
+  flexCenter: 'row',
 });
 
 const InputDecoration = styled('View', {
   flexCenter: 'row',
   paddingRight: '$xs',
-});
-
-const TextPlaceholder = styled('View', {
-  height: '$lineHeights$body',
-});
-
-const Message = styled(Text, {
-  marginTop: '$xs',
-  marginLeft: '$small',
 });

@@ -12,6 +12,8 @@ export default function PlaygroundPage() {
     { screen: 'playground/inputs', label: 'Inputs' },
     { screen: 'playground/layout', label: 'Layout' },
     { screen: 'playground/toast', label: 'Toast' },
+    { screen: 'playground/accordion', label: 'Accordion' },
+    { screen: 'playground/progress', label: 'Progress' },
   ];
 
   if (__DEV__) items.push({ screen: 'playground/sandbox', label: 'Sandbox' });

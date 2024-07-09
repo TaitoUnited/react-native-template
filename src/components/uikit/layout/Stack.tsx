@@ -6,7 +6,7 @@ import { styled, theme, Theme } from '~styles';
 type Props = ViewProps & {
   spacing: keyof Theme['space'] | 'none';
   axis?: 'x' | 'y';
-  align?: 'center' | 'start' | 'end' | 'stretch';
+  align?: 'center' | 'start' | 'end' | 'stretch' | 'baseline';
   justify?: 'center' | 'start' | 'end' | 'between' | 'around';
   children: ReactNode;
 };

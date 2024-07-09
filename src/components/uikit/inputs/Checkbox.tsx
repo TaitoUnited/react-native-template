@@ -33,9 +33,9 @@ export function Checkbox({ onChange, checked, value, label }: Props) {
 
   return (
     <Wrapper onPress={() => onChange(value)} activeOpacity={0.8}>
-      <RadioOuter>
+      <RadioOuter checked={checked}>
         <Animated.View style={animatedStyles}>
-          <Icon name="check" size={18} color="text" />
+          <Icon name="check" size={18} color="textOnContrastingBg" />
         </Animated.View>
       </RadioOuter>
 
@@ -59,4 +59,11 @@ const RadioOuter = styled('View', {
   marginRight: '$small',
   borderColor: '$text',
   flexCenter: 'row',
+  variants: {
+    checked: {
+      true: {
+        backgroundColor: '$primary',
+      },
+    },
+  },
 });

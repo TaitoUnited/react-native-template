@@ -1,9 +1,11 @@
+export { Accordion } from './Accordion';
 export { BottomSheet } from './BottomSheet';
 export { Card } from './Card';
 export { Icon } from './Icon';
 export { Image } from './Image';
 export { PickerModal } from './PickerModal';
 export { PickerSheet } from './PickerSheet';
+export { ProgressBar } from './ProgressBar';
 export { SegmentedControl } from './SegmentedControl';
 export { Text } from './Text';
 export { Button } from './buttons/Button';
