@@ -3,7 +3,7 @@ import { styled } from '~styles';
 
 const totalSteps = 5;
 
-export default function Toast() {
+export default function Progress() {
   return (
     <Wrapper>
       <Stack axis="y" spacing="large">

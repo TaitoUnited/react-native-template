@@ -5,6 +5,7 @@ import { styled } from '~styles';
 type Props = {
   step: number;
   totalSteps: number;
+  height?: number;
 };
 
 /**
@@ -15,7 +16,11 @@ type Props = {
  * @param {number} props.totalSteps - The total number of steps in the form.
  * @returns {JSX.Element} - The rendered component.
  */
-export function ProgressBar({ step, totalSteps }: Props): JSX.Element {
+export function ProgressBar({
+  step,
+  totalSteps,
+  height = 12,
+}: Props): JSX.Element {
   let progress = (step / totalSteps) * 100;
   if (progress > 100) {
     progress = 100;
@@ -28,21 +33,18 @@ export function ProgressBar({ step, totalSteps }: Props): JSX.Element {
   }
 
   return (
-    <ProgressContainer>
-      <Progress style={{ width: `${progress}%` }} />
+    <ProgressContainer style={{ height }}>
+      <Progress style={{ height, width: `${progress}%` }} />
     </ProgressContainer>
   );
 }
 
 const ProgressContainer = styled('View', {
   borderRadius: '$full',
-  height: 12,
-  width: '100%',
   backgroundColor: '$primaryMutedHover',
 });
 
 const Progress = styled('View', {
   borderRadius: '$full',
-  height: 12,
   backgroundColor: '$primary',
 });
