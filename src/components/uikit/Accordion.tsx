@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
-import Collapsible from 'react-native-collapsible';
+import Collapsible, { CollapsibleProps } from 'react-native-collapsible';
 
 import { Color, styled } from '~styles';
 
@@ -8,7 +8,7 @@ import { Icon, IconName } from './Icon';
 import { Text } from './Text';
 import { Stack } from './layout/Stack';
 
-type AccordionProps = {
+type AccordionProps = Omit<CollapsibleProps, 'collapsed'> & {
   title: string;
   initialOpen?: boolean;
   children: React.ReactNode;
@@ -22,6 +22,7 @@ export function Accordion({
   children,
   icon,
   iconColor,
+  ...rest
 }: AccordionProps) {
   const [isCollapsed, setCollapsed] = useState(!initialOpen);
 
@@ -36,7 +37,9 @@ export function Accordion({
         />
       </TouchableOpacity>
 
-      <Collapsible collapsed={isCollapsed}>{children}</Collapsible>
+      <Collapsible {...rest} collapsed={isCollapsed}>
+        {children}
+      </Collapsible>
     </Stack>
   );
 }
