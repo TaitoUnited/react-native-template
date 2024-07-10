@@ -1,6 +1,6 @@
 import { Stack } from 'expo-router';
 
-import { FillButton } from '~components/uikit';
+import { IconButton } from '~components/uikit';
 import { useColorMode } from '~services/color-mode';
 import { useDefaultStackScreenOptions } from '~utils/navigation';
 
@@ -13,15 +13,14 @@ export default function PlaygroundLayout() {
       screenOptions={{
         ...screenOptions,
         headerRight: () => (
-          <FillButton
-            variant="neutral"
+          <IconButton
+            icon={colorScheme === 'light' ? 'moon' : 'moonFilled'}
+            color="neutral"
             size="small"
             onPress={() => {
               setColorMode(colorScheme === 'light' ? 'dark' : 'light');
             }}
-          >
-            {colorScheme === 'light' ? 'Dark' : 'Light'}
-          </FillButton>
+          />
         ),
       }}
     >

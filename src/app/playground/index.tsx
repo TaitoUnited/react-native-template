@@ -25,6 +25,7 @@ export default function PlaygroundPage() {
             <IconButton
               icon="close"
               onPress={() => router.navigate('settings')}
+              color="neutral"
             />
           ),
         }}

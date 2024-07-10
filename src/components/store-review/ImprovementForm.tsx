@@ -5,7 +5,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { ScrollView } from 'react-native';
 
 import { showToast } from '~components/common/Toaster';
-import { FillButton, IconButton, Stack, Text } from '~components/uikit';
+import { Button, IconButton, Stack, Text } from '~components/uikit';
 import { styled } from '~styles';
 import { sleep } from '~utils/common';
 
@@ -82,15 +82,15 @@ export default function ImprovementForm({
             }}
           />
 
-          <FillButton
-            variant="primary"
+          <Button
+            variant="filled"
             onPress={form.handleSubmit(onSubmitFeedback)}
             style={{ width: '100%' }}
             loading={form.formState.isSubmitting}
             disabled={!form.formState.isValid || form.formState.isSubmitting}
           >
             <Trans>Submit feedback</Trans>
-          </FillButton>
+          </Button>
         </Stack>
       </ScrollView>
     </Stack>

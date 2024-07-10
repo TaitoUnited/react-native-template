@@ -15,7 +15,7 @@ export function useHeaderPlaygroundButton() {
       return config.appEnv !== 'prod' ? (
         <DropdownMenu.Root style={{ marginHorizontal: theme.space.regular }}>
           <DropdownMenu.Trigger>
-            <IconButton icon="moreVert" size="medium" />
+            <IconButton icon="moreVert" size="normal" color="neutral" />
           </DropdownMenu.Trigger>
           <DropdownMenu.Content>
             <DropdownMenu.Item

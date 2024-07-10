@@ -1,19 +1,34 @@
 import type { ReactNode } from 'react';
-import type { TouchableWithoutFeedbackProps } from 'react-native';
+import type {
+  PressableProps,
+  TouchableWithoutFeedbackProps,
+} from 'react-native';
 
 import type { IconName } from '../Icon';
 
-export type ButtonSize = 'small' | 'medium' | 'large';
+export type ButtonSize = 'small' | 'normal' | 'large';
 
-// Add more variants if needed, eg. success, error, warning, etc.
-export type ButtonVariant = 'primary' | 'danger' | 'warn' | 'info' | 'neutral';
+export type ButtonColor = 'primary' | 'success' | 'error';
 
-export type ButtonProps = TouchableWithoutFeedbackProps & {
-  children: ReactNode;
-  variant: ButtonVariant;
+export type ButtonVariant = 'filled' | 'soft' | 'outlined' | 'plain';
+
+export type ButtonOwnProps = {
+  variant?: ButtonVariant;
   size?: ButtonSize;
-  icon?: IconName;
-  iconSide?: 'start' | 'end';
-  iconPosition?: 'label' | 'edge';
+  disabled?: boolean;
   loading?: boolean;
 };
+
+export type ButtonProps = TouchableWithoutFeedbackProps &
+  ButtonOwnProps & {
+    color?: ButtonColor;
+    children: ReactNode;
+    icon?: IconName;
+    iconPlacement?: 'start' | 'end';
+  };
+
+export type IconButtonProps = PressableProps &
+  ButtonOwnProps & {
+    icon: IconName;
+    color?: ButtonColor | 'neutral';
+  };

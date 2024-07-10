@@ -83,13 +83,13 @@ export default function MenuList({ items, title }: Props) {
                       (isValidElement(item.currentValue) ? (
                         item.currentValue
                       ) : (
-                        <Text
+                        <Value
                           variant="body"
                           color="textMuted"
                           numberOfLines={1}
                         >
                           {item.currentValue}
-                        </Text>
+                        </Value>
                       ))}
 
                     {item.checked !== undefined && (
@@ -131,6 +131,10 @@ const Title = styled(Text, {
 const Label = styled(Text, {
   flex: 1,
   paddingVertical: '$xxs',
+});
+
+const Value = styled(Text, {
+  maxWidth: '75%',
 });
 
 const Pressable = styled('TouchableHighlight', {}).attrs(() => ({

@@ -4,13 +4,7 @@ import * as ExpoStoreReview from 'expo-store-review';
 import { useEffect, useState } from 'react';
 
 import ImprovementForm from '~components/store-review/ImprovementForm';
-import {
-  BottomSheet,
-  FillButton,
-  OutlineButton,
-  Stack,
-  Text,
-} from '~components/uikit';
+import { BottomSheet, Button, Stack, Text } from '~components/uikit';
 import { styled } from '~styles';
 import storage from '~utils/storage';
 
@@ -94,22 +88,21 @@ export default function StoreReview() {
         <Text variant="headingS">
           <Trans>Enjoying the app?</Trans>
         </Text>
-        <FillButton
-          variant="primary"
+        <Button
+          variant="filled"
           onPress={requestReview}
           icon="heartFilled"
-          iconSide="start"
           style={{ width: '75%' }}
         >
           <Trans>Loving it</Trans>
-        </FillButton>
-        <OutlineButton
-          variant="neutral"
+        </Button>
+        <Button
+          variant="outlined"
           onPress={() => setImprovementRequest(true)}
           style={{ width: '75%' }}
         >
           <Trans>Could be better</Trans>
-        </OutlineButton>
+        </Button>
       </FeedbackWrapper>
     );
   }

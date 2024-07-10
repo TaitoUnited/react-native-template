@@ -10,7 +10,6 @@ export type IconName = keyof typeof icons;
 type Props = {
   name: IconName;
   color?: keyof Theme['colors'];
-  forcedColor?: string; // NOTE: use this only in very special cases!!!
   size?: number;
   style?: ViewStyle;
 };
@@ -18,12 +17,11 @@ type Props = {
 export const Icon = memo(function Icon({
   name,
   color = 'text',
-  forcedColor,
   size = 24,
   style,
 }: Props) {
   const theme = useTheme();
-  const iconColor = forcedColor || theme.colors[color];
+  const iconColor = theme.colors[color];
 
   return (
     <SvgXml

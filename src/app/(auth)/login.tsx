@@ -3,7 +3,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import { showToast } from '~components/common/Toaster';
-import { FillButton, Stack, Text, TextInput } from '~components/uikit';
+import { Button, Stack, Text, TextInput } from '~components/uikit';
 import { useAuthStore } from '~services/auth';
 import { styled } from '~styles/styled';
 
@@ -97,8 +97,8 @@ export default function Login() {
 
           <PushContent />
 
-          <FillButton
-            variant="primary"
+          <Button
+            variant="filled"
             size="large"
             onPress={form.handleSubmit(handleSubmit)}
             disabled={status === 'logging-in'}
@@ -110,7 +110,7 @@ export default function Login() {
             ) : (
               <Trans>Login</Trans>
             )}
-          </FillButton>
+          </Button>
         </Scroller>
       </Wrapper>
     </SafeArea>
