@@ -9,7 +9,7 @@
     "plugin:prettier/recommended",
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "import", "lodash", "prettier"],
+  "plugins": ["@typescript-eslint", "import", "lodash", "prettier", "lingui"],
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 2020,
@@ -83,7 +83,7 @@
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-unused-vars": [
       "error",
-      { "argsIgnorePattern": "^_" },
+      { "argsIgnorePattern": "^_", "destructuredArrayIgnorePattern": "^_" },
     ],
     "@typescript-eslint/explicit-module-boundary-types": "off",
 
@@ -104,7 +104,39 @@
     "lodash/prefer-constant": "off",
     "lodash/prefer-noop": "off",
 
-    // Enforce absolute imports to be first
+    // Lingui rules (more info here: https://github.com/lingui/eslint-plugin?tab=readme-ov-file#supported-rules)
+    "lingui/no-unlocalized-strings": [
+      "warn",
+      {
+        "ignore": ["rgba", "rgb"],
+        "ignoreFunction": [
+          "console.log",
+          "console.error",
+          "Error",
+          "styled",
+          "css",
+        ],
+        "ignoreProperty": ["name", "targetName"],
+        "ignoreAttribute": [],
+      },
+    ],
+    "lingui/t-call-in-function": 2,
+    "lingui/no-single-variables-to-translate": 2,
+    "lingui/no-expression-in-message": 2,
+    "lingui/no-single-tag-to-translate": 2,
+    "lingui/no-trans-inside-trans": 2,
+    "lingui/text-restrictions": [
+      2,
+      {
+        "rules": [
+          {
+            "patterns": ["''", "’", "“"],
+            "message": "Error message",
+          },
+        ],
+      },
+    ],
+
     "import/order": [
       "error",
       {

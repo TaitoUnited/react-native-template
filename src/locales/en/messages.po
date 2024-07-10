@@ -13,216 +13,269 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/app/(tabs)/settings.tsx:157
+#: src/components/store-review/StoreReview.tsx:81
+msgid "An error occurred while requesting review"
+msgstr "An error occurred while requesting review"
+
+#: src/app/(tabs)/settings.tsx:130
+msgid "API level"
+msgstr "API level"
+
+#: src/app/(tabs)/settings.tsx:136
+msgid "App environment"
+msgstr "App environment"
+
+#: src/app/(tabs)/settings.tsx:202
 msgid "Appearance"
 msgstr "Appearance"
 
-#: src/app/(tabs)/settings.tsx:22
+#: src/app/(tabs)/settings.tsx:29
 msgid "Are you sure you want to logout?"
 msgstr ""
 
-#: src/app/(tabs)/settings.tsx:76
-#: src/app/(tabs)/settings.tsx:163
+#: src/app/(tabs)/settings.tsx:89
+#: src/app/(tabs)/settings.tsx:208
 msgid "Automatic"
 msgstr "Automatic"
 
-#: src/utils/navigation.tsx:46
+#: src/utils/navigation.tsx:35
 msgid "Back"
 msgstr ""
 
-#: src/app/(auth)/landing.tsx:41
+#: src/app/(auth)/landing.tsx:42
 msgid "By Taito United"
 msgstr "By Taito United"
 
-#: src/app/(tabs)/settings.tsx:23
-#: src/components/uikit/inputs/DateInput.tsx:88
-#: src/components/uikit/inputs/SearchInput.tsx:54
+#: src/app/(tabs)/settings.tsx:30
+#: src/components/uikit/inputs/DateInput.tsx:90
+#: src/components/uikit/inputs/SearchInput.tsx:56
 #: src/components/uikit/PickerModal.tsx:206
-#: src/components/uikit/PickerSheet.tsx:154
+#: src/components/uikit/PickerSheet.tsx:155
 msgid "Cancel"
 msgstr ""
 
-#: src/utils/linking.ts:21
+#: src/utils/linking.ts:23
 msgid "Cannot open {type}"
 msgstr ""
 
+#: src/components/uikit/PickerSheet.tsx:240
+msgid "Clear selected ({numSelected})"
+msgstr "Clear selected ({numSelected})"
+
 #: src/components/uikit/PickerModal.tsx:206
-#: src/components/uikit/PickerSheet.tsx:154
-#: src/services/permissions.tsx:108
-#: src/services/permissions.tsx:122
+#: src/components/uikit/PickerSheet.tsx:155
+#: src/services/permissions.tsx:110
+#: src/services/permissions.tsx:126
 msgid "Close"
 msgstr ""
 
-#: src/components/uikit/inputs/DateInput.tsx:87
+#: src/components/uikit/inputs/DateInput.tsx:89
 msgid "Confirm"
 msgstr "Confirm"
 
-#: src/app/(tabs)/settings.tsx:117
+#: src/app/(tabs)/settings.tsx:162
+#: src/app/playground/icons.tsx:30
 msgid "Copied to clipboard"
 msgstr "Copied to clipboard"
 
-#: src/services/auth.tsx:102
+#: src/components/store-review/StoreReview.tsx:109
+msgid "Could be better"
+msgstr "Could be better"
+
+#: src/services/auth.tsx:107
 msgid "Could not connect to server"
 msgstr ""
 
-#: src/services/permissions.tsx:120
+#: src/services/permissions.tsx:123
 msgid "Could not toggle permission. You can change the permission in the system settings."
 msgstr ""
 
-#: src/app/(auth)/landing.tsx:74
-#: src/app/(auth)/signup.tsx:55
+#: src/app/(auth)/landing.tsx:77
+#: src/app/(auth)/signup.tsx:57
 msgid "Create an account"
 msgstr "Create an account"
 
-#: src/app/(tabs)/settings.tsx:81
-#: src/app/(tabs)/settings.tsx:162
+#: src/app/(tabs)/settings.tsx:95
+#: src/app/(tabs)/settings.tsx:207
 msgid "Dark"
 msgstr "Dark"
 
-#: src/app/(auth)/signup.tsx:58
+#: src/app/(tabs)/settings.tsx:115
+msgid "Device ID"
+msgstr "Device ID"
+
+#: src/app/(auth)/signup.tsx:60
 msgid "Don‘t worry, these won‘t actually be saved."
 msgstr "Don‘t worry, these won‘t actually be saved."
 
 #: src/components/uikit/PickerModal.tsx:213
-#: src/components/uikit/PickerSheet.tsx:161
+#: src/components/uikit/PickerSheet.tsx:162
 msgid "Done"
 msgstr ""
 
-#: src/app/(auth)/login.tsx:63
-#: src/app/(auth)/signup.tsx:85
+#: src/app/(auth)/login.tsx:65
+#: src/app/(auth)/signup.tsx:87
 msgid "Email"
-msgstr ""
-
-#: src/app/(auth)/login.tsx:55
-#: src/app/(auth)/signup.tsx:77
-msgid "Email invalid"
 msgstr ""
 
 #: src/app/(auth)/login.tsx:57
 #: src/app/(auth)/signup.tsx:79
+msgid "Email invalid"
+msgstr ""
+
+#: src/app/(auth)/login.tsx:59
+#: src/app/(auth)/signup.tsx:81
 msgid "Email required"
 msgstr ""
 
-#: src/app/(auth)/landing.tsx:100
-#: src/app/(tabs)/settings.tsx:55
+#: src/app/(auth)/landing.tsx:106
+#: src/app/(tabs)/settings.tsx:65
+#: src/app/(tabs)/settings.tsx:198
 msgid "English"
 msgstr "English"
 
-#: src/app/(auth)/login.tsx:35
+#: src/components/store-review/StoreReview.tsx:94
+msgid "Enjoying the app?"
+msgstr "Enjoying the app?"
+
+#: src/app/(auth)/login.tsx:37
 msgid "Enter your credentials"
 msgstr "Enter your credentials"
 
-#: src/app/(tabs)/settings.tsx:102
+#: src/app/(tabs)/settings.tsx:146
 msgid "Environment"
 msgstr "Environment"
 
-#: src/app/(auth)/login.tsx:24
+#: src/app/(auth)/login.tsx:26
 msgid "Failed to login"
 msgstr ""
 
-#: src/app/(auth)/signup.tsx:41
+#: src/app/(auth)/signup.tsx:43
 msgid "Failed to signup"
 msgstr ""
 
-#: src/app/(auth)/landing.tsx:97
-#: src/app/(tabs)/settings.tsx:60
+#: src/components/store-review/ImprovementForm.tsx:67
+msgid "Feedback is required"
+msgstr "Feedback is required"
+
+#: src/components/store-review/ImprovementForm.tsx:34
+msgid "Feedback sent!"
+msgstr "Feedback sent!"
+
+#: src/app/(auth)/landing.tsx:101
+#: src/app/(tabs)/settings.tsx:71
 msgid "Finnish"
 msgstr "Finnish"
 
-#: src/app/(auth)/signup.tsx:105
+#: src/app/(auth)/signup.tsx:108
 msgid "First name"
 msgstr ""
 
-#: src/app/(auth)/signup.tsx:100
+#: src/app/(auth)/signup.tsx:103
 msgid "First name is required"
 msgstr ""
 
-#: src/app/(tabs)/_layout.tsx:31
+#: src/app/(tabs)/_layout.tsx:27
 #: src/app/(tabs)/home.tsx:10
 msgid "Home"
 msgstr ""
 
-#: src/app/(tabs)/settings.tsx:167
+#: src/components/store-review/ImprovementForm.tsx:56
+msgid "How can we improve?"
+msgstr "How can we improve?"
+
+#: src/app/(tabs)/settings.tsx:31
+msgid "I am sure"
+msgstr "I am sure"
+
+#: src/app/(tabs)/settings.tsx:212
 msgid "Info"
 msgstr "Info"
 
-#: src/app/(tabs)/settings.tsx:152
+#: src/app/(tabs)/settings.tsx:197
 msgid "Language"
 msgstr "Language"
 
-#: src/app/(auth)/signup.tsx:123
+#: src/app/(auth)/signup.tsx:127
 msgid "Last name"
 msgstr ""
 
-#: src/app/(auth)/signup.tsx:118
+#: src/app/(auth)/signup.tsx:122
 msgid "Last name is required"
 msgstr ""
 
-#: src/app/(tabs)/settings.tsx:86
-#: src/app/(tabs)/settings.tsx:160
+#: src/app/(tabs)/settings.tsx:101
+#: src/app/(tabs)/settings.tsx:205
 msgid "Light"
 msgstr "Light"
 
-#: src/app/(auth)/login.tsx:106
+#: src/app/(auth)/login.tsx:111
 msgid "Logging in..."
 msgstr ""
 
-#: src/app/(auth)/_layout.tsx:11
-#: src/app/(auth)/login.tsx:108
+#: src/app/(auth)/_layout.tsx:14
+#: src/app/(auth)/login.tsx:113
 msgid "Login"
 msgstr ""
 
-#: src/app/(tabs)/settings.tsx:24
-#: src/app/(tabs)/settings.tsx:35
+#: src/app/(tabs)/settings.tsx:44
 msgid "Logout"
 msgstr ""
 
-#: src/components/uikit/PickerSheet.tsx:254
+#: src/components/store-review/StoreReview.tsx:102
+msgid "Loving it"
+msgstr "Loving it"
+
+#: src/components/uikit/PickerSheet.tsx:256
 msgid "No results found."
 msgstr ""
 
-#: src/app/playground/utils.tsx:26
+#: src/app/playground/utils.tsx:28
 msgid "Open playground"
 msgstr ""
 
-#: src/services/permissions.tsx:109
-#: src/services/permissions.tsx:123
+#: src/services/permissions.tsx:111
+#: src/services/permissions.tsx:127
 msgid "Open settings"
 msgstr ""
 
-#: src/app/(auth)/login.tsx:83
-#: src/app/(auth)/signup.tsx:171
+#: src/app/(auth)/landing.tsx:69
+msgid "Or"
+msgstr "Or"
+
+#: src/app/(auth)/login.tsx:86
+#: src/app/(auth)/signup.tsx:177
 msgid "Password"
 msgstr ""
 
-#: src/app/(auth)/signup.tsx:218
+#: src/app/(auth)/signup.tsx:225
 msgid "Password again"
 msgstr ""
 
-#: src/app/(auth)/login.tsx:78
-#: src/app/(auth)/signup.tsx:165
-#: src/app/(auth)/signup.tsx:212
+#: src/app/(auth)/login.tsx:81
+#: src/app/(auth)/signup.tsx:171
+#: src/app/(auth)/signup.tsx:219
 msgid "Password is required"
 msgstr ""
 
-#: src/app/(auth)/signup.tsx:163
-#: src/app/(auth)/signup.tsx:210
+#: src/app/(auth)/signup.tsx:169
+#: src/app/(auth)/signup.tsx:217
 msgid "Password must be at least 8 characters"
 msgstr ""
 
-#: src/app/(auth)/signup.tsx:208
+#: src/app/(auth)/signup.tsx:215
 msgid "Passwords do not match"
 msgstr ""
 
-#: src/utils/linking.ts:34
+#: src/utils/linking.ts:36
 msgid "phone app"
 msgstr ""
 
-#: src/app/(auth)/signup.tsx:145
+#: src/app/(auth)/signup.tsx:150
 msgid "Phone number"
 msgstr ""
 
-#: src/app/(auth)/signup.tsx:136
+#: src/app/(auth)/signup.tsx:141
 msgid "Phone number is required"
 msgstr ""
 
@@ -230,65 +283,89 @@ msgstr ""
 msgid "Please try restarting the application."
 msgstr ""
 
-#: src/app/(auth)/signup.tsx:140
+#: src/app/(auth)/signup.tsx:145
 msgid "Preferred format: +358400123456"
 msgstr ""
 
-#: src/app/(tabs)/_layout.tsx:44
-#: src/app/(tabs)/profile.tsx:9
+#: src/app/(tabs)/_layout.tsx:40
+#: src/app/(tabs)/profile.tsx:10
 msgid "Profile"
 msgstr ""
 
-#: src/app/(auth)/landing.tsx:33
-msgid "React Native Template"
-msgstr "React Native Template"
-
-#: src/app/(tabs)/_layout.tsx:37
-#: src/app/(tabs)/search.tsx:9
-#: src/components/uikit/inputs/SearchInput.tsx:17
+#: src/app/(tabs)/_layout.tsx:33
+#: src/app/(tabs)/search.tsx:10
+#: src/components/uikit/inputs/SearchInput.tsx:19
 msgid "Search"
 msgstr ""
 
-#: src/app/(tabs)/_layout.tsx:51
+#: src/app/(tabs)/_layout.tsx:47
 msgid "Settings"
 msgstr ""
 
-#: src/app/(auth)/landing.tsx:55
+#: src/app/(auth)/landing.tsx:56
 msgid "Sign in"
 msgstr "Sign in"
 
-#: src/app/(auth)/signup.tsx:240
+#: src/app/(auth)/signup.tsx:249
 msgid "Signing up..."
 msgstr ""
 
-#: src/app/(auth)/_layout.tsx:12
-#: src/app/(auth)/signup.tsx:242
+#: src/app/(auth)/_layout.tsx:15
+#: src/app/(auth)/signup.tsx:251
 msgid "Signup"
 msgstr ""
 
 #: src/components/common/ErrorBoundary.tsx:39
-#: src/services/permissions.tsx:119
-#: src/utils/linking.ts:28
+#: src/services/permissions.tsx:121
+#: src/utils/linking.ts:30
 msgid "Something went wrong"
 msgstr ""
 
-#: src/app/(auth)/landing.tsx:50
+#: src/components/store-review/StoreReview.tsx:82
+msgid "Sorry about the inconvenience"
+msgstr "Sorry about the inconvenience"
+
+#: src/app/(auth)/landing.tsx:51
 msgid "Start your journey"
 msgstr "Start your journey"
 
-#: src/components/uikit/PickerSheet.tsx:257
+#: src/components/store-review/ImprovementForm.tsx:94
+msgid "Submit feedback"
+msgstr "Submit feedback"
+
+#: src/app/(tabs)/settings.tsx:198
+msgid "Suomi"
+msgstr "Suomi"
+
+#: src/app/(tabs)/settings.tsx:120
+msgid "System name"
+msgstr "System name"
+
+#: src/app/(tabs)/settings.tsx:125
+msgid "System version"
+msgstr "System version"
+
+#: src/app/(auth)/landing.tsx:33
+msgid "Taito Template"
+msgstr "Taito Template"
+
+#: src/components/store-review/ImprovementForm.tsx:35
+msgid "Thank you"
+msgstr "Thank you"
+
+#: src/components/uikit/PickerSheet.tsx:259
 msgid "Try changing your search term."
 msgstr ""
 
-#: src/services/permissions.tsx:105
+#: src/services/permissions.tsx:107
 msgid "Unable to change permission"
 msgstr ""
 
-#: src/app/(tabs)/settings.tsx:111
+#: src/app/(tabs)/settings.tsx:156
 msgid "Update ID"
 msgstr "Update ID"
 
-#: src/app/(tabs)/settings.tsx:98
+#: src/app/(tabs)/settings.tsx:141
 msgid "Version"
 msgstr "Version"
 
@@ -296,10 +373,14 @@ msgstr "Version"
 msgid "Welcome to"
 msgstr "Welcome to"
 
-#: src/app/(auth)/login.tsx:38
+#: src/app/(auth)/login.tsx:40
 msgid "You can enter any email and password to login."
 msgstr "You can enter any email and password to login."
 
-#: src/services/permissions.tsx:106
+#: src/app/playground/icons.tsx:19
+msgid "You can long press on an icon to copy its name to the clipboard."
+msgstr "You can long press on an icon to copy its name to the clipboard."
+
+#: src/services/permissions.tsx:108
 msgid "You need to change the permission in the system settings."
 msgstr ""

@@ -1,4 +1,4 @@
-import { t, Trans } from '@lingui/macro';
+import { Trans, msg } from '@lingui/macro';
 import { useHeaderHeight } from '@react-navigation/elements';
 import { Controller, useForm } from 'react-hook-form';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -6,6 +6,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { showToast } from '~components/common/Toaster';
 import { Button, Spacer, Stack, Text, TextInput } from '~components/uikit';
 import { useAuthStore } from '~services/auth';
+import { useI18n } from '~services/i18n';
 import { styled } from '~styles/styled';
 
 type Credentials = {
@@ -20,6 +21,7 @@ type Credentials = {
 export const MIN_PASSWORD_LENGTH = 8;
 
 export default function Signup() {
+  const { _ } = useI18n();
   const form = useForm<Credentials>({ mode: 'onChange' });
   const password = form.watch('password1');
   const { status, signup } = useAuthStore();
@@ -38,7 +40,7 @@ export default function Signup() {
 
       await signup(credentials);
     } catch (error: any) {
-      showToast({ title: t`Failed to signup`, type: 'error' });
+      showToast({ title: _(msg`Failed to signup`), type: 'error' });
     }
   }
 
@@ -74,15 +76,15 @@ export default function Signup() {
                 render={({ field, fieldState }) => {
                   const message =
                     fieldState.error?.type === 'validEmail'
-                      ? t`Email invalid`
+                      ? _(msg`Email invalid`)
                       : fieldState.error?.type === 'required'
-                        ? t`Email required`
+                        ? _(msg`Email required`)
                         : undefined;
 
                   return (
                     <TextInput
                       {...field}
-                      label={t`Email`}
+                      label={_(msg`Email`)}
                       message={message}
                       isValid={!message}
                       keyboardType="email-address"
@@ -98,12 +100,12 @@ export default function Signup() {
               <Controller
                 name="firstName"
                 control={form.control}
-                rules={{ required: t`First name is required` }}
+                rules={{ required: _(msg`First name is required`) }}
                 render={({ field, fieldState }) => {
                   return (
                     <TextInput
                       {...field}
-                      label={t`First name`}
+                      label={_(msg`First name`)}
                       message={fieldState.error?.message}
                       isValid={!fieldState.error}
                       returnKeyType="next"
@@ -117,12 +119,12 @@ export default function Signup() {
               <Controller
                 name="lastName"
                 control={form.control}
-                rules={{ required: t`Last name is required` }}
+                rules={{ required: _(msg`Last name is required`) }}
                 render={({ field, fieldState }) => {
                   return (
                     <TextInput
                       {...field}
-                      label={t`Last name`}
+                      label={_(msg`Last name`)}
                       message={fieldState.error?.message}
                       isValid={!fieldState.error}
                       returnKeyType="next"
@@ -136,16 +138,16 @@ export default function Signup() {
               <Controller
                 name="phoneNumber"
                 control={form.control}
-                rules={{ required: t`Phone number is required` }}
+                rules={{ required: _(msg`Phone number is required`) }}
                 render={({ field, fieldState }) => {
                   const message =
                     fieldState.error?.message ||
-                    t`Preferred format: +358400123456`;
+                    _(msg`Preferred format: +358400123456`);
 
                   return (
                     <TextInput
                       {...field}
-                      label={t`Phone number`}
+                      label={_(msg`Phone number`)}
                       message={message}
                       isValid={!fieldState.error}
                       returnKeyType="next"
@@ -164,15 +166,15 @@ export default function Signup() {
                 render={({ field, fieldState }) => {
                   const message =
                     fieldState.error?.type === 'minLength'
-                      ? t`Password must be at least 8 characters`
+                      ? _(msg`Password must be at least 8 characters`)
                       : fieldState.error?.type === 'required'
-                        ? t`Password is required`
+                        ? _(msg`Password is required`)
                         : undefined;
 
                   return (
                     <TextInput
                       {...field}
-                      label={t`Password`}
+                      label={_(msg`Password`)}
                       message={message}
                       isValid={!fieldState.error}
                       secureTextEntry
@@ -210,17 +212,17 @@ export default function Signup() {
                 render={({ field, fieldState }) => {
                   const message =
                     fieldState.error?.type === 'passwordsMatch'
-                      ? t`Passwords do not match`
+                      ? _(msg`Passwords do not match`)
                       : fieldState.error?.type === 'minLength'
-                        ? t`Password must be at least 8 characters`
+                        ? _(msg`Password must be at least 8 characters`)
                         : fieldState.error?.type === 'required'
-                          ? t`Password is required`
+                          ? _(msg`Password is required`)
                           : undefined;
 
                   return (
                     <TextInput
                       {...field}
-                      label={t`Password again`}
+                      label={_(msg`Password again`)}
                       message={message}
                       isValid={!fieldState.error}
                       secureTextEntry

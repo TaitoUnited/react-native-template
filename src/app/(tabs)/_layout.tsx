@@ -1,5 +1,4 @@
-import { t } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
+import { msg } from '@lingui/macro';
 import { Tabs } from 'expo-router';
 import { StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -7,6 +6,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import StoreReview from '~components/store-review/StoreReview';
 import { Icon, Text } from '~components/uikit';
 import type { IconName } from '~components/uikit/Icon';
+import { useI18n } from '~services/i18n';
 import { useTheme } from '~styles';
 
 type TabList = {
@@ -17,39 +17,34 @@ type TabList = {
 }[];
 
 export default function TabsLayout() {
-  /**
-   * Note: useLingui is called in root _layout, and it is passed down to all children.
-   * Here, the useLingui hook is necessary to make the t macro work in the tab bar and header.
-   * It is the only place that needs that addition, not sure why.
-   */
-  useLingui();
+  const { _ } = useI18n();
   const insets = useSafeAreaInsets();
 
   const theme = useTheme();
   const tabs: TabList = [
     {
       id: 'home',
-      title: t`Home`,
+      title: _(msg`Home`),
       iconFilled: 'homeFilled',
       iconOutlined: 'home',
     },
     {
       id: 'search',
-      title: t`Search`,
+      title: _(msg`Search`),
       iconFilled: 'search',
       iconOutlined: 'search',
     },
 
     {
       id: 'profile',
-      title: t`Profile`,
+      title: _(msg`Profile`),
       iconFilled: 'personCircleFilled',
       iconOutlined: 'personCircle',
     },
 
     {
       id: 'settings',
-      title: t`Settings`,
+      title: _(msg`Settings`),
       iconFilled: 'settingsFilled',
       iconOutlined: 'settings',
     },

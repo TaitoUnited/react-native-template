@@ -1,4 +1,4 @@
-import { t } from '@lingui/macro';
+import { msg } from '@lingui/macro';
 import { setStringAsync } from 'expo-clipboard';
 import { updateId as expoUpdateId } from 'expo-updates';
 import capitalize from 'lodash/capitalize';
@@ -23,24 +23,25 @@ import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 
 export default function Settings() {
+  const { _ } = useI18n();
   const logout = useAuthStore((s) => s.logout);
   function handleLogout() {
-    Alert.alert(t`Are you sure you want to logout?`, '', [
-      { text: t`Cancel`, style: 'cancel' },
-      { text: t`I am sure`, onPress: logout },
+    Alert.alert(_(msg`Are you sure you want to logout?`), '', [
+      { text: _(msg`Cancel`), style: 'cancel' },
+      { text: _(msg`I am sure`), onPress: logout },
     ]);
   }
 
   useHeaderPlaygroundButton();
 
   const items = [
-    useMenuListItem('LanguageMenuTarget'),
-    // useMenuListItem('AppearanceMenuTarget'), // We currently do not support dark mode, so until we do, we should not show this option
-    useMenuListItem('SystemInfoMenuTarget'),
+    useMenuListItem({ targetName: 'LanguageMenuTarget' }),
+    // useMenuListItem({ targetName: 'AppearanceMenuTarget' }), // We currently do not support dark mode, so until we do, we should not show this option
+    useMenuListItem({ targetName: 'SystemInfoMenuTarget' }),
     {
       id: 'logout',
       targetName: 'LogoutButton',
-      label: t`Logout`,
+      label: _(msg`Logout`),
       rightSlot: <Icon name="logout" color="textMuted" size={18} />,
       onPress: handleLogout,
     },
@@ -54,20 +55,20 @@ export default function Settings() {
 }
 
 function LanguageMenuTarget() {
-  const { setLocale, locale } = useI18n();
+  const { setLocale, locale, _ } = useI18n();
 
   return (
     <MenuList
       items={[
         {
           id: 'en',
-          label: t`English`,
+          label: _(msg`English`),
           checked: locale === 'en',
           onPress: () => setLocale('en'),
         },
         {
           id: 'fi',
-          label: t`Finnish`,
+          label: _(msg`Finnish`),
           checked: locale === 'fi',
           onPress: () => setLocale('fi'),
         },
@@ -77,6 +78,7 @@ function LanguageMenuTarget() {
 }
 
 function AppearanceMenuTarget() {
+  const { _ } = useI18n();
   const { setColorMode, colorMode } = useColorMode();
 
   return (
@@ -84,19 +86,19 @@ function AppearanceMenuTarget() {
       items={[
         {
           id: 'system',
-          label: t`Automatic`,
+          label: _(msg`Automatic`),
           checked: colorMode === 'system',
           onPress: () => setColorMode('system'),
         },
         {
           id: 'dark',
-          label: t`Dark`,
+          label: _(msg`Dark`),
           checked: colorMode === 'dark',
           onPress: () => setColorMode('dark'),
         },
         {
           id: 'light',
-          label: t`Light`,
+          label: _(msg`Light`),
           checked: colorMode === 'light',
           onPress: () => setColorMode('light'),
         },
@@ -106,41 +108,42 @@ function AppearanceMenuTarget() {
 }
 
 function SystemInfoMenuTarget() {
+  const { _ } = useI18n();
   const items: ComponentProps<typeof MenuList>['items'] = [
     {
       id: 'deviceId',
-      label: 'Device ID',
+      label: _(msg`Device ID`),
       currentValue: getUniqueIdSync(),
     },
     {
       id: 'systemName',
-      label: 'System name',
+      label: _(msg`System name`),
       currentValue: getSystemName(),
     },
     {
       id: 'systemVersion',
-      label: 'System version',
+      label: _(msg`System version`),
       currentValue: getSystemVersion(),
     },
     {
       id: 'apiLevel',
-      label: 'API level',
+      label: _(msg`API level`),
       currentValue: getApiLevelSync(),
       platform: 'android',
     },
     {
       id: 'appEnv',
-      label: 'App environment',
+      label: _(msg`App environment`),
       currentValue: config.appEnv,
     },
     {
       id: 'version',
-      label: t`Version`,
+      label: _(msg`Version`),
       currentValue: getReadableVersion(),
     },
     {
       id: 'environment',
-      label: t`Environment`,
+      label: _(msg`Environment`),
       currentValue: capitalize(config.appEnv),
     },
   ];
@@ -150,13 +153,13 @@ function SystemInfoMenuTarget() {
   if (updateId) {
     items.push({
       id: 'updateId',
-      label: t`Update ID`,
+      label: _(msg`Update ID`),
       currentValue: (
         <TouchableOpacity
           onLongPress={async () => {
             await setStringAsync(updateId);
             showToast({
-              title: t`Copied to clipboard`,
+              title: _(msg`Copied to clipboard`),
               type: 'success',
               icon: 'check',
             });
@@ -181,8 +184,8 @@ const Wrapper = styled('ScrollView', {
   },
 }));
 
-export function useMenuListItem(targetName: string) {
-  const { locale } = useI18n();
+export function useMenuListItem({ targetName }: { targetName: string }) {
+  const { locale, _ } = useI18n();
   const { colorMode } = useColorMode();
 
   let label = '';
@@ -191,22 +194,22 @@ export function useMenuListItem(targetName: string) {
 
   switch (targetName) {
     case 'LanguageMenuTarget':
-      label = t`Language`;
-      currentValue = locale === 'en' ? 'English' : 'Suomi';
+      label = _(msg`Language`);
+      currentValue = locale === 'en' ? _(msg`English`) : _(msg`Suomi`);
       target = LanguageMenuTarget;
       break;
     case 'AppearanceMenuTarget':
-      label = t`Appearance`;
+      label = _(msg`Appearance`);
       currentValue =
         colorMode === 'light'
-          ? t`Light`
+          ? _(msg`Light`)
           : colorMode === 'dark'
-            ? t`Dark`
-            : t`Automatic`;
+            ? _(msg`Dark`)
+            : _(msg`Automatic`);
       target = AppearanceMenuTarget;
       break;
     case 'SystemInfoMenuTarget':
-      label = t`Info`;
+      label = _(msg`Info`);
       target = SystemInfoMenuTarget;
       break;
     default:

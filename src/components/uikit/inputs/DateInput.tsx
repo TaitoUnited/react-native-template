@@ -1,4 +1,4 @@
-import { t } from '@lingui/macro';
+import { msg } from '@lingui/macro';
 import { DateTime } from 'luxon';
 import { forwardRef, useImperativeHandle, useState } from 'react';
 import { Keyboard, Platform, ViewStyle } from 'react-native';
@@ -8,9 +8,9 @@ import { useColorMode } from '~services/color-mode';
 import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 
-import { InputButton } from './InputButton';
 import { IconName } from '../Icon';
 import { Text } from '../Text';
+import { InputButton } from './InputButton';
 
 type Props = {
   label: string;
@@ -38,6 +38,7 @@ export const DateInput = forwardRef(
     }: Props,
     ref: any
   ) => {
+    const { _ } = useI18n();
     const [isPickerOpen, setPickerOpen] = useState(false);
     const { locale } = useI18n();
     const { colorScheme } = useColorMode();
@@ -85,8 +86,8 @@ export const DateInput = forwardRef(
           modal
           theme={pickerTheme}
           title={label}
-          confirmText={t`Confirm`}
-          cancelText={t`Cancel`}
+          confirmText={_(msg`Confirm`)}
+          cancelText={_(msg`Cancel`)}
           locale={locale}
           mode={mode}
           androidVariant="nativeAndroid"
@@ -103,6 +104,7 @@ export const DateInput = forwardRef(
   }
 );
 
+// eslint-disable-next-line lingui/no-unlocalized-strings
 DateInput.displayName = 'DateInput';
 
 const Message = styled(Text, {

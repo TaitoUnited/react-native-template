@@ -1,4 +1,3 @@
-import { useNavigationContainerRef } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useState } from 'react';
 
@@ -11,8 +10,7 @@ import { useFontsReady } from './font';
 export function useAppReady() {
   const initReady = useInitReady();
   const fontsReady = useFontsReady();
-  const routerReady = useRouterReady();
-  const appReady = initReady && fontsReady && routerReady;
+  const appReady = initReady && fontsReady;
 
   useEffect(() => {
     if (appReady) sleep(10).then(() => SplashScreen.hideAsync());
@@ -35,17 +33,4 @@ function useInitReady() {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return initReady;
-}
-
-function useRouterReady() {
-  const rootNavigation = useNavigationContainerRef();
-  const [routerReady, setRouterReady] = useState(false);
-
-  useEffect(() => {
-    return rootNavigation?.addListener('state', () => {
-      setRouterReady(true);
-    });
-  }, [rootNavigation]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  return routerReady;
 }

@@ -9,11 +9,11 @@ import { Keyboard, ViewStyle } from 'react-native';
 
 import { styled } from '~styles';
 
-import { InputButton } from './InputButton';
 import type { IconName } from '../Icon';
 import { PickerModal } from '../PickerModal';
 import { PickerSheet } from '../PickerSheet';
 import { Text } from '../Text';
+import { InputButton } from './InputButton';
 
 type BaseProps = {
   options: Array<{ label: string; value: string }>;
@@ -116,6 +116,7 @@ export const Select = forwardRef(
   }
 );
 
+// eslint-disable-next-line lingui/no-unlocalized-strings
 Select.displayName = 'Select';
 
 const Message = styled(Text, {

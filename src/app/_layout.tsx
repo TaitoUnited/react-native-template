@@ -1,4 +1,3 @@
-import { useLingui } from '@lingui/react';
 import { registerDevMenuItems } from 'expo-dev-menu';
 import {
   Stack,
@@ -41,6 +40,8 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const appReady = useAppReady();
 
+  if (!appReady) return null;
+
   return (
     <Providers>
       <RootLayoutNavigator />
@@ -52,8 +53,6 @@ export default function RootLayout() {
 
 function RootLayoutNavigator() {
   const screenOptions = useDefaultStackScreenOptions();
-
-  useLingui();
 
   return (
     <Stack screenOptions={{ headerShown: false }}>

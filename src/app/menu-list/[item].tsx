@@ -7,7 +7,7 @@ import { useMenuListItem } from '../(tabs)/settings';
 
 export default function MenuListItem() {
   const { item } = useLocalSearchParams<{ item: string }>();
-  const { target, label } = useMenuListItem(item as string);
+  const { target, label } = useMenuListItem({ targetName: item as string });
 
   const Target = target;
 

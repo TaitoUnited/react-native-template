@@ -1,12 +1,16 @@
-import { Trans, t } from '@lingui/macro';
+import { Trans, msg } from '@lingui/macro';
 import { differenceInDays } from 'date-fns';
 import * as ExpoStoreReview from 'expo-store-review';
 import { useEffect, useState } from 'react';
 
 import ImprovementForm from '~components/store-review/ImprovementForm';
 import { BottomSheet, Button, Stack, Text } from '~components/uikit';
+import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
-import storage from '~utils/storage';
+import storage, {
+  APP_REVIEW_DONE_STORAGE_KEY,
+  APP_REVIEW_LAST_REQUESTED_STORAGE_KEY,
+} from '~utils/storage';
 
 import { showToast } from '../common/Toaster';
 
@@ -14,16 +18,17 @@ const DAYS_TO_WAIT_BEFORE_ASKING_AGAIN = 7;
 const DAYS_BETWEEN_REVIEWS = 365;
 
 export default function StoreReview() {
+  const { _ } = useI18n();
   const [open, setOpen] = useState(false);
   const [improvementRequest, setImprovementRequest] = useState(false);
 
   useEffect(() => {
-    const persistedHasReviewed = storage.getNumber('@app/last-review-done');
+    const persistedHasReviewed = storage.getNumber(APP_REVIEW_DONE_STORAGE_KEY);
     const getReviewDate = async () => {
       try {
         if (await ExpoStoreReview.hasAction()) {
           const persistedLastAsked = storage.getNumber(
-            '@app/last-requested-review'
+            APP_REVIEW_LAST_REQUESTED_STORAGE_KEY
           );
           if (persistedLastAsked) {
             const differenceInDaysValue = differenceInDays(
@@ -61,20 +66,20 @@ export default function StoreReview() {
   }, []);
 
   const updateLastAsked = () => {
-    storage.set('@app/last-requested-review', new Date().getTime());
+    storage.set(APP_REVIEW_LAST_REQUESTED_STORAGE_KEY, new Date().getTime());
   };
 
   async function requestReview() {
     try {
       if (await ExpoStoreReview.hasAction()) {
         await ExpoStoreReview.requestReview();
-        storage.set('@app/last-review-done', new Date().getTime());
+        storage.set(APP_REVIEW_DONE_STORAGE_KEY, new Date().getTime());
       }
     } catch (error) {
       console.log('> Error requesting review: ', error);
       showToast({
-        title: t`An error occurred while requesting review`,
-        subtitle: t`Sorry about the inconvenience`,
+        title: _(msg`An error occurred while requesting review`),
+        subtitle: _(msg`Sorry about the inconvenience`),
         type: 'error',
       });
     } finally {

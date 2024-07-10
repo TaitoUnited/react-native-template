@@ -1,10 +1,11 @@
-import { t, Trans } from '@lingui/macro';
+import { Trans, msg } from '@lingui/macro';
 import { Controller, useForm } from 'react-hook-form';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import { showToast } from '~components/common/Toaster';
 import { Button, Stack, Text, TextInput } from '~components/uikit';
 import { useAuthStore } from '~services/auth';
+import { useI18n } from '~services/i18n';
 import { styled } from '~styles/styled';
 
 type Credentials = {
@@ -13,6 +14,7 @@ type Credentials = {
 };
 
 export default function Login() {
+  const { _ } = useI18n();
   const form = useForm<Credentials>({ mode: 'onBlur' });
   const { status, login } = useAuthStore();
 
@@ -21,7 +23,7 @@ export default function Login() {
       await login(form.getValues());
     } catch (error) {
       console.log('> Failed to login', error);
-      showToast({ title: t`Failed to login`, type: 'error' });
+      showToast({ title: _(msg`Failed to login`), type: 'error' });
     }
   }
 
@@ -52,15 +54,15 @@ export default function Login() {
                 render={({ field, fieldState }) => {
                   const message =
                     fieldState.error?.type === 'validEmail'
-                      ? t`Email invalid`
+                      ? _(msg`Email invalid`)
                       : fieldState.error?.type === 'required'
-                        ? t`Email required`
+                        ? _(msg`Email required`)
                         : undefined;
 
                   return (
                     <TextInput
                       {...field}
-                      label={t`Email`}
+                      label={_(msg`Email`)}
                       keyboardType="email-address"
                       autoCapitalize="none"
                       returnKeyType="next"
@@ -76,12 +78,12 @@ export default function Login() {
               <Controller
                 name="password"
                 control={form.control}
-                rules={{ required: t`Password is required` }}
+                rules={{ required: _(msg`Password is required`) }}
                 render={({ field, fieldState }) => {
                   return (
                     <TextInput
                       {...field}
-                      label={t`Password`}
+                      label={_(msg`Password`)}
                       secureTextEntry
                       returnKeyType="done"
                       message={fieldState.error?.message}

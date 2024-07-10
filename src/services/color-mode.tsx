@@ -1,8 +1,8 @@
-import { createContext, useContext, ReactNode } from 'react';
+import { ReactNode, createContext, useContext } from 'react';
 import { ColorSchemeName, useColorScheme } from 'react-native';
 
-import { theme as lightTheme, darkTheme, ThemeProvider } from '~styles';
-import { useStorageString } from '~utils/storage';
+import { ThemeProvider, darkTheme, theme as lightTheme } from '~styles';
+import { COLOR_MODE_STORAGE_KEY, useStorageString } from '~utils/storage';
 
 type ColorMode = 'light' | 'dark' | 'system';
 type ColorScheme = 'light' | 'dark';
@@ -22,8 +22,9 @@ const getColorScheme = (c: ColorSchemeName): ColorScheme =>
 
 export function ColorModeProvider({ children }: { children: ReactNode }) {
   const systemColorMode = useColorScheme();
-  const [persistedColorMode, setPersistedColorMode] =
-    useStorageString('@app/color-mode');
+  const [persistedColorMode, setPersistedColorMode] = useStorageString(
+    COLOR_MODE_STORAGE_KEY
+  );
 
   const colorMode = (persistedColorMode || 'system') as ColorMode;
 

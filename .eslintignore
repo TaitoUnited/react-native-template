@@ -3,3 +3,6 @@ ios/
 src/locales/_build/
 src/locales/**/*.js
 src/graphql/generated.ts
+src/app/playground/
+src/components/playground/
+src/design-system/

@@ -23,13 +23,13 @@ const getBaseStyle = ({
   if (disabled) {
     switch (variant) {
       case 'filled':
-        baseStyle.backgroundColor = theme.colors['neutral4'];
+        baseStyle.backgroundColor = theme.colors.neutral4;
         break;
       case 'soft':
-        baseStyle.backgroundColor = theme.colors['neutral5'];
+        baseStyle.backgroundColor = theme.colors.neutral5;
         break;
       case 'outlined':
-        baseStyle.borderColor = theme.colors['line2'];
+        baseStyle.borderColor = theme.colors.line2;
         break;
       case 'plain':
         // baseStyle remains as is
@@ -46,6 +46,7 @@ const getBaseStyle = ({
       baseStyle.backgroundColor = theme.colors[color];
       break;
     case 'soft':
+      // eslint-disable-next-line lingui/no-unlocalized-strings
       baseStyle.backgroundColor = theme.colors[`${color}Muted`];
       break;
     case 'outlined':
@@ -81,6 +82,7 @@ const getColor = ({
     case 'soft':
     case 'outlined':
     case 'plain':
+      // eslint-disable-next-line lingui/no-unlocalized-strings
       return color === 'primary' ? color : `${color}Contrast`;
     default:
       return 'textOnContrastingBg';

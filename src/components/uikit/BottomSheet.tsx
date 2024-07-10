@@ -58,6 +58,7 @@ export const BottomSheet = forwardRef(
   }
 );
 
+// eslint-disable-next-line lingui/no-unlocalized-strings
 BottomSheet.displayName = 'BottomSheet';
 
 const ContentWrapper = styled('View', {

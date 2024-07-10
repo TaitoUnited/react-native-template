@@ -1,4 +1,3 @@
-/* eslint-disable */
 export const body = {
   fontFamily: 'Inter',
   fontWeight: 400,

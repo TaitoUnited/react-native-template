@@ -203,6 +203,7 @@ const ListItem = memo(
   }
 );
 
+// eslint-disable-next-line lingui/no-unlocalized-strings
 ListItem.displayName = 'ListItem';
 
 function ListHeader({
@@ -236,7 +237,7 @@ function ListHeader({
           {numSelected > 1 && (
             <ClearButton onPress={onClearOption}>
               <Text variant="bodySmallBold" color="textMuted">
-                Clear selected ({numSelected})
+                <Trans>Clear selected ({numSelected})</Trans>
               </Text>
             </ClearButton>
           )}

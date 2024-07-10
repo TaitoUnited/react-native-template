@@ -1,9 +1,13 @@
-import { t } from '@lingui/macro';
+import { i18n } from '@lingui/core';
+import { msg } from '@lingui/macro';
 import { unstable_batchedUpdates } from 'react-native'; // eslint-disable-line
 import create from 'zustand';
 
 import { showToast } from '~components/common/Toaster';
-import storage from '~utils/storage';
+import storage, {
+  ACCESS_TOKEN_STORAGE_KEY,
+  REFRESH_TOKEN_STORAGE_KEY,
+} from '~utils/storage';
 
 type AuthStatus =
   | 'undetermined'
@@ -81,7 +85,7 @@ export async function initAuth() {
   authStore.setState({ status: 'determining' });
 
   try {
-    const accessToken = storage.getString('@app/access-token');
+    const accessToken = storage.getString(ACCESS_TOKEN_STORAGE_KEY);
 
     if (!accessToken) {
       throw Error('No access token!');
@@ -99,7 +103,10 @@ export async function initAuth() {
       // where the user will be logged out automatically
       console.log('> Auth error detected during auth check', error);
     } else if (error?.networkError) {
-      showToast({ title: t`Could not connect to server`, type: 'error' });
+      showToast({
+        title: i18n._(msg`Could not connect to server`),
+        type: 'error',
+      });
     } else {
       console.log('> Unknown auth error', error);
       // Logout the user in case of unknown errors or if the access token is missing
@@ -116,8 +123,8 @@ function setAuthTokens({
   refreshToken: string;
 }) {
   storage.clearAll();
-  storage.set('@app/access-token', accessToken);
-  storage.set('@app/refresh-token', refreshToken);
+  storage.set(ACCESS_TOKEN_STORAGE_KEY, accessToken);
+  storage.set(REFRESH_TOKEN_STORAGE_KEY, refreshToken);
 }
 
 export function isAuthError(error: any) {
