@@ -1,6 +1,6 @@
 // https://docs.expo.dev/guides/typescript/#appconfigjs
-import 'ts-node/register';
 import { ExpoConfig } from '@expo/config';
+import 'ts-node/register';
 
 import { getConfig } from './config/utils';
 
@@ -69,9 +69,9 @@ const expoConfig: ExpoConfig = {
     url: 'https://u.expo.dev/808dbf9f-9986-4409-a52d-050e69d62397',
   },
   // This is important for OTA updates to work properly!
-  // https://docs.expo.dev/eas-update/runtime-versions/#nativeversion-runtime-version-policy
+  // https://docs.expo.dev/eas-update/runtime-versions/#appversion-runtime-version-policy
   runtimeVersion: {
-    policy: 'fingerprintExperimental',
+    policy: 'appVersion',
   },
   plugins: [
     'expo-router',
