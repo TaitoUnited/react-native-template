@@ -100,20 +100,10 @@ const expoConfig: ExpoConfig = {
 // NOTE: we can't inline this to the plugin definition because the indendation would be wrong
 function getExtraProguardRules() {
   return `
-# react-native-fast-image
--keep public class com.dylanvann.fastimage.* {*;}
--keep public class com.dylanvann.fastimage.** {*;}
--keep public class * implements com.bumptech.glide.module.GlideModule
--keep public class * extends com.bumptech.glide.module.AppGlideModule
--keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
-  **[] $VALUES;
-  public *;
-}
+  # react-native-device-info
+  -keep class com.google.android.gms.common.** {*;}
 
-# react-native-device-info
--keep class com.google.android.gms.common.** {*;}
-
-# react-native-date-picker
+  # react-native-date-picker
 -keep public class net.time4j.android.ApplicationStarter
 -keep public class net.time4j.PrettyTime
 `;
