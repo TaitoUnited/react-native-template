@@ -1,7 +1,7 @@
 import { i18n } from '@lingui/core';
 import { msg } from '@lingui/macro';
 import { unstable_batchedUpdates } from 'react-native'; // eslint-disable-line
-import create from 'zustand';
+import { create } from 'zustand';
 
 import { showToast } from '~components/common/Toaster';
 import storage, {

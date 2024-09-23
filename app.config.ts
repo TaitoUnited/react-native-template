@@ -44,7 +44,7 @@ const expoConfig: ExpoConfig = {
       backgroundColor: config.adaptiveIcon.backgroundColor,
     },
     // Add more Android permissions here
-    permissions: ['POST_NOTIFICATIONS'],
+    permissions: [],
   },
   ios: {
     bundleIdentifier: appId,
@@ -53,11 +53,8 @@ const expoConfig: ExpoConfig = {
     config: {
       usesNonExemptEncryption: false,
     },
-    /* -------------- Add iOS permission usage descriptions here --------------
-    infoPlist: {
-      NSCameraUsageDescription: 'This app uses the camera to scan QR-codes.',
-    },
-    ------------------------------------------------------------------------- */
+    /* -------------- Add iOS permission usage descriptions here -------------- */
+    infoPlist: {},
   },
   extra: {
     ...config,
@@ -69,9 +66,9 @@ const expoConfig: ExpoConfig = {
     url: 'https://u.expo.dev/808dbf9f-9986-4409-a52d-050e69d62397',
   },
   // This is important for OTA updates to work properly!
-  // https://docs.expo.dev/eas-update/runtime-versions/#appversion-runtime-version-policy
+  // https://docs.expo.dev/eas-update/runtime-versions/#fingerprint-runtime-version-policy
   runtimeVersion: {
-    policy: 'appVersion',
+    policy: 'fingerprintExperimental',
   },
   plugins: [
     'expo-router',
@@ -79,10 +76,10 @@ const expoConfig: ExpoConfig = {
     ['expo-updates', { username: 'taito-united' }],
     ['./plugins/with-ios-settings', { teamId: 'EPATC4S9N2' }],
     [
-      './plugins/with-ios-permissions',
+      'react-native-permissions',
       {
-        // Add more iOS permissions here
-        permissions: ['Notifications'],
+        // Add setup_permissions to your Podfile
+        iosPermissions: [],
       },
     ],
     [

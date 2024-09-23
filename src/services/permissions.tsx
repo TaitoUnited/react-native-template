@@ -13,7 +13,7 @@ import {
   requestMultiple,
   requestNotifications,
 } from 'react-native-permissions';
-import create from 'zustand';
+import { create } from 'zustand';
 
 import { useAppState } from '~utils/observe';
 
@@ -187,7 +187,7 @@ const PERMISSION_CATEGORIES: Record<
     ],
   },
   bluetooth: {
-    ios: [PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL],
+    ios: [PERMISSIONS.IOS.BLUETOOTH],
     android:
       OS === 'android' && +Platform.Version > 30
         ? [
