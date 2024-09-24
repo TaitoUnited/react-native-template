@@ -87,6 +87,7 @@ const expoConfig: ExpoConfig = {
       {
         android: {
           buildToolsVersion: '34.0.0',
+          kotlinVersion: '1.6.21',
           minSdkVersion: 23,
           compileSdkVersion: 34,
           targetSdkVersion: 34,

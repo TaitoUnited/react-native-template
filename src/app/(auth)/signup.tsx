@@ -1,10 +1,9 @@
 import { Trans, msg } from '@lingui/macro';
-import { useHeaderHeight } from '@react-navigation/elements';
 import { Controller, useForm } from 'react-hook-form';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
 
 import { showToast } from '~components/common/Toaster';
-import { Button, Spacer, Stack, Text, TextInput } from '~components/uikit';
+import { Button, Stack, Text, TextInput } from '~components/uikit';
 import { useAuthStore } from '~services/auth';
 import { useI18n } from '~services/i18n';
 import { styled } from '~styles/styled';
@@ -25,7 +24,6 @@ export default function Signup() {
   const form = useForm<Credentials>({ mode: 'onChange' });
   const password = form.watch('password1');
   const { status, signup } = useAuthStore();
-  const headerHeight = useHeaderHeight();
   const isValidForm = form.formState.isValid && status !== 'signing-in';
 
   async function handleSubmit() {
@@ -45,243 +43,209 @@ export default function Signup() {
   }
 
   return (
-    <SafeArea>
-      <Wrapper>
-        <Scroller
-          // https://github.com/APSL/react-native-keyboard-aware-scroll-view/issues/217#issuecomment-419707063
-          extraHeight={-headerHeight}
-        >
-          <Stack axis="y" spacing="medium">
-            <Stack axis="y" spacing="small">
-              <Text variant="headingL">
-                <Trans>Create an account</Trans>
-              </Text>
-              <Text variant="bodySmall" color="textMuted">
-                <Trans>
-                  Don&lsquo;t worry, these won&lsquo;t actually be saved.
-                </Trans>
-              </Text>
-            </Stack>
+    <KeyboardAwareView>
+      <InnerStack axis="y" spacing="small" justify="between">
+        <Stack axis="y" spacing="small">
+          <Stack axis="y" spacing="small">
+            <Text variant="headingL">
+              <Trans>Create an account</Trans>
+            </Text>
+            <Text variant="bodySmall" color="textMuted">
+              <Trans>
+                Don&lsquo;t worry, these won&lsquo;t actually be saved.
+              </Trans>
+            </Text>
+          </Stack>
 
-            <Stack axis="y" spacing="regular">
-              <Controller
-                name="email"
-                control={form.control}
-                rules={{
-                  validate: {
-                    required: (v) => !!v,
-                    validEmail: (v) => v && v.includes('@'),
-                  },
-                }}
-                render={({ field, fieldState }) => {
-                  const message =
-                    fieldState.error?.type === 'validEmail'
-                      ? _(msg`Email invalid`)
-                      : fieldState.error?.type === 'required'
-                        ? _(msg`Email required`)
-                        : undefined;
+          <Stack axis="y" spacing="regular">
+            <Controller
+              name="email"
+              control={form.control}
+              rules={{
+                validate: {
+                  required: (v) => !!v,
+                  validEmail: (v) => v && v.includes('@'),
+                },
+              }}
+              render={({ field, fieldState }) => {
+                const message =
+                  fieldState.error?.type === 'validEmail'
+                    ? _(msg`Email invalid`)
+                    : fieldState.error?.type === 'required'
+                      ? _(msg`Email required`)
+                      : undefined;
 
-                  return (
-                    <TextInput
-                      {...field}
-                      label={_(msg`Email`)}
-                      message={message}
-                      isValid={!message}
-                      keyboardType="email-address"
-                      autoCapitalize="none"
-                      returnKeyType="next"
-                      onSubmitEditing={() => form.setFocus('firstName')}
-                      testID="emailInput"
-                    />
-                  );
-                }}
-              />
+                return (
+                  <TextInput
+                    {...field}
+                    label={_(msg`Email`)}
+                    message={message}
+                    isValid={!message}
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                    textContentType="emailAddress"
+                    autoCorrect={false}
+                    returnKeyType="next"
+                    onSubmitEditing={() => form.setFocus('firstName')}
+                    testID="emailInput"
+                  />
+                );
+              }}
+            />
+            <Controller
+              name="firstName"
+              control={form.control}
+              rules={{ required: _(msg`First name is required`) }}
+              render={({ field, fieldState }) => {
+                return (
+                  <TextInput
+                    {...field}
+                    label={_(msg`First name`)}
+                    message={fieldState.error?.message}
+                    isValid={!fieldState.error}
+                    returnKeyType="next"
+                    textContentType="givenName"
+                    onSubmitEditing={() => form.setFocus('lastName')}
+                    testID="firstNameInput"
+                  />
+                );
+              }}
+            />
+            <Controller
+              name="lastName"
+              control={form.control}
+              rules={{ required: _(msg`Last name is required`) }}
+              render={({ field, fieldState }) => {
+                return (
+                  <TextInput
+                    {...field}
+                    label={_(msg`Last name`)}
+                    message={fieldState.error?.message}
+                    isValid={!fieldState.error}
+                    returnKeyType="next"
+                    textContentType="familyName"
+                    onSubmitEditing={() => form.setFocus('phoneNumber')}
+                    testID="lastNameInput"
+                  />
+                );
+              }}
+            />
+            <Controller
+              name="phoneNumber"
+              control={form.control}
+              rules={{ required: _(msg`Phone number is required`) }}
+              render={({ field, fieldState }) => {
+                const message =
+                  fieldState.error?.message ||
+                  _(msg`Preferred format: +358400123456`);
 
-              <Controller
-                name="firstName"
-                control={form.control}
-                rules={{ required: _(msg`First name is required`) }}
-                render={({ field, fieldState }) => {
-                  return (
-                    <TextInput
-                      {...field}
-                      label={_(msg`First name`)}
-                      message={fieldState.error?.message}
-                      isValid={!fieldState.error}
-                      returnKeyType="next"
-                      onSubmitEditing={() => form.setFocus('lastName')}
-                      testID="firstNameInput"
-                    />
-                  );
-                }}
-              />
+                return (
+                  <TextInput
+                    {...field}
+                    label={_(msg`Phone number`)}
+                    message={message}
+                    isValid={!fieldState.error}
+                    returnKeyType="next"
+                    keyboardType="phone-pad"
+                    textContentType="telephoneNumber"
+                    onSubmitEditing={() => form.setFocus('password1')}
+                    testID="phoneNumberInput"
+                  />
+                );
+              }}
+            />
 
-              <Controller
-                name="lastName"
-                control={form.control}
-                rules={{ required: _(msg`Last name is required`) }}
-                render={({ field, fieldState }) => {
-                  return (
-                    <TextInput
-                      {...field}
-                      label={_(msg`Last name`)}
-                      message={fieldState.error?.message}
-                      isValid={!fieldState.error}
-                      returnKeyType="next"
-                      onSubmitEditing={() => form.setFocus('phoneNumber')}
-                      testID="lastNameInput"
-                    />
-                  );
-                }}
-              />
+            <Controller
+              name="password1"
+              control={form.control}
+              rules={{ required: true, minLength: MIN_PASSWORD_LENGTH }}
+              render={({ field, fieldState }) => {
+                const message =
+                  fieldState.error?.type === 'minLength'
+                    ? _(msg`Password must be at least 8 characters`)
+                    : fieldState.error?.type === 'required'
+                      ? _(msg`Password is required`)
+                      : undefined;
 
-              <Controller
-                name="phoneNumber"
-                control={form.control}
-                rules={{ required: _(msg`Phone number is required`) }}
-                render={({ field, fieldState }) => {
-                  const message =
-                    fieldState.error?.message ||
-                    _(msg`Preferred format: +358400123456`);
+                return (
+                  <TextInput
+                    {...field}
+                    label={_(msg`Password`)}
+                    message={message}
+                    isValid={!fieldState.error}
+                    secureTextEntry
+                    returnKeyType="next"
+                    textContentType="newPassword"
+                    onSubmitEditing={() => form.setFocus('password2')}
+                    testID="passwordInput"
+                  />
+                );
+              }}
+            />
 
-                  return (
-                    <TextInput
-                      {...field}
-                      label={_(msg`Phone number`)}
-                      message={message}
-                      isValid={!fieldState.error}
-                      returnKeyType="next"
-                      keyboardType="phone-pad"
-                      onSubmitEditing={() => form.setFocus('password1')}
-                      testID="phoneNumberInput"
-                    />
-                  );
-                }}
-              />
-
-              <Controller
-                name="password1"
-                control={form.control}
-                rules={{ required: true, minLength: MIN_PASSWORD_LENGTH }}
-                render={({ field, fieldState }) => {
-                  const message =
-                    fieldState.error?.type === 'minLength'
+            <Controller
+              name="password2"
+              control={form.control}
+              rules={{
+                validate: {
+                  required: (v) => !!v,
+                  minLength: (v) => v && v.length >= MIN_PASSWORD_LENGTH,
+                  passwordsMatch: (v) => v && v === password,
+                },
+              }}
+              render={({ field, fieldState }) => {
+                const message =
+                  fieldState.error?.type === 'passwordsMatch'
+                    ? _(msg`Passwords do not match`)
+                    : fieldState.error?.type === 'minLength'
                       ? _(msg`Password must be at least 8 characters`)
                       : fieldState.error?.type === 'required'
                         ? _(msg`Password is required`)
                         : undefined;
 
-                  return (
-                    <TextInput
-                      {...field}
-                      label={_(msg`Password`)}
-                      message={message}
-                      isValid={!fieldState.error}
-                      secureTextEntry
-                      returnKeyType="next"
-                      onSubmitEditing={() => form.setFocus('password2')}
-                      testID="passwordInput"
-                    />
-                  );
-                }}
-              />
-
-              {/** ----------------- iOS password field hack -------------------
-               * https://github.com/facebook/react-native/issues/21911#issuecomment-833144889
-               * By passing an extra input between the password inputs, iOS will
-               * not try to autofill the password field with generated password
-               * which would cause a weird visual glitch in the UI.
-               * Also we need to render <Spacer> components to mitigate the extra
-               * space that the hidden input would cause within the wrapping <Stack>
-               */}
-              <Spacer axis="y" size="none" />
-              <PasswordAutofillFix pointerEvents="none" />
-              <Spacer axis="y" size="none" />
-              {/* ----------------------------------------------------------- */}
-
-              <Controller
-                name="password2"
-                control={form.control}
-                rules={{
-                  validate: {
-                    required: (v) => !!v,
-                    minLength: (v) => v && v.length >= MIN_PASSWORD_LENGTH,
-                    passwordsMatch: (v) => v && v === password,
-                  },
-                }}
-                render={({ field, fieldState }) => {
-                  const message =
-                    fieldState.error?.type === 'passwordsMatch'
-                      ? _(msg`Passwords do not match`)
-                      : fieldState.error?.type === 'minLength'
-                        ? _(msg`Password must be at least 8 characters`)
-                        : fieldState.error?.type === 'required'
-                          ? _(msg`Password is required`)
-                          : undefined;
-
-                  return (
-                    <TextInput
-                      {...field}
-                      label={_(msg`Password again`)}
-                      message={message}
-                      isValid={!fieldState.error}
-                      secureTextEntry
-                      returnKeyType="done"
-                      testID="confirmPasswordInput"
-                    />
-                  );
-                }}
-              />
-            </Stack>
+                return (
+                  <TextInput
+                    {...field}
+                    label={_(msg`Password again`)}
+                    message={message}
+                    isValid={!fieldState.error}
+                    secureTextEntry
+                    textContentType="newPassword"
+                    returnKeyType="done"
+                    testID="confirmPasswordInput"
+                  />
+                );
+              }}
+            />
           </Stack>
-          <PushContent />
+        </Stack>
 
-          <Button
-            color="primary"
-            variant="filled"
-            size="large"
-            onPress={form.handleSubmit(handleSubmit)}
-            disabled={!isValidForm}
-            loading={status === 'signing-in'}
-            testID="signupButton"
-          >
-            {status === 'signing-in' ? (
-              <Trans>Signing up...</Trans>
-            ) : (
-              <Trans>Signup</Trans>
-            )}
-          </Button>
-        </Scroller>
-      </Wrapper>
-    </SafeArea>
+        <Button
+          color="primary"
+          variant="filled"
+          size="large"
+          onPress={form.handleSubmit(handleSubmit)}
+          disabled={!isValidForm}
+          loading={status === 'signing-in'}
+          testID="signupButton"
+        >
+          <Trans>Signup</Trans>
+        </Button>
+      </InnerStack>
+    </KeyboardAwareView>
   );
 }
 
-const SafeArea = styled('SafeAreaView', {
+const InnerStack = styled(Stack, {
+  padding: '$medium',
   flex: 1,
 });
 
-const Wrapper = styled('View', {
+const KeyboardAwareView = styled(KeyboardAwareScrollView, {
   flex: 1,
-});
-
-const Scroller = styled(KeyboardAwareScrollView, {
-  flex: 1,
-}).attrs((p) => ({
+}).attrs(() => ({
   keyboardShouldPersistTaps: 'handled',
   contentContainerStyle: {
     flexGrow: 1,
-    padding: p.theme.space.regular,
-    paddingTop: p.theme.space.medium,
   },
 }));
-
-const PushContent = styled('View', {
-  flexGrow: 1,
-  marginTop: '$medium',
-});
-
-const PasswordAutofillFix = styled('TextInput', {
-  opacity: 0.01,
-  height: '$hairlineWidth',
-});
