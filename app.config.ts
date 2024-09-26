@@ -101,9 +101,6 @@ const expoConfig: ExpoConfig = {
 // NOTE: we can't inline this to the plugin definition because the indendation would be wrong
 function getExtraProguardRules() {
   return `
-  # react-native-device-info
-  -keep class com.google.android.gms.common.** {*;}
-
   # react-native-date-picker
 -keep public class net.time4j.android.ApplicationStarter
 -keep public class net.time4j.PrettyTime

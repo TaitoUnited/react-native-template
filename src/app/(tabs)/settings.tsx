@@ -1,17 +1,16 @@
 import { msg } from '@lingui/macro';
+import {
+  applicationId,
+  getAndroidId,
+  getIosIdForVendorAsync,
+  nativeApplicationVersion,
+} from 'expo-application';
 import { setStringAsync } from 'expo-clipboard';
+import { modelName, osVersion, platformApiLevel } from 'expo-device';
 import { updateId as expoUpdateId } from 'expo-updates';
 import capitalize from 'lodash/capitalize';
-import { ComponentProps, FunctionComponent } from 'react';
-import { Alert, TouchableOpacity, View } from 'react-native';
-import {
-  getApiLevelSync,
-  getReadableVersion,
-  getSystemName,
-  getSystemVersion,
-  getUniqueIdSync,
-} from 'react-native-device-info';
-
+import { ComponentProps, FunctionComponent, useEffect, useState } from 'react';
+import { Alert, Platform, TouchableOpacity, View } from 'react-native';
 import { useHeaderPlaygroundButton } from '~app/playground/utils';
 import MenuList from '~components/common/MenuList';
 import { showToast } from '~components/common/Toaster';
@@ -109,41 +108,49 @@ function AppearanceMenuTarget() {
 
 function SystemInfoMenuTarget() {
   const { _ } = useI18n();
+  const [deviceId, setDeviceId] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchDeviceId() {
+      const id =
+        Platform.OS === 'android'
+          ? getAndroidId()
+          : await getIosIdForVendorAsync();
+      setDeviceId(id);
+    }
+    fetchDeviceId();
+  }, []);
+
   const items: ComponentProps<typeof MenuList>['items'] = [
     {
       id: 'deviceId',
       label: _(msg`Device ID`),
-      currentValue: getUniqueIdSync(),
+      currentValue: deviceId || _(msg`Fetching...`),
     },
     {
-      id: 'systemName',
-      label: _(msg`System name`),
-      currentValue: getSystemName(),
+      id: 'modelName',
+      label: _(msg`Model name`),
+      currentValue: modelName,
     },
     {
       id: 'systemVersion',
       label: _(msg`System version`),
-      currentValue: getSystemVersion(),
+      currentValue: osVersion,
     },
     {
       id: 'apiLevel',
       label: _(msg`API level`),
-      currentValue: getApiLevelSync(),
+      currentValue: platformApiLevel,
       platform: 'android',
-    },
-    {
-      id: 'appEnv',
-      label: _(msg`App environment`),
-      currentValue: config.appEnv,
     },
     {
       id: 'version',
       label: _(msg`Version`),
-      currentValue: getReadableVersion(),
+      currentValue: nativeApplicationVersion,
     },
     {
       id: 'environment',
-      label: _(msg`Environment`),
+      label: _(msg`App environment`),
       currentValue: capitalize(config.appEnv),
     },
   ];
@@ -170,6 +177,14 @@ function SystemInfoMenuTarget() {
           </Text>
         </TouchableOpacity>
       ),
+    });
+  }
+
+  if (config.appEnv !== 'prod') {
+    items.push({
+      id: 'bundleId',
+      label: _(msg`Bundle ID`),
+      currentValue: applicationId,
     });
   }
 
