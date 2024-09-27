@@ -64,8 +64,10 @@ If you are working on a project that was started before 2024, you will need to m
 
 14. If you are using AppCenter, you need to update the branches to use the new certificates and provisioning profiles. If you haven't already, you can download the provisioning profile from the Apple Developer portal and the certificate from 1Password. The password should be there as well. Select your branch and click on the tool icon on the right. Then click on _Sign_ and upload the files. Click on _Save & build_ to make sure it works properly.
 
-> Note: test branches (e.g. `test`, `staging`) should use the Ad Hoc profile and the production branch (e.g. `master`) should use the Distribution profile.
+> Note: test branches (e.g. `test`, `stag`) should use the Ad Hoc profile and the production branch (e.g. `master`) should use the Distribution profile.
 
 ## Manual code signing for Android
 
-TODO: Add Android manual code signing guide
+When you upload your first release to Google Play you will see a notice about "App signing by Google Play" and "Google is protecting your app signing key". This is the default behavior and requires no action on your behalf except to press "Continue".
+
+More information can be found [here](https://docs.expo.dev/app-signing/app-credentials/#app-signing-by-google-play).
