@@ -28,17 +28,19 @@ Currently, EAS Metadata is not supported for Android. We need need to manually u
 
 ### iOS
 
-Once you have updated the metadata and the app is ready to be submitted, you can run `eas submit --platform ios` to submit the app to the App Store. You can check the status of the submission in the **Submissions** tab in EAS dashboard.
+> IMPORTANT: For EAS Submit to be able to submit for you, you need to create an API key for the Apple Developer Portal. Please follow the [tutorial](https://github.com/expo/fyi/blob/main/creating-asc-api-key.md) to create the API key before your first submission.
+
+Once the app is ready to be submitted, you can run `eas submit --platform ios` to submit the app to the App Store. You can check the status of the submission in the **Submissions** tab in EAS dashboard.
 
 ### Android
 
-To be able to submit, we first need to go through that tutorial: <https://github.com/expo/fyi/blob/main/creating-google-service-account.md>
+> IMPORTANT: For EAS Submit to be able to submit for you, you need to create a Google Service Account. Please follow the [tutorial](https://github.com/expo/fyi/blob/main/creating-google-service-account.md) to create the Google Service Account before your first submission.
 
-Once you have updated the metadata and the app is ready to be submitted, you can run `eas submit --platform android` to submit the app to the Google Play Store. You can check the status of the submission in the **Submissions** tab in EAS dashboard.
+Once the app is ready to be submitted, you can run `eas submit --platform android` to submit the app to the Google Play Store. You can check the status of the submission in the **Submissions** tab in EAS dashboard.
 
 ### All (iOS & Android)
 
-Once you have updated the metadata and the app is ready to be submitted, you can run `eas submit --platform all` to submit the app to both the App Store and the Google Play Store. You can check the status of the submission in the **Submissions** tab in EAS dashboard.
+Once the app is ready to be submitted, you can run `eas submit --platform all` to submit the app to both the App Store and the Google Play Store. You can check the status of the submission in the **Submissions** tab in EAS dashboard.
 
 ## FAQ
 

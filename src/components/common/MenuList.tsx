@@ -55,7 +55,7 @@ export default function MenuList({ items, title }: Props) {
         {filteredItems.map((item, index) => (
           <Pressable
             testID={item.id}
-            key={item.label}
+            key={item.id}
             onPress={
               item.onPress || item.target
                 ? () => handleItemPress(item)

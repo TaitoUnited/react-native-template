@@ -90,7 +90,6 @@ export const DateInput = forwardRef(
           cancelText={_(msg`Cancel`)}
           locale={locale}
           mode={mode}
-          androidVariant="nativeAndroid"
           date={value}
           open={isPickerOpen}
           onCancel={() => setPickerOpen(false)}

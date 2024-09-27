@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { KeyboardProvider } from 'react-native-keyboard-controller';
 
 import ErrorBoundary from '~components/common/ErrorBoundary';
 import NavigationThemeProvider from '~components/common/NavigationThemeProvider';
@@ -13,10 +14,12 @@ export default function Providers({ children }: { children: ReactNode }) {
       <ColorModeProvider>
         <ErrorBoundary>
           <NavigationThemeProvider>
-            <AppWrapper>
-              {children}
-              <Toaster />
-            </AppWrapper>
+            <KeyboardProvider>
+              <AppWrapper>
+                {children}
+                <Toaster />
+              </AppWrapper>
+            </KeyboardProvider>
           </NavigationThemeProvider>
         </ErrorBoundary>
       </ColorModeProvider>

@@ -4,7 +4,17 @@
 
 We use EAS to build and sign the app. You can find the documentation [here](https://docs.expo.dev/deploy/build-project/#app-signing-credentials).
 
-We **highly suggest** to let EAS generate the credentials for you. You can also do it manually by following the instructions [here](https://docs.expo.dev/app-signing/local-credentials/)
+## New app
+
+We **highly suggest** to let EAS generate the credentials for you. Simply run the build script and select auto-submit option or run the submit script. Both will ask you if you want to let EAS generate the credentials for you.
+
+> Note: We let EAS automatically increment the version code and build number. If you want to do it manually, you can do it in the `app.json` (check the [documentation](https://docs.expo.dev/build-reference/app-versions/#local-version-source)).
+
+## Existing app
+
+If you are using EAS for the first time on an existing app, you can use the credentials in use in Google Play Console or App Store Connect. You will need to upload them manually to EAS in _Project settings_ -> _Credentials_. Follow the instructions during the upload. The credentials should be found in the password vault of the project.
+
+> Note: We let EAS automatically increment the version code and build number. You need to run `eas build:version:set -e prod` to set the current version code and build number, matching the one in the store. That way, EAS will increment the version code and build number correctly.
 
 ## Code signing with EAS
 

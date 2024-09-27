@@ -1,12 +1,12 @@
+import { ImageProps } from 'expo-image';
 import { useLayoutEffect, useState } from 'react';
-import { ImageRequireSource, Image } from 'react-native';
-import { Source } from 'react-native-fast-image';
+import { Image, ImageRequireSource } from 'react-native';
 
 export function useImageDimensions({
   source,
   size,
 }: {
-  source: Source | ImageRequireSource;
+  source: ImageProps['source'];
   size?: { width: number } | { height: number };
 }) {
   let width: number | undefined;

@@ -1,6 +1,6 @@
 // https://docs.expo.dev/guides/typescript/#appconfigjs
-import 'ts-node/register';
 import { ExpoConfig } from '@expo/config';
+import 'ts-node/register';
 
 import { getConfig } from './config/utils';
 
@@ -44,7 +44,7 @@ const expoConfig: ExpoConfig = {
       backgroundColor: config.adaptiveIcon.backgroundColor,
     },
     // Add more Android permissions here
-    permissions: ['POST_NOTIFICATIONS'],
+    permissions: [],
   },
   ios: {
     bundleIdentifier: appId,
@@ -53,11 +53,8 @@ const expoConfig: ExpoConfig = {
     config: {
       usesNonExemptEncryption: false,
     },
-    /* -------------- Add iOS permission usage descriptions here --------------
-    infoPlist: {
-      NSCameraUsageDescription: 'This app uses the camera to scan QR-codes.',
-    },
-    ------------------------------------------------------------------------- */
+    /* -------------- Add iOS permission usage descriptions here -------------- */
+    infoPlist: {},
   },
   extra: {
     ...config,
@@ -69,7 +66,7 @@ const expoConfig: ExpoConfig = {
     url: 'https://u.expo.dev/808dbf9f-9986-4409-a52d-050e69d62397',
   },
   // This is important for OTA updates to work properly!
-  // https://docs.expo.dev/eas-update/runtime-versions/#nativeversion-runtime-version-policy
+  // https://docs.expo.dev/eas-update/runtime-versions/#fingerprint-runtime-version-policy
   runtimeVersion: {
     policy: 'fingerprintExperimental',
   },
@@ -79,10 +76,10 @@ const expoConfig: ExpoConfig = {
     ['expo-updates', { username: 'taito-united' }],
     ['./plugins/with-ios-settings', { teamId: 'EPATC4S9N2' }],
     [
-      './plugins/with-ios-permissions',
+      'react-native-permissions',
       {
-        // Add more iOS permissions here
-        permissions: ['Notifications'],
+        // Add setup_permissions to your Podfile
+        iosPermissions: [],
       },
     ],
     [
@@ -90,6 +87,7 @@ const expoConfig: ExpoConfig = {
       {
         android: {
           buildToolsVersion: '34.0.0',
+          kotlinVersion: '1.6.21',
           minSdkVersion: 23,
           compileSdkVersion: 34,
           targetSdkVersion: 34,
@@ -103,20 +101,7 @@ const expoConfig: ExpoConfig = {
 // NOTE: we can't inline this to the plugin definition because the indendation would be wrong
 function getExtraProguardRules() {
   return `
-# react-native-fast-image
--keep public class com.dylanvann.fastimage.* {*;}
--keep public class com.dylanvann.fastimage.** {*;}
--keep public class * implements com.bumptech.glide.module.GlideModule
--keep public class * extends com.bumptech.glide.module.AppGlideModule
--keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
-  **[] $VALUES;
-  public *;
-}
-
-# react-native-device-info
--keep class com.google.android.gms.common.** {*;}
-
-# react-native-date-picker
+  # react-native-date-picker
 -keep public class net.time4j.android.ApplicationStarter
 -keep public class net.time4j.PrettyTime
 `;
