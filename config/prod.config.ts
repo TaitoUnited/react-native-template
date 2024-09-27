@@ -1,8 +1,9 @@
-import { Config } from './types';
 import * as colors from '../src/design-system/colors';
+import { Config } from './types';
 
 export const config: Config = {
   appEnv: 'prod',
+  scheme: 'taito-template',
   apiUrl: 'https://api.example.com',
   iconImage: './src/design-system/assets/icon.png',
   adaptiveIcon: {

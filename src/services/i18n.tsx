@@ -4,14 +4,14 @@ import { Settings } from 'luxon';
 import { getLocales } from 'react-native-localize';
 
 import { useEffectEvent } from '~utils/common';
-import storage, { LOCALE_STORAGE_KEY } from '~utils/storage';
+import storage, { STORAGE_KEYS } from '~utils/storage';
 
 export type Locale = 'fi' | 'en';
 const LOCALES: Locale[] = ['fi', 'en'];
 
 export async function initMessages() {
   const locales = getLocales();
-  const persistedLocale = storage.getString(LOCALE_STORAGE_KEY) as Locale;
+  const persistedLocale = storage.getString(STORAGE_KEYS.LOCALE) as Locale;
   const preferredLocale = locales[0];
   const defaultLocale: Locale = LOCALES.includes(persistedLocale)
     ? persistedLocale
@@ -22,7 +22,7 @@ export async function initMessages() {
   const defaultMessages = await loadMessages(defaultLocale);
 
   i18n.loadAndActivate({ locale: defaultLocale, messages: defaultMessages });
-  storage.set(LOCALE_STORAGE_KEY, defaultLocale);
+  storage.set(STORAGE_KEYS.LOCALE, defaultLocale);
   Settings.defaultLocale = defaultLocale;
 }
 
@@ -47,7 +47,7 @@ export function useI18n() {
       i18n.loadAndActivate({ locale, messages: newMessages });
 
       Settings.defaultLocale = locale;
-      storage.set(LOCALE_STORAGE_KEY, locale);
+      storage.set(STORAGE_KEYS.LOCALE, locale);
     } catch (error) {
       console.log(`> Failed to load messages for locale: ${locale}`, error);
     }
