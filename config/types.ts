@@ -1,5 +1,6 @@
 export type Config = {
   appEnv: 'dev' | 'test' | 'stag' | 'prod';
+  scheme: string;
   apiUrl: string;
   appIdSuffix?: string;
   iconImage: string;

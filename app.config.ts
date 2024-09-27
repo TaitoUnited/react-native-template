@@ -18,7 +18,7 @@ const appId = `com.taito.template${config.appIdSuffix ?? ''}`;
 const expoConfig: ExpoConfig = {
   slug: 'taito-template',
   name: 'Taito Template',
-  scheme: 'taito-template',
+  scheme: config.scheme,
   owner: 'taito-united',
   version: '1.0.0',
   orientation: 'portrait',

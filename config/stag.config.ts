@@ -1,8 +1,9 @@
-import { Config } from './types';
 import * as colors from '../src/design-system/colors';
+import { Config } from './types';
 
 export const config: Config = {
   appEnv: 'stag',
+  scheme: 'taito-template-stag',
   apiUrl: 'https://api.example.com',
   appIdSuffix: '.dev', // NOTE: dev/test/stag share the same app id!
   iconImage: './src/design-system/assets/icon-stag.png',
