@@ -7,26 +7,32 @@ import {
   useMMKVString,
 } from 'react-native-mmkv';
 
-export const LOCALE_STORAGE_KEY = '@app/locale';
-export const ACCESS_TOKEN_STORAGE_KEY = '@app/access-token';
-export const REFRESH_TOKEN_STORAGE_KEY = '@app/refresh-token';
-export const COLOR_MODE_STORAGE_KEY = '@app/color-mode';
-export const APP_REVIEW_LAST_REQUESTED_STORAGE_KEY =
-  '@app/last-requested-review';
-export const APP_REVIEW_DONE_STORAGE_KEY = '@app/last-review-done';
+import config from '~constants/config';
 
-// Add all storage keys here so that they can be cleared upon logout
+const createStorageKey = (key: string) => `@${config.scheme}/${key}`;
+
+// Add all your storage keys here
+export const STORAGE_KEYS = {
+  LOCALE: createStorageKey('locale'),
+  ACCESS_TOKEN: createStorageKey('access-token'),
+  REFRESH_TOKEN: createStorageKey('refresh-token'),
+  COLOR_MODE: createStorageKey('color-mode'),
+  APP_REVIEW_LAST_REQUESTED: createStorageKey('last-requested-review'),
+  APP_REVIEW_DONE: createStorageKey('last-review-done'),
+};
+
+// Add all clearable storage keys here so they can be cleared on logout
 const CLEARABLE_KEYS = [
-  ACCESS_TOKEN_STORAGE_KEY,
-  REFRESH_TOKEN_STORAGE_KEY,
+  STORAGE_KEYS.ACCESS_TOKEN,
+  STORAGE_KEYS.REFRESH_TOKEN,
 ] as const;
 
-// These storage keys should be persisted across logins, eg. showing some guided tours etc.
+// These storage keys should be persisted across logins, e.g. showing some guided tours, etc.
 const PERSISTENT_KEYS = [
-  LOCALE_STORAGE_KEY,
-  COLOR_MODE_STORAGE_KEY,
-  APP_REVIEW_DONE_STORAGE_KEY,
-  APP_REVIEW_LAST_REQUESTED_STORAGE_KEY,
+  STORAGE_KEYS.LOCALE,
+  STORAGE_KEYS.COLOR_MODE,
+  STORAGE_KEYS.APP_REVIEW_DONE,
+  STORAGE_KEYS.APP_REVIEW_LAST_REQUESTED,
 ] as const;
 
 const clearableStorage = new MMKV({ id: 'clearable' });

@@ -2,7 +2,7 @@ import { ReactNode, createContext, useContext } from 'react';
 import { ColorSchemeName, useColorScheme } from 'react-native';
 
 import { ThemeProvider, darkTheme, theme as lightTheme } from '~styles';
-import { COLOR_MODE_STORAGE_KEY, useStorageString } from '~utils/storage';
+import { STORAGE_KEYS, useStorageString } from '~utils/storage';
 
 type ColorMode = 'light' | 'dark' | 'system';
 type ColorScheme = 'light' | 'dark';
@@ -23,7 +23,7 @@ const getColorScheme = (c: ColorSchemeName): ColorScheme =>
 export function ColorModeProvider({ children }: { children: ReactNode }) {
   const systemColorMode = useColorScheme();
   const [persistedColorMode, setPersistedColorMode] = useStorageString(
-    COLOR_MODE_STORAGE_KEY
+    STORAGE_KEYS.COLOR_MODE
   );
 
   const colorMode = (persistedColorMode || 'system') as ColorMode;
