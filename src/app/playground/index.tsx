@@ -10,7 +10,10 @@ export default function PlaygroundPage() {
     { screen: 'playground/icons', label: 'Icons' },
     { screen: 'playground/buttons', label: 'Buttons' },
     { screen: 'playground/inputs', label: 'Inputs' },
+    { screen: 'playground/bottom-sheet', label: 'Bottom Sheet' },
     { screen: 'playground/layout', label: 'Layout' },
+    { screen: 'playground/accordion', label: 'Accordion' },
+    { screen: 'playground/progress', label: 'Progress' },
     { screen: 'playground/toast', label: 'Toast' },
   ];
 

@@ -15,7 +15,7 @@ type Props = {
 export function Radio({ onChange, checked, value, label }: Props) {
   return (
     <Wrapper onPress={() => onChange(value)} activeOpacity={0.8}>
-      <RadioOuter>{checked && <RadioInner />}</RadioOuter>
+      <RadioOuter checked={checked}>{checked && <RadioInner />}</RadioOuter>
       <Text variant={checked ? 'bodyBold' : 'body'}>{label}</Text>
     </Wrapper>
   );
@@ -48,7 +48,14 @@ const RadioOuter = styled('View', {
   borderRadius: '$full',
   borderWidth: PixelRatio.roundToNearestPixel(1.5), // match checkbox
   marginRight: '$small',
-  borderColor: '$text',
+  borderColor: '$line1',
+  variants: {
+    checked: {
+      true: {
+        borderColor: '$primary',
+      },
+    },
+  },
 });
 
 const RadioCircle = Animated.createAnimatedComponent(
@@ -59,6 +66,6 @@ const RadioCircle = Animated.createAnimatedComponent(
     bottom: 5,
     left: 5,
     borderRadius: '$full',
-    backgroundColor: '$text',
+    backgroundColor: '$primary',
   })
 );

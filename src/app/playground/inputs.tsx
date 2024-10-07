@@ -4,6 +4,7 @@ import {
   Checkbox,
   DateInput,
   Radio,
+  SearchInput,
   SegmentedControl,
   Select,
   Stack,
@@ -24,10 +25,55 @@ export default function Inputs() {
   return (
     <Wrapper>
       <Stack axis="y" spacing="xl">
-        <Stack axis="y" spacing="regular">
-          <Text variant="headingS">Text Input</Text>
-          <TextInput label="Text input" value={text} onChange={setText} />
-        </Stack>
+        <SearchInput
+          label="Search input"
+          value={text}
+          onChange={setText}
+          message="Find your favorite fruit"
+          suggestions={['Apple', 'Banana', 'Orange', 'Pineapple', 'Strawberry']}
+        />
+        <TextInput label="Text input" value={text} onChange={setText} />
+        <TextInput
+          label="Secure input"
+          value={text}
+          onChange={setText}
+          secureTextEntry
+        />
+        <TextInput
+          label="Limited characters input"
+          value={text}
+          onChange={setText}
+          showCharacterLimit
+          maxLength={10}
+          message="Max 10 characters"
+        />
+        <TextInput
+          label="Mandatory Text input"
+          showRequiredAsterisk
+          isRequired
+          value={text}
+          onChange={setText}
+          message="This field is mandatory"
+        />
+        <TextInput
+          label="Text input with label icon"
+          labelIcon="personEdit"
+          value={text}
+          onChange={setText}
+        />
+        <TextInput
+          label="Disabled input"
+          value={text}
+          onChange={setText}
+          isDisabled
+        />
+        <TextInput
+          label="Invalid input"
+          value={text}
+          onChange={setText}
+          isValid={false}
+          message="This is an error message"
+        />
 
         <Stack axis="y" spacing="regular">
           <Text variant="headingS">Date Input</Text>
@@ -124,6 +170,5 @@ const Wrapper = styled('ScrollView', {
 }).attrs((p) => ({
   contentContainerStyle: {
     padding: p.theme.space.regular,
-    paddingBottom: 100,
   },
 }));

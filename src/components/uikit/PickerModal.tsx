@@ -169,8 +169,8 @@ function ModalContent({
           ],
         }}
       >
-        <Stack axis="y" spacing="small">
-          <Text variant="bodySmall">{label}</Text>
+        <Stack axis="y" spacing="regular">
+          <Text variant="bodySmallSemiBold">{label}</Text>
 
           <ScrollView
             style={{
@@ -183,7 +183,7 @@ function ModalContent({
                   <Checkbox
                     key={option.value}
                     label={option.label}
-                    checked={selected.includes(option.value)}
+                    checked={selected?.includes(option.value)}
                     value={option.value}
                     onChange={() => handleOptionSelect(option.value)}
                   />
@@ -191,7 +191,7 @@ function ModalContent({
                   <Radio
                     key={option.value}
                     label={option.label}
-                    checked={selected.includes(option.value)}
+                    checked={selected?.includes(option.value)}
                     value={option.value}
                     onChange={() => handleOptionSelect(option.value)}
                   />
@@ -221,7 +221,7 @@ function ModalContent({
   );
 }
 
-const Wrapper = styled('SafeAreaView', {
+const Wrapper = styled('View', {
   flex: 1,
   justifyContent: 'flex-end',
 });
@@ -229,7 +229,7 @@ const Wrapper = styled('SafeAreaView', {
 const Backdrop = Animated.createAnimatedComponent(
   styled('View', {
     absoluteFill: true,
-    backgroundColor: '$backdrop',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
     zIndex: 1,
   })
 );
@@ -239,9 +239,8 @@ const Content = Animated.createAnimatedComponent(
     backgroundColor: '$surface',
     shadow: 'large',
     padding: '$medium',
-    paddingBottom: 0,
-    margin: '$xs',
-    borderRadius: '$large',
+    borderTopLeftRadius: '$medium',
+    borderTopRightRadius: '$medium',
     zIndex: 2,
   })
 );

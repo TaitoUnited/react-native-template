@@ -12,11 +12,11 @@ import { Icon } from '../Icon';
 import { getIconColor, getIconWrapperStyle, sizeToIconSize } from './helpers';
 import { IconButtonProps } from './types';
 
-const WANTED_HIT_SIZE = 44;
+const HIT_SLOP_FACTOR = 1.2;
 
 export function IconButton({
   icon,
-  color = 'primary',
+  color = 'neutral',
   size = 'normal',
   variant = 'filled',
   loading,
@@ -27,12 +27,13 @@ export function IconButton({
   const theme = useTheme();
   const pressed = useSharedValue(false);
   const iconSize = sizeToIconSize[size];
+  const wantedHitSize = iconSize * HIT_SLOP_FACTOR;
 
   const hitSlop = {
-    top: (WANTED_HIT_SIZE - iconSize) / 2,
-    bottom: (WANTED_HIT_SIZE - iconSize) / 2,
-    left: (WANTED_HIT_SIZE - iconSize) / 2,
-    right: (WANTED_HIT_SIZE - iconSize) / 2,
+    top: (wantedHitSize - iconSize) / 2,
+    bottom: (wantedHitSize - iconSize) / 2,
+    left: (wantedHitSize - iconSize) / 2,
+    right: (wantedHitSize - iconSize) / 2,
   };
 
   const wrapperStyle = getIconWrapperStyle({
@@ -74,7 +75,7 @@ export function IconButton({
       onPressOut={handlePressOut}
       size={size}
       disabled={disabled}
-      onPress={!disabled ? onPress : () => {}}
+      onPress={!disabled ? onPress : undefined}
       style={wrapperStyle}
       {...rest}
     >
@@ -97,18 +98,18 @@ const Wrapper = styled('Pressable', {
   variants: {
     size: {
       small: {
-        height: 32,
-        width: 32,
+        height: 16,
+        width: 16,
         borderRadius: '$regular',
       },
       normal: {
-        height: 44,
-        width: 44,
+        height: 24,
+        width: 24,
         borderRadius: '$regular',
       },
       large: {
-        height: 60,
-        width: 60,
+        height: 44,
+        width: 44,
       },
     },
     disabled: {

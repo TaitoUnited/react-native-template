@@ -2,19 +2,18 @@ import RNBottomSheet, {
   BottomSheetBackdrop,
   BottomSheetProps as RNBottomSheetProps,
 } from '@gorhom/bottom-sheet';
-import { ReactNode, forwardRef } from 'react';
+import { ReactNode, forwardRef, useImperativeHandle, useRef } from 'react';
 
 import { styled, useTheme } from '~styles';
 
-interface BottomSheetProps {
+type BottomSheetProps = RNBottomSheetProps & {
   initialIndex: number;
   snapPoints: string[]; // e.g. ['25%', '50%']
   children: ReactNode;
   onSheetChange?: (index: number) => void;
-  keyboardBehavior?: RNBottomSheetProps['keyboardBehavior'];
-}
+};
 
-export const BottomSheet = forwardRef(
+export const BottomSheet = forwardRef<RNBottomSheet, BottomSheetProps>(
   (
     {
       initialIndex,
@@ -22,10 +21,14 @@ export const BottomSheet = forwardRef(
       children,
       onSheetChange,
       keyboardBehavior = 'interactive',
+      ...rest
     }: BottomSheetProps,
-    ref: any
+    ref
   ) => {
     const theme = useTheme();
+
+    const bottomSheetRef = useRef<RNBottomSheet>(null);
+    useImperativeHandle(ref, () => bottomSheetRef.current as RNBottomSheet);
 
     const handleSheetChanges = (index: number) => {
       if (onSheetChange) {
@@ -35,7 +38,8 @@ export const BottomSheet = forwardRef(
 
     return (
       <RNBottomSheet
-        ref={ref}
+        {...rest}
+        ref={bottomSheetRef}
         backgroundStyle={{ backgroundColor: theme.colors.surface }}
         index={initialIndex}
         snapPoints={snapPoints}

@@ -29,6 +29,7 @@ const getBaseStyle = ({
         baseStyle.backgroundColor = theme.colors.neutral5;
         break;
       case 'outlined':
+        baseStyle.backgroundColor = theme.colors.surface;
         baseStyle.borderColor = theme.colors.line2;
         break;
       case 'plain':
@@ -50,6 +51,7 @@ const getBaseStyle = ({
       baseStyle.backgroundColor = theme.colors[`${color}Muted`];
       break;
     case 'outlined':
+      baseStyle.backgroundColor = theme.colors.surface;
       baseStyle.borderColor = theme.colors[color];
       break;
     case 'plain':

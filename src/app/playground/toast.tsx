@@ -96,14 +96,14 @@ export default function Toast() {
         </Stack>
 
         <Stack axis="y" spacing="regular">
-          <Text variant="headingS">Error toast</Text>
+          <Text variant="headingS">Warning toast</Text>
 
           <Stack axis="y" spacing="small">
             <Button
               variant="outlined"
               color="error"
               onPress={() =>
-                showToast({ title: 'A success toast', type: 'error' })
+                showToast({ title: 'A warning toast', type: 'warn' })
               }
             >
               Default
@@ -114,8 +114,8 @@ export default function Toast() {
               color="error"
               onPress={() =>
                 showToast({
-                  title: 'A error toast',
-                  type: 'error',
+                  title: 'A warn toast',
+                  type: 'warn',
                   icon: 'clock',
                 })
               }
@@ -129,6 +129,50 @@ export default function Toast() {
               onPress={() =>
                 showToast({
                   title: 'A simple toast',
+                  subtitle: 'With a subtitle',
+                  type: 'warn',
+                })
+              }
+            >
+              With subtitle
+            </Button>
+          </Stack>
+        </Stack>
+
+        <Stack axis="y" spacing="regular">
+          <Text variant="headingS">Error toast</Text>
+
+          <Stack axis="y" spacing="small">
+            <Button
+              variant="soft"
+              color="error"
+              onPress={() =>
+                showToast({ title: 'An error toast', type: 'error' })
+              }
+            >
+              Default
+            </Button>
+
+            <Button
+              variant="soft"
+              color="error"
+              onPress={() =>
+                showToast({
+                  title: 'An error toast',
+                  type: 'error',
+                  icon: 'clock',
+                })
+              }
+            >
+              With custom icon
+            </Button>
+
+            <Button
+              variant="soft"
+              color="error"
+              onPress={() =>
+                showToast({
+                  title: 'An simple toast',
                   subtitle: 'With a subtitle',
                   type: 'error',
                 })
@@ -148,6 +192,5 @@ const Wrapper = styled('ScrollView', {
 }).attrs((p) => ({
   contentContainerStyle: {
     padding: p.theme.space.regular,
-    paddingBottom: 100,
   },
 }));

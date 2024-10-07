@@ -63,7 +63,6 @@ const Wrapper = styled('ScrollView', {
 }).attrs((p) => ({
   contentContainerStyle: {
     padding: p.theme.space.regular,
-    paddingBottom: 100,
   },
 }));
 

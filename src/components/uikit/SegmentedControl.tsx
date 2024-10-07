@@ -3,8 +3,8 @@ import type { LayoutChangeEvent, LayoutRectangle } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
-  withTiming,
   withSpring,
+  withTiming,
 } from 'react-native-reanimated';
 
 import { styled } from '~styles';
@@ -109,8 +109,7 @@ function Segment({
       <SegmentButton onPress={onSelect}>
         <Text
           align="center"
-          variant="bodySmallBold"
-          color={isActive ? 'text' : 'textMuted'}
+          variant={isActive ? 'bodySmallBold' : 'bodySmall'}
           numberOfLines={1}
           style={{ flex: 1 }}
         >
@@ -156,7 +155,7 @@ const SegmentSeparator = Animated.createAnimatedComponent(
   styled('View', {
     width: 1,
     height: '50%',
-    backgroundColor: '$border',
+    backgroundColor: '$line2',
     zIndex: -1,
     elevation: -1,
   })

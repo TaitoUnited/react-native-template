@@ -1,9 +1,11 @@
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import ToastContainer, { ToastConfigParams } from 'react-native-toast-message';
 
-import { Icon, Stack, Text } from '~components/uikit';
-import type { IconName } from '~components/uikit/Icon';
+import { Icon, IconButton, Stack, Text } from '~components/uikit';
+import { IconName } from '~components/uikit/Icon';
 import { Color, styled, useTheme } from '~styles/styled';
+
+type Variant = 'info' | 'success' | 'warn' | 'error';
 
 type Props = ToastConfigParams<{
   icon?: IconName;
@@ -13,6 +15,14 @@ const toastConfig = {
   success: ({ text1, text2, props }: Props) => (
     <Toast
       variant="success"
+      title={text1 || ''}
+      subtitle={text2}
+      icon={props?.icon}
+    />
+  ),
+  warn: ({ text1, text2, props }: Props) => (
+    <Toast
+      variant="warn"
       title={text1 || ''}
       subtitle={text2}
       icon={props?.icon}
@@ -53,7 +63,7 @@ export function showToast({
   title: string;
   subtitle?: string;
   icon?: IconName;
-  type: 'info' | 'success' | 'error';
+  type: Variant;
 }) {
   ToastContainer.show({
     text1: title,
@@ -62,8 +72,6 @@ export function showToast({
     type,
   });
 }
-
-type Variant = 'info' | 'success' | 'error';
 
 function Toast({
   title,
@@ -79,6 +87,10 @@ function Toast({
   const color = variantToColor[variant];
   const iconName = icon || variantToIcon[variant];
   const hasIcon = !!iconName;
+
+  function onClose() {
+    ToastContainer.hide();
+  }
 
   return (
     <ToastWrapper hasIcon={hasIcon}>
@@ -96,28 +108,32 @@ function Toast({
             </Text>
           )}
         </Stack>
+        <IconButton variant="plain" icon="close" onPress={onClose} />
       </Stack>
     </ToastWrapper>
   );
 }
 
 const variantToColor: { [variant in Variant]: Color } = {
-  info: 'text',
+  info: 'infoContrast',
+  warn: 'warnContrast',
   error: 'errorContrast',
   success: 'successContrast',
 };
 
 const variantToIcon: { [variant in Variant]?: IconName } = {
-  error: 'warning',
-  success: 'check',
+  info: 'info',
+  warn: 'warning',
+  error: 'error',
+  success: 'checkCircle',
 };
 
 const ToastWrapper = styled('View', {
   borderRadius: '$full',
-  paddingVertical: '$small',
-  paddingHorizontal: '$large',
+  paddingVertical: '$regular',
+  paddingHorizontal: '$medium',
   backgroundColor: '$surface',
-  shadow: 'medium',
+  shadow: 'large',
   variants: {
     hasIcon: {
       true: { paddingLeft: '$regular' },
