@@ -1,4 +1,5 @@
 import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet';
+import { BottomSheetDefaultBackdropProps } from '@gorhom/bottom-sheet/lib/typescript/components/bottomSheetBackdrop/types';
 import { useCallback, useMemo, useRef, useState } from 'react';
 import { Button, Stack, Text } from '~components/uikit';
 import { styled } from '~styles';
@@ -17,7 +18,7 @@ export default function BottomSheets() {
   const toggleCustomBackdrop = () => setShowCustomBackdrop((prev) => !prev);
 
   const renderBackdrop = useCallback(
-    (props: any) => {
+    (props: BottomSheetDefaultBackdropProps) => {
       if (!showCustomBackdrop) {
         return (
           <BottomSheetBackdrop

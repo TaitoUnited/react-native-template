@@ -1,8 +1,11 @@
 import { i18n } from '@lingui/core';
 import { msg } from '@lingui/macro';
-import { forwardRef, useRef, useState } from 'react';
+import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 import {
+  NativeSyntheticEvent,
+  TextInput as RNTextInput,
   TextInputProps as RNTextInputProps,
+  TextInputFocusEventData,
   TouchableOpacity,
 } from 'react-native';
 
@@ -28,7 +31,7 @@ export type TextInputProps = Omit<RNTextInputProps, 'onChange'> & {
   showCharacterLimit?: boolean;
 };
 
-export const TextInput = forwardRef(
+export const TextInput = forwardRef<RNTextInput, TextInputProps>(
   (
     {
       value,
@@ -58,19 +61,21 @@ export const TextInput = forwardRef(
     const [secureTextVisible, setSecureTextVisible] = useState(false);
     const [isFocused, setFocused] = useState(false);
     const [characterCount, setCharacterCount] = useState(value?.length || 0);
-    const inputRef = useRef<any>(ref);
+
+    const inputRef = useRef<RNTextInput>(null);
+    useImperativeHandle(ref, () => inputRef.current as RNTextInput);
 
     function handleCancel() {
       onChange('');
       inputRef.current?.blur();
     }
 
-    function handleFocus(e: any) {
+    function handleFocus(e: NativeSyntheticEvent<TextInputFocusEventData>) {
       setFocused(true);
       if (onFocus) onFocus(e);
     }
 
-    function handleBlur(e: any) {
+    function handleBlur(e: NativeSyntheticEvent<TextInputFocusEventData>) {
       setFocused(false);
       if (onBlur) onBlur(e);
     }
@@ -118,7 +123,7 @@ export const TextInput = forwardRef(
 
           <Input
             {...rest}
-            {...{ ref: inputRef }}
+            ref={inputRef}
             value={value}
             placeholder={placeholder}
             onChangeText={isDisabled ? undefined : handleChangeText}

@@ -1,7 +1,13 @@
 import { i18n } from '@lingui/core';
 import { msg } from '@lingui/macro';
-import { forwardRef, useEffect, useRef, useState } from 'react';
-import { TouchableOpacity } from 'react-native';
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react';
+import { TextInput as RNTextInput, TouchableOpacity } from 'react-native';
 
 import { styled } from '~styles';
 
@@ -10,11 +16,11 @@ import { Text } from '../Text';
 import { Stack } from '../layout/Stack';
 import { TextInput, TextInputProps } from './TextInput';
 
-type Props = TextInputProps & {
+type SearchInputProps = TextInputProps & {
   suggestions?: string[];
 };
 
-export const SearchInput = forwardRef(
+export const SearchInput = forwardRef<RNTextInput, TextInputProps>(
   (
     {
       suggestions = [],
@@ -23,10 +29,12 @@ export const SearchInput = forwardRef(
       value,
       onChange,
       ...rest
-    }: Props,
+    }: SearchInputProps,
     ref
   ) => {
-    const inputRef = useRef<any>(ref);
+    const inputRef = useRef<RNTextInput>(null);
+    useImperativeHandle(ref, () => inputRef.current as RNTextInput);
+
     const [showSuggestions, setShowSuggestions] = useState(false);
 
     const filteredSuggestions = suggestions.filter(

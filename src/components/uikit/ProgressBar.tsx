@@ -21,12 +21,7 @@ export function ProgressBar({
   totalSteps,
   height = 12,
 }: Props): JSX.Element {
-  let progress = (step / totalSteps) * 100;
-  if (progress > 100) {
-    progress = 100;
-  } else if (progress < 0) {
-    progress = 0;
-  }
+  const progress = Math.min(Math.max((step / totalSteps) * 100, 0), 100);
 
   if (step === 0) {
     return <View />;

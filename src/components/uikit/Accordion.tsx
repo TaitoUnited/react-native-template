@@ -12,8 +12,8 @@ type AccordionProps = Omit<CollapsibleProps, 'collapsed'> & {
   title: string;
   initialOpen?: boolean;
   children: React.ReactNode;
-  icon?: IconName | null;
-  iconColor?: Color | null;
+  icon?: IconName;
+  iconColor?: Color;
 };
 
 export function Accordion({
@@ -29,7 +29,7 @@ export function Accordion({
   return (
     <Stack axis="y" spacing="small">
       <TouchableOpacity onPress={() => setCollapsed((p) => !p)}>
-        <AccordionTitle
+        <AccordionHeader
           title={title}
           icon={icon}
           iconColor={iconColor}
@@ -46,14 +46,14 @@ export function Accordion({
 
 const Title = styled(Stack, {
   borderBottomWidth: 1,
-  borderBottom: '$text',
+  borderBottomColor: '$line3',
   paddingVertical: '$small',
 });
 
-export function AccordionTitle({
+export function AccordionHeader({
   title,
   icon,
-  iconColor,
+  iconColor = 'neutral2',
   isCollapsed,
   standalone = false,
 }: Omit<AccordionProps, 'children'> & {
@@ -66,7 +66,7 @@ export function AccordionTitle({
         {title}
       </Text>
 
-      {icon && <Icon name={icon} color={iconColor ?? 'neutral2'} size={24} />}
+      {icon && <Icon name={icon} color={iconColor} size={24} />}
 
       {!standalone && (
         <Icon name={isCollapsed ? 'chevronDown' : 'chevronUp'} size={24} />

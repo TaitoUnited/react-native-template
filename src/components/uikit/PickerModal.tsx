@@ -229,7 +229,7 @@ const Wrapper = styled('View', {
 const Backdrop = Animated.createAnimatedComponent(
   styled('View', {
     absoluteFill: true,
-    backgroundColor: '$line1',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
     zIndex: 1,
   })
 );
