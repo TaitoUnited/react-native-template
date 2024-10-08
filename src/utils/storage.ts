@@ -22,6 +22,7 @@ export const STORAGE_KEYS = {
 };
 
 // Add all clearable storage keys here so they can be cleared on logout
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const CLEARABLE_KEYS = [
   STORAGE_KEYS.ACCESS_TOKEN,
   STORAGE_KEYS.REFRESH_TOKEN,
