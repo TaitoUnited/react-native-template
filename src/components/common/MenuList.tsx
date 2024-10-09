@@ -1,8 +1,10 @@
+import { msg } from '@lingui/macro';
 import { router } from 'expo-router';
 import { FunctionComponent, ReactNode, isValidElement } from 'react';
 import { Platform, StyleSheet } from 'react-native';
 
 import { Icon, Stack, Text } from '~components/uikit';
+import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 
 type Item = {
@@ -24,6 +26,7 @@ type Props = {
 };
 
 export default function MenuList({ items, title }: Props) {
+  const { _ } = useI18n();
   const filteredItems = items.filter(
     (info) => !(info.platform && Platform.OS !== info.platform)
   );
@@ -52,67 +55,71 @@ export default function MenuList({ items, title }: Props) {
       )}
 
       <Wrapper>
-        {filteredItems.map((item, index) => (
-          <Pressable
-            testID={item.id}
-            key={item.id}
-            onPress={
-              item.onPress || item.target
-                ? () => handleItemPress(item)
-                : undefined
-            }
-          >
-            <ContentWrapper axis="x" spacing="small">
-              {item.leftSlot ? <LeftSlot>{item.leftSlot}</LeftSlot> : null}
+        {filteredItems.map((item, index) => {
+          const isPressable = !!item.onPress || !!item.target;
+          return (
+            <Pressable
+              testID={item.id}
+              key={item.id}
+              onPress={isPressable ? () => handleItemPress(item) : undefined}
+              accessibilityRole={isPressable ? 'button' : 'text'}
+              accessibilityLabel={`${_(msg`Item`)} ${item.label}${item.currentValue ? `, ${_(msg`Selected value`)}: ${item.currentValue}` : ''}`}
+              accessibilityHint={
+                isPressable ? _(msg`Double tap to select ${item.label}`) : ''
+              }
+            >
+              <ContentWrapper axis="x" spacing="small">
+                {item.leftSlot ? <LeftSlot>{item.leftSlot}</LeftSlot> : null}
 
-              <Content
-                axis="x"
-                spacing="small"
-                align="center"
-                withDivider={index < filteredItems.length - 1}
-              >
-                <Label variant="body" numberOfLines={1}>
-                  {item.label}
-                </Label>
+                <Content
+                  axis="x"
+                  spacing="small"
+                  align="center"
+                  withDivider={index < filteredItems.length - 1}
+                >
+                  <Label variant="body" numberOfLines={1}>
+                    {item.label}
+                  </Label>
 
-                {item.rightSlot ? (
-                  <RightSlot>{item.rightSlot}</RightSlot>
-                ) : (
-                  <>
-                    {item.currentValue !== undefined &&
-                      (isValidElement(item.currentValue) ? (
-                        item.currentValue
-                      ) : (
-                        <Value
-                          variant="body"
-                          color="textMuted"
-                          numberOfLines={1}
-                        >
-                          {item.currentValue}
-                        </Value>
-                      ))}
-
-                    {item.checked !== undefined && (
-                      <>
-                        {item.checked ? (
-                          <CheckCircle>
-                            <Icon name="check" color="infoMuted" size={14} />
-                          </CheckCircle>
+                  {item.rightSlot ? (
+                    <RightSlot>{item.rightSlot}</RightSlot>
+                  ) : (
+                    <>
+                      {item.currentValue !== undefined &&
+                        (isValidElement(item.currentValue) ? (
+                          item.currentValue
                         ) : (
-                          <CheckOutline />
-                        )}
-                      </>
-                    )}
+                          <Value
+                            variant="body"
+                            color="textMuted"
+                            numberOfLines={1}
+                          >
+                            {item.currentValue}
+                          </Value>
+                        ))}
 
-                    {!!item.target && (
-                      <Icon name="chevronRight" size={24} color="neutral2" />
-                    )}
-                  </>
-                )}
-              </Content>
-            </ContentWrapper>
-          </Pressable>
-        ))}
+                      {item.checked !== undefined && (
+                        <>
+                          {item.checked ? (
+                            <CheckCircle>
+                              <Icon name="check" color="infoMuted" size={14} />
+                            </CheckCircle>
+                          ) : (
+                            <CheckOutline />
+                          )}
+                        </>
+                      )}
+
+                      {!!item.target && (
+                        <Icon name="chevronRight" size={24} color="neutral2" />
+                      )}
+                    </>
+                  )}
+                </Content>
+              </ContentWrapper>
+            </Pressable>
+          );
+        })}
       </Wrapper>
     </Stack>
   );

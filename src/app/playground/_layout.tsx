@@ -17,6 +17,7 @@ export default function PlaygroundLayout() {
       <Stack.Screen name="bottom-sheet" options={{ title: 'Bottom Sheet' }} />
       <Stack.Screen name="accordion" options={{ title: 'Accordion' }} />
       <Stack.Screen name="progress" options={{ title: 'Progress' }} />
+      <Stack.Screen name="image" options={{ title: 'Image' }} />
       <Stack.Screen name="toast" options={{ title: 'Toast' }} />
     </Stack>
   );

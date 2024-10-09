@@ -74,6 +74,7 @@ export function SystemInfoMenuTarget() {
               icon: 'check',
             });
           }}
+          accessibilityRole="button"
         >
           <Text variant="body" color="textMuted" numberOfLines={1}>
             {updateId.substring(0, 8)}

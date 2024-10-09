@@ -8,16 +8,25 @@ import { Icon } from '~components/uikit';
 import { useAuthStore } from '~services/auth';
 import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
+import { announceForAccessibility } from '~utils/a11y';
 
 export default function Settings() {
   useHeaderPlaygroundButton();
 
   const { _ } = useI18n();
   const logout = useAuthStore((s) => s.logout);
+
+  function onLogout() {
+    logout();
+    announceForAccessibility({
+      message: _(msg`Logged out successfully, back to the landing page`),
+    });
+  }
+
   function handleLogout() {
     Alert.alert(_(msg`Are you sure you want to logout?`), '', [
       { text: _(msg`Cancel`), style: 'cancel' },
-      { text: _(msg`I am sure`), onPress: logout },
+      { text: _(msg`I am sure`), onPress: onLogout },
     ]);
   }
 

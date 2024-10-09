@@ -1,5 +1,5 @@
 import { Image as ExpoImage, ImageProps } from 'expo-image';
-import { ImageStyle, StyleProp } from 'react-native';
+import { AccessibilityProps, ImageStyle, StyleProp } from 'react-native';
 
 import { useImageDimensions } from '~utils/image';
 
@@ -10,7 +10,23 @@ type Props = ImageProps & {
   autoSize?: { width: number } | { height: number };
 };
 
-export function Image({ source, style, autoSize, ...rest }: Props) {
+export function Image({
+  source,
+  style,
+  autoSize,
+  accessible = true,
+  accessibilityRole = 'image',
+  ...rest
+}: Props & AccessibilityProps) {
   const dimensions = useImageDimensions({ source, size: autoSize });
-  return <ExpoImage {...rest} source={source} style={[dimensions, style]} />;
+
+  return (
+    <ExpoImage
+      {...rest}
+      source={source}
+      style={[dimensions, style]}
+      accessible={accessible}
+      accessibilityRole={accessibilityRole}
+    />
+  );
 }

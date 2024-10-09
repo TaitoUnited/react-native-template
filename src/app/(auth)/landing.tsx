@@ -13,6 +13,7 @@ export default function Landing() {
   const { height } = useWindowDimensions();
   const insets = useSafeAreaInsets();
   const theme = useTheme();
+  const { _ } = useI18n();
 
   return (
     <Wrapper>
@@ -24,7 +25,13 @@ export default function Landing() {
             <LanguageSelector />
           </TopSectionHeader>
 
-          <TopSectionBody>
+          <TopSectionBody
+            accessible
+            accessibilityRole="header"
+            accessibilityLabel={_(
+              msg`Welcome to Taito Template by Taito United.`
+            )}
+          >
             <Stack axis="y" spacing="medium">
               <BlackText variant="headingS" align="center" withLineHeight>
                 <Trans>Welcome to</Trans>
@@ -47,11 +54,21 @@ export default function Landing() {
 
         <BottomSection style={{ minHeight: height * 0.4 }}>
           <Stack axis="y" spacing="regular">
-            <WhiteText variant="body" align="center" withLineHeight>
+            <WhiteText
+              variant="body"
+              align="center"
+              withLineHeight
+              accessibilityLabel={_(
+                msg`Start your journey by signing in or creating an account`
+              )}
+            >
               ✨ <Trans>Start your journey</Trans> ✨
             </WhiteText>
             <Link href="/(auth)/login" asChild>
-              <Button testID="loginButton">
+              <Button
+                testID="loginButton"
+                accessibilityHint={_(msg`Navigates to the sign-in screen`)}
+              >
                 <WhiteText variant="bodyBold">
                   <Trans>Sign in</Trans>
                 </WhiteText>
@@ -70,9 +87,11 @@ export default function Landing() {
               </WhiteText>
               <Line />
             </Stack>
-
             <Link href="/(auth)/signup" asChild>
-              <Button testID="signInButton">
+              <Button
+                testID="signInButton"
+                accessibilityHint={_(msg`Navigates to the sign-up screen`)}
+              >
                 <WhiteText variant="bodyBold">
                   <Trans>Create an account</Trans>
                 </WhiteText>
@@ -91,9 +110,10 @@ function LanguageSelector() {
   const { _, setLocale } = useI18n();
 
   return (
+    // Note: This is not a11y optimized. It would only say "Button" when focused while using a screen reader.
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
-        <IconButton icon="globe" color="neutral" />
+        <IconButton icon="globe" />
       </DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Item key="fi" onSelect={() => setLocale('fi')}>

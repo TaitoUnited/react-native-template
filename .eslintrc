@@ -7,7 +7,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:lodash/recommended",
     "plugin:prettier/recommended",
-    "plugin:react-native-a11y/all"
+    "plugin:react-native-a11y/all",
   ],
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint", "import", "lodash", "prettier", "lingui"],
@@ -105,6 +105,8 @@
     "lodash/prop-shorthand": "off",
     "lodash/prefer-constant": "off",
     "lodash/prefer-noop": "off",
+
+    "react-native-a11y/has-accessibility-hint": "warn",
 
     // Lingui rules (more info here: https://github.com/lingui/eslint-plugin?tab=readme-ov-file#supported-rules)
     "lingui/no-unlocalized-strings": [

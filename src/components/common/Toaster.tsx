@@ -4,6 +4,7 @@ import ToastContainer, { ToastConfigParams } from 'react-native-toast-message';
 import { Icon, IconButton, Stack, Text } from '~components/uikit';
 import { IconName } from '~components/uikit/Icon';
 import { Color, styled, useTheme } from '~styles/styled';
+import { announceForAccessibility } from '~utils/a11y';
 
 type Variant = 'info' | 'success' | 'warn' | 'error';
 
@@ -70,6 +71,10 @@ export function showToast({
     text2: subtitle,
     props: { icon },
     type,
+  });
+
+  announceForAccessibility({
+    message: `${type} toast: ${title}${subtitle ? `, ${subtitle}` : ''}`,
   });
 }
 

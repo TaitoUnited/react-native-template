@@ -9,6 +9,7 @@ import {
 } from 'react';
 import { TextInput as RNTextInput, TouchableOpacity } from 'react-native';
 
+import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 
 import { Icon } from '../Icon';
@@ -20,7 +21,7 @@ type SearchInputProps = TextInputProps & {
   suggestions?: string[];
 };
 
-export const SearchInput = forwardRef<RNTextInput, TextInputProps>(
+export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(
   (
     {
       suggestions = [],
@@ -28,10 +29,14 @@ export const SearchInput = forwardRef<RNTextInput, TextInputProps>(
       icon = 'search',
       value,
       onChange,
+      accessibilityRole,
+      accessibilityLabel,
+      accessibilityHint,
       ...rest
     }: SearchInputProps,
     ref
   ) => {
+    const { _ } = useI18n();
     const inputRef = useRef<RNTextInput>(null);
     useImperativeHandle(ref, () => inputRef.current as RNTextInput);
 
@@ -60,18 +65,23 @@ export const SearchInput = forwardRef<RNTextInput, TextInputProps>(
           onChange={onChange}
           placeholder={placeholder}
           icon={icon}
+          accessibilityRole={accessibilityRole ?? 'search'}
+          accessibilityLabel={accessibilityLabel ?? _(msg`Search input`)}
+          accessibilityHint={accessibilityHint ?? _(msg`Type to search and select from suggestions`)} // prettier-ignore
           {...rest}
         />
         {showSuggestions && filteredSuggestions.length > 0 && (
-          <Suggestions axis="y" spacing="small">
+          <Suggestions axis="y" spacing="small" accessibilityRole="list">
             {filteredSuggestions.map((option, index) => (
               <TouchableOpacity
                 onPress={() => handleSuggestionClick(option)}
                 key={index}
+                accessibilityLabel={option}
+                accessibilityHint={_(msg`Double tap to select this suggestion`)}
               >
                 <Stack axis="x" spacing="xs" align="end">
                   <Icon name="clock" size={16} color="textMuted" />
-                  <Text variant="bodySmall" color="textMuted" key={index}>
+                  <Text variant="bodySmall" color="textMuted">
                     {option}
                   </Text>
                 </Stack>

@@ -17,17 +17,36 @@ export default function DesignSystem() {
     <Wrapper>
       <Stack axis="y" spacing="xl">
         <Stack axis="y" spacing="medium">
-          <Text variant="headingS">Colors</Text>
+          <Text
+            variant="headingS"
+            accessibilityRole="header"
+            accessibilityLabel="Colors"
+          >
+            Colors
+          </Text>
 
           {Object.entries(colors).map((category) => (
             <Stack key={category[0]} axis="y" spacing="small">
-              <Text variant="bodyBold">{startCase(category[0])}</Text>
+              <Text
+                variant="bodyBold"
+                accessibilityLabel={startCase(category[0])}
+                accessibilityRole="header"
+              >
+                {startCase(category[0])}
+              </Text>
 
               <Grid spacing="regular" columns={3}>
                 {Object.entries(category[1]).map((color) => {
                   const colorName = color[0] as colors.ColorsToken;
                   return (
-                    <Stack key={colorName} axis="y" spacing="xs" align="center">
+                    <Stack
+                      key={colorName}
+                      axis="y"
+                      spacing="xs"
+                      align="center"
+                      accessible
+                      accessibilityLabel={`Color token: ${colorName}, color value: ${color[1]}`}
+                    >
                       <ColorBlock bg={colorName} />
                       <Text variant="bodySmall" color="neutral2">
                         {startCase(colorName)}
@@ -47,9 +66,12 @@ export default function DesignSystem() {
         </Stack>
 
         <Stack axis="y" spacing="medium">
-          <Text variant="headingS">Typography</Text>
+          <Text variant="headingS" accessibilityRole="header">
+            Typography
+          </Text>
 
           <Stack axis="y" spacing="xs">
+            {/* Accessibility note: Unless we have a description attached to the typography variant coming from Figma, we cannot make this very accessible */}
             {typographyNames.map((name) => (
               <TypographyBlock key={name}>
                 <Text variant={name as any}>{startCase(name)}</Text>
@@ -64,11 +86,20 @@ export default function DesignSystem() {
         </Stack>
 
         <Stack axis="y" spacing="regular">
-          <Text variant="headingS">Radii</Text>
+          <Text variant="headingS" accessibilityRole="header">
+            Radii
+          </Text>
 
           <Grid spacing="regular" justify="center">
             {radiiEntries.map(([name, value]) => (
-              <Stack key={name} axis="y" spacing="xs" align="center">
+              <Stack
+                key={name}
+                axis="y"
+                spacing="xs"
+                align="center"
+                accessible
+                accessibilityLabel={`Radii token: ${name}, radii value: ${value} pixels`}
+              >
                 <RadiiBlock style={{ borderRadius: value }}>
                   <Text variant="body" color="textMuted">
                     {value}px
@@ -81,11 +112,20 @@ export default function DesignSystem() {
         </Stack>
 
         <Stack axis="y" spacing="medium">
-          <Text variant="headingS">Spacing</Text>
+          <Text variant="headingS" accessibilityRole="header">
+            Spacing
+          </Text>
 
           <Stack axis="y" spacing="xxs">
             {spacingEntries.map(([name, value]) => (
-              <Stack key={name} axis="x" spacing="xs" align="center">
+              <Stack
+                key={name}
+                axis="x"
+                spacing="xs"
+                align="center"
+                accessible
+                accessibilityLabel={`Spacing token: ${name}, spacing value: ${value} pixels`}
+              >
                 <Text variant="bodySmall" style={{ minWidth: 56 }}>
                   {startCase(name)}
                 </Text>

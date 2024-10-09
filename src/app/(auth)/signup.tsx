@@ -7,6 +7,7 @@ import { Button, Stack, Text, TextInput } from '~components/uikit';
 import { useAuthStore } from '~services/auth';
 import { useI18n } from '~services/i18n';
 import { styled } from '~styles/styled';
+import { announceForAccessibility } from '~utils/a11y';
 
 type Credentials = {
   email: string;
@@ -37,6 +38,9 @@ export default function Signup() {
       };
 
       await signup(credentials);
+      announceForAccessibility({
+        message: _(msg`Signed up successfully, entering the app`),
+      });
     } catch (error) {
       console.log('> Failed to signup', error);
       showToast({ title: _(msg`Failed to signup`), type: 'error' });
@@ -48,7 +52,7 @@ export default function Signup() {
       <InnerStack axis="y" spacing="small" justify="between">
         <Stack axis="y" spacing="small">
           <Stack axis="y" spacing="small">
-            <Text variant="headingL">
+            <Text variant="headingL" accessibilityRole="header">
               <Trans>Create an account</Trans>
             </Text>
             <Text variant="bodySmall" color="textMuted">
@@ -229,6 +233,7 @@ export default function Signup() {
           disabled={!isValidForm}
           loading={status === 'signing-in'}
           testID="signupButton"
+          accessibilityHint={_(msg`Double tap to signup with the provided information`)} // prettier-ignore
         >
           <Trans>Signup</Trans>
         </Button>

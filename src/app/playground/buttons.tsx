@@ -38,7 +38,9 @@ function Section({
   return (
     <Card>
       <Stack axis="y" spacing="small">
-        <Text variant="headingS">{title}</Text>
+        <Text variant="headingS" accessibilityRole="header">
+          {title}
+        </Text>
         {children}
       </Stack>
     </Card>

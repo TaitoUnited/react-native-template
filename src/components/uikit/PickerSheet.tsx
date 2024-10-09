@@ -1,9 +1,10 @@
-import { Trans } from '@lingui/macro';
+import { Trans, msg } from '@lingui/macro';
 import { FlashList } from '@shopify/flash-list';
 import { ReactNode, memo, useState } from 'react';
 import { Modal, Platform } from 'react-native';
 
 import StatusBar from '~components/common/StatusBar';
+import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 import { useEffectEvent } from '~utils/common';
 
@@ -41,8 +42,7 @@ type MultipleValueProps = {
 
 type Props = BaseProps & (SingleValueProps | MultipleValueProps);
 
-// Use this picker for picking options from a LONG list of options that need filtering capabilities
-
+/** Use this picker for picking options from a LONG list of options that need filtering capabilities */
 export function PickerSheet({
   label,
   emptyContent,
@@ -82,6 +82,7 @@ function ModalContent({
   onClose,
   onConfirm,
 }: Omit<Props, 'isVisible'>) {
+  const { _ } = useI18n();
   const [searchTerm, setSearchTerm] = useState('');
   const [selected, setSelected] = useState(_selected);
 
@@ -150,14 +151,25 @@ function ModalContent({
       />
 
       <Footer>
-        <ActionButton onPress={onClose}>
+        <ActionButton
+          onPress={onClose}
+          accessibilityLabel={_(msg`Close the picker`)}
+          accessibilityHint={_(
+            msg`Close the picker without selecting any option`
+          )}
+        >
           <Text variant={multiple ? 'body' : 'bodyBold'}>
             {multiple ? <Trans>Cancel</Trans> : <Trans>Close</Trans>}
           </Text>
         </ActionButton>
 
         {multiple && (
-          <ActionButton onPress={handleDone}>
+          <ActionButton
+            onPress={handleDone}
+            accessibilityLabel={_(
+              msg`Confirm selected options and close the picker`
+            )}
+          >
             <Text variant="bodyBold">
               <Trans>Done</Trans>
             </Text>
@@ -219,10 +231,16 @@ function ListHeader({
   onSearch: (s: string) => void;
   onClearOption: () => void;
 }) {
+  const { _ } = useI18n();
   return (
     <ListHeaderWrapper>
       <Stack axis="y" spacing="regular">
-        <SearchInput value={searchTerm} onChange={onSearch} />
+        <SearchInput
+          value={searchTerm}
+          onChange={onSearch}
+          accessibilityLabel={_(msg`Search options`)}
+          accessibilityHint={_(msg`Type to search and filter options`)}
+        />
 
         <Stack axis="x" spacing="small" align="center" justify="between">
           <Text
@@ -235,7 +253,11 @@ function ListHeader({
           </Text>
 
           {numSelected > 1 && (
-            <ClearButton onPress={onClearOption}>
+            <ClearButton
+              onPress={onClearOption}
+              accessibilityLabel={_(msg`Clear selected options`)}
+              accessibilityHint={_(msg`Double tap to clear selected options`)}
+            >
               <Text variant="bodyExtraSmall" color="textMuted">
                 <Trans>Clear selected ({numSelected})</Trans>
               </Text>

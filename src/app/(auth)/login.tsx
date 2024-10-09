@@ -7,19 +7,24 @@ import { Button, Stack, Text, TextInput } from '~components/uikit';
 import { useAuthStore } from '~services/auth';
 import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
+import { announceForAccessibility } from '~utils/a11y';
 
 type Credentials = {
   email: string;
   password: string;
 };
+
 export default function Login() {
   const { _ } = useI18n();
-  const form = useForm<Credentials>({ mode: 'onBlur' });
+  const form = useForm<Credentials>({ mode: 'onChange' });
   const { status, login } = useAuthStore();
 
   async function handleSubmit() {
     try {
       await login(form.getValues());
+      announceForAccessibility({
+        message: _(msg`Logged in successfully, entering the app`),
+      });
     } catch (error) {
       console.log('> Failed to login', error);
       showToast({ title: _(msg`Failed to login`), type: 'error' });
@@ -31,10 +36,14 @@ export default function Login() {
       <InnerStack axis="y" spacing="medium" justify="between">
         <Stack axis="y" spacing="medium">
           <Stack axis="y" spacing="small">
-            <Text variant="headingL">
+            <Text variant="headingL" accessibilityRole="header">
               <Trans>Enter your credentials</Trans>
             </Text>
-            <Text variant="bodySmall" color="textMuted">
+            <Text
+              variant="bodySmall"
+              color="textMuted"
+              accessibilityRole="text"
+            >
               <Trans>You can enter any email and password to login.</Trans>
             </Text>
           </Stack>
@@ -102,9 +111,10 @@ export default function Login() {
           variant="filled"
           size="large"
           onPress={form.handleSubmit(handleSubmit)}
-          disabled={status === 'logging-in'}
+          disabled={status === 'logging-in' || !form.formState.isValid}
           loading={status === 'logging-in'}
           testID="loginButton"
+          accessibilityHint={_(msg`Double tap to log in with the provided email and password`)} // prettier-ignore
         >
           <Trans>Login</Trans>
         </Button>
@@ -120,7 +130,7 @@ const InnerStack = styled(Stack, {
 
 const KeyboardAwareView = styled(KeyboardAvoidingView, {
   flex: 1,
-}).attrs((p) => ({
+}).attrs(() => ({
   keyboardShouldPersistTaps: 'handled',
   contentContainerStyle: {
     flexGrow: 1,

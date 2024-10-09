@@ -1,4 +1,4 @@
-import { Trans, msg } from '@lingui/macro';
+import { msg } from '@lingui/macro';
 import { setStringAsync } from 'expo-clipboard';
 import { Pressable } from 'react-native';
 
@@ -16,9 +16,7 @@ export default function Icons() {
     <Wrapper>
       <Stack axis="y" spacing="medium">
         <Note>
-          <Trans>
-            You can long press on an icon to copy its name to the clipboard.
-          </Trans>
+          You can long press on an icon to copy its name to the clipboard.
         </Note>
         <Grid spacing="small" justify="between" align="center">
           {Object.keys(icons).map((name) => (
@@ -40,7 +38,11 @@ export default function Icons() {
                 align="center"
                 justify="center"
               >
-                <Icon name={name as IconName} size={24} />
+                <Icon
+                  name={name as IconName}
+                  size={24}
+                  accessibilityLabel={'Icon'}
+                />
                 <Text
                   variant="bodyExtraSmall"
                   color="textMuted"

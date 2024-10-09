@@ -1,7 +1,12 @@
 import { msg } from '@lingui/macro';
 import { DateTime } from 'luxon';
 import { forwardRef, useImperativeHandle, useState } from 'react';
-import { Keyboard, Platform, ViewStyle } from 'react-native';
+import {
+  AccessibilityProps,
+  Keyboard,
+  Platform,
+  ViewStyle,
+} from 'react-native';
 import DatePicker from 'react-native-date-picker';
 
 import { useColorMode } from '~services/color-mode';
@@ -34,8 +39,10 @@ export const DateInput = forwardRef(
       mode = 'date',
       icon = mode === 'time' ? 'clock' : 'calendarMonth',
       onChange,
+      accessibilityLabel,
+      accessibilityHint,
       ...rest
-    }: Props,
+    }: Props & AccessibilityProps,
     ref: any
   ) => {
     const { _ } = useI18n();
@@ -75,6 +82,8 @@ export const DateInput = forwardRef(
             Keyboard.dismiss();
             setPickerOpen(true);
           }}
+          accessibilityLabel={accessibilityLabel ?? _(msg`Date picker input for ${label}, current value: ${value}`)} // prettier-ignore
+          accessibilityHint={accessibilityHint ?? _(msg`Double tap to open date picker`)} // prettier-ignore
         />
         {!!message && (
           <Message variant="bodySmall" color="textMuted">
