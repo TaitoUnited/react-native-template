@@ -40,6 +40,7 @@
     "postinstall": "patch-package",
     "eas-build-post-install": "./post-install.sh",
     "eas:build": "node scripts/build.mjs",
+    "eas:update": "node scripts/update.mjs",
     "eas:submit": "node scripts/submit.mjs",
     "metadata:push": "eas metadata:push"
   },

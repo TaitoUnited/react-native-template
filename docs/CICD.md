@@ -27,7 +27,8 @@ Make sure that the owner of the project (if different than the default **taito-u
 Make sure to update the following in `eas.json`
 
 - `bundleIdentifier`: the bundle identifier of the app. Please make sure that it is the same as the one defined in `app.config.ts`
-- `appleTeamId`: the team id of the Apple Developer account.
+- `appleTeamId`: the [Apple Team](https://github.com/expo/fyi/blob/main/apple-team.md) ID of the team that will be used to sign the app.
+- `ascAppId`: the [Apple Store Connect app ID](https://github.com/expo/fyi/blob/main/asc-app-id.md) of the app you want to build.
 
 ### Make your first build
 
