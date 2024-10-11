@@ -25,14 +25,14 @@ jobs:
             •	🌐 ⚙️ **EAS Update**: Select `eas-update` to trigger an update (automatically for both platforms)
 
             > [!NOTE] 
-            > The update is managed by a [custom GitHub action](/.github/workflows/eas-trigger.yml), while the build actions are handled directly via [EAS integration](https://expo.dev/accounts/taito-united/projects/taito-template/github).
+            > The update is managed by a [custom GitHub action](${{ github.server_url }}/${{ github.repository }}/blob/${{ github.head_ref || github.ref_name }}/.github/workflows/eas-trigger.yml), while the build actions are handled directly via [EAS integration](https://expo.dev/accounts/taito-united/projects/taito-template/github).
 
             Once you apply the respective label, the appropriate workflow will be triggered automatically. You can monitor the progress in the [Actions tab](${{ github.server_url }}/${{ github.repository }}/actions).
 
             > [!TIP] 
             > If you want to trigger a new build or update after some new code changes, you can remove the label and apply it again.
 
-            For more information, refer to the [PR Reviews Guide](./docs/PR_REVIEWS.md).
+            For more information, refer to the [PR Reviews Guide](${{ github.server_url }}/${{ github.repository }}/blob/${{ github.head_ref || github.ref_name }}/docs/PR_REVIEWS.md).
 
             > [!INFO] 
             > Once you merge to the **dev** branch, a build will be triggered automatically for each platform using the dev profile.
