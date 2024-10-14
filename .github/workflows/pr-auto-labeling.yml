@@ -1,0 +1,57 @@
+name: Auto Labeling on PR
+
+on:
+  pull_request:
+    types: [opened, reopened, labeled, unlabeled, synchronize]
+
+jobs:
+  assign_labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Execute assign labels
+        id: action-assign-labels
+        uses: mauroalderete/action-assign-labels@v1
+        with:
+          pull-request-number: ${{ github.event.pull_request.number }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          conventional-commits: |
+            conventional-commits:
+              - type: 'accessibility'
+                nouns: ['accessibility', 'a11y']
+                labels: ['a11y']
+              - type: 'CI/CD'
+                nouns: ['ci', 'cd', 'cicd', 'ci/cd', 'CI/CD', 'build', 'builds', 'config', 'conf', 'configuration', 'configure']
+                labels: ['ci/cd']
+              - type: 'docs'
+                nouns: ['docs', 'documentation', 'doc']
+                labels: ['docs']
+              - type: 'enhancement'
+                nouns: ['improvement', 'enhancement', 'enhancements', 'improve']
+                labels: ['enhancement']
+              - type: 'feature'
+                nouns: ['feature', 'features', 'feat']
+                labels: ['feature']
+              - type: 'fix'
+                nouns: ['fix', 'fixed', 'bug', 'bugs']
+                labels: ['fix']
+              - type: 'chore'
+                nouns: ['chore', 'maintenance']
+                labels: ['maintenance']
+              - type 'performance'
+                nouns: ['perf', 'performance']
+                labels: ['performance']
+              - type: 'refactor'
+                nouns: ['refactor', 'refactored']
+                labels: ['refactor']
+              - type: 'revert'
+                nouns: ['revert', 'reverts']
+                labels: ['revert']
+              - type: 'style'
+                nouns: ['style', 'styles', 'styling', 'styled', 'structure']
+                labels: ['style']
+              - type: 'test'
+                nouns: ['test', 'tests', 'testing']
+                labels: ['testing']

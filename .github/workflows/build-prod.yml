@@ -12,6 +12,13 @@ on:
           - android
           - all
         required: true
+      submit:
+        type: choice
+        description: Do you want to automatically submit the build to the store?
+        options:
+          - yes
+          - no
+        required: true
       email:
         type: choice
         description: Notify the client via email?
@@ -25,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Setup repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: 👷‍♀️ Build
         uses: ./.github/actions/build-workflow

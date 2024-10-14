@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/store-review/StoreReview.tsx:81
+#: src/components/store-review/StoreReview.tsx:80
 msgid "An error occurred while requesting review"
 msgstr "An error occurred while requesting review"
 
@@ -52,7 +52,6 @@ msgstr "By Taito United"
 
 #: src/app/(tabs)/settings.tsx:19
 #: src/components/uikit/inputs/DateInput.tsx:90
-#: src/components/uikit/inputs/SearchInput.tsx:56
 #: src/components/uikit/PickerModal.tsx:206
 #: src/components/uikit/PickerSheet.tsx:155
 msgid "Cancel"
@@ -82,11 +81,11 @@ msgstr "Confirm"
 msgid "Copied to clipboard"
 msgstr "Copied to clipboard"
 
-#: src/components/store-review/StoreReview.tsx:109
+#: src/components/store-review/StoreReview.tsx:108
 msgid "Could be better"
 msgstr "Could be better"
 
-#: src/services/auth.tsx:107
+#: src/services/auth.tsx:104
 msgid "Could not connect to server"
 msgstr ""
 
@@ -138,7 +137,7 @@ msgstr ""
 msgid "English"
 msgstr "English"
 
-#: src/components/store-review/StoreReview.tsx:94
+#: src/components/store-review/StoreReview.tsx:93
 msgid "Enjoying the app?"
 msgstr "Enjoying the app?"
 
@@ -222,7 +221,7 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: src/components/store-review/StoreReview.tsx:102
+#: src/components/store-review/StoreReview.tsx:101
 msgid "Loving it"
 msgstr "Loving it"
 
@@ -298,9 +297,13 @@ msgstr ""
 
 #: src/app/(tabs)/_layout.tsx:33
 #: src/app/(tabs)/search.tsx:10
-#: src/components/uikit/inputs/SearchInput.tsx:19
+#: src/components/uikit/inputs/SearchInput.tsx:27
 msgid "Search"
 msgstr ""
+
+#: src/components/uikit/inputs/Select.tsx:54
+msgid "Select"
+msgstr "Select"
 
 #: src/app/(tabs)/_layout.tsx:47
 msgid "Settings"
@@ -321,7 +324,7 @@ msgstr ""
 msgid "Something went wrong"
 msgstr ""
 
-#: src/components/store-review/StoreReview.tsx:82
+#: src/components/store-review/StoreReview.tsx:81
 msgid "Sorry about the inconvenience"
 msgstr "Sorry about the inconvenience"
 
@@ -352,6 +355,10 @@ msgstr "Thank you"
 #: src/components/uikit/PickerSheet.tsx:259
 msgid "Try changing your search term."
 msgstr ""
+
+#: src/components/uikit/inputs/TextInput.tsx:38
+msgid "Type here"
+msgstr "Type here"
 
 #: src/services/permissions.tsx:107
 msgid "Unable to change permission"

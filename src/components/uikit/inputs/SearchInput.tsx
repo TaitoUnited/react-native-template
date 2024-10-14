@@ -20,7 +20,7 @@ type SearchInputProps = TextInputProps & {
   suggestions?: string[];
 };
 
-export const SearchInput = forwardRef<RNTextInput, TextInputProps>(
+export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(
   (
     {
       suggestions = [],

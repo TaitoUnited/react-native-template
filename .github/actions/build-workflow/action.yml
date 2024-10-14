@@ -7,6 +7,9 @@ inputs:
   platform:
     type: string
     required: true
+  submit:
+    type: string
+    required: false
   email:
     type: string
     required: true
@@ -29,7 +32,7 @@ jobs:
       - name: 🚀 Build app
         id: build-app
         run: |
-          eas build --platform ${{ inputs.platform }} --profile ${{ inputs.environment }} --non-interactive | tee temp.txt
+          eas build --platform ${{ inputs.platform }} --profile ${{ inputs.environment }} ${{ inputs.submit == 'true' && '--auto-submit' || '' }} --non-interactive | tee temp.txt
           echo "BUILD_URL=$(echo "$(cat temp.txt)" | grep -o 'Build details: [^ ]*' | awk '{print $3}')" >> $GITHUB_OUTPUT
 
   notify-slack:
