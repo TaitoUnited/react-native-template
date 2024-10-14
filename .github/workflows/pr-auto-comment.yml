@@ -2,7 +2,7 @@ name: EAS Comment on PR creation
 
 on:
   pull_request:
-    types: [opened, synchronize, edited]
+    types: [opened, reopened]
 
 jobs:
   add_comment:

@@ -2,7 +2,7 @@ name: Auto Labeling on PR
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, reopened, labeled, unlabeled, synchronize]
 
 jobs:
   assign_labels:
@@ -55,6 +55,3 @@ jobs:
               - type: 'test'
                 nouns: ['test', 'tests', 'testing']
                 labels: ['testing']
-
-          maintain-labels-not-matched: false
-          apply-changes: true
