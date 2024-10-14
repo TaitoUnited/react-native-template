@@ -12,6 +12,13 @@ on:
           - android
           - all
         required: true
+      submit:
+        type: choice
+        description: Do you want to automatically submit the build to the store?
+        options:
+          - yes
+          - no
+        required: true
       email:
         type: choice
         description: Notify the client via email?
