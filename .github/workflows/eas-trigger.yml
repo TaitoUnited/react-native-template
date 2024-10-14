@@ -11,7 +11,7 @@ jobs:
     if: contains(github.event.label.name, 'eas-update')
     steps:
       - name: ⬇️ Setup repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: 📦 Install
         uses: ./.github/actions/install
