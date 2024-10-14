@@ -22,7 +22,7 @@ jobs:
             •	🏗️ 🍏 **iOS Build**: Select `eas-build-ios:dev` to trigger a build for iOS
             •	🏗️ 🤖 **Android Build**: Select `eas-build-android:dev` to trigger a build for Android
             •	🏗️ 📲 **All Platforms Build**: Select `eas-build-all:dev` to trigger builds for both platforms
-            •	🌐 ⚙️ **EAS Update**: Select `eas-update` to trigger an update (automatically for both platforms)
+            •	🌐 **EAS Update**: Select `eas-update` to trigger an update (automatically for both platforms)
 
             > [!NOTE] 
             > The update is managed by a [custom GitHub action](${{ github.server_url }}/${{ github.repository }}/blob/${{ github.head_ref || github.ref_name }}/.github/workflows/eas-trigger.yml), while the build actions are handled directly via [EAS integration](https://expo.dev/accounts/taito-united/projects/taito-template/github).
@@ -34,5 +34,11 @@ jobs:
 
             For more information, refer to the [PR Reviews Guide](${{ github.server_url }}/${{ github.repository }}/blob/${{ github.head_ref || github.ref_name }}/docs/PR_REVIEWS.md).
 
-            > [!INFO] 
-            > Once you merge to the **dev** branch, a build will be triggered automatically for each platform using the dev profile.
+            > [!IMPORTANT] 
+            > After merging changes into the **dev** branch, a build will automatically be triggered for both platform using the dev profile. 
+            >
+            > Therefore, there is no need to manually initiate a build after merging to the **dev** branch.
+            >
+            > Additionally, builds will automatically trigger when promoting changes to **test**, **stag**, and **prod**. 
+            > 
+            > For the prod branch, the build will also be automatically submitted to the app stores.
