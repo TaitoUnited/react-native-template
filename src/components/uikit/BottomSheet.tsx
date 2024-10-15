@@ -7,7 +7,7 @@ import { ReactNode, forwardRef, useImperativeHandle, useRef } from 'react';
 import { styled, useTheme } from '~styles';
 
 type BottomSheetProps = RNBottomSheetProps & {
-  initialIndex: number;
+  initialIndex?: number;
   snapPoints: string[]; // e.g. ['25%', '50%']
   children: ReactNode;
   onSheetChange?: (index: number) => void;
@@ -16,10 +16,10 @@ type BottomSheetProps = RNBottomSheetProps & {
 export const BottomSheet = forwardRef<RNBottomSheet, BottomSheetProps>(
   (
     {
-      initialIndex,
+      initialIndex = 0,
       snapPoints,
       children,
-      onSheetChange,
+      onSheetChange = () => {},
       keyboardBehavior = 'interactive',
       ...rest
     }: BottomSheetProps,
@@ -46,6 +46,7 @@ export const BottomSheet = forwardRef<RNBottomSheet, BottomSheetProps>(
         onChange={handleSheetChanges}
         enablePanDownToClose
         keyboardBehavior={keyboardBehavior}
+        accessible={false} // Important if you want to access the bottom sheet content
         backdropComponent={(props) => (
           <BottomSheetBackdrop
             {...props}

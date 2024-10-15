@@ -1,7 +1,9 @@
+import { msg } from '@lingui/macro';
 import { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import Collapsible, { CollapsibleProps } from 'react-native-collapsible';
 
+import { useI18n } from '~services/i18n';
 import { Color, styled } from '~styles';
 
 import { Icon, IconName } from './Icon';
@@ -24,20 +26,31 @@ export function Accordion({
   iconColor,
   ...rest
 }: AccordionProps) {
-  const [isCollapsed, setCollapsed] = useState(!initialOpen);
+  const { _ } = useI18n();
+  const [collapsed, setCollapsed] = useState(!initialOpen);
 
   return (
     <Stack axis="y" spacing="small">
-      <TouchableOpacity onPress={() => setCollapsed((p) => !p)}>
+      <TouchableOpacity
+        onPress={() => setCollapsed((prev) => !prev)}
+        accessibilityRole="header"
+        accessibilityLabel={title}
+        accessibilityState={{ expanded: !collapsed }}
+        accessibilityHint={
+          collapsed
+            ? _(msg`Double tap to expand the content`)
+            : _(msg`Double tap to collapse the content`)
+        }
+      >
         <AccordionHeader
           title={title}
           icon={icon}
           iconColor={iconColor}
-          isCollapsed={isCollapsed}
+          collapsed={collapsed}
         />
       </TouchableOpacity>
 
-      <Collapsible {...rest} collapsed={isCollapsed}>
+      <Collapsible {...rest} collapsed={collapsed}>
         {children}
       </Collapsible>
     </Stack>
@@ -50,15 +63,16 @@ const Title = styled(Stack, {
   paddingVertical: '$small',
 });
 
-export function AccordionHeader({
+function AccordionHeader({
   title,
   icon,
   iconColor = 'neutral2',
-  isCollapsed,
-  standalone = false,
-}: Omit<AccordionProps, 'children'> & {
-  isCollapsed: boolean;
-  standalone?: boolean;
+  collapsed,
+}: {
+  title: string;
+  icon?: IconName;
+  iconColor?: Color;
+  collapsed: boolean;
 }) {
   return (
     <Title axis="x" spacing="small" align="center" justify="between">
@@ -68,9 +82,7 @@ export function AccordionHeader({
 
       {icon && <Icon name={icon} color={iconColor} size={24} />}
 
-      {!standalone && (
-        <Icon name={isCollapsed ? 'chevronDown' : 'chevronUp'} size={24} />
-      )}
+      <Icon name={collapsed ? 'chevronDown' : 'chevronUp'} size={24} />
     </Title>
   );
 }

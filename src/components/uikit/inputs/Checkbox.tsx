@@ -1,3 +1,4 @@
+import { msg } from '@lingui/macro';
 import { PixelRatio } from 'react-native';
 import Animated, {
   Easing,
@@ -5,6 +6,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
+import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 
 import { Icon } from '../Icon';
@@ -18,6 +20,7 @@ type Props = {
 };
 
 export function Checkbox({ onChange, checked, value, label }: Props) {
+  const { _ } = useI18n();
   const animatedStyles = useAnimatedStyle(() => {
     return {
       transform: [
@@ -32,7 +35,19 @@ export function Checkbox({ onChange, checked, value, label }: Props) {
   });
 
   return (
-    <Wrapper onPress={() => onChange(value)} activeOpacity={0.8}>
+    <Wrapper
+      onPress={() => onChange(value)}
+      activeOpacity={0.8}
+      accessible
+      accessibilityRole="checkbox"
+      accessibilityLabel={_(msg`Checkbox option: ${label}`)}
+      accessibilityState={{ checked }}
+      accessibilityHint={
+        checked
+          ? _(msg`Double tap to check this option`)
+          : _(msg`Double tap to uncheck this option`)
+      }
+    >
       <RadioOuter checked={checked}>
         <Animated.View style={animatedStyles}>
           <Icon name="check" size={18} color="textOnContrastingBg" />

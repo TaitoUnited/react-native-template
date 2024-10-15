@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
+import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 
 import { Icon, IconName } from '../Icon';
@@ -54,10 +55,14 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
       onFocus,
       multiline = false,
       returnKeyType = 'done',
+      accessibilityRole,
+      accessibilityLabel,
+      accessibilityHint,
       ...rest
     }: TextInputProps,
     ref
   ) => {
+    const { _ } = useI18n();
     const [secureTextVisible, setSecureTextVisible] = useState(false);
     const [isFocused, setFocused] = useState(false);
     const [characterCount, setCharacterCount] = useState(value?.length || 0);
@@ -93,11 +98,20 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
         {label && (
           <Stack axis="x" spacing="xs" align="center">
             {labelIcon && <Icon name={labelIcon} size={24} color="text" />}
-            <Text variant="headingS" color="text" numberOfLines={1}>
+            <Text
+              variant="headingS"
+              color="text"
+              numberOfLines={1}
+              accessibilityLabel={_(msg`Label for ${label} input`)}
+            >
               {label}
             </Text>
             {isRequired && showRequiredAsterisk && (
-              <Text variant="body" color="error">
+              <Text
+                variant="body"
+                color="error"
+                accessibilityLabel={_(msg`Required field indicator`)}
+              >
                 *
               </Text>
             )}
@@ -105,7 +119,13 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
         )}
 
         {showCharacterLimit && isFocused && (
-          <CharacterCount variant="bodyExtraSmall">
+          <CharacterCount
+            variant="bodyExtraSmall"
+            accessibilityLabel={_(msg`Character count`)}
+            accessibilityHint={_(
+              msg`Number of characters entered in the input field: currently ${characterCount} out of ${maxLength}`
+            )}
+          >
             <Text variant="bodyExtraSmallBold">{characterCount}</Text>
             {` / ${maxLength}`}
           </CharacterCount>
@@ -137,11 +157,25 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
             selectTextOnFocus={!isDisabled}
             multiline={multiline}
             maxLength={maxLength}
+            accessibilityRole={accessibilityRole ?? 'text'}
+            accessibilityLabel={accessibilityLabel ?? _(msg`${label} input field`)} // prettier-ignore
+            accessibilityHint={accessibilityHint ?? _(msg`Enter your ${label} here`)} // prettier-ignore
+            accessibilityState={{ disabled: isDisabled }}
           />
 
           {allowSecureTextToggle ? (
             <InputDecoration>
-              <TouchableOpacity onPress={() => setSecureTextVisible((p) => !p)}>
+              <TouchableOpacity
+                onPress={() => setSecureTextVisible((p) => !p)}
+                accessible
+                accessibilityRole="button"
+                accessibilityLabel={_(msg`Toggle visibility`)}
+                accessibilityHint={
+                  secureTextVisible
+                    ? _(msg`Hide text by toggling visibility`)
+                    : _(msg`Show text by toggling visibility`)
+                }
+              >
                 {secureTextVisible ? (
                   <Icon name="eye" size={20} color="text" />
                 ) : (
@@ -155,6 +189,8 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
               size="small"
               onPress={handleCancel}
               disabled={!value}
+              accessibilityLabel={_(msg`Clear input`)}
+              accessibilityHint={_(msg`Double tap to clear the input`)}
             />
           )}
         </InputWrapper>
@@ -165,6 +201,11 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
             <Text
               variant="bodySmall"
               color={isValid ? 'text' : 'errorContrast'}
+              accessibilityHint={
+                isValid
+                  ? _(msg`Informational message for the ${label} input field`)
+                  : _(msg`This is an error message for the ${label} input field`) // prettier-ignore
+              }
             >
               {message}
             </Text>

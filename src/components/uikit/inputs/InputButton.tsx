@@ -1,12 +1,15 @@
+import { msg } from '@lingui/macro';
 import { ViewStyle } from 'react-native';
 
+import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 
 import { Icon, IconName } from '../Icon';
 import { Text } from '../Text';
+import { ButtonProps } from '../buttons/types';
 import { Stack } from '../layout/Stack';
 
-type Props = {
+type Props = Omit<ButtonProps, 'children'> & {
   value?: string;
   label: string;
   labelIcon?: IconName;
@@ -37,7 +40,12 @@ export function InputButton({
   isFocused = false,
   showRequiredAsterisk = true,
   onPress,
+  accessibilityLabel,
+  accessibilityHint,
+  ...rest
 }: Props) {
+  const { _ } = useI18n();
+
   return (
     <Stack axis="y" spacing="regular">
       <Stack axis="x" spacing="xs" align="center">
@@ -53,6 +61,7 @@ export function InputButton({
       </Stack>
       <Wrapper style={style}>
         <InputWrapper
+          {...rest}
           focused={isFocused}
           valid={isValid}
           disabled={isDisabled}
@@ -64,6 +73,8 @@ export function InputButton({
               withLineHeight
               numberOfLines={1}
               style={{ flex: 1 }}
+              accessibilityLabel={accessibilityLabel ?? value}
+              accessibilityHint={accessibilityHint ?? _(msg`Double tap to enter a value`)} // prettier-ignore
             >
               {value || placeholder}
             </Text>

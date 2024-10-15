@@ -19,6 +19,7 @@ export function Button({
   style,
   variant = 'filled',
   onPress,
+  accessibilityRole,
   ...rest
 }: ButtonProps) {
   const theme = useTheme();
@@ -44,6 +45,8 @@ export function Button({
       disabled={disabled}
       style={[wrapperStyle, style]}
       onPress={!disabled ? onPress : undefined}
+      accessibilityRole={accessibilityRole ?? 'button'}
+      accessibilityState={{ disabled, busy: loading }}
       {...rest}
     >
       <Stack

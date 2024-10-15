@@ -79,6 +79,7 @@ export default function TabsLayout() {
             name={id}
             options={{
               title,
+              tabBarAccessibilityLabel: _(msg`${title} tab`),
               tabBarItemStyle: {
                 // On certain devices without insets, the tab bar is too close to the bottom of the screen
                 paddingBottom: insets.bottom === 0 ? 4 : 0,

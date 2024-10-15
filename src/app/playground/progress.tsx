@@ -11,8 +11,8 @@ export default function Progress() {
           <Text variant="headingS">Progress bar</Text>
 
           <Stack axis="y" spacing="regular">
-            {Array.from({ length: totalSteps }).map((_, i) => (
-              <ProgressBar key={i} step={i + 1} totalSteps={totalSteps} />
+            {Array.from({ length: totalSteps + 1 }).map((_, i) => (
+              <ProgressBar key={i} step={i} totalSteps={totalSteps} />
             ))}
           </Stack>
         </Stack>

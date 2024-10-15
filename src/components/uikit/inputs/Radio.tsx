@@ -1,6 +1,8 @@
+import { msg } from '@lingui/macro';
 import { useEffect, useRef } from 'react';
 import { Animated, PixelRatio } from 'react-native';
 
+import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 
 import { Text } from '../Text';
@@ -13,8 +15,17 @@ type Props = {
 };
 
 export function Radio({ onChange, checked, value, label }: Props) {
+  const { _ } = useI18n();
   return (
-    <Wrapper onPress={() => onChange(value)} activeOpacity={0.8}>
+    <Wrapper
+      onPress={() => onChange(value)}
+      activeOpacity={0.8}
+      accessible
+      accessibilityRole="radio"
+      accessibilityState={{ checked }}
+      accessibilityLabel={_(msg`Radio option: ${label}`)}
+      accessibilityHint={_(msg`Double tap to select this option`)}
+    >
       <RadioOuter checked={checked}>{checked && <RadioInner />}</RadioOuter>
       <Text variant={checked ? 'bodyBold' : 'body'}>{label}</Text>
     </Wrapper>

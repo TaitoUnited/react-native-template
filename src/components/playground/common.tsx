@@ -5,7 +5,7 @@ import { styled } from '~styles';
 
 export function Note({ children }: { children: ReactNode }) {
   return (
-    <NoteWrapper>
+    <NoteWrapper accessible accessibilityLabel={`Note: ${children}`}>
       <Stack axis="y" spacing="xs">
         <Stack axis="x" spacing="xxs" align="center">
           <Icon name="warning" color="warn" />

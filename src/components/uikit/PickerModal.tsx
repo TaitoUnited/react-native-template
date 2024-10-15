@@ -1,4 +1,4 @@
-import { Trans } from '@lingui/macro';
+import { Trans, msg } from '@lingui/macro';
 import { MutableRefObject, useEffect, useRef, useState } from 'react';
 import {
   Animated,
@@ -10,7 +10,9 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
+import { announceForAccessibility } from '~utils/a11y';
 
 import { Text } from './Text';
 import { Checkbox } from './inputs/Checkbox';
@@ -39,10 +41,13 @@ type MultipleValueProps = {
 
 type Props = BaseProps & (SingleValueProps | MultipleValueProps);
 
-// Use this picker for picking options from a SHORT list of options (less than 20 options).
-// You can use `PickerSheet` for longer lists.
-
+/** Use this picker for picking options from a SHORT list of options (less than 20 options).
+ *
+ * You can use `PickerSheet` for longer lists.
+ *
+ */
 export function PickerModal({ isVisible, onClose, ...rest }: Props) {
+  const { _ } = useI18n();
   const backdropAnimation = useRef(new Animated.Value(isVisible ? 1 : 0));
   const contentAnimation = useRef(new Animated.Value(isVisible ? 1 : 0));
 
@@ -94,9 +99,13 @@ export function PickerModal({ isVisible, onClose, ...rest }: Props) {
   return (
     <Modal
       animationType="none"
-      transparent={true}
+      transparent
       visible={isVisible}
       onRequestClose={handleClose}
+      accessible
+      accessibilityViewIsModal
+      accessibilityLabel={_(msg`Picker Modal`)}
+      accessibilityHint={_(msg`Allows you to pick an option from the list`)}
     >
       <ModalContent
         {...rest}
@@ -121,12 +130,16 @@ function ModalContent({
   backdropAnimation: MutableRefObject<Animated.Value>;
   contentAnimation: MutableRefObject<Animated.Value>;
 }) {
+  const { _ } = useI18n();
   const dimensions = useWindowDimensions();
   const insets = useSafeAreaInsets();
   const [selected, setSelected] = useState(_selected);
 
   function handleDone(value: any) {
     onConfirm(value);
+    announceForAccessibility({
+      message: _(msg`Closing the picker modal with selected option ${value}`),
+    });
     requestAnimationFrame(() => {
       onClose();
     });
@@ -151,7 +164,7 @@ function ModalContent({
 
   return (
     <Wrapper>
-      <TouchableWithoutFeedback onPress={onClose}>
+      <TouchableWithoutFeedback onPress={onClose} accessible={false}>
         <Backdrop style={{ opacity: backdropAnimation.current }} />
       </TouchableWithoutFeedback>
 
@@ -176,6 +189,7 @@ function ModalContent({
             style={{
               maxHeight: dimensions.height - insets.bottom - insets.top - 150,
             }}
+            accessibilityRole="list"
           >
             <Stack axis="y" spacing="regular">
               {options.map((option) =>
@@ -201,14 +215,17 @@ function ModalContent({
           </ScrollView>
 
           <Footer>
-            <ActionButton onPress={onClose}>
+            <ActionButton onPress={onClose} accessibilityRole="button">
               <Text variant={multiple ? 'body' : 'bodyBold'}>
                 {multiple ? <Trans>Cancel</Trans> : <Trans>Close</Trans>}
               </Text>
             </ActionButton>
 
             {multiple && (
-              <ActionButton onPress={() => handleDone(selected)}>
+              <ActionButton
+                onPress={() => handleDone(selected)}
+                accessibilityRole="button"
+              >
                 <Text variant="bodyBold">
                   <Trans>Done</Trans>
                 </Text>
