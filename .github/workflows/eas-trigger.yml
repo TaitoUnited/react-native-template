@@ -1,16 +1,17 @@
-name: update
+name: Trigger EAS Update
+
 on:
-  push:
-    branches:
-      - main
+  pull_request:
+    types: [labeled]
 
 jobs:
   update:
-    name: EAS Update
+    name: Update Preview Branch
     runs-on: ubuntu-latest
+    if: contains(github.event.label.name, 'eas-update')
     steps:
       - name: ⬇️ Setup repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: 📦 Install
         uses: ./.github/actions/install
@@ -20,8 +21,8 @@ jobs:
       - name: 🌎 Compile translations
         run: npm run i18n:extract && npm run i18n:compile
 
-      - name: 🚀 Publish update
+      - name: 🚀 Create preview
         uses: expo/expo-github-action/preview@v8
+        id: preview
         with:
-          command: eas update --auto --branch main
-          comment: false
+          command: eas update --branch ${{ github.head_ref }} --message "${{ github.event.pull_request.title }}" --non-interactive

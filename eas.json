@@ -8,22 +8,24 @@
     "dev:simulator": {
       "developmentClient": true,
       "distribution": "internal",
+      "android": { "image": "latest" },
+      "ios": { "simulator": true, "image": "latest" },
       "env": {
         "APP_ENV": "dev"
-      },
-      "ios": {
-        "simulator": true
       }
     },
     "dev": {
-      "developmentClient": true,
       "distribution": "internal",
+      "android": { "image": "latest" },
+      "ios": { "image": "latest" },
       "env": {
         "APP_ENV": "dev"
       }
     },
     "test": {
       "distribution": "internal",
+      "android": { "image": "latest" },
+      "ios": { "image": "latest" },
       "env": {
         "APP_ENV": "test"
       },
@@ -31,6 +33,8 @@
     },
     "stag": {
       "distribution": "internal",
+      "android": { "image": "latest" },
+      "ios": { "image": "latest" },
       "env": {
         "APP_ENV": "stag"
       },
@@ -38,6 +42,8 @@
     },
     "prod": {
       "distribution": "store",
+      "android": { "image": "latest" },
+      "ios": { "image": "latest" },
       "autoIncrement": true,
       "env": {
         "APP_ENV": "prod"

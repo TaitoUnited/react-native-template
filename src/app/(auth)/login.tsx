@@ -120,7 +120,7 @@ const InnerStack = styled(Stack, {
 
 const KeyboardAwareView = styled(KeyboardAvoidingView, {
   flex: 1,
-}).attrs((p) => ({
+}).attrs(() => ({
   keyboardShouldPersistTaps: 'handled',
   contentContainerStyle: {
     flexGrow: 1,

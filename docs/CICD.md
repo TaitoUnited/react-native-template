@@ -54,7 +54,7 @@ Go to your repository settings and click on **Secrets**. Add the following secre
 - `SENDGRID_GITHUB_ACTION_API_KEY` (the api key we use to send emails to testers)
 - `SLACK_WEBHOOK` (the webhook we use to send messages to Slack)
 
-You should change the following in `.github/workflows/common-config.yml`:
+You should change the following in the different workflows in `.github` (use the global search to find them easily):
 
 - `SLACK_CHANNEL`: the name of the channel where you want to send the slack notifications about the builds
 - The list of emails of the clients/testers that should receive the email notifications about the builds whenever you select the option (so they can download the new app version from EAS) - see below

@@ -1,0 +1,46 @@
+name: EAS Comment on PR creation
+
+on:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  add_comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add a comment to the PR
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            Hi! 👋
+
+            To ensure a smooth review process, it is recommended to trigger a **build** (or an **update** if no native changes have been made since the last build). 
+
+            You can do so by applying the appropriate **label** based on your needs:
+
+            •	🏗️ 🍏 **iOS Build**: Select `eas-build-ios:dev` to trigger a build for iOS
+            •	🏗️ 🤖 **Android Build**: Select `eas-build-android:dev` to trigger a build for Android
+            •	🏗️ 📲 **All Platforms Build**: Select `eas-build-all:dev` to trigger builds for both platforms
+            •	🌐 **EAS Update**: Select `eas-update` to trigger an update (automatically for both platforms)
+
+            > [!NOTE] 
+            > The update is managed by a [custom GitHub action](${{ github.server_url }}/${{ github.repository }}/blob/${{ github.head_ref || github.ref_name }}/.github/workflows/eas-trigger.yml), while the build actions are handled directly via [EAS integration](https://docs.expo.dev/build/building-from-github/#build-using-github-pr-labels).
+
+            Once you apply the respective label, the appropriate workflow will be triggered automatically. You can monitor the progress in the [Actions tab](${{ github.server_url }}/${{ github.repository }}/actions).
+
+            > [!WARNING]
+            > If you push new commits to your PR branch after selecting a build label, a new build will be triggered automatically. 
+            > 
+            > It is advisable to remove the label once applied and reapply it if necessary; you will likely need to trigger an update instead of a fresh build.
+
+            > [!IMPORTANT] 
+            > After merging changes into the **dev** branch, a build will automatically be triggered for both platform using the dev profile. 
+            >
+            > Therefore, there is no need to manually initiate a build after merging to the **dev** branch.
+            >
+            > Additionally, builds will automatically trigger when promoting changes to **test**, **stag**, and **prod**. 
+            > 
+            > For the prod branch, the build will also be automatically submitted to the app stores.
+
+            For more information, refer to the [PR Reviews Guide](${{ github.server_url }}/${{ github.repository }}/blob/${{ github.head_ref || github.ref_name }}/docs/PR_REVIEWS.md).

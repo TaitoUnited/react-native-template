@@ -67,6 +67,8 @@ More information on how to setup app reviews can be found [here](https://docs.ex
 - [Localization](/docs/LOCALIZATION.md)
 - [PR Reviews](/docs/PR_REVIEWS.md)
 - [CICD](/docs/CICD.md)
+- [App Builds](/docs/BUILDS.md)
+- [Updates](/docs/UPDATES.md)
 - [Code Signing](/docs/CODE_SIGNING.md)
 - [Publishing to stores](/docs/PUBLISHING.md)
 - [Publishing updates to stores](/docs/UPDATES.md)

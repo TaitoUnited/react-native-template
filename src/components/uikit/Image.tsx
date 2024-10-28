@@ -1,5 +1,6 @@
 import { Image as ExpoImage, ImageProps } from 'expo-image';
 import { ImageStyle, StyleProp } from 'react-native';
+
 import { useImageDimensions } from '~utils/image';
 
 type Props = ImageProps & {
