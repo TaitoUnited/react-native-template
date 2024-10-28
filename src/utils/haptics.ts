@@ -2,6 +2,8 @@ import * as Haptics from 'expo-haptics';
 import { Platform } from 'react-native';
 
 /**
+ * _[CUSTOMIZE]_
+ *
  * Determines whether to use haptic feedback.
  *
  * Haptic communication is a highly effective form of nonverbal communication in native applications.

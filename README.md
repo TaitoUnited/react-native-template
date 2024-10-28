@@ -14,6 +14,12 @@ Make sure your development environment is setup and up-to-date by following this
 
 After you have cloned this repo to start a new mobile app project go through the following steps to customize the template based on your project needs.
 
+### Customizable features
+
+Look for `[CUSTOMIZE]` in the codebase to find places where you need to customize the template.
+
+For example, you can decide to opt in or out of **[haptic feedback](./src/utils/haptics.ts)** or **[store review](<./src/app/(tabs)/_layout.tsx>)**.
+
 ### Update app metadata
 
 Update the following fields in the `config/app.config.ts`:

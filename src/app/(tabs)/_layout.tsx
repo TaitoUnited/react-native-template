@@ -19,6 +19,8 @@ export type TabList = {
 }[];
 
 /**
+ * _[CUSTOMIZE]_
+ *
  * Determines whether to use a fully customizable bottom tab bar (`CustomBottomBar`)
  * or the default tab layout with minimal customization (`DefaultBottomBar`).
  *
@@ -28,6 +30,17 @@ export type TabList = {
  * Example: For a custom bottom bar based on specific branding needs, set `USE_CUSTOM_TABS = true`.
  */
 const USE_CUSTOM_TABS = true;
+
+/**
+ * _[CUSTOMIZE]_
+ *
+ * Determines whether to show the store review modal.
+ *
+ * The review modal is used to get users feedback about the app.
+ *
+ * The idea behind is to get negative feedback before sent to us via email and positive feedback directly in the store.
+ */
+const USE_STORE_REVIEW = true;
 
 export default function TabsLayout() {
   const { _ } = useI18n();
@@ -69,7 +82,7 @@ export default function TabsLayout() {
       ) : (
         <DefaultBottomBar tabs={tabs} theme={theme} />
       )}
-      <StoreReview />
+      {USE_STORE_REVIEW && <StoreReview />}
     </>
   );
 }
