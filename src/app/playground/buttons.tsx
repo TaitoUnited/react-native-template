@@ -150,6 +150,7 @@ function IconButtonExamples({
               color={color}
               loading={loading}
               disabled={disabled}
+              onPress={handlePress}
             />
           ))}
         </Stack>

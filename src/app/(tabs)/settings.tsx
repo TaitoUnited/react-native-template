@@ -8,6 +8,7 @@ import { useAuthStore } from '~services/auth';
 import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 import { announceForAccessibility } from '~utils/a11y';
+import { haptics } from '~utils/haptics';
 
 export default function Settings() {
   useHeaderPlaygroundButton();
@@ -17,12 +18,14 @@ export default function Settings() {
 
   function onLogout() {
     logout();
+    haptics.notificationSuccess();
     announceForAccessibility({
       message: _(msg`Logged out successfully, back to the landing page`),
     });
   }
 
   function handleLogout() {
+    haptics.notificationWarning();
     alert(_(msg`Are you sure you want to logout?`), '', [
       { text: _(msg`Cancel`), style: 'cancel', onPress: () => {} },
       { text: _(msg`I am sure`), onPress: onLogout },

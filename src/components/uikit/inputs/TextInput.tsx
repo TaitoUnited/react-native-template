@@ -11,6 +11,7 @@ import {
 
 import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
+import { haptics } from '~utils/haptics';
 
 import { Icon, type IconName } from '../Icon';
 import { Text } from '../Text';
@@ -77,6 +78,7 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
 
     function handleFocus(e: NativeSyntheticEvent<TextInputFocusEventData>) {
       setFocused(true);
+      haptics.selection();
       if (onFocus) onFocus(e);
     }
 

@@ -6,6 +6,7 @@ import { Platform, StyleSheet } from 'react-native';
 import { Icon, Stack, Text } from '~components/uikit';
 import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
+import { haptics } from '~utils/haptics';
 
 type Item = {
   id: string;
@@ -43,6 +44,7 @@ export default function MenuList({ items, title }: Props) {
       router.navigate(item.target);
     }
 
+    haptics.selection();
     item.onPress?.();
   }
 

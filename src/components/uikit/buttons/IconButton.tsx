@@ -1,5 +1,5 @@
 import { msg } from '@lingui/macro';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, GestureResponderEvent } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -9,6 +9,7 @@ import Animated, {
 
 import { useI18n } from '~services/i18n';
 import { styled, useTheme } from '~styles';
+import { haptics } from '~utils/haptics';
 
 import { Icon } from '../Icon';
 import { getIconColor, getIconWrapperStyle, sizeToIconSize } from './helpers';
@@ -74,6 +75,13 @@ export function IconButton({
     };
   });
 
+  function _onPress(e: GestureResponderEvent) {
+    if (!disabled && onPress) {
+      haptics.selection();
+      onPress(e);
+    }
+  }
+
   return (
     <Wrapper
       hitSlop={hitSlop}
@@ -81,7 +89,7 @@ export function IconButton({
       onPressOut={handlePressOut}
       size={size}
       disabled={disabled}
-      onPress={!disabled ? onPress : undefined}
+      onPress={_onPress}
       style={wrapperStyle}
       accessibilityRole={accessibilityRole ?? 'button'}
       accessibilityLabel={accessibilityLabel ?? _(msg`Icon button with ${icon} icon`)} // prettier-ignore

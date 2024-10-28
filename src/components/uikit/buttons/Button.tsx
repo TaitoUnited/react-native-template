@@ -1,6 +1,7 @@
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, GestureResponderEvent } from 'react-native';
 
-import { type Typography, styled, useTheme } from '~styles';
+import { styled, useTheme, type Typography } from '~styles';
+import { haptics } from '~utils/haptics';
 
 import { Icon } from '../Icon';
 import { Text } from '../Text';
@@ -39,12 +40,19 @@ export function Button({
     <Icon name={icon} color={textColor} size={iconSize} />
   );
 
+  function _onPress(e: GestureResponderEvent) {
+    if (!disabled && onPress) {
+      haptics.selection();
+      onPress(e);
+    }
+  }
+
   return (
     <Wrapper
       size={size}
       disabled={disabled}
       style={[wrapperStyle, style]}
-      onPress={!disabled ? onPress : undefined}
+      onPress={_onPress}
       accessibilityRole={accessibilityRole ?? 'button'}
       accessibilityState={{ disabled, busy: loading }}
       {...rest}

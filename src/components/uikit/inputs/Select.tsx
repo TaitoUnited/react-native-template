@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 
 import { useI18n } from '~services/i18n';
+import { haptics } from '~utils/haptics';
 
 import type { IconName } from '../Icon';
 import { PickerModal } from '../PickerModal';
@@ -117,6 +118,7 @@ export const Select = forwardRef(
             // Dismissing the keyboard is necessary to force any focused input to blur
             Keyboard.dismiss();
             setPickerOpen(true);
+            haptics.selection();
           }}
           accessibilityRole={accessibilityRole ?? 'button'}
           accessibilityLabel={ accessibilityLabel ?? _(msg`Select input for ${label}, current value: ${value}`)} // prettier-ignore

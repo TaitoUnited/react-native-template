@@ -7,6 +7,7 @@ import { Icon, IconButton, Stack, Text } from '~components/uikit';
 import { type IconName } from '~components/uikit/Icon';
 import { styled, useTheme, type Color } from '~styles/styled';
 import { announceForAccessibility } from '~utils/a11y';
+import { haptics } from '~utils/haptics';
 
 type Variant = 'info' | 'success' | 'warn' | 'error';
 
@@ -68,6 +69,7 @@ export function showToast({
   icon?: IconName;
   type: Variant;
 }) {
+  getHaptic(type)();
   ToastContainer.show({
     text1: title,
     text2: subtitle,
@@ -78,6 +80,21 @@ export function showToast({
   announceForAccessibility({
     message: `${type} toast: ${title}${subtitle ? `, ${subtitle}` : ''}`,
   });
+}
+
+function getHaptic(type: Variant) {
+  switch (type) {
+    case 'info':
+      return haptics.impactLight;
+    case 'warn':
+      return haptics.notificationWarning;
+    case 'error':
+      return haptics.notificationError;
+    case 'success':
+      return haptics.notificationSuccess;
+    default:
+      return haptics.impactLight;
+  }
 }
 
 function Toast({

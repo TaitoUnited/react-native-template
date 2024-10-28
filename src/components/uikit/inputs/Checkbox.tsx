@@ -8,6 +8,7 @@ import Animated, {
 
 import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
+import { haptics } from '~utils/haptics';
 
 import { Icon } from '../Icon';
 import { Text } from '../Text';
@@ -34,9 +35,14 @@ export function Checkbox({ onChange, checked, value, label }: Props) {
     };
   });
 
+  function onPress() {
+    haptics.selection();
+    onChange(value);
+  }
+
   return (
     <Wrapper
-      onPress={() => onChange(value)}
+      onPress={onPress}
       activeOpacity={0.8}
       accessible
       accessibilityRole="checkbox"
