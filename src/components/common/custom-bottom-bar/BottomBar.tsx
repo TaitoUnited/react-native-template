@@ -4,7 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { TabList } from '~app/(tabs)/_layout';
 import { styled } from '~styles';
 
-import { TabButton } from './Tab';
+import { TabBarButton } from './Tab';
 
 type CustomTabBarProps = Pick<
   BottomTabBarProps,
@@ -50,7 +50,7 @@ export function BottomBar({
           navigation.emit({ type: 'tabLongPress', target: route.key });
 
         return (
-          <TabButton
+          <TabBarButton
             key={route.key}
             isFocused={isFocused}
             onPress={onPress}

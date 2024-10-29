@@ -1,5 +1,5 @@
 import { msg } from '@lingui/macro';
-import { memo, useMemo } from 'react';
+import { useEffect } from 'react';
 import { Pressable } from 'react-native';
 import Animated, {
   interpolate,
@@ -24,12 +24,12 @@ type TabBarButtonProps = {
   tab: TabList[number];
 };
 
-const TabBarButton = ({
+export function TabBarButton({
   isFocused,
   label,
   tab,
   ...pressableProps
-}: TabBarButtonProps) => {
+}: TabBarButtonProps) {
   const { _ } = useI18n();
   const iconScale = useSharedValue(isFocused ? 1 : 0);
   const labelOpacity = useSharedValue(isFocused ? 1 : 0);
@@ -43,7 +43,7 @@ const TabBarButton = ({
     });
   };
 
-  useMemo(() => updateFocusAnimation(isFocused), [isFocused]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => updateFocusAnimation(isFocused), [isFocused]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const animatedIconStyle = useAnimatedStyle(() => ({
     transform: [{ scale: interpolate(iconScale.value, [0, 1], [1, 1.2]) }],
@@ -70,32 +70,19 @@ const TabBarButton = ({
             color={isFocused ? 'primary' : 'neutral2'}
           />
         </Animated.View>
-        <LabelWrapper style={animatedTextStyle}>
-          <StyledLabel variant="bodyExtraSmall" isFocused={isFocused}>
+        <Animated.View style={animatedTextStyle}>
+          <Text
+            variant="bodyExtraSmall"
+            color={isFocused ? 'primary' : 'textMuted'}
+          >
             {label}
-          </StyledLabel>
-        </LabelWrapper>
+          </Text>
+        </Animated.View>
       </Stack>
     </Wrapper>
   );
-};
+}
 
 const Wrapper = styled(Pressable, {
   flex: 1,
 });
-
-const LabelWrapper = Animated.createAnimatedComponent(styled('View', {}));
-
-const StyledLabel = styled(Text, {
-  variants: {
-    isFocused: {
-      true: { color: '$primary' },
-      false: { color: '$textMuted' },
-    },
-  },
-});
-
-export const TabButton = memo(
-  TabBarButton,
-  (prev, next) => prev.isFocused === next.isFocused
-);
