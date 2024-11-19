@@ -42,11 +42,13 @@ If you are working on a project that was started before 2024, you will need to m
 
 3. Follow the [instructions](https://developer.apple.com/help/account/create-certificates/create-a-certificate-signing-request) to create a certificate signing request (CSR) using Keychain Access on your Mac.
 
+> Note: You can put your work email as the user email and the name of the client and name of the certificate as the common name (e.g. _XX Oy - Distribution Managed_).
+
 4. Upload the CSR to the Apple Developer portal and click _Continue_.
 
 5. Download the certificate and double-click it to install it in your Keychain.
 
-6. Open Keychain Access and find the certificate you just installed. Right-click it and select _Export_.
+6. Open Keychain Access and find the certificate you just installed. Click on the chevron to expand it. Right-click on the private key and select _Export_.
 
 7. Save the certificate as a .p12 file and make sure to set a password. You should use the password generator from 1Password to set a strong one. Make sure to save it there as well in case we need it in the future.
 
