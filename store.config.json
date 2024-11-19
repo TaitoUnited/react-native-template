@@ -33,7 +33,7 @@
       "notes": "This is an example app primarily used for educational purposes."
     },
     "release": {
-      "automaticRelease": true
+      "automaticRelease": false
     },
     "advisory": {
       "alcoholTobaccoOrDrugUseOrReferences": "NONE",

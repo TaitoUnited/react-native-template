@@ -5,170 +5,166 @@ import ora from 'ora';
 async function main() {
   const spinner = ora('Processing...');
   try {
-    let answers = await promptUserInput();
+    // Collect user input
+    const answers = await gatherInputs();
 
-    // Handle additional prompts for production and iOS development profiles
-    answers = await handleProductionProfile(answers);
-    answers = await handleIOSDevelopmentProfile(answers);
-
-    // Run pre-build tasks based on the profile
+    // Run pre-build tasks
     runPreBuildTasks(answers.profile);
 
-    // Construct the build command based on user inputs
-    const command = constructEASCommand(answers);
-
-    console.info('> Command: ', command);
+    // Construct and execute the build command
+    const command = constructBuildCommand(answers);
+    console.info('> Command:', command);
 
     spinner.start();
-
-    // Execute the build command
-    runCommandSync(
+    executeCommandSync(
       command,
-      `> EAS build finished successfully with profile: ${answers.profile}`
+      `EAS build completed successfully using profile: ${answers.profile}`
     );
-
     spinner.succeed('Operation completed successfully.');
   } catch (error) {
-    console.error('> Error:', error.message);
     spinner.fail('Operation failed.');
+    console.error('> Error:', error.message || error);
   }
 }
 
-main();
-
 /**
- * Prompts user for platform, profile, and release message input.
- * @returns {Promise<object>} User inputs.
+ * Gathers initial user inputs and processes additional prompts based on conditions.
+ * @returns {Promise<object>} Consolidated user inputs.
  */
-async function promptUserInput() {
-  const platformOptions = ['Android', 'iOS', 'All'];
-  const profileOptions = ['Development', 'Testing', 'Staging', 'Production'];
-
+async function gatherInputs() {
   const answers = await inquirer.prompt([
     {
       type: 'list',
       name: 'platform',
-      message: 'Select the platform: ',
-      choices: platformOptions,
-    },
-    {
-      type: 'list',
-      name: 'profile',
-      message: 'Select the profile: ',
-      choices: profileOptions,
+      message: 'Select the platform:',
+      choices: ['Android', 'iOS', 'All'],
     },
     {
       type: 'input',
       name: 'message',
-      message: 'Give a description of what this release contains: ',
+      message: 'Describe this release:',
+    },
+    {
+      type: 'list',
+      name: 'profile',
+      message: 'Select the profile:',
+      choices: ['Development', 'Testing', 'Staging', 'Production'],
     },
   ]);
 
-  return answers;
+  // Handle additional prompts based on profile or platform
+  return await handleProfileSpecificPrompts(answers);
 }
 
 /**
- * Prompts for additional input if the selected profile is Production.
- * @param {object} answers - The current answers object.
- * @returns {Promise<object>} Updated answers object.
+ * Handles additional prompts for profiles like Production or Development (iOS).
+ * @param {object} answers - Initial user inputs.
+ * @returns {Promise<object>} Updated user inputs.
  */
-async function handleProductionProfile(answers) {
+async function handleProfileSpecificPrompts(answers) {
+  const additionalPrompts = [];
+
   if (answers.profile === 'Production') {
-    const autoSubmitAnswer = await inquirer.prompt([
+    additionalPrompts.push(
+      {
+        type: 'list',
+        name: 'store',
+        message: 'Is this build for Internal use or for the Stores?',
+        choices: ['Internal Build', 'Store Build'],
+      },
       {
         type: 'list',
         name: 'autoSubmit',
         message: 'Auto-submit to stores?',
         choices: ['Yes', 'No'],
-      },
-    ]);
-    answers.autoSubmit = autoSubmitAnswer.autoSubmit;
+        when: (prevAnswers) => prevAnswers.store === 'Store Build',
+      }
+    );
   }
-  return answers;
-}
 
-/**
- * Prompts for additional input if the selected platform is iOS and profile is Development.
- * @param {object} answers - The current answers object.
- * @returns {Promise<object>} Updated answers object.
- */
-async function handleIOSDevelopmentProfile(answers) {
   if (answers.platform === 'iOS' && answers.profile === 'Development') {
-    const devSimulatorAnswer = await inquirer.prompt([
-      {
-        type: 'list',
-        name: 'simulator',
-        message: 'Build for simulator or real device?',
-        choices: ['Simulator', 'Device'],
-      },
-    ]);
-    answers.simulator = devSimulatorAnswer.simulator;
+    additionalPrompts.push({
+      type: 'list',
+      name: 'simulator',
+      message: 'Build for simulator or real device?',
+      choices: ['Simulator', 'Device'],
+    });
   }
 
-  if (answers.simulator === 'Simulator') {
-    answers.profile = 'Simulator';
-  }
+  const additionalAnswers = additionalPrompts.length
+    ? await inquirer.prompt(additionalPrompts)
+    : {};
 
-  return answers;
+  return { ...answers, ...additionalAnswers };
 }
 
 /**
- * Constructs the EAS build command based on the user's inputs.
- * @param {object} answers - The user inputs.
- * @returns {string} The constructed command.
+ * Constructs the EAS build command based on user inputs.
+ * @param {object} answers - User inputs.
+ * @returns {string} Constructed build command.
  */
-function constructEASCommand(answers) {
-  const platformMap = {
-    Android: 'android',
-    iOS: 'ios',
-    All: 'all',
-  };
-
+function constructBuildCommand(answers) {
+  const platformMap = { Android: 'android', iOS: 'ios', All: 'all' };
   const profileMap = {
     Simulator: 'dev:simulator',
     Development: 'dev',
     Testing: 'test',
     Staging: 'stag',
+    'Production (Internal)': 'prod-internal',
     Production: 'prod',
   };
 
-  let command = `eas build --platform ${platformMap[answers.platform]} --profile ${profileMap[answers.profile]} --message "${answers.message}"`;
+  const platform = platformMap[answers.platform];
+  const profile =
+    answers.store === 'Internal Build'
+      ? 'prod-internal'
+      : profileMap[answers.profile];
 
-  if (answers.autoSubmit === 'Yes') {
-    command += ' --auto-submit';
-  }
+  let command = `eas build --platform ${platform} --profile ${profile} --message "${answers.message}"`;
+  if (answers.autoSubmit === 'Yes') command += ' --auto-submit';
 
   return command;
 }
 
 /**
- * Runs pre-build tasks based on the profile, such as compiling translations.
+ * Runs pre-build tasks specific to the selected profile.
  * @param {string} profile - The build profile.
- * @throws Will throw an error if a pre-build task fails.
  */
 function runPreBuildTasks(profile) {
-  const i18nCommand =
-    profile === 'Production' ? 'npm run i18n:compile' : 'npm run i18n:compile';
+  const i18nExtractCommand = 'npm run i18n:extract';
+  executeCommandSync(
+    i18nExtractCommand,
+    '> Translations extracted successfully.'
+  );
 
-  runCommandSync(i18nCommand, '> Translations compiled successfully.');
+  const i18nCommand =
+    profile === 'Production'
+      ? 'npm run i18n:compile:strict'
+      : 'npm run i18n:compile';
+
+  executeCommandSync(i18nCommand, '> Translations compiled successfully.');
 }
 
 /**
  * Executes a shell command synchronously and handles errors.
- * @param {string} command - The command to execute.
- * @param {string} successMessage - Message to log on success.
+ * @param {string} command - The shell command to execute.
+ * @param {string} successMessage - Message to log upon success.
  */
-function runCommandSync(command, successMessage) {
+function executeCommandSync(command, successMessage) {
   const result = spawnSync(command, { stdio: 'inherit', shell: true });
 
   if (result.error) {
-    console.error(`> Error executing command: ${command}`, result.error);
-    throw result.error;
+    throw new Error(
+      `Error executing command: ${command}\n${result.error.message}`
+    );
   }
 
   if (result.status !== 0) {
-    throw new Error(`Command failed with exit code: ${result.status}`);
+    throw new Error(`Command failed with exit code ${result.status}`);
   }
 
   console.info(successMessage);
 }
+
+// Execute the main function
+main();

@@ -40,6 +40,16 @@
       },
       "channel": "stag"
     },
+    "prod-internal": {
+      "distribution": "internal",
+      "android": { "image": "latest" },
+      "ios": { "image": "latest" },
+      "autoIncrement": false,
+      "env": {
+        "APP_ENV": "prod"
+      },
+      "channel": "prod-internal"
+    },
     "prod": {
       "distribution": "store",
       "android": { "image": "latest" },

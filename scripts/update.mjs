@@ -13,7 +13,7 @@ async function main() {
     const profileMap = {
       Development: 'dev',
       Testing: 'test',
-      Staging: 'stag',
+      'Production (Internal)': 'prod-internal',
       Production: 'prod',
     };
 
@@ -25,8 +25,8 @@ async function main() {
     const envFilePath = path.resolve(process.cwd(), '.env');
     loadEnvFile(envFilePath);
 
-    // Optional: Validates that critical environment variables are set
-    validateEnvVars([]); // Add any other critical variables you need for your build process
+    // Optional: Validate that critical environment variables are set
+    validateEnvVars([]); // Add any other critical variables
 
     const { command, redactedCommand } = constructEASCommand(
       branchName,
@@ -49,7 +49,12 @@ main();
  * @returns {Promise<{profile: string, message: string}>} User inputs.
  */
 async function promptUserInput() {
-  const profileOptions = ['Development', 'Testing', 'Staging', 'Production'];
+  const profileOptions = [
+    'Development',
+    'Testing',
+    'Production (Internal)',
+    'Production',
+  ];
 
   const answers = await inquirer.prompt([
     {
@@ -74,8 +79,13 @@ async function promptUserInput() {
  * @throws Will throw an error if a pre-build task fails.
  */
 function runPreBuildTasks(profile) {
+  const i18nExtractCommand = 'npm run i18n:extract';
+  runCommandSync(i18nExtractCommand, '> Translations extracted successfully.');
+
   const i18nCommand =
-    profile === 'Production' ? 'npm run i18n:compile' : 'npm run i18n:compile';
+    profile === 'Production'
+      ? 'npm run i18n:compile:strict'
+      : 'npm run i18n:compile';
 
   runCommandSync(i18nCommand, '> Translations compiled successfully.');
 }
@@ -94,7 +104,7 @@ function loadEnvFile(filePath) {
   const lines = fileContent.split('\n');
 
   lines.forEach((line) => {
-    const match = line.match(/^([^#=]+)=(.*)$/); // Match key=value pairs
+    const match = line.match(/^([^#=]+)=(.*)$/);
     if (match) {
       const key = match[1].trim();
       const value = match[2].trim().replace(/(^['"]|['"]$)/g, ''); // Remove surrounding quotes
@@ -112,7 +122,8 @@ function loadEnvFile(filePath) {
  * @returns {{command: string, redactedCommand: string}} The command and the redacted command string.
  */
 function constructEASCommand(branchName, message) {
-  let command = `APP_ENV=${branchName}`;
+  const prodBranch = branchName === 'prod' || branchName === 'prod-internal';
+  let command = `APP_ENV=${prodBranch ? 'prod' : branchName}`;
   let redactedCommand = command;
 
   for (const [key, value] of Object.entries(process.env)) {
