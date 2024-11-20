@@ -4,7 +4,7 @@ import { ColorSchemeName, useColorScheme } from 'react-native';
 import { ThemeProvider, darkTheme, theme as lightTheme } from '~styles';
 import { STORAGE_KEYS, useStorageString } from '~utils/storage';
 
-type ColorMode = 'light' | 'dark' | 'system';
+type ColorMode = 'light' | 'dark' | 'auto';
 type ColorScheme = 'light' | 'dark';
 
 type ContextValue = {
@@ -26,11 +26,11 @@ export function ColorModeProvider({ children }: { children: ReactNode }) {
     STORAGE_KEYS.COLOR_MODE
   );
 
-  const colorMode = (persistedColorMode || 'system') as ColorMode;
+  const colorMode = (persistedColorMode || 'auto') as ColorMode;
 
   let colorScheme: ColorScheme;
 
-  if (colorMode === 'system') {
+  if (colorMode === 'auto') {
     colorScheme = getColorScheme(systemColorMode);
   } else if (colorMode === 'dark') {
     colorScheme = 'dark';
