@@ -1,10 +1,9 @@
 import { msg } from '@lingui/macro';
-import { Alert } from 'react-native';
 
 import MenuList from '~components/common/MenuList';
 import { useHeaderPlaygroundButton } from '~components/playground/utils';
 import { useMenuListItem } from '~components/settings/hooks';
-import { Icon } from '~components/uikit';
+import { Icon, alert } from '~components/uikit';
 import { useAuthStore } from '~services/auth';
 import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
@@ -15,8 +14,8 @@ export default function Settings() {
   const { _ } = useI18n();
   const logout = useAuthStore((s) => s.logout);
   function handleLogout() {
-    Alert.alert(_(msg`Are you sure you want to logout?`), '', [
-      { text: _(msg`Cancel`), style: 'cancel' },
+    alert(_(msg`Are you sure you want to logout?`), '', [
+      { text: _(msg`Cancel`), style: 'cancel', onPress: () => {} },
       { text: _(msg`I am sure`), onPress: logout },
     ]);
   }

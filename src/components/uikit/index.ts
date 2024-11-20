@@ -8,6 +8,7 @@ export { PickerSheet } from './PickerSheet';
 export { ProgressBar } from './ProgressBar';
 export { SegmentedControl } from './SegmentedControl';
 export { Text } from './Text';
+export { alert } from './alert';
 export { Button } from './buttons/Button';
 export { IconButton } from './buttons/IconButton';
 export { Checkbox } from './inputs/Checkbox';
@@ -19,3 +20,4 @@ export { TextInput } from './inputs/TextInput';
 export { Grid } from './layout/Grid';
 export { Spacer } from './layout/Spacer';
 export { Stack } from './layout/Stack';
+

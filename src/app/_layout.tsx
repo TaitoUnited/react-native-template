@@ -1,4 +1,4 @@
-import { registerDevMenuItems } from 'expo-dev-menu';
+import { registerDevMenuItems } from 'expo-dev-client';
 import {
   Stack,
   router,
@@ -8,24 +8,25 @@ import {
 } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
-import { DevSettings } from 'react-native';
+import { DevSettings, Platform } from 'react-native';
 
 import Providers from '~Providers';
 import StatusBar from '~components/common/StatusBar';
+import Meta from '~components/web/Meta';
 import { useAuthStore } from '~services/auth';
 import { useEffectEvent } from '~utils/common';
 import { useAppReady } from '~utils/init';
 import { useDefaultStackScreenOptions } from '~utils/navigation';
 
-if (__DEV__) {
+if (__DEV__ && ['android', 'ios'].includes(Platform.OS)) {
   const devMenuItems = [
     {
       name: 'Open Playground',
-      callback: () => router.navigate('playground'),
+      callback: () => router.navigate('/playground'),
     },
     {
       name: 'Open Sitemap',
-      callback: () => router.navigate('_sitemap'),
+      callback: () => router.navigate('/_sitemap'),
     },
   ];
 
@@ -44,6 +45,7 @@ export default function RootLayout() {
 
   return (
     <Providers>
+      <Meta />
       <RootLayoutNavigator />
       <StatusBar transparent />
       {appReady && <RouteProtection />}
@@ -85,7 +87,6 @@ function RouteProtection() {
 
   const onPathChange = useEffectEvent(() => {
     if (authStatus === 'unauthenticated' && notInAuthRoute) {
-      router.replace('/');
       router.navigate('/(auth)/landing');
     }
   });

@@ -23,7 +23,7 @@ const expoConfig: ExpoConfig = {
   version: '0.0.1',
   orientation: 'portrait',
   jsEngine: 'hermes',
-  platforms: ['ios', 'android'],
+  platforms: ['ios', 'android', 'web'], // Remove web if you don't need to support it
   icon: config.iconImage,
   newArchEnabled: true,
   backgroundColor: '#000000', // root view background
@@ -40,9 +40,15 @@ const expoConfig: ExpoConfig = {
   },
   ios: {
     bundleIdentifier: appId,
-    supportsTablet: false, // Change this if your app supports tablets
+    supportsTablet: true, // Change this if your app supports tablets
     appStoreUrl: config.appStoreUrl,
     bitcode: false,
+  },
+  // Remove the `web` entry if you don't need to support it
+  web: {
+    bundler: 'metro',
+    output: 'static',
+    favicon: config.iconImage,
   },
   extra: {
     ...config,
