@@ -1,7 +1,7 @@
 import { i18n } from '@lingui/core';
 import { I18nProvider as LinguiProvider, useLingui } from '@lingui/react';
+import { getLocales } from 'expo-localization';
 import { Settings } from 'luxon';
-import { getLocales } from 'react-native-localize';
 
 import { useEffectEvent } from '~utils/common';
 import storage, { STORAGE_KEYS } from '~utils/storage';

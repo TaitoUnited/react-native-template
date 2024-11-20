@@ -56,7 +56,6 @@ function RootLayoutNavigator() {
 
   return (
     <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="index" />
       <Stack.Screen name="(tabs)" options={{ animation: 'none' }} />
       <Stack.Screen name="(auth)" options={{ animation: 'fade' }} />
       <Stack.Screen

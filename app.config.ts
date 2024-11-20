@@ -20,22 +20,14 @@ const expoConfig: ExpoConfig = {
   name: 'Taito Template',
   scheme: config.scheme,
   owner: 'taito-united',
-  version: '1.0.0',
+  version: '0.0.1',
   orientation: 'portrait',
   jsEngine: 'hermes',
   platforms: ['ios', 'android'],
   icon: config.iconImage,
+  newArchEnabled: true,
   backgroundColor: '#000000', // root view background
   userInterfaceStyle: 'automatic',
-  experiments: {
-    tsconfigPaths: true,
-    // typedRoutes: true, // Enable when it's possible to generate types for routes manually
-  },
-  splash: {
-    resizeMode: 'contain',
-    backgroundColor: config.splash.backgroundColor,
-    image: config.splash.image,
-  },
   android: {
     package: appId,
     playStoreUrl: config.playStoreUrl,
@@ -48,13 +40,9 @@ const expoConfig: ExpoConfig = {
   },
   ios: {
     bundleIdentifier: appId,
+    supportsTablet: false, // Change this if your app supports tablets
     appStoreUrl: config.appStoreUrl,
     bitcode: false,
-    config: {
-      usesNonExemptEncryption: false,
-    },
-    /* -------------- Add iOS permission usage descriptions here -------------- */
-    infoPlist: {},
   },
   extra: {
     ...config,
@@ -68,13 +56,36 @@ const expoConfig: ExpoConfig = {
   // This is important for OTA updates to work properly!
   // https://docs.expo.dev/eas-update/runtime-versions/#fingerprint-runtime-version-policy
   runtimeVersion: {
-    policy: 'fingerprintExperimental',
+    policy: 'fingerprint',
   },
   plugins: [
     'expo-router',
-    'expo-font',
+    'expo-localization',
     ['expo-updates', { username: 'taito-united' }],
-    ['./plugins/with-ios-settings', { teamId: 'EPATC4S9N2' }],
+    [
+      'expo-font',
+      {
+        fonts: [
+          './src/design-system/fonts/Inter-Bold.ttf',
+          './src/design-system/fonts/Inter-Medium.ttf',
+          './src/design-system/fonts/Inter-Regular.ttf',
+          './src/design-system/fonts/Inter-SemiBold.ttf',
+        ],
+      },
+    ],
+    [
+      'expo-splash-screen',
+      {
+        backgroundColor: config.splash.backgroundColor,
+        image: config.splash.image,
+        resizeMode: 'contain',
+        // Uncomment to add splash screen dark mode
+        // dark: {
+        //   image: config.splash.darkImage,
+        //   backgroundColor: config.splash.darkBackgroundColor
+        // },
+      },
+    ],
     [
       'react-native-permissions',
       {
@@ -82,18 +93,10 @@ const expoConfig: ExpoConfig = {
         iosPermissions: [],
       },
     ],
+    ['./plugins/with-ios-settings', { teamId: 'EPATC4S9N2' }],
     [
       'expo-build-properties',
-      {
-        android: {
-          buildToolsVersion: '34.0.0',
-          kotlinVersion: '1.6.21',
-          minSdkVersion: 23,
-          compileSdkVersion: 34,
-          targetSdkVersion: 34,
-          extraProguardRules: getExtraProguardRules(),
-        },
-      },
+      { android: { extraProguardRules: getExtraProguardRules() } },
     ],
   ],
 };

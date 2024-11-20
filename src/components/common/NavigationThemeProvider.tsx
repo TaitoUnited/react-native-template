@@ -1,4 +1,8 @@
-import { ThemeProvider } from '@react-navigation/native';
+import {
+  DarkTheme,
+  DefaultTheme,
+  ThemeProvider,
+} from '@react-navigation/native';
 import { ReactNode } from 'react';
 
 import { useColorMode } from '~services/color-mode';
@@ -14,17 +18,21 @@ export default function NavigationThemeProvider({
 
   return (
     <ThemeProvider
-      value={{
-        dark: colorScheme === 'dark',
-        colors: {
-          card: theme.colors.surface,
-          background: theme.colors.neutral5,
-          border: theme.colors.line3,
-          text: theme.colors.text,
-          primary: theme.colors.primary,
-          notification: theme.colors.error,
-        },
-      }}
+      value={
+        colorScheme === 'dark'
+          ? DarkTheme
+          : {
+              ...DefaultTheme,
+              colors: {
+                card: theme.colors.surface,
+                background: theme.colors.neutral5,
+                border: theme.colors.line3,
+                text: theme.colors.text,
+                primary: theme.colors.primary,
+                notification: theme.colors.error,
+              },
+            }
+      }
     >
       {children}
     </ThemeProvider>

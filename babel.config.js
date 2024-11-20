@@ -3,10 +3,5 @@ module.exports = function (api) {
   return {
     presets: ['babel-preset-expo'],
     plugins: ['macros', 'react-native-reanimated/plugin'],
-    env: {
-      production: {
-        plugins: ['transform-remove-console'],
-      },
-    },
   };
 };
