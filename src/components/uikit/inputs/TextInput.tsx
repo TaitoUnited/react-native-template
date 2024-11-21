@@ -119,7 +119,6 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
           align="center"
           valid={isValid}
           disabled={isDisabled}
-          style={style}
         >
           {!!icon && <Icon name={icon} size={24} color="text" />}
 
@@ -139,6 +138,7 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
             selectTextOnFocus={!isDisabled}
             multiline={multiline}
             maxLength={maxLength}
+            style={style}
           />
 
           {allowSecureTextToggle ? (

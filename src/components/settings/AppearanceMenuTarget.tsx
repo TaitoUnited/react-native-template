@@ -14,8 +14,8 @@ export function AppearanceMenuTarget() {
         {
           id: 'system',
           label: _(msg`Automatic`),
-          checked: colorMode === 'system',
-          onPress: () => setColorMode('system'),
+          checked: colorMode === 'auto',
+          onPress: () => setColorMode('auto'),
         },
         {
           id: 'dark',
