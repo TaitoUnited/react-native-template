@@ -1,4 +1,4 @@
-import { registerDevMenuItems } from 'expo-dev-client';
+import { registerDevMenuItems } from 'expo-dev-menu';
 import {
   Stack,
   router,
@@ -76,6 +76,7 @@ function RouteProtection() {
   const pathname = usePathname();
   const authStatus = useAuthStore((s) => s.status);
   const notInAuthRoute = segments[0] !== '(auth)';
+  const notInDevRoutes = pathname !== '/_sitemap' && pathname !== '/playground';
 
   const onAuthChange = useEffectEvent(() => {
     if (authStatus === 'unauthenticated' && notInAuthRoute) {
@@ -86,7 +87,7 @@ function RouteProtection() {
   });
 
   const onPathChange = useEffectEvent(() => {
-    if (authStatus === 'unauthenticated' && notInAuthRoute) {
+    if (authStatus === 'unauthenticated' && notInAuthRoute && notInDevRoutes) {
       router.navigate('/(auth)/landing');
     }
   });
