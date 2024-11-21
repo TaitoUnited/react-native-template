@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
-import Collapsible, { CollapsibleProps } from 'react-native-collapsible';
+import Collapsible, { type CollapsibleProps } from 'react-native-collapsible';
 
-import { Color, styled } from '~styles';
+import { styled, type Color } from '~styles';
 
-import { Icon, IconName } from './Icon';
+import { Icon, type IconName } from './Icon';
 import { Text } from './Text';
 import { Stack } from './layout/Stack';
 

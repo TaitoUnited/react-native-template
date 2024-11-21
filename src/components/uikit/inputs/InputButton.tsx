@@ -1,8 +1,8 @@
-import { ViewStyle } from 'react-native';
+import { type ViewStyle } from 'react-native';
 
 import { styled } from '~styles';
 
-import { Icon, IconName } from '../Icon';
+import { Icon, type IconName } from '../Icon';
 import { Text } from '../Text';
 import { Stack } from '../layout/Stack';
 

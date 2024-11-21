@@ -1,6 +1,6 @@
 import { Trans } from '@lingui/macro';
 import { FlashList } from '@shopify/flash-list';
-import { ReactNode, memo, useState } from 'react';
+import { type ReactNode, memo, useState } from 'react';
 import { Modal, Platform } from 'react-native';
 
 import StatusBar from '~components/common/StatusBar';

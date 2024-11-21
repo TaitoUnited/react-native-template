@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { ViewProps } from 'react-native';
 
-import { styled, theme, Theme } from '~styles';
+import { styled, theme, type Theme } from '~styles';
 
 type Props = ViewProps & {
   spacing: keyof Theme['space'] | 'none';

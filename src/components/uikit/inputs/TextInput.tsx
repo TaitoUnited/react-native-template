@@ -2,16 +2,16 @@ import { i18n } from '@lingui/core';
 import { msg } from '@lingui/macro';
 import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 import {
-  NativeSyntheticEvent,
-  TextInput as RNTextInput,
-  TextInputProps as RNTextInputProps,
-  TextInputFocusEventData,
   TouchableOpacity,
+  type NativeSyntheticEvent,
+  type TextInput as RNTextInput,
+  type TextInputProps as RNTextInputProps,
+  type TextInputFocusEventData,
 } from 'react-native';
 
 import { styled } from '~styles';
 
-import { Icon, IconName } from '../Icon';
+import { Icon, type IconName } from '../Icon';
 import { Text } from '../Text';
 import { IconButton } from '../buttons/IconButton';
 import { Stack } from '../layout/Stack';

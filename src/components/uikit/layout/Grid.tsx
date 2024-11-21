@@ -1,7 +1,7 @@
-import { cloneElement, isValidElement, ReactNode, useState } from 'react';
-import { LayoutChangeEvent, View, ViewProps } from 'react-native';
+import { cloneElement, isValidElement, type ReactNode, useState } from 'react';
+import { type LayoutChangeEvent, View, type ViewProps } from 'react-native';
 
-import { styled, Theme, useTheme } from '~styles';
+import { styled, type Theme, useTheme } from '~styles';
 
 import { flattenChildren } from '../helpers';
 

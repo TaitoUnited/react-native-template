@@ -1,6 +1,6 @@
-import { ImageProps } from 'expo-image';
+import { type ImageProps } from 'expo-image';
 import { useLayoutEffect, useState } from 'react';
-import { Image, ImageRequireSource } from 'react-native';
+import { Image, type ImageRequireSource } from 'react-native';
 
 export function useImageDimensions({
   source,

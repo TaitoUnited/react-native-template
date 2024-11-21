@@ -1,12 +1,12 @@
 import { ActivityIndicator } from 'react-native';
 
-import { Typography, styled, useTheme } from '~styles';
+import { type Typography, styled, useTheme } from '~styles';
 
 import { Icon } from '../Icon';
 import { Text } from '../Text';
 import { Stack } from '../layout/Stack';
 import { getButtonWrapperStyle, getTextColor, sizeToIconSize } from './helpers';
-import { ButtonProps, ButtonSize } from './types';
+import { type ButtonProps, type ButtonSize } from './types';
 
 export function Button({
   children,

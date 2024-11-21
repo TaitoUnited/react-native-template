@@ -7,14 +7,14 @@ import {
   useRef,
   useState,
 } from 'react';
-import { TextInput as RNTextInput, TouchableOpacity } from 'react-native';
+import { TouchableOpacity, type TextInput as RNTextInput } from 'react-native';
 
 import { styled } from '~styles';
 
 import { Icon } from '../Icon';
 import { Text } from '../Text';
 import { Stack } from '../layout/Stack';
-import { TextInput, TextInputProps } from './TextInput';
+import { TextInput, type TextInputProps } from './TextInput';
 
 type SearchInputProps = TextInputProps & {
   suggestions?: string[];

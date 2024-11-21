@@ -9,7 +9,7 @@ import { setStringAsync } from 'expo-clipboard';
 import { modelName, osVersion, platformApiLevel } from 'expo-device';
 import { updateId as expoUpdateId } from 'expo-updates';
 import capitalize from 'lodash/capitalize';
-import { ComponentProps, useEffect, useState } from 'react';
+import { useEffect, useState, type ComponentProps } from 'react';
 import { Platform, TouchableOpacity } from 'react-native';
 
 import MenuList from '~components/common/MenuList';

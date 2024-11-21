@@ -1,10 +1,10 @@
 import RNBottomSheet, {
   BottomSheetBackdrop,
-  BottomSheetProps as RNBottomSheetProps,
+  type BottomSheetProps as RNBottomSheetProps,
   useBottomSheetSpringConfigs,
 } from '@gorhom/bottom-sheet';
 import {
-  ReactNode,
+  type ReactNode,
   forwardRef,
   useEffect,
   useImperativeHandle,

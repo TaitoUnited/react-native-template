@@ -1,4 +1,4 @@
-import { theme, Theme } from './styled';
+import { theme, type Theme } from './styled';
 import * as typographyTokens from '../design-system/typography';
 
 type Typography = keyof typeof typographyTokens;
@@ -51,11 +51,11 @@ export function getTextTypographyVariants() {
   // TODO: improve typing here - remove `any`s
   const typographyVariants = {} as Record<Typography, any>;
 
-  const compoundVariants = [] as Array<{
+  const compoundVariants = [] as {
     variant: Typography;
     withLineHeight: boolean;
     css: any;
-  }>;
+  }[];
 
   const defaultVariants: { variant: Typography; withLineHeight: boolean } = {
     variant: 'body',

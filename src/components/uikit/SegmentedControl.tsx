@@ -12,7 +12,7 @@ import { styled } from '~styles';
 import { Text } from './Text';
 
 type Props<T> = {
-  segments: Array<{ value: T; label: string }>;
+  segments: { value: T; label: string }[];
   selected: T;
   onSelect: (value: T) => void;
 };

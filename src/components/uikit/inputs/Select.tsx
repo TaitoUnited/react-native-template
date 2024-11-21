@@ -1,13 +1,13 @@
 import { i18n } from '@lingui/core';
 import { msg } from '@lingui/macro';
 import {
-  ComponentProps,
+  type ComponentProps,
   forwardRef,
-  ReactNode,
+  type ReactNode,
   useImperativeHandle,
   useState,
 } from 'react';
-import { Keyboard, ViewStyle } from 'react-native';
+import { Keyboard, type ViewStyle } from 'react-native';
 
 import type { IconName } from '../Icon';
 import { PickerModal } from '../PickerModal';
@@ -15,7 +15,7 @@ import { PickerSheet } from '../PickerSheet';
 import { InputButton } from './InputButton';
 
 type BaseProps = {
-  options: Array<{ label: string; value: string }>;
+  options: { label: string; value: string }[];
   label: string;
   labelIcon?: IconName;
   placeholder?: string;

@@ -1,9 +1,11 @@
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import ToastContainer, { ToastConfigParams } from 'react-native-toast-message';
+import ToastContainer, {
+  type ToastConfigParams,
+} from 'react-native-toast-message';
 
 import { Icon, IconButton, Stack, Text } from '~components/uikit';
-import { IconName } from '~components/uikit/Icon';
-import { Color, styled, useTheme } from '~styles/styled';
+import { type IconName } from '~components/uikit/Icon';
+import { type Color, styled, useTheme } from '~styles/styled';
 
 type Variant = 'info' | 'success' | 'warn' | 'error';
 

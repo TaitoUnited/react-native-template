@@ -1,6 +1,11 @@
 import { useIsFocused } from '@react-navigation/native';
 import { useEffect, useRef, useState } from 'react';
-import { AppState, AppStateStatus, BackHandler, Keyboard } from 'react-native';
+import {
+  AppState,
+  type AppStateStatus,
+  BackHandler,
+  Keyboard,
+} from 'react-native';
 
 import { useEffectEvent } from './common';
 

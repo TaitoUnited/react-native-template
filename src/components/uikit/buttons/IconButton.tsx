@@ -10,7 +10,7 @@ import { styled, useTheme } from '~styles';
 
 import { Icon } from '../Icon';
 import { getIconColor, getIconWrapperStyle, sizeToIconSize } from './helpers';
-import { IconButtonProps } from './types';
+import type { IconButtonProps } from './types';
 
 const HIT_SLOP_FACTOR = 1.2;
 
