@@ -103,7 +103,6 @@ export const DateInput = forwardRef(
   }
 );
 
-// eslint-disable-next-line lingui/no-unlocalized-strings
 DateInput.displayName = 'DateInput';
 
 const Message = styled(Text, {

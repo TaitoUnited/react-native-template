@@ -51,7 +51,7 @@ const toastConfig = {
 export default function Toaster() {
   const theme = useTheme();
   const insets = useSafeAreaInsets();
-  const topOffset = insets.top + (theme.space.small as number);
+  const topOffset = insets.top + theme.space.small;
 
   return <ToastContainer config={toastConfig} topOffset={topOffset} />;
 }

@@ -54,6 +54,7 @@ export default function MenuList({ items, title }: Props) {
       <Wrapper>
         {filteredItems.map((item, index) => (
           <Pressable
+            accessibilityRole="button"
             testID={item.id}
             key={item.id}
             onPress={

@@ -203,7 +203,6 @@ const ListItem = memo(
   }
 );
 
-// eslint-disable-next-line lingui/no-unlocalized-strings
 ListItem.displayName = 'ListItem';
 
 function ListHeader({

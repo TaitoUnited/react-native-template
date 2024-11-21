@@ -15,10 +15,10 @@ const alertPolyfill = (
 
   if (result) {
     const confirmOption = options.find(({ style }) => style !== 'cancel');
-    confirmOption && confirmOption.onPress();
+    if (confirmOption) confirmOption.onPress();
   } else {
     const cancelOption = options.find(({ style }) => style === 'cancel');
-    cancelOption && cancelOption.onPress();
+    if (cancelOption) cancelOption.onPress();
   }
 };
 

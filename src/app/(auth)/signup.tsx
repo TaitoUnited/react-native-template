@@ -38,6 +38,7 @@ export default function Signup() {
 
       await signup(credentials);
     } catch (error: any) {
+      console.log('> Failed to signup', error);
       showToast({ title: _(msg`Failed to signup`), type: 'error' });
     }
   }

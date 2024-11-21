@@ -97,6 +97,7 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
               {label}
             </Text>
             {isRequired && showRequiredAsterisk && (
+              // eslint-disable-next-line lingui/no-unlocalized-strings
               <Text variant="body" color="error">
                 *
               </Text>
@@ -107,6 +108,7 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
         {showCharacterLimit && isFocused && (
           <CharacterCount variant="bodyExtraSmall">
             <Text variant="bodyExtraSmallBold">{characterCount}</Text>
+            {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
             {` / ${maxLength}`}
           </CharacterCount>
         )}
@@ -141,7 +143,10 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
 
           {allowSecureTextToggle ? (
             <InputDecoration>
-              <TouchableOpacity onPress={() => setSecureTextVisible((p) => !p)}>
+              <TouchableOpacity
+                accessibilityRole="button"
+                onPress={() => setSecureTextVisible((p) => !p)}
+              >
                 {secureTextVisible ? (
                   <Icon name="eye" size={20} color="text" />
                 ) : (
@@ -175,7 +180,6 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
   }
 );
 
-// eslint-disable-next-line lingui/no-unlocalized-strings
 TextInput.displayName = 'TextInput';
 
 const InputWrapper = styled(Stack, {

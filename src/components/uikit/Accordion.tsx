@@ -28,7 +28,10 @@ export function Accordion({
 
   return (
     <Stack axis="y" spacing="small">
-      <TouchableOpacity onPress={() => setCollapsed((p) => !p)}>
+      <TouchableOpacity
+        accessibilityRole="button"
+        onPress={() => setCollapsed((p) => !p)}
+      >
         <AccordionHeader
           title={title}
           icon={icon}

@@ -151,7 +151,7 @@ function ModalContent({
 
   return (
     <Wrapper>
-      <TouchableWithoutFeedback onPress={onClose}>
+      <TouchableWithoutFeedback accessibilityRole="button" onPress={onClose}>
         <Backdrop style={{ opacity: backdropAnimation.current }} />
       </TouchableWithoutFeedback>
 

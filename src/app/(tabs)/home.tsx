@@ -1,9 +1,19 @@
 import { Trans } from '@lingui/macro';
+import { useEffect, useState } from 'react';
 
 import { Text } from '~components/uikit';
 import { styled } from '~styles';
 
 export default function Home() {
+  const [firstName] = useState('Taylor');
+  const [lastName] = useState('Swift');
+
+  // 🔴 Avoid: redundant state and unnecessary Effect
+  const [_, setFullName] = useState('');
+  useEffect(() => {
+    setFullName(firstName + ' ' + lastName);
+  }, [firstName, lastName]);
+
   return (
     <Wrapper testID="homeScreen">
       <Text variant="body">

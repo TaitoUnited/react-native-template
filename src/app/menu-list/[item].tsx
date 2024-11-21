@@ -6,7 +6,7 @@ import { styled } from '~styles';
 
 export default function MenuListItem() {
   const { item } = useLocalSearchParams<{ item: string }>();
-  const { target, label } = useMenuListItem({ targetName: item as string });
+  const { target, label } = useMenuListItem({ targetName: item });
 
   const Target = target;
 

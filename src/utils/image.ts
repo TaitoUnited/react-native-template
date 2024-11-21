@@ -24,7 +24,7 @@ export function useImageDimensions({
     height?: number;
   }>({ width, height });
 
-  const src = typeof source === 'object' ? (source as any).uri : source;
+  const src = typeof source === 'object' ? source.uri : source;
 
   useLayoutEffect(() => {
     if (!width && !height) return;

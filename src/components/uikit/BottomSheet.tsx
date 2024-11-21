@@ -1,14 +1,15 @@
 import RNBottomSheet, {
   BottomSheetBackdrop,
-  type BottomSheetProps as RNBottomSheetProps,
   useBottomSheetSpringConfigs,
+  type BottomSheetBackdropProps,
+  type BottomSheetProps as RNBottomSheetProps,
 } from '@gorhom/bottom-sheet';
 import {
-  type ReactNode,
   forwardRef,
   useEffect,
   useImperativeHandle,
   useRef,
+  type ReactNode,
 } from 'react';
 
 import { styled, useTheme } from '~styles';
@@ -74,6 +75,18 @@ export const BottomSheet = forwardRef<RNBottomSheet, BottomSheetProps>(
       }
     };
 
+    function renderBackdropComponent(props: BottomSheetBackdropProps) {
+      return (
+        <BottomSheetBackdrop
+          {...props}
+          enableTouchThrough={false}
+          opacity={0.2}
+          disappearsOnIndex={-1}
+          pressBehavior="close"
+        />
+      );
+    }
+
     return (
       <RNBottomSheet
         {...rest}
@@ -87,15 +100,7 @@ export const BottomSheet = forwardRef<RNBottomSheet, BottomSheetProps>(
         onAnimate={handleSheetAnimate}
         enablePanDownToClose
         keyboardBehavior={keyboardBehavior}
-        backdropComponent={(props) => (
-          <BottomSheetBackdrop
-            {...props}
-            enableTouchThrough={false}
-            opacity={0.2}
-            disappearsOnIndex={-1}
-            pressBehavior="close"
-          />
-        )}
+        backdropComponent={renderBackdropComponent}
       >
         <ContentWrapper>{children}</ContentWrapper>
       </RNBottomSheet>
@@ -103,7 +108,6 @@ export const BottomSheet = forwardRef<RNBottomSheet, BottomSheetProps>(
   }
 );
 
-// eslint-disable-next-line lingui/no-unlocalized-strings
 BottomSheet.displayName = 'BottomSheet';
 
 const ContentWrapper = styled('View', {

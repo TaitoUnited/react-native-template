@@ -51,7 +51,6 @@ const getBaseStyle = ({
       baseStyle.backgroundColor = theme.colors[color];
       break;
     case 'soft':
-      // eslint-disable-next-line lingui/no-unlocalized-strings
       baseStyle.backgroundColor = theme.colors[`${color}Muted`];
       break;
     case 'outlined':

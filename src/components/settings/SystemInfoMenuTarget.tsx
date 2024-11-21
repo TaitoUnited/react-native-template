@@ -66,6 +66,7 @@ export function SystemInfoMenuTarget() {
       label: _(msg`Update ID`),
       currentValue: (
         <TouchableOpacity
+          accessibilityRole="button"
           onLongPress={async () => {
             await setStringAsync(updateId);
             showToast({

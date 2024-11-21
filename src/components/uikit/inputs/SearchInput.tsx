@@ -66,6 +66,7 @@ export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(
           <Suggestions axis="y" spacing="small">
             {filteredSuggestions.map((option, index) => (
               <TouchableOpacity
+                accessibilityRole="button"
                 onPress={() => handleSuggestionClick(option)}
                 key={index}
               >
@@ -84,7 +85,6 @@ export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(
   }
 );
 
-// eslint-disable-next-line lingui/no-unlocalized-strings
 SearchInput.displayName = 'SearchInput';
 
 const Suggestions = styled(Stack, {

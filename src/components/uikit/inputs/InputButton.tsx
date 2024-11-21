@@ -46,6 +46,7 @@ export function InputButton({
           {label}
         </Text>
         {isRequired && showRequiredAsterisk && (
+          // eslint-disable-next-line lingui/no-unlocalized-strings
           <Text variant="body" color="error">
             *
           </Text>

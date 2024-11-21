@@ -118,5 +118,4 @@ export const Select = forwardRef(
   }
 );
 
-// eslint-disable-next-line lingui/no-unlocalized-strings
 Select.displayName = 'Select';

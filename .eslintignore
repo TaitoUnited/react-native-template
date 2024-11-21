@@ -8,3 +8,4 @@ src/components/playground/
 src/design-system/
 /.expo
 node_modules
+.eslintrc.js

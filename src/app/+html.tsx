@@ -30,6 +30,7 @@ export default function Root({ children }: { children: React.ReactNode }) {
   );
 }
 
+// eslint-disable-next-line lingui/no-unlocalized-strings
 const responsiveBackground = `
 body {
   background-color: #fff;
