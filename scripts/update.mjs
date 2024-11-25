@@ -22,17 +22,8 @@ async function main() {
     // Run pre-build tasks based on the profile
     runPreBuildTasks(answers.profile);
 
-    const envFilePath = path.resolve(process.cwd(), '.env');
-    loadEnvFile(envFilePath);
-
-    // Optional: Validate that critical environment variables are set
-    validateEnvVars([]); // Add any other critical variables
-
-    const { command, redactedCommand } = constructEASCommand(
-      branchName,
-      answers.message
-    );
-    console.info('> Command: ', redactedCommand);
+    const command = constructEASCommand(branchName, answers.message);
+    console.info('> Command: ', command);
 
     runCommandSync(command, `> EAS update finished for branch: ${branchName}`);
     spinner.succeed('Operation completed successfully.');
@@ -82,96 +73,34 @@ function runPreBuildTasks(profile) {
   const i18nExtractCommand = 'npm run i18n:extract';
   runCommandSync(i18nExtractCommand, '> Translations extracted successfully.');
 
-  const i18nCommand =
-    profile === 'Production'
-      ? 'npm run i18n:compile:strict'
-      : 'npm run i18n:compile';
+  const i18nCommand = ['Production', 'Production (Internal)'].includes(profile)
+    ? 'npm run i18n:compile:strict'
+    : 'npm run i18n:compile';
 
   runCommandSync(i18nCommand, '> Translations compiled successfully.');
-}
-
-/**
- * Loads environment variables from a .env file into process.env.
- * @param {string} filePath - Path to the .env file.
- */
-function loadEnvFile(filePath) {
-  if (!fs.existsSync(filePath)) {
-    console.warn(`> Warning: .env file not found at ${filePath}`);
-    return;
-  }
-
-  const fileContent = fs.readFileSync(filePath, 'utf8');
-  const lines = fileContent.split('\n');
-
-  lines.forEach((line) => {
-    const match = line.match(/^([^#=]+)=(.*)$/);
-    if (match) {
-      const key = match[1].trim();
-      const value = match[2].trim().replace(/(^['"]|['"]$)/g, ''); // Remove surrounding quotes
-      process.env[key] = value;
-    }
-  });
-
-  console.info('> Environment variables loaded from .env file.');
 }
 
 /**
  * Constructs the command string for the EAS update.
  * @param {string} branchName - The branch name to use for the update.
  * @param {string} message - The message describing the update.
- * @returns {{command: string, redactedCommand: string}} The command and the redacted command string.
+ * @returns {string} The constructed command string.
  */
 function constructEASCommand(branchName, message) {
-  const prodBranch = branchName === 'prod' || branchName === 'prod-internal';
-  let command = `APP_ENV=${prodBranch ? 'prod' : branchName}`;
-  let redactedCommand = command;
+  const prodBranch = ['prod', 'prod-internal'].includes(branchName) && 'prod';
 
-  for (const [key, value] of Object.entries(process.env)) {
-    if (key.startsWith('EXPO_PUBLIC_') && value) {
-      const escapedValue = escapeShellValue(value);
-      command += ` ${key}=${escapedValue}`;
-      redactedCommand += ` ${key}=${redactValue(value)}`;
-    }
-  }
-  const easUpdateCommand = ` eas update --branch ${branchName} --message "${message}"`;
-  command += easUpdateCommand;
-  redactedCommand += easUpdateCommand;
+  const environmentMap = {
+    dev: 'development',
+    test: 'preview',
+    prod: 'production',
+    'prod-internal': 'production',
+  };
 
-  return { command, redactedCommand };
-}
+  const environment = environmentMap[branchName];
 
-/**
- * Escapes special characters in shell commands: ^, #, $, |, ", ', \, and others.
- *
- * @param {string} value - The value to escape.
- * @returns {string} The escaped value.
- */
-function escapeShellValue(value) {
-  return value.replace(/(["'$`\\|^#])/g, '\\$1');
-}
+  const command = `APP_ENV=${prodBranch || branchName} eas update --branch ${branchName} --message "${message}" --environment ${environment}`;
 
-/**
- * Redacts sensitive values for logging.
- * @param {string} value - The value to be redacted.
- * @returns {string} - The redacted value.
- */
-function redactValue(value) {
-  if (!value) return 'N/A';
-  const length = value.length;
-  if (length <= 2) return value; // Too short to redact
-  return `${value[0]}${'*'.repeat(length - 2)}${value[length - 1]}`;
-}
-
-/**
- * Validates that required environment variables are set.
- * @param {string[]} requiredVars - List of required environment variables.
- */
-function validateEnvVars(requiredVars) {
-  requiredVars.forEach((varName) => {
-    if (!process.env[varName]) {
-      console.warn(`> Warning: Environment variable ${varName} is not set.`);
-    }
-  });
+  return command;
 }
 
 /**

@@ -63,6 +63,7 @@ src/locales/**/*.js
 
 .env.figma
 .env
+.env.local
 
 # Expo managed workflow
 .expo

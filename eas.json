@@ -10,6 +10,7 @@
       "distribution": "internal",
       "android": { "image": "latest" },
       "ios": { "simulator": true, "image": "latest" },
+      "environment": "development",
       "env": {
         "APP_ENV": "dev"
       }
@@ -18,6 +19,7 @@
       "distribution": "internal",
       "android": { "image": "latest" },
       "ios": { "image": "latest" },
+      "environment": "development",
       "env": {
         "APP_ENV": "dev"
       }
@@ -26,6 +28,7 @@
       "distribution": "internal",
       "android": { "image": "latest" },
       "ios": { "image": "latest" },
+      "environment": "preview",
       "env": {
         "APP_ENV": "test"
       },
@@ -36,6 +39,7 @@
       "android": { "image": "latest" },
       "ios": { "image": "latest" },
       "autoIncrement": false,
+      "environment": "production",
       "env": {
         "APP_ENV": "prod"
       },
@@ -46,6 +50,7 @@
       "android": { "image": "latest" },
       "ios": { "image": "latest" },
       "autoIncrement": true,
+      "environment": "production",
       "env": {
         "APP_ENV": "prod"
       },
