@@ -1,0 +1,37 @@
+# Build the dev env app on EAS Cloud service.
+name: 'Build | Dev'
+run-name: Build | Dev (for ${{ inputs.platform }} on ${{ github.ref_name }})
+on:
+  workflow_dispatch:
+    inputs:
+      platform:
+        type: choice
+        description: Which platform to build for
+        options:
+          - ios
+          - android
+          - all
+        required: true
+        default: all
+      email:
+        type: choice
+        description: Notify the client via email?
+        options:
+          - false
+          - true
+        required: true
+jobs:
+  build-workflow:
+    name: Build workflow
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Setup repo
+        uses: actions/checkout@v4
+
+      - name: 👷‍♀️ Build
+        uses: ./.github/actions/build-workflow
+        with:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          platform: ${{ github.event.inputs.platform }}
+          email: ${{ github.event.inputs.email }}
+          environment: dev
