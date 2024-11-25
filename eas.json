@@ -11,27 +11,24 @@
       "android": { "image": "latest" },
       "ios": { "simulator": true, "image": "latest" },
       "environment": "development",
-      "env": {
-        "APP_ENV": "dev"
-      }
+      "env": { "APP_ENV": "dev" },
+      "channel": "dev"
     },
     "dev": {
+      "developmentClient": false,
       "distribution": "internal",
       "android": { "image": "latest" },
       "ios": { "image": "latest" },
       "environment": "development",
-      "env": {
-        "APP_ENV": "dev"
-      }
+      "env": { "APP_ENV": "dev" },
+      "channel": "dev"
     },
     "test": {
       "distribution": "internal",
       "android": { "image": "latest" },
       "ios": { "image": "latest" },
       "environment": "preview",
-      "env": {
-        "APP_ENV": "test"
-      },
+      "env": { "APP_ENV": "test" },
       "channel": "test"
     },
     "prod-internal": {
@@ -40,9 +37,7 @@
       "ios": { "image": "latest" },
       "autoIncrement": false,
       "environment": "production",
-      "env": {
-        "APP_ENV": "prod"
-      },
+      "env": { "APP_ENV": "prod" },
       "channel": "prod-internal"
     },
     "prod": {
@@ -51,17 +46,13 @@
       "ios": { "image": "latest" },
       "autoIncrement": true,
       "environment": "production",
-      "env": {
-        "APP_ENV": "prod"
-      },
+      "env": { "APP_ENV": "prod" },
       "channel": "prod"
     }
   },
   "submit": {
     "prod": {
-      "android": {
-        "track": "internal"
-      },
+      "android": { "track": "internal" },
       "ios": {
         "bundleIdentifier": "com.taito.template",
         "appleTeamId": "EPATC4S9N2",
