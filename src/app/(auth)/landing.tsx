@@ -46,7 +46,7 @@ export default function Landing() {
         </TopSection>
 
         <BottomSection style={{ minHeight: height * 0.4 }}>
-          <Stack axis="y" spacing="regular">
+          <Stack axis="y" spacing="regular" align="center">
             <WhiteText variant="body" align="center" withLineHeight>
               ✨ <Trans>Start your journey</Trans> ✨
             </WhiteText>
@@ -58,18 +58,11 @@ export default function Landing() {
               </Button>
             </Link>
 
-            <Stack
-              axis="x"
-              spacing="xs"
-              align="center"
-              style={{ alignSelf: 'center' }}
-            >
-              <Line />
-              <WhiteText variant="overlineSmall">
-                <Trans>Or</Trans>
-              </WhiteText>
-              <Line />
-            </Stack>
+            <Line />
+            <WhiteText variant="overlineSmall">
+              <Trans>Or</Trans>
+            </WhiteText>
+            <Line />
 
             <Link href="/(auth)/signup" asChild>
               <Button testID="signInButton">
@@ -114,7 +107,6 @@ function LanguageSelector() {
 const Wrapper = styled('View', {
   position: 'relative',
   flex: 1,
-  backgroundColor: '#000',
 });
 
 const ImageBackground = styled('ImageBackground', {
@@ -159,6 +151,7 @@ const Button = styled('TouchableHighlight', {
   borderRadius: '$full',
   backgroundColor: 'rgba(0, 0, 0, 1)',
   flexCenter: 'row',
+  width: '100%',
 }).attrs(() => ({
   underlayColor: 'rgba(0, 0, 0, 0.6)',
 }));

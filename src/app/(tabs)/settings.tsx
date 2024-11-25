@@ -1,8 +1,8 @@
 import { msg } from '@lingui/macro';
 import { Alert } from 'react-native';
 
-import { useHeaderPlaygroundButton } from '~app/playground/utils';
 import MenuList from '~components/common/MenuList';
+import { useHeaderPlaygroundButton } from '~components/playground/utils';
 import { useMenuListItem } from '~components/settings/hooks';
 import { Icon } from '~components/uikit';
 import { useAuthStore } from '~services/auth';

@@ -27,7 +27,7 @@ export default function PlaygroundPage() {
           headerLeft: () => (
             <IconButton
               icon="close"
-              onPress={() => router.navigate('settings')}
+              onPress={() => router.navigate('/settings')}
               color="neutral"
             />
           ),

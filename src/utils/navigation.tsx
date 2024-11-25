@@ -1,7 +1,6 @@
 import { msg } from '@lingui/macro';
 import { NavigationState, PartialState } from '@react-navigation/native';
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
-import { StackNavigationOptions } from '@react-navigation/stack';
 import { useNavigation } from 'expo-router';
 import { useEffect } from 'react';
 
@@ -39,7 +38,7 @@ export function useDefaultStackScreenOptions() {
 }
 
 export function useHeaderOptions(
-  options: StackNavigationOptions,
+  options: NativeStackNavigationOptions,
   deps: any[] = []
 ) {
   const navigation = useNavigation();

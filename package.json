@@ -2,7 +2,7 @@
   "name": "taito-react-native-template",
   "version": "0.0.1",
   "private": true,
-  "main": "index.tsx",
+  "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
     "start:clean": "expo start --clear",
@@ -21,10 +21,6 @@
     "prebuild:test": "APP_ENV=test npm run prebuild",
     "prebuild:stag": "APP_ENV=stag npm run prebuild",
     "prebuild:prod": "APP_ENV=prod npm run prebuild",
-    "prebuild:ci": "EXPO_NO_GIT_STATUS=1 npx expo prebuild --clean --skip-dependency-update react,react-native",
-    "prebuild:ci:test": "APP_ENV=test npm run prebuild:ci",
-    "prebuild:ci:stag": "APP_ENV=stag npm run prebuild:ci",
-    "prebuild:ci:prod": "APP_ENV=prod npm run prebuild:ci",
     "design-system:sync": "npm run design-system:tokenize && npm run design-system:codegen && npm run design-system:format",
     "design-system:tokenize": "figmage tokenize --env ./config/.env.figma",
     "design-system:codegen": "figmage codegen --env ./config/.env.figma",
@@ -46,101 +42,72 @@
   },
   "dependencies_comment": "NOTE: Expo will automatically update some package versions to be compatible with the current Expo SDK version!",
   "dependencies": {
-    "@gorhom/bottom-sheet": "4.6.4",
-    "@lingui/macro": "4.11.4",
-    "@lingui/react": "4.11.4",
-    "@react-native-menu/menu": "1.1.3",
-    "@react-navigation/bottom-tabs": "6.6.1",
-    "@react-navigation/native": "6.1.18",
-    "@react-navigation/stack": "6.4.1",
-    "@shopify/flash-list": "1.6.3",
-    "expo": "^50.0.0",
-    "expo-application": "~5.8.4",
-    "expo-build-properties": "~0.11.1",
-    "expo-clipboard": "~5.0.1",
-    "expo-constants": "~15.4.6",
-    "expo-dev-client": "~3.3.12",
-    "expo-device": "~5.9.4",
-    "expo-font": "~11.10.3",
-    "expo-image": "~1.10.6",
-    "expo-linking": "~6.2.2",
-    "expo-router": "~3.4.10",
-    "expo-splash-screen": "~0.26.5",
-    "expo-status-bar": "~1.11.1",
-    "expo-store-review": "~6.8.3",
-    "expo-system-ui": "~2.9.4",
-    "expo-updates": "~0.24.13",
+    "@gorhom/bottom-sheet": "5.0.6",
+    "@lingui/core": "4.14.0",
+    "@lingui/react": "4.14.0",
+    "@react-native-menu/menu": "1.1.6",
+    "@react-navigation/native": "^7.0.0",
+    "@shopify/flash-list": "1.7.1",
+    "expo": "~52.0.7",
+    "expo-application": "~6.0.1",
+    "expo-build-properties": "~0.13.1",
+    "expo-clipboard": "~7.0.0",
+    "expo-constants": "~17.0.3",
+    "expo-dev-client": "~5.0.3",
+    "expo-device": "~7.0.1",
+    "expo-font": "~13.0.1",
+    "expo-image": "~2.0.1",
+    "expo-linking": "~7.0.3",
+    "expo-localization": "~16.0.0",
+    "expo-router": "~4.0.7",
+    "expo-splash-screen": "~0.29.11",
+    "expo-status-bar": "~2.0.0",
+    "expo-store-review": "~8.0.0",
+    "expo-system-ui": "~4.0.3",
+    "expo-updates": "~0.26.7",
+    "expo-web-browser": "~14.0.1",
     "lodash": "4.17.21",
     "luxon": "3.5.0",
-    "moti": "0.29.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-freeze": "1.0.4",
-    "react-hook-form": "7.53.0",
-    "react-native": "0.73.6",
-    "react-native-collapsible": "1.6.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-hook-form": "7.53.2",
+    "react-native": "0.76.2",
+    "react-native-collapsible": "1.6.2",
     "react-native-date-picker": "5.0.7",
-    "react-native-gesture-handler": "~2.14.0",
-    "react-native-ios-context-menu": "2.5.1",
-    "react-native-ios-utilities": "4.5.0",
-    "react-native-keyboard-controller": "1.13.4",
-    "react-native-localize": "3.2.1",
-    "react-native-mmkv": "2.12.2",
-    "react-native-permissions": "4.1.5",
-    "react-native-reanimated": "~3.6.2",
-    "react-native-safe-area-context": "4.8.2",
-    "react-native-screens": "~3.29.0",
-    "react-native-svg": "14.1.0",
+    "react-native-gesture-handler": "~2.20.2",
+    "react-native-ios-context-menu": "2.5.2",
+    "react-native-ios-utilities": "4.5.1",
+    "react-native-keyboard-controller": "1.14.5",
+    "react-native-mmkv": "3.0.2",
+    "react-native-permissions": "5.1.0",
+    "react-native-reanimated": "~3.16.1",
+    "react-native-safe-area-context": "4.12.0",
+    "react-native-screens": "^4.0.0",
+    "react-native-svg": "15.8.0",
     "react-native-toast-message": "2.2.1",
-    "react-native-web": "~0.19.1",
+    "react-native-web": "~0.19.13",
     "stitches-native": "0.4.0",
-    "zeego": "1.10.0",
-    "zustand": "4.5.5"
+    "zeego": "2.0.4",
+    "zustand": "5.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0",
-    "@babel/preset-env": "^7.25.4",
-    "@babel/runtime": "^7.25.6",
-    "@lingui/cli": "4.11.4",
-    "@types/jest": "^29.5.13",
-    "@types/lodash": "4.17.7",
+    "@babel/core": "7.26.0",
+    "@lingui/cli": "4.14.0",
+    "@lingui/macro": "4.14.0",
+    "@types/lodash": "4.17.13",
     "@types/luxon": "3.4.2",
-    "@types/react": "~18.2.45",
-    "@types/react-test-renderer": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "6.21.0",
-    "@typescript-eslint/parser": "6.21.0",
-    "ajv": "8.17.1",
-    "babel-jest": "^29.7.0",
-    "babel-plugin-transform-remove-console": "6.9.4",
-    "eslint": "^8.41.0",
-    "eslint-config-prettier": "9.1.0",
-    "eslint-config-standard": "17.1.0",
-    "eslint-plugin-import": "2.29.1",
-    "eslint-plugin-lingui": "0.3.0",
-    "eslint-plugin-lodash": "7.4.0",
-    "eslint-plugin-n": "16.6.2",
-    "eslint-plugin-prettier": "5.1.3",
-    "eslint-plugin-promise": "6.1.1",
-    "eslint-plugin-react": "7.33.2",
-    "eslint-plugin-react-hooks": "4.6.0",
-    "eslint-plugin-standard": "5.0.0",
+    "@types/react": "~18.3.12",
     "figmage": "0.13.1",
     "jest": "^29.2.1",
-    "jest-expo": "~50.0.4",
+    "jest-expo": "~52.0.2",
     "patch-package": "8.0.0",
     "prettier": "3.3.3",
-    "react-test-renderer": "18.2.0",
-    "ts-node": "10.9.2",
-    "type-fest": "4.26.1",
+    "react-test-renderer": "18.3.1",
+    "ts-node": "^10.9.2",
     "typescript": "~5.3.3"
   },
-  "engines": {
-    "npm": ">=7",
-    "node": ">=16",
-    "yarn": "please-use-npm"
-  },
   "jest": {
-    "preset": "react-native"
+    "preset": "jest-expo"
   },
   "prettier": {
     "trailingComma": "es5",
@@ -148,72 +115,11 @@
     "semi": true,
     "singleQuote": true
   },
-  "lingui": {
-    "locales": [
-      "en",
-      "fi"
-    ],
-    "sourceLocale": "en",
-    "catalogs": [
-      {
-        "path": "src/locales/{locale}/messages",
-        "include": [
-          "src"
-        ]
-      }
-    ],
-    "format": "po"
-  },
-  "figmage": {
-    "outDir": "src/design-system",
-    "tokenize": {
-      "tokens": [
-        {
-          "name": "colors",
-          "type": "color"
-        },
-        {
-          "name": "typography",
-          "type": "text"
-        },
-        {
-          "name": "shadows",
-          "type": "drop-shadow"
-        },
-        {
-          "name": "spacing",
-          "type": "width",
-          "nodeName": "Figmage - Spacing"
-        },
-        {
-          "name": "radii",
-          "type": "radius",
-          "nodeName": "Figmage - Radii"
-        },
-        {
-          "name": "icons",
-          "type": "svg",
-          "nodeName": "Figmage - Icons"
-        },
-        {
-          "name": "assets",
-          "type": "png",
-          "nodeName": "App Icon & Splash"
-        }
-      ]
-    },
-    "codegen": {
-      "defaults": {
-        "filetype": "ts",
-        "tokenCase": "camel"
-      },
-      "spacing": {
-        "filetype": "json",
-        "tokenCase": "lower"
-      },
-      "assets": {
-        "filetype": "png",
-        "tokenCase": "kebab"
+  "expo_comment": "NOTE: This allows to ignore unknown packages while running `expo doctor`",
+  "expo": {
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "listUnknownPackages": false
       }
     }
   }
