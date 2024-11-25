@@ -15,8 +15,8 @@ on:
         type: choice
         description: Which env to build for
         options:
+          - dev
           - test
-          - stag
           - prod
         required: true
         default: test

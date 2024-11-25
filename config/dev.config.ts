@@ -5,7 +5,7 @@ export const config: Config = {
   appEnv: 'dev',
   scheme: 'taito-template-dev',
   apiUrl: 'https://api.example.com',
-  appIdSuffix: '.dev', // NOTE: dev/test/stag share the same app id!
+  appIdSuffix: '.dev', // NOTE: dev/test share the same app id!
   iconImage: './src/design-system/assets/icon.png',
   adaptiveIcon: {
     foregroundImage: './src/design-system/assets/adaptive-icon.png',

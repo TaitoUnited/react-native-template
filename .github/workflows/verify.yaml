@@ -1,7 +1,7 @@
 name: 'Verify'
 on:
   push:
-    branches: [dev, test, stag, prod]
+    branches: [dev, test, prod]
   pull_request:
     branches: [dev]
 jobs:
@@ -30,7 +30,7 @@ jobs:
       # Conditional step for checking translations
       - name: Check translations
         run: |
-          if [[ "${{ github.ref }}" == "refs/heads/prod" || "${{ github.ref }}" == "refs/heads/stag" ]]; then
+          if [[ "${{ github.ref }}" == "refs/heads/prod" ]]; then
             npm run i18n:compile:strict
           else
             npm run i18n:compile

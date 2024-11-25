@@ -1,6 +1,6 @@
 # Builds
 
-We use [Expo Application Services (EAS)](https://expo.dev/eas) to build the app. EAS enables us to seamlessly create builds for different environments, such as **dev**, **test**, **staging**, and **production**.
+We use [Expo Application Services (EAS)](https://expo.dev/eas) to build the app. EAS enables us to seamlessly create builds for different environments, such as **dev**, **test**, and **production**.
 
 Depending on your project’s needs, there are several ways to trigger the build process.
 
@@ -23,7 +23,7 @@ This script helps generate the necessary build command and triggers the build pr
 
 ## Manual GitHub Actions
 
-You can also trigger builds using **GitHub Actions** for the **Test**, **Staging**, and **Production** environments. To do so:
+You can also trigger builds using **GitHub Actions** for the **Test** and **Production** environments. To do so:
 
 1. Navigate to the [GitHub Actions tab](https://github.com/TaitoUnited/react-native-template/actions).
 2. Select the appropriate workflow and click the _“Run workflow”_ button.
@@ -36,7 +36,7 @@ The GitHub Action workflows for building are located in `.github/workflows/build
 
 ## Automatic EAS Github Actions
 
-EAS also allows for automatic builds whenever code is merged into key branches (`dev`, `test`, `stag` or `prod`). This eliminates the need to manually trigger builds.
+EAS also allows for automatic builds whenever code is merged into key branches (`dev`, `test` or `prod`). This eliminates the need to manually trigger builds.
 
 > [!NOTE]
 > When code is merged into the **prod** branch, the build will automatically be submitted to the app stores (Google Play and Apple App Store).

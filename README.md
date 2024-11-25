@@ -47,7 +47,7 @@ Follow this [Publishing guide](/docs/PUBLISHING.md).
 If the app is customer facing and published to App Store or Google Play you should setup app reviews. This allows users to rate the app and give feedback. The reviews are then visible in the store and can be used to improve the app.
 
 1. Setup app reviews in App Store Connect and Google Play Console.
-2. Update the `(dev|test|stag|prod.config.ts` with the app store and google play urls. (only prod will allow you to actually rate the app, the rest is for testing purposes)
+2. Update the `(dev|test|prod.config.ts` with the app store and google play urls. (only prod will allow you to actually rate the app, the rest is for testing purposes)
 3. Mode the `StoreReview` component to a more appropriate place in your app.
 4. Make sure to collect the user feedback in the backend or have it sent to you via email or some other channel.
 

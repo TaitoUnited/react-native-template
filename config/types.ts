@@ -1,5 +1,5 @@
 export type Config = {
-  appEnv: 'dev' | 'test' | 'stag' | 'prod';
+  appEnv: 'dev' | 'test' | 'prod';
   scheme: string;
   apiUrl: string;
   appIdSuffix?: string;

@@ -31,15 +31,6 @@
       },
       "channel": "test"
     },
-    "stag": {
-      "distribution": "internal",
-      "android": { "image": "latest" },
-      "ios": { "image": "latest" },
-      "env": {
-        "APP_ENV": "stag"
-      },
-      "channel": "stag"
-    },
     "prod-internal": {
       "distribution": "internal",
       "android": { "image": "latest" },
