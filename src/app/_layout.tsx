@@ -1,11 +1,5 @@
 import { registerDevMenuItems } from 'expo-dev-menu';
-import {
-  Stack,
-  router,
-  usePathname,
-  useRouter,
-  useSegments,
-} from 'expo-router';
+import { Stack, router, usePathname, useSegments } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { DevSettings, Platform } from 'react-native';
@@ -21,11 +15,11 @@ import { useDefaultStackScreenOptions } from '~utils/navigation';
 if (__DEV__ && ['android', 'ios'].includes(Platform.OS)) {
   const devMenuItems = [
     {
-      name: 'Open Playground',
+      name: 'Open Playground', // eslint-disable-line lingui/no-unlocalized-strings
       callback: () => router.navigate('/playground'),
     },
     {
-      name: 'Open Sitemap',
+      name: 'Open Sitemap', // eslint-disable-line lingui/no-unlocalized-strings
       callback: () => router.navigate('/_sitemap'),
     },
   ];
@@ -71,7 +65,6 @@ function RootLayoutNavigator() {
 // We are guaranteed to be either in `unauthenticated` or `authenticated` state
 // at this point so we don't need to care about the other auth states
 function RouteProtection() {
-  const router = useRouter();
   const segments = useSegments();
   const pathname = usePathname();
   const authStatus = useAuthStore((s) => s.status);
@@ -92,8 +85,8 @@ function RouteProtection() {
     }
   });
 
-  useEffect(() => onAuthChange(), [authStatus]); // eslint-disable-line
-  useEffect(() => onPathChange(), [pathname]); // eslint-disable-line
+  useEffect(() => onAuthChange(), [authStatus]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => onPathChange(), [pathname]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return null;
 }

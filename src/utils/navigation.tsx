@@ -1,6 +1,9 @@
 import { msg } from '@lingui/macro';
-import { NavigationState, PartialState } from '@react-navigation/native';
-import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import {
+  type NavigationState,
+  type PartialState,
+} from '@react-navigation/native';
+import { type NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import { useNavigation } from 'expo-router';
 import { useEffect } from 'react';
 

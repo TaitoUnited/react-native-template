@@ -1,5 +1,5 @@
-import { Image as ExpoImage, ImageProps } from 'expo-image';
-import { ImageStyle, StyleProp } from 'react-native';
+import { Image as ExpoImage, type ImageProps } from 'expo-image';
+import { type ImageStyle, type StyleProp } from 'react-native';
 
 import { useImageDimensions } from '~utils/image';
 

@@ -6,6 +6,7 @@ export default function Meta() {
 
   return (
     <Head>
+      {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
       <title>Taito Template</title>
       <meta
         name="description"

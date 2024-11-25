@@ -3,6 +3,8 @@ import { useAssets } from 'expo-asset';
 import config from '~constants/config';
 import { styled } from '~styles';
 
+import Splash from '../../design-system/assets/splash.png';
+
 if (config.splash.image !== './src/design-system/assets/splash.png') {
   throw Error(
     'Unexpected splash screen image, expected "./design-system/assets/splash.png"'
@@ -10,9 +12,7 @@ if (config.splash.image !== './src/design-system/assets/splash.png') {
 }
 
 export default function SplashScreen() {
-  const [assets, error] = useAssets([
-    require('../../design-system/assets/splash.png'),
-  ]);
+  const [assets, error] = useAssets([Splash]);
 
   if (!assets || error) return null;
 

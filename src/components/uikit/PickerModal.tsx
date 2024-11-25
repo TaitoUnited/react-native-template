@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/macro';
-import { MutableRefObject, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type MutableRefObject } from 'react';
 import {
   Animated,
   Easing,
@@ -19,7 +19,7 @@ import { Stack } from './layout/Stack';
 
 type BaseProps = {
   label: string;
-  options: Array<{ label: string; value: string }>;
+  options: { label: string; value: string }[];
   isVisible: boolean;
   multiple?: boolean;
   onClose: () => void;
@@ -151,7 +151,7 @@ function ModalContent({
 
   return (
     <Wrapper>
-      <TouchableWithoutFeedback onPress={onClose}>
+      <TouchableWithoutFeedback accessibilityRole="button" onPress={onClose}>
         <Backdrop style={{ opacity: backdropAnimation.current }} />
       </TouchableWithoutFeedback>
 

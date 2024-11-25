@@ -1,5 +1,5 @@
 import { msg } from '@lingui/macro';
-import { FunctionComponent } from 'react';
+import { type FunctionComponent } from 'react';
 import { View } from 'react-native';
 
 import { useColorMode } from '~services/color-mode';

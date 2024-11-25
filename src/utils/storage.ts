@@ -38,12 +38,14 @@ const PERSISTENT_KEYS = [
 const clearableStorage = new MMKV({ id: 'clearable' });
 const persistentStorage = new MMKV({ id: 'persistent' });
 
-type Key = (typeof CLEARABLE_KEYS)[number] | (typeof PERSISTENT_KEYS)[number];
+type Key = (typeof CLEARABLE_KEYS)[number];
 
 function getStorage(key: Key) {
   return PERSISTENT_KEYS.includes(key as any)
     ? persistentStorage
-    : clearableStorage;
+    : CLEARABLE_KEYS.includes(key as any)
+      ? clearableStorage
+      : new MMKV({ id: 'default' }); // This should never happen
 }
 
 function set<T extends object | string | boolean | number>(key: Key, value: T) {

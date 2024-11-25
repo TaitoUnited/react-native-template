@@ -6,3 +6,6 @@ src/graphql/generated.ts
 src/app/playground/
 src/components/playground/
 src/design-system/
+/.expo
+node_modules
+.eslintrc.js

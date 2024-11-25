@@ -3,11 +3,11 @@ import { Alert, Platform } from 'react-native';
 const alertPolyfill = (
   title: string,
   description: string,
-  options: Array<{
+  options: {
     text: string;
     onPress: () => void;
     style?: string;
-  }>
+  }[]
 ) => {
   const result = window.confirm(
     [title, description].filter(Boolean).join('\n')
@@ -15,10 +15,10 @@ const alertPolyfill = (
 
   if (result) {
     const confirmOption = options.find(({ style }) => style !== 'cancel');
-    confirmOption && confirmOption.onPress();
+    if (confirmOption) confirmOption.onPress();
   } else {
     const cancelOption = options.find(({ style }) => style === 'cancel');
-    cancelOption && cancelOption.onPress();
+    if (cancelOption) cancelOption.onPress();
   }
 };
 

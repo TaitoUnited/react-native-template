@@ -1,5 +1,5 @@
 import { router } from 'expo-router';
-import { FunctionComponent, ReactNode, isValidElement } from 'react';
+import { type FunctionComponent, type ReactNode, isValidElement } from 'react';
 import { Platform, StyleSheet } from 'react-native';
 
 import { Icon, Stack, Text } from '~components/uikit';
@@ -54,6 +54,7 @@ export default function MenuList({ items, title }: Props) {
       <Wrapper>
         {filteredItems.map((item, index) => (
           <Pressable
+            accessibilityRole="button"
             testID={item.id}
             key={item.id}
             onPress={

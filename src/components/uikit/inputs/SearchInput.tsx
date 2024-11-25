@@ -7,14 +7,14 @@ import {
   useRef,
   useState,
 } from 'react';
-import { TextInput as RNTextInput, TouchableOpacity } from 'react-native';
+import { TouchableOpacity, type TextInput as RNTextInput } from 'react-native';
 
 import { styled } from '~styles';
 
 import { Icon } from '../Icon';
 import { Text } from '../Text';
 import { Stack } from '../layout/Stack';
-import { TextInput, TextInputProps } from './TextInput';
+import { TextInput, type TextInputProps } from './TextInput';
 
 type SearchInputProps = TextInputProps & {
   suggestions?: string[];
@@ -66,6 +66,7 @@ export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(
           <Suggestions axis="y" spacing="small">
             {filteredSuggestions.map((option, index) => (
               <TouchableOpacity
+                accessibilityRole="button"
                 onPress={() => handleSuggestionClick(option)}
                 key={index}
               >
@@ -84,7 +85,6 @@ export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(
   }
 );
 
-// eslint-disable-next-line lingui/no-unlocalized-strings
 SearchInput.displayName = 'SearchInput';
 
 const Suggestions = styled(Stack, {

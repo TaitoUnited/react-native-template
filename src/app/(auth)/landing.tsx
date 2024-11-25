@@ -4,6 +4,7 @@ import { useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as DropdownMenu from 'zeego/dropdown-menu';
 
+import LandingImage from '~assets/landing_background.jpg';
 import StatusBar from '~components/common/StatusBar';
 import { IconButton, Stack, Text } from '~components/uikit';
 import { useI18n } from '~services/i18n';
@@ -16,7 +17,7 @@ export default function Landing() {
 
   return (
     <Wrapper>
-      <ImageBackground source={require('~assets/landing_background.jpg')}>
+      <ImageBackground source={LandingImage}>
         <TopSection
           style={{ paddingTop: Math.max(insets.top, theme.space.regular) }}
         >
@@ -39,6 +40,7 @@ export default function Landing() {
                 withLineHeight
                 style={{ marginLeft: 16 }}
               >
+                {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
                 <Trans>By Taito United</Trans> 💚
               </BlackText>
             </Stack>
@@ -48,7 +50,8 @@ export default function Landing() {
         <BottomSection style={{ minHeight: height * 0.4 }}>
           <Stack axis="y" spacing="regular" align="center">
             <WhiteText variant="body" align="center" withLineHeight>
-              ✨ <Trans>Start your journey</Trans> ✨
+              {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
+              {/* prettier-ignore */}✨<Trans>Start your journey</Trans> ✨
             </WhiteText>
             <Link href="/(auth)/login" asChild>
               <Button testID="loginButton">

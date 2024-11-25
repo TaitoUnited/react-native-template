@@ -50,6 +50,38 @@ export default function TabsLayout() {
     },
   ];
 
+  function renderTabIcon({
+    focused,
+    iconFilled,
+    iconOutlined,
+  }: {
+    focused: boolean;
+    iconFilled: IconName;
+    iconOutlined: IconName;
+  }) {
+    return <Icon name={focused ? iconFilled : iconOutlined} color="text" />;
+  }
+
+  function renderBarLabel({
+    focused,
+    id,
+    title,
+  }: {
+    focused: boolean;
+    id: string;
+    title: string;
+  }) {
+    return (
+      <Text
+        variant="bodyExtraSmall"
+        color={focused ? 'text' : 'textMuted'}
+        testID={id}
+      >
+        {title}
+      </Text>
+    );
+  }
+
   return (
     <>
       <Tabs
@@ -83,21 +115,10 @@ export default function TabsLayout() {
                 // On certain devices without insets, the tab bar is too close to the bottom of the screen
                 paddingBottom: insets.bottom === 0 ? 4 : 0,
               },
-              tabBarLabel: ({ focused }) => (
-                <Text
-                  variant="bodyExtraSmall"
-                  color={focused ? 'text' : 'textMuted'}
-                  testID={id}
-                >
-                  {title}
-                </Text>
-              ),
-              tabBarIcon: ({ focused }) => (
-                <Icon
-                  name={focused ? iconFilled : iconOutlined}
-                  color={focused ? 'text' : 'textMuted'}
-                />
-              ),
+              tabBarLabel: ({ focused }) =>
+                renderBarLabel({ focused, id, title }),
+              tabBarIcon: ({ focused }) =>
+                renderTabIcon({ focused, iconFilled, iconOutlined }),
             }}
           />
         ))}

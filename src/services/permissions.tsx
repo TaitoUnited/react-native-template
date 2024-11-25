@@ -5,7 +5,7 @@ import { useCallback } from 'react';
 import { Alert, Platform } from 'react-native';
 import {
   PERMISSIONS,
-  Permission,
+  type Permission,
   RESULTS,
   checkMultiple,
   checkNotifications,

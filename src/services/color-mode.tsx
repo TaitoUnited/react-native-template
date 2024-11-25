@@ -1,5 +1,5 @@
-import { ReactNode, createContext, useContext } from 'react';
-import { ColorSchemeName, useColorScheme } from 'react-native';
+import { type ReactNode, createContext, useContext } from 'react';
+import { type ColorSchemeName, useColorScheme } from 'react-native';
 
 import { ThemeProvider, darkTheme, theme as lightTheme } from '~styles';
 import { STORAGE_KEYS, useStorageString } from '~utils/storage';

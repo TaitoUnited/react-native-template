@@ -2,16 +2,16 @@ import { i18n } from '@lingui/core';
 import { msg } from '@lingui/macro';
 import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 import {
-  NativeSyntheticEvent,
-  TextInput as RNTextInput,
-  TextInputProps as RNTextInputProps,
-  TextInputFocusEventData,
   TouchableOpacity,
+  type NativeSyntheticEvent,
+  type TextInput as RNTextInput,
+  type TextInputProps as RNTextInputProps,
+  type TextInputFocusEventData,
 } from 'react-native';
 
 import { styled } from '~styles';
 
-import { Icon, IconName } from '../Icon';
+import { Icon, type IconName } from '../Icon';
 import { Text } from '../Text';
 import { IconButton } from '../buttons/IconButton';
 import { Stack } from '../layout/Stack';
@@ -97,6 +97,7 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
               {label}
             </Text>
             {isRequired && showRequiredAsterisk && (
+              // eslint-disable-next-line lingui/no-unlocalized-strings
               <Text variant="body" color="error">
                 *
               </Text>
@@ -107,6 +108,7 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
         {showCharacterLimit && isFocused && (
           <CharacterCount variant="bodyExtraSmall">
             <Text variant="bodyExtraSmallBold">{characterCount}</Text>
+            {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
             {` / ${maxLength}`}
           </CharacterCount>
         )}
@@ -117,7 +119,6 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
           align="center"
           valid={isValid}
           disabled={isDisabled}
-          style={style}
         >
           {!!icon && <Icon name={icon} size={24} color="text" />}
 
@@ -137,11 +138,15 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
             selectTextOnFocus={!isDisabled}
             multiline={multiline}
             maxLength={maxLength}
+            style={style}
           />
 
           {allowSecureTextToggle ? (
             <InputDecoration>
-              <TouchableOpacity onPress={() => setSecureTextVisible((p) => !p)}>
+              <TouchableOpacity
+                accessibilityRole="button"
+                onPress={() => setSecureTextVisible((p) => !p)}
+              >
                 {secureTextVisible ? (
                   <Icon name="eye" size={20} color="text" />
                 ) : (
@@ -175,7 +180,6 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
   }
 );
 
-// eslint-disable-next-line lingui/no-unlocalized-strings
 TextInput.displayName = 'TextInput';
 
 const InputWrapper = styled(Stack, {

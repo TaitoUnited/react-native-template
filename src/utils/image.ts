@@ -1,6 +1,6 @@
-import { ImageProps } from 'expo-image';
+import { type ImageProps } from 'expo-image';
 import { useLayoutEffect, useState } from 'react';
-import { Image, ImageRequireSource } from 'react-native';
+import { Image, type ImageRequireSource } from 'react-native';
 
 export function useImageDimensions({
   source,
@@ -24,7 +24,7 @@ export function useImageDimensions({
     height?: number;
   }>({ width, height });
 
-  const src = typeof source === 'object' ? (source as any).uri : source;
+  const src = typeof source === 'object' ? source.uri : source;
 
   useLayoutEffect(() => {
     if (!width && !height) return;

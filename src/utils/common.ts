@@ -60,7 +60,7 @@ export function useDebouncedValue(value: string, delayMs: number) {
     return () => {
       clearTimeout(handler);
     };
-  }, [value]); // eslint-disable-line
+  }, [value]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return debouncedValue;
 }

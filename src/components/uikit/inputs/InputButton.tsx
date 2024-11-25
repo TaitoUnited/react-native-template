@@ -1,8 +1,8 @@
-import { ViewStyle } from 'react-native';
+import { type ViewStyle } from 'react-native';
 
 import { styled } from '~styles';
 
-import { Icon, IconName } from '../Icon';
+import { Icon, type IconName } from '../Icon';
 import { Text } from '../Text';
 import { Stack } from '../layout/Stack';
 
@@ -46,6 +46,7 @@ export function InputButton({
           {label}
         </Text>
         {isRequired && showRequiredAsterisk && (
+          // eslint-disable-next-line lingui/no-unlocalized-strings
           <Text variant="body" color="error">
             *
           </Text>
