@@ -39,7 +39,7 @@ jobs:
             >
             > Therefore, there is no need to manually initiate a build after merging to the **dev** branch.
             >
-            > Additionally, builds will automatically trigger when promoting changes to **test** and **prod**. 
+            > Additionally, builds will automatically trigger when promoting changes to **dev**, **test** and **prod**. 
             > 
             > For the prod branch, the build will also be automatically submitted to the app stores.
 

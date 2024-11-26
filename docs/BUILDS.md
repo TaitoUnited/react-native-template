@@ -23,7 +23,7 @@ This script helps generate the necessary build command and triggers the build pr
 
 ## Manual GitHub Actions
 
-You can also trigger builds using **GitHub Actions** for the **Test** and **Production** environments. To do so:
+You can also trigger builds using **GitHub Actions** for the **Development**, **Test** and **Production** environments. To do so:
 
 1. Navigate to the [GitHub Actions tab](https://github.com/TaitoUnited/react-native-template/actions).
 2. Select the appropriate workflow and click the _“Run workflow”_ button.
