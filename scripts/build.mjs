@@ -48,7 +48,7 @@ async function gatherInputs() {
       type: 'list',
       name: 'profile',
       message: 'Select the profile:',
-      choices: ['Development', 'Testing', 'Staging', 'Production'],
+      choices: ['Development', 'Testing', 'Production'],
     },
   ]);
 
@@ -109,7 +109,6 @@ function constructBuildCommand(answers) {
     Simulator: 'dev:simulator',
     Development: 'dev',
     Testing: 'test',
-    Staging: 'stag',
     'Production (Internal)': 'prod-internal',
     Production: 'prod',
   };

@@ -90,7 +90,7 @@ You can check the list of registered devices by running `eas device:list` to mak
 
 Once you have correctly added the devices to the team, you need to resign your latest build to include the new devices in the provisioning profile, so the app can be installed on those new devices.
 
-You can do it by running `eas build:resign --profile (test|stag|prod)`, select iOS, the relevant team and edit the devices selection. This will create a new build with the same credentials as the previous one but with the new devices added to the provisioning profile.
+You can do it by running `eas build:resign --profile (dev|test|prod)`, select iOS, the relevant team and edit the devices selection. This will create a new build with the same credentials as the previous one but with the new devices added to the provisioning profile.
 
 **Important**
 

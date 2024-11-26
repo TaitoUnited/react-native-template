@@ -1,6 +1,6 @@
-# Build the staging env app on EAS Cloud service.
-name: 'Build | Staging'
-run-name: Build | Staging (for ${{ inputs.platform }} on ${{ github.ref_name }})
+# Build the dev env app on EAS Cloud service.
+name: 'Build | Dev'
+run-name: Build | Dev (for ${{ inputs.platform }} on ${{ github.ref_name }})
 on:
   workflow_dispatch:
     inputs:
@@ -12,6 +12,7 @@ on:
           - android
           - all
         required: true
+        default: all
       email:
         type: choice
         description: Notify the client via email?
@@ -33,4 +34,4 @@ jobs:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           platform: ${{ github.event.inputs.platform }}
           email: ${{ github.event.inputs.email }}
-          environment: stag
+          environment: dev
