@@ -6,9 +6,6 @@ import { Settings } from 'luxon';
 import { useEffectEvent } from '~utils/common';
 import storage, { STORAGE_KEYS } from '~utils/storage';
 
-import { messages as enMessages } from '../locales/en/messages';
-import { messages as fiMessages } from '../locales/fi/messages';
-
 export type Locale = 'fi' | 'en';
 const LOCALES: Locale[] = ['fi', 'en'];
 
@@ -32,9 +29,9 @@ export async function initMessages() {
 async function loadMessages(locale: Locale) {
   switch (locale) {
     case 'fi':
-      return fiMessages;
+      return require('../locales/fi/messages').messages; // eslint-disable-line @typescript-eslint/no-require-imports
     case 'en':
-      return enMessages;
+      return require('../locales/en/messages').messages; // eslint-disable-line @typescript-eslint/no-require-imports
     default:
       throw Error(`Unkown locale: ${locale}`);
   }
