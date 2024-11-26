@@ -1,5 +1,5 @@
 // https://docs.expo.dev/guides/typescript/#appconfigjs
-import { ExpoConfig } from '@expo/config';
+import { type ExpoConfig } from '@expo/config';
 import 'ts-node/register';
 
 import { getConfig } from './config/utils';
@@ -17,7 +17,7 @@ const appId = `com.taito.template${config.appIdSuffix ?? ''}`;
 
 const expoConfig: ExpoConfig = {
   slug: 'taito-template',
-  name: 'Taito Template',
+  name: 'Taito Template', // eslint-disable-line lingui/no-unlocalized-strings
   scheme: config.scheme,
   owner: 'taito-united',
   version: '0.0.1',
@@ -109,6 +109,7 @@ const expoConfig: ExpoConfig = {
 
 // NOTE: we can't inline this to the plugin definition because the indendation would be wrong
 function getExtraProguardRules() {
+  // eslint-disable-next-line lingui/no-unlocalized-strings
   return `
   # react-native-date-picker
 -keep public class net.time4j.android.ApplicationStarter
