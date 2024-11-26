@@ -1,5 +1,5 @@
 import * as colors from '../src/design-system/colors';
-import { Config } from './types';
+import { type Config } from './types';
 
 export const config: Config = {
   appEnv: 'prod',
