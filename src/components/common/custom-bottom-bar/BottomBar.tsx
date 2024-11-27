@@ -1,7 +1,7 @@
-import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import { type BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { TabList } from '~app/(tabs)/_layout';
+import { type TabList } from '~app/(tabs)/_layout';
 import { styled } from '~styles';
 
 import { TabBarButton } from './Tab';

@@ -1,4 +1,5 @@
 import { msg } from '@lingui/macro';
+import { type BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { Tabs } from 'expo-router';
 import { StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -158,11 +159,15 @@ function DefaultBottomBar({ tabs, theme }: BottomBarProps) {
   );
 }
 
+function renderBottomBar(props: BottomTabBarProps & { tabs: TabList }) {
+  return <BottomBar {...props} />;
+}
+
 function CustomBottomBar({ tabs, theme }: BottomBarProps) {
   return (
     <Tabs
       initialRouteName="home"
-      tabBar={(props) => <BottomBar {...props} tabs={tabs} />}
+      tabBar={(props) => renderBottomBar({ ...props, tabs })}
       screenOptions={{
         headerStyle: {
           backgroundColor: theme.colors.surface,
