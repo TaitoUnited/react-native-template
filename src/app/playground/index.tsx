@@ -14,6 +14,7 @@ export default function PlaygroundPage() {
     { screen: 'playground/layout', label: 'Layout' },
     { screen: 'playground/accordion', label: 'Accordion' },
     { screen: 'playground/progress', label: 'Progress' },
+    { screen: 'playground/image', label: 'Image' },
     { screen: 'playground/toast', label: 'Toast' },
   ];
 
