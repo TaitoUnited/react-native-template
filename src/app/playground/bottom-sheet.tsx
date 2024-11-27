@@ -76,7 +76,12 @@ export default function BottomSheets() {
           <Text variant="headingM" align="center">
             Awesome Bottom Sheet
           </Text>
-          <Button onPress={handleClosePress}>Close</Button>
+          <Button
+            onPress={handleClosePress}
+            accessibilityHint="Double tap to close the bottom sheet"
+          >
+            Close
+          </Button>
         </ContentContainer>
       </BottomSheet>
     </Wrapper>
@@ -90,4 +95,5 @@ const Wrapper = styled('View', {
 
 const ContentContainer = styled(Stack, {
   padding: '$large',
+  zIndex: 1,
 });

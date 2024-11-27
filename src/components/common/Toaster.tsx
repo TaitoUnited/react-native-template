@@ -5,7 +5,8 @@ import ToastContainer, {
 
 import { Icon, IconButton, Stack, Text } from '~components/uikit';
 import { type IconName } from '~components/uikit/Icon';
-import { type Color, styled, useTheme } from '~styles/styled';
+import { styled, useTheme, type Color } from '~styles/styled';
+import { announceForAccessibility } from '~utils/a11y';
 
 type Variant = 'info' | 'success' | 'warn' | 'error';
 
@@ -72,6 +73,10 @@ export function showToast({
     text2: subtitle,
     props: { icon },
     type,
+  });
+
+  announceForAccessibility({
+    message: `${type} toast: ${title}${subtitle ? `, ${subtitle}` : ''}`,
   });
 }
 

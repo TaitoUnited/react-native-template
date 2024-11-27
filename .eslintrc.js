@@ -14,8 +14,8 @@ module.exports = {
     'plugin:react/jsx-runtime',
 
     // Accessibility, Localization, and Utility Libraries
+    'plugin:react-native-a11y/all',
     'plugin:lingui/recommended',
-    'plugin:react-native-a11y/ios',
     'plugin:lodash/recommended',
   ],
   parser: '@typescript-eslint/parser',
@@ -136,6 +136,7 @@ module.exports = {
 
     // Accessibility rules
     // Custom accessibility rules for React Native (provided by react-native-a11y plugin)
+    'react-native-a11y/has-accessibility-hint': 'warn',
   },
 
   ignorePatterns: ['/dist/*', '*.d.ts'],

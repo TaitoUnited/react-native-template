@@ -1,6 +1,6 @@
 import { Trans, msg } from '@lingui/macro';
 import { Link } from 'expo-router';
-import { useWindowDimensions } from 'react-native';
+import { AccessibilityInfo, useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as DropdownMenu from 'zeego/dropdown-menu';
 
@@ -14,6 +14,7 @@ export default function Landing() {
   const { height } = useWindowDimensions();
   const insets = useSafeAreaInsets();
   const theme = useTheme();
+  const { _ } = useI18n();
 
   return (
     <Wrapper>
@@ -51,10 +52,13 @@ export default function Landing() {
           <Stack axis="y" spacing="regular" align="center">
             <WhiteText variant="body" align="center" withLineHeight>
               {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
-              {/* prettier-ignore */}✨<Trans>Start your journey</Trans> ✨
+              {/* prettier-ignore */}✨ <Trans>Start your journey</Trans> ✨
             </WhiteText>
             <Link href="/(auth)/login" asChild>
-              <Button testID="loginButton">
+              <Button
+                testID="loginButton"
+                accessibilityHint={_(msg`Navigates to the sign-in screen`)}
+              >
                 <WhiteText variant="bodyBold">
                   <Trans>Sign in</Trans>
                 </WhiteText>
@@ -68,7 +72,10 @@ export default function Landing() {
             <Line />
 
             <Link href="/(auth)/signup" asChild>
-              <Button testID="signInButton">
+              <Button
+                testID="signInButton"
+                accessibilityHint={_(msg`Navigates to the sign-up screen`)}
+              >
                 <WhiteText variant="bodyBold">
                   <Trans>Create an account</Trans>
                 </WhiteText>
@@ -87,15 +94,32 @@ function LanguageSelector() {
   const { _, setLocale } = useI18n();
 
   return (
+    // Note: This is not a11y optimized. It would only say "Button" when focused while using a screen reader.
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
-        <IconButton icon="globe" color="neutral" />
+        <IconButton icon="globe" />
       </DropdownMenu.Trigger>
       <DropdownMenu.Content>
-        <DropdownMenu.Item key="fi" onSelect={() => setLocale('fi')}>
+        <DropdownMenu.Item
+          key="fi"
+          onSelect={() => {
+            setLocale('fi');
+            AccessibilityInfo.announceForAccessibility(
+              _(msg`Language set to Finnish`)
+            );
+          }}
+        >
           <DropdownMenu.ItemTitle>{_(msg`Finnish`)}</DropdownMenu.ItemTitle>
         </DropdownMenu.Item>
-        <DropdownMenu.Item key="en" onSelect={() => setLocale('en')}>
+        <DropdownMenu.Item
+          key="en"
+          onSelect={() => {
+            setLocale('en');
+            AccessibilityInfo.announceForAccessibility(
+              _(msg`Language set to English`)
+            );
+          }}
+        >
           <DropdownMenu.ItemTitle>{_(msg`English`)}</DropdownMenu.ItemTitle>
         </DropdownMenu.Item>
       </DropdownMenu.Content>
