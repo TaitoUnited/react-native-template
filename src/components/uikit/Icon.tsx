@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import type { ViewStyle } from 'react-native';
+import type { AccessibilityProps, ViewStyle } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 
 import * as icons from '~design-system/icons';
@@ -19,12 +19,14 @@ export const Icon = memo(function Icon({
   color = 'text',
   size = 24,
   style,
-}: Props) {
+  ...rest
+}: Props & AccessibilityProps) {
   const theme = useTheme();
   const iconColor = theme.colors[color];
 
   return (
     <SvgXml
+      {...rest}
       xml={icons[name]}
       width={size}
       height={size}

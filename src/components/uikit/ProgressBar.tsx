@@ -28,7 +28,12 @@ export function ProgressBar({
   }
 
   return (
-    <ProgressContainer style={{ height }}>
+    <ProgressContainer
+      style={{ height }}
+      accessible
+      accessibilityRole="progressbar"
+      accessibilityValue={{ now: step, min: 0, max: totalSteps }}
+    >
       <Progress style={{ height, width: `${progress}%` }} />
     </ProgressContainer>
   );

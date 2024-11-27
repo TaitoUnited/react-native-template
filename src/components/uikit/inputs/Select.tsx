@@ -1,13 +1,19 @@
 import { i18n } from '@lingui/core';
 import { msg } from '@lingui/macro';
 import {
-  type ComponentProps,
   forwardRef,
-  type ReactNode,
   useImperativeHandle,
   useState,
+  type ComponentProps,
+  type ReactNode,
 } from 'react';
-import { Keyboard, type ViewStyle } from 'react-native';
+import {
+  Keyboard,
+  type AccessibilityProps,
+  type ViewStyle,
+} from 'react-native';
+
+import { useI18n } from '~services/i18n';
 
 import type { IconName } from '../Icon';
 import { PickerModal } from '../PickerModal';
@@ -42,7 +48,9 @@ type MultipleValueProps = {
   onChange: (option: string[]) => void;
 };
 
-type Props = BaseProps & (SingleValueProps | MultipleValueProps);
+type Props = BaseProps &
+  (SingleValueProps | MultipleValueProps) &
+  AccessibilityProps;
 
 export const Select = forwardRef(
   (
@@ -58,10 +66,14 @@ export const Select = forwardRef(
       multiple = false,
       icon = 'arrowDropDown',
       onChange,
+      accessibilityRole,
+      accessibilityLabel,
+      accessibilityHint,
       ...rest
     }: Props,
     ref: any
   ) => {
+    const { _ } = useI18n();
     const [isPickerOpen, setPickerOpen] = useState(false);
     const visibleValue = Array.isArray(value)
       ? options
@@ -106,6 +118,9 @@ export const Select = forwardRef(
             Keyboard.dismiss();
             setPickerOpen(true);
           }}
+          accessibilityRole={accessibilityRole ?? 'button'}
+          accessibilityLabel={ accessibilityLabel ?? _(msg`Select input for ${label}, current value: ${value}`)} // prettier-ignore
+          accessibilityHint={accessibilityHint ?? _(msg`Double tap to open options to select`)} // prettier-ignore
         />
 
         {(!pickerType && options.length > 20) || pickerType === 'sheet' ? (
