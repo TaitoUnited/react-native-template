@@ -113,7 +113,6 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
                 color="error"
                 accessibilityLabel={_(msg`Required field indicator`)}
                 accessibilityHint={_(msg`This field is marked as required`)}
-
                 // eslint-disable-next-line lingui/no-unlocalized-strings
               >
                 *

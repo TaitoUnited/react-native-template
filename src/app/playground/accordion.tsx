@@ -7,7 +7,7 @@ export default function Accordions() {
       <Stack axis="y" spacing="2xl">
         <Stack axis="y" spacing="small">
           <Text variant="headingS">Accordion</Text>
-          <Accordion initialOpen={true} title="Accordion Heading">
+          <Accordion initialOpen title="Accordion Heading">
             <AccordionContent />
           </Accordion>
         </Stack>
@@ -15,7 +15,7 @@ export default function Accordions() {
         <Stack axis="y" spacing="small">
           <Text variant="headingS">Accordion with icon</Text>
           <Accordion
-            initialOpen={true}
+            initialOpen
             title="Accordion Heading"
             icon="checkCircle"
             iconColor="success"
