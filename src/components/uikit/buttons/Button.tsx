@@ -1,4 +1,4 @@
-import { ActivityIndicator, GestureResponderEvent } from 'react-native';
+import { ActivityIndicator, type GestureResponderEvent } from 'react-native';
 
 import { styled, useTheme, type Typography } from '~styles';
 import { haptics } from '~utils/haptics';

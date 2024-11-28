@@ -1,5 +1,5 @@
 import { msg } from '@lingui/macro';
-import { ActivityIndicator, GestureResponderEvent } from 'react-native';
+import { ActivityIndicator, type GestureResponderEvent } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
