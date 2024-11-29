@@ -6,11 +6,13 @@ import { Platform } from 'react-native';
  *
  * Determines whether to use haptic feedback.
  *
- * Haptic communication is a highly effective form of nonverbal communication in native applications.
+ * Haptic feedback provides a physical response to user interactions,
+ * enhancing the user experience in native applications. It is commonly
+ * used to signify actions such as clicks, selections, or the display of a toast message
  *
- * It is for example used to communicate clicks, selections, or the apperance of a toast message.
+ * Note: iOS devices produce more subtle haptic feedback compared to Android devices. It is now only used on iOS devices by default
  */
-const USE_HAPTICS = true;
+const USE_HAPTICS = Platform.OS === 'ios';
 
 export const HapticFeedback = {
   impactLight: 'impactLight',
