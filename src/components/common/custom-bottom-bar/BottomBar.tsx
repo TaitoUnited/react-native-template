@@ -3,6 +3,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { type TabList } from '~app/(tabs)/_layout';
 import { styled } from '~styles';
+import { haptics } from '~utils/haptics';
 
 import { TabBarButton } from './Tab';
 
@@ -42,6 +43,7 @@ export function BottomBar({
             canPreventDefault: true,
           });
           if (!isFocused && !event.defaultPrevented) {
+            haptics.selection();
             navigation.navigate(route.name, route.params);
           }
         };

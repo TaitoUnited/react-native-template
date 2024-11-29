@@ -4,6 +4,7 @@ import { Animated, PixelRatio } from 'react-native';
 
 import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
+import { haptics } from '~utils/haptics';
 
 import { Text } from '../Text';
 
@@ -16,9 +17,15 @@ type Props = {
 
 export function Radio({ onChange, checked, value, label }: Props) {
   const { _ } = useI18n();
+
+  function onPress() {
+    haptics.selection();
+    onChange(value);
+  }
+
   return (
     <Wrapper
-      onPress={() => onChange(value)}
+      onPress={onPress}
       activeOpacity={0.8}
       accessible
       accessibilityRole="radio"

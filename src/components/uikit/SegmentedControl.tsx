@@ -10,6 +10,7 @@ import Animated, {
 
 import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
+import { haptics } from '~utils/haptics';
 
 import { Text } from './Text';
 
@@ -56,6 +57,7 @@ function Segments<T>({
   function handleSegmentChange(index: number) {
     offset.value = segmentSize * index;
     onSelect(segments[index].value);
+    haptics.selection();
   }
 
   return (

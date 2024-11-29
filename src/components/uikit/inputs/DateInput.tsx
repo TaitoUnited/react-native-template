@@ -12,6 +12,7 @@ import DatePicker from 'react-native-date-picker';
 import { useColorMode } from '~services/color-mode';
 import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
+import { haptics } from '~utils/haptics';
 
 import { type IconName } from '../Icon';
 import { Text } from '../Text';
@@ -81,6 +82,7 @@ export const DateInput = forwardRef(
             // Dismissing the keyboard is necessary to force any focused input to blur
             Keyboard.dismiss();
             setPickerOpen(true);
+            haptics.selection();
           }}
           accessibilityLabel={accessibilityLabel ?? _(msg`Date picker input for ${label}, current value: ${value}`)} // prettier-ignore
           accessibilityHint={accessibilityHint ?? _(msg`Double tap to open date picker`)} // prettier-ignore

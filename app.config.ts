@@ -36,7 +36,7 @@ const expoConfig: ExpoConfig = {
       backgroundColor: config.adaptiveIcon.backgroundColor,
     },
     // Add more Android permissions here
-    permissions: [],
+    permissions: ['VIBRATE'],
   },
   ios: {
     bundleIdentifier: appId,

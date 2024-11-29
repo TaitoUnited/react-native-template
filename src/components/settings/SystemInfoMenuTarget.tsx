@@ -17,6 +17,7 @@ import { showToast } from '~components/common/Toaster';
 import { Text } from '~components/uikit';
 import config from '~constants/config';
 import { useI18n } from '~services/i18n';
+import { haptics } from '~utils/haptics';
 
 export function SystemInfoMenuTarget() {
   const { _ } = useI18n();
@@ -68,6 +69,7 @@ export function SystemInfoMenuTarget() {
         <TouchableOpacity
           accessibilityRole="button"
           onLongPress={async () => {
+            haptics.notificationSuccess();
             await setStringAsync(updateId);
             showToast({
               title: _(msg`Copied to clipboard`),

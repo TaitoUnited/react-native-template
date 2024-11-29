@@ -12,6 +12,6 @@ export type Config = {
     backgroundColor: string;
     image: string;
   };
-  appStoreUrl?: string;
-  playStoreUrl?: string;
+  appStoreUrl?: string; // You can safely remove this if you do not use the Store Review feature
+  playStoreUrl?: string; // You can safely remove this if you do not use the Store Review feature
 };

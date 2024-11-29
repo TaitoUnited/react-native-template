@@ -9,6 +9,7 @@ import type { IconName } from '~components/uikit/Icon';
 import * as icons from '~design-system/icons';
 import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
+import { haptics } from '~utils/haptics';
 
 export default function Icons() {
   const { _ } = useI18n();
@@ -23,6 +24,7 @@ export default function Icons() {
             <Pressable
               key={name}
               onLongPress={async () => {
+                haptics.notificationSuccess();
                 await setStringAsync(name);
                 showToast({
                   title: _(msg`Copied to clipboard`),

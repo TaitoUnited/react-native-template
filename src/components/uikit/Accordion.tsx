@@ -5,6 +5,7 @@ import Collapsible, { type CollapsibleProps } from 'react-native-collapsible';
 
 import { useI18n } from '~services/i18n';
 import { styled, type Color } from '~styles';
+import { haptics } from '~utils/haptics';
 
 import { Icon, type IconName } from './Icon';
 import { Text } from './Text';
@@ -29,10 +30,15 @@ export function Accordion({
   const { _ } = useI18n();
   const [collapsed, setCollapsed] = useState(!initialOpen);
 
+  function onPress() {
+    haptics.selection();
+    setCollapsed((p) => !p);
+  }
+
   return (
     <Stack axis="y" spacing="small">
       <TouchableOpacity
-        onPress={() => setCollapsed((p) => !p)}
+        onPress={onPress}
         accessibilityRole="header"
         accessibilityLabel={title}
         accessibilityState={{ expanded: !collapsed }}

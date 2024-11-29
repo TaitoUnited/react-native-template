@@ -8,6 +8,7 @@ import { useAuthStore } from '~services/auth';
 import { useI18n } from '~services/i18n';
 import { styled } from '~styles/styled';
 import { announceForAccessibility } from '~utils/a11y';
+import { haptics } from '~utils/haptics';
 
 type Credentials = {
   email: string;
@@ -41,6 +42,7 @@ export default function Signup() {
       announceForAccessibility({
         message: _(msg`Signed up successfully, entering the app`),
       });
+      haptics.notificationSuccess();
     } catch (error) {
       console.log('> Failed to signup', error);
       showToast({ title: _(msg`Failed to signup`), type: 'error' });
