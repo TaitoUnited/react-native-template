@@ -104,6 +104,14 @@ const expoConfig: ExpoConfig = {
       'expo-build-properties',
       { android: { extraProguardRules: getExtraProguardRules() } },
     ],
+    [
+      '@sentry/react-native/expo',
+      {
+        organization: 'taito-united',
+        project: 'react-native', // TODO change this to your project name
+        url: 'https://sentry.io/',
+      },
+    ],
   ],
 };
 
