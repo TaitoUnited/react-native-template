@@ -107,8 +107,14 @@ const expoConfig: ExpoConfig = {
     [
       '@sentry/react-native/expo',
       {
+        /**
+         * _[CUSTOMIZE]_
+         *
+         * Create a project in sentry and customize these to match the project.
+         */
+
         organization: 'taito-united',
-        project: 'react-native', // TODO change this to your project name
+        project: 'react-native',
         url: 'https://sentry.io/',
       },
     ],
