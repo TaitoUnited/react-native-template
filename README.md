@@ -33,6 +33,13 @@ Update the following fields in the `config/app.config.ts`:
 
 Follow this [CICD guide](/docs/CICD.md).
 
+### Setup Sentry
+
+1. Create a project in [Sentry](https://sentry.io) (get credentials from Taito).
+2. In Sentry dashboard, go to project settings, click **Client Keys (DSN)** and copy the DSN to Sentry initialization configurations in `src/app/_layout.tsx`.
+3. Replace the project name in sentry config in `app.config.ts` with the project name you created in Sentry.
+4. To allow the Expo CI to upload source maps to sentry, you have to add a sentry auth token to expo. In Sentry dashboard General Settings (not project specific), go to **Auth Tokens** and **Create New Token**. Name it after your project. Copy it to create an environment variable in your **Expo** project: **Environment variables** > **Add variable** > Name: `SENTRY_AUTH_TOKEN`, paste the value, and set **Visibility** to **Secret**.
+
 ### Setup a design system
 
 1. If you don't have a design system yet clone the [Design System Template](https://www.figma.com/file/vEO1Adp6j0nHiiq9BiexE1/Design-System-Template) project in Figma.
