@@ -25,13 +25,7 @@ const navigationIntegration = Sentry.reactNavigationIntegration({
 });
 
 Sentry.init({
-  /**
-   * _[CUSTOMIZE]_
-   * Replace DSN with the one from Sentry project settings.
-   * Adjust tracesSampleRate and enableNativeFramesTracking if performance tracing is necessary.
-   */
-
-  dsn: '',
+  dsn: process.env.EXPO_PUBLIC_SENTRY_DSN,
   tracesSampleRate: 0.0,
   enableNativeFramesTracking: false,
   integrations: [navigationIntegration],
