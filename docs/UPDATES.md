@@ -9,3 +9,5 @@ You can find the Expo documentation [here](https://docs.expo.dev/versions/latest
 We built a custom script to make it easier to publish updates. You can run the script `eas:update` to publish an update to the app.
 
 The script will ask you for which environment you want to publish the update to (e.g. **Testing** or **Production**) and for a description of the update (e.g. _"Fixing the login issue"_), which will be helpful to know what was changed in the update when looking at the EAS dashboard.
+
+**Notice**: On your first update, verify that the channel and branch is linked by running `eas channel:list`. If your channel says "No branches are pointing to this channel", you need to link it manually by `eas channel:edit`.
