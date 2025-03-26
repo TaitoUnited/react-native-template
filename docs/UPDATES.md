@@ -6,6 +6,6 @@ You can find the Expo documentation [here](https://docs.expo.dev/versions/latest
 
 ## Publishing an update
 
-We built a custom script to make it easier to publish updates. You can run the script `eas:update` to publish an update to the app.
+We built a custom script to make it easier to publish updates. You can run the script `eas:update` to publish an update to the app. It will also take care of uploading source maps to sentry.
 
 The script will ask you for which environment you want to publish the update to (e.g. **Testing** or **Production**) and for a description of the update (e.g. _"Fixing the login issue"_), which will be helpful to know what was changed in the update when looking at the EAS dashboard.
