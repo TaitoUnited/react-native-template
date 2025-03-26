@@ -1,8 +1,16 @@
 import { registerDevMenuItems } from 'expo-dev-menu';
-import { Stack, router, usePathname, useSegments } from 'expo-router';
+import {
+  Stack,
+  router,
+  useNavigationContainerRef,
+  usePathname,
+  useSegments,
+} from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
+import * as Sentry from '@sentry/react-native';
 import { useEffect } from 'react';
 import { DevSettings, Platform } from 'react-native';
+import { isRunningInExpoGo } from 'expo';
 
 import Providers from '~Providers';
 import StatusBar from '~components/common/StatusBar';
@@ -11,6 +19,17 @@ import { useAuthStore } from '~services/auth';
 import { useEffectEvent } from '~utils/common';
 import { useAppReady } from '~utils/init';
 import { useDefaultStackScreenOptions } from '~utils/navigation';
+
+const navigationIntegration = Sentry.reactNavigationIntegration({
+  enableTimeToInitialDisplay: !isRunningInExpoGo(),
+});
+
+Sentry.init({
+  dsn: process.env.EXPO_PUBLIC_SENTRY_DSN,
+  tracesSampleRate: 0.0,
+  enableNativeFramesTracking: false,
+  integrations: [navigationIntegration],
+});
 
 if (__DEV__ && ['android', 'ios'].includes(Platform.OS)) {
   const devMenuItems = [
@@ -32,8 +51,16 @@ if (__DEV__ && ['android', 'ios'].includes(Platform.OS)) {
 
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
+const RootLayout = () => {
   const appReady = useAppReady();
+
+  const ref = useNavigationContainerRef();
+
+  useEffect(() => {
+    if (ref?.current) {
+      navigationIntegration.registerNavigationContainer(ref);
+    }
+  }, [ref]);
 
   if (!appReady) return null;
 
@@ -45,7 +72,7 @@ export default function RootLayout() {
       {appReady && <RouteProtection />}
     </Providers>
   );
-}
+};
 
 function RootLayoutNavigator() {
   const screenOptions = useDefaultStackScreenOptions();
@@ -61,6 +88,8 @@ function RootLayoutNavigator() {
     </Stack>
   );
 }
+
+export default Sentry.wrap(RootLayout);
 
 // We are guaranteed to be either in `unauthenticated` or `authenticated` state
 // at this point so we don't need to care about the other auth states

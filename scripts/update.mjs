@@ -1,8 +1,7 @@
+/* eslint-disable lingui/no-unlocalized-strings */
 import { spawnSync } from 'child_process';
 import inquirer from 'inquirer';
 import ora from 'ora';
-import fs from 'fs';
-import path from 'path';
 
 async function main() {
   const spinner = ora('Processing...');
@@ -23,9 +22,16 @@ async function main() {
     runPreBuildTasks(answers.profile);
 
     const command = constructEASCommand(branchName, answers.message);
-    console.info('> Command: ', command);
 
+    console.info('> Command: ', command);
     runCommandSync(command, `> EAS update finished for branch: ${branchName}`);
+
+    console.info('> Uploading source maps to sentry...');
+    runCommandSync(
+      `eas env:exec production 'npx sentry-expo-upload-sourcemaps dist'`,
+      `> Source maps uploaded to sentry.`
+    );
+
     spinner.succeed('Operation completed successfully.');
   } catch (error) {
     console.error('> Error:', error.message);

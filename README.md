@@ -33,6 +33,15 @@ Update the following fields in the `config/app.config.ts`:
 
 Follow this [CICD guide](/docs/CICD.md).
 
+### Setup Sentry
+
+1. Create a project in [Sentry](https://sentry.io) (get credentials from Taito).
+2. In Sentry dashboard, go to project settings, click **Client Keys (DSN)** and create a DSN. This is the URL that your app will send error reports to. Create a file in your project root named `.env.local` and paste the DSN there: `EXPO_PUBLIC_SENTRY_DSN=<your_dsn>`
+3. Push the env into Expo by `eas env:push`. Select all environments.
+4. Replace the project name in Sentry config in `app.config.ts` with the project name you created in Sentry.
+
+> Context: Sentry needs source maps to make the stacktraces more readable. Expo CI will do this automatically after building the app, and for OTA-updates, our `npm run eas:update` will also do this for you after publishing the update.
+
 ### Setup a design system
 
 1. If you don't have a design system yet clone the [Design System Template](https://www.figma.com/file/vEO1Adp6j0nHiiq9BiexE1/Design-System-Template) project in Figma.

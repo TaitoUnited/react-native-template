@@ -88,7 +88,8 @@
     "react-native-web": "~0.19.13",
     "stitches-native": "0.4.0",
     "zeego": "2.0.4",
-    "zustand": "5.0.1"
+    "zustand": "5.0.1",
+    "@sentry/react-native": "~6.3.0"
   },
   "devDependencies": {
     "@babel/core": "7.26.0",
