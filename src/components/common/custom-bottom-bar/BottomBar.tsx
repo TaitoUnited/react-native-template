@@ -1,4 +1,5 @@
 import { type BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { type TabList } from '~app/(tabs)/_layout';
 import { styled } from '~styles';
@@ -21,8 +22,9 @@ export function BottomBar({
   navigation,
   tabs,
 }: CustomTabBarProps) {
+  const { bottom } = useSafeAreaInsets();
   return (
-    <TabBarContainer>
+    <TabBarContainer style={{ paddingBottom: bottom }}>
       {state.routes.map((route, index) => {
         if (EXCLUDED_ROUTES.includes(route.name)) return null;
 

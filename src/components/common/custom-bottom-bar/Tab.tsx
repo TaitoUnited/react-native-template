@@ -57,6 +57,7 @@ export function TabBarButton({
   return (
     <Wrapper
       {...pressableProps}
+      testID={label}
       onPressIn={() => (iconScale.value = withTiming(0.8, { duration: 150 }))}
       onPressOut={() => (iconScale.value = withTiming(1, { duration: 150 }))}
       accessibilityRole="button"
