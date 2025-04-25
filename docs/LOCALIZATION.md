@@ -198,6 +198,56 @@ Fails the build if there are any missing translations. This ensures full coverag
 
 ---
 
+## 📁 Exporting/Importing Translations via CSV
+
+Use the `i18n:sync-csv` script to work with translators outside the codebase.
+
+---
+
+### 📦 Export Translations (PO ➡️ CSV)
+
+1. Run:
+
+   ```bash
+   npm run i18n:sync-csv
+   ```
+
+2. Choose **"Export translations (PO to CSV)"**
+3. Select which locales to export
+
+- The script will output `.csv` files to `.translations/untranslated/<locale>.csv`
+
+---
+
+### ✍️ Handling Translations with Translators
+
+1. Upload to the Excel file provided for translation  
+   _(Check [project links](/docs/README.md#links) for the shared document)_
+
+2. Translators should update the `msgstr[0]` column with their translations
+
+---
+
+### 📥 Import Translations (CSV ➡️ PO)
+
+1. Export the updated Excel sheet to CSV
+
+> ⚠️ **Important:** Excel may break special characters. Use Google Sheets to import and re-export if needed.
+
+2. Run:
+
+   ```bash
+   npm run i18n:sync-csv
+   ```
+
+3. Choose **"Import translations (CSV to PO)"**
+4. Select the locales
+
+- Input will be read from `.translations/translated/<locale>.csv`
+- The relevant `messages.po` files will be updated
+
+---
+
 ## ❓ FAQ & Resources
 
 - 📘 [LinguiJS Docs](https://lingui.dev/introduction)

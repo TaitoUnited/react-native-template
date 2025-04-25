@@ -13,626 +13,622 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/uikit/inputs/TextInput.tsx:167
+#: src/components/uikit/inputs/TextInput.tsx
 msgid "{label} input field"
 msgstr ""
 
-#: src/app/(tabs)/_layout.tsx:159
+#: src/app/(tabs)/_layout.tsx
 msgid "{title} tab"
 msgstr ""
 
-#: src/components/uikit/PickerModal.tsx:108
+#: src/components/uikit/PickerModal.tsx
 msgid "Allows you to pick an option from the list"
 msgstr ""
 
-#: src/components/store-review/StoreReview.tsx:80
+#: src/components/store-review/StoreReview.tsx
 msgid "An error occurred while requesting review"
 msgstr "Arvostelun pyytämisessä tapahtui virhe"
 
-#: src/components/settings/SystemInfoMenuTarget.tsx:46
+#: src/components/settings/SystemInfoMenuTarget.tsx
 msgid "API level"
 msgstr "API-taso"
 
-#: src/components/settings/SystemInfoMenuTarget.tsx:57
+#: src/components/settings/SystemInfoMenuTarget.tsx
 msgid "App environment"
 msgstr "Sovellusympäristö"
 
-#: src/components/settings/hooks.tsx:27
+#: src/components/settings/hooks.tsx
 msgid "Appearance"
 msgstr "Väriteema"
 
-#: src/app/(tabs)/settings.tsx:29
+#: src/app/(tabs)/settings.tsx
 msgid "Are you sure you want to logout?"
 msgstr "Oletko varma, että haluat kirjautua ulos?"
 
-#: src/components/settings/AppearanceMenuTarget.tsx:16
-#: src/components/settings/hooks.tsx:33
+#: src/components/settings/hooks.tsx
+#: src/components/settings/AppearanceMenuTarget.tsx
 msgid "Automatic"
 msgstr "Automaattinen"
 
-#: src/utils/navigation.tsx:37
+#: src/utils/navigation.tsx
 msgid "Back"
 msgstr "Takaisin"
 
-#: src/components/settings/SystemInfoMenuTarget.tsx:92
+#: src/components/settings/SystemInfoMenuTarget.tsx
 msgid "Bundle ID"
 msgstr "Pakettitunnus"
 
-#: src/app/(auth)/landing.tsx:45
-#: src/app/(auth)/landing.web.tsx:44
+#: src/app/(auth)/landing.web.tsx
+#: src/app/(auth)/landing.tsx
 msgid "By Taito United"
 msgstr "Taito Unitedilta"
 
-#: src/app/(tabs)/settings.tsx:30
-#: src/components/uikit/inputs/DateInput.tsx:101
-#: src/components/uikit/PickerModal.tsx:220
-#: src/components/uikit/PickerSheet.tsx:162
+#: src/components/uikit/PickerSheet.tsx
+#: src/components/uikit/PickerModal.tsx
+#: src/components/uikit/inputs/DateInput.tsx
+#: src/app/(tabs)/settings.tsx
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: src/utils/linking.ts:23
+#: src/utils/linking.ts
 msgid "Cannot open {type}"
 msgstr "Ei voida avata {type}"
 
-#: src/components/uikit/inputs/TextInput.tsx:129
+#: src/components/uikit/inputs/TextInput.tsx
 msgid "Character count"
 msgstr "Merkkimäärä"
 
-#: src/components/uikit/inputs/Checkbox.tsx:49
+#: src/components/uikit/inputs/Checkbox.tsx
 msgid "Checkbox option: {label}"
 msgstr "Valintaruudun vaihtoehto: {label}"
 
-#: src/components/uikit/inputs/TextInput.tsx:198
+#: src/components/uikit/inputs/TextInput.tsx
 msgid "Clear input"
 msgstr "Tyhjennä syöte"
 
-#: src/components/uikit/PickerSheet.tsx:264
+#: src/components/uikit/PickerSheet.tsx
 msgid "Clear selected ({numSelected})"
 msgstr "Tyhjennä valitut ({numSelected})"
 
-#: src/components/uikit/PickerSheet.tsx:260
+#: src/components/uikit/PickerSheet.tsx
 msgid "Clear selected options"
 msgstr "Tyhjennä valitut vaihtoehdot"
 
-#: src/components/uikit/PickerModal.tsx:220
-#: src/components/uikit/PickerSheet.tsx:162
-#: src/services/permissions.tsx:110
-#: src/services/permissions.tsx:126
+#: src/services/permissions.tsx
+#: src/services/permissions.tsx
+#: src/components/uikit/PickerSheet.tsx
+#: src/components/uikit/PickerModal.tsx
 msgid "Close"
 msgstr "Sulje"
 
-#: src/components/uikit/PickerSheet.tsx:156
+#: src/components/uikit/PickerSheet.tsx
 msgid "Close the picker"
 msgstr "Sulje valinta"
 
-#: src/components/uikit/PickerSheet.tsx:158
+#: src/components/uikit/PickerSheet.tsx
 msgid "Close the picker without selecting any option"
 msgstr "Sulje valitsin ilman valintaa"
 
-#: src/components/uikit/PickerModal.tsx:141
+#: src/components/uikit/PickerModal.tsx
 msgid "Closing the picker modal with selected option {value}"
 msgstr "Suljetaan valitsinikkuna valitulla vaihtoehdolla {value}"
 
-#: src/components/uikit/inputs/DateInput.tsx:100
+#: src/components/uikit/inputs/DateInput.tsx
 msgid "Confirm"
 msgstr "Vahvista"
 
-#: src/components/uikit/PickerSheet.tsx:170
+#: src/components/uikit/PickerSheet.tsx
 msgid "Confirm selected options and close the picker"
 msgstr "Vahvista valitut vaihtoehdot ja sulje valitsin"
 
-#: src/components/uikit/PickerSheet.tsx:173
+#: src/components/uikit/PickerSheet.tsx
 msgid "Confirming selected options will close the picker"
 msgstr ""
 
-#: src/app/playground/icons.tsx:30
-#: src/components/settings/SystemInfoMenuTarget.tsx:75
+#: src/components/settings/SystemInfoMenuTarget.tsx
 msgid "Copied to clipboard"
 msgstr "Kopioitu leikepöydälle"
 
-#: src/components/store-review/StoreReview.tsx:108
+#: src/components/store-review/StoreReview.tsx
 msgid "Could be better"
 msgstr "Voisi olla parempi"
 
-#: src/services/auth.tsx:104
+#: src/services/auth.tsx
 msgid "Could not connect to server"
 msgstr "Ei voitu yhdistää palvelimeen"
 
-#: src/services/permissions.tsx:123
+#: src/services/permissions.tsx
 msgid "Could not toggle permission. You can change the permission in the system settings."
 msgstr "Ei voitu muuttaa lupaa. Voit muuttaa lupaa järjestelmäasetuksista."
 
-#: src/app/(auth)/landing.tsx:80
-#: src/app/(auth)/landing.web.tsx:73
-#: src/app/(auth)/signup.tsx:58
+#: src/app/(auth)/signup.tsx
+#: src/app/(auth)/landing.web.tsx
+#: src/app/(auth)/landing.tsx
 msgid "Create an account"
 msgstr "Luo uusi tili"
 
-#: src/components/settings/AppearanceMenuTarget.tsx:22
-#: src/components/settings/hooks.tsx:32
+#: src/components/settings/hooks.tsx
+#: src/components/settings/AppearanceMenuTarget.tsx
 msgid "Dark"
 msgstr "Tumma"
 
-#: src/components/uikit/inputs/DateInput.tsx:87
+#: src/components/uikit/inputs/DateInput.tsx
 msgid "Date picker input for {label}, current value: {value}"
 msgstr "Päivämäärän valitsin {label}, nykyinen arvo: {value}"
 
-#: src/components/settings/SystemInfoMenuTarget.tsx:29
+#: src/components/settings/SystemInfoMenuTarget.tsx
 msgid "Device ID"
 msgstr "Laitetunnus"
 
-#: src/app/(auth)/signup.tsx:61
+#: src/app/(auth)/signup.tsx
 msgid "Don‘t worry, these won‘t actually be saved."
 msgstr "Älä huoli, mitään ei oikeasti tallenneta"
 
-#: src/components/uikit/PickerModal.tsx:230
-#: src/components/uikit/PickerSheet.tsx:177
+#: src/components/uikit/PickerSheet.tsx
+#: src/components/uikit/PickerModal.tsx
 msgid "Done"
 msgstr "Valmis"
 
-#: src/components/uikit/inputs/Checkbox.tsx:53
+#: src/components/uikit/inputs/Checkbox.tsx
 msgid "Double tap to check this option"
 msgstr "Tuplaklikkaa valitaksesi tämä vaihtoehto"
 
-#: src/components/uikit/PickerSheet.tsx:261
+#: src/components/uikit/PickerSheet.tsx
 msgid "Double tap to clear selected options"
 msgstr "Tuplaklikkaa tyhjentääksesi valitut vaihtoehdot"
 
-#: src/components/uikit/inputs/TextInput.tsx:199
+#: src/components/uikit/inputs/TextInput.tsx
 msgid "Double tap to clear the input"
 msgstr "Tuplaklikkaa tyhjentääksesi syötteen"
 
-#: src/components/uikit/Accordion.tsx:48
+#: src/components/uikit/Accordion.tsx
 msgid "Double tap to collapse the content"
 msgstr "Tuplaklikkaa sulkeaksesi sisällön"
 
-#: src/components/uikit/inputs/TextInput.tsx:108
+#: src/components/uikit/inputs/TextInput.tsx
 msgid "Double tap to edit {label}"
 msgstr ""
 
-#: src/components/uikit/inputs/InputButton.tsx:78
+#: src/components/uikit/inputs/InputButton.tsx
 msgid "Double tap to enter a value"
 msgstr "Tuplaklikkaa syöttääksesi arvon"
 
-#: src/components/uikit/Accordion.tsx:47
+#: src/components/uikit/Accordion.tsx
 msgid "Double tap to expand the content"
 msgstr "Tuplaklikkaa laajentaaksesi sisällön"
 
-#: src/app/(auth)/login.tsx:119
+#: src/app/(auth)/login.tsx
 msgid "Double tap to log in with the provided email and password"
 msgstr "Tuplaklikkaa kirjautuaksesi sähköpostilla ja salasanalla"
 
-#: src/components/uikit/inputs/DateInput.tsx:88
+#: src/components/uikit/inputs/DateInput.tsx
 msgid "Double tap to open date picker"
 msgstr "Tuplaklikkaa avataksesi päivämäärän valitsimen"
 
-#: src/components/uikit/inputs/Select.tsx:125
+#: src/components/uikit/inputs/Select.tsx
 msgid "Double tap to open options to select"
 msgstr "Tuplaklikkaa avataksesi valintavaihtoehdot"
 
-#: src/components/uikit/buttons/IconButton.tsx:96
+#: src/components/uikit/buttons/IconButton.tsx
 msgid "Double tap to perform action"
 msgstr "Tuplaklikkaa suorittaaksesi toiminnon"
 
-#: src/components/common/MenuList.tsx:70
+#. placeholder {0}: item.label
+#: src/components/common/MenuList.tsx
 msgid "Double tap to select {0}"
 msgstr "Tuplaklikkaa valitaksesi {0}"
 
-#: src/components/uikit/inputs/Radio.tsx:34
+#: src/components/uikit/inputs/Radio.tsx
 msgid "Double tap to select this option"
 msgstr "Tuplaklikkaa valitaksesi tämä vaihtoehto"
 
-#: src/components/uikit/SegmentedControl.tsx:120
+#: src/components/uikit/SegmentedControl.tsx
 msgid "Double tap to select this segment"
 msgstr "Tuplaklikkaa valitaksesi tämä segmentti"
 
-#: src/components/uikit/inputs/SearchInput.tsx:81
+#: src/components/uikit/inputs/SearchInput.tsx
 msgid "Double tap to select this suggestion"
 msgstr "Tuplaklikkaa valitaksesi tämä ehdotus"
 
-#: src/components/common/custom-bottom-bar/Tab.tsx:64
+#: src/components/common/custom-bottom-bar/Tab.tsx
 msgid "Double tap to select this tab"
 msgstr ""
 
-#: src/app/(auth)/signup.tsx:238
+#: src/app/(auth)/signup.tsx
 msgid "Double tap to signup with the provided information"
 msgstr "Tuplaklikkaa rekisteröityäksesi annetuilla tiedoilla"
 
-#: src/components/uikit/inputs/Checkbox.tsx:54
+#: src/components/uikit/inputs/Checkbox.tsx
 msgid "Double tap to uncheck this option"
 msgstr "Tuplaklikkaa poistaaksesi valinnan tästä vaihtoehdosta"
 
-#: src/app/(auth)/login.tsx:74
-#: src/app/(auth)/signup.tsx:88
+#: src/app/(auth)/signup.tsx
+#: src/app/(auth)/login.tsx
 msgid "Email"
 msgstr "Sähköposti"
 
-#: src/app/(auth)/login.tsx:66
-#: src/app/(auth)/signup.tsx:80
+#: src/app/(auth)/signup.tsx
+#: src/app/(auth)/login.tsx
 msgid "Email invalid"
 msgstr "Virheellinen sähköposti"
 
-#: src/app/(auth)/login.tsx:68
-#: src/app/(auth)/signup.tsx:82
+#: src/app/(auth)/signup.tsx
+#: src/app/(auth)/login.tsx
 msgid "Email required"
 msgstr "Sähköposti on pakollinen"
 
-#: src/app/(auth)/landing.tsx:123
-#: src/app/(auth)/landing.web.tsx:99
-#: src/components/settings/hooks.tsx:23
-#: src/components/settings/LanguageMenuTarget.tsx:14
+#: src/components/settings/hooks.tsx
+#: src/components/settings/LanguageMenuTarget.tsx
+#: src/app/(auth)/landing.web.tsx
+#: src/app/(auth)/landing.tsx
 msgid "English"
 msgstr "Englanti"
 
-#: src/components/store-review/StoreReview.tsx:93
+#: src/components/store-review/StoreReview.tsx
 msgid "Enjoying the app?"
 msgstr "Nautitko sovelluksesta?"
 
-#: src/components/uikit/inputs/TextInput.tsx:168
+#: src/components/uikit/inputs/TextInput.tsx
 msgid "Enter your {label} here"
 msgstr "Anna {label} tähän"
 
-#: src/app/(auth)/login.tsx:42
+#: src/app/(auth)/login.tsx
 msgid "Enter your credentials"
 msgstr "Syötä tunnuksesi"
 
-#: src/app/(auth)/login.tsx:32
+#: src/app/(auth)/login.tsx
 msgid "Failed to login"
 msgstr "Sisäänkirjautuminen epäonnistui"
 
-#: src/app/(auth)/signup.tsx:48
+#: src/app/(auth)/signup.tsx
 msgid "Failed to signup"
 msgstr "Rekisteröityminen epäonnistui"
 
-#: src/components/store-review/ImprovementForm.tsx:67
+#: src/components/store-review/ImprovementForm.tsx
 msgid "Feedback is required"
 msgstr "Palaute on pakollinen"
 
-#: src/components/store-review/ImprovementForm.tsx:34
+#: src/components/store-review/ImprovementForm.tsx
 msgid "Feedback sent!"
 msgstr "Palaute lähetetty!"
 
-#: src/components/settings/SystemInfoMenuTarget.tsx:31
+#: src/components/settings/SystemInfoMenuTarget.tsx
 msgid "Fetching..."
 msgstr "Haetaan..."
 
-#: src/app/(auth)/landing.tsx:112
-#: src/app/(auth)/landing.web.tsx:96
-#: src/components/settings/LanguageMenuTarget.tsx:20
+#: src/components/settings/LanguageMenuTarget.tsx
+#: src/app/(auth)/landing.web.tsx
+#: src/app/(auth)/landing.tsx
 msgid "Finnish"
 msgstr "Suomi"
 
-#: src/app/(auth)/signup.tsx:110
+#: src/app/(auth)/signup.tsx
 msgid "First name"
 msgstr "Etunimi"
 
-#: src/app/(auth)/signup.tsx:105
+#: src/app/(auth)/signup.tsx
 msgid "First name is required"
 msgstr "Etunimi on pakollinen"
 
-#: src/components/uikit/inputs/TextInput.tsx:181
+#: src/components/uikit/inputs/TextInput.tsx
 msgid "Hide text by toggling visibility"
 msgstr "Piilota teksti vaihtamalla näkyvyyttä"
 
-#: src/app/(tabs)/_layout.tsx:52
-#: src/app/(tabs)/_layout.web.tsx:20
-#: src/app/(tabs)/home.tsx:10
+#: src/app/(tabs)/home.tsx
+#: src/app/(tabs)/_layout.web.tsx
+#: src/app/(tabs)/_layout.tsx
 msgid "Home"
 msgstr "Koti"
 
-#: src/components/store-review/ImprovementForm.tsx:56
+#: src/components/store-review/ImprovementForm.tsx
 msgid "How can we improve?"
 msgstr "Kuinka voimme parantaa?"
 
-#: src/app/(tabs)/settings.tsx:31
+#: src/app/(tabs)/settings.tsx
 msgid "I am sure"
 msgstr "Olen varma"
 
-#: src/components/uikit/buttons/IconButton.tsx:95
+#: src/components/uikit/buttons/IconButton.tsx
 msgid "Icon button with {icon} icon"
 msgstr "Kuvakepainike, jossa {icon} kuvake"
 
-#: src/components/settings/hooks.tsx:37
+#: src/components/settings/hooks.tsx
 msgid "Info"
 msgstr "Tiedot"
 
-#: src/components/uikit/inputs/TextInput.tsx:212
+#: src/components/uikit/inputs/TextInput.tsx
 msgid "Informational message for the {label} input field"
 msgstr "Informatiivinen viesti {label} syötekentälle"
 
-#: src/components/common/MenuList.tsx:68
+#: src/components/common/MenuList.tsx
 msgid "Item"
 msgstr "Kohde"
 
-#: src/components/uikit/inputs/TextInput.tsx:107
+#: src/components/uikit/inputs/TextInput.tsx
 msgid "Label for {label} input"
 msgstr "Nimike {label} syötteelle"
 
-#: src/components/settings/hooks.tsx:22
+#: src/components/settings/hooks.tsx
 msgid "Language"
 msgstr "Kieli"
 
-#: src/app/(auth)/landing.tsx:119
+#: src/app/(auth)/landing.tsx
 msgid "Language set to English"
 msgstr ""
 
-#: src/app/(auth)/landing.tsx:108
+#: src/app/(auth)/landing.tsx
 msgid "Language set to Finnish"
 msgstr ""
 
-#: src/app/(auth)/signup.tsx:129
+#: src/app/(auth)/signup.tsx
 msgid "Last name"
 msgstr "Sukunimi"
 
-#: src/app/(auth)/signup.tsx:124
+#: src/app/(auth)/signup.tsx
 msgid "Last name is required"
 msgstr "Sukunimi on pakollinen"
 
-#: src/components/settings/AppearanceMenuTarget.tsx:28
-#: src/components/settings/hooks.tsx:30
+#: src/components/settings/hooks.tsx
+#: src/components/settings/AppearanceMenuTarget.tsx
 msgid "Light"
 msgstr "Vaalea"
 
-#: src/app/(auth)/login.tsx:27
+#: src/app/(auth)/login.tsx
 msgid "Logged in successfully, entering the app"
 msgstr "Kirjautuminen onnistui, siirrytään sovellukseen"
 
-#: src/app/(tabs)/settings.tsx:23
+#: src/app/(tabs)/settings.tsx
 msgid "Logged out successfully, back to the landing page"
 msgstr "Uloskirjautuminen onnistui, palataan aloitussivulle"
 
-#: src/app/(auth)/_layout.tsx:14
-#: src/app/(auth)/login.tsx:121
+#: src/app/(auth)/login.tsx
+#: src/app/(auth)/_layout.tsx
 msgid "Login"
 msgstr "Kirjaudu sisään"
 
-#: src/app/(tabs)/settings.tsx:42
+#: src/app/(tabs)/settings.tsx
 msgid "Logout"
 msgstr "Kirjaudu ulos"
 
-#: src/components/store-review/StoreReview.tsx:101
+#: src/components/store-review/StoreReview.tsx
 msgid "Loving it"
 msgstr "Rakastan tätä"
 
-#: src/components/settings/SystemInfoMenuTarget.tsx:36
+#: src/components/settings/SystemInfoMenuTarget.tsx
 msgid "Model name"
 msgstr "Mallin nimi"
 
-#: src/app/(auth)/landing.tsx:60
+#: src/app/(auth)/landing.tsx
 msgid "Navigates to the sign-in screen"
 msgstr "Siirtyy kirjautumisnäyttöön"
 
-#: src/app/(auth)/landing.tsx:77
+#: src/app/(auth)/landing.tsx
 msgid "Navigates to the sign-up screen"
 msgstr "Siirtyy rekisteröitymisnäyttöön"
 
-#: src/components/uikit/PickerSheet.tsx:280
+#: src/components/uikit/PickerSheet.tsx
 msgid "No results found."
 msgstr "Ei tuloksia."
 
-#: src/components/uikit/inputs/TextInput.tsx:131
+#: src/components/uikit/inputs/TextInput.tsx
 msgid "Number of characters entered in the input field: currently {characterCount} out of {maxLength}"
 msgstr "Syötekenttään syötettyjen merkkien määrä: tällä hetkellä {characterCount} / {maxLength}"
 
-#: src/components/playground/utils.tsx:30
-msgid "Open playground"
-msgstr "Avaa leikkikenttä"
-
-#: src/services/permissions.tsx:111
-#: src/services/permissions.tsx:127
+#: src/services/permissions.tsx
+#: src/services/permissions.tsx
 msgid "Open settings"
 msgstr "Avaa asetukset"
 
-#: src/app/(auth)/landing.tsx:70
-#: src/app/(auth)/landing.web.tsx:66
+#: src/app/(auth)/landing.web.tsx
+#: src/app/(auth)/landing.tsx
 msgid "Or"
 msgstr "Tai"
 
-#: src/app/(auth)/login.tsx:97
-#: src/app/(auth)/signup.tsx:180
+#: src/app/(auth)/signup.tsx
+#: src/app/(auth)/login.tsx
 msgid "Password"
 msgstr "Salasana"
 
-#: src/app/(auth)/signup.tsx:216
+#: src/app/(auth)/signup.tsx
 msgid "Password again"
 msgstr "Salasana uudelleen"
 
-#: src/app/(auth)/login.tsx:92
-#: src/app/(auth)/signup.tsx:174
-#: src/app/(auth)/signup.tsx:210
+#: src/app/(auth)/signup.tsx
+#: src/app/(auth)/signup.tsx
+#: src/app/(auth)/login.tsx
 msgid "Password is required"
 msgstr "Salasana on pakollinen"
 
-#: src/app/(auth)/signup.tsx:172
-#: src/app/(auth)/signup.tsx:208
+#: src/app/(auth)/signup.tsx
+#: src/app/(auth)/signup.tsx
 msgid "Password must be at least 8 characters"
 msgstr "Salasanan on oltava vähintään 8 merkkiä pitkä"
 
-#: src/app/(auth)/signup.tsx:206
+#: src/app/(auth)/signup.tsx
 msgid "Passwords do not match"
 msgstr "Salasanat eivät täsmää"
 
-#: src/utils/linking.ts:36
+#: src/utils/linking.ts
 msgid "phone app"
 msgstr "puhelinsovellus"
 
-#: src/app/(auth)/signup.tsx:152
+#: src/app/(auth)/signup.tsx
 msgid "Phone number"
 msgstr "Puhelinnumero"
 
-#: src/app/(auth)/signup.tsx:143
+#: src/app/(auth)/signup.tsx
 msgid "Phone number is required"
 msgstr "Puhelinnumero on pakollinen"
 
-#: src/components/uikit/PickerModal.tsx:107
+#: src/components/uikit/PickerModal.tsx
 msgid "Picker Modal"
 msgstr "Valintaikkuna"
 
-#: src/components/common/ErrorBoundary.tsx:42
+#: src/components/common/ErrorBoundary.tsx
 msgid "Please try restarting the application."
 msgstr "Yritä käynnistää sovellus uudelleen."
 
-#: src/app/(auth)/signup.tsx:147
+#: src/app/(auth)/signup.tsx
 msgid "Preferred format: +358400123456"
 msgstr "Suositeltu muoto: +358400123456"
 
-#: src/app/(tabs)/_layout.tsx:65
-#: src/app/(tabs)/_layout.web.tsx:33
-#: src/app/(tabs)/profile.tsx:10
+#: src/app/(tabs)/profile.tsx
+#: src/app/(tabs)/_layout.web.tsx
+#: src/app/(tabs)/_layout.tsx
 msgid "Profile"
 msgstr "Profiili"
 
-#: src/components/uikit/inputs/Radio.tsx:33
+#: src/components/uikit/inputs/Radio.tsx
 msgid "Radio option: {label}"
 msgstr "Valintanapin vaihtoehto: {label}"
 
-#: src/components/uikit/inputs/TextInput.tsx:116
+#: src/components/uikit/inputs/TextInput.tsx
 msgid "Required field indicator"
 msgstr "Pakollisen kentän merkki"
 
-#: src/app/(tabs)/_layout.tsx:58
-#: src/app/(tabs)/_layout.web.tsx:26
-#: src/app/(tabs)/search.tsx:10
-#: src/components/uikit/inputs/SearchInput.tsx:28
+#: src/components/uikit/inputs/SearchInput.tsx
+#: src/app/(tabs)/search.tsx
+#: src/app/(tabs)/_layout.web.tsx
+#: src/app/(tabs)/_layout.tsx
 msgid "Search"
 msgstr "Hae"
 
-#: src/components/uikit/inputs/SearchInput.tsx:69
+#: src/components/uikit/inputs/SearchInput.tsx
 msgid "Search input"
 msgstr ""
 
-#: src/components/uikit/PickerSheet.tsx:243
+#: src/components/uikit/PickerSheet.tsx
 msgid "Search options"
 msgstr ""
 
-#: src/components/uikit/SegmentedControl.tsx:119
+#: src/components/uikit/SegmentedControl.tsx
 msgid "Segment {label}"
 msgstr ""
 
-#: src/components/uikit/inputs/Select.tsx:63
+#: src/components/uikit/inputs/Select.tsx
 msgid "Select"
 msgstr "Valitse"
 
-#: src/components/uikit/inputs/Select.tsx:124
+#: src/components/uikit/inputs/Select.tsx
 msgid "Select input for {label}, current value: {value}"
 msgstr ""
 
-#: src/components/common/MenuList.tsx:68
+#: src/components/common/MenuList.tsx
 msgid "Selected value"
 msgstr ""
 
-#: src/app/(tabs)/_layout.tsx:72
-#: src/app/(tabs)/_layout.web.tsx:40
+#: src/app/(tabs)/_layout.web.tsx
+#: src/app/(tabs)/_layout.tsx
 msgid "Settings"
 msgstr "Asetukset"
 
-#: src/components/uikit/inputs/TextInput.tsx:182
+#: src/components/uikit/inputs/TextInput.tsx
 msgid "Show text by toggling visibility"
 msgstr "Näytä teksti vaihtamalla näkyvyyttä"
 
-#: src/app/(auth)/landing.tsx:63
-#: src/app/(auth)/landing.web.tsx:59
+#: src/app/(auth)/landing.web.tsx
+#: src/app/(auth)/landing.tsx
 msgid "Sign in"
 msgstr "Kirjaudu sisään"
 
-#: src/app/(auth)/signup.tsx:43
+#: src/app/(auth)/signup.tsx
 msgid "Signed up successfully, entering the app"
 msgstr "Rekisteröityminen onnistui, siirrytään sovellukseen"
 
-#: src/app/(auth)/_layout.tsx:15
-#: src/app/(auth)/signup.tsx:240
+#: src/app/(auth)/signup.tsx
+#: src/app/(auth)/_layout.tsx
 msgid "Signup"
 msgstr "Rekisteröidy"
 
-#: src/components/common/ErrorBoundary.tsx:39
-#: src/services/permissions.tsx:121
-#: src/utils/linking.ts:30
+#: src/utils/linking.ts
+#: src/services/permissions.tsx
+#: src/components/common/ErrorBoundary.tsx
 msgid "Something went wrong"
 msgstr "Jotain meni pieleen"
 
-#: src/components/store-review/StoreReview.tsx:81
+#: src/components/store-review/StoreReview.tsx
 msgid "Sorry about the inconvenience"
 msgstr "Pahoittelemme häiriötä"
 
-#: src/app/(auth)/landing.tsx:55
-#: src/app/(auth)/landing.web.tsx:54
+#: src/app/(auth)/landing.web.tsx
+#: src/app/(auth)/landing.tsx
 msgid "Start your journey"
 msgstr "Aloita matkasi"
 
-#: src/components/store-review/ImprovementForm.tsx:94
+#: src/components/store-review/ImprovementForm.tsx
 msgid "Submit feedback"
 msgstr "Lähetä palaute"
 
-#: src/components/settings/hooks.tsx:23
+#: src/components/settings/hooks.tsx
 msgid "Suomi"
 msgstr "Suomi"
 
-#: src/components/settings/SystemInfoMenuTarget.tsx:41
+#: src/components/settings/SystemInfoMenuTarget.tsx
 msgid "System version"
 msgstr "Järjestelmän versio"
 
-#: src/app/(auth)/landing.tsx:35
-#: src/app/(auth)/landing.web.tsx:34
+#: src/app/(auth)/landing.web.tsx
+#: src/app/(auth)/landing.tsx
 msgid "Taito Template"
 msgstr "Taito-pohja"
 
-#: src/components/store-review/ImprovementForm.tsx:35
+#: src/components/store-review/ImprovementForm.tsx
 msgid "Thank you"
 msgstr "Kiitos"
 
-#: src/components/uikit/inputs/TextInput.tsx:117
+#: src/components/uikit/inputs/TextInput.tsx
 msgid "This field is marked as required"
 msgstr ""
 
-#: src/components/uikit/inputs/TextInput.tsx:213
+#: src/components/uikit/inputs/TextInput.tsx
 msgid "This is an error message for the {label} input field"
 msgstr "Tämä on virheilmoitus {label} syötekentälle"
 
-#: src/components/uikit/inputs/TextInput.tsx:178
+#: src/components/uikit/inputs/TextInput.tsx
 msgid "Toggle visibility"
 msgstr "Vaihda näkyvyyttä"
 
-#: src/components/uikit/PickerSheet.tsx:283
+#: src/components/uikit/PickerSheet.tsx
 msgid "Try changing your search term."
 msgstr "Kokeile muuttaa hakutermiä."
 
-#: src/components/uikit/inputs/TextInput.tsx:40
+#: src/components/uikit/inputs/TextInput.tsx
 msgid "Type here"
 msgstr "Kirjoita tähän"
 
-#: src/components/uikit/PickerSheet.tsx:244
+#: src/components/uikit/PickerSheet.tsx
 msgid "Type to search and filter options"
 msgstr ""
 
-#: src/components/uikit/inputs/SearchInput.tsx:70
+#: src/components/uikit/inputs/SearchInput.tsx
 msgid "Type to search and select from suggestions"
 msgstr ""
 
-#: src/services/permissions.tsx:107
+#: src/services/permissions.tsx
 msgid "Unable to change permission"
 msgstr "Lupaa ei voitu muuttaa"
 
-#: src/components/settings/SystemInfoMenuTarget.tsx:32
+#: src/components/settings/SystemInfoMenuTarget.tsx
 msgid "Unavailable"
 msgstr "Ei saatavilla"
 
-#: src/components/settings/SystemInfoMenuTarget.tsx:67
+#: src/components/settings/SystemInfoMenuTarget.tsx
 msgid "Update ID"
 msgstr "Päivitystunnus"
 
-#: src/components/settings/SystemInfoMenuTarget.tsx:52
+#: src/components/settings/SystemInfoMenuTarget.tsx
 msgid "Version"
 msgstr "Versio"
 
-#: src/app/(auth)/landing.tsx:32
-#: src/app/(auth)/landing.web.tsx:31
+#: src/app/(auth)/landing.web.tsx
+#: src/app/(auth)/landing.tsx
 msgid "Welcome to"
 msgstr "Tervetuloa"
 
-#: src/app/(auth)/login.tsx:49
+#: src/app/(auth)/login.tsx
 msgid "You can enter any email and password to login."
 msgstr "Voit syöttää minkä tahansa sähköpostin ja salasanan kirjautuaksesi"
 
-#: src/services/permissions.tsx:108
+#: src/services/permissions.tsx
 msgid "You need to change the permission in the system settings."
 msgstr "Lupa on muutettava järjestelmäasetuksissa."

@@ -87,3 +87,5 @@ reactNativePermissionsIOS.json
 
 expo-env.d.ts
 # @end expo-cli
+
+.translations/

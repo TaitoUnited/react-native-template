@@ -1,12 +1,14 @@
-/** @type {import('@lingui/conf').LinguiConfig} */
-module.exports = {
-  locales: ["en", "fi"],
-  sourceLocale: "en",
+import { defineConfig } from '@lingui/cli';
+import { formatter } from '@lingui/format-po';
+
+export default defineConfig({
+  locales: ['en', 'fi'],
+  sourceLocale: 'en',
   catalogs: [
     {
-      path: "src/locales/{locale}/messages",
-      include: ["src"],
+      path: 'src/locales/{locale}/messages',
+      include: ['src'],
     },
   ],
-  format: "po",
-};
+  format: formatter({ lineNumbers: false }),
+});
