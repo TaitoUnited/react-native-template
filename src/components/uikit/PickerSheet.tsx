@@ -141,7 +141,11 @@ function ModalContent({
           return (
             <ListItem
               multiple={multiple}
-              checked={selected?.includes(item.value)}
+              checked={
+                multiple
+                  ? selected.includes(item.value)
+                  : selected === item.value
+              }
               onOptionSelect={handleOptionSelect}
               value={item.value}
               label={item.label}
