@@ -1,10 +1,9 @@
-import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react/macro';
 import { router } from 'expo-router';
 import { isValidElement, type FunctionComponent, type ReactNode } from 'react';
 import { Platform, StyleSheet } from 'react-native';
 
 import { Icon, Stack, Text } from '~components/uikit';
-import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 import { haptics } from '~utils/haptics';
 
@@ -27,7 +26,7 @@ type Props = {
 };
 
 export default function MenuList({ items, title }: Props) {
-  const { _ } = useI18n();
+  const { t } = useLingui();
   const filteredItems = items.filter(
     (info) => !(info.platform && Platform.OS !== info.platform)
   );
@@ -65,9 +64,9 @@ export default function MenuList({ items, title }: Props) {
               key={item.id}
               onPress={isPressable ? () => handleItemPress(item) : undefined}
               accessibilityRole={isPressable ? 'button' : 'text'}
-              accessibilityLabel={`${_(msg`Item`)} ${item.label}${item.currentValue ? `, ${_(msg`Selected value`)}: ${item.currentValue}` : ''}`} // eslint-disable-line lingui/no-unlocalized-strings
+              accessibilityLabel={`${t`Item`} ${item.label}${item.currentValue ? `, ${t`Selected value`}: ${item.currentValue}` : ''}`} // eslint-disable-line lingui/no-unlocalized-strings
               accessibilityHint={
-                isPressable ? _(msg`Double tap to select ${item.label}`) : ''
+                isPressable ? t`Double tap to select ${item.label}` : ''
               }
             >
               <ContentWrapper axis="x" spacing="small">

@@ -1,15 +1,14 @@
-import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react/macro';
 import { Drawer } from 'expo-router/drawer';
 import { StyleSheet } from 'react-native';
 
 import { Icon, type IconName } from '~components/uikit/Icon';
-import { useI18n } from '~services/i18n';
 import { useTheme } from '~styles';
 
 import { type TabList as DrawerList } from './_layout';
 
 export default function DrawerLayout() {
-  const { _ } = useI18n();
+  const { t } = useLingui();
 
   const theme = useTheme();
 
@@ -17,27 +16,27 @@ export default function DrawerLayout() {
   const drawerItems: DrawerList = [
     {
       id: 'home',
-      title: _(msg`Home`),
+      title: t`Home`,
       iconFilled: 'homeFilled',
       iconOutlined: 'home',
     },
     {
       id: 'search',
-      title: _(msg`Search`),
+      title: t`Search`,
       iconFilled: 'search',
       iconOutlined: 'search',
     },
 
     {
       id: 'profile',
-      title: _(msg`Profile`),
+      title: t`Profile`,
       iconFilled: 'personCircleFilled',
       iconOutlined: 'personCircle',
     },
 
     {
       id: 'settings',
-      title: _(msg`Settings`),
+      title: t`Settings`,
       iconFilled: 'settingsFilled',
       iconOutlined: 'settings',
     },

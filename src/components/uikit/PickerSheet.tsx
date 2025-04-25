@@ -1,10 +1,9 @@
-import { Trans, msg } from '@lingui/macro';
+import { Trans, useLingui } from '@lingui/react/macro';
 import { FlashList } from '@shopify/flash-list';
 import { memo, useState, type ReactNode } from 'react';
 import { Modal, Platform } from 'react-native';
 
 import StatusBar from '~components/common/StatusBar';
-import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 import { useEffectEvent } from '~utils/common';
 
@@ -82,7 +81,7 @@ function ModalContent({
   onClose,
   onConfirm,
 }: Omit<Props, 'isVisible'>) {
-  const { _ } = useI18n();
+  const { t } = useLingui();
   const [searchTerm, setSearchTerm] = useState('');
   const [selected, setSelected] = useState(_selected);
 
@@ -157,10 +156,8 @@ function ModalContent({
       <Footer>
         <ActionButton
           onPress={onClose}
-          accessibilityLabel={_(msg`Close the picker`)}
-          accessibilityHint={_(
-            msg`Close the picker without selecting any option`
-          )}
+          accessibilityLabel={t`Close the picker`}
+          accessibilityHint={t`Close the picker without selecting any option`}
         >
           <Text variant={multiple ? 'body' : 'bodyBold'}>
             {multiple ? <Trans>Cancel</Trans> : <Trans>Close</Trans>}
@@ -170,12 +167,8 @@ function ModalContent({
         {multiple && (
           <ActionButton
             onPress={handleDone}
-            accessibilityLabel={_(
-              msg`Confirm selected options and close the picker`
-            )}
-            accessibilityHint={_(
-              msg`Confirming selected options will close the picker`
-            )}
+            accessibilityLabel={t`Confirm selected options and close the picker`}
+            accessibilityHint={t`Confirming selected options will close the picker`}
           >
             <Text variant="bodyBold">
               <Trans>Done</Trans>
@@ -237,15 +230,15 @@ function ListHeader({
   onSearch: (s: string) => void;
   onClearOption: () => void;
 }) {
-  const { _ } = useI18n();
+  const { t } = useLingui();
   return (
     <ListHeaderWrapper>
       <Stack axis="y" spacing="regular">
         <SearchInput
           value={searchTerm}
           onChange={onSearch}
-          accessibilityLabel={_(msg`Search options`)}
-          accessibilityHint={_(msg`Type to search and filter options`)}
+          accessibilityLabel={t`Search options`}
+          accessibilityHint={t`Type to search and filter options`}
         />
 
         <Stack axis="x" spacing="small" align="center" justify="between">
@@ -261,8 +254,8 @@ function ListHeader({
           {numSelected > 1 && (
             <ClearButton
               onPress={onClearOption}
-              accessibilityLabel={_(msg`Clear selected options`)}
-              accessibilityHint={_(msg`Double tap to clear selected options`)}
+              accessibilityLabel={t`Clear selected options`}
+              accessibilityHint={t`Double tap to clear selected options`}
             >
               <Text variant="bodyExtraSmall" color="textMuted">
                 <Trans>Clear selected ({numSelected})</Trans>

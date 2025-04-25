@@ -1,4 +1,4 @@
-import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react/macro';
 import { useEffect } from 'react';
 import { Pressable } from 'react-native';
 import Animated, {
@@ -11,7 +11,6 @@ import Animated, {
 
 import { type TabList } from '~app/(tabs)/_layout';
 import { Icon, Stack, Text } from '~components/uikit';
-import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 
 const ANIMATION_DURATION = 350;
@@ -30,7 +29,7 @@ export function TabBarButton({
   tab,
   ...pressableProps
 }: TabBarButtonProps) {
-  const { _ } = useI18n();
+  const { t } = useLingui();
   const iconScale = useSharedValue(isFocused ? 1 : 0);
   const labelOpacity = useSharedValue(isFocused ? 1 : 0);
 
@@ -62,7 +61,7 @@ export function TabBarButton({
       onPressOut={() => (iconScale.value = withTiming(1, { duration: 150 }))}
       accessibilityRole="button"
       accessibilityLabel={label}
-      accessibilityHint={_(msg`Double tap to select this tab`)}
+      accessibilityHint={t`Double tap to select this tab`}
     >
       <Stack axis="y" align="center" spacing="xs">
         <Animated.View style={animatedIconStyle}>

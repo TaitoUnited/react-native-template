@@ -1,4 +1,4 @@
-import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react/macro';
 import { DateTime } from 'luxon';
 import { forwardRef, useImperativeHandle, useState } from 'react';
 import {
@@ -46,7 +46,7 @@ export const DateInput = forwardRef(
     }: Props & AccessibilityProps,
     ref: any
   ) => {
-    const { _ } = useI18n();
+    const { t } = useLingui();
     const [isPickerOpen, setPickerOpen] = useState(false);
     const { locale } = useI18n();
     const { colorScheme } = useColorMode();
@@ -84,8 +84,8 @@ export const DateInput = forwardRef(
             setPickerOpen(true);
             haptics.selection();
           }}
-          accessibilityLabel={accessibilityLabel ?? _(msg`Date picker input for ${label}, current value: ${value}`)} // prettier-ignore
-          accessibilityHint={accessibilityHint ?? _(msg`Double tap to open date picker`)} // prettier-ignore
+          accessibilityLabel={accessibilityLabel ?? t`Date picker input for ${label}, current value: ${value}`} // prettier-ignore
+          accessibilityHint={accessibilityHint ?? t`Double tap to open date picker`} // prettier-ignore
         />
         {!!message && (
           <Message variant="bodySmall" color="textMuted">
@@ -97,8 +97,8 @@ export const DateInput = forwardRef(
           modal
           theme={pickerTheme}
           title={label}
-          confirmText={_(msg`Confirm`)}
-          cancelText={_(msg`Cancel`)}
+          confirmText={t`Confirm`}
+          cancelText={t`Cancel`}
           locale={locale}
           mode={mode}
           date={value}

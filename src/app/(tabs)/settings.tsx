@@ -1,11 +1,10 @@
-import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react/macro';
 
 import MenuList from '~components/common/MenuList';
 import { useHeaderPlaygroundButton } from '~components/playground/utils';
 import { useMenuListItem } from '~components/settings/hooks';
 import { Icon, alert } from '~components/uikit';
 import { useAuthStore } from '~services/auth';
-import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 import { announceForAccessibility } from '~utils/a11y';
 import { haptics } from '~utils/haptics';
@@ -13,22 +12,22 @@ import { haptics } from '~utils/haptics';
 export default function Settings() {
   useHeaderPlaygroundButton();
 
-  const { _ } = useI18n();
+  const { t } = useLingui();
   const logout = useAuthStore((s) => s.logout);
 
   function onLogout() {
     logout();
     haptics.notificationSuccess();
     announceForAccessibility({
-      message: _(msg`Logged out successfully, back to the landing page`),
+      message: t`Logged out successfully, back to the landing page`,
     });
   }
 
   function handleLogout() {
     haptics.notificationWarning();
-    alert(_(msg`Are you sure you want to logout?`), '', [
-      { text: _(msg`Cancel`), style: 'cancel', onPress: () => {} },
-      { text: _(msg`I am sure`), onPress: onLogout },
+    alert(t`Are you sure you want to logout?`, '', [
+      { text: t`Cancel`, style: 'cancel', onPress: () => {} },
+      { text: t`I am sure`, onPress: onLogout },
     ]);
   }
 
@@ -39,7 +38,7 @@ export default function Settings() {
     {
       id: 'logout',
       targetName: 'LogoutButton',
-      label: _(msg`Logout`),
+      label: t`Logout`,
       rightSlot: <Icon name="logout" color="textMuted" size={18} />,
       onPress: handleLogout,
     },

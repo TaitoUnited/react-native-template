@@ -1,75 +1,98 @@
-# Localization
+# 🌍 Localization Guide
 
-## How to manage translations
+This guide walks you through managing translations in your project using [LinguiJS](https://lingui.dev), including how to update translations, add new strings, manage dynamic and pluralized text, and export/import `.po` files via CSV.
 
-### How to update an existing translation
+---
 
-It is recommanded to first run the script `i18n:extract` to extract the strings from the source code. This will update the `messages.po` file for each language with any new strings that need to be translated as well as their identifiers.
+## 🛠 Translation Management
 
-You can open this file in a text editor and translate the strings. For example, if you want to translate the string `Create an account` to French, you would change the `msgstr` tag and it would look like this:
+### 📝 Updating Existing Translations
 
-```po
-#: src/app/(auth)/landing.tsx:74
-#: src/app/(auth)/signup.tsx:55
-msgid "Create an account"
-msgstr "Créer un compte" <-- Your translation
-```
+1. Run the following command to extract all translatable strings from your source code:
 
-Run the script `i18n:extract` again to make sure that the translation is valid. This will update the `messages.po` file for each language with any new strings that need to be translated.
+   ```bash
+   npm run i18n:extract
+   ```
 
-### How to add a new string to be translated
+   This updates each language’s `messages.po` file with new or modified strings.
 
-In the code, we use the following to declare a string as translatable:
+2. Open the relevant `messages.po` file in a text editor and add your translations. For example:
+
+   ```po
+   #: src/app/(auth)/landing.tsx:74
+   #: src/app/(auth)/signup.tsx:55
+   msgid "Create an account"
+   msgstr "Luo tili"
+   ```
+
+3. Re-run the extract command to validate your translations and ensure files are properly updated:
+
+   ```bash
+   npm run i18n:extract
+   ```
+
+---
+
+### ➕ Adding a New Translatable String
+
+To mark a static string as translatable in your code:
 
 ```tsx
-import { Trans } from '@lingui/macro';
+import { Trans } from '@lingui/react/macro';
 
-<Trans>My string to translate</Trans>;
+<Trans>Create an account</Trans>;
 ```
 
-Once you have added this code, run the script `i18n:extract` to extract the strings from the source code. This will automatically add the new string to the `messages.po` file for each language. You can now update the translation for each language in their respective `messages.po` file.
+Then run:
 
-### How to add a new dynamic string to be translated
+```bash
+npm run i18n:extract
+```
 
-In the code, we use the following to declare a prop or variable as translatable:
+This updates all `messages.po` files with the new string.
+
+---
+
+### 🔁 Translating Dynamic Content
+
+For dynamic values like props or alt attributes:
 
 ```tsx
-import { msg } from '@lingui/macro';
-import { useI18n } from '~services/i18n';
+import { useLingui } from '@lingui/react/macro';
 
 export default function ImageWithCaption() {
-  const { _ } = useI18n();
-  return <img src="..." alt={_(msg`Image caption`)} />;
+  const { t } = useLingui();
+  return <img src="..." alt={t`Image caption`} />;
 }
 ```
 
-We use `i18n` from the `useI18n`, which is the same as the one from `@lingui/react`.
-
-If you cannot use hooks in your function, you can import `i18n` from the `@lingui/core` package and use it directly.
+If you're outside of a React component or can't use hooks:
 
 ```tsx
-import { i18n } from '@lingui/core';
-import { msg } from '@lingui/macro';
+import { t } from "@lingui/core/macro";
 
 export function SearchInput({
-  value,
-  placeholder = _(msg`Search`),
-  onChange,
-  suggestions = [],
-  ...rest
-}: Props) {
+  placeholder = t`Search`,
+  ...
+}) {
   ...
 }
 ```
 
-Once you have added this code, run the script `i18n:extract` to extract the strings from the source code. This will automatically add the new string to the `messages.po` file for each language. You can now update the translation for each language in their respective `messages.po` file.
+Then extract the translations:
 
-### How to handle plurals
+```bash
+npm run i18n:extract
+```
 
-In the code, we use the following to declare a variable that have multiple translations according to its value:
+---
+
+### 🔢 Handling Plurals
+
+To localize pluralized content:
 
 ```tsx
-import { plural } from '@lingui/macro';
+import { plural } from '@lingui/core/macro';
 
 const message = plural(numBooks, {
   one: '# Book',
@@ -77,13 +100,16 @@ const message = plural(numBooks, {
 });
 ```
 
-When `numBooks == 1`, this will render as `1` book and for `numBook == 2` it will be `2` books.
+- If `numBooks = 1` → "1 Book"
+- If `numBooks = 2` → "2 Books"
 
-_For more information, refer to the official documentation: https://lingui.dev/guides/plurals_
+📘 [Plurals Guide](https://lingui.dev/guides/plurals)
 
-### How to handle nested components
+---
 
-The `Trans` macro and `Text` component may be nested, to achieve custom styling. For example:
+### 🧩 Handling Nested Components
+
+Use nested components within `<Trans>` blocks for rich formatting:
 
 ```tsx
 <Trans>
@@ -95,70 +121,85 @@ The `Trans` macro and `Text` component may be nested, to achieve custom styling.
 </Trans>
 ```
 
-The extracted string for translation will look like this:
+Will be extracted as:
 
-`"<0><1>Concert of </1><2>Green Day</2><3> tonight!</3></0>"`
-
-_For more information, refer to the official documentation: https://lingui.dev/tutorials/react-native#nesting-components_
-
-## Translations for production
-
-**Note: The translations are handled in the CI/CD pipeline. You don't need to do anything.**
-
-_The following steps are only for information purposes._
-
-### How to generate the translations for test environments manually
-
-Run the script `i18n:compile` to generate the translations for test environments manually. This will create or update files called `messages.js` for each language. These files contain all the strings that need to be translated.
-
-### How to generate the translations for production manually
-
-Run the script `i18n:compile:strict` to generate the translations for test environments manually. This will create or update files called `messages.js` for each language. These files contain all the strings that need to be translated.
-
-_Note: The strict mode will fail if there are any untranslated strings. This is useful to make sure that all the strings are translated before deploying to production._
-
-## How to handle locales
-
-### How to add a new language
-
-_Note: By default, English and Finnish are already included in the project. You can skip this section if you want to add one of these languages._
-
-In the `package.json`, add a new entry to the `locales` object under `lingui`. For example, if you want to add French, you would add the following:
-
-```json
-"lingui": {
-    "locales": [
-      "en",
-      "fi",
-      "fr" <-- Your new entry
-    ],
-    ...
-}
+```text
+"<0><1>Concert of </1><2>Green Day</2><3> tonight!</3></0>"
 ```
 
-Run the script `i18n:extract` to extract the strings from the source code. This will automatically create a new folder in `src/locales` called `fr`. This folder contains a file called `messages.po` which contains all the strings that need to be translated.
+📘 [Nested Components Guide](https://lingui.dev/tutorials/react-native#nesting-components)
 
-In order for your new language to be selectable in your application, you need to change the `i18n.tsx` file accordingly.
+---
 
-### How to remove a language
+## 🚀 Translations in CI/CD
 
-In the `package.json`, remove the entry from the `locales` object under `lingui`. For example, if you want to remove French, you would remove the following:
+> ✅ **Note:** Translations are compiled in the CI/CD pipeline via the custom [post-install script](/.eas/build/post-install.sh).
+>
+> It utilizes the following commands:
 
-```json
-"lingui": {
-    "locales": [
-      "en",
-      "fi",
-      "fr", <-- Remove this entry
-    ],
+### 🧪 Compiling Translations for Testing
+
+```bash
+npm run i18n:compile
 ```
 
-Then you need to do the following:
+This generates `messages.js` for each language from `.po` files.
 
-- Run the script `i18n:extract` to extract the strings from the source code.
-- Delete the folder in `src/locales` called `fr` and all it contains.
-- Update the `i18n.tsx` file accordingly.
+### 🏁 Compiling Translations for Production
 
-## FAQ
+```bash
+npm run i18n:compile:strict
+```
 
-Refer to the official documentation for more information: https://lingui.dev/introduction
+Fails the build if there are any missing translations. This ensures full coverage before release.
+
+---
+
+## 🌐 Managing Locales
+
+### ➕ Adding a New Language
+
+1. Add your locale to [`lingui.config.js`](/lingui.config.js):
+
+   ```ts
+   export default defineConfig({
+     locales: ['en', 'fi', '<lang>'], // Add your language code here
+   });
+   ```
+
+2. Run:
+
+   ```bash
+   npm run i18n:extract
+   ```
+
+   This creates a new folder and `messages.po` file under `src/locales/<lang>`.
+
+3. Update your language switcher in `i18n.tsx` to include the new locale.
+
+4. If you are using the `i18n:sync-csv` script, you may need to update the locales in the script as well.
+
+---
+
+### ➖ Removing a Language
+
+1. Remove the locale from [`lingui.config.js`](/lingui.config.js):
+
+   ```ts
+   locales: ['en', 'fi'], // Remove your locale
+   ```
+
+2. Then:
+
+   - Run `npm run i18n:extract`
+   - Delete the `src/locales/<lang>` folder
+   - Update `i18n.tsx` accordingly
+   - If using the `i18n:sync-csv` script, remove the locale from the script as well.
+
+---
+
+## ❓ FAQ & Resources
+
+- 📘 [LinguiJS Docs](https://lingui.dev/introduction)
+- 📘 [React Native Localization Tutorial](https://lingui.dev/tutorials/react-native)
+- 📘 [Pluralization](https://lingui.dev/guides/plurals)

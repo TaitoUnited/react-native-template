@@ -1,12 +1,11 @@
 import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
-import { Trans, msg } from '@lingui/macro';
+import { Trans, useLingui } from '@lingui/react/macro';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { ScrollView } from 'react-native';
 
 import { showToast } from '~components/common/Toaster';
 import { Button, IconButton, Stack, Text } from '~components/uikit';
-import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 import { sleep } from '~utils/common';
 
@@ -19,7 +18,7 @@ export default function ImprovementForm({
   onCancel,
   onDone,
 }: ImprovementFormType) {
-  const { _ } = useI18n();
+  const { t } = useLingui();
   const form = useForm({
     defaultValues: {
       feedback: '',
@@ -31,8 +30,8 @@ export default function ImprovementForm({
     try {
       await sleep(2000);
       showToast({
-        title: _(msg`Feedback sent!`),
-        subtitle: _(msg`Thank you`),
+        title: t`Feedback sent!`,
+        subtitle: t`Thank you`,
         type: 'success',
       });
     } catch (error) {
@@ -64,7 +63,7 @@ export default function ImprovementForm({
           <Controller
             name="feedback"
             control={form.control}
-            rules={{ required: _(msg`Feedback is required`) }}
+            rules={{ required: t`Feedback is required` }}
             render={({ field }) => {
               return (
                 <InputWrapper focused={isFocused}>

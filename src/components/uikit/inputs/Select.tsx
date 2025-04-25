@@ -1,5 +1,4 @@
-import { i18n } from '@lingui/core';
-import { msg } from '@lingui/macro';
+import { t } from '@lingui/core/macro';
 import {
   forwardRef,
   useImperativeHandle,
@@ -13,7 +12,6 @@ import {
   type ViewStyle,
 } from 'react-native';
 
-import { useI18n } from '~services/i18n';
 import { haptics } from '~utils/haptics';
 
 import type { IconName } from '../Icon';
@@ -60,7 +58,7 @@ export const Select = forwardRef(
       options,
       label,
       labelIcon,
-      placeholder = i18n._(msg`Select`),
+      placeholder = t`Select`,
       message,
       emptyContent,
       pickerType,
@@ -74,7 +72,6 @@ export const Select = forwardRef(
     }: Props,
     ref: any
   ) => {
-    const { _ } = useI18n();
     const [isPickerOpen, setPickerOpen] = useState(false);
     const visibleValue = Array.isArray(value)
       ? options
@@ -121,8 +118,8 @@ export const Select = forwardRef(
             haptics.selection();
           }}
           accessibilityRole={accessibilityRole ?? 'button'}
-          accessibilityLabel={ accessibilityLabel ?? _(msg`Select input for ${label}, current value: ${value}`)} // prettier-ignore
-          accessibilityHint={accessibilityHint ?? _(msg`Double tap to open options to select`)} // prettier-ignore
+          accessibilityLabel={ accessibilityLabel ?? t`Select input for ${label}, current value: ${value}`} // prettier-ignore
+          accessibilityHint={accessibilityHint ?? t`Double tap to open options to select`} // prettier-ignore
         />
 
         {(!pickerType && options.length > 20) || pickerType === 'sheet' ? (

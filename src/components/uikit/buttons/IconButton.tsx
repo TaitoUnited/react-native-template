@@ -1,4 +1,4 @@
-import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react/macro';
 import { ActivityIndicator, type GestureResponderEvent } from 'react-native';
 import Animated, {
   useAnimatedStyle,
@@ -7,7 +7,6 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import { useI18n } from '~services/i18n';
 import { styled, useTheme } from '~styles';
 import { haptics } from '~utils/haptics';
 
@@ -30,7 +29,7 @@ export function IconButton({
   accessibilityHint,
   ...rest
 }: IconButtonProps) {
-  const { _ } = useI18n();
+  const { t } = useLingui();
   const theme = useTheme();
   const pressed = useSharedValue(false);
   const iconSize = sizeToIconSize[size];
@@ -92,8 +91,8 @@ export function IconButton({
       onPress={_onPress}
       style={wrapperStyle}
       accessibilityRole={accessibilityRole ?? 'button'}
-      accessibilityLabel={accessibilityLabel ?? _(msg`Icon button with ${icon} icon`)} // prettier-ignore
-      accessibilityHint={accessibilityHint ?? _(msg`Double tap to perform action`)} // prettier-ignore
+      accessibilityLabel={accessibilityLabel ?? t`Icon button with ${icon} icon`} // prettier-ignore
+      accessibilityHint={accessibilityHint ?? t`Double tap to perform action`} // prettier-ignore
       accessibilityState={{ disabled: !!disabled, busy: !!loading }}
       {...rest}
     >

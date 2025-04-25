@@ -1,9 +1,8 @@
-import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react/macro';
 import { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import Collapsible, { type CollapsibleProps } from 'react-native-collapsible';
 
-import { useI18n } from '~services/i18n';
 import { styled, type Color } from '~styles';
 import { haptics } from '~utils/haptics';
 
@@ -27,7 +26,7 @@ export function Accordion({
   iconColor,
   ...rest
 }: AccordionProps) {
-  const { _ } = useI18n();
+  const { t } = useLingui();
   const [collapsed, setCollapsed] = useState(!initialOpen);
 
   function onPress() {
@@ -44,8 +43,8 @@ export function Accordion({
         accessibilityState={{ expanded: !collapsed }}
         accessibilityHint={
           collapsed
-            ? _(msg`Double tap to expand the content`)
-            : _(msg`Double tap to collapse the content`)
+            ? t`Double tap to expand the content`
+            : t`Double tap to collapse the content`
         }
       >
         <AccordionHeader

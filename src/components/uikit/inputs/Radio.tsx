@@ -1,8 +1,7 @@
-import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react/macro';
 import { useEffect, useRef } from 'react';
 import { Animated, PixelRatio } from 'react-native';
 
-import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 import { haptics } from '~utils/haptics';
 
@@ -16,7 +15,7 @@ type Props = {
 };
 
 export function Radio({ onChange, checked, value, label }: Props) {
-  const { _ } = useI18n();
+  const { t } = useLingui();
 
   function onPress() {
     haptics.selection();
@@ -30,8 +29,8 @@ export function Radio({ onChange, checked, value, label }: Props) {
       accessible
       accessibilityRole="radio"
       accessibilityState={{ checked }}
-      accessibilityLabel={_(msg`Radio option: ${label}`)}
-      accessibilityHint={_(msg`Double tap to select this option`)}
+      accessibilityLabel={t`Radio option: ${label}`}
+      accessibilityHint={t`Double tap to select this option`}
     >
       <RadioOuter checked={checked}>{checked && <RadioInner />}</RadioOuter>
       <Text variant={checked ? 'bodyBold' : 'body'}>{label}</Text>

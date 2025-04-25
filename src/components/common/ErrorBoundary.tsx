@@ -1,4 +1,4 @@
-import { Trans } from '@lingui/macro';
+import { Trans } from '@lingui/react/macro';
 import { Component, type ReactNode } from 'react';
 
 import { Stack, Text } from '~components/uikit';

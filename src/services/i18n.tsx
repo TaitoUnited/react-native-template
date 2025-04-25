@@ -1,9 +1,8 @@
 import { i18n } from '@lingui/core';
-import { I18nProvider as LinguiProvider, useLingui } from '@lingui/react';
+import { I18nProvider as LinguiProvider } from '@lingui/react';
 import { getLocales } from 'expo-localization';
 import { Settings } from 'luxon';
 
-import { useEffectEvent } from '~utils/common';
 import storage, { STORAGE_KEYS } from '~utils/storage';
 
 export type Locale = 'fi' | 'en';
@@ -38,10 +37,9 @@ async function loadMessages(locale: Locale) {
 }
 
 export function useI18n() {
-  const lingui = useLingui();
-  const currentLocale = lingui.i18n.locale as Locale;
+  const currentLocale = i18n.locale as Locale;
 
-  const setLocale = useEffectEvent(async (locale: Locale) => {
+  async function changeLocale(locale: Locale) {
     try {
       const newMessages = await loadMessages(locale);
       i18n.loadAndActivate({ locale, messages: newMessages });
@@ -51,14 +49,9 @@ export function useI18n() {
     } catch (error) {
       console.log(`> Failed to load messages for locale: ${locale}`, error);
     }
-  });
+  }
 
-  return {
-    i18n: lingui.i18n,
-    locale: currentLocale,
-    setLocale,
-    _: lingui._,
-  };
+  return { locale: currentLocale, changeLocale };
 }
 
 export function I18nProvider({ children }: { children: React.ReactNode }) {

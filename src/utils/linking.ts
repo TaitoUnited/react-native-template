@@ -1,5 +1,4 @@
-import { i18n } from '@lingui/core';
-import { msg } from '@lingui/macro';
+import { t } from '@lingui/core/macro';
 import { Linking } from 'react-native';
 
 import { showToast } from '~components/common/Toaster';
@@ -20,18 +19,18 @@ export async function launchUrl(
       console.log('> no support for url');
 
       showToast({
-        title: i18n._(msg`Cannot open ${type}`),
+        title: t`Cannot open ${type}`,
         subtitle: message,
         type: 'error',
       });
     }
   } catch (error) {
     console.log('> Cannot open url', error);
-    showToast({ title: i18n._(msg`Something went wrong`), type: 'error' });
+    showToast({ title: t`Something went wrong`, type: 'error' });
   }
 }
 
 export function phonecall(number: string) {
   const url = `tel:${number}`;
-  launchUrl(url, i18n._(msg`phone app`));
+  launchUrl(url, t`phone app`);
 }

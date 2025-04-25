@@ -1,5 +1,4 @@
-import { i18n } from '@lingui/core';
-import { msg } from '@lingui/macro';
+import { t } from '@lingui/core/macro';
 import { unstable_batchedUpdates } from 'react-native';
 import { create } from 'zustand';
 
@@ -101,7 +100,7 @@ export async function initAuth() {
       console.log('> Auth error detected during auth check', error);
     } else if (error?.networkError) {
       showToast({
-        title: i18n._(msg`Could not connect to server`),
+        title: t`Could not connect to server`,
         type: 'error',
       });
     } else {

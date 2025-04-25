@@ -1,4 +1,4 @@
-import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react/macro';
 import { PixelRatio } from 'react-native';
 import Animated, {
   Easing,
@@ -6,7 +6,6 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 import { haptics } from '~utils/haptics';
 
@@ -21,7 +20,7 @@ type Props = {
 };
 
 export function Checkbox({ onChange, checked, value, label }: Props) {
-  const { _ } = useI18n();
+  const { t } = useLingui();
   const animatedStyles = useAnimatedStyle(() => {
     return {
       transform: [
@@ -46,12 +45,12 @@ export function Checkbox({ onChange, checked, value, label }: Props) {
       activeOpacity={0.8}
       accessible
       accessibilityRole="checkbox"
-      accessibilityLabel={_(msg`Checkbox option: ${label}`)}
+      accessibilityLabel={t`Checkbox option: ${label}`}
       accessibilityState={{ checked }}
       accessibilityHint={
         checked
-          ? _(msg`Double tap to check this option`)
-          : _(msg`Double tap to uncheck this option`)
+          ? t`Double tap to check this option`
+          : t`Double tap to uncheck this option`
       }
     >
       <RadioOuter checked={checked}>

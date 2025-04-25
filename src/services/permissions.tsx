@@ -1,4 +1,4 @@
-import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react/macro';
 import compact from 'lodash/compact';
 import flatten from 'lodash/flatten';
 import { useCallback } from 'react';
@@ -17,8 +17,6 @@ import { create } from 'zustand';
 
 import { useAppState } from '~utils/observe';
 
-import { useI18n } from './i18n';
-
 const usePermissionStore = create<PermissionStore>((set, get) => ({
   status: 'pending',
   permissions: undefined,
@@ -34,7 +32,7 @@ const usePermissionStore = create<PermissionStore>((set, get) => ({
 const OS = Platform.OS as 'ios' | 'android';
 
 export function usePermissions() {
-  const { _ } = useI18n();
+  const { t } = useLingui();
   const { status, permissions, setPermissions } = usePermissionStore();
 
   const check = useCallback(async () => {
@@ -104,11 +102,11 @@ export function usePermissions() {
           return RESULTS.GRANTED;
         } else if (Object.values(statuses).some((s) => s === RESULTS.BLOCKED)) {
           Alert.alert(
-            _(msg`Unable to change permission`),
-            _(msg`You need to change the permission in the system settings.`),
+            t`Unable to change permission`,
+            t`You need to change the permission in the system settings.`,
             [
-              { text: _(msg`Close`), style: 'cancel' },
-              { text: _(msg`Open settings`), onPress: _openSettings },
+              { text: t`Close`, style: 'cancel' },
+              { text: t`Open settings`, onPress: _openSettings },
             ]
           );
 
@@ -118,13 +116,11 @@ export function usePermissions() {
         console.log('> Failed to request permission', error);
 
         Alert.alert(
-          _(msg`Something went wrong`),
-          _(
-            msg`Could not toggle permission. You can change the permission in the system settings.`
-          ),
+          t`Something went wrong`,
+          t`Could not toggle permission. You can change the permission in the system settings.`,
           [
-            { text: _(msg`Close`), style: 'cancel' },
-            { text: _(msg`Open settings`), onPress: _openSettings },
+            { text: t`Close`, style: 'cancel' },
+            { text: t`Open settings`, onPress: _openSettings },
           ]
         );
 

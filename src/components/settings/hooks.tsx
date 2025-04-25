@@ -1,4 +1,4 @@
-import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react/macro';
 import { type FunctionComponent } from 'react';
 import { View } from 'react-native';
 
@@ -10,7 +10,8 @@ import { LanguageMenuTarget } from './LanguageMenuTarget';
 import { SystemInfoMenuTarget } from './SystemInfoMenuTarget';
 
 export function useMenuListItem({ targetName }: { targetName: string }) {
-  const { locale, _ } = useI18n();
+  const { locale } = useI18n();
+  const { t } = useLingui();
   const { colorMode } = useColorMode();
 
   let label = '';
@@ -19,22 +20,22 @@ export function useMenuListItem({ targetName }: { targetName: string }) {
 
   switch (targetName) {
     case 'LanguageMenuTarget':
-      label = _(msg`Language`);
-      currentValue = locale === 'en' ? _(msg`English`) : _(msg`Suomi`);
+      label = t`Language`;
+      currentValue = locale === 'en' ? t`English` : t`Suomi`;
       target = LanguageMenuTarget;
       break;
     case 'AppearanceMenuTarget':
-      label = _(msg`Appearance`);
+      label = t`Appearance`;
       currentValue =
         colorMode === 'light'
-          ? _(msg`Light`)
+          ? t`Light`
           : colorMode === 'dark'
-            ? _(msg`Dark`)
-            : _(msg`Automatic`);
+            ? t`Dark`
+            : t`Automatic`;
       target = AppearanceMenuTarget;
       break;
     case 'SystemInfoMenuTarget':
-      label = _(msg`Info`);
+      label = t`Info`;
       target = SystemInfoMenuTarget;
       break;
     default:

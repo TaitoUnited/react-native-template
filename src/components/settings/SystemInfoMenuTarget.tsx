@@ -1,4 +1,4 @@
-import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react/macro';
 import {
   applicationId,
   getAndroidId,
@@ -16,45 +16,42 @@ import MenuList from '~components/common/MenuList';
 import { showToast } from '~components/common/Toaster';
 import { Text } from '~components/uikit';
 import config from '~constants/config';
-import { useI18n } from '~services/i18n';
 import { haptics } from '~utils/haptics';
 
 export function SystemInfoMenuTarget() {
-  const { _ } = useI18n();
+  const { t } = useLingui();
   const { deviceId, loading } = useDeviceId();
 
   const items: ComponentProps<typeof MenuList>['items'] = [
     {
       id: 'deviceId',
-      label: _(msg`Device ID`),
-      currentValue: loading
-        ? _(msg`Fetching...`)
-        : deviceId || _(msg`Unavailable`),
+      label: t`Device ID`,
+      currentValue: loading ? t`Fetching...` : deviceId || t`Unavailable`,
     },
     {
       id: 'modelName',
-      label: _(msg`Model name`),
+      label: t`Model name`,
       currentValue: modelName,
     },
     {
       id: 'systemVersion',
-      label: _(msg`System version`),
+      label: t`System version`,
       currentValue: osVersion,
     },
     {
       id: 'apiLevel',
-      label: _(msg`API level`),
+      label: t`API level`,
       currentValue: platformApiLevel,
       platform: 'android',
     },
     {
       id: 'version',
-      label: _(msg`Version`),
+      label: t`Version`,
       currentValue: nativeApplicationVersion,
     },
     {
       id: 'environment',
-      label: _(msg`App environment`),
+      label: t`App environment`,
       currentValue: capitalize(config.appEnv),
     },
   ];
@@ -64,7 +61,7 @@ export function SystemInfoMenuTarget() {
   if (updateId) {
     items.push({
       id: 'updateId',
-      label: _(msg`Update ID`),
+      label: t`Update ID`,
       currentValue: (
         <TouchableOpacity
           accessibilityRole="button"
@@ -72,7 +69,7 @@ export function SystemInfoMenuTarget() {
             haptics.notificationSuccess();
             await setStringAsync(updateId);
             showToast({
-              title: _(msg`Copied to clipboard`),
+              title: t`Copied to clipboard`,
               type: 'success',
               icon: 'check',
             });
@@ -89,7 +86,7 @@ export function SystemInfoMenuTarget() {
   if (config.appEnv !== 'prod') {
     items.push({
       id: 'bundleId',
-      label: _(msg`Bundle ID`),
+      label: t`Bundle ID`,
       currentValue: applicationId,
     });
   }
