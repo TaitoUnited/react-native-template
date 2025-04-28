@@ -84,12 +84,7 @@ const expoConfig: ExpoConfig = {
       {
         backgroundColor: config.splash.backgroundColor,
         image: config.splash.image,
-        resizeMode: 'contain',
-        // Uncomment to add splash screen dark mode
-        // dark: {
-        //   image: config.splash.darkImage,
-        //   backgroundColor: config.splash.darkBackgroundColor
-        // },
+        imageWidth: 1000,
       },
     ],
     [

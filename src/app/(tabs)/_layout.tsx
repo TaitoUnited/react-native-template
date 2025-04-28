@@ -1,12 +1,15 @@
 import { msg } from '@lingui/macro';
-import { type BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import {
+  type BottomTabBarButtonProps,
+  type BottomTabBarProps,
+} from '@react-navigation/bottom-tabs';
 import { Tabs } from 'expo-router';
-import { StyleSheet } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { BottomBar } from '~components/common/custom-bottom-bar/BottomBar';
 import StoreReview from '~components/store-review/StoreReview';
-import { Icon, Text } from '~components/uikit';
+import { Icon, Stack, Text } from '~components/uikit';
 import type { IconName } from '~components/uikit/Icon';
 import { useI18n } from '~services/i18n';
 import { useTheme } from '~styles';
@@ -128,6 +131,20 @@ function DefaultBottomBar({ tabs, theme }: BottomBarProps) {
     );
   }
 
+  function renderTabBarButton(props: BottomTabBarButtonProps) {
+    return (
+      <Pressable
+        {...props}
+        android_ripple={null} // Removes ripple effect on Android
+        style={props.style}
+      >
+        <Stack axis="y" spacing="none" align="center">
+          {props.children}
+        </Stack>
+      </Pressable>
+    );
+  }
+
   return (
     <Tabs
       initialRouteName="home"
@@ -165,6 +182,7 @@ function DefaultBottomBar({ tabs, theme }: BottomBarProps) {
               renderBarLabel({ focused, id, title }),
             tabBarIcon: ({ focused }) =>
               renderTabIcon({ focused, iconFilled, iconOutlined }),
+            tabBarButton: (props) => renderTabBarButton(props),
           }}
         />
       ))}

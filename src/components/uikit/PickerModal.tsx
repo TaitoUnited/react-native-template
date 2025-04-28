@@ -197,7 +197,7 @@ function ModalContent({
                   <Checkbox
                     key={option.value}
                     label={option.label}
-                    checked={selected?.includes(option.value)}
+                    checked={selected.includes(option.value)}
                     value={option.value}
                     onChange={() => handleOptionSelect(option.value)}
                   />
@@ -205,7 +205,7 @@ function ModalContent({
                   <Radio
                     key={option.value}
                     label={option.label}
-                    checked={selected?.includes(option.value)}
+                    checked={selected === option.value}
                     value={option.value}
                     onChange={() => handleOptionSelect(option.value)}
                   />
