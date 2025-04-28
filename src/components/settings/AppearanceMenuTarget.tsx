@@ -1,11 +1,10 @@
-import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react/macro';
 
 import MenuList from '~components/common/MenuList';
 import { useColorMode } from '~services/color-mode';
-import { useI18n } from '~services/i18n';
 
 export function AppearanceMenuTarget() {
-  const { _ } = useI18n();
+  const { t } = useLingui();
   const { setColorMode, colorMode } = useColorMode();
 
   return (
@@ -13,19 +12,19 @@ export function AppearanceMenuTarget() {
       items={[
         {
           id: 'system',
-          label: _(msg`Automatic`),
+          label: t`Automatic`,
           checked: colorMode === 'auto',
           onPress: () => setColorMode('auto'),
         },
         {
           id: 'dark',
-          label: _(msg`Dark`),
+          label: t`Dark`,
           checked: colorMode === 'dark',
           onPress: () => setColorMode('dark'),
         },
         {
           id: 'light',
-          label: _(msg`Light`),
+          label: t`Light`,
           checked: colorMode === 'light',
           onPress: () => setColorMode('light'),
         },

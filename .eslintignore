@@ -9,3 +9,4 @@ src/design-system/
 /.expo
 node_modules
 .eslintrc.js
+scripts/

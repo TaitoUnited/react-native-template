@@ -1,4 +1,4 @@
-import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react/macro';
 import {
   type BottomTabBarButtonProps,
   type BottomTabBarProps,
@@ -11,7 +11,6 @@ import { BottomBar } from '~components/common/custom-bottom-bar/BottomBar';
 import StoreReview from '~components/store-review/StoreReview';
 import { Icon, Stack, Text } from '~components/uikit';
 import type { IconName } from '~components/uikit/Icon';
-import { useI18n } from '~services/i18n';
 import { useTheme } from '~styles';
 
 export type TabList = {
@@ -46,33 +45,33 @@ const USE_CUSTOM_TABS = true;
 const USE_STORE_REVIEW = true;
 
 export default function TabsLayout() {
-  const { _ } = useI18n();
+  const { t } = useLingui();
 
   const theme = useTheme();
   const tabs: TabList = [
     {
       id: 'home',
-      title: _(msg`Home`),
+      title: t`Home`,
       iconFilled: 'homeFilled',
       iconOutlined: 'home',
     },
     {
       id: 'search',
-      title: _(msg`Search`),
+      title: t`Search`,
       iconFilled: 'search',
       iconOutlined: 'search',
     },
 
     {
       id: 'profile',
-      title: _(msg`Profile`),
+      title: t`Profile`,
       iconFilled: 'personCircleFilled',
       iconOutlined: 'personCircle',
     },
 
     {
       id: 'settings',
-      title: _(msg`Settings`),
+      title: t`Settings`,
       iconFilled: 'settingsFilled',
       iconOutlined: 'settings',
     },
@@ -96,7 +95,7 @@ type BottomBarProps = {
 };
 
 function DefaultBottomBar({ tabs, theme }: BottomBarProps) {
-  const { _ } = useI18n();
+  const { t } = useLingui();
   const insets = useSafeAreaInsets();
 
   function renderTabIcon({
@@ -173,7 +172,7 @@ function DefaultBottomBar({ tabs, theme }: BottomBarProps) {
           name={id}
           options={{
             title,
-            tabBarAccessibilityLabel: _(msg`${title} tab`),
+            tabBarAccessibilityLabel: t`${title} tab`,
             tabBarItemStyle: {
               // On certain devices without insets, the tab bar is too close to the bottom of the screen
               paddingBottom: insets.bottom === 0 ? 4 : 0,

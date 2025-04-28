@@ -1,5 +1,4 @@
-import { i18n } from '@lingui/core';
-import { msg } from '@lingui/macro';
+import { t } from '@lingui/core/macro';
 import {
   forwardRef,
   useEffect,
@@ -9,7 +8,6 @@ import {
 } from 'react';
 import { TouchableOpacity, type TextInput as RNTextInput } from 'react-native';
 
-import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 
 import { Icon } from '../Icon';
@@ -25,7 +23,7 @@ export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(
   (
     {
       suggestions = [],
-      placeholder = i18n._(msg`Search`),
+      placeholder = t`Search`,
       icon = 'search',
       value,
       onChange,
@@ -36,7 +34,6 @@ export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(
     }: SearchInputProps,
     ref
   ) => {
-    const { _ } = useI18n();
     const inputRef = useRef<RNTextInput>(null);
     useImperativeHandle(ref, () => inputRef.current as RNTextInput);
 
@@ -66,8 +63,8 @@ export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(
           placeholder={placeholder}
           icon={icon}
           accessibilityRole={accessibilityRole ?? 'search'}
-          accessibilityLabel={accessibilityLabel ?? _(msg`Search input`)}
-          accessibilityHint={accessibilityHint ?? _(msg`Type to search and select from suggestions`)} // prettier-ignore
+          accessibilityLabel={accessibilityLabel ?? t`Search input`}
+          accessibilityHint={accessibilityHint ?? t`Type to search and select from suggestions`} // prettier-ignore
           {...rest}
         />
         {showSuggestions && filteredSuggestions.length > 0 && (
@@ -78,7 +75,7 @@ export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(
                 onPress={() => handleSuggestionClick(option)}
                 key={index}
                 accessibilityLabel={option}
-                accessibilityHint={_(msg`Double tap to select this suggestion`)}
+                accessibilityHint={t`Double tap to select this suggestion`}
               >
                 <Stack axis="x" spacing="xs" align="end">
                   <Icon name="clock" size={16} color="textMuted" />

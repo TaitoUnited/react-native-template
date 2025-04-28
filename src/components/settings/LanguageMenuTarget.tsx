@@ -1,25 +1,26 @@
-import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react/macro';
 
 import MenuList from '~components/common/MenuList';
 import { useI18n } from '~services/i18n';
 
 export function LanguageMenuTarget() {
-  const { setLocale, locale, _ } = useI18n();
+  const { changeLocale, locale } = useI18n();
+  const { t } = useLingui();
 
   return (
     <MenuList
       items={[
         {
           id: 'en',
-          label: _(msg`English`),
+          label: t`English`,
           checked: locale === 'en',
-          onPress: () => setLocale('en'),
+          onPress: () => changeLocale('en'),
         },
         {
           id: 'fi',
-          label: _(msg`Finnish`),
+          label: t`Finnish`,
           checked: locale === 'fi',
-          onPress: () => setLocale('fi'),
+          onPress: () => changeLocale('fi'),
         },
       ]}
     />

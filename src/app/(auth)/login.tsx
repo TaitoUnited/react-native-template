@@ -1,11 +1,10 @@
-import { Trans, msg } from '@lingui/macro';
+import { Trans, useLingui } from '@lingui/react/macro';
 import { Controller, useForm } from 'react-hook-form';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 
 import { showToast } from '~components/common/Toaster';
 import { Button, Stack, Text, TextInput } from '~components/uikit';
 import { useAuthStore } from '~services/auth';
-import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 import { announceForAccessibility } from '~utils/a11y';
 import { haptics } from '~utils/haptics';
@@ -16,7 +15,7 @@ type Credentials = {
 };
 
 export default function Login() {
-  const { _ } = useI18n();
+  const { t } = useLingui();
   const form = useForm<Credentials>({ mode: 'onChange' });
   const { status, login } = useAuthStore();
 
@@ -24,12 +23,12 @@ export default function Login() {
     try {
       await login(form.getValues());
       announceForAccessibility({
-        message: _(msg`Logged in successfully, entering the app`),
+        message: t`Logged in successfully, entering the app`,
       });
       haptics.notificationSuccess();
     } catch (error) {
       console.log('> Failed to login', error);
-      showToast({ title: _(msg`Failed to login`), type: 'error' });
+      showToast({ title: t`Failed to login`, type: 'error' });
     }
   }
 
@@ -63,15 +62,15 @@ export default function Login() {
               render={({ field, fieldState }) => {
                 const message =
                   fieldState.error?.type === 'validEmail'
-                    ? _(msg`Email invalid`)
+                    ? t`Email invalid`
                     : fieldState.error?.type === 'required'
-                      ? _(msg`Email required`)
+                      ? t`Email required`
                       : undefined;
 
                 return (
                   <TextInput
                     {...field}
-                    label={_(msg`Email`)}
+                    label={t`Email`}
                     keyboardType="email-address"
                     autoCapitalize="none"
                     returnKeyType="next"
@@ -89,12 +88,12 @@ export default function Login() {
             <Controller
               name="password"
               control={form.control}
-              rules={{ required: _(msg`Password is required`) }}
+              rules={{ required: t`Password is required` }}
               render={({ field, fieldState }) => {
                 return (
                   <TextInput
                     {...field}
-                    label={_(msg`Password`)}
+                    label={t`Password`}
                     secureTextEntry
                     returnKeyType="done"
                     message={fieldState.error?.message}
@@ -116,7 +115,7 @@ export default function Login() {
           disabled={status === 'logging-in' || !form.formState.isValid}
           loading={status === 'logging-in'}
           testID="loginButton"
-          accessibilityHint={_(msg`Double tap to log in with the provided email and password`)} // prettier-ignore
+          accessibilityHint={t`Double tap to log in with the provided email and password`} // prettier-ignore
         >
           <Trans>Login</Trans>
         </Button>

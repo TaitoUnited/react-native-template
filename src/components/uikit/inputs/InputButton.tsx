@@ -1,7 +1,6 @@
-import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react/macro';
 import { type ViewStyle } from 'react-native';
 
-import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 
 import { Icon, type IconName } from '../Icon';
@@ -44,7 +43,7 @@ export function InputButton({
   accessibilityHint,
   ...rest
 }: Props) {
-  const { _ } = useI18n();
+  const { t } = useLingui();
 
   return (
     <Stack axis="y" spacing="regular">
@@ -75,7 +74,7 @@ export function InputButton({
               numberOfLines={1}
               style={{ flex: 1 }}
               accessibilityLabel={accessibilityLabel ?? value}
-              accessibilityHint={accessibilityHint ?? _(msg`Double tap to enter a value`)} // prettier-ignore
+              accessibilityHint={accessibilityHint ?? t`Double tap to enter a value`} // prettier-ignore
             >
               {value || placeholder}
             </Text>

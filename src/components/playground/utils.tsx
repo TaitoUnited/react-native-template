@@ -1,16 +1,13 @@
-import { msg } from '@lingui/macro';
 import { router } from 'expo-router';
 import { View } from 'react-native';
 import * as DropdownMenu from 'zeego/dropdown-menu';
 
 import { IconButton } from '~components/uikit';
 import config from '~constants/config';
-import { useI18n } from '~services/i18n';
 import { useTheme } from '~styles';
 import { useHeaderOptions } from '~utils/navigation';
 
 export function useHeaderPlaygroundButton() {
-  const { _ } = useI18n();
   const theme = useTheme();
 
   useHeaderOptions({
@@ -26,9 +23,7 @@ export function useHeaderPlaygroundButton() {
                 key="playground"
                 onSelect={() => router.navigate('/playground')}
               >
-                <DropdownMenu.ItemTitle>
-                  {_(msg`Open playground`)}
-                </DropdownMenu.ItemTitle>
+                <DropdownMenu.ItemTitle>Playground</DropdownMenu.ItemTitle>
                 <DropdownMenu.ItemIcon
                   ios={{ name: 'character.book.closed' }}
                   androidIconName="library_books"

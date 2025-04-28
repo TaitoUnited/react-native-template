@@ -1,11 +1,10 @@
-import { Trans, msg } from '@lingui/macro';
+import { Trans, useLingui } from '@lingui/react/macro';
 import { differenceInDays } from 'date-fns';
 import * as ExpoStoreReview from 'expo-store-review';
 import { useEffect, useState } from 'react';
 
 import ImprovementForm from '~components/store-review/ImprovementForm';
 import { BottomSheet, Button, Stack, Text } from '~components/uikit';
-import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 import storage, { STORAGE_KEYS } from '~utils/storage';
 
@@ -15,7 +14,7 @@ const DAYS_TO_WAIT_BEFORE_ASKING_AGAIN = 7;
 const DAYS_BETWEEN_REVIEWS = 365;
 
 export default function StoreReview() {
-  const { _ } = useI18n();
+  const { t } = useLingui();
   const [open, setOpen] = useState(false);
   const [improvementRequest, setImprovementRequest] = useState(false);
 
@@ -77,8 +76,8 @@ export default function StoreReview() {
     } catch (error) {
       console.log('> Error requesting review: ', error);
       showToast({
-        title: _(msg`An error occurred while requesting review`),
-        subtitle: _(msg`Sorry about the inconvenience`),
+        title: t`An error occurred while requesting review`,
+        subtitle: t`Sorry about the inconvenience`,
         type: 'error',
       });
     } finally {

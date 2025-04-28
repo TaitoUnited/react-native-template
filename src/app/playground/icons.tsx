@@ -1,4 +1,3 @@
-import { msg } from '@lingui/macro';
 import { setStringAsync } from 'expo-clipboard';
 import { Pressable } from 'react-native';
 
@@ -7,12 +6,10 @@ import { Note } from '~components/playground/common';
 import { Grid, Icon, Stack, Text } from '~components/uikit';
 import type { IconName } from '~components/uikit/Icon';
 import * as icons from '~design-system/icons';
-import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 import { haptics } from '~utils/haptics';
 
 export default function Icons() {
-  const { _ } = useI18n();
   return (
     <Wrapper>
       <Stack axis="y" spacing="medium">
@@ -27,7 +24,7 @@ export default function Icons() {
                 haptics.notificationSuccess();
                 await setStringAsync(name);
                 showToast({
-                  title: _(msg`Copied to clipboard`),
+                  title: `Copied to clipboard`,
                   subtitle: `"${name}"`,
                   type: 'success',
                   icon: 'check',

@@ -1,4 +1,4 @@
-import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react/macro';
 import {
   type NavigationState,
   type PartialState,
@@ -7,7 +7,6 @@ import { type NativeStackNavigationOptions } from '@react-navigation/native-stac
 import { useNavigation } from 'expo-router';
 import { useEffect } from 'react';
 
-import { useI18n } from '~services/i18n';
 import { useTheme } from '~styles';
 
 export function getActiveRouteName(
@@ -20,7 +19,7 @@ export function getActiveRouteName(
 }
 
 export function useDefaultStackScreenOptions() {
-  const { _ } = useI18n();
+  const { t } = useLingui();
   const theme = useTheme();
 
   const screenOptions: NativeStackNavigationOptions = {
@@ -34,7 +33,7 @@ export function useDefaultStackScreenOptions() {
     headerBackTitleStyle: {
       fontSize: theme.fontSizes.body,
     },
-    headerBackTitle: _(msg`Back`),
+    headerBackTitle: t`Back`,
   };
 
   return screenOptions;

@@ -1,4 +1,4 @@
-import { Trans, msg } from '@lingui/macro';
+import { Trans, useLingui } from '@lingui/react/macro';
 import { Link } from 'expo-router';
 import { AccessibilityInfo, useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -14,7 +14,7 @@ export default function Landing() {
   const { height } = useWindowDimensions();
   const insets = useSafeAreaInsets();
   const theme = useTheme();
-  const { _ } = useI18n();
+  const { t } = useLingui();
 
   return (
     <Wrapper>
@@ -57,7 +57,7 @@ export default function Landing() {
             <Link href="/(auth)/login" asChild>
               <Button
                 testID="loginButton"
-                accessibilityHint={_(msg`Navigates to the sign-in screen`)}
+                accessibilityHint={t`Navigates to the sign-in screen`}
               >
                 <WhiteText variant="bodyBold">
                   <Trans>Sign in</Trans>
@@ -74,7 +74,7 @@ export default function Landing() {
             <Link href="/(auth)/signup" asChild>
               <Button
                 testID="signInButton"
-                accessibilityHint={_(msg`Navigates to the sign-up screen`)}
+                accessibilityHint={t`Navigates to the sign-up screen`}
               >
                 <WhiteText variant="bodyBold">
                   <Trans>Create an account</Trans>
@@ -91,7 +91,8 @@ export default function Landing() {
 }
 
 function LanguageSelector() {
-  const { _, setLocale } = useI18n();
+  const { changeLocale } = useI18n();
+  const { t } = useLingui();
 
   return (
     // Note: This is not a11y optimized. It would only say "Button" when focused while using a screen reader.
@@ -103,24 +104,24 @@ function LanguageSelector() {
         <DropdownMenu.Item
           key="fi"
           onSelect={() => {
-            setLocale('fi');
+            changeLocale('fi');
             AccessibilityInfo.announceForAccessibility(
-              _(msg`Language set to Finnish`)
+              t`Language set to Finnish`
             );
           }}
         >
-          <DropdownMenu.ItemTitle>{_(msg`Finnish`)}</DropdownMenu.ItemTitle>
+          <DropdownMenu.ItemTitle>{t`Finnish`}</DropdownMenu.ItemTitle>
         </DropdownMenu.Item>
         <DropdownMenu.Item
           key="en"
           onSelect={() => {
-            setLocale('en');
+            changeLocale('en');
             AccessibilityInfo.announceForAccessibility(
-              _(msg`Language set to English`)
+              t`Language set to English`
             );
           }}
         >
-          <DropdownMenu.ItemTitle>{_(msg`English`)}</DropdownMenu.ItemTitle>
+          <DropdownMenu.ItemTitle>{t`English`}</DropdownMenu.ItemTitle>
         </DropdownMenu.Item>
       </DropdownMenu.Content>
     </DropdownMenu.Root>

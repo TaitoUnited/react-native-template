@@ -1,5 +1,4 @@
-import { i18n } from '@lingui/core';
-import { msg } from '@lingui/macro';
+import { t } from '@lingui/core/macro';
 import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 import {
   TouchableOpacity,
@@ -9,7 +8,6 @@ import {
   type TextInputFocusEventData,
 } from 'react-native';
 
-import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 import { haptics } from '~utils/haptics';
 
@@ -37,7 +35,7 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
   (
     {
       value,
-      placeholder = i18n._(msg`Type here`),
+      placeholder = t`Type here`,
       onChange,
       icon,
       isRequired = false,
@@ -63,7 +61,6 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
     }: TextInputProps,
     ref
   ) => {
-    const { _ } = useI18n();
     const [secureTextVisible, setSecureTextVisible] = useState(false);
     const [isFocused, setFocused] = useState(false);
     const [characterCount, setCharacterCount] = useState(value?.length || 0);
@@ -104,8 +101,8 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
               variant="headingS"
               color="text"
               numberOfLines={1}
-              accessibilityLabel={_(msg`Label for ${label} input`)}
-              accessibilityHint={_(msg`Double tap to edit ${label}`)}
+              accessibilityLabel={t`Label for ${label} input`}
+              accessibilityHint={t`Double tap to edit ${label}`}
             >
               {label}
             </Text>
@@ -113,8 +110,8 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
               <Text
                 variant="body"
                 color="error"
-                accessibilityLabel={_(msg`Required field indicator`)}
-                accessibilityHint={_(msg`This field is marked as required`)}
+                accessibilityLabel={t`Required field indicator`}
+                accessibilityHint={t`This field is marked as required`}
                 // eslint-disable-next-line lingui/no-unlocalized-strings
               >
                 *
@@ -126,10 +123,8 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
         {showCharacterLimit && isFocused && (
           <CharacterCount
             variant="bodyExtraSmall"
-            accessibilityLabel={_(msg`Character count`)}
-            accessibilityHint={_(
-              msg`Number of characters entered in the input field: currently ${characterCount} out of ${maxLength}`
-            )}
+            accessibilityLabel={t`Character count`}
+            accessibilityHint={t`Number of characters entered in the input field: currently ${characterCount} out of ${maxLength}`}
           >
             <Text variant="bodyExtraSmallBold">{characterCount}</Text>
             {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
@@ -164,8 +159,8 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
             maxLength={maxLength}
             style={style}
             accessibilityRole={accessibilityRole ?? 'text'}
-            accessibilityLabel={accessibilityLabel ?? _(msg`${label} input field`)} // prettier-ignore
-            accessibilityHint={accessibilityHint ?? _(msg`Enter your ${label} here`)} // prettier-ignore
+            accessibilityLabel={accessibilityLabel ?? t`${label} input field`} // prettier-ignore
+            accessibilityHint={accessibilityHint ?? t`Enter your ${label} here`} // prettier-ignore
             accessibilityState={{ disabled: isDisabled }}
           />
 
@@ -175,11 +170,11 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
                 onPress={() => setSecureTextVisible((p) => !p)}
                 accessible
                 accessibilityRole="button"
-                accessibilityLabel={_(msg`Toggle visibility`)}
+                accessibilityLabel={t`Toggle visibility`}
                 accessibilityHint={
                   secureTextVisible
-                    ? _(msg`Hide text by toggling visibility`)
-                    : _(msg`Show text by toggling visibility`)
+                    ? t`Hide text by toggling visibility`
+                    : t`Show text by toggling visibility`
                 }
               >
                 {secureTextVisible ? (
@@ -195,8 +190,8 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
               size="small"
               onPress={handleCancel}
               disabled={!value}
-              accessibilityLabel={_(msg`Clear input`)}
-              accessibilityHint={_(msg`Double tap to clear the input`)}
+              accessibilityLabel={t`Clear input`}
+              accessibilityHint={t`Double tap to clear the input`}
             />
           )}
         </InputWrapper>
@@ -209,8 +204,8 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
               color={isValid ? 'text' : 'errorContrast'}
               accessibilityHint={
                 isValid
-                  ? _(msg`Informational message for the ${label} input field`)
-                  : _(msg`This is an error message for the ${label} input field`) // prettier-ignore
+                  ? t`Informational message for the ${label} input field`
+                  : t`This is an error message for the ${label} input field` // prettier-ignore
               }
             >
               {message}

@@ -1,4 +1,4 @@
-import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react/macro';
 import { Fragment, useState } from 'react';
 import type { LayoutChangeEvent, LayoutRectangle } from 'react-native';
 import Animated, {
@@ -8,7 +8,6 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 import { haptics } from '~utils/haptics';
 
@@ -95,7 +94,7 @@ function Segment({
   distanceFromActive: number;
   onSelect: () => void;
 }) {
-  const { _ } = useI18n();
+  const { t } = useLingui();
   const separatorOpacity = useAnimatedStyle(() => {
     let opacity = 0;
 
@@ -116,8 +115,8 @@ function Segment({
         accessible
         accessibilityRole="menuitem"
         accessibilityState={{ selected: isActive }}
-        accessibilityLabel={_(msg`Segment ${label}`)}
-        accessibilityHint={_(msg`Double tap to select this segment`)}
+        accessibilityLabel={t`Segment ${label}`}
+        accessibilityHint={t`Double tap to select this segment`}
       >
         <Text
           align="center"

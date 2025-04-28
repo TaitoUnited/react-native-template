@@ -1,4 +1,4 @@
-import { Trans, msg } from '@lingui/macro';
+import { Trans, useLingui } from '@lingui/react/macro';
 import { useEffect, useRef, useState, type MutableRefObject } from 'react';
 import {
   Animated,
@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { useI18n } from '~services/i18n';
 import { styled } from '~styles';
 import { announceForAccessibility } from '~utils/a11y';
 
@@ -47,7 +46,7 @@ type Props = BaseProps & (SingleValueProps | MultipleValueProps);
  *
  */
 export function PickerModal({ isVisible, onClose, ...rest }: Props) {
-  const { _ } = useI18n();
+  const { t } = useLingui();
   const backdropAnimation = useRef(new Animated.Value(isVisible ? 1 : 0));
   const contentAnimation = useRef(new Animated.Value(isVisible ? 1 : 0));
 
@@ -104,8 +103,8 @@ export function PickerModal({ isVisible, onClose, ...rest }: Props) {
       onRequestClose={handleClose}
       accessible
       accessibilityViewIsModal
-      accessibilityLabel={_(msg`Picker Modal`)}
-      accessibilityHint={_(msg`Allows you to pick an option from the list`)}
+      accessibilityLabel={t`Picker Modal`}
+      accessibilityHint={t`Allows you to pick an option from the list`}
     >
       <ModalContent
         {...rest}
@@ -130,7 +129,7 @@ function ModalContent({
   backdropAnimation: MutableRefObject<Animated.Value>;
   contentAnimation: MutableRefObject<Animated.Value>;
 }) {
-  const { _ } = useI18n();
+  const { t } = useLingui();
   const dimensions = useWindowDimensions();
   const insets = useSafeAreaInsets();
   const [selected, setSelected] = useState(_selected);
@@ -138,7 +137,7 @@ function ModalContent({
   function handleDone(value: any) {
     onConfirm(value);
     announceForAccessibility({
-      message: _(msg`Closing the picker modal with selected option ${value}`),
+      message: t`Closing the picker modal with selected option ${value}`,
     });
     requestAnimationFrame(() => {
       onClose();
