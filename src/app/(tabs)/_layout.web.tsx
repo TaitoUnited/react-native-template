@@ -56,7 +56,6 @@ export default function DrawerLayout() {
 
   return (
     <Drawer
-      initialRouteName="home"
       screenOptions={{
         headerStyle: {
           backgroundColor: theme.colors.surface,

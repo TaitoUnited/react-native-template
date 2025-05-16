@@ -58,8 +58,8 @@ msgstr "Takaisin"
 msgid "Bundle ID"
 msgstr "Pakettitunnus"
 
-#: src/app/(auth)/landing.web.tsx
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.web.tsx
+#: src/app/(auth)/index.tsx
 msgid "By Taito United"
 msgstr "Taito Unitedilta"
 
@@ -142,8 +142,8 @@ msgid "Could not toggle permission. You can change the permission in the system 
 msgstr "Ei voitu muuttaa lupaa. Voit muuttaa lupaa järjestelmäasetuksista."
 
 #: src/app/(auth)/signup.tsx
-#: src/app/(auth)/landing.web.tsx
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.web.tsx
+#: src/app/(auth)/index.tsx
 msgid "Create an account"
 msgstr "Luo uusi tili"
 
@@ -259,8 +259,8 @@ msgstr "Sähköposti on pakollinen"
 
 #: src/components/settings/hooks.tsx
 #: src/components/settings/LanguageMenuTarget.tsx
-#: src/app/(auth)/landing.web.tsx
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.web.tsx
+#: src/app/(auth)/index.tsx
 msgid "English"
 msgstr "Englanti"
 
@@ -297,8 +297,8 @@ msgid "Fetching..."
 msgstr "Haetaan..."
 
 #: src/components/settings/LanguageMenuTarget.tsx
-#: src/app/(auth)/landing.web.tsx
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.web.tsx
+#: src/app/(auth)/index.tsx
 msgid "Finnish"
 msgstr "Suomi"
 
@@ -352,11 +352,11 @@ msgstr "Nimike {label} syötteelle"
 msgid "Language"
 msgstr "Kieli"
 
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.tsx
 msgid "Language set to English"
 msgstr ""
 
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.tsx
 msgid "Language set to Finnish"
 msgstr ""
 
@@ -398,11 +398,11 @@ msgstr "Rakastan tätä"
 msgid "Model name"
 msgstr "Mallin nimi"
 
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.tsx
 msgid "Navigates to the sign-in screen"
 msgstr "Siirtyy kirjautumisnäyttöön"
 
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.tsx
 msgid "Navigates to the sign-up screen"
 msgstr "Siirtyy rekisteröitymisnäyttöön"
 
@@ -419,8 +419,8 @@ msgstr "Syötekenttään syötettyjen merkkien määrä: tällä hetkellä {char
 msgid "Open settings"
 msgstr "Avaa asetukset"
 
-#: src/app/(auth)/landing.web.tsx
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.web.tsx
+#: src/app/(auth)/index.tsx
 msgid "Or"
 msgstr "Tai"
 
@@ -526,8 +526,8 @@ msgstr "Asetukset"
 msgid "Show text by toggling visibility"
 msgstr "Näytä teksti vaihtamalla näkyvyyttä"
 
-#: src/app/(auth)/landing.web.tsx
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.web.tsx
+#: src/app/(auth)/index.tsx
 msgid "Sign in"
 msgstr "Kirjaudu sisään"
 
@@ -550,8 +550,8 @@ msgstr "Jotain meni pieleen"
 msgid "Sorry about the inconvenience"
 msgstr "Pahoittelemme häiriötä"
 
-#: src/app/(auth)/landing.web.tsx
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.web.tsx
+#: src/app/(auth)/index.tsx
 msgid "Start your journey"
 msgstr "Aloita matkasi"
 
@@ -567,8 +567,8 @@ msgstr "Suomi"
 msgid "System version"
 msgstr "Järjestelmän versio"
 
-#: src/app/(auth)/landing.web.tsx
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.web.tsx
+#: src/app/(auth)/index.tsx
 msgid "Taito Template"
 msgstr "Taito-pohja"
 
@@ -583,6 +583,10 @@ msgstr ""
 #: src/components/uikit/inputs/TextInput.tsx
 msgid "This is an error message for the {label} input field"
 msgstr "Tämä on virheilmoitus {label} syötekentälle"
+
+#: src/app/+not-found.tsx
+msgid "This screen does not exist"
+msgstr ""
 
 #: src/components/uikit/inputs/TextInput.tsx
 msgid "Toggle visibility"
@@ -620,8 +624,8 @@ msgstr "Päivitystunnus"
 msgid "Version"
 msgstr "Versio"
 
-#: src/app/(auth)/landing.web.tsx
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.web.tsx
+#: src/app/(auth)/index.tsx
 msgid "Welcome to"
 msgstr "Tervetuloa"
 
