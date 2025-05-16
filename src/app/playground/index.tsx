@@ -1,24 +1,24 @@
 import { Stack, router } from 'expo-router';
 
-import MenuList from '~components/common/MenuList';
+import MenuList, { Item } from '~components/common/MenuList';
 import { IconButton, Text } from '~components/uikit';
 import { styled } from '~styles';
 
 export default function PlaygroundPage() {
-  const items: Array<{ label: string; screen: any }> = [
-    { screen: 'playground/design-system', label: 'Design System' },
-    { screen: 'playground/icons', label: 'Icons' },
-    { screen: 'playground/buttons', label: 'Buttons' },
-    { screen: 'playground/inputs', label: 'Inputs' },
-    { screen: 'playground/bottom-sheet', label: 'Bottom Sheet' },
-    { screen: 'playground/layout', label: 'Layout' },
-    { screen: 'playground/accordion', label: 'Accordion' },
-    { screen: 'playground/progress', label: 'Progress' },
-    { screen: 'playground/image', label: 'Image' },
-    { screen: 'playground/toast', label: 'Toast' },
+  const items: Item[] = [
+    { id: 'design-system', target: '/playground/design-system', label: 'Design System' }, // prettier-ignore
+    { id: 'icons', target: '/playground/icons', label: 'Icons' },
+    { id: 'buttons', target: '/playground/buttons', label: 'Buttons' },
+    { id: 'inputs', target: '/playground/inputs', label: 'Inputs' },
+    { id: 'bottom', target: '/playground/bottom-sheet', label: 'Bottom Sheet' },
+    { id: 'layout', target: '/playground/layout', label: 'Layout' },
+    { id: 'accordion', target: '/playground/accordion', label: 'Accordion' },
+    { id: 'progress', target: '/playground/progress', label: 'Progress' },
+    { id: 'image', target: '/playground/image', label: 'Image' },
+    { id: 'toast', target: '/playground/toast', label: 'Toast' },
   ];
 
-  if (__DEV__) items.push({ screen: 'playground/sandbox', label: 'Sandbox' });
+  if (__DEV__) items.push({ id: 'sandbox', target: '/playground/sandbox', label: 'Sandbox' }); // prettier-ignore
 
   return (
     <Wrapper>
@@ -36,9 +36,9 @@ export default function PlaygroundPage() {
       />
       <MenuList
         items={items.map((item) => ({
-          id: item.screen,
+          id: item.id,
           label: item.label,
-          target: item.screen,
+          target: item.target,
           leftSlot: (
             <MenuListItemLeftSlot>
               <Text variant="bodyLargeBold" color="infoContrast">

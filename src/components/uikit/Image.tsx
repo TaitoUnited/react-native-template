@@ -1,6 +1,11 @@
-import { Image as ExpoImage, type ImageProps } from 'expo-image';
+import {
+  Image as ExpoImage,
+  type ImageProps,
+  type ImageSource,
+} from 'expo-image';
 import {
   type AccessibilityProps,
+  type ImageRequireSource,
   type ImageStyle,
   type StyleProp,
 } from 'react-native';
@@ -8,7 +13,7 @@ import {
 import { useImageDimensions } from '~utils/image';
 
 type Props = ImageProps & {
-  source: NonNullable<ImageProps['source']>;
+  source: NonNullable<ImageSource | ImageRequireSource>;
   style?: StyleProp<ImageStyle>;
   // Automatically set the width and height based on the image aspect ratio
   autoSize?: { width: number } | { height: number };

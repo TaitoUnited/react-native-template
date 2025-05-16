@@ -41,7 +41,7 @@ export function useDefaultStackScreenOptions() {
 
 export function useHeaderOptions(
   options: NativeStackNavigationOptions,
-  deps: any[] = []
+  deps: unknown[] = []
 ) {
   const navigation = useNavigation();
 

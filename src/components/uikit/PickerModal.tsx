@@ -1,5 +1,6 @@
 import { Trans, useLingui } from '@lingui/react/macro';
-import { useEffect, useRef, useState, type MutableRefObject } from 'react';
+import { FlashList } from '@shopify/flash-list';
+import { useEffect, useRef, useState, type RefObject } from 'react';
 import {
   Animated,
   Easing,
@@ -16,13 +17,15 @@ import { announceForAccessibility } from '~utils/a11y';
 import { Text } from './Text';
 import { Checkbox } from './inputs/Checkbox';
 import { Radio } from './inputs/Radio';
+import { Spacer } from './layout/Spacer';
 import { Stack } from './layout/Stack';
+
+type Option = { label: string; value: string };
 
 type BaseProps = {
   label: string;
-  options: { label: string; value: string }[];
+  options: Option[];
   isVisible: boolean;
-  multiple?: boolean;
   onClose: () => void;
 };
 
@@ -40,11 +43,11 @@ type MultipleValueProps = {
 
 type Props = BaseProps & (SingleValueProps | MultipleValueProps);
 
-/** Use this picker for picking options from a SHORT list of options (less than 20 options).
- *
- * You can use `PickerSheet` for longer lists.
- *
- */
+type AnimatedPickerProps = {
+  backdropAnimation: RefObject<Animated.Value>;
+  contentAnimation: RefObject<Animated.Value>;
+};
+
 export function PickerModal({ isVisible, onClose, ...rest }: Props) {
   const { t } = useLingui();
   const backdropAnimation = useRef(new Animated.Value(isVisible ? 1 : 0));
@@ -83,12 +86,7 @@ export function PickerModal({ isVisible, onClose, ...rest }: Props) {
   }
 
   function handleClose() {
-    animateClose(() => {
-      // Modal will unmount the content so try to avoid any UI glitches with `requestAnimationFrame`
-      requestAnimationFrame(() => {
-        onClose();
-      });
-    });
+    animateClose(() => requestAnimationFrame(() => onClose()));
   }
 
   useEffect(() => {
@@ -106,67 +104,44 @@ export function PickerModal({ isVisible, onClose, ...rest }: Props) {
       accessibilityLabel={t`Picker Modal`}
       accessibilityHint={t`Allows you to pick an option from the list`}
     >
-      <ModalContent
-        {...rest}
-        onClose={handleClose}
-        backdropAnimation={backdropAnimation}
-        contentAnimation={contentAnimation}
-      />
+      {rest.multiple ? (
+        <MultiplePicker
+          {...rest}
+          onClose={handleClose}
+          backdropAnimation={backdropAnimation}
+          contentAnimation={contentAnimation}
+        />
+      ) : (
+        <SinglePicker
+          {...rest}
+          onClose={handleClose}
+          backdropAnimation={backdropAnimation}
+          contentAnimation={contentAnimation}
+        />
+      )}
     </Modal>
   );
 }
 
-function ModalContent({
-  label,
-  options,
-  multiple = false,
-  selected: _selected,
+function PickerLayout({
+  children,
   backdropAnimation,
   contentAnimation,
   onClose,
-  onConfirm,
-}: Omit<Props, 'isVisible'> & {
-  backdropAnimation: MutableRefObject<Animated.Value>;
-  contentAnimation: MutableRefObject<Animated.Value>;
+}: {
+  children: React.ReactNode;
+  backdropAnimation: RefObject<Animated.Value>;
+  contentAnimation: RefObject<Animated.Value>;
+  onClose: () => void;
 }) {
-  const { t } = useLingui();
   const dimensions = useWindowDimensions();
   const insets = useSafeAreaInsets();
-  const [selected, setSelected] = useState(_selected);
-
-  function handleDone(value: any) {
-    onConfirm(value);
-    announceForAccessibility({
-      message: t`Closing the picker modal with selected option ${value}`,
-    });
-    requestAnimationFrame(() => {
-      onClose();
-    });
-  }
-
-  function handleOptionSelect(value: string) {
-    if (multiple) {
-      const current = selected as string[];
-      const isChecked = current.includes(value);
-      const newSelected = isChecked
-        ? current.filter((o) => o !== value)
-        : [...current, value];
-
-      setSelected(newSelected);
-    } else {
-      setSelected(value);
-      setTimeout(() => {
-        handleDone(value);
-      }, 200);
-    }
-  }
 
   return (
     <Wrapper>
       <TouchableWithoutFeedback onPress={onClose} accessible={false}>
         <Backdrop style={{ opacity: backdropAnimation.current }} />
       </TouchableWithoutFeedback>
-
       <Content
         style={{
           maxHeight: dimensions.height - insets.bottom - insets.top,
@@ -181,59 +156,144 @@ function ModalContent({
           ],
         }}
       >
-        <Stack axis="y" spacing="regular">
-          <Text variant="bodySmallSemiBold">{label}</Text>
-
-          <ScrollView
-            style={{
-              maxHeight: dimensions.height - insets.bottom - insets.top - 150,
-            }}
-            accessibilityRole="list"
-          >
-            <Stack axis="y" spacing="regular">
-              {options.map((option) =>
-                multiple ? (
-                  <Checkbox
-                    key={option.value}
-                    label={option.label}
-                    checked={selected.includes(option.value)}
-                    value={option.value}
-                    onChange={() => handleOptionSelect(option.value)}
-                  />
-                ) : (
-                  <Radio
-                    key={option.value}
-                    label={option.label}
-                    checked={selected === option.value}
-                    value={option.value}
-                    onChange={() => handleOptionSelect(option.value)}
-                  />
-                )
-              )}
-            </Stack>
-          </ScrollView>
-
-          <Footer>
-            <ActionButton onPress={onClose} accessibilityRole="button">
-              <Text variant={multiple ? 'body' : 'bodyBold'}>
-                {multiple ? <Trans>Cancel</Trans> : <Trans>Close</Trans>}
-              </Text>
-            </ActionButton>
-
-            {multiple && (
-              <ActionButton
-                onPress={() => handleDone(selected)}
-                accessibilityRole="button"
-              >
-                <Text variant="bodyBold">
-                  <Trans>Done</Trans>
-                </Text>
-              </ActionButton>
-            )}
-          </Footer>
-        </Stack>
+        {children}
       </Content>
     </Wrapper>
+  );
+}
+
+type SinglePickerProps = Omit<BaseProps, 'isVisible'> &
+  SingleValueProps &
+  AnimatedPickerProps;
+
+function SinglePicker({
+  label,
+  options,
+  selected: initialSelected,
+  onClose,
+  onConfirm,
+  backdropAnimation,
+  contentAnimation,
+}: SinglePickerProps) {
+  const { t } = useLingui();
+  const [selected, setSelected] = useState(initialSelected);
+
+  function handleSelect(value: string) {
+    setSelected(value);
+    setTimeout(() => {
+      onConfirm(value);
+      announceForAccessibility({ message: t`Closing with ${value}` });
+      requestAnimationFrame(() => onClose());
+    }, 200);
+  }
+
+  return (
+    <PickerLayout
+      onClose={onClose}
+      backdropAnimation={backdropAnimation}
+      contentAnimation={contentAnimation}
+    >
+      <ScrollView accessibilityRole="list">
+        <Stack axis="y" spacing="regular">
+          <Text variant="bodySmallSemiBold">{label}</Text>
+          <FlashList
+            data={options}
+            extraData={selected} // Trigger re-render on selected change
+            estimatedItemSize={48}
+            keyExtractor={(item) => item.value}
+            ItemSeparatorComponent={() => <Spacer size="small" />}
+            renderItem={({ item: opt }) => (
+              <Radio
+                label={opt.label}
+                value={opt.value}
+                checked={selected === opt.value}
+                onChange={() => handleSelect(opt.value)}
+              />
+            )}
+          />
+        </Stack>
+      </ScrollView>
+      <Footer>
+        <ActionButton onPress={onClose} accessibilityRole="button">
+          <Text variant="bodyBold">
+            <Trans>Close</Trans>
+          </Text>
+        </ActionButton>
+      </Footer>
+    </PickerLayout>
+  );
+}
+
+type MultiplePickerProps = Omit<BaseProps, 'isVisible'> &
+  MultipleValueProps &
+  AnimatedPickerProps;
+
+function MultiplePicker({
+  label,
+  options,
+  selected: initialSelected,
+  onClose,
+  onConfirm,
+  backdropAnimation,
+  contentAnimation,
+}: MultiplePickerProps) {
+  const { t } = useLingui();
+  const [selected, setSelected] = useState<string[]>(initialSelected);
+
+  function toggle(value: string) {
+    setSelected((prev) =>
+      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]
+    );
+  }
+
+  function handleDone() {
+    onConfirm(selected);
+    announceForAccessibility({
+      message: t`Closing with ${selected.join(', ')}`,
+    });
+    requestAnimationFrame(() => onClose());
+  }
+
+  return (
+    <PickerLayout
+      onClose={onClose}
+      backdropAnimation={backdropAnimation}
+      contentAnimation={contentAnimation}
+    >
+      <ScrollView accessibilityRole="list">
+        <Stack axis="y" spacing="regular">
+          <Text variant="bodySmallSemiBold">{label}</Text>
+          <FlashList
+            data={options}
+            extraData={selected} // Trigger re-render on selected change
+            estimatedItemSize={48}
+            keyExtractor={(item) => item.value}
+            ItemSeparatorComponent={() => <Spacer size="small" />}
+            renderItem={({ item: opt }) => (
+              <Checkbox
+                key={opt.value}
+                label={opt.label}
+                value={opt.value}
+                checked={selected.includes(opt.value)}
+                onChange={() => toggle(opt.value)}
+              />
+            )}
+          />
+        </Stack>
+      </ScrollView>
+      <Footer>
+        <ActionButton onPress={onClose} accessibilityRole="button">
+          <Text variant="body">
+            <Trans>Cancel</Trans>
+          </Text>
+        </ActionButton>
+        <ActionButton onPress={handleDone} accessibilityRole="button">
+          <Text variant="bodyBold">
+            <Trans>Done</Trans>
+          </Text>
+        </ActionButton>
+      </Footer>
+    </PickerLayout>
   );
 }
 

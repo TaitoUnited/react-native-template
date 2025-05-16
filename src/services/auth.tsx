@@ -1,8 +1,5 @@
-import { t } from '@lingui/core/macro';
-import { unstable_batchedUpdates } from 'react-native';
 import { create } from 'zustand';
 
-import { showToast } from '~components/common/Toaster';
 import storage, { STORAGE_KEYS } from '~utils/storage';
 
 type AuthStatus =
@@ -93,21 +90,10 @@ export async function initAuth() {
     // In all other cases keep user logged in if the error is not auth error
     // since they might be able to resolve it by eg. connecting to the internet etc.
     authStore.setState({ status: 'authenticated' });
-  } catch (error: any) {
-    if (isAuthError(error)) {
-      // Ignore auth errors here since they are handled in the GraphQL client
-      // where the user will be logged out automatically
-      console.log('> Auth error detected during auth check', error);
-    } else if (error?.networkError) {
-      showToast({
-        title: t`Could not connect to server`,
-        type: 'error',
-      });
-    } else {
-      console.log('> Unknown auth error', error);
-      // Logout the user in case of unknown errors or if the access token is missing
-      authStore.getState().logout();
-    }
+  } catch (error: unknown) {
+    console.log('> Unknown auth error', error);
+    // Logout the user in case of unknown errors or if the access token is missing
+    authStore.getState().logout();
   }
 }
 
@@ -121,25 +107,6 @@ function setAuthTokens({
   storage.clearAll();
   storage.set(STORAGE_KEYS.ACCESS_TOKEN, accessToken);
   storage.set(STORAGE_KEYS.REFRESH_TOKEN, refreshToken);
-}
-
-export function isAuthError(error: any) {
-  return error?.graphQLErrors?.some((e: any) =>
-    ['FORBIDDEN', 'UNAUTHENTICATED'].includes(e?.code)
-  );
-}
-
-// This is used to automatically logout the user if the GraphQL client encounters an auth error
-export function handleAuthError(error: any) {
-  if (isAuthError(error)) {
-    // https://github.com/pmndrs/zustand#calling-actions-outside-a-react-event-handler
-    unstable_batchedUpdates(() => {
-      useAuthStore
-        .getState()
-        .logout()
-        .catch((e) => console.log('> Failed handle auth error', e));
-    });
-  }
 }
 
 // Mock login functions --------------------------------------------------------

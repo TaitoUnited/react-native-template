@@ -35,8 +35,8 @@ export function useKeyboardVisibility() {
 }
 
 export function useAppState(callbacks: {
-  onActive?: () => any;
-  onInactive?: () => any;
+  onActive?: () => void;
+  onInactive?: () => void;
 }) {
   const appState = useRef(AppState.currentState);
 
@@ -63,7 +63,7 @@ export function useAppState(callbacks: {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 }
 
-export function useBackHandler(callback: () => any) {
+export function useBackHandler(callback: () => unknown) {
   const isFocused = useIsFocused();
 
   useEffect(() => {

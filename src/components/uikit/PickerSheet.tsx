@@ -92,6 +92,8 @@ function ModalContent({
   );
 
   function handleDone() {
+    // TODO: Fix this type
+    // eslint-disable-next-line typescript-eslint/no-explicit-any
     onConfirm(selected as any);
     requestAnimationFrame(() => {
       onClose();

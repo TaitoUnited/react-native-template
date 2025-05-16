@@ -157,8 +157,8 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
             maxLength={maxLength}
             style={style}
             accessibilityRole={accessibilityRole ?? 'text'}
-            accessibilityLabel={accessibilityLabel ?? t`${label} input field`} // prettier-ignore
-            accessibilityHint={accessibilityHint ?? t`Enter your ${label} here`} // prettier-ignore
+            accessibilityLabel={accessibilityLabel ?? t`${label ?? 'text'} input field`} // prettier-ignore
+            accessibilityHint={accessibilityHint ?? t`Enter your ${label ?? 'text'} here`} // prettier-ignore
             accessibilityState={{ disabled: isDisabled }}
           />
 
@@ -202,8 +202,8 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
               color={isValid ? 'text' : 'errorContrast'}
               accessibilityHint={
                 isValid
-                  ? t`Informational message for the ${label} input field`
-                  : t`This is an error message for the ${label} input field` // prettier-ignore
+                  ? t`Informational message for the ${(label ?? '')} input field`
+                  : t`This is an error message for the ${(label ?? '')} input field` // prettier-ignore
               }
             >
               {message}
