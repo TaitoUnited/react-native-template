@@ -144,6 +144,7 @@ module.exports = defineConfig([
     ignores: [
       'android/',
       'ios/',
+      'app.config.ts',
       'src/locales/',
       'src/graphql/generated.ts',
       'src/app/playground/',

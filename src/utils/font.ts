@@ -1,4 +1,3 @@
-/* eslint-disable lingui/no-unlocalized-strings */
 import { useFonts } from 'expo-font';
 
 import InterBold from '../design-system/fonts/Inter-Bold.ttf';

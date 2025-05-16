@@ -1,4 +1,5 @@
 import type { ConfigContext, ExpoConfig } from 'expo/config';
+
 import type { AppConfig, AppEnv } from './app.config.types';
 import { version } from './package.json';
 

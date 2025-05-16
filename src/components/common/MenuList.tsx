@@ -64,7 +64,7 @@ export default function MenuList({ items, title }: Props) {
               key={item.id}
               onPress={isPressable ? () => handleItemPress(item) : undefined}
               accessibilityRole={isPressable ? 'button' : 'text'}
-              accessibilityLabel={`${t`Item`} ${item.label}${item.currentValue ? `, ${t`Selected value`}: ${item.currentValue}` : ''}`} // eslint-disable-line lingui/no-unlocalized-strings
+              accessibilityLabel={`${t`Item`} ${item.label}${item.currentValue ? `, ${t`Selected value`}: ${item.currentValue}` : ''}`}
               accessibilityHint={
                 isPressable ? t`Double tap to select ${item.label}` : ''
               }

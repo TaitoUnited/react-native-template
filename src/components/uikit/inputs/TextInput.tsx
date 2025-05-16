@@ -112,7 +112,6 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
                 color="error"
                 accessibilityLabel={t`Required field indicator`}
                 accessibilityHint={t`This field is marked as required`}
-                // eslint-disable-next-line lingui/no-unlocalized-strings
               >
                 *
               </Text>
@@ -127,7 +126,6 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
             accessibilityHint={t`Number of characters entered in the input field: currently ${characterCount} out of ${maxLength}`}
           >
             <Text variant="bodyExtraSmallBold">{characterCount}</Text>
-            {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
             {` / ${maxLength}`}
           </CharacterCount>
         )}
