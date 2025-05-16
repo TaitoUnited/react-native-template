@@ -15,7 +15,8 @@ const ICON = './src/design-system/assets/icon.png';
 const ADAPTIVE_ICON = './src/design-system/assets/adaptive-icon.png';
 const FAVICON = './src/design-system/assets/icon.png';
 const SCHEME = 'taito-template';
-const COLOR = '#009a48'; // Corresponds to `colors.brand.brand`
+export const BACKGROUND_COLOR = '#009a48'; // Corresponds to `colors.brand.brand`
+export const SPLASHSCREEN = './src/design-system/assets/splash.png';
 
 // Store links for app store review prompts (recommended for user-facing apps to help users leave reviews and avoid negative feedback in the stores)
 const APP_STORE_URL = 'https://apps.apple.com/us/app/example/id1234567890';
@@ -55,7 +56,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     android: {
       adaptiveIcon: {
         foregroundImage: adaptiveIcon,
-        backgroundColor: COLOR,
+        backgroundColor: BACKGROUND_COLOR,
       },
       edgeToEdgeEnabled: true,
       package: packageName,
@@ -96,10 +97,10 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       [
         'expo-splash-screen',
         {
-          image: './src/design-system/assets/splash.png',
+          image: SPLASHSCREEN,
           imageWidth: 1000,
           resizeMode: 'contain',
-          backgroundColor: COLOR,
+          backgroundColor: BACKGROUND_COLOR,
         },
       ],
       [
