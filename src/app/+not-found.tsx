@@ -12,7 +12,7 @@ export default function NotFoundScreen() {
   return (
     <>
       <ExpoStack.Screen options={{ title: t`Oops!` }} />
-      <Wrapper testID="homeScreen">
+      <Wrapper testID="not-found-screen">
         <Stack axis="y" spacing="regular" align="center" justify="center">
           <Text variant="body">
             <Trans>This screen does not exist</Trans>
