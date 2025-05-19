@@ -310,6 +310,10 @@ msgstr "Etunimi"
 msgid "First name is required"
 msgstr "Etunimi on pakollinen"
 
+#: src/app/+not-found.tsx
+msgid "Go to home screen!"
+msgstr ""
+
 #: src/components/uikit/inputs/TextInput.tsx
 msgid "Hide text by toggling visibility"
 msgstr "Piilota teksti vaihtamalla näkyvyyttä"
@@ -413,6 +417,10 @@ msgstr "Ei tuloksia."
 #: src/components/uikit/inputs/TextInput.tsx
 msgid "Number of characters entered in the input field: currently {characterCount} out of {maxLength}"
 msgstr "Syötekenttään syötettyjen merkkien määrä: tällä hetkellä {characterCount} / {maxLength}"
+
+#: src/app/+not-found.tsx
+msgid "Oops!"
+msgstr ""
 
 #: src/services/permissions.tsx
 #: src/services/permissions.tsx

@@ -310,6 +310,10 @@ msgstr ""
 msgid "First name is required"
 msgstr ""
 
+#: src/app/+not-found.tsx
+msgid "Go to home screen!"
+msgstr "Go to home screen!"
+
 #: src/components/uikit/inputs/TextInput.tsx
 msgid "Hide text by toggling visibility"
 msgstr "Hide text by toggling visibility"
@@ -413,6 +417,10 @@ msgstr ""
 #: src/components/uikit/inputs/TextInput.tsx
 msgid "Number of characters entered in the input field: currently {characterCount} out of {maxLength}"
 msgstr "Number of characters entered in the input field: currently {characterCount} out of {maxLength}"
+
+#: src/app/+not-found.tsx
+msgid "Oops!"
+msgstr "Oops!"
 
 #: src/services/permissions.tsx
 #: src/services/permissions.tsx
