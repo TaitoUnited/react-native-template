@@ -2,7 +2,7 @@ import { useAssets } from 'expo-asset';
 
 import { styled } from '~styles';
 
-import { BACKGROUND_COLOR } from '../../../app.config';
+import config from '~constants/config';
 import Splash from '../../design-system/assets/splash.png';
 
 export default function SplashScreen() {
@@ -16,7 +16,7 @@ export default function SplashScreen() {
     <Wrapper>
       <SplashContent
         pointerEvents="none"
-        style={[{ backgroundColor: BACKGROUND_COLOR }]}
+        style={[{ backgroundColor: config.backgroundColor }]}
       >
         <SplashImage source={imageSource} fadeDuration={0} />
       </SplashContent>
