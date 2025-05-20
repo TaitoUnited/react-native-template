@@ -17,18 +17,14 @@ on:
         default: 'false'
 
 jobs:
-  checkout:
-    name: ⬇️ Setup repo
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
   build:
     name: Build app
-    needs: checkout
     runs-on: ubuntu-latest
     outputs:
       BUILD_URL: ${{ steps.build.outputs.BUILD_URL }}
     steps:
+      - name: ⬇️ Setup repo
+        uses: actions/checkout@v4
       - name: 🚀 Build
         id: build
         uses: ./.github/actions/build-app
@@ -43,6 +39,8 @@ jobs:
     runs-on: ubuntu-latest
     if: always()
     steps:
+      - name: ⬇️ Setup repo
+        uses: actions/checkout@v4
       - uses: ./.github/actions/notify-slack
         with:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
@@ -56,6 +54,8 @@ jobs:
     if: ${{ needs.build.result == 'success' && inputs.email == 'true' }}
     runs-on: ubuntu-latest
     steps:
+      - name: ⬇️ Setup repo
+        uses: actions/checkout@v4
       - uses: ./.github/actions/notify-clients
         with:
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_GITHUB_ACTION_API_KEY }}
