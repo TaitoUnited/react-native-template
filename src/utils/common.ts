@@ -27,7 +27,7 @@ export function useFirstMountState(): boolean {
 }
 
 export function usePrevious<T>(state: T): T | undefined {
-  const ref = useRef<T>();
+  const ref = useRef<T>(undefined);
 
   useEffect(() => {
     ref.current = state;
@@ -37,7 +37,7 @@ export function usePrevious<T>(state: T): T | undefined {
 }
 
 export function usePreviousDistinct<T>(value: T): T | undefined {
-  const prevRef = useRef<T>();
+  const prevRef = useRef<T>(undefined);
   const curRef = useRef<T>(value);
   const isFirstMount = useFirstMountState();
 
@@ -81,15 +81,16 @@ export function useInterval(callback: () => void, delay: number | null) {
 }
 
 // Userland version of upcoming official `useEffectEvent` React hook:
-// RFC: https://github.com/reactjs/rfcs/blob/useEffectEvent/text/0000-useEffectEvent.md
+// RFC: https://react.dev/reference/react/experimental_useEffectEvent
+// eslint-disable-next-line typescript-eslint/no-explicit-any
 export function useEffectEvent<T extends (...args: any[]) => any>(handler: T) {
-  const handlerRef = useRef<T>();
+  const handlerRef = useRef<T>(undefined);
 
   useLayoutEffect(() => {
     handlerRef.current = handler;
   });
 
-  return useCallback((...args: any[]) => {
+  return useCallback((...args: unknown[]) => {
     const fn = handlerRef.current;
     return fn?.(...args);
   }, []);

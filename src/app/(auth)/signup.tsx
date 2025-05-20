@@ -29,7 +29,7 @@ export default function Signup() {
 
   async function handleSubmit() {
     try {
-      const { password1, password2, ...values } = form.getValues(); // eslint-disable-line @typescript-eslint/no-unused-vars
+      const { password1, password2, ...values } = form.getValues(); // eslint-disable-line typescript-eslint/no-unused-vars
 
       const credentials = {
         ...values,

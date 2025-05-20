@@ -1,5 +1,5 @@
-import { theme, type Theme } from './styled';
 import * as typographyTokens from '../design-system/typography';
+import { theme, type Theme } from './styled';
 
 type Typography = keyof typeof typographyTokens;
 type ThemeKey = keyof Theme;
@@ -19,19 +19,19 @@ type ThemeKey = keyof Theme;
  *   }
  * }
  */
-export function themeProp<P extends string, T extends ThemeKey>(
+export function themeProp<P extends string, T extends ThemeKey, R>(
   prop: P,
   themeKey: T,
-  getStyles: (token: string) => any
+  getStyles: (token: string) => R
 ) {
-  const values: Record<string, any> = { [prop]: {} };
+  const values: Record<string, Record<string, R>> = { [prop]: {} };
 
   Object.values(theme[themeKey]).forEach(({ token }) => {
     values[prop][token] = getStyles(`$${token}`);
   });
 
   return values as {
-    [prop in P]: { [token in keyof Theme[T]]: any };
+    [K in P]: { [TK in keyof Theme[T]]: R };
   };
 }
 
@@ -47,24 +47,34 @@ export function themeProp<P extends string, T extends ThemeKey>(
  *   }
  * }
  */
+type TypographyVariant = {
+  typography: Typography;
+  lineHeight: number;
+};
+
+type CompoundVariant = {
+  variant: Typography;
+  withLineHeight: boolean;
+  css: { lineHeight: string };
+};
+
+type DefaultVariants = {
+  variant: Typography;
+  withLineHeight: boolean;
+};
+
 export function getTextTypographyVariants() {
-  // TODO: improve typing here - remove `any`s
-  const typographyVariants = {} as Record<Typography, any>;
+  const typographyVariants: Record<Typography, TypographyVariant> =
+    {} as Record<Typography, TypographyVariant>;
 
-  const compoundVariants = [] as {
-    variant: Typography;
-    withLineHeight: boolean;
-    css: any;
-  }[];
+  const compoundVariants: CompoundVariant[] = [];
 
-  const defaultVariants: { variant: Typography; withLineHeight: boolean } = {
+  const defaultVariants: DefaultVariants = {
     variant: 'body',
     withLineHeight: false,
   };
 
-  Object.keys(typographyTokens).forEach((v) => {
-    const variant = v as Typography;
-
+  (Object.keys(typographyTokens) as Typography[]).forEach((variant) => {
     typographyVariants[variant] = {
       typography: variant,
       // Apply line height only for multiline text since by default app UI text

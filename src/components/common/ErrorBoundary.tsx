@@ -9,7 +9,7 @@ interface Props {
 }
 
 interface State {
-  error: any;
+  error: Error | null;
 }
 
 // NOTE: error boundaries have to use class components for some reason...
@@ -18,7 +18,7 @@ export default class ErrorBoundary extends Component<Props, State> {
     error: null,
   };
 
-  componentDidCatch(error: any) {
+  componentDidCatch(error: Error) {
     console.log('> ErrorBoundary error', error);
     this.setState({ error });
   }

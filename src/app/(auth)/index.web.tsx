@@ -40,7 +40,6 @@ export default function Landing() {
                 withLineHeight
                 style={{ marginLeft: 16 }}
               >
-                {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
                 <Trans>By Taito United</Trans> 💚
               </BlackText>
             </Stack>
@@ -50,8 +49,7 @@ export default function Landing() {
         <BottomSection style={{ minHeight: height * 0.4 }}>
           <Stack axis="y" spacing="regular" align="center">
             <WhiteText variant="body" align="center" withLineHeight>
-              {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
-              {/* prettier-ignore */}✨<Trans>Start your journey</Trans> ✨
+              ✨<Trans>Start your journey</Trans> ✨
             </WhiteText>
             <Link href="/(auth)/login" asChild>
               <Button testID="loginButton">

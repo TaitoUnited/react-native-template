@@ -22,7 +22,7 @@ export const STORAGE_KEYS = {
 };
 
 // Add all clearable storage keys here so they can be cleared on logout
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 const CLEARABLE_KEYS = [
   STORAGE_KEYS.ACCESS_TOKEN,
   STORAGE_KEYS.REFRESH_TOKEN,
@@ -42,9 +42,9 @@ const persistentStorage = new MMKV({ id: 'persistent' });
 type Key = (typeof CLEARABLE_KEYS)[number];
 
 function getStorage(key: Key) {
-  return PERSISTENT_KEYS.includes(key as any)
+  return PERSISTENT_KEYS.includes(key)
     ? persistentStorage
-    : CLEARABLE_KEYS.includes(key as any)
+    : CLEARABLE_KEYS.includes(key)
       ? clearableStorage
       : new MMKV({ id: 'default' }); // This should never happen
 }

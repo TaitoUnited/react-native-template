@@ -70,7 +70,7 @@ export const Select = forwardRef(
       accessibilityHint,
       ...rest
     }: Props,
-    ref: any
+    ref: any // eslint-disable-line typescript-eslint/no-explicit-any
   ) => {
     const [isPickerOpen, setPickerOpen] = useState(false);
     const visibleValue = Array.isArray(value)
@@ -86,7 +86,9 @@ export const Select = forwardRef(
       multiple,
       emptyContent,
       isVisible: isPickerOpen,
+      // eslint-disable-next-line typescript-eslint/no-explicit-any
       selected: value as any,
+      // eslint-disable-next-line typescript-eslint/no-explicit-any
       onConfirm: onChange as any,
       onClose: () => setPickerOpen(false),
     };
@@ -118,7 +120,14 @@ export const Select = forwardRef(
             haptics.selection();
           }}
           accessibilityRole={accessibilityRole ?? 'button'}
-          accessibilityLabel={ accessibilityLabel ?? t`Select input for ${label}, current value: ${value}`} // prettier-ignore
+          accessibilityLabel={
+            accessibilityLabel ??
+            t`Select input for ${label}, current value: ${
+              Array.isArray(value)
+                ? value.join(', ')
+                : value ?? ''
+            }`
+          } // prettier-ignore
           accessibilityHint={accessibilityHint ?? t`Double tap to open options to select`} // prettier-ignore
         />
 

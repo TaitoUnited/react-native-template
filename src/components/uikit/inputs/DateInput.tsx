@@ -44,7 +44,7 @@ export const DateInput = forwardRef(
       accessibilityHint,
       ...rest
     }: Props & AccessibilityProps,
-    ref: any
+    ref: any // eslint-disable-line typescript-eslint/no-explicit-any
   ) => {
     const { t } = useLingui();
     const [isPickerOpen, setPickerOpen] = useState(false);

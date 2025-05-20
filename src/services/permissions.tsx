@@ -6,6 +6,7 @@ import { Alert, Platform } from 'react-native';
 import {
   PERMISSIONS,
   type Permission,
+  type PermissionStatus,
   RESULTS,
   checkMultiple,
   checkNotifications,
@@ -16,6 +17,8 @@ import {
 import { create } from 'zustand';
 
 import { useAppState } from '~utils/observe';
+
+type Statuses = Record<Permission | 'notifications', PermissionStatus>;
 
 const usePermissionStore = create<PermissionStore>((set, get) => ({
   status: 'pending',
@@ -72,7 +75,7 @@ export function usePermissions() {
       const _openSettings = () => openSettings().catch(() => console.log('> Failed to open settings')); // prettier-ignore
 
       try {
-        let statuses: any = {}; // TODO: fix type
+        let statuses: Statuses | null = null;
 
         if (
           category === 'bluetooth' ||
@@ -85,15 +88,22 @@ export function usePermissions() {
           const permissionsToRequest = PERMISSION_CATEGORIES[category][OS];
 
           if (permissionsToRequest.length > 0) {
-            statuses = await requestMultiple(permissionsToRequest);
+            statuses = await requestMultiple(permissionsToRequest) as Statuses; // prettier-ignore
           }
         } else if (category === 'notification') {
-          statuses = await requestNotifications([
+          const notificationStatus = await requestNotifications([
             'alert',
             'sound',
             'badge',
             'criticalAlert',
           ]);
+
+          statuses = { notifications: notificationStatus.status } as Statuses; // prettier-ignore
+        }
+
+        if (statuses === null) {
+          console.log('> No permissions to request');
+          return RESULTS.UNAVAILABLE;
         }
 
         if (Object.values(statuses).every((s) => s === RESULTS.GRANTED)) {
@@ -155,9 +165,7 @@ export function usePermissions() {
 function getPermissions(platform: 'ios' | 'android') {
   return compact(
     flatten(
-      Object.values(PERMISSION_CATEGORIES).map(
-        (category) => category[platform] as any
-      )
+      Object.values(PERMISSION_CATEGORIES).map((category) => category[platform])
     )
   );
 }

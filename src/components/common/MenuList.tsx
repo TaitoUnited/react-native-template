@@ -1,5 +1,5 @@
 import { useLingui } from '@lingui/react/macro';
-import { router } from 'expo-router';
+import { router, type Href } from 'expo-router';
 import { isValidElement, type FunctionComponent, type ReactNode } from 'react';
 import { Platform, StyleSheet } from 'react-native';
 
@@ -7,14 +7,14 @@ import { Icon, Stack, Text } from '~components/uikit';
 import { styled } from '~styles';
 import { haptics } from '~utils/haptics';
 
-type Item = {
+export type Item = {
   id: string;
   label: string;
   currentValue?: string | number | ReactNode;
   checked?: boolean;
   leftSlot?: ReactNode;
   rightSlot?: ReactNode;
-  target?: FunctionComponent<any>; // | keyof ParamList;
+  target?: FunctionComponent<any> | Href; // eslint-disable-line typescript-eslint/no-explicit-any
   targetName?: string;
   onPress?: () => void;
   platform?: 'ios' | 'android';
@@ -33,12 +33,7 @@ export default function MenuList({ items, title }: Props) {
 
   function handleItemPress(item: Item) {
     if (typeof item.target === 'function') {
-      router.navigate({
-        pathname: 'menu-list/[menuListItem]',
-        params: {
-          menuListItem: item.targetName,
-        },
-      });
+      router.navigate(`/menu-list/${item.targetName}`);
     } else if (typeof item.target === 'string') {
       router.navigate(item.target);
     }
@@ -64,7 +59,7 @@ export default function MenuList({ items, title }: Props) {
               key={item.id}
               onPress={isPressable ? () => handleItemPress(item) : undefined}
               accessibilityRole={isPressable ? 'button' : 'text'}
-              accessibilityLabel={`${t`Item`} ${item.label}${item.currentValue ? `, ${t`Selected value`}: ${item.currentValue}` : ''}`} // eslint-disable-line lingui/no-unlocalized-strings
+              accessibilityLabel={`${t`Item`} ${item.label}${item.currentValue ? `, ${t`Selected value`}: ${item.currentValue}` : ''}`}
               accessibilityHint={
                 isPressable ? t`Double tap to select ${item.label}` : ''
               }

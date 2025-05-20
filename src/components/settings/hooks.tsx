@@ -16,7 +16,7 @@ export function useMenuListItem({ targetName }: { targetName: string }) {
 
   let label = '';
   let currentValue;
-  let target: FunctionComponent<any> = () => <View />;
+  let target: FunctionComponent<any> = () => <View />; // eslint-disable-line typescript-eslint/no-explicit-any
 
   switch (targetName) {
     case 'LanguageMenuTarget':

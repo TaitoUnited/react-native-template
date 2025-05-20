@@ -1,8 +1,8 @@
 import { useAssets } from 'expo-asset';
 
+import config from '~constants/config';
 import { styled } from '~styles';
 
-import config from '~constants/config';
 import Splash from '../../design-system/assets/splash.png';
 
 export default function SplashScreen() {
