@@ -7,31 +7,52 @@ on:
       platform:
         type: choice
         description: Which platform to build for
-        options:
-          - ios
-          - android
-          - all
+        options: [ios, android, all]
         required: true
         default: all
       email:
         type: choice
         description: Notify the client via email?
-        options:
-          - 'false'
-          - 'true'
-        required: true
-jobs:
-  build-workflow:
-    name: Build workflow
-    runs-on: ubuntu-latest
-    steps:
-      - name: ⬇️ Setup repo
-        uses: actions/checkout@v4
+        options: ['false', 'true']
+        default: 'false'
 
-      - name: 👷‍♀️ Build
-        uses: ./.github/actions/build-workflow
+jobs:
+  build:
+    name: Build app
+    runs-on: ubuntu-latest
+    outputs:
+      BUILD_URL: ${{ steps.build.outputs.BUILD_URL }}
+    steps:
+      - name: 🚀 Build
+        id: build
+        uses: ./.github/actions/build-app
         with:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-          platform: ${{ github.event.inputs.platform }}
-          email: ${{ github.event.inputs.email }}
+          platform: ${{ inputs.platform }}
+          environment: development
+
+  slack:
+    name: Notify Slack
+    needs: build
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - uses: ./.github/actions/notify-slack
+        with:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          BUILD_URL: ${{ needs.build.outputs.BUILD_URL }}
+          platform: ${{ inputs.platform }}
+          status: ${{ needs.build.result }}
+
+  email:
+    name: Notify Clients
+    needs: build
+    if: ${{ needs.build.result == 'success' && inputs.email == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/actions/notify-clients
+        with:
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_GITHUB_ACTION_API_KEY }}
+          BUILD_URL: ${{ needs.build.outputs.BUILD_URL }}
+          platform: ${{ inputs.platform }}
           environment: development

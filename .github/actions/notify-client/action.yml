@@ -1,0 +1,29 @@
+name: Notify Clients
+description: Sends release email to clients
+inputs:
+  SENDGRID_API_KEY:
+    description: SendGrid API key
+    required: true
+  BUILD_URL:
+    description: URL to the build
+    required: true
+  platform:
+    description: Platform for which the build was made
+    required: true
+  environment:
+    description: Environment for which the build was made
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: 📧 Send emails
+      uses: licenseware/send-email-notification@v1
+      with:
+        api-key: ${{ inputs.SENDGRID_API_KEY }}
+        subject: New Release for ${{ inputs.platform }} (${{ inputs.environment }} environment)
+        from-email: taito.dev@gmail.com
+        to-email: support@taitounited.fi
+        markdown-body: |
+          # New Release for ${{ inputs.platform }} 🚀
+          Click [here](${{ inputs.BUILD_URL }}) to install it on your device. 📲
