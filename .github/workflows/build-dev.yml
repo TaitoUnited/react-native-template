@@ -17,8 +17,8 @@ on:
         type: choice
         description: Notify the client via email?
         options:
-          - false
-          - true
+          - 'false'
+          - 'true'
         required: true
 jobs:
   build-workflow:
@@ -34,4 +34,4 @@ jobs:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           platform: ${{ github.event.inputs.platform }}
           email: ${{ github.event.inputs.email }}
-          environment: dev
+          environment: development
