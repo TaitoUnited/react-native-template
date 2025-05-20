@@ -83,7 +83,7 @@ export function SystemInfoMenuTarget() {
     });
   }
 
-  if (config.appEnv !== 'prod') {
+  if (config.appEnv !== 'production') {
     items.push({
       id: 'bundleId',
       label: t`Bundle ID`,

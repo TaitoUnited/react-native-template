@@ -1,0 +1,19 @@
+diff --git a/node_modules/react-native-collapsible/Collapsible.js b/node_modules/react-native-collapsible/Collapsible.js
+index dc4d3b8..2c013fd 100644
+--- a/node_modules/react-native-collapsible/Collapsible.js
++++ b/node_modules/react-native-collapsible/Collapsible.js
+@@ -1,4 +1,4 @@
+-import React, { Component } from 'react';
++import { Component } from 'react';
+ import { Animated, Easing } from 'react-native';
+ 
+ const ANIMATED_EASING_PREFIXES = ['easeInOut', 'easeOut', 'easeIn'];
+@@ -188,7 +188,7 @@ export default class Collapsible extends Component {
+     const hasKnownHeight = !measuring && (measured || collapsed);
+     const style = {
+       overflow: 'hidden',
+-      height: hasKnownHeight ? height : 0,
++      height: hasKnownHeight ? height : 'unset',
+     };
+     const contentStyle = {};
+     if (measuring) {

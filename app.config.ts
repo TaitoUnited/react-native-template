@@ -1,124 +1,131 @@
-// https://docs.expo.dev/guides/typescript/#appconfigjs
-import { type ExpoConfig } from '@expo/config';
-import 'ts-node/register';
+import type { ConfigContext, ExpoConfig } from 'expo/config';
+import type { AppConfig, AppEnv } from './app.config.types';
+import { version } from './package.json';
 
-import { getConfig } from './config/utils';
+// Replace these with your EAS project ID and project slug.
+// You can find them at https://expo.dev/accounts/[account]/projects/[project].
+const EAS_PROJECT_ID = '808dbf9f-9986-4409-a52d-050e69d62397';
+const PROJECT_SLUG = 'taito-template';
+const OWNER = 'taito-united';
 
-/** ------------------------- NOTE: -------------------------
- * Do not commit `console.log` statements in this file!!!
- * It will break android builds because of the way we Expo resolves
- * the `index.tsx` file during the build process...
- ------------------------------------------------------------ */
+const APP_NAME = 'Taito Template';
+const BUNDLE_IDENTIFIER = 'com.taito.template';
+const PACKAGE_NAME = 'com.taito.template';
+const SCHEME = 'taito-template';
 
-const env = process.env.APP_ENV || 'dev';
+const ICON = './src/design-system/assets/icon.png';
+const ADAPTIVE_ICON = './src/design-system/assets/adaptive-icon.png';
+const SPLASHSCREEN = './src/design-system/assets/splash.png';
+const FAVICON = ICON; // TODO: Add proper favicon
+const BACKGROUND_COLOR = '#009a48'; // Corresponds to `colors.brand.brand`
 
-const config = getConfig(env);
-const appId = `com.taito.template${config.appIdSuffix ?? ''}`;
+// Store links for app store review prompts (recommended for user-facing apps to help users leave reviews and avoid negative feedback in the stores)
+const APP_STORE_URL = 'https://apps.apple.com/us/app/example/id1234567890';
+const PLAY_STORE_URL =
+  'https://play.google.com/store/apps/details?id=com.example';
 
-const expoConfig: ExpoConfig = {
-  slug: 'taito-template',
-  name: 'Taito Template', // eslint-disable-line lingui/no-unlocalized-strings
-  scheme: config.scheme,
-  owner: 'taito-united',
-  version: '0.0.1',
-  orientation: 'portrait',
-  jsEngine: 'hermes',
-  platforms: ['ios', 'android', 'web'], // Remove web if you don't need to support it
-  icon: config.iconImage,
-  newArchEnabled: true,
-  backgroundColor: '#000000', // root view background
-  userInterfaceStyle: 'automatic',
-  android: {
-    package: appId,
-    playStoreUrl: config.playStoreUrl,
-    adaptiveIcon: {
-      foregroundImage: config.adaptiveIcon.foregroundImage,
-      backgroundColor: config.adaptiveIcon.backgroundColor,
-    },
-    // Add more Android permissions here
-    permissions: ['VIBRATE'],
-  },
-  ios: {
-    bundleIdentifier: appId,
-    supportsTablet: true, // Change this if your app supports tablets
-    appStoreUrl: config.appStoreUrl,
-    bitcode: false,
-  },
-  // Remove the `web` entry if you don't need to support it
-  web: {
-    bundler: 'metro',
-    output: 'static',
-    favicon: config.iconImage,
-  },
-  extra: {
+export default ({ config }: ConfigContext): ExpoConfig => {
+  const env = (process.env.APP_ENV as AppEnv) || 'development';
+  const customConfig = getDynamicAppConfig(env);
+  console.log('⚙️ Building app for environment:', env);
+
+  return {
     ...config,
-    eas: {
-      projectId: '808dbf9f-9986-4409-a52d-050e69d62397',
+    name: customConfig.name,
+    version, // Automatically bump your project version with `npm version patch`, `npm version minor` or `npm version major`.
+    slug: PROJECT_SLUG, // Must be consistent across all environments.
+    owner: OWNER,
+    orientation: 'portrait',
+    userInterfaceStyle: 'automatic',
+    icon: customConfig.icon,
+    scheme: customConfig.scheme,
+    ios: {
+      supportsTablet: true,
+      bundleIdentifier: customConfig.bundleIdentifier,
+      appStoreUrl: APP_STORE_URL,
     },
-  },
-  updates: {
-    url: 'https://u.expo.dev/808dbf9f-9986-4409-a52d-050e69d62397',
-  },
-  // This is important for OTA updates to work properly!
-  // https://docs.expo.dev/eas-update/runtime-versions/#fingerprint-runtime-version-policy
-  runtimeVersion: {
-    policy: 'fingerprint',
-  },
-  plugins: [
-    'expo-router',
-    'expo-localization',
-    ['expo-updates', { username: 'taito-united' }],
-    [
-      'expo-font',
-      {
-        fonts: [
-          './src/design-system/fonts/Inter-Bold.ttf',
-          './src/design-system/fonts/Inter-Medium.ttf',
-          './src/design-system/fonts/Inter-Regular.ttf',
-          './src/design-system/fonts/Inter-SemiBold.ttf',
-        ],
+    android: {
+      adaptiveIcon: {
+        foregroundImage: customConfig.adaptiveIcon,
+        backgroundColor: customConfig.backgroundColor,
       },
+      edgeToEdgeEnabled: true,
+      package: customConfig.packageName,
+      playStoreUrl: PLAY_STORE_URL,
+    },
+    updates: {
+      url: `https://u.expo.dev/${EAS_PROJECT_ID}`,
+    },
+    runtimeVersion: {
+      policy: 'appVersion',
+    },
+    extra: {
+      ...customConfig,
+      eas: { projectId: EAS_PROJECT_ID },
+    },
+    web: {
+      bundler: 'metro',
+      output: 'static',
+      favicon: FAVICON,
+    },
+    plugins: [
+      'expo-router',
+      'expo-localization',
+      ['expo-updates', { username: OWNER }],
+      [
+        'expo-font',
+        {
+          fonts: [
+            './src/design-system/fonts/Inter-Bold.ttf',
+            './src/design-system/fonts/Inter-Medium.ttf',
+            './src/design-system/fonts/Inter-Regular.ttf',
+            './src/design-system/fonts/Inter-SemiBold.ttf',
+          ],
+        },
+      ],
+      [
+        'expo-splash-screen',
+        {
+          image: customConfig.splashscreen,
+          imageWidth: 1000,
+          resizeMode: 'contain',
+          backgroundColor: customConfig.backgroundColor,
+        },
+      ],
+      [
+        'react-native-permissions',
+        {
+          // Add setup_permissions to your Podfile
+          iosPermissions: [],
+        },
+      ],
+      ['./plugins/with-ios-settings', { teamId: 'EPATC4S9N2' }],
+      [
+        'expo-build-properties',
+        { android: { extraProguardRules: getExtraProguardRules() } },
+      ],
+      [
+        '@sentry/react-native/expo',
+        {
+          /**
+           * _[CUSTOMIZE]_
+           *
+           * Create a project in sentry and customize these to match the project.
+           */
+          organization: OWNER,
+          project: 'react-native',
+          url: 'https://sentry.io/',
+        },
+      ],
     ],
-    [
-      'expo-splash-screen',
-      {
-        backgroundColor: config.splash.backgroundColor,
-        image: config.splash.image,
-        imageWidth: 1000,
-      },
-    ],
-    [
-      'react-native-permissions',
-      {
-        // Add setup_permissions to your Podfile
-        iosPermissions: [],
-      },
-    ],
-    ['./plugins/with-ios-settings', { teamId: 'EPATC4S9N2' }],
-    [
-      'expo-build-properties',
-      { android: { extraProguardRules: getExtraProguardRules() } },
-    ],
-    [
-      '@sentry/react-native/expo',
-      {
-        /**
-         * _[CUSTOMIZE]_
-         *
-         * Create a project in sentry and customize these to match the project.
-         */
-
-        organization: 'taito-united',
-        project: 'react-native',
-        url: 'https://sentry.io/',
-      },
-    ],
-  ],
+    experiments: {
+      typedRoutes: true,
+    },
+  };
 };
 
 // NOTE: we can't inline this to the plugin definition because the indendation would be wrong
 function getExtraProguardRules() {
-  // eslint-disable-next-line lingui/no-unlocalized-strings
   return `
   # react-native-date-picker
 -keep public class net.time4j.android.ApplicationStarter
@@ -126,4 +133,48 @@ function getExtraProguardRules() {
 `;
 }
 
-export default expoConfig;
+/** Dynamically configure the app based on the environment. */
+const getDynamicAppConfig = (environment: AppEnv): AppConfig => {
+  if (environment === 'production') {
+    return {
+      name: APP_NAME,
+      bundleIdentifier: BUNDLE_IDENTIFIER,
+      packageName: PACKAGE_NAME,
+      icon: ICON,
+      adaptiveIcon: ADAPTIVE_ICON,
+      backgroundColor: BACKGROUND_COLOR,
+      splashscreen: SPLASHSCREEN,
+      scheme: SCHEME,
+      appEnv: environment,
+      apiUrl: 'https://api.example.com',
+    };
+  }
+
+  if (environment === 'preview') {
+    return {
+      name: `(prev) ${APP_NAME}`,
+      bundleIdentifier: `${BUNDLE_IDENTIFIER}.preview`,
+      packageName: `${PACKAGE_NAME}.preview`,
+      icon: './src/design-system/assets/icon-test.png',
+      adaptiveIcon: './src/design-system/assets/adaptive-icon-test.png',
+      backgroundColor: BACKGROUND_COLOR,
+      splashscreen: SPLASHSCREEN,
+      scheme: `${SCHEME}-prev`,
+      appEnv: environment,
+      apiUrl: 'https://api.example.com',
+    };
+  }
+
+  return {
+    name: `(dev) ${APP_NAME}`,
+    bundleIdentifier: `${BUNDLE_IDENTIFIER}.dev`,
+    packageName: `${PACKAGE_NAME}.dev`,
+    icon: ICON,
+    adaptiveIcon: ADAPTIVE_ICON,
+    backgroundColor: BACKGROUND_COLOR,
+    splashscreen: SPLASHSCREEN,
+    scheme: `${SCHEME}-dev`,
+    appEnv: environment,
+    apiUrl: 'https://api.example.com',
+  };
+};

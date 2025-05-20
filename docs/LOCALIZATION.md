@@ -19,7 +19,7 @@ This guide walks you through managing translations in your project using [Lingui
 2. Open the relevant `messages.po` file in a text editor and add your translations. For example:
 
    ```po
-   #: src/app/(auth)/landing.tsx:74
+   #: src/app/(auth)/index.tsx:74
    #: src/app/(auth)/signup.tsx:55
    msgid "Create an account"
    msgstr "Luo tili"

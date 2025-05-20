@@ -58,8 +58,8 @@ msgstr ""
 msgid "Bundle ID"
 msgstr "Bundle ID"
 
-#: src/app/(auth)/landing.web.tsx
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.web.tsx
+#: src/app/(auth)/index.tsx
 msgid "By Taito United"
 msgstr "By Taito United"
 
@@ -142,8 +142,8 @@ msgid "Could not toggle permission. You can change the permission in the system 
 msgstr ""
 
 #: src/app/(auth)/signup.tsx
-#: src/app/(auth)/landing.web.tsx
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.web.tsx
+#: src/app/(auth)/index.tsx
 msgid "Create an account"
 msgstr "Create an account"
 
@@ -259,8 +259,8 @@ msgstr ""
 
 #: src/components/settings/hooks.tsx
 #: src/components/settings/LanguageMenuTarget.tsx
-#: src/app/(auth)/landing.web.tsx
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.web.tsx
+#: src/app/(auth)/index.tsx
 msgid "English"
 msgstr "English"
 
@@ -297,8 +297,8 @@ msgid "Fetching..."
 msgstr "Fetching..."
 
 #: src/components/settings/LanguageMenuTarget.tsx
-#: src/app/(auth)/landing.web.tsx
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.web.tsx
+#: src/app/(auth)/index.tsx
 msgid "Finnish"
 msgstr "Finnish"
 
@@ -309,6 +309,10 @@ msgstr ""
 #: src/app/(auth)/signup.tsx
 msgid "First name is required"
 msgstr ""
+
+#: src/app/+not-found.tsx
+msgid "Go to home screen!"
+msgstr "Go to home screen!"
 
 #: src/components/uikit/inputs/TextInput.tsx
 msgid "Hide text by toggling visibility"
@@ -352,11 +356,11 @@ msgstr "Label for {label} input"
 msgid "Language"
 msgstr "Language"
 
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.tsx
 msgid "Language set to English"
 msgstr "Language set to English"
 
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.tsx
 msgid "Language set to Finnish"
 msgstr "Language set to Finnish"
 
@@ -398,11 +402,11 @@ msgstr "Loving it"
 msgid "Model name"
 msgstr "Model name"
 
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.tsx
 msgid "Navigates to the sign-in screen"
 msgstr "Navigates to the sign-in screen"
 
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.tsx
 msgid "Navigates to the sign-up screen"
 msgstr "Navigates to the sign-up screen"
 
@@ -414,13 +418,17 @@ msgstr ""
 msgid "Number of characters entered in the input field: currently {characterCount} out of {maxLength}"
 msgstr "Number of characters entered in the input field: currently {characterCount} out of {maxLength}"
 
+#: src/app/+not-found.tsx
+msgid "Oops!"
+msgstr "Oops!"
+
 #: src/services/permissions.tsx
 #: src/services/permissions.tsx
 msgid "Open settings"
 msgstr ""
 
-#: src/app/(auth)/landing.web.tsx
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.web.tsx
+#: src/app/(auth)/index.tsx
 msgid "Or"
 msgstr "Or"
 
@@ -526,8 +534,8 @@ msgstr ""
 msgid "Show text by toggling visibility"
 msgstr "Show text by toggling visibility"
 
-#: src/app/(auth)/landing.web.tsx
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.web.tsx
+#: src/app/(auth)/index.tsx
 msgid "Sign in"
 msgstr "Sign in"
 
@@ -550,8 +558,8 @@ msgstr ""
 msgid "Sorry about the inconvenience"
 msgstr "Sorry about the inconvenience"
 
-#: src/app/(auth)/landing.web.tsx
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.web.tsx
+#: src/app/(auth)/index.tsx
 msgid "Start your journey"
 msgstr "Start your journey"
 
@@ -567,8 +575,8 @@ msgstr "Suomi"
 msgid "System version"
 msgstr "System version"
 
-#: src/app/(auth)/landing.web.tsx
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.web.tsx
+#: src/app/(auth)/index.tsx
 msgid "Taito Template"
 msgstr "Taito Template"
 
@@ -583,6 +591,10 @@ msgstr "This field is marked as required"
 #: src/components/uikit/inputs/TextInput.tsx
 msgid "This is an error message for the {label} input field"
 msgstr "This is an error message for the {label} input field"
+
+#: src/app/+not-found.tsx
+msgid "This screen does not exist"
+msgstr "This screen does not exist"
 
 #: src/components/uikit/inputs/TextInput.tsx
 msgid "Toggle visibility"
@@ -620,8 +632,8 @@ msgstr "Update ID"
 msgid "Version"
 msgstr "Version"
 
-#: src/app/(auth)/landing.web.tsx
-#: src/app/(auth)/landing.tsx
+#: src/app/(auth)/index.web.tsx
+#: src/app/(auth)/index.tsx
 msgid "Welcome to"
 msgstr "Welcome to"
 

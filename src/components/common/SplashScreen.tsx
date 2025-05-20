@@ -1,15 +1,9 @@
 import { useAssets } from 'expo-asset';
 
-import config from '~constants/config';
 import { styled } from '~styles';
 
+import config from '~constants/config';
 import Splash from '../../design-system/assets/splash.png';
-
-if (config.splash.image !== './src/design-system/assets/splash.png') {
-  throw Error(
-    'Unexpected splash screen image, expected "./design-system/assets/splash.png"'
-  );
-}
 
 export default function SplashScreen() {
   const [assets, error] = useAssets([Splash]);
@@ -22,7 +16,7 @@ export default function SplashScreen() {
     <Wrapper>
       <SplashContent
         pointerEvents="none"
-        style={[{ backgroundColor: config.splash.backgroundColor }]}
+        style={[{ backgroundColor: config.backgroundColor }]}
       >
         <SplashImage source={imageSource} fadeDuration={0} />
       </SplashContent>

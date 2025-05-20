@@ -146,7 +146,6 @@ function DefaultBottomBar({ tabs, theme }: BottomBarProps) {
 
   return (
     <Tabs
-      initialRouteName="home"
       screenOptions={{
         headerStyle: {
           backgroundColor: theme.colors.surface,
@@ -196,7 +195,6 @@ function renderBottomBar(props: BottomTabBarProps & { tabs: TabList }) {
 function CustomBottomBar({ tabs, theme }: BottomBarProps) {
   return (
     <Tabs
-      initialRouteName="home"
       tabBar={(props) => renderBottomBar({ ...props, tabs })}
       screenOptions={{
         headerStyle: {

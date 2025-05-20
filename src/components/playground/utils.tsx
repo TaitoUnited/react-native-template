@@ -12,7 +12,7 @@ export function useHeaderPlaygroundButton() {
 
   useHeaderOptions({
     headerRight: () => {
-      return config.appEnv !== 'prod' ? (
+      return config.appEnv !== 'production' ? (
         <View style={{ marginHorizontal: theme.space.regular }}>
           <DropdownMenu.Root>
             <DropdownMenu.Trigger>

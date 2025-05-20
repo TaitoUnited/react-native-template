@@ -5,53 +5,44 @@
     "appVersionSource": "remote"
   },
   "build": {
-    "dev:simulator": {
-      "developmentClient": true,
-      "distribution": "internal",
-      "android": { "image": "latest" },
-      "ios": { "simulator": true, "image": "latest" },
-      "environment": "development",
-      "env": { "APP_ENV": "dev" },
-      "channel": "dev"
-    },
-    "dev": {
+    "development": {
       "developmentClient": false,
       "distribution": "internal",
       "android": { "image": "latest" },
       "ios": { "image": "latest" },
       "environment": "development",
-      "env": { "APP_ENV": "dev" },
-      "channel": "dev"
+      "env": { "APP_ENV": "development" },
+      "channel": "development"
     },
-    "test": {
+    "development:simulator": {
+      "extends": "development",
+      "developmentClient": true,
+      "ios": { "simulator": true }
+    },
+    "preview": {
       "distribution": "internal",
       "android": { "image": "latest" },
       "ios": { "image": "latest" },
       "environment": "preview",
-      "env": { "APP_ENV": "test" },
-      "channel": "test"
+      "env": { "APP_ENV": "preview" },
+      "channel": "preview"
     },
-    "prod-internal": {
-      "distribution": "internal",
-      "android": { "image": "latest" },
-      "ios": { "image": "latest" },
-      "autoIncrement": false,
-      "environment": "production",
-      "env": { "APP_ENV": "prod" },
-      "channel": "prod-internal"
-    },
-    "prod": {
+    "production": {
       "distribution": "store",
       "android": { "image": "latest" },
       "ios": { "image": "latest" },
       "autoIncrement": true,
       "environment": "production",
-      "env": { "APP_ENV": "prod" },
-      "channel": "prod"
+      "env": { "APP_ENV": "production" },
+      "channel": "production"
+    },
+    "production-internal": {
+      "extends": "production",
+      "distribution": "internal"
     }
   },
   "submit": {
-    "prod": {
+    "production": {
       "android": { "track": "internal" },
       "ios": {
         "bundleIdentifier": "com.taito.template",

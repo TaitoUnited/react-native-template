@@ -15,6 +15,10 @@ config.transformer.minifierConfig = {
   },
 };
 
+// Learn more about the need for this here: https://github.com/expo/expo/discussions/36551
+config.resolver.unstable_enablePackageExports = false;
+
+// Learn more about the need for this here: https://github.com/expo/expo/discussions/36551
 config.transformer.getTransformOptions = async () => ({
   // The following allows tree shaking and lazy loading. Learn more https://docs.expo.dev/guides/tree-shaking/
   transform: {

@@ -1,7 +1,6 @@
 import Constants from 'expo-constants';
+import { AppConfig } from '../../app.config.types';
 
-import type { Config } from '../../config/types';
-
-const config = Constants.expoConfig?.extra as Config;
+const config = Constants.expoConfig?.extra as AppConfig;
 
 export default config;
