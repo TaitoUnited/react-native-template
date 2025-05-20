@@ -29,6 +29,7 @@ jobs:
       - uses: actions/checkout@v4
   build:
     name: Build app
+    needs: checkout
     runs-on: ubuntu-latest
     outputs:
       BUILD_URL: ${{ steps.build.outputs.BUILD_URL }}
