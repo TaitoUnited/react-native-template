@@ -44,6 +44,12 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       supportsTablet: true,
       bundleIdentifier: customConfig.bundleIdentifier,
       appStoreUrl: APP_STORE_URL,
+      config: {
+        usesNonExemptEncryption: false,
+      },
+      infoPlist: {
+        ITSAppUsesNonExemptEncryption: false,
+      },
     },
     android: {
       adaptiveIcon: {
