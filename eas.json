@@ -1,6 +1,6 @@
 {
   "cli": {
-    "version": ">= 4.1.2",
+    "version": ">= 16.6.1",
     "promptToConfigurePushNotifications": false,
     "appVersionSource": "remote"
   },
@@ -38,6 +38,7 @@
     },
     "production-internal": {
       "extends": "production",
+      "autoIncrement": false,
       "distribution": "internal"
     }
   },
