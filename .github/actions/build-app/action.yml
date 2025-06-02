@@ -57,5 +57,5 @@ runs:
         eas build --platform ${{ inputs.platform }} --profile ${{ inputs.environment }} $([ "${{ inputs.submit }}" = "true" ] && echo "--auto-submit") --non-interactive | tee temp.txt
         ANDROID_URL=$(grep -o 'Android build details: [^ ]*' temp.txt | awk '{print $4}')
         IOS_URL=$(grep -o 'iOS build details: [^ ]*' temp.txt | awk '{print $4}')
-        echo "ANDROID_BUILD_URL=$ANDROID_URL" >> $GITHUB_OUTPUT
-        echo "IOS_BUILD_URL=$IOS_URL" >> $GITHUB_OUTPUT
+        echo "ANDROID_BUILD_URL=$ANDROID_URL" >> "$GITHUB_OUTPUT"
+        echo "IOS_BUILD_URL=$IOS_URL" >> "$GITHUB_OUTPUT"
