@@ -36,6 +36,7 @@ jobs:
         with:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           platform: ${{ inputs.platform }}
+          submit: ${{ inputs.submit }}
           environment: production
 
   slack:
