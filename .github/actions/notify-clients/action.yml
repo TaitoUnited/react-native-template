@@ -4,9 +4,12 @@ inputs:
   SENDGRID_API_KEY:
     description: SendGrid API key
     required: true
-  BUILD_URL:
-    description: URL to the build
-    required: true
+  ANDROID_BUILD_URL:
+    description: URL to the Android build
+    required: false
+  IOS_BUILD_URL:
+    description: URL to the iOS build
+    required: false
   platform:
     description: Platform for which the build was made
     required: true
@@ -26,4 +29,6 @@ runs:
         to-email: support@taitounited.fi
         markdown-body: |
           # New Release for ${{ inputs.platform }} 🚀
-          Click [here](${{ inputs.BUILD_URL }}) to install it on your device. 📲
+
+          ${{ inputs.ANDROID_BUILD_URL && format('**Android:** [Download here]({0})', inputs.ANDROID_BUILD_URL) || '' }}
+          ${{ inputs.IOS_BUILD_URL && format('**iOS:** [Download here]({0})', inputs.IOS_BUILD_URL) || '' }}

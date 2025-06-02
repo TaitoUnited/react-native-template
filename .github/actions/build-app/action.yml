@@ -15,6 +15,13 @@ inputs:
     description: Do you want to automatically submit the build to the store?
     default: no
     required: false
+outputs:
+  ANDROID_BUILD_URL:
+    description: The Android build URL
+    value: ${{ steps.build-app.outputs.ANDROID_BUILD_URL }}
+  IOS_BUILD_URL:
+    description: The iOS build URL
+    value: ${{ steps.build-app.outputs.IOS_BUILD_URL }}
 runs:
   using: composite
   steps:
@@ -48,4 +55,7 @@ runs:
       shell: bash
       run: |
         eas build --platform ${{ inputs.platform }} --profile ${{ inputs.environment }} $([ "${{ inputs.submit }}" = "true" ] && echo "--auto-submit") --non-interactive | tee temp.txt
-        echo "BUILD_URL=$(grep -o 'Build details: [^ ]*' temp.txt | awk '{print \$3}')" >> $GITHUB_ENV
+        ANDROID_URL=$(grep -o 'Android build details: [^ ]*' temp.txt | awk '{print $4}')
+        IOS_URL=$(grep -o 'iOS build details: [^ ]*' temp.txt | awk '{print $4}')
+        echo "ANDROID_BUILD_URL=$ANDROID_URL" >> $GITHUB_OUTPUT
+        echo "IOS_BUILD_URL=$IOS_URL" >> $GITHUB_OUTPUT

@@ -26,7 +26,8 @@ jobs:
     name: Build app
     runs-on: ubuntu-latest
     outputs:
-      BUILD_URL: ${{ steps.build.outputs.BUILD_URL }}
+      ANDROID_BUILD_URL: ${{ steps.build.outputs.ANDROID_BUILD_URL }}
+      IOS_BUILD_URL: ${{ steps.build.outputs.IOS_BUILD_URL }}
     steps:
       - name: ⬇️ Setup repo
         uses: actions/checkout@v4
@@ -50,7 +51,8 @@ jobs:
       - uses: ./.github/actions/notify-slack
         with:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          BUILD_URL: ${{ needs.build.outputs.BUILD_URL }}
+          ANDROID_BUILD_URL: ${{ needs.build.outputs.ANDROID_BUILD_URL }}
+          IOS_BUILD_URL: ${{ needs.build.outputs.IOS_BUILD_URL }}
           platform: ${{ inputs.platform }}
           status: ${{ needs.build.result }}
 
@@ -65,6 +67,7 @@ jobs:
       - uses: ./.github/actions/notify-clients
         with:
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_GITHUB_ACTION_API_KEY }}
-          BUILD_URL: ${{ needs.build.outputs.BUILD_URL }}
+          ANDROID_BUILD_URL: ${{ needs.build.outputs.ANDROID_BUILD_URL }}
+          IOS_BUILD_URL: ${{ needs.build.outputs.IOS_BUILD_URL }}
           platform: ${{ inputs.platform }}
           environment: production
