@@ -1,0 +1,43 @@
+name: Notify Slack
+description: Sends Slack notification
+inputs:
+  SLACK_WEBHOOK:
+    description: Slack webhook URL
+    required: true
+  ANDROID_BUILD_URL:
+    description: URL to the Android build
+    required: false
+  IOS_BUILD_URL:
+    description: URL to the iOS build
+    required: false
+  platform:
+    description: Platform for which the build was made
+    required: true
+  status:
+    description: Status of the build
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: 🔔 Notify Slack
+      uses: rtCamp/action-slack-notify@v2
+      with:
+        status: ${{ inputs.status }}
+      env:
+        SLACK_CHANNEL: builds
+        SLACK_COLOR: ${{ inputs.status }}
+        SLACK_ICON: ${{ github.event.organization.avatar_url }}
+        SLACK_TITLE: ${{ inputs.status == 'success' && format('Build successful for {0} :white_check_mark:', inputs.platform) || format('Build failed for {0} :x:', inputs.platform) }}
+        SLACK_MESSAGE: >-
+          ${{ 
+            (inputs.ANDROID_BUILD_URL != '' && inputs.IOS_BUILD_URL != '') && 
+              format('See <{0}|Android build> :android: and <{1}|iOS build> :apple:', inputs.ANDROID_BUILD_URL, inputs.IOS_BUILD_URL) ||
+            (inputs.ANDROID_BUILD_URL != '' && inputs.IOS_BUILD_URL == '') && 
+              format('See <{0}|Android build> :android:', inputs.ANDROID_BUILD_URL) ||
+            (inputs.ANDROID_BUILD_URL == '' && inputs.IOS_BUILD_URL != '') && 
+              format('See <{0}|iOS build> :apple:', inputs.IOS_BUILD_URL) ||
+            format('See the <{0}/{1}/actions/runs/{2}|GitHub Actions logs> :sad_pepe:', github.server_url, github.repository, github.run_id)
+          }}
+        SLACK_USERNAME: ${{ github.event.repository.name }} - ${{ github.workflow }}
+        SLACK_WEBHOOK: ${{ inputs.SLACK_WEBHOOK }}

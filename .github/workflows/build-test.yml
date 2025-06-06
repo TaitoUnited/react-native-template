@@ -1,37 +1,67 @@
-# Build the test env app on EAS Cloud service.
-name: 'Build | Test'
-run-name: Build | Test (for ${{ inputs.platform }} on ${{ github.ref_name }})
+# Build the preview env app on EAS Cloud service.
+name: 'Build | Preview'
+run-name: Build | Preview (for ${{ inputs.platform }} on ${{ github.ref_name }})
 on:
   workflow_dispatch:
     inputs:
       platform:
         type: choice
         description: Which platform to build for
-        options:
-          - ios
-          - android
-          - all
+        options: [ios, android, all]
         required: true
         default: all
       email:
         type: choice
         description: Notify the client via email?
-        options:
-          - false
-          - true
-        required: true
+        options: ['false', 'true']
+        default: 'false'
+
 jobs:
-  build-workflow:
-    name: Build workflow
+  build:
+    name: Build app
+    runs-on: ubuntu-latest
+    outputs:
+      ANDROID_BUILD_URL: ${{ steps.build.outputs.ANDROID_BUILD_URL }}
+      IOS_BUILD_URL: ${{ steps.build.outputs.IOS_BUILD_URL }}
+    steps:
+      - name: ⬇️ Setup repo
+        uses: actions/checkout@v4
+      - name: 🚀 Build
+        id: build
+        uses: ./.github/actions/build-app
+        with:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          platform: ${{ inputs.platform }}
+          environment: preview
+
+  slack:
+    name: Notify Slack
+    needs: build
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: ⬇️ Setup repo
+        uses: actions/checkout@v4
+      - uses: ./.github/actions/notify-slack
+        with:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          ANDROID_BUILD_URL: ${{ needs.build.outputs.ANDROID_BUILD_URL }}
+          IOS_BUILD_URL: ${{ needs.build.outputs.IOS_BUILD_URL }}
+          platform: ${{ inputs.platform }}
+          status: ${{ needs.build.result }}
+
+  email:
+    name: Notify Clients
+    needs: build
+    if: ${{ needs.build.result == 'success' && inputs.email == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Setup repo
         uses: actions/checkout@v4
-
-      - name: 👷‍♀️ Build
-        uses: ./.github/actions/build-workflow
+      - uses: ./.github/actions/notify-clients
         with:
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-          platform: ${{ github.event.inputs.platform }}
-          email: ${{ github.event.inputs.email }}
-          environment: test
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_GITHUB_ACTION_API_KEY }}
+          ANDROID_BUILD_URL: ${{ needs.build.outputs.ANDROID_BUILD_URL }}
+          IOS_BUILD_URL: ${{ needs.build.outputs.IOS_BUILD_URL }}
+          platform: ${{ inputs.platform }}
+          environment: preview

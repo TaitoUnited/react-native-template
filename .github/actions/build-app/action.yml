@@ -1,0 +1,70 @@
+name: Build app
+description: Builds the app via EAS CLI
+inputs:
+  EXPO_TOKEN:
+    description: Used for eas and expo commands
+    required: true
+  platform:
+    description: Which platform to build for
+    required: true
+  environment:
+    description: Which environment to build for
+    required: true
+  submit:
+    description: Do you want to automatically submit the build to the store?
+    default: no
+    required: false
+outputs:
+  ANDROID_BUILD_URL:
+    description: The Android build URL
+    value: ${{ steps.build-app.outputs.ANDROID_BUILD_URL }}
+  IOS_BUILD_URL:
+    description: The iOS build URL
+    value: ${{ steps.build-app.outputs.IOS_BUILD_URL }}
+runs:
+  using: composite
+  steps:
+    - name: 🔐 Check for EXPO_TOKEN
+      shell: bash
+      run: |
+        echo ${{ inputs.EXPO_TOKEN }}
+        if [ -z "${{ inputs.EXPO_TOKEN }}" ]; then
+          echo "You must provide an EXPO_TOKEN secret linked to this project's Expo account in this repo's secrets. Learn more: https://docs.expo.dev/eas-update/github-actions"
+          exit 1
+        fi
+
+    - name: ⎔ Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20.x
+        cache: npm
+        cache-dependency-path: ./package.json
+
+    - name: 🏗 Setup EAS
+      uses: expo/expo-github-action@v8
+      with:
+        eas-version: latest
+        token: ${{ inputs.EXPO_TOKEN }}
+
+    - name: 📫 Install dependencies
+      shell: bash
+      run: npm ci
+
+    - id: build-app
+      name: 🚀 Build app
+      shell: bash
+      run: |
+        eas build --platform ${{ inputs.platform }} --profile ${{ inputs.environment }} $([ "${{ inputs.submit }}" = "true" ] && echo "--auto-submit") --non-interactive | tee temp.txt
+
+        if [ "${{ inputs.platform }}" = "android" ]; then
+          ANDROID_URL=$(grep -o 'Build details: [^ ]*' temp.txt | awk '{print $3}')
+          echo "ANDROID_BUILD_URL=$ANDROID_URL" >> "$GITHUB_OUTPUT"
+        elif [ "${{ inputs.platform }}" = "ios" ]; then
+          IOS_URL=$(grep -o 'Build details: [^ ]*' temp.txt | awk '{print $3}')
+          echo "IOS_BUILD_URL=$IOS_URL" >> "$GITHUB_OUTPUT"
+        else
+          ANDROID_URL=$(grep -o 'Android build details: [^ ]*' temp.txt | awk '{print $4}')
+          IOS_URL=$(grep -o 'iOS build details: [^ ]*' temp.txt | awk '{print $4}')
+          echo "ANDROID_BUILD_URL=$ANDROID_URL" >> "$GITHUB_OUTPUT"
+          echo "IOS_BUILD_URL=$IOS_URL" >> "$GITHUB_OUTPUT"
+        fi

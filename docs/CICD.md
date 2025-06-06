@@ -57,15 +57,10 @@ Go to your repository settings and click on **Secrets**. Add the following secre
 You should change the following in the different workflows in `.github` (use the global search to find them easily):
 
 - `SLACK_CHANNEL`: the name of the channel where you want to send the slack notifications about the builds
-- The list of emails of the clients/testers that should receive the email notifications about the builds whenever you select the option (so they can download the new app version from EAS) - see below
+- The list of emails of the clients/testers that should receive the email notifications about the builds whenever you select the option (so they can download the new app version from EAS) in the [notify-clients](/.github/actions/notify-clients/action.yml) action.
 
 ```
-strategy:
-      matrix:
-        to-emails:
-          # Add the client emails here
-          - julien.texier@taitounited.fi
-          - teemu.taskula@taitounited.fi
+to-email: client1@example.com, client2@example.com
 ```
 
 You can customize the email as you wish by changing the following attributes from the job named `📧 Notify client`

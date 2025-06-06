@@ -10,10 +10,10 @@ async function main() {
     spinner.start();
 
     const profileMap = {
-      Development: 'dev',
-      Testing: 'test',
-      'Production (Internal)': 'prod-internal',
-      Production: 'prod',
+      Development: 'development',
+      Preview: 'preview',
+      'Production (Internal)': 'production-internal',
+      Production: 'production',
     };
 
     const branchName = profileMap[answers.profile];
@@ -48,7 +48,7 @@ main();
 async function promptUserInput() {
   const profileOptions = [
     'Development',
-    'Testing',
+    'Preview',
     'Production (Internal)',
     'Production',
   ];
@@ -93,18 +93,11 @@ function runPreBuildTasks(profile) {
  * @returns {string} The constructed command string.
  */
 function constructEASCommand(branchName, message) {
-  const prodBranch = ['prod', 'prod-internal'].includes(branchName) && 'prod';
+  const isProduction =
+    branchName === 'production' || branchName === 'production-internal';
+  const env = isProduction ? 'production' : branchName;
 
-  const environmentMap = {
-    dev: 'development',
-    test: 'preview',
-    prod: 'production',
-    'prod-internal': 'production',
-  };
-
-  const environment = environmentMap[branchName];
-
-  const command = `APP_ENV=${prodBranch || branchName} eas update --branch ${branchName} --message "${message}" --environment ${environment}`;
+  const command = `APP_ENV=${env} eas update --branch ${env} --message "${message}" --environment ${env}`;
 
   return command;
 }

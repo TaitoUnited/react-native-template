@@ -48,7 +48,7 @@ async function gatherInputs() {
       type: 'list',
       name: 'profile',
       message: 'Select the profile:',
-      choices: ['Development', 'Testing', 'Production'],
+      choices: ['Development', 'Preview', 'Production'],
     },
   ]);
 
@@ -106,17 +106,17 @@ async function handleProfileSpecificPrompts(answers) {
 function constructBuildCommand(answers) {
   const platformMap = { Android: 'android', iOS: 'ios', All: 'all' };
   const profileMap = {
-    Simulator: 'dev:simulator',
-    Development: 'dev',
-    Testing: 'test',
-    'Production (Internal)': 'prod-internal',
-    Production: 'prod',
+    Simulator: 'development:simulator',
+    Development: 'development',
+    Preview: 'preview',
+    'Production (Internal)': 'production-internal',
+    Production: 'production',
   };
 
   const platform = platformMap[answers.platform];
   const profile =
     answers.store === 'Internal Build'
-      ? 'prod-internal'
+      ? 'production-internal'
       : profileMap[answers.profile];
 
   let command = `eas build --platform ${platform} --profile ${profile} --message "${answers.message}"`;
