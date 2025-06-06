@@ -28,7 +28,22 @@ runs:
         from-email: taito.dev@gmail.com
         to-email: support@taitounited.fi
         markdown-body: |
-          # New Release for ${{ inputs.platform }} 🚀
+          # 🚀 New Release Available for ${{ inputs.platform }}!
 
-          ${{ inputs.ANDROID_BUILD_URL && format('**Android:** [Download here]({0})', inputs.ANDROID_BUILD_URL) || '' }}
-          ${{ inputs.IOS_BUILD_URL && format('**iOS:** [Download here]({0})', inputs.IOS_BUILD_URL) || '' }}
+          Hello,
+
+          We are excited to announce that a new release for **${{ inputs.platform }}** is now available in the **${{ inputs.environment }}** environment.
+
+          ## Download Links
+
+          ${{ inputs.ANDROID_BUILD_URL && format('**Android:** [Download the latest build here]({0})', inputs.ANDROID_BUILD_URL) || 'No Android build available for this release.' }}
+          ${{ inputs.IOS_BUILD_URL && format('**iOS:** [Download the latest build here]({0})', inputs.IOS_BUILD_URL) || 'No iOS build available for this release.' }}
+
+          ## What’s New?
+
+          - Please refer to the release notes or changelog for detailed information about the updates and improvements in this version.
+
+          If you have any questions or encounter any issues, feel free to reach out to our support team.
+
+          Best regards,  
+          The Taito United Team

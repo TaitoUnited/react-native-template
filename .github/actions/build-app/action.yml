@@ -1,4 +1,3 @@
-# .github/actions/build-app/action.yml
 name: Build app
 description: Builds the app via EAS CLI
 inputs:
