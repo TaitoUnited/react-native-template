@@ -77,9 +77,9 @@ export function getTextTypographyVariants() {
   (Object.keys(typographyTokens) as Typography[]).forEach((variant) => {
     typographyVariants[variant] = {
       typography: variant,
-      // Apply line height only for multiline text since by default app UI text
-      // should not have a line height bigger than `1` (same as font size)
-      lineHeight: typographyTokens[variant].fontSize,
+      // The 1.25 multiplier ensures enough vertical space for ascenders and descenders,
+      // preventing text from being visually cropped.
+      lineHeight: typographyTokens[variant].fontSize * 1.25,
     };
 
     compoundVariants.push({
