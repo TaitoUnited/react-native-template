@@ -1,4 +1,6 @@
 import startCase from 'lodash/startCase';
+import { ScrollView, View } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { Note } from '~components/playground/common';
 import { Grid, Stack, Text } from '~components/uikit';
@@ -6,7 +8,7 @@ import * as colors from '~design-system/colors';
 import * as radii from '~design-system/radii';
 import spacing from '~design-system/spacing.json';
 import * as typography from '~design-system/typography';
-import { styled, themeProp } from '~styles';
+import { flexCenter } from '~styles/utils';
 
 const typographyNames = Object.keys(typography).sort();
 const radiiEntries = Object.entries(radii).sort((a, b) => a[1] - b[1]);
@@ -14,7 +16,10 @@ const spacingEntries = Object.entries(spacing).sort((a, b) => a[1] - b[1]);
 
 export default function DesignSystem() {
   return (
-    <Wrapper>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.contentContainer}
+    >
       <Stack axis="y" spacing="xl">
         <Stack axis="y" spacing="medium">
           <Text
@@ -47,7 +52,7 @@ export default function DesignSystem() {
                       accessible
                       accessibilityLabel={`Color token: ${colorName}, color value: ${color[1]}`}
                     >
-                      <ColorBlock bg={colorName} />
+                      <View style={styles.colorBlock(colorName)} />
                       <Text variant="bodySmall" color="neutral2">
                         {startCase(colorName)}
                       </Text>
@@ -73,9 +78,9 @@ export default function DesignSystem() {
           <Stack axis="y" spacing="xs">
             {/* Accessibility note: Unless we have a description attached to the typography variant coming from Figma, we cannot make this very accessible */}
             {typographyNames.map((name) => (
-              <TypographyBlock key={name}>
+              <View style={styles.typographyBlock} key={name}>
                 <Text variant={name as any}>{startCase(name)}</Text>
-              </TypographyBlock>
+              </View>
             ))}
           </Stack>
 
@@ -100,11 +105,17 @@ export default function DesignSystem() {
                 accessible
                 accessibilityLabel={`Radii token: ${name}, radii value: ${value} pixels`}
               >
-                <RadiiBlock style={{ borderRadius: value }}>
+                <View
+                  style={[
+                    styles.radiiBlock,
+                    { borderRadius: value },
+                    flexCenter(),
+                  ]}
+                >
                   <Text variant="body" color="textMuted">
                     {value}px
                   </Text>
-                </RadiiBlock>
+                </View>
                 <Text variant="bodySmall">{startCase(name)}</Text>
               </Stack>
             ))}
@@ -129,7 +140,10 @@ export default function DesignSystem() {
                 <Text variant="bodySmall" style={{ minWidth: 56 }}>
                   {startCase(name)}
                 </Text>
-                <SpacingBlock key={name} style={{ width: value }} />
+                <View
+                  style={[styles.spacingBlock, { width: value }]}
+                  key={name}
+                />
                 <Text variant="bodySmall" color="textMuted">
                   {value}px
                 </Text>
@@ -144,51 +158,43 @@ export default function DesignSystem() {
           </Note>
         </Stack>
       </Stack>
-    </Wrapper>
+    </ScrollView>
   );
 }
 
-const Wrapper = styled('ScrollView', {
-  flex: 1,
-}).attrs((p) => ({
-  contentContainerStyle: {
-    padding: p.theme.space.regular,
+const styles = StyleSheet.create((theme) => ({
+  container: {
+    flex: 1,
+  },
+  contentContainer: {
+    padding: theme.space.regular,
+  },
+  colorBlock: (color: colors.ColorsToken) => ({
+    height: 80,
+    width: '100%',
+    borderRadius: theme.radii.medium,
+    borderWidth: 1,
+    borderColor: 'rgba(150, 150, 150, 0.15)',
+    backgroundColor: theme.colors[color],
+  }),
+  typographyBlock: {
+    padding: theme.space.regular,
+    borderRadius: theme.radii.medium,
+    borderWidth: 1,
+    borderColor: 'rgba(150, 150, 150, 0.15)',
+  },
+  radiiBlock: {
+    height: 100,
+    width: 100,
+    borderWidth: 1,
+    borderColor: theme.colors.neutral3,
+    backgroundColor: theme.colors.neutral5,
+  },
+  spacingBlock: {
+    height: 24,
+    borderWidth: 1,
+    borderRadius: 2,
+    borderColor: theme.colors.neutral3,
+    backgroundColor: theme.colors.neutral5,
   },
 }));
-
-const ColorBlock = styled('View', {
-  height: 80,
-  width: '100%',
-  borderRadius: '$medium',
-  borderWidth: 1,
-  borderColor: 'rgba(150, 150, 150, 0.15)',
-  variants: {
-    ...themeProp('bg', 'colors', (color) => ({
-      backgroundColor: color,
-    })),
-  },
-});
-
-const TypographyBlock = styled('View', {
-  padding: '$regular',
-  borderRadius: '$medium',
-  borderWidth: 1,
-  borderColor: 'rgba(150, 150, 150, 0.15)',
-});
-
-const RadiiBlock = styled('View', {
-  height: 100,
-  width: 100,
-  borderWidth: 1,
-  borderColor: '$border',
-  backgroundColor: '$neutral5',
-  flexCenter: 'row',
-});
-
-const SpacingBlock = styled('View', {
-  height: 24,
-  borderWidth: 1,
-  borderRadius: 2,
-  borderColor: '$border',
-  backgroundColor: '$neutral5',
-});

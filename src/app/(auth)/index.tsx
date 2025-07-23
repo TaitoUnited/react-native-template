@@ -1,90 +1,100 @@
 import { Trans, useLingui } from '@lingui/react/macro';
 import { Link } from 'expo-router';
-import { AccessibilityInfo, useWindowDimensions } from 'react-native';
+import {
+  AccessibilityInfo,
+  ImageBackground,
+  Platform,
+  TouchableHighlight,
+  useWindowDimensions,
+  View,
+} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { StyleSheet } from 'react-native-unistyles';
 import * as DropdownMenu from 'zeego/dropdown-menu';
 
 import LandingImage from '~assets/landing_background.jpg';
+import WebLandingImage from '~assets/web_landing_background.jpg';
 import StatusBar from '~components/common/StatusBar';
 import { IconButton, Stack, Text } from '~components/uikit';
 import { useI18n } from '~services/i18n';
-import { styled, useTheme } from '~styles';
 
 export default function Landing() {
   const { height } = useWindowDimensions();
   const insets = useSafeAreaInsets();
-  const theme = useTheme();
   const { t } = useLingui();
 
   return (
-    <Wrapper>
-      <ImageBackground source={LandingImage}>
-        <TopSection
-          style={{ paddingTop: Math.max(insets.top, theme.space.regular) }}
-        >
-          <TopSectionHeader>
+    <View style={styles.wrapper}>
+      <ImageBackground
+        style={styles.imageBackground}
+        imageStyle={Platform.OS === 'web' && styles.imageStyle}
+        source={Platform.OS === 'web' ? WebLandingImage : LandingImage}
+      >
+        <View style={styles.topSection(insets.top)}>
+          <View style={styles.topSectionHeader}>
             <LanguageSelector />
-          </TopSectionHeader>
+          </View>
 
-          <TopSectionBody>
-            <Stack axis="y" spacing="medium">
-              <BlackText variant="headingS" align="center" withLineHeight>
-                <Trans>Welcome to</Trans>
-              </BlackText>
-              <BlackText variant="headingXl" align="center">
-                <Trans>Taito Template</Trans>
-              </BlackText>
+          <Stack
+            style={styles.topSectionBody}
+            axis="y"
+            spacing="medium"
+            justify="center"
+          >
+            <Text style={styles.blackText} variant="headingS" align="center">
+              <Trans>Welcome to</Trans>
+            </Text>
+            <Text style={styles.blackText} variant="headingXl" align="center">
+              <Trans>Taito Template</Trans>
+            </Text>
+            <Text style={styles.blackText} variant="headingS" align="center">
+              <Trans>By Taito United</Trans>
+            </Text>
+          </Stack>
+        </View>
 
-              <BlackText
-                variant="headingS"
-                align="center"
-                withLineHeight
-                style={{ marginLeft: 16 }}
-              >
-                <Trans>By Taito United</Trans> 💚
-              </BlackText>
-            </Stack>
-          </TopSectionBody>
-        </TopSection>
-
-        <BottomSection style={{ minHeight: height * 0.4 }}>
+        <View style={styles.bottomSection(height)}>
           <Stack axis="y" spacing="regular" align="center">
-            <WhiteText variant="body" align="center" withLineHeight>
+            <Text color="surface" variant="body" align="center" withLineHeight>
               ✨ <Trans>Start your journey</Trans> ✨
-            </WhiteText>
+            </Text>
             <Link href="/(auth)/login" asChild>
-              <Button
+              <TouchableHighlight
+                style={styles.button}
+                underlayColor="rgba(0, 0, 0, 0.6)"
                 testID="loginButton"
                 accessibilityHint={t`Navigates to the sign-in screen`}
               >
-                <WhiteText variant="bodyBold">
+                <Text color="surface" variant="bodyBold">
                   <Trans>Sign in</Trans>
-                </WhiteText>
-              </Button>
+                </Text>
+              </TouchableHighlight>
             </Link>
 
-            <Line />
-            <WhiteText variant="overlineSmall">
+            <View style={styles.line} />
+            <Text color="surface" variant="overlineSmall">
               <Trans>Or</Trans>
-            </WhiteText>
-            <Line />
+            </Text>
+            <View style={styles.line} />
 
             <Link href="/(auth)/signup" asChild>
-              <Button
+              <TouchableHighlight
+                style={styles.button}
+                underlayColor="rgba(0, 0, 0, 0.6)"
                 testID="signInButton"
                 accessibilityHint={t`Navigates to the sign-up screen`}
               >
-                <WhiteText variant="bodyBold">
+                <Text color="surface" variant="bodyBold">
                   <Trans>Create an account</Trans>
-                </WhiteText>
-              </Button>
+                </Text>
+              </TouchableHighlight>
             </Link>
           </Stack>
-        </BottomSection>
+        </View>
       </ImageBackground>
 
       <StatusBar transparent />
-    </Wrapper>
+    </View>
   );
 }
 
@@ -130,60 +140,58 @@ function LanguageSelector() {
 // adhere to the design system 100%. In that case, it's ok to use custom styles
 // that are out of the design system like here we are using hard coded white color.
 
-const Wrapper = styled('View', {
-  position: 'relative',
-  flex: 1,
-});
-
-const ImageBackground = styled('ImageBackground', {
-  flex: 1,
-  justifyContent: 'flex-end',
-  paddingHorizontal: '$xxs',
-});
-
-const BlackText = styled(Text, {
-  color: 'rgba(0, 0, 0, 0.8)',
-});
-
-const WhiteText = styled(Text, {
-  color: '#fff',
-});
-
-const TopSection = styled('View', {
-  flex: 1,
-});
-
-const TopSectionHeader = styled('View', {
-  flexDirection: 'row',
-  justifyContent: 'flex-end',
-  paddingHorizontal: '$regular',
-});
-
-const TopSectionBody = styled('View', {
-  flex: 1,
-  flexCenter: 'column',
-  padding: '$large',
-});
-
-const BottomSection = styled('View', {
-  padding: '$regular',
-  paddingTop: '$large',
-  backgroundColor: 'rgba(0, 0, 0, 0.65)',
-  borderRadius: '$large',
-});
-
-const Button = styled('TouchableHighlight', {
-  padding: '$medium',
-  borderRadius: '$full',
-  backgroundColor: 'rgba(0, 0, 0, 1)',
-  flexCenter: 'row',
-  width: '100%',
-}).attrs(() => ({
-  underlayColor: 'rgba(0, 0, 0, 0.6)',
+const styles = StyleSheet.create((theme) => ({
+  wrapper: {
+    flex: 1,
+    position: 'relative',
+  },
+  imageBackground: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    paddingHorizontal: theme.space.xxs,
+  },
+  imageStyle: {
+    height: '100%',
+  },
+  blackText: {
+    color: 'rgba(0, 0, 0, 0.8)',
+  },
+  topSection: (paddingTop: number) => ({
+    flex: 1,
+    paddingTop,
+  }),
+  topSectionHeader: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    paddingHorizontal: theme.space.regular,
+  },
+  topSectionBody: {
+    flex: 1,
+    padding: theme.space.large,
+  },
+  bottomSection: (insetTop: number) => ({
+    minHeight: Math.max(insetTop, theme.space.regular) * 0.4,
+    padding: theme.space.regular,
+    paddingTop: theme.space.large,
+    backgroundColor: 'rgba(0, 0, 0, 0.65)',
+    borderRadius: theme.space.large,
+    width: '100%',
+    maxWidth: 1000,
+    alignSelf: 'center',
+    marginBottom: theme.space.large,
+  }),
+  button: {
+    padding: theme.space.medium,
+    borderRadius: theme.radii.full,
+    backgroundColor: 'rgba(0, 0, 0, 1)',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+  },
+  line: {
+    height: 1,
+    width: 72,
+    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+  },
 }));
-
-const Line = styled('View', {
-  height: 1,
-  width: 72,
-  backgroundColor: 'rgba(255, 255, 255, 0.15)',
-});

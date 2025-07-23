@@ -2,8 +2,9 @@ import { useLingui } from '@lingui/react/macro';
 import { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import Collapsible, { type CollapsibleProps } from 'react-native-collapsible';
+import { StyleSheet } from 'react-native-unistyles';
 
-import { styled, type Color } from '~styles';
+import { type Color } from '~styles/styled';
 import { haptics } from '~utils/haptics';
 
 import { Icon, type IconName } from './Icon';
@@ -62,12 +63,6 @@ export function Accordion({
   );
 }
 
-const Title = styled(Stack, {
-  borderBottomWidth: 1,
-  borderBottomColor: '$line3',
-  paddingVertical: '$small',
-});
-
 function AccordionHeader({
   title,
   icon,
@@ -80,7 +75,13 @@ function AccordionHeader({
   collapsed: boolean;
 }) {
   return (
-    <Title axis="x" spacing="small" align="center" justify="between">
+    <Stack
+      style={styles.header}
+      axis="x"
+      spacing="small"
+      align="center"
+      justify="between"
+    >
       <Text variant="headingS" numberOfLines={1} style={{ flex: 1 }}>
         {title}
       </Text>
@@ -88,6 +89,14 @@ function AccordionHeader({
       {icon && <Icon name={icon} color={iconColor} size={24} />}
 
       <Icon name={collapsed ? 'chevronDown' : 'chevronUp'} size={24} />
-    </Title>
+    </Stack>
   );
 }
+
+const styles = StyleSheet.create((theme) => ({
+  header: {
+    borderBottomWidth: 1,
+    borderBottomColor: theme.colors.line3,
+    paddingVertical: theme.space.small,
+  },
+}));

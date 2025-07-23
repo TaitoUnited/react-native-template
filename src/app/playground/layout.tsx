@@ -1,12 +1,14 @@
-import { StyleSheet } from 'react-native';
-
+import { ScrollView, View } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 import { Note } from '~components/playground/common';
 import { Grid, Spacer, Stack, Text } from '~components/uikit';
-import { styled } from '~styles';
 
 export default function Layout() {
   return (
-    <Wrapper>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.contentContainer}
+    >
       <Stack axis="y" spacing="large">
         <Note>
           If you have long lists do not use these layout components but instead
@@ -22,33 +24,33 @@ export default function Layout() {
             while applying uniform spacing between the elements.
           </Text>
 
-          <ExampleBlock>
+          <View style={styles.exampleBlock}>
             <Stack axis="y" spacing="small">
               <Text variant="bodySmallBold" color="infoContrast">
                 {`<Stack axis="x" spacing="regular">...</Stack>`}
               </Text>
 
               <Stack axis="x" spacing="regular">
-                <Box />
-                <Box />
-                <Box />
+                <View style={styles.box} />
+                <View style={styles.box} />
+                <View style={styles.box} />
               </Stack>
             </Stack>
-          </ExampleBlock>
+          </View>
 
-          <ExampleBlock>
+          <View style={styles.exampleBlock}>
             <Stack axis="y" spacing="small">
               <Text variant="bodySmallBold" color="infoContrast">
                 {`<Stack axis="y" spacing="small">...</Stack>`}
               </Text>
 
               <Stack axis="y" spacing="small">
-                <Box />
-                <Box />
-                <Box />
+                <View style={styles.box} />
+                <View style={styles.box} />
+                <View style={styles.box} />
               </Stack>
             </Stack>
-          </ExampleBlock>
+          </View>
         </Stack>
 
         <Stack axis="y" spacing="regular">
@@ -60,26 +62,26 @@ export default function Layout() {
             elements.
           </Text>
 
-          <ExampleBlock>
+          <View style={styles.exampleBlock}>
             <Stack axis="y" spacing="small">
               <Text variant="bodySmallBold" color="infoContrast" withLineHeight>
                 {`
 <Stack axis="x" spacing="xs">
-    <Box />
+    <View style={styles.box} />
     <Spacer size="large" />
-    <Box />
-    <Box />
+    <View style={styles.box} />
+    <View style={styles.box} />
 </Stack>`.trim()}
               </Text>
 
               <Stack axis="x" spacing="xs">
-                <Box />
+                <View style={styles.box} />
                 <Spacer size="large" />
-                <Box />
-                <Box />
+                <View style={styles.box} />
+                <View style={styles.box} />
               </Stack>
             </Stack>
-          </ExampleBlock>
+          </View>
         </Stack>
 
         <Stack axis="y" spacing="regular">
@@ -89,7 +91,7 @@ export default function Layout() {
             A Grid component can be used for grid-like layouts.
           </Text>
 
-          <ExampleBlock>
+          <View style={styles.exampleBlock}>
             <Stack axis="y" spacing="small">
               <Text variant="bodySmallBold" color="infoContrast">
                 {`<Grid spacing="xs">...</Grid>`}
@@ -97,11 +99,11 @@ export default function Layout() {
 
               <Grid spacing="xs">
                 {Array.from({ length: 15 }).map((_, i) => (
-                  <Box key={i} />
+                  <View style={styles.box} key={i} />
                 ))}
               </Grid>
             </Stack>
-          </ExampleBlock>
+          </View>
 
           <Text variant="body" withLineHeight>
             A number of columns can be provided to force the grid structure. By
@@ -109,7 +111,7 @@ export default function Layout() {
             instrictic size with the given spacing.
           </Text>
 
-          <ExampleBlock>
+          <View style={styles.exampleBlock}>
             <Stack axis="y" spacing="small">
               <Text variant="bodySmallBold" color="infoContrast">
                 {`<Grid spacing="xs" colums={3}>...</Grid>`}
@@ -117,38 +119,37 @@ export default function Layout() {
 
               <Grid spacing="xs" columns={3}>
                 {Array.from({ length: 15 }).map((_, i) => (
-                  <Box key={i} style={{ width: '100%' }} />
+                  <View style={[styles.box, { width: '100%' }]} key={i} />
                 ))}
               </Grid>
             </Stack>
-          </ExampleBlock>
+          </View>
         </Stack>
       </Stack>
-    </Wrapper>
+    </ScrollView>
   );
 }
 
-const Wrapper = styled('ScrollView', {
-  flex: 1,
-}).attrs((p) => ({
-  contentContainerStyle: {
-    padding: p.theme.space.regular,
+const styles = StyleSheet.create((theme) => ({
+  container: {
+    flex: 1,
+  },
+  contentContainer: {
+    padding: theme.space.regular,
+  },
+  exampleBlock: {
+    padding: theme.space.small,
+    borderWidth: 1,
+    borderColor: theme.colors.neutral3,
+    borderRadius: theme.radii.small,
+    backgroundColor: theme.colors.neutral5,
+  },
+  box: {
+    height: 60,
+    width: 60,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: theme.colors.info,
+    borderRadius: theme.radii.regular,
+    backgroundColor: theme.colors.infoMuted,
   },
 }));
-
-const ExampleBlock = styled('View', {
-  padding: '$small',
-  borderWidth: 1,
-  borderColor: '$border',
-  borderRadius: '$small',
-  backgroundColor: '$neutral5',
-});
-
-const Box = styled('View', {
-  height: 60,
-  width: 60,
-  borderWidth: StyleSheet.hairlineWidth,
-  borderColor: '$info',
-  borderRadius: '$regular',
-  backgroundColor: '$infoMuted',
-});

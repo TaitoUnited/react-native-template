@@ -1,11 +1,12 @@
 import type { ReactNode } from 'react';
-import type { ViewProps } from 'react-native';
+import { View, type ViewProps } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
-import { styled, theme, type Theme } from '~styles';
+import { type Space } from '~styles/styled';
 
 type Props = ViewProps & {
-  spacing: keyof Theme['space'] | 'none';
-  axis?: 'x' | 'y';
+  spacing: Space | 'none';
+  axis: 'x' | 'y';
   align?: 'center' | 'start' | 'end' | 'stretch' | 'baseline';
   justify?: 'center' | 'start' | 'end' | 'between' | 'around';
   children: ReactNode;
@@ -17,52 +18,47 @@ export function Stack({
   spacing,
   align,
   justify,
+  style,
   ...rest
 }: Props) {
+  styles.useVariants({
+    axis,
+    align,
+    justify,
+    spacing,
+  });
+
   return (
-    <Wrapper
-      axis={axis}
-      align={align}
-      justify={justify}
-      spacing={spacing}
-      {...rest}
-    >
+    <View style={[styles.wrapper, style]} {...rest}>
       {children}
-    </Wrapper>
+    </View>
   );
 }
 
-const spacingVariants: { [key in Props['spacing']]: { gap: number } } =
-  Object.entries(theme.space).reduce(
-    (acc, [key, value]) => {
-      acc[key as Props['spacing']] = {
-        gap: Number(value.value),
-      };
-      return acc;
+const styles = StyleSheet.create((theme) => ({
+  wrapper: {
+    variants: {
+      axis: {
+        x: { flexDirection: 'row' },
+        y: { flexDirection: 'column' },
+      },
+      align: {
+        center: { alignItems: 'center' },
+        start: { alignItems: 'flex-start' },
+        end: { alignItems: 'flex-end' },
+        stretch: { alignItems: 'stretch' },
+        baseline: { alignItems: 'baseline' },
+      },
+      justify: {
+        center: { justifyContent: 'center' },
+        start: { justifyContent: 'flex-start' },
+        end: { justifyContent: 'flex-end' },
+        between: { justifyContent: 'space-between' },
+        around: { justifyContent: 'space-around' },
+      },
+      spacing: Object.fromEntries(
+        Object.entries(theme.space).map(([key, value]) => [key, { gap: value }])
+      ),
     },
-    {} as { [key in Props['spacing']]: { gap: number } }
-  );
-
-const Wrapper = styled('View', {
-  variants: {
-    axis: {
-      x: { flexDirection: 'row' },
-      y: { flexDirection: 'column' },
-    },
-    align: {
-      center: { alignItems: 'center' },
-      start: { alignItems: 'flex-start' },
-      end: { alignItems: 'flex-end' },
-      stretch: { alignItems: 'stretch' },
-      baseline: { alignItems: 'baseline' },
-    },
-    justify: {
-      center: { justifyContent: 'center' },
-      start: { justifyContent: 'flex-start' },
-      end: { justifyContent: 'flex-end' },
-      between: { justifyContent: 'space-between' },
-      around: { justifyContent: 'space-around' },
-    },
-    spacing: spacingVariants,
   },
-});
+}));

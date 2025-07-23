@@ -1,11 +1,13 @@
+import { View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import ToastContainer, {
   type ToastConfigParams,
 } from 'react-native-toast-message';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
 import { Icon, IconButton, Stack, Text } from '~components/uikit';
 import { type IconName } from '~components/uikit/Icon';
-import { styled, useTheme, type Color } from '~styles/styled';
+import { type Color } from '~styles/styled';
 import { announceForAccessibility } from '~utils/a11y';
 import { haptics } from '~utils/haptics';
 
@@ -51,7 +53,7 @@ const toastConfig = {
 };
 
 export default function Toaster() {
-  const theme = useTheme();
+  const { theme } = useUnistyles();
   const insets = useSafeAreaInsets();
   const topOffset = insets.top + theme.space.small;
 
@@ -116,8 +118,10 @@ function Toast({
     ToastContainer.hide();
   }
 
+  styles.useVariants({ hasIcon });
+
   return (
-    <ToastWrapper hasIcon={hasIcon}>
+    <View style={styles.toastWrapper}>
       <Stack axis="x" spacing="small" align="center">
         {hasIcon && <Icon name={iconName} size={24} color={color} />}
 
@@ -134,7 +138,7 @@ function Toast({
         </Stack>
         <IconButton variant="plain" icon="close" onPress={onClose} />
       </Stack>
-    </ToastWrapper>
+    </View>
   );
 }
 
@@ -152,16 +156,18 @@ const variantToIcon: { [variant in Variant]?: IconName } = {
   success: 'checkCircle',
 };
 
-const ToastWrapper = styled('View', {
-  borderRadius: '$full',
-  paddingVertical: '$regular',
-  paddingHorizontal: '$medium',
-  backgroundColor: '$surface',
-  shadow: 'large',
-  variants: {
-    hasIcon: {
-      true: { paddingLeft: '$regular' },
-      false: { paddingLeft: '$large' },
+const styles = StyleSheet.create((theme) => ({
+  toastWrapper: {
+    borderRadius: theme.radii.full,
+    paddingVertical: theme.space.regular,
+    paddingHorizontal: theme.space.medium,
+    backgroundColor: theme.colors.surface,
+    ...theme.shadows.large,
+    variants: {
+      hasIcon: {
+        true: { paddingLeft: theme.space.regular },
+        false: { paddingLeft: theme.space.large },
+      },
     },
   },
-});
+}));

@@ -1,8 +1,9 @@
 import { Stack, router, useLocalSearchParams } from 'expo-router';
 import { useEffect } from 'react';
+import { ScrollView } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { useMenuListItem } from '~components/settings/hooks';
-import { styled } from '~styles';
 
 export default function MenuListItem() {
   const { item } = useLocalSearchParams<{ item: string }>();
@@ -18,17 +19,21 @@ export default function MenuListItem() {
 
   if (!Target) return null;
   return (
-    <Wrapper>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.contentContainer}
+    >
       <Stack.Screen options={{ title: label }} />
       <Target />
-    </Wrapper>
+    </ScrollView>
   );
 }
 
-const Wrapper = styled('ScrollView', {
-  flex: 1,
-}).attrs((p) => ({
-  contentContainerStyle: {
-    padding: p.theme.space.regular,
+const styles = StyleSheet.create((theme) => ({
+  container: {
+    flex: 1,
+  },
+  contentContainer: {
+    padding: theme.space.regular,
   },
 }));

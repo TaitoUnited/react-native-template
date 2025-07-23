@@ -1,7 +1,6 @@
 import { useLingui } from '@lingui/react/macro';
-import { type ViewStyle } from 'react-native';
-
-import { styled } from '~styles';
+import { TouchableOpacity, View, type ViewStyle } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { Icon, type IconName } from '../Icon';
 import { Text } from '../Text';
@@ -45,6 +44,13 @@ export function InputButton({
 }: Props) {
   const { t } = useLingui();
 
+  // Controls the visual styles based on the input state
+  styles.useVariants({
+    focused: isFocused,
+    valid: isValid,
+    disabled: isDisabled,
+  });
+
   return (
     <Stack axis="y" spacing="regular">
       <Stack axis="x" spacing="xs" align="center">
@@ -58,15 +64,20 @@ export function InputButton({
           </Text>
         )}
       </Stack>
-      <Wrapper style={style}>
-        <InputWrapper
+      <View style={[styles.wrapper, style]}>
+        <TouchableOpacity
+          style={styles.inputWrapper}
           {...rest}
-          focused={isFocused}
-          valid={isValid}
-          disabled={isDisabled}
+          activeOpacity={isDisabled ? 1 : 0.5}
           onPress={isDisabled ? undefined : onPress}
         >
-          <Input>
+          <Stack
+            axis="x"
+            spacing="regular"
+            justify="around"
+            align="center"
+            style={styles.input}
+          >
             <Text
               variant="body"
               withLineHeight
@@ -77,15 +88,15 @@ export function InputButton({
             >
               {value || placeholder}
             </Text>
-          </Input>
 
-          {!!icon && (
-            <InputDecoration>
-              <Icon name={icon} size={24} color="text" />
-            </InputDecoration>
-          )}
-        </InputWrapper>
-      </Wrapper>
+            {!!icon && (
+              <View style={styles.inputDecoration}>
+                <Icon name={icon} size={24} color="text" />
+              </View>
+            )}
+          </Stack>
+        </TouchableOpacity>
+      </View>
       {!!message && (
         <Stack axis="x" spacing="small" align="center">
           {!isValid && <Icon name="error" size={20} color="errorContrast" />}
@@ -98,44 +109,37 @@ export function InputButton({
   );
 }
 
-const Wrapper = styled('View', {
-  position: 'relative',
-  display: 'flex',
-});
-
-const InputWrapper = styled('TouchableOpacity', {
-  position: 'relative',
-  flexDirection: 'row',
-  borderWidth: 1,
-  borderRadius: '$small',
-  backgroundColor: '$surface',
-  overflow: 'hidden',
-  variants: {
-    focused: {
-      true: { opacity: 0.5 },
-    },
-    valid: {
-      true: { borderColor: '$line1' },
-      false: { borderColor: '$errorContrast' },
-    },
-    disabled: {
-      true: { backgroundColor: '$neutral4', borderWidth: 0 },
+const styles = StyleSheet.create((theme) => ({
+  wrapper: {
+    position: 'relative',
+    display: 'flex',
+  },
+  inputWrapper: {
+    position: 'relative',
+    flexDirection: 'row',
+    borderWidth: 1,
+    borderRadius: theme.radii.small,
+    backgroundColor: theme.colors.surface,
+    overflow: 'hidden',
+    variants: {
+      focused: {
+        true: { opacity: 0.5 },
+      },
+      valid: {
+        true: { borderColor: theme.colors.line1 },
+        false: { borderColor: theme.colors.errorContrast },
+      },
+      disabled: {
+        true: { backgroundColor: theme.colors.neutral4, borderWidth: 0 },
+      },
     },
   },
-}).attrs(({ disabled }) => ({
-  activeOpacity: disabled ? 1 : 0.5,
+  input: {
+    minHeight: 60,
+    flexGrow: 1,
+    paddingHorizontal: theme.space.small,
+  },
+  inputDecoration: {
+    paddingRight: theme.space.xs,
+  },
 }));
-
-const Input = styled('View', {
-  alignItems: 'flex-end',
-  flexDirection: 'row',
-  minHeight: 60,
-  flexGrow: 1,
-  paddingHorizontal: '$small',
-  flexCenter: 'row',
-});
-
-const InputDecoration = styled('View', {
-  flexCenter: 'row',
-  paddingRight: '$xs',
-});

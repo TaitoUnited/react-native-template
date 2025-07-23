@@ -1,12 +1,13 @@
 import { useLingui } from '@lingui/react/macro';
-import { PixelRatio } from 'react-native';
+import { PixelRatio, TouchableOpacity, View } from 'react-native';
 import Animated, {
   Easing,
   useAnimatedStyle,
   withTiming,
 } from 'react-native-reanimated';
+import { StyleSheet } from 'react-native-unistyles';
 
-import { styled } from '~styles';
+import { flexCenter } from '~styles/utils';
 import { haptics } from '~utils/haptics';
 
 import { Icon } from '../Icon';
@@ -39,8 +40,11 @@ export function Checkbox({ onChange, checked, value, label }: Props) {
     onChange(value);
   }
 
+  styles.useVariants({ checked });
+
   return (
-    <Wrapper
+    <TouchableOpacity
+      style={styles.wrapper}
       onPress={onPress}
       activeOpacity={0.8}
       accessible
@@ -53,37 +57,37 @@ export function Checkbox({ onChange, checked, value, label }: Props) {
           : t`Double tap to uncheck this option`
       }
     >
-      <RadioOuter checked={checked}>
+      <View style={[styles.radioOuter, flexCenter()]}>
         <Animated.View style={animatedStyles}>
           <Icon name="check" size={18} color="textOnContrastingBg" />
         </Animated.View>
-      </RadioOuter>
+      </View>
 
       <Text variant={checked ? 'bodyBold' : 'body'}>{label}</Text>
-    </Wrapper>
+    </TouchableOpacity>
   );
 }
 
-const Wrapper = styled('TouchableOpacity', {
-  flexDirection: 'row',
-  alignItems: 'center',
-});
-
-const RadioOuter = styled('View', {
-  position: 'relative',
-  width: 24,
-  height: 24,
-  backgroundColor: 'transparent',
-  borderRadius: '$regular',
-  borderWidth: PixelRatio.roundToNearestPixel(1.5), // try to match icon width
-  marginRight: '$small',
-  borderColor: '$text',
-  flexCenter: 'row',
-  variants: {
-    checked: {
-      true: {
-        backgroundColor: '$primary',
+const styles = StyleSheet.create((theme) => ({
+  wrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  radioOuter: {
+    position: 'relative',
+    width: 24,
+    height: 24,
+    backgroundColor: 'transparent',
+    borderRadius: theme.radii.regular,
+    borderWidth: PixelRatio.roundToNearestPixel(1.5), // try to match
+    marginRight: theme.space.small,
+    borderColor: theme.colors.text,
+    variants: {
+      checked: {
+        true: {
+          backgroundColor: theme.colors.primary,
+        },
       },
     },
   },
-});
+}));

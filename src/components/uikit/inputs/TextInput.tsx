@@ -1,14 +1,15 @@
 import { t } from '@lingui/core/macro';
 import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 import {
+  TextInput as RNTextInput,
   TouchableOpacity,
+  View,
   type NativeSyntheticEvent,
-  type TextInput as RNTextInput,
   type TextInputProps as RNTextInputProps,
   type TextInputFocusEventData,
 } from 'react-native';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
-import { styled } from '~styles';
 import { haptics } from '~utils/haptics';
 
 import { Icon, type IconName } from '../Icon';
@@ -61,12 +62,19 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
     }: TextInputProps,
     ref
   ) => {
+    const { theme } = useUnistyles();
     const [secureTextVisible, setSecureTextVisible] = useState(false);
     const [isFocused, setFocused] = useState(false);
     const [characterCount, setCharacterCount] = useState(value?.length || 0);
 
     const inputRef = useRef<RNTextInput>(null);
     useImperativeHandle(ref, () => inputRef.current as RNTextInput);
+
+    // Controls the visual styles based on the input state
+    styles.useVariants({
+      valid: isValid,
+      disabled: isDisabled,
+    });
 
     function handleCancel() {
       onChange('');
@@ -120,26 +128,21 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
         )}
 
         {showCharacterLimit && isFocused && (
-          <CharacterCount
+          <Text
+            style={styles.characterCount}
             variant="bodyExtraSmall"
             accessibilityLabel={t`Character count`}
             accessibilityHint={t`Number of characters entered in the input field: currently ${characterCount} out of ${maxLength}`}
           >
             <Text variant="bodyExtraSmallBold">{characterCount}</Text>
             {` / ${maxLength}`}
-          </CharacterCount>
+          </Text>
         )}
 
-        <InputWrapper
-          axis="x"
-          spacing="xs"
-          align="center"
-          valid={isValid}
-          disabled={isDisabled}
-        >
+        <Stack style={styles.inputWrapper} axis="x" spacing="xs" align="center">
           {!!icon && <Icon name={icon} size={24} color="text" />}
 
-          <Input
+          <RNTextInput
             {...rest}
             ref={inputRef}
             value={value}
@@ -155,7 +158,8 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
             selectTextOnFocus={!isDisabled}
             multiline={multiline}
             maxLength={maxLength}
-            style={style}
+            style={[styles.input, style]}
+            placeholderTextColor={theme.colors.textMuted}
             accessibilityRole={accessibilityRole ?? 'text'}
             accessibilityLabel={accessibilityLabel ?? t`${label ?? 'text'} input field`} // prettier-ignore
             accessibilityHint={accessibilityHint ?? t`Enter your ${label ?? 'text'} here`} // prettier-ignore
@@ -163,7 +167,7 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
           />
 
           {allowSecureTextToggle ? (
-            <InputDecoration>
+            <View style={styles.inputDecoration}>
               <TouchableOpacity
                 onPress={() => setSecureTextVisible((p) => !p)}
                 accessible
@@ -181,7 +185,7 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
                   <Icon name="eyeOff" size={20} color="text" />
                 )}
               </TouchableOpacity>
-            </InputDecoration>
+            </View>
           ) : (
             <IconButton
               icon="close"
@@ -192,7 +196,7 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
               accessibilityHint={t`Double tap to clear the input`}
             />
           )}
-        </InputWrapper>
+        </Stack>
 
         {!!message && (
           <Stack axis="x" spacing="small" align="center">
@@ -217,39 +221,36 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
 
 TextInput.displayName = 'TextInput';
 
-const InputWrapper = styled(Stack, {
-  padding: '$regular',
-  borderRadius: '$small',
-  backgroundColor: '$surface',
-  borderWidth: 1,
-  variants: {
-    valid: {
-      true: { borderColor: '$line1' },
-      false: { borderColor: '$errorContrast' },
-    },
-    disabled: {
-      true: { backgroundColor: '$neutral4', borderWidth: 0 },
+const styles = StyleSheet.create((theme) => ({
+  inputWrapper: {
+    padding: theme.space.regular,
+    borderRadius: theme.radii.small,
+    backgroundColor: theme.colors.surface,
+    borderWidth: 1,
+    variants: {
+      valid: {
+        true: { borderColor: theme.colors.line1 },
+        false: { borderColor: theme.colors.errorContrast },
+      },
+      disabled: {
+        true: { backgroundColor: theme.colors.neutral4, borderWidth: 0 },
+      },
     },
   },
-});
-
-const Input = styled('TextInput', {
-  typography: 'body',
-  color: '$text',
-  lineHeight: 20,
-  width: '70%', // This is to prevent the input from expanding with the text and pushing the icon out of view
-  flexGrow: 1,
-}).attrs((p) => ({
-  placeholderTextColor: p.theme.colors.textMuted,
+  input: {
+    ...theme.typography.body,
+    color: theme.colors.text,
+    lineHeight: 20,
+    width: '70%', // This is to prevent the input from expanding with the text and pushing the icon out of view
+    flexGrow: 1,
+  },
+  inputDecoration: {
+    flexDirection: 'row',
+    paddingRight: theme.space.xs,
+  },
+  characterCount: {
+    position: 'absolute',
+    top: theme.space.regular,
+    right: theme.space.xxs,
+  },
 }));
-
-const InputDecoration = styled('View', {
-  flexCenter: 'row',
-  paddingRight: '$xs',
-});
-
-const CharacterCount = styled(Text, {
-  position: 'absolute',
-  top: '$regular',
-  right: '$xxs',
-});

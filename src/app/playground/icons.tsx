@@ -1,17 +1,20 @@
 import { setStringAsync } from 'expo-clipboard';
-import { Pressable } from 'react-native';
+import { Pressable, ScrollView } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { showToast } from '~components/common/Toaster';
 import { Note } from '~components/playground/common';
 import { Grid, Icon, Stack, Text } from '~components/uikit';
 import type { IconName } from '~components/uikit/Icon';
 import * as icons from '~design-system/icons';
-import { styled } from '~styles';
 import { haptics } from '~utils/haptics';
 
 export default function Icons() {
   return (
-    <Wrapper>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.contentContainer}
+    >
       <Stack axis="y" spacing="medium">
         <Note>
           You can long press on an icon to copy its name to the clipboard.
@@ -31,7 +34,8 @@ export default function Icons() {
                 });
               }}
             >
-              <IconWrapper
+              <Stack
+                style={styles.iconWrapper}
                 axis="y"
                 spacing="small"
                 align="center"
@@ -50,27 +54,27 @@ export default function Icons() {
                 >
                   {name}
                 </Text>
-              </IconWrapper>
+              </Stack>
             </Pressable>
           ))}
         </Grid>
       </Stack>
-    </Wrapper>
+    </ScrollView>
   );
 }
 
-const Wrapper = styled('ScrollView', {
-  flex: 1,
-}).attrs((p) => ({
-  contentContainerStyle: {
-    padding: p.theme.space.regular,
+const styles = StyleSheet.create((theme) => ({
+  container: {
+    flex: 1,
+  },
+  contentContainer: {
+    padding: theme.space.regular,
+  },
+  iconWrapper: {
+    padding: theme.space.xs,
+    borderRadius: theme.radii.small,
+    backgroundColor: theme.colors.surface,
+    width: 80,
+    height: 80,
   },
 }));
-
-const IconWrapper = styled(Stack, {
-  padding: '$xs',
-  borderRadius: '$small',
-  backgroundColor: '$surface',
-  width: 80,
-  height: 80,
-});

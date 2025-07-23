@@ -1,12 +1,17 @@
-import { StyleSheet } from 'react-native';
+import { View, type ViewProps } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
-import { styled } from '~styles';
+export const Card = (props: ViewProps) => (
+  <View style={styles.card} {...props} />
+);
 
-export const Card = styled('View', {
-  backgroundColor: '$surface',
-  borderRadius: '$regular',
-  borderWidth: StyleSheet.hairlineWidth,
-  borderColor: '$line3',
-  padding: '$regular',
-  shadow: 'small',
-});
+const styles = StyleSheet.create((theme) => ({
+  card: {
+    backgroundColor: theme.colors.surface,
+    borderRadius: theme.radii.regular,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: theme.colors.line3,
+    padding: theme.space.regular,
+    ...theme.shadows.small,
+  },
+}));

@@ -1,19 +1,21 @@
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
-import { styled, useTheme } from '~styles';
+import { flexCenter } from '~styles/utils';
 
 export default function LoadingScreen() {
-  const theme = useTheme();
+  const { theme } = useUnistyles();
 
   return (
-    <Wrapper>
+    <View style={[styles.wrapper, flexCenter()]} testID="loadingScreen">
       <ActivityIndicator size="large" color={theme.colors.text} />
-    </Wrapper>
+    </View>
   );
 }
 
-const Wrapper = styled('View', {
-  flex: 1,
-  flexCenter: 'column',
-  backgroundColor: '$background',
-});
+const styles = StyleSheet.create((theme) => ({
+  wrapper: {
+    flex: 1,
+    backgroundColor: theme.colors.surface,
+  },
+}));

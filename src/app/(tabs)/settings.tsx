@@ -1,11 +1,12 @@
 import { useLingui } from '@lingui/react/macro';
+import { ScrollView } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
 import MenuList from '~components/common/MenuList';
 import { useHeaderPlaygroundButton } from '~components/playground/utils';
 import { useMenuListItem } from '~components/settings/hooks';
 import { Icon, alert } from '~components/uikit';
 import { useAuthStore } from '~services/auth';
-import { styled } from '~styles';
 import { announceForAccessibility } from '~utils/a11y';
 import { haptics } from '~utils/haptics';
 
@@ -45,16 +46,21 @@ export default function Settings() {
   ];
 
   return (
-    <Wrapper testID="settingsScreen">
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.contentContainer}
+      testID="settingsScreen"
+    >
       <MenuList items={items} />
-    </Wrapper>
+    </ScrollView>
   );
 }
 
-const Wrapper = styled('ScrollView', {
-  flex: 1,
-}).attrs((p) => ({
-  contentContainerStyle: {
-    padding: p.theme.space.regular,
+const styles = StyleSheet.create((theme) => ({
+  container: {
+    flex: 1,
+  },
+  contentContainer: {
+    padding: theme.space.regular,
   },
 }));

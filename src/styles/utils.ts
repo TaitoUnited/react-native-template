@@ -1,49 +1,32 @@
-import { StyleSheet } from 'react-native';
-import type * as Stitches from 'stitches-native';
+import { StyleSheet, type ViewStyle } from 'react-native';
 
-import * as shadows from '~design-system/shadows';
 import * as typographyTokens from '~design-system/typography';
 import * as designSystemUtils from '~design-system/utils';
 
-type Typography = keyof typeof typographyTokens;
+import { type AppThemes } from './styled';
 
-export const typography = (variant: Typography) => {
+type Typography = keyof typeof typographyTokens;
+type FlexCenter = {
+  flexDirection: ViewStyle['flexDirection'];
+  justifyContent: ViewStyle['justifyContent'];
+  alignItems: ViewStyle['alignItems'];
+};
+
+export const typography = (theme: AppThemes['light'], variant: Typography) => {
   const { fontWeight, textTransform } = typographyTokens[variant];
 
   return {
-    fontFamily: `$${designSystemUtils.getFontFromWeight(fontWeight)}`,
-    fontSize: `$${variant}`,
-    fontWeight: `$${variant}`,
-    letterSpacing: `$${variant}`,
-    lineHeight: `$${variant}`,
+    fontFamily: `${designSystemUtils.getFontFromWeight(fontWeight)}`,
+    fontSize: theme.fontSizes[variant],
+    fontWeight: theme.fontWeights[variant],
+    letterSpacing: theme.letterSpacings[variant],
+    lineHeight: theme.lineHeights[variant],
     textTransform,
-  };
+  } as designSystemUtils.TypographyDefinition;
 };
 
-export const size = (value: Stitches.PropertyValue<'width'>) => ({
-  width: value,
-  height: value,
-});
-
-export const shadow = (
-  level: 'none' | designSystemUtils.ShadowName<shadows.ShadowsToken>
-) => {
-  return {
-    none: {
-      elevation: 0,
-      shadowOffset: { width: 0, height: 0 },
-      shadowRadius: 0,
-      shadowOpacity: 0,
-      shadowColor: '#000',
-    },
-    ...designSystemUtils.getShadows(shadows),
-  }[level];
-};
-
-export const flexCenter = (
-  value?: Stitches.PropertyValue<'flexDirection'>
-) => ({
-  flexDirection: value || 'column',
+export const flexCenter = (): FlexCenter => ({
+  flexDirection: 'row',
   justifyContent: 'center',
   alignItems: 'center',
 });
@@ -51,3 +34,10 @@ export const flexCenter = (
 export const absoluteFill = () => ({
   ...StyleSheet.absoluteFillObject,
 });
+
+export const getTypography = (
+  theme: AppThemes['light'],
+  variant: Typography
+): designSystemUtils.TypographyDefinition => {
+  return typography(theme, variant);
+};

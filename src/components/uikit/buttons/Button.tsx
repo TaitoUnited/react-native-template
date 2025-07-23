@@ -1,6 +1,11 @@
-import { ActivityIndicator, type GestureResponderEvent } from 'react-native';
+import {
+  ActivityIndicator,
+  TouchableOpacity,
+  type GestureResponderEvent,
+} from 'react-native';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
-import { styled, useTheme, type Typography } from '~styles';
+import { type Typography } from '~styles/styled';
 import { haptics } from '~utils/haptics';
 
 import { Icon } from '../Icon';
@@ -23,7 +28,7 @@ export function Button({
   accessibilityRole,
   ...rest
 }: ButtonProps) {
-  const theme = useTheme();
+  const { theme } = useUnistyles();
   const textVariant = sizeToTextVariant[size];
   const iconSize = sizeToIconSize[size];
 
@@ -47,12 +52,16 @@ export function Button({
     }
   }
 
+  styles.useVariants({
+    size,
+    disabled,
+  });
+
   return (
-    <Wrapper
-      size={size}
-      disabled={disabled}
-      style={[wrapperStyle, style]}
+    <TouchableOpacity
+      style={[styles.wrapper, wrapperStyle, style]}
       onPress={_onPress}
+      activeOpacity={disabled ? 0.9 : 0.8}
       accessibilityRole={accessibilityRole ?? 'button'}
       accessibilityState={{ disabled, busy: loading }}
       {...rest}
@@ -84,7 +93,7 @@ export function Button({
           </>
         )}
       </Stack>
-    </Wrapper>
+    </TouchableOpacity>
   );
 }
 
@@ -100,29 +109,18 @@ const sizeToLineHeight: Record<ButtonSize, number> = {
   large: 26,
 };
 
-const Wrapper = styled('TouchableOpacity', {
-  borderRadius: '$full',
-  variants: {
-    size: {
-      small: {
-        minHeight: 32,
-        paddingHorizontal: '$small',
+const styles = StyleSheet.create((theme) => ({
+  wrapper: {
+    borderRadius: theme.radii.full,
+    variants: {
+      size: {
+        small: { minHeight: 32, paddingHorizontal: theme.space.small },
+        normal: { minHeight: 44, paddingHorizontal: theme.space.regular },
+        large: { minHeight: 60, paddingHorizontal: theme.space.medium },
       },
-      normal: {
-        minHeight: 44,
-        paddingHorizontal: '$regular',
-      },
-      large: {
-        minHeight: 60,
-        paddingHorizontal: '$medium',
-      },
-    },
-    disabled: {
-      true: {
-        opacity: 0.9,
+      disabled: {
+        true: { opacity: 0.9 },
       },
     },
   },
-}).attrs(({ disabled }) => ({
-  activeOpacity: disabled ? 0.9 : 0.8,
 }));

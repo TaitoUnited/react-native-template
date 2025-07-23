@@ -1,19 +1,17 @@
 import { router } from 'expo-router';
 import { View } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 import * as DropdownMenu from 'zeego/dropdown-menu';
 
 import { IconButton } from '~components/uikit';
 import config from '~constants/config';
-import { useTheme } from '~styles';
 import { useHeaderOptions } from '~utils/navigation';
 
 export function useHeaderPlaygroundButton() {
-  const theme = useTheme();
-
   useHeaderOptions({
     headerRight: () => {
       return config.appEnv !== 'production' ? (
-        <View style={{ marginHorizontal: theme.space.regular }}>
+        <View style={styles.wrapper}>
           <DropdownMenu.Root>
             <DropdownMenu.Trigger>
               <IconButton icon="moreVert" size="normal" color="neutral" />
@@ -36,3 +34,9 @@ export function useHeaderPlaygroundButton() {
     },
   });
 }
+
+const styles = StyleSheet.create((theme) => ({
+  wrapper: {
+    marginHorizontal: theme.space.regular,
+  },
+}));

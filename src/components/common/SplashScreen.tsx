@@ -1,7 +1,9 @@
 import { useAssets } from 'expo-asset';
+import { Image, View } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
 import config from '~constants/config';
-import { styled } from '~styles';
+import { absoluteFill } from '~styles/utils';
 
 import Splash from '../../design-system/assets/splash.png';
 
@@ -13,27 +15,28 @@ export default function SplashScreen() {
   const imageSource = { uri: assets[0].localUri || '' };
 
   return (
-    <Wrapper>
-      <SplashContent
+    <View style={styles.wrapper} testID="splashScreen">
+      <View
         pointerEvents="none"
-        style={[{ backgroundColor: config.backgroundColor }]}
+        style={[{ backgroundColor: config.backgroundColor }, absoluteFill()]}
       >
-        <SplashImage source={imageSource} fadeDuration={0} />
-      </SplashContent>
-    </Wrapper>
+        <Image
+          style={styles.splashImage}
+          source={imageSource}
+          fadeDuration={0}
+        />
+      </View>
+    </View>
   );
 }
 
-const Wrapper = styled('View', {
-  flex: 1,
-});
-
-const SplashContent = styled('View', {
-  absoluteFill: true,
-});
-
-const SplashImage = styled('Image', {
-  width: '100%',
-  height: '100%',
-  resizeMode: 'contain',
+const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+  },
+  splashImage: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'contain',
+  },
 });

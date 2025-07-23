@@ -1,11 +1,11 @@
 import { Trans, useLingui } from '@lingui/react/macro';
 import { Controller, useForm } from 'react-hook-form';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { showToast } from '~components/common/Toaster';
 import { Button, Stack, Text, TextInput } from '~components/uikit';
 import { useAuthStore } from '~services/auth';
-import { styled } from '~styles';
 import { announceForAccessibility } from '~utils/a11y';
 import { haptics } from '~utils/haptics';
 
@@ -33,8 +33,17 @@ export default function Login() {
   }
 
   return (
-    <KeyboardAwareView behavior={'padding'} keyboardVerticalOffset={100}>
-      <InnerStack axis="y" spacing="medium" justify="between">
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior="padding"
+      keyboardVerticalOffset={100}
+    >
+      <Stack
+        style={styles.innerStack}
+        axis="y"
+        spacing="medium"
+        justify="between"
+      >
         <Stack axis="y" spacing="medium">
           <Stack axis="y" spacing="small">
             <Text variant="headingL" accessibilityRole="header">
@@ -119,21 +128,17 @@ export default function Login() {
         >
           <Trans>Login</Trans>
         </Button>
-      </InnerStack>
-    </KeyboardAwareView>
+      </Stack>
+    </KeyboardAvoidingView>
   );
 }
 
-const InnerStack = styled(Stack, {
-  padding: '$medium',
-  flex: 1,
-});
-
-const KeyboardAwareView = styled(KeyboardAvoidingView, {
-  flex: 1,
-}).attrs(() => ({
-  keyboardShouldPersistTaps: 'handled',
-  contentContainerStyle: {
-    flexGrow: 1,
+const styles = StyleSheet.create((theme) => ({
+  container: {
+    flex: 1,
+  },
+  innerStack: {
+    padding: theme.space.medium,
+    flex: 1,
   },
 }));

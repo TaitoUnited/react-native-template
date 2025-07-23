@@ -2,11 +2,11 @@ import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
 import { Trans, useLingui } from '@lingui/react/macro';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { showToast } from '~components/common/Toaster';
 import { Button, IconButton, Stack, Text } from '~components/uikit';
-import { styled } from '~styles';
 import { sleep } from '~utils/common';
 
 type ImprovementFormType = {
@@ -25,6 +25,11 @@ export default function ImprovementForm({
     },
   });
   const [isFocused, setFocused] = useState(false);
+
+  // Controls the visual styles based on the input state
+  styles.useVariants({
+    focused: isFocused,
+  });
 
   async function onSubmitFeedback() {
     try {
@@ -49,7 +54,7 @@ export default function ImprovementForm({
       justify="between"
       style={{ height: '100%' }}
     >
-      <BackButton icon="close" onPress={onCancel} />
+      <IconButton style={styles.backButton} icon="close" onPress={onCancel} />
 
       <Text variant="headingS">
         <Trans>How can we improve?</Trans>
@@ -66,8 +71,9 @@ export default function ImprovementForm({
             rules={{ required: t`Feedback is required` }}
             render={({ field }) => {
               return (
-                <InputWrapper focused={isFocused}>
-                  <Input
+                <View style={styles.inputWrapper}>
+                  <BottomSheetTextInput
+                    style={styles.input}
                     {...field}
                     multiline
                     autoCapitalize="sentences"
@@ -78,7 +84,7 @@ export default function ImprovementForm({
                     onFocus={() => setFocused(true)}
                     onBlur={() => setFocused(false)}
                   />
-                </InputWrapper>
+                </View>
               );
             }}
           />
@@ -98,38 +104,34 @@ export default function ImprovementForm({
   );
 }
 
-const BackButton = styled(IconButton, {
-  position: 'absolute',
-  top: -10,
-  right: 10,
-});
-
-const InputWrapper = styled('View', {
-  alignItems: 'flex-end',
-  position: 'relative',
-  flexDirection: 'row',
-  borderBottomWidth: 1,
-  borderTopRightRadius: '$regular',
-  borderTopLeftRadius: '$regular',
-  variants: {
-    focused: {
-      true: { backgroundColor: 'rgba(150, 150, 150, 0.15)' },
-      false: { backgroundColor: 'transparent' },
-    },
-    valid: {
-      true: { borderColor: '$text' },
-      false: { borderColor: '$error' },
+const styles = StyleSheet.create((theme) => ({
+  backButton: {
+    position: 'absolute',
+    top: -10,
+    right: 10,
+  },
+  inputWrapper: {
+    alignItems: 'flex-end',
+    position: 'relative',
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    borderTopRightRadius: theme.radii.regular,
+    borderTopLeftRadius: theme.radii.regular,
+    width: '100%',
+    variants: {
+      focused: {
+        true: { backgroundColor: 'rgba(150, 150, 150, 0.15)' },
+        false: { backgroundColor: 'transparent' },
+      },
     },
   },
-  width: '100%',
-});
-
-const Input = styled(BottomSheetTextInput, {
-  minHeight: 60,
-  typography: 'body',
-  color: '$text',
-  flexGrow: 1,
-  paddingHorizontal: '$small',
-  paddingBottom: 10,
-  paddingTop: '$medium',
-});
+  input: {
+    minHeight: 60,
+    ...theme.typography.body,
+    color: theme.colors.text,
+    flexGrow: 1,
+    paddingHorizontal: theme.space.small,
+    paddingBottom: 10,
+    paddingTop: theme.space.medium,
+  },
+}));

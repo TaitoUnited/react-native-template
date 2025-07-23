@@ -1,12 +1,13 @@
 import { cloneElement, isValidElement, type ReactNode, useState } from 'react';
 import { type LayoutChangeEvent, View, type ViewProps } from 'react-native';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
-import { styled, type Theme, useTheme } from '~styles';
+import { type Space } from '~styles/styled';
 
 import { flattenChildren } from '../helpers';
 
 type Props = ViewProps & {
-  spacing: keyof Theme['space'];
+  spacing: Space;
   align?: 'center' | 'start' | 'end' | 'stretch';
   justify?: 'center' | 'start' | 'end' | 'between' | 'around';
   columns?: number;
@@ -23,17 +24,24 @@ export function Grid({
 }: Props) {
   // Handle `Fragments` by flattening children
   const elements = flattenChildren(children).filter((e) => isValidElement(e));
-  const theme = useTheme();
+  const { theme } = useUnistyles();
   const [width, setWidth] = useState(-1);
   const colWidth =
     columns !== undefined && width !== -1 ? width / columns : undefined;
 
+  styles.useVariants({
+    align,
+    justify,
+  });
+
   return (
-    <Wrapper
+    <View
       {...rest}
-      align={align}
-      justify={justify}
-      style={[rest.style, { margin: theme.space[spacing] / -2 }]}
+      style={[
+        styles.wrapper,
+        rest.style,
+        { margin: theme.space[spacing] / -2 },
+      ]}
       onLayout={(e: LayoutChangeEvent) => setWidth(e.nativeEvent.layout.width)}
     >
       {elements.map((child, index) => {
@@ -49,26 +57,28 @@ export function Grid({
           </View>
         );
       })}
-    </Wrapper>
+    </View>
   );
 }
 
-const Wrapper = styled('View', {
-  flexDirection: 'row',
-  flexWrap: 'wrap',
-  variants: {
-    align: {
-      center: { alignItems: 'center' },
-      start: { alignItems: 'flex-start' },
-      end: { alignItems: 'flex-end' },
-      stretch: { alignItems: 'stretch' },
-    },
-    justify: {
-      center: { justifyContent: 'center' },
-      start: { justifyContent: 'flex-start' },
-      end: { justifyContent: 'flex-end' },
-      between: { justifyContent: 'space-between' },
-      around: { justifyContent: 'space-around' },
+const styles = StyleSheet.create(() => ({
+  wrapper: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    variants: {
+      align: {
+        center: { alignItems: 'center' },
+        start: { alignItems: 'flex-start' },
+        end: { alignItems: 'flex-end' },
+        stretch: { alignItems: 'stretch' },
+      },
+      justify: {
+        center: { justifyContent: 'center' },
+        start: { justifyContent: 'flex-start' },
+        end: { justifyContent: 'flex-end' },
+        between: { justifyContent: 'space-between' },
+        around: { justifyContent: 'space-around' },
+      },
     },
   },
-});
+}));

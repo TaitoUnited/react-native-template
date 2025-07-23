@@ -1,8 +1,9 @@
 import { type BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import { View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { type TabList } from '~app/(tabs)/_layout';
-import { styled } from '~styles';
 import { haptics } from '~utils/haptics';
 
 import { TabBarButton } from './Tab';
@@ -24,7 +25,7 @@ export function BottomBar({
 }: CustomTabBarProps) {
   const { bottom } = useSafeAreaInsets();
   return (
-    <TabBarContainer style={{ paddingBottom: bottom }}>
+    <View style={[styles.container, { paddingBottom: bottom }]}>
       {state.routes.map((route, index) => {
         if (EXCLUDED_ROUTES.includes(route.name)) return null;
 
@@ -61,14 +62,16 @@ export function BottomBar({
           />
         );
       })}
-    </TabBarContainer>
+    </View>
   );
 }
 
-const TabBarContainer = styled('View', {
-  display: 'flex',
-  flexDirection: 'row',
-  backgroundColor: '$surface',
-  paddingVertical: '$xs',
-  shadow: 'small',
-});
+const styles = StyleSheet.create((theme) => ({
+  container: {
+    display: 'flex',
+    flexDirection: 'row',
+    backgroundColor: theme.colors.surface,
+    paddingVertical: theme.space.xs,
+    ...theme.shadows.small,
+  },
+}));

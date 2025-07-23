@@ -1,9 +1,10 @@
 import { Trans, useLingui } from '@lingui/react/macro';
 import { Stack as ExpoStack, Link } from 'expo-router';
+import { ScrollView } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { Button, Stack, Text } from '~components/uikit';
 import { useAuthStore } from '~services/auth';
-import { styled } from '~styles';
 
 export default function NotFoundScreen() {
   const { t } = useLingui();
@@ -12,7 +13,10 @@ export default function NotFoundScreen() {
   return (
     <>
       <ExpoStack.Screen options={{ title: t`Oops!` }} />
-      <Wrapper testID="not-found-screen">
+      <ScrollView
+        contentContainerStyle={styles.container}
+        testID="not-found-screen"
+      >
         <Stack axis="y" spacing="regular" align="center" justify="center">
           <Text variant="body">
             <Trans>This screen does not exist</Trans>
@@ -23,15 +27,14 @@ export default function NotFoundScreen() {
             </Button>
           </Link>
         </Stack>
-      </Wrapper>
+      </ScrollView>
     </>
   );
 }
 
-const Wrapper = styled('ScrollView', {
-  flex: 1,
-}).attrs(() => ({
-  contentContainerStyle: {
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
     margin: 'auto',
   },
-}));
+});

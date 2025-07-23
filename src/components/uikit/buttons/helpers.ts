@@ -1,6 +1,7 @@
 import { type StyleProp, type ViewStyle } from 'react-native';
+import { type UnistylesThemes } from 'react-native-unistyles';
 
-import { type Color, type useTheme } from '~styles';
+import { type Color } from '~styles/styled';
 
 import {
   type ButtonProps,
@@ -15,7 +16,7 @@ const getBaseStyle = ({
   color = 'primary',
   disabled = false,
 }: Pick<ButtonProps, 'variant' | 'color' | 'disabled'> & {
-  theme: ReturnType<typeof useTheme>;
+  theme: UnistylesThemes['light'];
 }): ViewStyle => {
   const baseStyle: ViewStyle = {
     backgroundColor: 'transparent',
@@ -101,7 +102,7 @@ export const getButtonWrapperStyle = ({
   color = 'primary',
   disabled = false,
 }: Pick<ButtonProps, 'variant' | 'color' | 'disabled'> & {
-  theme: ReturnType<typeof useTheme>;
+  theme: UnistylesThemes['light'];
 }): StyleProp<ViewStyle> => {
   return getBaseStyle({ variant, color, disabled, theme });
 };
@@ -113,7 +114,7 @@ export const getIconWrapperStyle = ({
   color = 'primary',
   disabled = false,
 }: Pick<IconButtonProps, 'variant' | 'color' | 'disabled'> & {
-  theme: ReturnType<typeof useTheme>;
+  theme: UnistylesThemes['light'];
 }): StyleProp<ViewStyle> => {
   if (color === 'neutral') {
     return { backgroundColor: 'transparent' };

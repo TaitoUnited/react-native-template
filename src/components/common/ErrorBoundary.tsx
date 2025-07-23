@@ -1,8 +1,9 @@
 import { Trans } from '@lingui/react/macro';
 import { Component, type ReactNode } from 'react';
+import { SafeAreaView, ScrollView } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { Stack, Text } from '~components/uikit';
-import { styled } from '~styles';
 
 interface Props {
   children: ReactNode;
@@ -32,8 +33,8 @@ export default class ErrorBoundary extends Component<Props, State> {
 
 function ErrorView() {
   return (
-    <SafeArea>
-      <Scroller>
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView contentContainerStyle={styles.contentContainerStyle}>
         <Stack axis="y" spacing="regular" align="center">
           <Text variant="bodyLargeBold" align="center">
             <Trans>Something went wrong</Trans>
@@ -42,19 +43,16 @@ function ErrorView() {
             <Trans>Please try restarting the application.</Trans>
           </Text>
         </Stack>
-      </Scroller>
-    </SafeArea>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
-const SafeArea = styled('SafeAreaView', {
-  flex: 1,
-  backgroundColor: '$background',
-});
-
-const Scroller = styled('ScrollView', {
-  flex: 1,
-}).attrs(() => ({
+const styles = StyleSheet.create((theme) => ({
+  safeArea: {
+    flex: 1,
+    backgroundColor: theme.colors.surface,
+  },
   contentContainerStyle: {
     flex: 1,
     alignItems: 'center',

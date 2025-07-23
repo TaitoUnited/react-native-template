@@ -1,16 +1,15 @@
 import { useLingui } from '@lingui/react/macro';
 import { Drawer } from 'expo-router/drawer';
 import { StyleSheet } from 'react-native';
+import { useUnistyles } from 'react-native-unistyles';
 
 import { Icon, type IconName } from '~components/uikit/Icon';
-import { useTheme } from '~styles';
 
 import { type TabList as DrawerList } from './_layout';
 
 export default function DrawerLayout() {
   const { t } = useLingui();
-
-  const theme = useTheme();
+  const { theme } = useUnistyles();
 
   // Note: the items are intentionally 'duplicated' from the tabs list as we assume they will differ from each other in a real project.
   const drawerItems: DrawerList = [

@@ -6,12 +6,15 @@ import {
   Easing,
   Modal,
   ScrollView,
+  TouchableOpacity,
   TouchableWithoutFeedback,
   useWindowDimensions,
+  View,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { StyleSheet } from 'react-native-unistyles';
 
-import { styled } from '~styles';
+import { absoluteFill, flexCenter } from '~styles/utils';
 import { announceForAccessibility } from '~utils/a11y';
 
 import { Text } from './Text';
@@ -138,27 +141,36 @@ function PickerLayout({
   const insets = useSafeAreaInsets();
 
   return (
-    <Wrapper>
+    <View style={styles.wrapper}>
       <TouchableWithoutFeedback onPress={onClose} accessible={false}>
-        <Backdrop style={{ opacity: backdropAnimation.current }} />
+        <Animated.View
+          style={[
+            styles.backdrop,
+            { opacity: backdropAnimation.current },
+            absoluteFill(),
+          ]}
+        />
       </TouchableWithoutFeedback>
-      <Content
-        style={{
-          maxHeight: dimensions.height - insets.bottom - insets.top,
-          opacity: contentAnimation.current,
-          transform: [
-            {
-              translateY: contentAnimation.current.interpolate({
-                inputRange: [0, 1],
-                outputRange: [300, 0],
-              }),
-            },
-          ],
-        }}
+      <Animated.View
+        style={[
+          styles.content,
+          {
+            maxHeight: dimensions.height - insets.bottom - insets.top,
+            opacity: contentAnimation.current,
+            transform: [
+              {
+                translateY: contentAnimation.current.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [300, 0],
+                }),
+              },
+            ],
+          },
+        ]}
       >
         {children}
-      </Content>
-    </Wrapper>
+      </Animated.View>
+    </View>
   );
 }
 
@@ -213,13 +225,17 @@ function SinglePicker({
           />
         </Stack>
       </ScrollView>
-      <Footer>
-        <ActionButton onPress={onClose} accessibilityRole="button">
+      <View style={styles.footer}>
+        <TouchableOpacity
+          style={[styles.actionButton, flexCenter()]}
+          onPress={onClose}
+          accessibilityRole="button"
+        >
           <Text variant="bodyBold">
             <Trans>Close</Trans>
           </Text>
-        </ActionButton>
-      </Footer>
+        </TouchableOpacity>
+      </View>
     </PickerLayout>
   );
 }
@@ -281,53 +297,53 @@ function MultiplePicker({
           />
         </Stack>
       </ScrollView>
-      <Footer>
-        <ActionButton onPress={onClose} accessibilityRole="button">
+      <View style={styles.footer}>
+        <TouchableOpacity
+          style={[styles.actionButton, flexCenter()]}
+          onPress={onClose}
+          accessibilityRole="button"
+        >
           <Text variant="body">
             <Trans>Cancel</Trans>
           </Text>
-        </ActionButton>
-        <ActionButton onPress={handleDone} accessibilityRole="button">
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.actionButton, flexCenter()]}
+          onPress={handleDone}
+          accessibilityRole="button"
+        >
           <Text variant="bodyBold">
             <Trans>Done</Trans>
           </Text>
-        </ActionButton>
-      </Footer>
+        </TouchableOpacity>
+      </View>
     </PickerLayout>
   );
 }
 
-const Wrapper = styled('View', {
-  flex: 1,
-  justifyContent: 'flex-end',
-});
-
-const Backdrop = Animated.createAnimatedComponent(
-  styled('View', {
-    absoluteFill: true,
+const styles = StyleSheet.create((theme) => ({
+  wrapper: {
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
+  backdrop: {
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     zIndex: 1,
-  })
-);
-
-const Content = Animated.createAnimatedComponent(
-  styled('View', {
-    backgroundColor: '$surface',
-    shadow: 'large',
-    padding: '$medium',
-    borderTopLeftRadius: '$medium',
-    borderTopRightRadius: '$medium',
+  },
+  content: {
+    backgroundColor: theme.colors.surface,
+    ...theme.shadows.large,
+    padding: theme.space.medium,
+    borderTopLeftRadius: theme.radii.medium,
+    borderTopRightRadius: theme.radii.medium,
     zIndex: 2,
-  })
-);
-
-const Footer = styled('View', {
-  flexDirection: 'row',
-});
-
-const ActionButton = styled('TouchableOpacity', {
-  flex: 1,
-  paddingTop: '$regular',
-  paddingBottom: '$medium',
-  flexCenter: 'row',
-});
+  },
+  footer: {
+    flexDirection: 'row',
+  },
+  actionButton: {
+    flex: 1,
+    paddingTop: theme.space.regular,
+    paddingBottom: theme.space.medium,
+  },
+}));
