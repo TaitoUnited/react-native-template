@@ -1,14 +1,14 @@
 declare module '*.jpg' {
-  const value: any;
+  const value: ImageSourcePropType | undefined;
   export default value;
 }
 
 declare module '*.png' {
-  const value: any;
+  const value: ImageSourcePropType | undefined;
   export default value;
 }
 
 declare module '*.ttf' {
-  const src: string;
+  const src: FontSource;
   export default src;
 }
