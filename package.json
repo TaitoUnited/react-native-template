@@ -91,7 +91,6 @@
     "react-native-toast-message": "2.3.0",
     "react-native-unistyles": "3.0.7",
     "react-native-web": "~0.20.0",
-    "stitches-native": "0.4.0",
     "zeego": "3.0.6",
     "zustand": "5.0.4"
   },
