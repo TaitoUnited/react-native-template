@@ -2,12 +2,9 @@ import { Trans } from '@lingui/react/macro';
 import { ScrollView } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
-import { useHeaderPlaygroundButton } from '~components/playground/utils';
 import { Text } from '~components/uikit';
 
 export default function Home() {
-  useHeaderPlaygroundButton();
-
   return (
     <ScrollView
       style={styles.container}
