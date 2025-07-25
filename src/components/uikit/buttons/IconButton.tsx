@@ -12,7 +12,6 @@ import Animated, {
 } from 'react-native-reanimated';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
-import { flexCenter } from '~styles/utils';
 import { haptics } from '~utils/haptics';
 
 import { Icon } from '../Icon';
@@ -98,7 +97,7 @@ export function IconButton({
       onPressOut={handlePressOut}
       disabled={disabled}
       onPress={_onPress}
-      style={[styles.wrapper, wrapperStyle, flexCenter()]}
+      style={[styles.wrapper, wrapperStyle]}
       accessibilityRole={accessibilityRole ?? 'button'}
       accessibilityLabel={accessibilityLabel ?? t`Icon button with ${icon} icon`} // prettier-ignore
       accessibilityHint={accessibilityHint ?? t`Double tap to perform action`} // prettier-ignore
@@ -121,6 +120,7 @@ const styles = StyleSheet.create((theme) => ({
   wrapper: {
     borderRadius: theme.radii.medium,
     position: 'relative',
+    ...theme.utils.flexCenter,
     variants: {
       size: {
         small: {

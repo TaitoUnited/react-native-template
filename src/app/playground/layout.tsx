@@ -1,4 +1,4 @@
-import { ScrollView, View } from 'react-native';
+import { ScrollView, View, ViewProps } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { Note } from '~components/playground/common';
 import { Grid, Spacer, Stack, Text } from '~components/uikit';
@@ -19,7 +19,7 @@ export default function Layout() {
         <Stack axis="y" spacing="regular">
           <Text variant="headingS">Stack</Text>
 
-          <Text variant="body" withLineHeight>
+          <Text variant="body">
             Stack component is used to stack elements vertically or horizontally
             while applying uniform spacing between the elements.
           </Text>
@@ -31,9 +31,9 @@ export default function Layout() {
               </Text>
 
               <Stack axis="x" spacing="regular">
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
+                <Box />
+                <Box />
+                <Box />
               </Stack>
             </Stack>
           </View>
@@ -45,9 +45,9 @@ export default function Layout() {
               </Text>
 
               <Stack axis="y" spacing="small">
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
+                <Box />
+                <Box />
+                <Box />
               </Stack>
             </Stack>
           </View>
@@ -56,7 +56,7 @@ export default function Layout() {
         <Stack axis="y" spacing="regular">
           <Text variant="headingS">Spacer</Text>
 
-          <Text variant="body" withLineHeight>
+          <Text variant="body">
             It&lsquo;s possible to intervine Spacer components within a Stack to
             apply a different spacing amount at specific places between
             elements.
@@ -64,21 +64,21 @@ export default function Layout() {
 
           <View style={styles.exampleBlock}>
             <Stack axis="y" spacing="small">
-              <Text variant="bodySmallBold" color="infoContrast" withLineHeight>
+              <Text variant="bodySmallBold" color="infoContrast">
                 {`
 <Stack axis="x" spacing="xs">
-    <View style={styles.box} />
+    <Box />
     <Spacer size="large" />
-    <View style={styles.box} />
-    <View style={styles.box} />
+    <Box />
+    <Box />
 </Stack>`.trim()}
               </Text>
 
               <Stack axis="x" spacing="xs">
-                <View style={styles.box} />
+                <Box />
                 <Spacer size="large" />
-                <View style={styles.box} />
-                <View style={styles.box} />
+                <Box />
+                <Box />
               </Stack>
             </Stack>
           </View>
@@ -87,7 +87,7 @@ export default function Layout() {
         <Stack axis="y" spacing="regular">
           <Text variant="headingS">Grid</Text>
 
-          <Text variant="body" withLineHeight>
+          <Text variant="body">
             A Grid component can be used for grid-like layouts.
           </Text>
 
@@ -99,13 +99,13 @@ export default function Layout() {
 
               <Grid spacing="xs">
                 {Array.from({ length: 15 }).map((_, i) => (
-                  <View style={styles.box} key={i} />
+                  <Box key={i} />
                 ))}
               </Grid>
             </Stack>
           </View>
 
-          <Text variant="body" withLineHeight>
+          <Text variant="body">
             A number of columns can be provided to force the grid structure. By
             default the grid will just layout the children based on their
             instrictic size with the given spacing.
@@ -119,7 +119,7 @@ export default function Layout() {
 
               <Grid spacing="xs" columns={3}>
                 {Array.from({ length: 15 }).map((_, i) => (
-                  <View style={[styles.box, { width: '100%' }]} key={i} />
+                  <Box key={i} fullWidth />
                 ))}
               </Grid>
             </Stack>
@@ -129,6 +129,10 @@ export default function Layout() {
     </ScrollView>
   );
 }
+
+const Box = (props: ViewProps & { fullWidth?: boolean }) => (
+  <View style={[styles.box, props.fullWidth && { width: '100%' }]} {...props} />
+);
 
 const styles = StyleSheet.create((theme) => ({
   container: {

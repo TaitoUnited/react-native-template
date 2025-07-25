@@ -4,9 +4,9 @@ import {
   type BottomTabBarProps,
 } from '@react-navigation/bottom-tabs';
 import { Tabs } from 'expo-router';
-import { Pressable, StyleSheet } from 'react-native';
+import { Pressable } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useUnistyles } from 'react-native-unistyles';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
 import { BottomBar } from '~components/common/custom-bottom-bar/BottomBar';
 import StoreReview from '~components/store-review/StoreReview';

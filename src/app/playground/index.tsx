@@ -4,7 +4,6 @@ import { StyleSheet } from 'react-native-unistyles';
 
 import MenuList, { Item } from '~components/common/MenuList';
 import { IconButton, Stack, Text } from '~components/uikit';
-import { flexCenter } from '~styles/utils';
 
 export default function PlaygroundPage() {
   const items: Item[] = [
@@ -45,11 +44,7 @@ export default function PlaygroundPage() {
           label: item.label,
           target: item.target,
           leftSlot: (
-            <Stack
-              axis="x"
-              spacing="none"
-              style={[styles.menuListItemLeftSlot, flexCenter()]}
-            >
+            <Stack axis="x" spacing="none" style={styles.menuListItemLeftSlot}>
               <Text variant="bodyLargeBold" color="infoContrast">
                 {item.label.slice(0, 2)}
               </Text>
@@ -73,5 +68,6 @@ const styles = StyleSheet.create((theme) => ({
     height: 40,
     borderRadius: theme.radii.regular,
     backgroundColor: theme.colors.infoMuted,
+    ...theme.utils.flexCenter,
   },
 }));

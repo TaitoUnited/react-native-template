@@ -14,7 +14,6 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { StyleSheet } from 'react-native-unistyles';
 
-import { absoluteFill, flexCenter } from '~styles/utils';
 import { announceForAccessibility } from '~utils/a11y';
 
 import { Text } from './Text';
@@ -144,11 +143,7 @@ function PickerLayout({
     <View style={styles.wrapper}>
       <TouchableWithoutFeedback onPress={onClose} accessible={false}>
         <Animated.View
-          style={[
-            styles.backdrop,
-            { opacity: backdropAnimation.current },
-            absoluteFill(),
-          ]}
+          style={[styles.backdrop, { opacity: backdropAnimation.current }]}
         />
       </TouchableWithoutFeedback>
       <Animated.View
@@ -227,7 +222,7 @@ function SinglePicker({
       </ScrollView>
       <View style={styles.footer}>
         <TouchableOpacity
-          style={[styles.actionButton, flexCenter()]}
+          style={styles.actionButton}
           onPress={onClose}
           accessibilityRole="button"
         >
@@ -299,7 +294,7 @@ function MultiplePicker({
       </ScrollView>
       <View style={styles.footer}>
         <TouchableOpacity
-          style={[styles.actionButton, flexCenter()]}
+          style={styles.actionButton}
           onPress={onClose}
           accessibilityRole="button"
         >
@@ -308,7 +303,7 @@ function MultiplePicker({
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={[styles.actionButton, flexCenter()]}
+          style={styles.actionButton}
           onPress={handleDone}
           accessibilityRole="button"
         >
@@ -327,8 +322,9 @@ const styles = StyleSheet.create((theme) => ({
     justifyContent: 'flex-end',
   },
   backdrop: {
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
     zIndex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    ...theme.utils.absoluteFill,
   },
   content: {
     backgroundColor: theme.colors.surface,
@@ -345,5 +341,6 @@ const styles = StyleSheet.create((theme) => ({
     flex: 1,
     paddingTop: theme.space.regular,
     paddingBottom: theme.space.medium,
+    ...theme.utils.flexCenter,
   },
 }));

@@ -1,11 +1,12 @@
 import { Text as RNText } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
-import { type Color, type Typography } from '~styles/styled';
+import type * as typographyTokens from '~design-system/typography';
+import { type Color } from '~styles/styled';
 import { getTypography } from '~styles/utils';
 
 type TextProps = RNText['props'] & {
-  variant?: Typography;
+  variant?: keyof typeof typographyTokens;
   align?: 'left' | 'right' | 'center';
   uppercase?: boolean;
   color?: Color;

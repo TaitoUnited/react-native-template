@@ -3,7 +3,6 @@ import { Image, View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
 import config from '~constants/config';
-import { absoluteFill } from '~styles/utils';
 
 import Splash from '../../design-system/assets/splash.png';
 
@@ -18,7 +17,10 @@ export default function SplashScreen() {
     <View style={styles.wrapper} testID="splashScreen">
       <View
         pointerEvents="none"
-        style={[{ backgroundColor: config.backgroundColor }, absoluteFill()]}
+        style={[
+          styles.splashContent,
+          { backgroundColor: config.backgroundColor },
+        ]}
       >
         <Image
           style={styles.splashImage}
@@ -30,13 +32,16 @@ export default function SplashScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create((theme) => ({
   wrapper: {
     flex: 1,
+  },
+  splashContent: {
+    ...theme.utils.absoluteFill,
   },
   splashImage: {
     width: '100%',
     height: '100%',
     resizeMode: 'contain',
   },
-});
+}));

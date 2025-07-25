@@ -14,7 +14,6 @@ import Animated, {
 } from 'react-native-reanimated';
 import { StyleSheet } from 'react-native-unistyles';
 
-import { absoluteFill } from '~styles/utils';
 import { haptics } from '~utils/haptics';
 
 import { Text } from './Text';
@@ -69,11 +68,7 @@ function Segments<T>({
   return (
     <>
       <Animated.View
-        style={[
-          styles.segmentBackground,
-          segmentBackgroundStyle,
-          absoluteFill(),
-        ]}
+        style={[styles.segmentBackground, segmentBackgroundStyle]}
       />
 
       {segments.map((segment, index) => {
@@ -158,8 +153,9 @@ const styles = StyleSheet.create((theme) => ({
     borderRadius: 10,
   },
   segmentBackground: {
-    backgroundColor: 'rgba(150, 150, 150, 0.15)',
     borderRadius: 8,
+    backgroundColor: 'rgba(150, 150, 150, 0.15)',
+    ...theme.utils.absoluteFill,
   },
   segmentButton: {
     position: 'relative',

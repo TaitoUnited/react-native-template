@@ -19,7 +19,7 @@ export function Note({ children }: { children: ReactNode }) {
           </Text>
         </Stack>
 
-        <Text variant="bodySmall" color="warnContrast" withLineHeight>
+        <Text variant="bodySmall" color="warnContrast">
           {children}
         </Text>
       </Stack>

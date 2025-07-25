@@ -9,7 +9,7 @@ export default function Sandbox() {
       contentContainerStyle={styles.contentContainer}
     >
       <Stack axis="y" spacing="medium">
-        <Text variant="body" withLineHeight>
+        <Text variant="body">
           You can play around with various components here if you don&lsquo;t
           want to add a new screen for them in the playground.
         </Text>

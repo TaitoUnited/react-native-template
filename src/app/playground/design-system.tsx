@@ -8,7 +8,6 @@ import * as colors from '~design-system/colors';
 import * as radii from '~design-system/radii';
 import spacing from '~design-system/spacing.json';
 import * as typography from '~design-system/typography';
-import { flexCenter } from '~styles/utils';
 
 const typographyNames = Object.keys(typography).sort();
 const radiiEntries = Object.entries(radii).sort((a, b) => a[1] - b[1]);
@@ -105,13 +104,7 @@ export default function DesignSystem() {
                 accessible
                 accessibilityLabel={`Radii token: ${name}, radii value: ${value} pixels`}
               >
-                <View
-                  style={[
-                    styles.radiiBlock,
-                    { borderRadius: value },
-                    flexCenter(),
-                  ]}
-                >
+                <View style={[styles.radiiBlock, { borderRadius: value }]}>
                   <Text variant="body" color="textMuted">
                     {value}px
                   </Text>
@@ -189,6 +182,7 @@ const styles = StyleSheet.create((theme) => ({
     borderWidth: 1,
     borderColor: theme.colors.neutral3,
     backgroundColor: theme.colors.neutral5,
+    ...theme.utils.flexCenter,
   },
   spacingBlock: {
     height: 24,

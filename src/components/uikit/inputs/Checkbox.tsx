@@ -7,7 +7,6 @@ import Animated, {
 } from 'react-native-reanimated';
 import { StyleSheet } from 'react-native-unistyles';
 
-import { flexCenter } from '~styles/utils';
 import { haptics } from '~utils/haptics';
 
 import { Icon } from '../Icon';
@@ -57,7 +56,7 @@ export function Checkbox({ onChange, checked, value, label }: Props) {
           : t`Double tap to uncheck this option`
       }
     >
-      <View style={[styles.radioOuter, flexCenter()]}>
+      <View style={styles.radioOuter}>
         <Animated.View style={animatedStyles}>
           <Icon name="check" size={18} color="textOnContrastingBg" />
         </Animated.View>
@@ -82,6 +81,7 @@ const styles = StyleSheet.create((theme) => ({
     borderWidth: PixelRatio.roundToNearestPixel(1.5), // try to match
     marginRight: theme.space.small,
     borderColor: theme.colors.text,
+    ...theme.utils.flexCenter,
     variants: {
       checked: {
         true: {

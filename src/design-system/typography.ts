@@ -1,6 +1,4 @@
-import { TypographyDefinition } from './utils';
-
-export const body: TypographyDefinition = {
+export const body = {
   fontFamily: 'Inter',
   fontWeight: 400,
   fontSize: 16,
@@ -8,7 +6,7 @@ export const body: TypographyDefinition = {
   letterSpacing: 0,
   lineHeight: 1.5,
 };
-export const bodyBold: TypographyDefinition = {
+export const bodyBold = {
   fontFamily: 'Inter',
   fontWeight: 700,
   fontSize: 16,
@@ -16,7 +14,7 @@ export const bodyBold: TypographyDefinition = {
   letterSpacing: 0,
   lineHeight: 1.5,
 };
-export const bodyExtraSmall: TypographyDefinition = {
+export const bodyExtraSmall = {
   fontFamily: 'Inter',
   fontWeight: 400,
   fontSize: 12,
@@ -24,7 +22,7 @@ export const bodyExtraSmall: TypographyDefinition = {
   letterSpacing: 0,
   lineHeight: 1.5,
 };
-export const bodyExtraSmallBold: TypographyDefinition = {
+export const bodyExtraSmallBold = {
   fontFamily: 'Inter',
   fontWeight: 700,
   fontSize: 12,
@@ -32,7 +30,7 @@ export const bodyExtraSmallBold: TypographyDefinition = {
   letterSpacing: 0,
   lineHeight: 1.5,
 };
-export const bodyLarge: TypographyDefinition = {
+export const bodyLarge = {
   fontFamily: 'Inter',
   fontWeight: 400,
   fontSize: 18,
@@ -40,7 +38,7 @@ export const bodyLarge: TypographyDefinition = {
   letterSpacing: 0,
   lineHeight: 1.556,
 };
-export const bodyLargeBold: TypographyDefinition = {
+export const bodyLargeBold = {
   fontFamily: 'Inter',
   fontWeight: 700,
   fontSize: 18,
@@ -48,7 +46,7 @@ export const bodyLargeBold: TypographyDefinition = {
   letterSpacing: 0,
   lineHeight: 1.556,
 };
-export const bodySemiBold: TypographyDefinition = {
+export const bodySemiBold = {
   fontFamily: 'Inter',
   fontWeight: 600,
   fontSize: 16,
@@ -56,7 +54,7 @@ export const bodySemiBold: TypographyDefinition = {
   letterSpacing: 0,
   lineHeight: 1.5,
 };
-export const bodySmall: TypographyDefinition = {
+export const bodySmall = {
   fontFamily: 'Inter',
   fontWeight: 400,
   fontSize: 14,
@@ -64,7 +62,7 @@ export const bodySmall: TypographyDefinition = {
   letterSpacing: 0,
   lineHeight: 1.5,
 };
-export const bodySmallBold: TypographyDefinition = {
+export const bodySmallBold = {
   fontFamily: 'Inter',
   fontWeight: 700,
   fontSize: 14,
@@ -72,7 +70,7 @@ export const bodySmallBold: TypographyDefinition = {
   letterSpacing: 0,
   lineHeight: 1.5,
 };
-export const bodySmallSemiBold: TypographyDefinition = {
+export const bodySmallSemiBold = {
   fontFamily: 'Inter',
   fontWeight: 600,
   fontSize: 14,
@@ -80,7 +78,7 @@ export const bodySmallSemiBold: TypographyDefinition = {
   letterSpacing: 0,
   lineHeight: 1.5,
 };
-export const displayExtraSmall: TypographyDefinition = {
+export const displayExtraSmall = {
   fontFamily: 'Inter',
   fontWeight: 500,
   fontSize: 32,
@@ -88,7 +86,7 @@ export const displayExtraSmall: TypographyDefinition = {
   letterSpacing: 0,
   lineHeight: 1.5,
 };
-export const displayLarge: TypographyDefinition = {
+export const displayLarge = {
   fontFamily: 'Inter',
   fontWeight: 500,
   fontSize: 64,
@@ -96,7 +94,7 @@ export const displayLarge: TypographyDefinition = {
   letterSpacing: 0,
   lineHeight: 1.5,
 };
-export const displaySmall: TypographyDefinition = {
+export const displaySmall = {
   fontFamily: 'Inter',
   fontWeight: 500,
   fontSize: 48,
@@ -104,7 +102,7 @@ export const displaySmall: TypographyDefinition = {
   letterSpacing: 0,
   lineHeight: 1.5,
 };
-export const headingL: TypographyDefinition = {
+export const headingL = {
   fontFamily: 'Inter',
   fontWeight: 700,
   fontSize: 28,
@@ -112,7 +110,7 @@ export const headingL: TypographyDefinition = {
   letterSpacing: 0,
   lineHeight: 1.5,
 };
-export const headingM: TypographyDefinition = {
+export const headingM = {
   fontFamily: 'Inter',
   fontWeight: 600,
   fontSize: 22,
@@ -120,7 +118,7 @@ export const headingM: TypographyDefinition = {
   letterSpacing: 0,
   lineHeight: 1.5,
 };
-export const headingS: TypographyDefinition = {
+export const headingS = {
   fontFamily: 'Inter',
   fontWeight: 600,
   fontSize: 16,
@@ -128,7 +126,7 @@ export const headingS: TypographyDefinition = {
   letterSpacing: 0,
   lineHeight: 1.5,
 };
-export const headingXl: TypographyDefinition = {
+export const headingXl = {
   fontFamily: 'Inter',
   fontWeight: 700,
   fontSize: 42,
@@ -136,7 +134,7 @@ export const headingXl: TypographyDefinition = {
   letterSpacing: 0,
   lineHeight: 1.5,
 };
-export const headingXxl: TypographyDefinition = {
+export const headingXxl = {
   fontFamily: 'Inter',
   fontWeight: 700,
   fontSize: 72,
@@ -144,7 +142,7 @@ export const headingXxl: TypographyDefinition = {
   letterSpacing: 0,
   lineHeight: 1.5,
 };
-export const label: TypographyDefinition = {
+export const label = {
   fontFamily: 'Inter',
   fontWeight: 500,
   fontSize: 14,
@@ -152,7 +150,7 @@ export const label: TypographyDefinition = {
   letterSpacing: 0,
   lineHeight: 1.5,
 };
-export const lead: TypographyDefinition = {
+export const lead = {
   fontFamily: 'Inter',
   fontWeight: 400,
   fontSize: 28,
@@ -160,7 +158,7 @@ export const lead: TypographyDefinition = {
   letterSpacing: 0,
   lineHeight: 1.5,
 };
-export const leadBold: TypographyDefinition = {
+export const leadBold = {
   fontFamily: 'Inter',
   fontWeight: 700,
   fontSize: 28,
@@ -168,7 +166,7 @@ export const leadBold: TypographyDefinition = {
   letterSpacing: 0,
   lineHeight: 1.5,
 };
-export const linkText: TypographyDefinition = {
+export const linkText = {
   fontFamily: 'Inter',
   fontWeight: 600,
   fontSize: 16,
@@ -176,7 +174,7 @@ export const linkText: TypographyDefinition = {
   letterSpacing: 0,
   lineHeight: 1.5,
 };
-export const linkTextHover: TypographyDefinition = {
+export const linkTextHover = {
   fontFamily: 'Inter',
   fontWeight: 600,
   fontSize: 16,
@@ -184,7 +182,7 @@ export const linkTextHover: TypographyDefinition = {
   letterSpacing: 0,
   lineHeight: 1.5,
 };
-export const overlineRegular: TypographyDefinition = {
+export const overlineRegular = {
   fontFamily: 'Inter',
   fontWeight: 700,
   fontSize: 14,
@@ -192,7 +190,7 @@ export const overlineRegular: TypographyDefinition = {
   letterSpacing: 0,
   lineHeight: 1.5,
 };
-export const overlineSmall: TypographyDefinition = {
+export const overlineSmall = {
   fontFamily: 'Inter',
   fontWeight: 700,
   fontSize: 12,

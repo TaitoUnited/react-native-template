@@ -26,7 +26,6 @@ export default function ImprovementForm({
   });
   const [isFocused, setFocused] = useState(false);
 
-  // Controls the visual styles based on the input state
   styles.useVariants({
     focused: isFocused,
   });

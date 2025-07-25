@@ -13,9 +13,7 @@ const WEIGHT_TO_FONT = {
   900: 'Black',
 } as const;
 
-export function getFontFromWeight(
-  weight: TextStyle['fontWeight']
-): FontWeightVar {
+export function getFontFromWeight(weight: number): FontWeightVar {
   return WEIGHT_TO_FONT[weight as FontWeightNum].toLowerCase() as FontWeightVar;
 }
 

@@ -22,7 +22,6 @@ export function Radio({ onChange, checked, value, label }: Props) {
     onChange(value);
   }
 
-  // Controls the visual styles based on the checked state
   styles.useVariants({ checked });
 
   return (

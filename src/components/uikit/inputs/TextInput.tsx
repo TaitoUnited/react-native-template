@@ -70,7 +70,6 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
     const inputRef = useRef<RNTextInput>(null);
     useImperativeHandle(ref, () => inputRef.current as RNTextInput);
 
-    // Controls the visual styles based on the input state
     styles.useVariants({
       valid: isValid,
       disabled: isDisabled,
@@ -128,15 +127,16 @@ export const TextInput = forwardRef<RNTextInput, TextInputProps>(
         )}
 
         {showCharacterLimit && isFocused && (
-          <Text
+          <Stack
+            axis="x"
+            spacing="none"
             style={styles.characterCount}
-            variant="bodyExtraSmall"
             accessibilityLabel={t`Character count`}
             accessibilityHint={t`Number of characters entered in the input field: currently ${characterCount} out of ${maxLength}`}
           >
             <Text variant="bodyExtraSmallBold">{characterCount}</Text>
-            {` / ${maxLength}`}
-          </Text>
+            <Text variant="bodyExtraSmall"> / {maxLength}</Text>
+          </Stack>
         )}
 
         <Stack style={styles.inputWrapper} axis="x" spacing="xs" align="center">

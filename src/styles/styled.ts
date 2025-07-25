@@ -7,18 +7,26 @@ import space from '~design-system/spacing.json';
 import * as typography from '~design-system/typography';
 import * as designSystemUtils from '~design-system/utils';
 
+import { absoluteFill, flexCenter } from './utils';
+
+const typographyTokens = typography as Typography<keyof typeof typography>;
+
 const lightTheme = {
-  typography,
+  typography: typographyTokens,
   colors: designSystemUtils.transformColors(colors),
   radii: { ...radii, none: 0 },
   space: { ...space, none: 0 },
   sizes: { hairlineWidth: StyleSheet.hairlineWidth },
-  fonts: designSystemUtils.getFonts(typography),
-  fontSizes: designSystemUtils.getFontSizes(typography),
-  fontWeights: designSystemUtils.getFontWeights(typography),
-  letterSpacings: designSystemUtils.getLetterSpacings(typography), // prettier-ignore
-  lineHeights: designSystemUtils.getLineHeights(typography),
+  fonts: designSystemUtils.getFonts(typographyTokens),
+  fontSizes: designSystemUtils.getFontSizes(typographyTokens),
+  fontWeights: designSystemUtils.getFontWeights(typographyTokens),
+  letterSpacings: designSystemUtils.getLetterSpacings(typographyTokens), // prettier-ignore
+  lineHeights: designSystemUtils.getLineHeights(typographyTokens),
   shadows: designSystemUtils.getShadows(shadows),
+  utils: {
+    absoluteFill,
+    flexCenter,
+  },
 };
 
 const appThemes = {
@@ -37,7 +45,10 @@ const breakpoints = {
 type AppBreakpoints = typeof breakpoints;
 export type AppThemes = typeof appThemes;
 
-export type Typography = keyof typeof typography;
+export type Typography<T extends string> = Record<
+  T,
+  designSystemUtils.TypographyDefinition
+>;
 export type Color = keyof AppThemes['light']['colors'];
 export type Space = keyof AppThemes['light']['space'];
 export type Radii = keyof AppThemes['light']['radii'];

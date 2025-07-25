@@ -55,7 +55,7 @@ export default function Landing() {
 
         <View style={styles.bottomSection(height)}>
           <Stack axis="y" spacing="regular" align="center">
-            <Text color="surface" variant="body" align="center" withLineHeight>
+            <Text color="surface" variant="body" align="center">
               ✨ <Trans>Start your journey</Trans> ✨
             </Text>
             <Link href="/(auth)/login" asChild>

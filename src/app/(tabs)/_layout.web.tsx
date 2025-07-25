@@ -1,7 +1,6 @@
 import { useLingui } from '@lingui/react/macro';
 import { Drawer } from 'expo-router/drawer';
-import { StyleSheet } from 'react-native';
-import { useUnistyles } from 'react-native-unistyles';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
 import { Icon, type IconName } from '~components/uikit/Icon';
 

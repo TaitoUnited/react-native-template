@@ -81,7 +81,7 @@ export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(
                 accessibilityLabel={option}
                 accessibilityHint={t`Double tap to select this suggestion`}
               >
-                <Stack axis="x" spacing="xs" align="end">
+                <Stack axis="x" spacing="xs" align="center">
                   <Icon name="clock" size={16} color="textMuted" />
                   <Text variant="bodySmall" color="textMuted">
                     {option}
@@ -103,7 +103,7 @@ const styles = StyleSheet.create((theme) => ({
     padding: theme.space.small,
     borderRadius: theme.radii.regular,
     backgroundColor: theme.colors.surface,
-    borderWidth: 0.5,
+    borderWidth: StyleSheet.hairlineWidth,
     borderColor: theme.colors.line3,
     ...theme.shadows.medium,
   },

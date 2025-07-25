@@ -44,7 +44,6 @@ export function InputButton({
 }: Props) {
   const { t } = useLingui();
 
-  // Controls the visual styles based on the input state
   styles.useVariants({
     focused: isFocused,
     valid: isValid,
@@ -80,7 +79,6 @@ export function InputButton({
           >
             <Text
               variant="body"
-              withLineHeight
               numberOfLines={1}
               style={{ flex: 1 }}
               accessibilityLabel={accessibilityLabel ?? value}

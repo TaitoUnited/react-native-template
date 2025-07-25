@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
-import { type Typography } from '~styles/styled';
+import { type TypographyToken } from '~design-system/typography';
 import { haptics } from '~utils/haptics';
 
 import { Icon } from '../Icon';
@@ -97,7 +97,7 @@ export function Button({
   );
 }
 
-const sizeToTextVariant: Record<ButtonSize, Typography> = {
+const sizeToTextVariant: Record<ButtonSize, TypographyToken> = {
   small: 'bodyExtraSmallBold',
   normal: 'bodySmallBold',
   large: 'bodySemiBold',

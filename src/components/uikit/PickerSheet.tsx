@@ -11,7 +11,6 @@ import {
 import { StyleSheet } from 'react-native-unistyles';
 
 import StatusBar from '~components/common/StatusBar';
-import { flexCenter } from '~styles/utils';
 import { useEffectEvent } from '~utils/common';
 
 import { Text } from './Text';
@@ -164,7 +163,7 @@ function ModalContent({
 
       <View style={styles.footer}>
         <TouchableOpacity
-          style={[styles.actionButton, flexCenter()]}
+          style={styles.actionButton}
           onPress={onClose}
           accessibilityLabel={t`Close the picker`}
           accessibilityHint={t`Close the picker without selecting any option`}
@@ -176,7 +175,7 @@ function ModalContent({
 
         {multiple && (
           <TouchableOpacity
-            style={[styles.actionButton, flexCenter()]}
+            style={styles.actionButton}
             onPress={handleDone}
             accessibilityLabel={t`Confirm selected options and close the picker`}
             accessibilityHint={t`Confirming selected options will close the picker`}
@@ -282,7 +281,7 @@ function ListHeader({
 
 function ListEmpty({ children }: { children?: ReactNode }) {
   return (
-    <View style={[styles.listEmptyWrapper, flexCenter()]}>
+    <View style={styles.listEmptyWrapper}>
       {children || (
         <Stack axis="y" spacing="regular">
           <Text align="center">
@@ -315,6 +314,7 @@ const styles = StyleSheet.create((theme) => ({
     backgroundColor: theme.colors.surface,
     borderBottomWidth: 1,
     borderColor: theme.colors.line3,
+    ...theme.utils.flexCenter,
   },
   clearButton: {
     alignSelf: 'flex-end',
@@ -332,5 +332,6 @@ const styles = StyleSheet.create((theme) => ({
   },
   actionButton: {
     padding: theme.space.regular,
+    ...theme.utils.flexCenter,
   },
 }));

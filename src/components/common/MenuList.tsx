@@ -5,7 +5,6 @@ import { Platform, TouchableHighlight, View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
 import { Icon, Stack, Text } from '~components/uikit';
-import { flexCenter } from '~styles/utils';
 import { haptics } from '~utils/haptics';
 
 export type Item = {
@@ -70,9 +69,7 @@ export default function MenuList({ items, title }: Props) {
             >
               <Stack style={styles.contentWrapper} axis="x" spacing="small">
                 {item.leftSlot ? (
-                  <View style={[styles.leftSlot, flexCenter()]}>
-                    {item.leftSlot}
-                  </View>
+                  <View style={styles.leftSlot}>{item.leftSlot}</View>
                 ) : null}
 
                 <Stack
@@ -86,9 +83,7 @@ export default function MenuList({ items, title }: Props) {
                   </Text>
 
                   {item.rightSlot ? (
-                    <View style={[styles.rightSlot, flexCenter()]}>
-                      {item.rightSlot}
-                    </View>
+                    <View style={styles.rightSlot}>{item.rightSlot}</View>
                   ) : (
                     <>
                       {item.currentValue !== undefined &&
@@ -108,7 +103,7 @@ export default function MenuList({ items, title }: Props) {
                       {item.checked !== undefined && (
                         <>
                           {item.checked ? (
-                            <View style={[styles.checkCircle, flexCenter()]}>
+                            <View style={styles.checkCircle}>
                               <Icon name="check" color="infoMuted" size={14} />
                             </View>
                           ) : (
@@ -166,15 +161,18 @@ const styles = StyleSheet.create((theme) => ({
   },
   leftSlot: {
     paddingVertical: theme.space.small,
+    ...theme.utils.flexCenter,
   },
   rightSlot: {
     minHeight: 24,
+    ...theme.utils.flexCenter,
   },
   checkCircle: {
     width: 24,
     height: 24,
     borderRadius: theme.radii.full,
     backgroundColor: theme.colors.info,
+    ...theme.utils.flexCenter,
   },
   checkOutline: {
     width: 24,
