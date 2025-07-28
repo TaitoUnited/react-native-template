@@ -99,6 +99,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
         },
       ],
       ['./plugins/with-ios-settings', { teamId: 'EPATC4S9N2' }],
+      'react-native-edge-to-edge',
       [
         'expo-build-properties',
         { android: { extraProguardRules: getExtraProguardRules() } },
