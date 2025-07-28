@@ -38,7 +38,7 @@ export function ProgressBar({
     progressAnim.value = withTiming(progress, {
       duration: animated ? 200 : 0,
     });
-  }, [animated, progress, progressAnim, step]);
+  }, [step]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const animatedStyle = useAnimatedStyle(() => {
     return {

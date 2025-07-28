@@ -44,6 +44,7 @@ const breakpoints = {
 
 type AppBreakpoints = typeof breakpoints;
 export type AppThemes = typeof appThemes;
+export type Theme = AppThemes[keyof AppThemes];
 
 export type Typography<T extends string> = Record<
   T,

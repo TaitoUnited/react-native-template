@@ -49,11 +49,15 @@ export default function Signup() {
   }
 
   return (
-    <KeyboardAwareScrollView style={styles.container}>
+    <KeyboardAwareScrollView
+      style={styles.container}
+      contentContainerStyle={styles.contentStyle}
+      keyboardShouldPersistTaps="handled"
+    >
       <Stack
         style={styles.innerStack}
         axis="y"
-        spacing="medium"
+        spacing="small"
         justify="between"
       >
         <Stack axis="y" spacing="small">
@@ -251,6 +255,9 @@ export default function Signup() {
 const styles = StyleSheet.create((theme) => ({
   container: {
     flex: 1,
+  },
+  contentStyle: {
+    flexGrow: 1,
   },
   innerStack: {
     padding: theme.space.medium,

@@ -1,10 +1,10 @@
 import { type ComponentType, createElement, forwardRef } from 'react';
 import type { TextProps as RNTextProps } from 'react-native';
-import { StyleSheet, useUnistyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 
 import type * as typographyTokens from '~design-system/typography';
 import { type Color } from '~styles/styled';
-import { getTypography } from '~styles/utils';
+import { typography } from '~styles/utils';
 
 type TextProps = RNTextProps & {
   variant?: keyof typeof typographyTokens;
@@ -29,16 +29,15 @@ export function Text({
   style,
   ...props
 }: TextProps) {
-  const { theme } = useUnistyles();
-  const typographyStyle = getTypography(theme, variant);
-
   styles.useVariants({
     align,
     uppercase,
     color,
+    variant,
   });
+
   return (
-    <LeanText style={[typographyStyle, styles.text, style]} {...props}>
+    <LeanText style={[styles.text, style]} {...props}>
       {children}
     </LeanText>
   );
@@ -46,8 +45,13 @@ export function Text({
 
 const styles = StyleSheet.create((theme) => ({
   text: {
-    color: theme.colors.text,
     variants: {
+      variant: Object.fromEntries(
+        Object.keys(theme.typography).map((key) => [
+          key,
+          typography(theme, key as typographyTokens.TypographyToken),
+        ])
+      ),
       color: Object.fromEntries(
         Object.entries(theme.colors).map(([key, value]) => [
           key,

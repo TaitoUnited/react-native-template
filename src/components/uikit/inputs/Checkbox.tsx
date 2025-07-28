@@ -78,7 +78,7 @@ const styles = StyleSheet.create((theme) => ({
     height: 24,
     backgroundColor: 'transparent',
     borderRadius: theme.radii.regular,
-    borderWidth: PixelRatio.roundToNearestPixel(1.5), // try to match
+    borderWidth: PixelRatio.roundToNearestPixel(1.5), // try to match with icon width
     marginRight: theme.space.small,
     borderColor: theme.colors.text,
     ...theme.utils.flexCenter,
