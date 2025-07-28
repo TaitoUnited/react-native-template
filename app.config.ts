@@ -17,7 +17,6 @@ const SCHEME = 'taito-template';
 const ICON = './src/design-system/assets/icon.png';
 const ADAPTIVE_ICON = './src/design-system/assets/adaptive-icon.png';
 const SPLASHSCREEN = './src/design-system/assets/splash.png';
-const FAVICON = ICON; // TODO: Add proper favicon
 const BACKGROUND_COLOR = '#009a48'; // Corresponds to `colors.brand.brand`
 
 // Store links for app store review prompts (recommended for user-facing apps to help users leave reviews and avoid negative feedback in the stores)
@@ -67,11 +66,6 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     extra: {
       ...customConfig,
       eas: { projectId: EAS_PROJECT_ID },
-    },
-    web: {
-      bundler: 'metro',
-      output: 'static',
-      favicon: FAVICON,
     },
     plugins: [
       'expo-router',

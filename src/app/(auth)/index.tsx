@@ -3,7 +3,6 @@ import { Link } from 'expo-router';
 import {
   AccessibilityInfo,
   ImageBackground,
-  Platform,
   TouchableHighlight,
   useWindowDimensions,
   View,
@@ -13,7 +12,6 @@ import { StyleSheet } from 'react-native-unistyles';
 import * as DropdownMenu from 'zeego/dropdown-menu';
 
 import LandingImage from '~assets/landing_background.jpg';
-import WebLandingImage from '~assets/web_landing_background.jpg';
 import StatusBar from '~components/common/StatusBar';
 import { IconButton, Stack, Text } from '~components/uikit';
 import { useI18n } from '~services/i18n';
@@ -25,11 +23,7 @@ export default function Landing() {
 
   return (
     <View style={styles.wrapper}>
-      <ImageBackground
-        style={styles.imageBackground}
-        imageStyle={Platform.OS === 'web' && styles.imageStyle}
-        source={Platform.OS === 'web' ? WebLandingImage : LandingImage}
-      >
+      <ImageBackground style={styles.imageBackground} source={LandingImage}>
         <View style={styles.topSection(insets.top)}>
           <View style={styles.topSectionHeader}>
             <LanguageSelector />

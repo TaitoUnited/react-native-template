@@ -8,7 +8,6 @@ import { DevSettings, Platform } from 'react-native';
 
 import Providers from '~Providers';
 import StatusBar from '~components/common/StatusBar';
-import Meta from '~components/web/Meta';
 import { useAuthStore } from '~services/auth';
 import { useAppReady } from '~utils/init';
 import { useDefaultStackScreenOptions } from '~utils/navigation';
@@ -59,7 +58,6 @@ const RootLayout = () => {
 
   return (
     <Providers>
-      <Meta />
       <RootLayoutNavigator />
       <StatusBar transparent />
     </Providers>
