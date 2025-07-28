@@ -1,36 +1,36 @@
 import type { ReactNode } from 'react';
+import { View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
+import { StyleSheet } from 'react-native-unistyles';
 
 import ErrorBoundary from '~components/common/ErrorBoundary';
 import NavigationThemeProvider from '~components/common/NavigationThemeProvider';
 import Toaster from '~components/common/Toaster';
-import { ColorModeProvider } from '~services/color-mode';
 import { I18nProvider } from '~services/i18n';
-import { styled } from '~styles';
 
 export default function Providers({ children }: { children: ReactNode }) {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <I18nProvider>
-        <ColorModeProvider>
-          <ErrorBoundary>
-            <NavigationThemeProvider>
-              <KeyboardProvider>
-                <AppWrapper>
-                  {children}
-                  <Toaster />
-                </AppWrapper>
-              </KeyboardProvider>
-            </NavigationThemeProvider>
-          </ErrorBoundary>
-        </ColorModeProvider>
+        <ErrorBoundary>
+          <NavigationThemeProvider>
+            <KeyboardProvider>
+              <View style={styles.appWrapper}>
+                {children}
+                <Toaster />
+              </View>
+            </KeyboardProvider>
+          </NavigationThemeProvider>
+        </ErrorBoundary>
       </I18nProvider>
     </GestureHandlerRootView>
   );
 }
 
-const AppWrapper = styled('View', {
-  flex: 1,
-  backgroundColor: '$background',
-});
+const styles = StyleSheet.create((theme) => ({
+  appWrapper: {
+    flex: 1,
+    backgroundColor: theme.colors.surface,
+  },
+}));

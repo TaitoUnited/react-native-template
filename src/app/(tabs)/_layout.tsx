@@ -4,14 +4,14 @@ import {
   type BottomTabBarProps,
 } from '@react-navigation/bottom-tabs';
 import { Tabs } from 'expo-router';
-import { Pressable, StyleSheet } from 'react-native';
+import { Pressable } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
 import { BottomBar } from '~components/common/custom-bottom-bar/BottomBar';
 import StoreReview from '~components/store-review/StoreReview';
 import { Icon, Stack, Text } from '~components/uikit';
 import type { IconName } from '~components/uikit/Icon';
-import { useTheme } from '~styles';
 
 export type TabList = {
   id: string;
@@ -47,7 +47,6 @@ const USE_STORE_REVIEW = true;
 export default function TabsLayout() {
   const { t } = useLingui();
 
-  const theme = useTheme();
   const tabs: TabList = [
     {
       id: 'home',
@@ -80,9 +79,9 @@ export default function TabsLayout() {
   return (
     <>
       {USE_CUSTOM_TABS ? (
-        <CustomBottomBar tabs={tabs} theme={theme} />
+        <CustomBottomBar tabs={tabs} />
       ) : (
-        <DefaultBottomBar tabs={tabs} theme={theme} />
+        <DefaultBottomBar tabs={tabs} />
       )}
       {USE_STORE_REVIEW && <StoreReview />}
     </>
@@ -91,12 +90,12 @@ export default function TabsLayout() {
 
 type BottomBarProps = {
   tabs: TabList;
-  theme: ReturnType<typeof useTheme>;
 };
 
-function DefaultBottomBar({ tabs, theme }: BottomBarProps) {
+function DefaultBottomBar({ tabs }: BottomBarProps) {
   const { t } = useLingui();
   const insets = useSafeAreaInsets();
+  const { theme } = useUnistyles();
 
   function renderTabIcon({
     focused,
@@ -192,7 +191,9 @@ function renderBottomBar(props: BottomTabBarProps & { tabs: TabList }) {
   return <BottomBar {...props} />;
 }
 
-function CustomBottomBar({ tabs, theme }: BottomBarProps) {
+function CustomBottomBar({ tabs }: BottomBarProps) {
+  const { theme } = useUnistyles();
+
   return (
     <Tabs
       tabBar={(props) => renderBottomBar({ ...props, tabs })}

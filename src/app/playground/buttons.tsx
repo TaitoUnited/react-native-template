@@ -1,3 +1,5 @@
+import { ScrollView } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 import { Button, Card, IconButton, Stack, Text } from '~components/uikit';
 import type {
   ButtonColor,
@@ -5,18 +7,20 @@ import type {
   ButtonVariant,
   IconButtonProps,
 } from '~components/uikit/buttons/types';
-import { styled } from '~styles';
 
 export default function Buttons() {
   return (
-    <Wrapper>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.contentContainer}
+    >
       <Stack axis="y" spacing="large">
         <ButtonExamples />
         <IconButtonExamples title="Icon buttons" />
         <IconButtonExamples title="Loading Icon buttons" loading />
         <IconButtonExamples title="Disabled Icon buttons" disabled />
       </Stack>
-    </Wrapper>
+    </ScrollView>
   );
 }
 
@@ -159,10 +163,11 @@ function IconButtonExamples({
   );
 }
 
-const Wrapper = styled('ScrollView', {
-  flex: 1,
-}).attrs((p) => ({
-  contentContainerStyle: {
-    padding: p.theme.space.regular,
+const styles = StyleSheet.create((theme) => ({
+  container: {
+    flex: 1,
+  },
+  contentContainer: {
+    padding: theme.space.regular,
   },
 }));

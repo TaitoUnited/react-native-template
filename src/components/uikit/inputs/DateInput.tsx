@@ -3,15 +3,13 @@ import { DateTime } from 'luxon';
 import { forwardRef, useImperativeHandle, useState } from 'react';
 import {
   Keyboard,
-  Platform,
   type AccessibilityProps,
   type ViewStyle,
 } from 'react-native';
 import DatePicker from 'react-native-date-picker';
+import { StyleSheet } from 'react-native-unistyles';
 
-import { useColorMode } from '~services/color-mode';
 import { useI18n } from '~services/i18n';
-import { styled } from '~styles';
 import { haptics } from '~utils/haptics';
 
 import { type IconName } from '../Icon';
@@ -49,7 +47,6 @@ export const DateInput = forwardRef(
     const { t } = useLingui();
     const [isPickerOpen, setPickerOpen] = useState(false);
     const { locale } = useI18n();
-    const { colorScheme } = useColorMode();
 
     useImperativeHandle(ref, () => ({
       focus: () => {
@@ -66,9 +63,6 @@ export const DateInput = forwardRef(
         : mode === 'datetime'
           ? DateTime.DATETIME_SHORT
           : DateTime.TIME_SIMPLE;
-
-    // TODO: fix Android dark mode support
-    const pickerTheme = Platform.OS === 'ios' ? colorScheme : 'light';
 
     return (
       <>
@@ -88,14 +82,14 @@ export const DateInput = forwardRef(
           accessibilityHint={accessibilityHint ?? t`Double tap to open date picker`} // prettier-ignore
         />
         {!!message && (
-          <Message variant="bodySmall" color="textMuted">
+          <Text style={styles.message} variant="bodySmall" color="textMuted">
             {message}
-          </Message>
+          </Text>
         )}
 
         <DatePicker
           modal
-          theme={pickerTheme}
+          theme="light"
           title={label}
           confirmText={t`Confirm`}
           cancelText={t`Cancel`}
@@ -116,7 +110,9 @@ export const DateInput = forwardRef(
 
 DateInput.displayName = 'DateInput';
 
-const Message = styled(Text, {
-  marginTop: '$xs',
-  marginLeft: '$small',
-});
+const styles = StyleSheet.create((theme) => ({
+  message: {
+    marginTop: theme.space.xs,
+    marginLeft: theme.space.small,
+  },
+}));

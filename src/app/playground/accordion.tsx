@@ -1,9 +1,13 @@
+import { ScrollView } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 import { Accordion, Stack, Text } from '~components/uikit';
-import { styled } from '~styles';
 
 export default function Accordions() {
   return (
-    <Wrapper>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.contentContainer}
+    >
       <Stack axis="y" spacing="2xl">
         <Stack axis="y" spacing="small">
           <Text variant="headingS">Accordion</Text>
@@ -24,7 +28,7 @@ export default function Accordions() {
           </Accordion>
         </Stack>
       </Stack>
-    </Wrapper>
+    </ScrollView>
   );
 }
 
@@ -36,10 +40,11 @@ function AccordionContent() {
   );
 }
 
-const Wrapper = styled('ScrollView', {
-  flex: 1,
-}).attrs((p) => ({
-  contentContainerStyle: {
-    padding: p.theme.space.regular,
+const styles = StyleSheet.create((theme) => ({
+  container: {
+    flex: 1,
+  },
+  contentContainer: {
+    padding: theme.space.regular,
   },
 }));

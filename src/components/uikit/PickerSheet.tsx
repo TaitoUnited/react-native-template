@@ -1,10 +1,16 @@
 import { Trans, useLingui } from '@lingui/react/macro';
 import { FlashList } from '@shopify/flash-list';
 import { memo, useState, type ReactNode } from 'react';
-import { Modal, Platform } from 'react-native';
+import {
+  Modal,
+  Platform,
+  SafeAreaView,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
 import StatusBar from '~components/common/StatusBar';
-import { styled } from '~styles';
 import { useEffectEvent } from '~utils/common';
 
 import { Text } from './Text';
@@ -122,7 +128,7 @@ function ModalContent({
   }
 
   return (
-    <SafeArea>
+    <SafeAreaView style={styles.safeArea}>
       <ListHeader
         label={label}
         searchTerm={searchTerm}
@@ -155,8 +161,9 @@ function ModalContent({
         }}
       />
 
-      <Footer>
-        <ActionButton
+      <View style={styles.footer}>
+        <TouchableOpacity
+          style={styles.actionButton}
           onPress={onClose}
           accessibilityLabel={t`Close the picker`}
           accessibilityHint={t`Close the picker without selecting any option`}
@@ -164,10 +171,11 @@ function ModalContent({
           <Text variant={multiple ? 'body' : 'bodyBold'}>
             {multiple ? <Trans>Cancel</Trans> : <Trans>Close</Trans>}
           </Text>
-        </ActionButton>
+        </TouchableOpacity>
 
         {multiple && (
-          <ActionButton
+          <TouchableOpacity
+            style={styles.actionButton}
             onPress={handleDone}
             accessibilityLabel={t`Confirm selected options and close the picker`}
             accessibilityHint={t`Confirming selected options will close the picker`}
@@ -175,13 +183,13 @@ function ModalContent({
             <Text variant="bodyBold">
               <Trans>Done</Trans>
             </Text>
-          </ActionButton>
+          </TouchableOpacity>
         )}
-      </Footer>
+      </View>
 
       {/* On iOS the modal effect will reveal the black root background */}
       {Platform.OS === 'ios' && <StatusBar />}
-    </SafeArea>
+    </SafeAreaView>
   );
 }
 
@@ -196,7 +204,7 @@ type ListItemProps = {
 const ListItem = memo(
   ({ multiple, label, value, checked, onOptionSelect }: ListItemProps) => {
     return (
-      <ListItemWrapper>
+      <View style={styles.listItemWrapper}>
         {multiple ? (
           <Checkbox
             label={label}
@@ -212,7 +220,7 @@ const ListItem = memo(
             onChange={() => onOptionSelect(value)}
           />
         )}
-      </ListItemWrapper>
+      </View>
     );
   }
 );
@@ -234,7 +242,7 @@ function ListHeader({
 }) {
   const { t } = useLingui();
   return (
-    <ListHeaderWrapper>
+    <View style={styles.listHeaderWrapper}>
       <Stack axis="y" spacing="regular">
         <SearchInput
           value={searchTerm}
@@ -254,7 +262,8 @@ function ListHeader({
           </Text>
 
           {numSelected > 1 && (
-            <ClearButton
+            <TouchableOpacity
+              style={styles.clearButton}
               onPress={onClearOption}
               accessibilityLabel={t`Clear selected options`}
               accessibilityHint={t`Double tap to clear selected options`}
@@ -262,17 +271,17 @@ function ListHeader({
               <Text variant="bodyExtraSmall" color="textMuted">
                 <Trans>Clear selected ({numSelected})</Trans>
               </Text>
-            </ClearButton>
+            </TouchableOpacity>
           )}
         </Stack>
       </Stack>
-    </ListHeaderWrapper>
+    </View>
   );
 }
 
 function ListEmpty({ children }: { children?: ReactNode }) {
   return (
-    <ListEmptyWrapper>
+    <View style={styles.listEmptyWrapper}>
       {children || (
         <Stack axis="y" spacing="regular">
           <Text align="center">
@@ -283,7 +292,7 @@ function ListEmpty({ children }: { children?: ReactNode }) {
           </Text>
         </Stack>
       )}
-    </ListEmptyWrapper>
+    </View>
   );
 }
 
@@ -291,42 +300,38 @@ function ListSeparator() {
   return <Spacer axis="y" size="regular" />;
 }
 
-const SafeArea = styled('SafeAreaView', {
-  flex: 1,
-  backgroundColor: '$surface',
-});
-
-const ListEmptyWrapper = styled('View', {
-  padding: '$large',
-  flexCenter: 'row',
-});
-
-const ListHeaderWrapper = styled('View', {
-  marginBottom: '$small',
-  padding: '$regular',
-  backgroundColor: '$surface',
-  borderBottomWidth: 1,
-  borderColor: '$line3',
-});
-
-const ClearButton = styled('TouchableOpacity', {
-  alignSelf: 'flex-end',
-});
-
-const ListItemWrapper = styled('View', {
-  paddingHorizontal: '$small',
-});
-
-const Footer = styled('View', {
-  width: '100%',
-  borderTopWidth: 1,
-  borderColor: '$line3',
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'space-around',
-});
-
-const ActionButton = styled('TouchableOpacity', {
-  padding: '$regular',
-  flexCenter: 'row',
-});
+const styles = StyleSheet.create((theme) => ({
+  safeArea: {
+    flex: 1,
+    backgroundColor: theme.colors.surface,
+  },
+  listEmptyWrapper: {
+    padding: theme.space.large,
+  },
+  listHeaderWrapper: {
+    marginBottom: theme.space.small,
+    padding: theme.space.regular,
+    backgroundColor: theme.colors.surface,
+    borderBottomWidth: 1,
+    borderColor: theme.colors.line3,
+    ...theme.utils.flexCenter,
+  },
+  clearButton: {
+    alignSelf: 'flex-end',
+  },
+  listItemWrapper: {
+    paddingHorizontal: theme.space.small,
+  },
+  footer: {
+    width: '100%',
+    borderTopWidth: 1,
+    borderColor: theme.colors.line3,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  actionButton: {
+    padding: theme.space.regular,
+    ...theme.utils.flexCenter,
+  },
+}));

@@ -8,10 +8,10 @@ import Animated, {
   withSpring,
   withTiming,
 } from 'react-native-reanimated';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { type TabList } from '~app/(tabs)/_layout';
 import { Icon, Stack, Text } from '~components/uikit';
-import { styled } from '~styles';
 
 const ANIMATION_DURATION = 350;
 
@@ -54,9 +54,10 @@ export function TabBarButton({
   }));
 
   return (
-    <Wrapper
+    <Pressable
       {...pressableProps}
       testID={label}
+      style={styles.pressable}
       onPressIn={() => (iconScale.value = withTiming(0.8, { duration: 150 }))}
       onPressOut={() => (iconScale.value = withTiming(1, { duration: 150 }))}
       accessibilityRole="button"
@@ -79,10 +80,12 @@ export function TabBarButton({
           </Text>
         </Animated.View>
       </Stack>
-    </Wrapper>
+    </Pressable>
   );
 }
 
-const Wrapper = styled(Pressable, {
-  flex: 1,
+const styles = StyleSheet.create({
+  pressable: {
+    flex: 1,
+  },
 });

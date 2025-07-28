@@ -11,8 +11,8 @@ import {
   useRef,
   type ReactNode,
 } from 'react';
-
-import { styled, useTheme } from '~styles';
+import { View } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
 type BottomSheetProps = RNBottomSheetProps & {
   initialIndex?: number;
@@ -35,8 +35,6 @@ export const BottomSheet = forwardRef<RNBottomSheet, BottomSheetProps>(
     }: BottomSheetProps,
     ref
   ) => {
-    const theme = useTheme();
-
     const bottomSheetRef = useRef<RNBottomSheet>(null);
     useImperativeHandle(ref, () => ({
       close: () => bottomSheetRef.current?.close(),
@@ -91,7 +89,7 @@ export const BottomSheet = forwardRef<RNBottomSheet, BottomSheetProps>(
       <RNBottomSheet
         {...rest}
         ref={bottomSheetRef}
-        backgroundStyle={{ backgroundColor: theme.colors.surface }}
+        backgroundStyle={styles.background}
         index={initialIndex}
         snapPoints={snapPoints}
         animationConfigs={animationConfigs}
@@ -103,7 +101,7 @@ export const BottomSheet = forwardRef<RNBottomSheet, BottomSheetProps>(
         backdropComponent={renderBackdropComponent}
         accessible={false} // Important if you want to access the bottom sheet content
       >
-        <ContentWrapper>{children}</ContentWrapper>
+        <View style={styles.contentWrapper}>{children}</View>
       </RNBottomSheet>
     );
   }
@@ -111,6 +109,11 @@ export const BottomSheet = forwardRef<RNBottomSheet, BottomSheetProps>(
 
 BottomSheet.displayName = 'BottomSheet';
 
-const ContentWrapper = styled('View', {
-  padding: '$regular',
-});
+const styles = StyleSheet.create((theme) => ({
+  contentWrapper: {
+    padding: theme.space.regular,
+  },
+  background: {
+    backgroundColor: theme.colors.surface,
+  },
+}));

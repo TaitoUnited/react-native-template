@@ -1,9 +1,10 @@
 import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet';
 import { BottomSheetDefaultBackdropProps } from '@gorhom/bottom-sheet/lib/typescript/components/bottomSheetBackdrop/types';
 import { useCallback, useMemo, useRef, useState } from 'react';
+import { View } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { Button, Stack, Text } from '~components/uikit';
-import { styled } from '~styles';
 
 /**
  * NOTE: This example implementation does not use the UI Kit Bottom Sheet because of the ref we are using to control the sheet
@@ -52,7 +53,7 @@ export default function BottomSheets() {
   );
 
   return (
-    <Wrapper>
+    <View style={styles.container}>
       <Stack axis="y" spacing="medium">
         <Button onPress={handleExpandPress}>Expand</Button>
         <Button onPress={handleCollapsePress}>Collapse</Button>
@@ -72,7 +73,7 @@ export default function BottomSheets() {
         onAnimate={handleSheetAnimate}
         backdropComponent={renderBackdrop}
       >
-        <ContentContainer axis="y" spacing="large">
+        <Stack style={styles.contentContainer} axis="y" spacing="large">
           <Text variant="headingM" align="center">
             Awesome Bottom Sheet
           </Text>
@@ -82,18 +83,17 @@ export default function BottomSheets() {
           >
             Close
           </Button>
-        </ContentContainer>
+        </Stack>
       </BottomSheet>
-    </Wrapper>
+    </View>
   );
 }
 
-const Wrapper = styled('View', {
-  flex: 1,
-  padding: '$regular',
-});
-
-const ContentContainer = styled(Stack, {
-  padding: '$large',
-  zIndex: 1,
-});
+const styles = StyleSheet.create((theme) => ({
+  container: {
+    flex: 1,
+  },
+  contentContainer: {
+    padding: theme.space.regular,
+  },
+}));

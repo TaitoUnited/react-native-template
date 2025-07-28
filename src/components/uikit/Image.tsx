@@ -36,6 +36,7 @@ export function Image({
       style={[dimensions, style]}
       accessible={accessible}
       accessibilityRole={accessibilityRole}
+      contentFit="cover"
     />
   );
 }

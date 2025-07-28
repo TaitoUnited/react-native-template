@@ -7,8 +7,7 @@ import {
   useState,
 } from 'react';
 import { TouchableOpacity, type TextInput as RNTextInput } from 'react-native';
-
-import { styled } from '~styles';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { Icon } from '../Icon';
 import { Text } from '../Text';
@@ -68,7 +67,12 @@ export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(
           {...rest}
         />
         {showSuggestions && filteredSuggestions.length > 0 && (
-          <Suggestions axis="y" spacing="small" accessibilityRole="list">
+          <Stack
+            style={styles.suggestions}
+            axis="y"
+            spacing="small"
+            accessibilityRole="list"
+          >
             {filteredSuggestions.map((option, index) => (
               <TouchableOpacity
                 accessibilityRole="button"
@@ -77,7 +81,7 @@ export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(
                 accessibilityLabel={option}
                 accessibilityHint={t`Double tap to select this suggestion`}
               >
-                <Stack axis="x" spacing="xs" align="end">
+                <Stack axis="x" spacing="xs" align="center">
                   <Icon name="clock" size={16} color="textMuted" />
                   <Text variant="bodySmall" color="textMuted">
                     {option}
@@ -85,7 +89,7 @@ export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(
                 </Stack>
               </TouchableOpacity>
             ))}
-          </Suggestions>
+          </Stack>
         )}
       </Stack>
     );
@@ -94,11 +98,13 @@ export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(
 
 SearchInput.displayName = 'SearchInput';
 
-const Suggestions = styled(Stack, {
-  padding: '$small',
-  borderRadius: '$regular',
-  backgroundColor: '$surface',
-  borderWidth: 0.5,
-  borderColor: '$line3',
-  shadow: 'medium',
-});
+const styles = StyleSheet.create((theme) => ({
+  suggestions: {
+    padding: theme.space.small,
+    borderRadius: theme.radii.regular,
+    backgroundColor: theme.colors.surface,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: theme.colors.line3,
+    ...theme.shadows.medium,
+  },
+}));

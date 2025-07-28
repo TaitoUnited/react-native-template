@@ -1,14 +1,19 @@
 import { useLingui } from '@lingui/react/macro';
 import { Fragment, useState } from 'react';
-import type { LayoutChangeEvent, LayoutRectangle } from 'react-native';
+import {
+  TouchableOpacity,
+  View,
+  type LayoutChangeEvent,
+  type LayoutRectangle,
+} from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withSpring,
   withTiming,
 } from 'react-native-reanimated';
+import { StyleSheet } from 'react-native-unistyles';
 
-import { styled } from '~styles';
 import { haptics } from '~utils/haptics';
 
 import { Text } from './Text';
@@ -23,11 +28,12 @@ export function SegmentedControl<T>(props: Props<T>) {
   const [layout, setLayout] = useState<LayoutRectangle>();
 
   return (
-    <Wrapper
+    <View
+      style={styles.wrapper}
       onLayout={(e: LayoutChangeEvent) => setLayout(e.nativeEvent.layout)}
     >
       {!!layout && <Segments {...props} width={layout.width} />}
-    </Wrapper>
+    </View>
   );
 }
 
@@ -61,7 +67,9 @@ function Segments<T>({
 
   return (
     <>
-      <SegmentBackground style={segmentBackgroundStyle} />
+      <Animated.View
+        style={[styles.segmentBackground, segmentBackgroundStyle]}
+      />
 
       {segments.map((segment, index) => {
         return (
@@ -110,8 +118,10 @@ function Segment({
 
   return (
     <Fragment>
-      <SegmentButton
+      <TouchableOpacity
+        style={styles.segmentButton}
         onPress={onSelect}
+        activeOpacity={0.8}
         accessible
         accessibilityRole="menuitem"
         accessibilityState={{ selected: isActive }}
@@ -126,8 +136,8 @@ function Segment({
         >
           {label}
         </Text>
-      </SegmentButton>
-      <SegmentSeparator style={separatorOpacity} />
+      </TouchableOpacity>
+      <Animated.View style={[styles.segmentSeparator, separatorOpacity]} />
     </Fragment>
   );
 }
@@ -135,39 +145,31 @@ function Segment({
 // NOTE: we are using hard coded border radii here in order to have the wrapper
 // and the segment button radii match perfectly
 
-const Wrapper = styled('View', {
-  flexDirection: 'row',
-  alignItems: 'center',
-  backgroundColor: '$surface',
-  borderRadius: 10,
-});
-
-const SegmentBackground = Animated.createAnimatedComponent(
-  styled('View', {
-    absoluteFill: true,
-    backgroundColor: 'rgba(150, 150, 150, 0.15)',
+const styles = StyleSheet.create((theme) => ({
+  wrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: theme.colors.surface,
+    borderRadius: 10,
+  },
+  segmentBackground: {
     borderRadius: 8,
-  })
-);
-
-const SegmentButton = styled('TouchableOpacity', {
-  position: 'relative',
-  flex: 1,
-  flexCenter: 'row',
-  paddingVertical: '$small',
-  paddingHorizontal: '$regular',
-  zIndex: 1,
-  elevation: 1,
-}).attrs(() => ({
-  activeOpacity: 0.8,
-}));
-
-const SegmentSeparator = Animated.createAnimatedComponent(
-  styled('View', {
+    backgroundColor: 'rgba(150, 150, 150, 0.15)',
+    ...theme.utils.absoluteFill,
+  },
+  segmentButton: {
+    position: 'relative',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: theme.space.small,
+    paddingHorizontal: theme.space.regular,
+    zIndex: 1,
+    elevation: 1,
+  },
+  segmentSeparator: {
     width: 1,
     height: '50%',
-    backgroundColor: '$line2',
-    zIndex: -1,
-    elevation: -1,
-  })
-);
+    backgroundColor: theme.colors.line2,
+  },
+}));

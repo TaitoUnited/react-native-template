@@ -2,10 +2,10 @@ import { Trans, useLingui } from '@lingui/react/macro';
 import { differenceInDays } from 'date-fns';
 import * as ExpoStoreReview from 'expo-store-review';
 import { useEffect, useState } from 'react';
+import { StyleSheet } from 'react-native-unistyles';
 
 import ImprovementForm from '~components/store-review/ImprovementForm';
 import { BottomSheet, Button, Stack, Text } from '~components/uikit';
-import { styled } from '~styles';
 import storage, { STORAGE_KEYS } from '~utils/storage';
 
 import { showToast } from '../common/Toaster';
@@ -87,7 +87,12 @@ export default function StoreReview() {
 
   function Feedback() {
     return (
-      <FeedbackWrapper axis="y" spacing="regular" align="center">
+      <Stack
+        style={styles.feedbackWrapper}
+        axis="y"
+        spacing="regular"
+        align="center"
+      >
         <Text variant="headingS">
           <Trans>Enjoying the app?</Trans>
         </Text>
@@ -106,7 +111,7 @@ export default function StoreReview() {
         >
           <Trans>Could be better</Trans>
         </Button>
-      </FeedbackWrapper>
+      </Stack>
     );
   }
 
@@ -136,7 +141,9 @@ export default function StoreReview() {
   );
 }
 
-const FeedbackWrapper = styled(Stack, {
-  width: '100%',
-  paddingHorizontal: '$regular',
-});
+const styles = StyleSheet.create((theme) => ({
+  feedbackWrapper: {
+    width: '100%',
+    paddingHorizontal: theme.space.regular,
+  },
+}));

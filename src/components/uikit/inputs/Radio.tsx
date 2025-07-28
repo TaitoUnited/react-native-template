@@ -1,8 +1,8 @@
 import { useLingui } from '@lingui/react/macro';
 import { useEffect, useRef } from 'react';
-import { Animated, PixelRatio } from 'react-native';
+import { Animated, PixelRatio, TouchableOpacity, View } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
-import { styled } from '~styles';
 import { haptics } from '~utils/haptics';
 
 import { Text } from '../Text';
@@ -22,8 +22,11 @@ export function Radio({ onChange, checked, value, label }: Props) {
     onChange(value);
   }
 
+  styles.useVariants({ checked });
+
   return (
-    <Wrapper
+    <TouchableOpacity
+      style={styles.wrapper}
       onPress={onPress}
       activeOpacity={0.8}
       accessible
@@ -32,9 +35,9 @@ export function Radio({ onChange, checked, value, label }: Props) {
       accessibilityLabel={t`Radio option: ${label}`}
       accessibilityHint={t`Double tap to select this option`}
     >
-      <RadioOuter checked={checked}>{checked && <RadioInner />}</RadioOuter>
+      <View style={styles.radioOuter}>{checked && <RadioInner />}</View>
       <Text variant={checked ? 'bodyBold' : 'body'}>{label}</Text>
-    </Wrapper>
+    </TouchableOpacity>
   );
 }
 
@@ -49,40 +52,40 @@ function RadioInner() {
     }).start();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  return <RadioCircle style={{ transform: [{ scale }] }} />;
+  return (
+    <Animated.View style={[styles.radioCircle, { transform: [{ scale }] }]} />
+  );
 }
 
-const Wrapper = styled('TouchableOpacity', {
-  flexDirection: 'row',
-  alignItems: 'center',
-});
-
-const RadioOuter = styled('View', {
-  position: 'relative',
-  width: 24,
-  height: 24,
-  backgroundColor: 'transparent',
-  borderRadius: '$full',
-  borderWidth: PixelRatio.roundToNearestPixel(1.5), // match checkbox
-  marginRight: '$small',
-  borderColor: '$line1',
-  variants: {
-    checked: {
-      true: {
-        borderColor: '$primary',
+const styles = StyleSheet.create((theme) => ({
+  wrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  radioOuter: {
+    position: 'relative',
+    width: 24,
+    height: 24,
+    backgroundColor: 'transparent',
+    borderRadius: theme.radii.full,
+    borderWidth: PixelRatio.roundToNearestPixel(1.5), // match checkbox
+    marginRight: theme.space.small,
+    borderColor: theme.colors.line1,
+    variants: {
+      checked: {
+        true: {
+          borderColor: theme.colors.primary,
+        },
       },
     },
   },
-});
-
-const RadioCircle = Animated.createAnimatedComponent(
-  styled('View', {
+  radioCircle: {
     position: 'absolute',
     top: 5,
     right: 5,
     bottom: 5,
     left: 5,
-    borderRadius: '$full',
-    backgroundColor: '$primary',
-  })
-);
+    borderRadius: theme.radii.full,
+    backgroundColor: theme.colors.primary,
+  },
+}));

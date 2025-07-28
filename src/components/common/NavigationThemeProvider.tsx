@@ -4,22 +4,19 @@ import {
   ThemeProvider,
 } from '@react-navigation/native';
 import { type ReactNode } from 'react';
-
-import { useColorMode } from '~services/color-mode';
-import { useTheme } from '~styles';
+import { UnistylesRuntime, useUnistyles } from 'react-native-unistyles';
 
 export default function NavigationThemeProvider({
   children,
 }: {
   children: ReactNode;
 }) {
-  const theme = useTheme();
-  const { colorScheme } = useColorMode();
+  const { theme } = useUnistyles();
 
   return (
     <ThemeProvider
       value={
-        colorScheme === 'dark'
+        UnistylesRuntime.colorScheme === 'dark'
           ? DarkTheme
           : {
               ...DefaultTheme,

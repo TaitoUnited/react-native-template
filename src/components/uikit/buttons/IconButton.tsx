@@ -1,13 +1,17 @@
 import { useLingui } from '@lingui/react/macro';
-import { ActivityIndicator, type GestureResponderEvent } from 'react-native';
+import {
+  ActivityIndicator,
+  Pressable,
+  type GestureResponderEvent,
+} from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withSpring,
   withTiming,
 } from 'react-native-reanimated';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
-import { styled, useTheme } from '~styles';
 import { haptics } from '~utils/haptics';
 
 import { Icon } from '../Icon';
@@ -30,7 +34,7 @@ export function IconButton({
   ...rest
 }: IconButtonProps) {
   const { t } = useLingui();
-  const theme = useTheme();
+  const { theme } = useUnistyles();
   const pressed = useSharedValue(false);
   const iconSize = sizeToIconSize[size];
   const wantedHitSize = iconSize * HIT_SLOP_FACTOR;
@@ -81,22 +85,26 @@ export function IconButton({
     }
   }
 
+  styles.useVariants({
+    size,
+    disabled,
+  });
+
   return (
-    <Wrapper
+    <Pressable
       hitSlop={hitSlop}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
-      size={size}
       disabled={disabled}
       onPress={_onPress}
-      style={wrapperStyle}
+      style={[styles.wrapper, wrapperStyle]}
       accessibilityRole={accessibilityRole ?? 'button'}
       accessibilityLabel={accessibilityLabel ?? t`Icon button with ${icon} icon`} // prettier-ignore
       accessibilityHint={accessibilityHint ?? t`Double tap to perform action`} // prettier-ignore
       accessibilityState={{ disabled: !!disabled, busy: !!loading }}
       {...rest}
     >
-      <PressHighlight style={highlightStyles} />
+      <Animated.View style={highlightStyles} />
       {loading ? (
         <ActivityIndicator color={theme.colors[iconColor]} size="small" />
       ) : (
@@ -104,45 +112,43 @@ export function IconButton({
           <Icon name={icon} color={iconColor} size={iconSize} />
         </Animated.View>
       )}
-    </Wrapper>
+    </Pressable>
   );
 }
 
-const Wrapper = styled('Pressable', {
-  borderRadius: '$medium',
-  position: 'relative',
-  flexCenter: 'row',
-  variants: {
-    size: {
-      small: {
-        height: 16,
-        width: 16,
-        borderRadius: '$regular',
+const styles = StyleSheet.create((theme) => ({
+  wrapper: {
+    borderRadius: theme.radii.medium,
+    position: 'relative',
+    ...theme.utils.flexCenter,
+    variants: {
+      size: {
+        small: {
+          height: 16,
+          width: 16,
+          borderRadius: theme.radii.regular,
+        },
+        normal: {
+          height: 24,
+          width: 24,
+          borderRadius: theme.radii.regular,
+        },
+        large: {
+          height: 44,
+          width: 44,
+        },
       },
-      normal: {
-        height: 24,
-        width: 24,
-        borderRadius: '$regular',
-      },
-      large: {
-        height: 44,
-        width: 44,
-      },
-    },
-    disabled: {
-      true: {
-        opacity: 0.9,
+      disabled: {
+        true: {
+          opacity: 0.9,
+        },
       },
     },
   },
-});
-
-const PressHighlight = Animated.createAnimatedComponent(
-  styled('View', {
-    absoluteFill: true,
+  pressHighlight: {
     zIndex: -1,
     elevation: -1,
-    backgroundColor: '$pressHighlight',
-    borderRadius: '$full',
-  })
-);
+    backgroundColor: theme.colors.neutral5, // TODO: Add press highlight color to theme
+    borderRadius: theme.radii.full,
+  },
+}));

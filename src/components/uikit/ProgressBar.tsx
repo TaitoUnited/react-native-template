@@ -1,12 +1,11 @@
-import { type JSX } from 'react';
+import { useEffect, type JSX } from 'react';
+import { View } from 'react-native';
 import Animated, {
   useAnimatedStyle,
-  useDerivedValue,
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-
-import { styled } from '~styles';
+import { StyleSheet } from 'react-native-unistyles';
 
 type Props = {
   step: number;
@@ -35,11 +34,11 @@ export function ProgressBar({
 
   const progressAnim = useSharedValue(0);
 
-  useDerivedValue(() => {
+  useEffect(() => {
     progressAnim.value = withTiming(progress, {
       duration: animated ? 200 : 0,
     });
-  }, [step]);
+  }, [step]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
@@ -48,25 +47,24 @@ export function ProgressBar({
   });
 
   return (
-    <ProgressContainer
-      style={{ height }}
+    <View
+      style={[styles.progressContainer, { height }]}
       accessible
       accessibilityRole="progressbar"
       accessibilityValue={{ now: step, min: 0, max: totalSteps }}
     >
-      <AnimatedProgress style={[{ height }, animatedStyle]} />
-    </ProgressContainer>
+      <Animated.View style={[styles.progress, { height }, animatedStyle]} />
+    </View>
   );
 }
 
-const ProgressContainer = styled('View', {
-  borderRadius: '$full',
-  backgroundColor: '$primaryMutedHover',
-});
-
-const Progress = styled('View', {
-  borderRadius: '$full',
-  backgroundColor: '$primary',
-});
-
-const AnimatedProgress = Animated.createAnimatedComponent(Progress);
+const styles = StyleSheet.create((theme) => ({
+  progressContainer: {
+    borderRadius: theme.radii.full,
+    backgroundColor: theme.colors.primaryMutedHover,
+  },
+  progress: {
+    backgroundColor: theme.colors.primary,
+    borderRadius: theme.radii.full,
+  },
+}));

@@ -107,6 +107,7 @@ module.exports = defineConfig([
             '*.startsWith',
             'require',
             'useState',
+            'createElement',
           ],
         },
       ],
@@ -114,7 +115,7 @@ module.exports = defineConfig([
       // Accessibility
       'react-native-a11y/has-accessibility-hint': 'warn',
 
-      // Import sort/order
+      // Import sort/order etc.
       'import/namespace': ['error', { allowComputed: true }],
       'import/order': [
         'error',
@@ -131,6 +132,21 @@ module.exports = defineConfig([
             ['parent', 'sibling', 'index'],
           ],
           'newlines-between': 'always',
+        },
+      ],
+      'no-restricted-imports': [
+        'error',
+        {
+          name: 'react-native',
+          importNames: ['StyleSheet'],
+          message:
+            'Please import StyleSheet from unistyles instead of react-native.',
+        },
+        {
+          name: 'react-native',
+          importNames: ['Text'],
+          message:
+            'Please import Text from our design system instead of react-native.',
         },
       ],
     },

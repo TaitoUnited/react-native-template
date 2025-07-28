@@ -1,10 +1,10 @@
 import { useLingui } from '@lingui/react/macro';
 import { router, type Href } from 'expo-router';
 import { isValidElement, type FunctionComponent, type ReactNode } from 'react';
-import { Platform, StyleSheet } from 'react-native';
+import { Platform, TouchableHighlight, View } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { Icon, Stack, Text } from '~components/uikit';
-import { styled } from '~styles';
 import { haptics } from '~utils/haptics';
 
 export type Item = {
@@ -45,18 +45,21 @@ export default function MenuList({ items, title }: Props) {
   return (
     <Stack axis="y" spacing="xs">
       {!!title && (
-        <Title variant="overlineSmall" color="textMuted">
+        <Text style={styles.title} variant="overlineSmall" color="textMuted">
           {title}
-        </Title>
+        </Text>
       )}
 
-      <Wrapper>
-        {filteredItems.map((item, index) => {
+      <View style={styles.wrapper}>
+        {filteredItems.map((item) => {
+          styles.useVariants({ withDivider: filteredItems.length > 1 });
+
           const isPressable = !!item.onPress || !!item.target;
           return (
-            <Pressable
+            <TouchableHighlight
               testID={item.id}
               key={item.id}
+              underlayColor="rgba(150, 150, 150, 0.2)" // TODO: Design system template do not have the pressed color for now. Might be added in the future.
               onPress={isPressable ? () => handleItemPress(item) : undefined}
               accessibilityRole={isPressable ? 'button' : 'text'}
               accessibilityLabel={`${t`Item`} ${item.label}${item.currentValue ? `, ${t`Selected value`}: ${item.currentValue}` : ''}`}
@@ -64,44 +67,47 @@ export default function MenuList({ items, title }: Props) {
                 isPressable ? t`Double tap to select ${item.label}` : ''
               }
             >
-              <ContentWrapper axis="x" spacing="small">
-                {item.leftSlot ? <LeftSlot>{item.leftSlot}</LeftSlot> : null}
+              <Stack style={styles.contentWrapper} axis="x" spacing="small">
+                {item.leftSlot ? (
+                  <View style={styles.leftSlot}>{item.leftSlot}</View>
+                ) : null}
 
-                <Content
+                <Stack
                   axis="x"
                   spacing="small"
                   align="center"
-                  withDivider={index < filteredItems.length - 1}
+                  style={styles.content}
                 >
-                  <Label variant="body" numberOfLines={1}>
+                  <Text style={styles.label} variant="body" numberOfLines={1}>
                     {item.label}
-                  </Label>
+                  </Text>
 
                   {item.rightSlot ? (
-                    <RightSlot>{item.rightSlot}</RightSlot>
+                    <View style={styles.rightSlot}>{item.rightSlot}</View>
                   ) : (
                     <>
                       {item.currentValue !== undefined &&
                         (isValidElement(item.currentValue) ? (
                           item.currentValue
                         ) : (
-                          <Value
+                          <Text
+                            style={styles.value}
                             variant="body"
                             color="textMuted"
                             numberOfLines={1}
                           >
                             {item.currentValue}
-                          </Value>
+                          </Text>
                         ))}
 
                       {item.checked !== undefined && (
                         <>
                           {item.checked ? (
-                            <CheckCircle>
+                            <View style={styles.checkCircle}>
                               <Icon name="check" color="infoMuted" size={14} />
-                            </CheckCircle>
+                            </View>
                           ) : (
-                            <CheckOutline />
+                            <View style={styles.checkOutline} />
                           )}
                         </>
                       )}
@@ -111,79 +117,68 @@ export default function MenuList({ items, title }: Props) {
                       )}
                     </>
                   )}
-                </Content>
-              </ContentWrapper>
-            </Pressable>
+                </Stack>
+              </Stack>
+            </TouchableHighlight>
           );
         })}
-      </Wrapper>
+      </View>
     </Stack>
   );
 }
 
-const Wrapper = styled('View', {
-  backgroundColor: '$surface',
-  borderRadius: '$medium',
-  overflow: 'hidden',
-});
-
-const Title = styled(Text, {
-  marginLeft: '$small',
-});
-
-const Label = styled(Text, {
-  flex: 1,
-  paddingVertical: '$xxs',
-});
-
-const Value = styled(Text, {
-  maxWidth: '75%',
-});
-
-const Pressable = styled('TouchableHighlight', {}).attrs(() => ({
-  underlayColor: 'rgba(150, 150, 150, 0.2)', // TODO: Design system template do not have the pressed color for now. Might be added in the future.
-}));
-
-const ContentWrapper = styled(Stack, {
-  paddingLeft: '$regular',
-});
-
-const Content = styled(Stack, {
-  flex: 1,
-  paddingRight: '$small',
-  paddingVertical: '$small',
-  variants: {
-    withDivider: {
-      true: {
-        borderBottomWidth: StyleSheet.hairlineWidth,
-        borderBottomColor: '$line3',
+const styles = StyleSheet.create((theme) => ({
+  wrapper: {
+    backgroundColor: theme.colors.surface,
+    borderRadius: theme.radii.medium,
+    overflow: 'hidden',
+  },
+  title: {
+    marginLeft: theme.space.small,
+  },
+  label: {
+    flex: 1,
+    paddingVertical: theme.space.xxs,
+  },
+  value: {
+    maxWidth: '75%',
+  },
+  contentWrapper: {
+    paddingLeft: theme.space.regular,
+  },
+  content: {
+    flex: 1,
+    paddingRight: theme.space.small,
+    paddingVertical: theme.space.small,
+    variants: {
+      withDivider: {
+        true: {
+          borderBottomWidth: StyleSheet.hairlineWidth,
+          borderBottomColor: theme.colors.line3,
+        },
       },
     },
   },
-});
-
-const LeftSlot = styled('View', {
-  flexCenter: 'row',
-  paddingVertical: '$small',
-});
-
-const RightSlot = styled('View', {
-  flexCenter: 'row',
-  minHeight: 24,
-});
-
-const CheckCircle = styled('View', {
-  width: 24,
-  height: 24,
-  borderRadius: '$full',
-  backgroundColor: '$info',
-  flexCenter: 'row',
-});
-
-const CheckOutline = styled('View', {
-  width: 24,
-  height: 24,
-  borderRadius: '$full',
-  borderWidth: 1,
-  borderColor: '$muted4',
-});
+  leftSlot: {
+    paddingVertical: theme.space.small,
+    ...theme.utils.flexCenter,
+  },
+  rightSlot: {
+    minHeight: 24,
+    ...theme.utils.flexCenter,
+  },
+  checkCircle: {
+    width: 24,
+    height: 24,
+    borderRadius: theme.radii.full,
+    backgroundColor: theme.colors.info,
+    ...theme.utils.flexCenter,
+  },
+  checkOutline: {
+    width: 24,
+    height: 24,
+    borderRadius: theme.radii.full,
+    borderWidth: 1,
+    borderColor: theme.colors.neutral4,
+  },
+}));

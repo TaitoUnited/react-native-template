@@ -1,9 +1,11 @@
 import { StatusBar as RNStatusBar } from 'expo-status-bar';
-
-import { useColorMode } from '~services/color-mode';
+import { UnistylesRuntime } from 'react-native-unistyles';
 
 export default function StatusBar({ transparent = false }) {
-  const { colorMode } = useColorMode();
-
-  return <RNStatusBar style={colorMode} translucent={transparent} />;
+  return (
+    <RNStatusBar
+      style={UnistylesRuntime.colorScheme === 'dark' ? 'light' : 'dark'}
+      translucent={transparent}
+    />
+  );
 }

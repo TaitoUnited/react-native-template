@@ -1,3 +1,4 @@
+import { TextStyle } from 'react-native';
 import * as colors from '~design-system/colors';
 
 const WEIGHT_TO_FONT = {
@@ -12,7 +13,7 @@ const WEIGHT_TO_FONT = {
   900: 'Black',
 } as const;
 
-export function getFontFromWeight(weight: number) {
+export function getFontFromWeight(weight: number): FontWeightVar {
   return WEIGHT_TO_FONT[weight as FontWeightNum].toLowerCase() as FontWeightVar;
 }
 
@@ -127,12 +128,12 @@ export function transformColors(
 // Types ----------------------------------------------------------------------
 
 export type TypographyDefinition = {
-  fontFamily: string;
-  fontWeight: number;
-  fontSize: number;
-  textTransform: string;
-  letterSpacing: number;
-  lineHeight: number;
+  fontFamily: NonNullable<TextStyle['fontFamily']>;
+  fontWeight: NonNullable<TextStyle['fontWeight']>;
+  fontSize: NonNullable<TextStyle['fontSize']>;
+  textTransform: NonNullable<TextStyle['textTransform']>;
+  letterSpacing: NonNullable<TextStyle['letterSpacing']>;
+  lineHeight: NonNullable<TextStyle['lineHeight']>;
 };
 
 export type FontWeightToName = typeof WEIGHT_TO_FONT;

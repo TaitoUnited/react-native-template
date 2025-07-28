@@ -1,23 +1,28 @@
+import { ScrollView } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 import { Stack, Text } from '~components/uikit';
-import { styled } from '~styles';
 
 export default function Sandbox() {
   return (
-    <Wrapper>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.contentContainer}
+    >
       <Stack axis="y" spacing="medium">
-        <Text variant="body" withLineHeight>
+        <Text variant="body">
           You can play around with various components here if you don&lsquo;t
           want to add a new screen for them in the playground.
         </Text>
       </Stack>
-    </Wrapper>
+    </ScrollView>
   );
 }
 
-const Wrapper = styled('ScrollView', {
-  flex: 1,
-}).attrs((p) => ({
-  contentContainerStyle: {
-    padding: p.theme.space.regular,
+const styles = StyleSheet.create((theme) => ({
+  container: {
+    flex: 1,
+  },
+  contentContainer: {
+    padding: theme.space.regular,
   },
 }));

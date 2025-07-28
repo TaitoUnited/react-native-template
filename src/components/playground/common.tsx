@@ -1,11 +1,16 @@
 import type { ReactNode } from 'react';
+import { View } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { Icon, Stack, Text } from '~components/uikit';
-import { styled } from '~styles';
 
 export function Note({ children }: { children: ReactNode }) {
   return (
-    <NoteWrapper accessible accessibilityLabel={`Note: ${children}`}>
+    <View
+      style={styles.wrapper}
+      accessible
+      accessibilityLabel={`Note: ${children}`}
+    >
       <Stack axis="y" spacing="xs">
         <Stack axis="x" spacing="xxs" align="center">
           <Icon name="warning" color="warn" />
@@ -14,18 +19,20 @@ export function Note({ children }: { children: ReactNode }) {
           </Text>
         </Stack>
 
-        <Text variant="bodySmall" color="warnContrast" withLineHeight>
+        <Text variant="bodySmall" color="warnContrast">
           {children}
         </Text>
       </Stack>
-    </NoteWrapper>
+    </View>
   );
 }
 
-const NoteWrapper = styled('View', {
-  borderLeftWidth: 6,
-  borderColor: '$warn',
-  borderRadius: '$small',
-  backgroundColor: '$warnMuted',
-  padding: '$regular',
-});
+const styles = StyleSheet.create((theme) => ({
+  wrapper: {
+    borderLeftWidth: 6,
+    borderColor: theme.colors.warn,
+    borderRadius: theme.radii.small,
+    backgroundColor: theme.colors.warnMuted,
+    padding: theme.space.regular,
+  },
+}));

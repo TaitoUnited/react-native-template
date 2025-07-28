@@ -6,8 +6,7 @@ import {
 import { type NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import { useNavigation } from 'expo-router';
 import { useEffect } from 'react';
-
-import { useTheme } from '~styles';
+import { useUnistyles } from 'react-native-unistyles';
 
 export function getActiveRouteName(
   state: NavigationState | PartialState<NavigationState>
@@ -20,7 +19,7 @@ export function getActiveRouteName(
 
 export function useDefaultStackScreenOptions() {
   const { t } = useLingui();
-  const theme = useTheme();
+  const { theme } = useUnistyles();
 
   const screenOptions: NativeStackNavigationOptions = {
     headerStyle: {

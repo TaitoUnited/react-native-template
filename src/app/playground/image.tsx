@@ -1,5 +1,6 @@
+import { ScrollView } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 import { Grid, Stack, Text, Image as UiImage } from '~components/uikit';
-import { styled } from '~styles';
 
 const photos = [
   'https://tinyurl.com/57ssptjn',
@@ -9,14 +10,18 @@ const photos = [
 
 export default function Image() {
   return (
-    <Wrapper>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.contentContainer}
+    >
       <Stack axis="y" spacing="large">
         <Stack axis="y" spacing="regular">
           <Text variant="headingS">Images</Text>
 
           <Grid spacing="regular" justify="center">
             {photos.map((photo, index) => (
-              <Img
+              <UiImage
+                style={styles.img}
                 key={index}
                 source={{ uri: photo }}
                 autoSize={{ width: 300 }}
@@ -26,18 +31,18 @@ export default function Image() {
           </Grid>
         </Stack>
       </Stack>
-    </Wrapper>
+    </ScrollView>
   );
 }
 
-const Wrapper = styled('ScrollView', {
-  flex: 1,
-}).attrs((p) => ({
-  contentContainerStyle: {
-    padding: p.theme.space.regular,
+const styles = StyleSheet.create((theme) => ({
+  container: {
+    flex: 1,
+  },
+  contentContainer: {
+    padding: theme.space.regular,
+  },
+  img: {
+    borderRadius: theme.radii.regular,
   },
 }));
-
-const Img = styled(UiImage, {
-  borderRadius: '$regular',
-});
