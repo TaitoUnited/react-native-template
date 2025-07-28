@@ -35,7 +35,7 @@ const createNotificationFeedback = (type: Haptics.NotificationFeedbackType) => {
 };
 // Function to trigger haptics based on the feedback type
 const hapticToTrigger = (haptic: HapticFeedbackType) => {
-  if (!USE_HAPTICS || Platform.OS === 'web') return () => {};
+  if (!USE_HAPTICS) return () => {};
 
   switch (haptic) {
     case HapticFeedback.impactLight:

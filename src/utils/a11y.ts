@@ -1,7 +1,7 @@
 // You can find more info about accessibility in React Native in the official documentation: https://reactnative.dev/docs/accessibilityinfo
 
 import { useEffect, useState } from 'react';
-import { AccessibilityInfo, Platform } from 'react-native';
+import { AccessibilityInfo } from 'react-native';
 
 /**
  * Announces a message for accessibility using the screen reader.
@@ -23,8 +23,6 @@ export function announceForAccessibility({
   queue?: boolean;
   delay?: number;
 }) {
-  if (Platform.OS === 'web') return; // Web does not support this feature
-
   if (delay) {
     setTimeout(() => {
       AccessibilityInfo.announceForAccessibilityWithOptions(message, {

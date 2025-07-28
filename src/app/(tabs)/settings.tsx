@@ -1,11 +1,11 @@
 import { useLingui } from '@lingui/react/macro';
-import { ScrollView } from 'react-native';
+import { Alert, ScrollView } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
 import MenuList from '~components/common/MenuList';
 import { useHeaderPlaygroundButton } from '~components/playground/utils';
 import { useMenuListItem } from '~components/settings/hooks';
-import { Icon, alert } from '~components/uikit';
+import { Icon } from '~components/uikit';
 import { useAuthStore } from '~services/auth';
 import { announceForAccessibility } from '~utils/a11y';
 import { haptics } from '~utils/haptics';
@@ -26,7 +26,7 @@ export default function Settings() {
 
   function handleLogout() {
     haptics.notificationWarning();
-    alert(t`Are you sure you want to logout?`, '', [
+    Alert.alert(t`Are you sure you want to logout?`, '', [
       { text: t`Cancel`, style: 'cancel', onPress: () => {} },
       { text: t`I am sure`, onPress: onLogout },
     ]);
